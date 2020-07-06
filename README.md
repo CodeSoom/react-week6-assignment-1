@@ -96,8 +96,8 @@ npm run test:e2e
 ### Todo
 - [X] App의 Restaurants 관련 관심사 분리 (=> RestaurantsPage)
 - [X] `AboutPage` 컴포넌트 구현
-- [ ] `HomePage` 컴포넌트 구현
-- [ ] App 컴포넌트에 라우팅 적용
+- [X] `HomePage` 컴포넌트 구현
+- [X] App 컴포넌트에 라우팅 적용
 - [ ] `RestaurantDetailPage` 컴포넌트 구현
 - [ ] `RestaurantDetailContainer` 컴포넌트 구현
 - [ ] `RestaurantDetail` 컴포넌트 구현
