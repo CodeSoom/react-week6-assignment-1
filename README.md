@@ -92,3 +92,12 @@ npm run coverage
 ```bash
 npm run test:e2e
 ```
+
+### Todo
+- [ ] App의 Restaurants 관련 관심사 분리 (=> RestaurantsPage)
+- [ ] `AboutPage` 컴포넌트 구현
+- [ ] App 컴포넌트에 라우팅 적용
+- [ ] `RestaurantDetailPage` 컴포넌트 구현
+- [ ] `RestaurantDetailContainer` 컴포넌트 구현
+- [ ] `RestaurantDetail` 컴포넌트 구현
+- [ ] `Restaurants` 컴포넌트에 Link 렌더링 적용
