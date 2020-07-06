@@ -4,6 +4,8 @@ import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import { MemoryRouter } from 'react-router-dom';
+
 import App from './App';
 
 describe('App', () => {
@@ -23,5 +25,19 @@ describe('App', () => {
         { id: 1, name: '마법사주방' },
       ],
     }));
+  });
+
+  context('at path /', () => {
+    it('render home', () => {
+      const { container } = render((
+        <MemoryRouter>
+          <App />
+        </MemoryRouter>
+      ));
+
+      expect(container).toHaveTextContent('Home');
+      expect(container).toHaveTextContent('About');
+      expect(container).toHaveTextContent('Restaurants');
+    });
   });
 });
