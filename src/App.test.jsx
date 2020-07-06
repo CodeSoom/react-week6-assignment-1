@@ -52,4 +52,16 @@ describe('App', () => {
       expect(container).toHaveTextContent('페이지입니다.');
     });
   });
+
+  context('at path /restaurants', () => {
+    it('render about', () => {
+      const { container } = render((
+        <MemoryRouter initialEntries={['/restaurants']}>
+          <App />
+        </MemoryRouter>
+      ));
+
+      expect(container).toHaveTextContent('서울');
+    });
+  });
 });
