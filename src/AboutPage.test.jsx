@@ -10,4 +10,5 @@ test('AboutPage', () => {
   ));
 
   expect(container).toHaveTextContent('About');
+  expect(container).toHaveTextContent('About 페이지입니다.');
 });

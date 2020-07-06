@@ -30,7 +30,7 @@ describe('App', () => {
   context('at path /', () => {
     it('render home', () => {
       const { container } = render((
-        <MemoryRouter>
+        <MemoryRouter initialEntries={['/']}>
           <App />
         </MemoryRouter>
       ));
@@ -44,12 +44,12 @@ describe('App', () => {
   context('at path /about', () => {
     it('render about', () => {
       const { container } = render((
-        <MemoryRouter initialEntries={['/home']}>
+        <MemoryRouter initialEntries={['/about']}>
           <App />
         </MemoryRouter>
       ));
 
-      expect(container).toHaveTextContent('About 페이지입니다.');
+      expect(container).toHaveTextContent('페이지입니다.');
     });
   });
 });
