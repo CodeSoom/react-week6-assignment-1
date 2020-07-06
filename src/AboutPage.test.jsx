@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render } from '@testing-library/jest-dom';
+import { render } from '@testing-library/react';
 
 import AboutPage from './AboutPage';
 
