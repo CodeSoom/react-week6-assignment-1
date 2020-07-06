@@ -40,4 +40,16 @@ describe('App', () => {
       expect(container).toHaveTextContent('Restaurants');
     });
   });
+
+  context('at path /about', () => {
+    it('render about', () => {
+      const { container } = render((
+        <MemoryRouter initialEntries={['/home']}>
+          <App />
+        </MemoryRouter>
+      ));
+
+      expect(container).toHaveTextContent('About 페이지입니다.');
+    });
+  });
 });
