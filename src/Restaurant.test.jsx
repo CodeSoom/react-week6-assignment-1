@@ -14,6 +14,6 @@ describe('Restaurant', () => {
       <Restaurant restaurant={RESTAURANT} />
     ));
 
-    expect(getByText('양천주가')).toBeInTheDocument();
+    expect(getByText(RESTAURANT.name)).toBeInTheDocument();
   });
 });
