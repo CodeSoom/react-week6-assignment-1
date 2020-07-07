@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
+import { useDispatch } from 'react-redux';
 
 import { useParams } from 'react-router-dom';
 
+import {
+  loadRestaurant,
+} from './actions';
+
 export default function RestaurantPage() {
   const { restaurantId } = useParams();
+
+  // TODO : 서버로부터 restaurant 가져오기
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadRestaurant(restaurantId));
+  });
 
   return (
     <div>
