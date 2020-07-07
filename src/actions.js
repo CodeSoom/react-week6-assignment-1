@@ -28,7 +28,7 @@ export function setRestaurants(restaurants) {
 
 export function setRestaurant(restaurant) {
   return {
-    type: 'setRestaurants',
+    type: 'setRestaurant',
     payload: { restaurant },
   };
 }
@@ -76,7 +76,7 @@ export function loadRestaurants() {
   };
 }
 
-export function loadRestaurant(restaurantId) {
+export function loadRestaurant({ restaurantId }) {
   return async (dispatch) => {
     const restaurant = await fetchRestaurant({
       restaurantId,
