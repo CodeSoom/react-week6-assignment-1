@@ -36,10 +36,24 @@ describe('App', () => {
   });
 
   it('About 링크를 클릭 시 about 페이지가 보인다.', () => {
-    const { getByText } = render(<App />, { wrapper: MemoryRouter });
+    const { getByText } = render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>,
+    );
 
     fireEvent.click(getByText('About'));
 
     expect(getByText('About page')).not.toBeNull();
+  });
+
+  it('관련 링크가 없을 시 Not Found 페이지가 보인다.', () => {
+    const { getByText } = render(
+      <MemoryRouter initialEntries={['/404']}>
+        <App />
+      </MemoryRouter>,
+    );
+
+    expect(getByText('Not Found')).not.toBeNull();
   });
 });
