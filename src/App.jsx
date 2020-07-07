@@ -5,6 +5,7 @@ import { Switch, Route } from 'react-router-dom';
 import HomePage from './HomePage';
 import AboutPage from './AboutPage';
 import RestaurantsPage from './RestaurantsPage';
+import NotFoundPage from './NotFoundPage';
 
 // 0. 지역, 분류 목록을 얻기
 // 1. 지역 선택 - Regions <- API (0)
@@ -34,12 +35,6 @@ import RestaurantsPage from './RestaurantsPage';
  * - 페이지 이름("404 Not Found")이 보인다. (임의로 추가함)
  * - 존재하지 않는 URL로 접근했을 때, 404 Not Found 페이지가 보인다.
 */
-
-function NotFoundPage() {
-  return (
-    <h2>404 Not Found</h2>
-  );
-}
 
 export default function App() {
   return (
