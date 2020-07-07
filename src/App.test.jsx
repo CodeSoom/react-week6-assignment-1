@@ -51,11 +51,9 @@ describe('App with router', () => {
 
   context('with URL included /RestaurantPage', () => {
     it('shows page name', () => {
-      const { container } = renderApp({ path: '/restaurant' });
+      const { container } = renderApp({ path: '/restaurant/1' });
 
-      expect(container).toHaveTextContent('Restaurant');
-
-      // TODO : 파라미터에 따라 다른 콘테츠 보여주기
+      expect(container).toHaveTextContent('Restaurant1');
     });
   });
 
