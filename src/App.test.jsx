@@ -32,7 +32,7 @@ describe('App', () => {
       ));
 
       expect(getByText('About')).toBeInTheDocument();
-      expect(getByText('About페이지 입니다.')).toBeInTheDocument();
+      expect(getByText('About 페이지 입니다.')).toBeInTheDocument();
     });
   });
 });
