@@ -8,7 +8,9 @@ import { MemoryRouter } from 'react-router-dom';
 
 import App from './App';
 
-test('App', () => {
+import routes from '../fixtures/routes';
+
+describe('App', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
@@ -17,11 +19,24 @@ test('App', () => {
     restaurants: [],
   }));
 
-  const { container } = render((
-    <MemoryRouter initialEntries={['/']}>
-      <App />
-    </MemoryRouter>
-  ));
+  it('renders header all the time', () => {
+    const containers = routes.map((route) => render(
+      <MemoryRouter initialEntries={[route]}>
+        <App />
+      </MemoryRouter>,
+    ));
+    containers.map(({ container }) => expect(container).toHaveTextContent('헤더'));
+  });
 
-  expect(container).toHaveTextContent('Home');
+  context('with path /', () => {
+    it('renders the HomePage', () => {
+      const { container } = render((
+        <MemoryRouter initialEntries={['/']}>
+          <App />
+        </MemoryRouter>
+      ));
+
+      expect(container).toHaveTextContent('Home');
+    });
+  });
 });
