@@ -29,6 +29,24 @@ test('App', () => {
 });
 
 describe('App', () => {
+  it('Home 링크가 있다', () => {
+    const { getByText } = render(<App />, { wrapper: MemoryRouter });
+
+    expect(getByText('Home')).not.toBeNull();
+  });
+
+  it('Home 링크를 클릭 시 home 페이지가 보인다.', () => {
+    const { getByText } = render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>,
+    );
+
+    fireEvent.click(getByText('About'));
+
+    expect(getByText('Home page')).not.toBeNull();
+  });
+
   it('About 링크가 있다', () => {
     const { getByText } = render(<App />, { wrapper: MemoryRouter });
 
