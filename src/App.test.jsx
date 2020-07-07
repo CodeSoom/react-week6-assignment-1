@@ -49,15 +49,18 @@ describe('App with router', () => {
     });
   });
 
+  // TODO : 파라미터에 따라 다른 콘텐츠 보여주는 거 공부 후 구현하기
   // context('with URL included /RestaurantPage', () => {
   //   it('shows page name', () => {
 
   //   });
   // });
 
-  // context('with URL included /NotFoundPage', () => {
-  //   it('shows page name', () => {
+  context('with URL included /nonExistentPage', () => {
+    it('shows Not Found', () => {
+      const { container } = renderApp({ path: '/codesoom' });
 
-  //   });
-  // });
+      expect(container).toHaveTextContent('404 Not Found');
+    });
+  });
 });
