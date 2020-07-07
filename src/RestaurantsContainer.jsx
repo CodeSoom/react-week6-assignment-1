@@ -2,6 +2,7 @@ import React from 'react';
 
 import { useSelector } from 'react-redux';
 
+import { Link } from 'react-router-dom';
 import { get } from './utils';
 
 import RestaurantContainer from './RestaurantContainer';
@@ -12,10 +13,14 @@ export default function RestaurantsContainer() {
   return (
     <ul>
       {restaurants.map((restaurant) => (
-        <RestaurantContainer
+        <Link
           key={restaurant.id}
-          restaurant={restaurant}
-        />
+          to={`/restaurant/${restaurant.id}`}
+        >
+          <RestaurantContainer
+            restaurant={restaurant}
+          />
+        </Link>
       ))}
     </ul>
   );
