@@ -4,6 +4,7 @@ import {
   setRegions,
   setCategories,
   setRestaurants,
+  setRestaurant,
   selectRegion,
   selectCategory,
 } from './actions';
@@ -106,6 +107,20 @@ describe('reducer', () => {
         id: 1,
         name: '한식',
       });
+    });
+  });
+
+  describe('setRestaurant', () => {
+    it('change restaurant', () => {
+      const initialState = {
+        restaurant: null,
+      };
+
+      const restaurant = { id: 1, name: '한식' };
+
+      const state = reducer(initialState, setRestaurant(restaurant));
+
+      expect(state.restaurant).toEqual(restaurant);
     });
   });
 });
