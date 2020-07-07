@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -40,6 +40,15 @@ describe('App', () => {
       const { getByText } = renderApp({ path: '/' });
 
       expect(getByText('헤더')).not.toBeNull();
+    });
+  });
+
+  context('click header', () => {
+    it('render home', () => {
+      const { getByText } = renderApp({ path: '/restaurants' });
+
+      fireEvent.click(getByText('헤더'));
+      expect(getByText('Home')).not.toBeNull();
     });
   });
 
