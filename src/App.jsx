@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Switch, Link, Route } from 'react-router-dom';
 
+import Home from './Home';
 import About from './About';
 import NotFound from './NotFound';
 import RegionsContainer from './RegionsContainer';
@@ -24,8 +25,11 @@ export default function App() {
 
   return (
     <>
+      <Link to="/">Home</Link>
       <Link to="/about">About</Link>
+
       <Switch>
+        <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
         <Route component={NotFound} />
       </Switch>

@@ -42,9 +42,9 @@ describe('App', () => {
       </MemoryRouter>,
     );
 
-    fireEvent.click(getByText('About'));
+    fireEvent.click(getByText('Home'));
 
-    expect(getByText('Home page')).not.toBeNull();
+    expect(getByText('Home Page')).not.toBeNull();
   });
 
   it('About 링크가 있다', () => {
