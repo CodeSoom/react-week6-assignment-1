@@ -70,4 +70,12 @@ describe('App', () => {
       expect(queryByText('한식')).not.toBeNull();
     });
   });
+
+  context('with invalid path', () => {
+    it('renders the not found page', () => {
+      const { getByText } = renderApp({ path: '/xxx' });
+
+      expect(getByText(/Not Found/)).toBeInTheDocument();
+    });
+  });
 });
