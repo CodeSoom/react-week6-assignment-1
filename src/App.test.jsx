@@ -35,8 +35,8 @@ describe('App', () => {
     );
   }
 
-  context('with path /restaurants', () => {
-    it('renders Homepage', () => {
+  context('when rendered', () => {
+    it('renders header', () => {
       const { getByText } = renderApp({ path: './restaurants' });
 
       expect(getByText(/헤더/)).not.toBeNull();
@@ -44,7 +44,7 @@ describe('App', () => {
   });
 
   context('with path /restaurants', () => {
-    it('renders Homepage', () => {
+    it('renders RestaurantsPage', () => {
       const { queryByText } = renderApp({ path: './restaurants' });
 
       expect(queryByText('서울')).not.toBeNull();
