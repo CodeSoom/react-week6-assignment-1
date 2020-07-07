@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
@@ -13,7 +13,9 @@ export default function RestaurantDetailPage() {
 
   const dispatch = useDispatch();
 
-  dispatch(loadRestaurant(restaurantId));
+  useEffect(() => {
+    dispatch(loadRestaurant(restaurantId));
+  }, []);
 
   return (
     <RestaurantDetailContainer />

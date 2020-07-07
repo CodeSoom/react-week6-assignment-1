@@ -9,7 +9,7 @@ import {
 import HomePage from './HomePage';
 import AboutPage from './AboutPage';
 import RestaurantsPage from './RestaurantsPage';
-import RestaurantDetailPage from './RestaurantDetailPage'
+import RestaurantDetailPage from './RestaurantDetailPage';
 
 export default function App() {
   return (
@@ -21,7 +21,7 @@ export default function App() {
         <Route exact path="/" component={HomePage} />
         <Route path="/about" component={AboutPage} />
         <Route exact path="/restaurants" component={RestaurantsPage} />
-        <Route path="/restaurants/:topicId" component={RestaurantDetailPage} />
+        <Route path="/restaurants/:restaurantId" component={RestaurantDetailPage} />
       </Switch>
     </>
   );
