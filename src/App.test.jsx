@@ -2,33 +2,61 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
+import { MemoryRouter } from 'react-router-dom';
+
 import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
-test('App', () => {
-  const dispatch = jest.fn();
+describe('App', () => {
+  beforeEach(() => {
+    const dispatch = jest.fn();
+    useDispatch.mockImplementation(() => dispatch);
 
-  useDispatch.mockImplementation(() => dispatch);
-
-  useSelector.mockImplementation((selector) => selector({
-    regions: [
-      { id: 1, name: '서울' },
-    ],
-    categories: [
-      { id: 1, name: '한식' },
-    ],
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
-  }));
-
-  const { queryByText } = render((
-    <App />
-  ));
-
-  expect(dispatch).toBeCalled();
-
-  expect(queryByText('서울')).not.toBeNull();
-  expect(queryByText('한식')).not.toBeNull();
+    useSelector.mockImplementation((selector) => selector({
+      regions: [
+        { id: 1, name: '서울' },
+      ],
+      categories: [
+        { id: 1, name: '한식' },
+      ],
+      restaurants: [
+        { id: 1, name: '마법사주방' },
+      ],
+    }));
+  });
+  context('with path "/"', () => {
+    it('renders Home Page', () => {
+      const { getByText } = render(
+        <MemoryRouter initialEntries={['/']}>
+          <App />
+        </MemoryRouter>,
+      );
+      expect(getByText('Home')).not.toBeNull();
+      expect(getByText('About')).not.toBeNull();
+      expect(getByText('Restaurants')).not.toBeNull();
+    });
+  });
+  // context('with path "/about"', () => {
+  //   it('renders About Page', () => {
+  //     const { getByText } = render(
+  //       <MemoryRouter initialEntries={['/about']}>
+  //         <App />
+  //       </MemoryRouter>,
+  //     );
+  //     expect(getByText('About')).not.toBeNull();
+  //   });
+  // });
+  // context('with path "/restaurant"', () => {
+  //   it('redners Restaurant Page', () => {
+  //     const { getByText } = render(
+  //       <MemoryRouter initialEntries={['/restaurant']}>
+  //         <App />
+  //       </MemoryRouter>,
+  //     );
+  //     expect(getByText('서울(V)')).not.toBeNull();
+  //     expect(getByText('한식(V)')).not.toBeNull();
+  //     expect(getByText('마법사주방')).not.toBeNull();
+  //   });
+  // });
 });
