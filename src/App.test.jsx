@@ -92,16 +92,19 @@ describe('App', () => {
 
     expect(getByText('마법사주방')).not.toBeNull();
   });
+
   it('레스토랑을 클릭시 상세페이지로 이동한다.', () => {
-    const { getByText } = render(
+    const { getByText, container } = render(
       <MemoryRouter initialEntries={['/restaurants']}>
         <App />
       </MemoryRouter>,
     );
 
     fireEvent.click(getByText('마법사주방'));
-    expect(getByText('상호명')).not.toBeNull();
-    expect(getByText('주소')).not.toBeNull();
-    expect(getByText('메뉴')).not.toBeNull();
+
+    expect(container.innerHTML).toMatch('Restaurants Detail');
+    expect(container.innerHTML).toMatch('상호명');
+    expect(container.innerHTML).toMatch('주소');
+    expect(container.innerHTML).toMatch('메뉴');
   });
 });

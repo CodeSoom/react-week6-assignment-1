@@ -5,6 +5,7 @@ import Home from './Home';
 import About from './About';
 import NotFound from './NotFound';
 import Restaurants from './Restaurants';
+import RestaurantsDetail from './RestaurantsDetail';
 
 // 0. 지역, 분류 목록을 얻기
 // 1. 지역 선택 - Regions <- API (0)
@@ -32,6 +33,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
+        <Route path="/restaurants/:id" component={RestaurantsDetail} />
         <Route path="/restaurants" component={Restaurants} />
         <Route component={NotFound} />
       </Switch>
