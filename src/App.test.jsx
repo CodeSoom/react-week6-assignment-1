@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import { MemoryRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -32,5 +32,13 @@ describe('App', () => {
   it('About 링크가 있다', () => {
     const { getByText } = render(<App />, { wrapper: MemoryRouter });
     expect(getByText('About')).not.toBeNull();
+  });
+
+  it('About 링크를 클릭 시 about 페이지가 보인다.', () => {
+    const { getByText } = render(<App />, { wrapper: MemoryRouter });
+
+    fireEvent.click(getByText('About'));
+
+    expect(getByText('About page')).not.toBeNull();
   });
 });
