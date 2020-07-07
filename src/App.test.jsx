@@ -62,7 +62,7 @@ describe('App', () => {
 
     fireEvent.click(getByText('About'));
 
-    expect(getByText('About page')).not.toBeNull();
+    expect(getByText('About Page')).not.toBeNull();
   });
 
   it('관련 링크가 없을 시 Not Found 페이지가 보인다.', () => {
@@ -89,6 +89,6 @@ describe('App', () => {
 
     fireEvent.click(getByText('Restaurants'));
 
-    expect(getByText('Restaurants page')).not.toBeNull();
+    expect(getByText('Restaurants Page')).not.toBeNull();
   });
 });

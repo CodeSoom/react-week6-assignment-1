@@ -5,6 +5,7 @@ import { Switch, Link, Route } from 'react-router-dom';
 import Home from './Home';
 import About from './About';
 import NotFound from './NotFound';
+import Restaurants from './Restaurants';
 import RegionsContainer from './RegionsContainer';
 import CategoriesContainer from './CategoriesContainer';
 import RestaurantsContainer from './RestaurantsContainer';
@@ -43,6 +44,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
+        <Route path="/restaurants" component={Restaurants} />
         <Route component={NotFound} />
       </Switch>
       <RegionsContainer />
