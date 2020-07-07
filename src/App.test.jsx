@@ -35,11 +35,12 @@ describe('App', () => {
     );
   }
 
-  context('when rendered', () => {
-    it('renders header', () => {
+  context('with path /', () => {
+    it('renders HomePage', () => {
       const { getByText } = renderApp({ path: '/' });
 
-      expect(getByText(/헤더/)).not.toBeNull();
+      expect(getByText(/About/)).not.toBeNull();
+      expect(getByText(/Restaurants/)).not.toBeNull();
     });
   });
 
