@@ -9,6 +9,7 @@ import {
   loadRestaurants,
   setRestaurants,
   loadRestaurant,
+  setRestaurant,
 } from './actions';
 
 const middlewares = [thunk];
@@ -98,6 +99,7 @@ describe('actions', () => {
         const actions = store.getActions();
 
         expect(actions).toHaveLength(1);
+        expect(actions[0]).toEqual(setRestaurant([]));
       });
     });
     context('without restaurantId', () => {

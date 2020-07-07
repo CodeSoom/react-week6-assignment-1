@@ -3,9 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { loadRestaurant } from './actions';
 
+import { get } from './utils';
+
 export default function RestaurantsDetail({ match }) {
   const dispatch = useDispatch();
-  const { selectedRestaurant } = useSelector((state) => state);
+  const selectedRestaurant = useSelector(get('selectedRestaurant'));
 
   useEffect(() => {
     dispatch(loadRestaurant(match && match.params.id));
@@ -26,9 +28,9 @@ export default function RestaurantsDetail({ match }) {
         <h3>메뉴: </h3>
         <ul>
           {selectedRestaurant
-          && selectedRestaurant.menuItems.map((item) => (
-            <li key={item.id}>{item.name}</li>
-          ))}
+            && selectedRestaurant.menuItems.map((item) => (
+              <li key={item.id}>{item.name}</li>
+            ))}
         </ul>
       </div>
     </>
