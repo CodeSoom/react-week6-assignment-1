@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Switch, Link, Route } from 'react-router-dom';
 
 import About from './About';
+import NotFound from './NotFound';
 import RegionsContainer from './RegionsContainer';
 import CategoriesContainer from './CategoriesContainer';
 import RestaurantsContainer from './RestaurantsContainer';
@@ -26,6 +27,7 @@ export default function App() {
       <Link to="/about">About</Link>
       <Switch>
         <Route path="/about" component={About} />
+        <Route component={NotFound} />
       </Switch>
       <RegionsContainer />
       <CategoriesContainer />
