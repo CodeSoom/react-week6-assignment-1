@@ -31,9 +31,7 @@ describe('reducer', () => {
         regions: [],
       };
 
-      const regions = [
-        { id: 1, name: '서울' },
-      ];
+      const regions = [{ id: 1, name: '서울' }];
 
       const state = reducer(initialState, setRegions(regions));
 
@@ -47,9 +45,7 @@ describe('reducer', () => {
         categories: [],
       };
 
-      const categories = [
-        { id: 1, name: '한식' },
-      ];
+      const categories = [{ id: 1, name: '한식' }];
 
       const state = reducer(initialState, setCategories(categories));
 
@@ -63,9 +59,7 @@ describe('reducer', () => {
         restaurants: [],
       };
 
-      const restaurants = [
-        { id: 1, name: '마법사주방' },
-      ];
+      const restaurants = [{ id: 1, name: '마법사주방' }];
 
       const state = reducer(initialState, setRestaurants(restaurants));
 
@@ -76,9 +70,7 @@ describe('reducer', () => {
   describe('selectRegion', () => {
     it('changes selected region', () => {
       const initialState = {
-        regions: [
-          { id: 1, name: '서울' },
-        ],
+        regions: [{ id: 1, name: '서울' }],
         selectedRegion: null,
       };
 
@@ -94,9 +86,7 @@ describe('reducer', () => {
   describe('selectCategory', () => {
     it('changes selected category', () => {
       const initialState = {
-        categories: [
-          { id: 1, name: '한식' },
-        ],
+        categories: [{ id: 1, name: '한식' }],
         selectedCategory: null,
       };
 
@@ -105,6 +95,27 @@ describe('reducer', () => {
       expect(state.selectedCategory).toEqual({
         id: 1,
         name: '한식',
+      });
+    });
+  });
+
+  describe('selectRestaurant', () => {
+    it('changes selected restaurant', () => {
+      const initialState = {
+        restaurants: [
+          {
+            id: 1,
+            name: '홍콩반점',
+          },
+        ],
+        selectedRestaurants: null,
+      };
+
+      const state = reducer(initialState, selectRestaurant(1));
+
+      expect(state.selectedRestaurants).toEqual({
+        id: 1,
+        name: '홍콩반점',
       });
     });
   });
