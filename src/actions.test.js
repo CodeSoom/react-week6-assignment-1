@@ -8,11 +8,8 @@ import {
   setCategories,
   loadRestaurants,
   setRestaurants,
-  setRestaurant,
   loadRestaurant,
 } from './actions';
-
-import RESTAURANT from '../fixtures/restaurant';
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
