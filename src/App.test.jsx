@@ -80,4 +80,15 @@ describe('App', () => {
 
     expect(getByText('Restaurants')).not.toBeNull();
   });
+  it('Restaurants 링크를 클릭 시 Restaurants 페이지가 보인다.', () => {
+    const { getByText } = render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>,
+    );
+
+    fireEvent.click(getByText('Restaurants'));
+
+    expect(getByText('Restaurants page')).not.toBeNull();
+  });
 });
