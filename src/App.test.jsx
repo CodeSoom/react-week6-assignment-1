@@ -62,4 +62,11 @@ describe('App', () => {
       });
     });
   });
+
+  context('잘못된 경로에 들어가면', () => {
+    it('Not found 페이지가 나온다.', () => {
+      const { container } = renderApp({ path: '/some/unknow' });
+      expect(container).toHaveTextContent('404 Not Found');
+    });
+  });
 });
