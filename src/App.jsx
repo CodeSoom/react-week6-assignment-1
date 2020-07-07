@@ -1,23 +1,11 @@
-import React, { useEffect } from 'react';
-
-import { useDispatch } from 'react-redux';
+import React from 'react';
 
 import { Link, Switch, Route } from 'react-router-dom';
-
-import {
-  loadInitialData,
-} from './actions';
 
 import HomePage from './HomePage';
 import AboutPage from './AboutPage';
 
 export default function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(loadInitialData());
-  });
-
   return (
     <div>
       <h1><Link to="/">헤더</Link></h1>
