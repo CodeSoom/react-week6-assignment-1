@@ -60,4 +60,12 @@ describe('App', () => {
       expect(getByText(/About이지롱/)).not.toBeNull();
     });
   });
+
+  context('with invalid path', () => {
+    it('renders NotFoundPage', () => {
+      const { getByText } = renderApp({ path: '/invalidpath' });
+
+      expect(getByText(/파멸의 길/)).not.toBeNull();
+    });
+  });
 });
