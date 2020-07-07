@@ -2,6 +2,7 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
+import { MemoryRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
@@ -19,7 +20,7 @@ test('App', () => {
     }),
   );
 
-  const { queryByText } = render(<App />);
+  const { queryByText } = render(<App />, { wrapper: MemoryRouter });
 
   expect(dispatch).toBeCalled();
 
@@ -29,7 +30,7 @@ test('App', () => {
 
 describe('App', () => {
   it('About 링크가 있다', () => {
-    const { getByText } = render(<App />);
+    const { getByText } = render(<App />, { wrapper: MemoryRouter });
     expect(getByText('About')).not.toBeNull();
   });
 });
