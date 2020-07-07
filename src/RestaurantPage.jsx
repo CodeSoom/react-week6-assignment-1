@@ -5,6 +5,10 @@ import { useParams } from 'react-router-dom';
 export default function RestaurantPage() {
   const { restaurantId } = useParams();
 
+  useEffect(() => {
+    dispatch(loadRestaurant(restaurantId));
+  }, []);
+
   return (
     <div>
       <h2>
