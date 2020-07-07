@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { MemoryRouter } from 'react-router-dom';
 
+import RESTAURANT from '../fixtures/restaurant';
+
 import App from './App';
 
 describe('App', () => {
@@ -24,6 +26,7 @@ describe('App', () => {
       restaurants: [
         { id: 1, name: '마법사주방' },
       ],
+      restaurant: RESTAURANT,
     }));
   });
 
@@ -94,7 +97,7 @@ describe('App', () => {
 
   context('at path /restaurant/1', () => {
     it('render restaurant detail page', () => {
-      const { container } = renderApp({ path: '/restaurant/1' });
+      const { container } = renderApp({ path: '/restaurants/1' });
 
       expect(container).toHaveTextContent('양천주가');
     });
