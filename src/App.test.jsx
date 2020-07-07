@@ -58,7 +58,7 @@ describe('App with router', () => {
 
   context('with URL included /nonExistentPage', () => {
     it('shows Not Found', () => {
-      const { container } = renderApp({ path: '/codesoom' });
+      const { container } = renderApp({ path: '/non-existent' });
 
       expect(container).toHaveTextContent('404 Not Found');
     });

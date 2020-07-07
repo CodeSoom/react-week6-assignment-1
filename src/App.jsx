@@ -45,15 +45,20 @@ function AboutPage() {
   );
 }
 
+function NotFoundPage() {
+  return (
+    <h2>404 Not Found</h2>
+  );
+}
+
 export default function App() {
   return (
     <Switch>
       <Route exact path="/" component={HomePage} />
       <Route path="/about" component={AboutPage} />
       <Route path="/restaurants" component={RestaurantsPage} />
-      {/* <RestaurantsPage />
-      <RestaurantPage />
-      <NotFoundPage /> */}
+      {/* <RestaurantPage /> */}
+      <Route path="/non-existent" component={NotFoundPage} />
     </Switch>
   );
 }
