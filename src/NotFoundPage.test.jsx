@@ -9,5 +9,5 @@ test('NotFoundPage', () => {
     <NotFoundPage />
   ));
 
-  expect(screen.getByText(/Not Foud/)).toBeInTheDocument();
+  expect(screen.getByText(/Not Found/)).toBeInTheDocument();
 });
