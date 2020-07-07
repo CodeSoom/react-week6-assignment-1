@@ -23,7 +23,7 @@ describe('App', () => {
     }));
   });
 
-  context('/에 들어가면', () => {
+  context('/에 접속하면', () => {
     it('기본 메인 페이지가 나온다.', () => {
       const { getByText } = render((
         <MemoryRouter initialEntries={['/']}>
@@ -37,7 +37,7 @@ describe('App', () => {
     });
   });
 
-  context('About을 클릭하면', () => {
+  context('/about에 접속하면', () => {
     it('About 페이지로 들어간다.', () => {
       const { getByText } = render((
         <MemoryRouter initialEntries={['/about']}>

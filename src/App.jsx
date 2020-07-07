@@ -13,6 +13,7 @@ export default function App() {
   return (
     <div>
       <Switch>
+        <Route exact path="/" component={HomePage} />
         <Route path="/about" component={AboutPage} />
         {/* <HomePage /> */}
         {/* <RestaurantsPage /> */}
