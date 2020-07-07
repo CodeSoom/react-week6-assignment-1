@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter, Link } from 'react-router-dom';
 
 import App from './App';
 
@@ -60,6 +60,18 @@ describe('App', () => {
       const { container } = renderApp({ path: '/xxx' });
 
       expect(container).toHaveTextContent('Not Found');
+    });
+  });
+
+  context('when click header from other page', () => {
+    it('goes to HomePage', () => {
+      const { container, getByText } = renderApp({ path: '/about' });
+
+      expect(container).toHaveTextContent('헤더');
+
+      fireEvent.click(getByText('헤더'));
+
+      expect(container).toHaveTextContent('Home');
     });
   });
 });
