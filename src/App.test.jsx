@@ -52,4 +52,12 @@ describe('App', () => {
       expect(queryByText('한식')).not.toBeNull();
     });
   });
+
+  context('with path /about', () => {
+    it('renders RestaurantsPage', () => {
+      const { getByText } = renderApp({ path: '/about' });
+
+      expect(getByText(/About이지롱/)).not.toBeNull();
+    });
+  });
 });
