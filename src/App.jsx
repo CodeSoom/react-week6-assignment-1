@@ -5,6 +5,7 @@ import { Switch, Route } from 'react-router-dom';
 import HomePage from './HomePage';
 import AboutPage from './AboutPage';
 import RestaurantsPage from './RestaurantsPage';
+import RestaurantPage from './RestaurantPage';
 import NotFoundPage from './NotFoundPage';
 
 // 0. 지역, 분류 목록을 얻기
@@ -26,7 +27,8 @@ import NotFoundPage from './NotFoundPage';
  * - 관련 내용("About...")이 보인다.
  * 4. RestaurantsPage
  * - 페이지 이름("Restaurants")이 보인다. (임의로 추가함)
- * - 지역과 카테고리를 모두 선택하면, 레스토랑 목록이 보인다.
+ * - 지역과 카테고리를 모두 선택하면, 레스토랑 목록이 보인
+ * 다.
  * - 레스토랑을 클릭하면, 레스토랑 상세 페이지로 이동한다.
  * 5. RestaurantPage
  * - 페이지 이름("Restaurant")이 보인다. (임의로 추가함)
@@ -36,19 +38,13 @@ import NotFoundPage from './NotFoundPage';
  * - 존재하지 않는 URL로 접근했을 때, 404 Not Found 페이지가 보인다.
 */
 
-function RestaurantPage() {
-  return (
-    <h2>Restaurant</h2>
-  );
-}
-
 export default function App() {
   return (
     <Switch>
       <Route exact path="/" component={HomePage} />
       <Route path="/about" component={AboutPage} />
       <Route path="/restaurants" component={RestaurantsPage} />
-      <Route path="/restaurant" component={RestaurantPage} />
+      <Route path="/restaurant/:restaurantId" component={RestaurantPage} />
       <Route path="/non-existent" component={NotFoundPage} />
     </Switch>
   );
