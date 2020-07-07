@@ -36,13 +36,19 @@ import NotFoundPage from './NotFoundPage';
  * - 존재하지 않는 URL로 접근했을 때, 404 Not Found 페이지가 보인다.
 */
 
+function RestaurantPage() {
+  return (
+    <h2>Restaurant</h2>
+  );
+}
+
 export default function App() {
   return (
     <Switch>
       <Route exact path="/" component={HomePage} />
       <Route path="/about" component={AboutPage} />
       <Route path="/restaurants" component={RestaurantsPage} />
-      {/* <RestaurantPage /> */}
+      <Route path="/restaurant" component={RestaurantPage} />
       <Route path="/non-existent" component={NotFoundPage} />
     </Switch>
   );
