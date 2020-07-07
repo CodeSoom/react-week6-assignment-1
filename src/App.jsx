@@ -4,6 +4,9 @@ import RestaurantsPage from './RestaurantsPage';
 
 export default function App() {
   return (
-    <RestaurantsPage />
+    <div>
+      <h1>헤더</h1>
+      <RestaurantsPage />
+    </div>
   );
 }
