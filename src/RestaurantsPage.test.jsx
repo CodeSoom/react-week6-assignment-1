@@ -2,6 +2,8 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
+import { MemoryRouter } from 'react-router-dom';
+
 import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantsPage from './RestaurantsPage';
@@ -17,7 +19,7 @@ test('RestaurantsPage', () => {
     restaurants: [{ id: 1, name: '마법사주방' }],
   }));
 
-  const { queryByText } = render(<RestaurantsPage />);
+  const { queryByText } = render(<MemoryRouter><RestaurantsPage /></MemoryRouter>);
 
   expect(dispatch).toBeCalled();
 
