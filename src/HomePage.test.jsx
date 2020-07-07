@@ -6,14 +6,16 @@ import { MemoryRouter } from 'react-router-dom';
 
 import HomePage from './HomePage';
 
-test('HomePage', () => {
-  const { container } = render((
-    <MemoryRouter>
-      <HomePage />
-    </MemoryRouter>
-  ));
+describe('HomePage', () => {
+  it('can see contents', () => {
+    const { container } = render((
+      <MemoryRouter>
+        <HomePage />
+      </MemoryRouter>
+    ));
 
-  expect(container).toHaveTextContent('Home');
-  expect(container).toHaveTextContent('About');
-  expect(container).toHaveTextContent('Restaurants');
+    expect(container).toHaveTextContent('Home');
+    expect(container).toHaveTextContent('About');
+    expect(container).toHaveTextContent('Restaurants');
+  });
 });

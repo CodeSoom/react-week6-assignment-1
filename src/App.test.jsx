@@ -27,6 +27,18 @@ describe('App', () => {
     }));
   });
 
+  context('at all path', () => {
+    it('render header', () => {
+      const { getByText } = render((
+        <MemoryRouter initialEntries={['/']}>
+          <App />
+        </MemoryRouter>
+      ));
+
+      expect(getByText('헤더')).not.toBeNull();
+    });
+  });
+
   context('at path /', () => {
     it('render home', () => {
       const { container } = render((
