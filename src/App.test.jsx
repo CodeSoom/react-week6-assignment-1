@@ -49,11 +49,14 @@ describe('App', () => {
   });
   context('with path "/restaurant"', () => {
     it('redners Restaurant Page', () => {
-      render(
-        <MemoryRouter initialEntries={['/restaurant']}>
+      const { getByText } = render(
+        <MemoryRouter initialEntries={['/restaurants']}>
           <App />
         </MemoryRouter>,
       );
+
+      expect(getByText(/서울/)).not.toBeNull();
+      expect(getByText(/한식/)).not.toBeNull();
     });
   });
 });
