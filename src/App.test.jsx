@@ -75,16 +75,16 @@ describe('App with router', () => {
     });
 
     it('shows header and page name', () => {
-      const { container } = renderApp({ path: '/restaurant/1' });
+      const { container } = renderApp({ path: '/restaurants/1' });
 
       expect(container).toHaveTextContent('헤더');
       expect(container).toHaveTextContent('Restaurant1');
     });
   });
 
-  context('with URL included /nonExistentPage', () => {
+  context('with URL included /any_not_exist_url', () => {
     it('shows Not Found', () => {
-      const { container } = renderApp({ path: '/non-existent' });
+      const { container } = renderApp({ path: '/any_not_exist_url' });
 
       expect(container).toHaveTextContent('404 Not Found');
     });

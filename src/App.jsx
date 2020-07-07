@@ -47,9 +47,9 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/about" component={AboutPage} />
-        <Route path="/restaurants" component={RestaurantsPage} />
-        <Route path="/restaurant/:restaurantId" component={RestaurantPage} />
-        <Route path="/non-existent" component={NotFoundPage} />
+        <Route exact path="/restaurants" component={RestaurantsPage} />
+        <Route path="/restaurants/:restaurantId" component={RestaurantPage} />
+        <Route path="/any_not_exist_url" component={NotFoundPage} />
       </Switch>
     </div>
   );
