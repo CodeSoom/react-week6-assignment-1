@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import App from './App';
 
+import restaurants from '../fixtures/restaurants';
 import restaurant from '../fixtures/restaurant';
 
 jest.mock('react-router-dom');
@@ -40,16 +41,18 @@ describe('App with router', () => {
   });
 
   context('with URL included /RestaurantsPage', () => {
-    it('shows header and page name', () => {
+    const dispatch = jest.fn();
+
+    beforeEach(() => {
       useSelector.mockImplementation((selector) => selector({
         regions: [],
         categories: [],
-        restaurants: [],
+        restaurants,
       }));
-      const dispatch = jest.fn();
-
       useDispatch.mockImplementation(() => dispatch);
+    });
 
+    it('shows header and page name', () => {
       const { container } = renderApp({ path: '/restaurants' });
 
       expect(container).toHaveTextContent('헤더');
@@ -61,11 +64,14 @@ describe('App with router', () => {
     const dispatch = jest.fn();
 
     beforeEach(() => {
-      useDispatch.mockImplementation(() => dispatch);
       useParams.mockReturnValue({ restaurantId: 1 });
       useSelector.mockImplementation((selector) => selector({
+        regions: [],
+        categories: [],
+        restaurants,
         restaurant,
       }));
+      useDispatch.mockImplementation(() => dispatch);
     });
 
     it('shows header and page name', () => {
