@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import { get } from './utils';
 
-import Restaurant from './Restaurant';
+import RestaurantContainer from './RestaurantContainer';
 
 export default function RestaurantsContainer() {
   const restaurants = useSelector(get('restaurants'));
@@ -12,7 +12,7 @@ export default function RestaurantsContainer() {
   return (
     <ul>
       {restaurants.map((restaurant) => (
-        <Restaurant
+        <RestaurantContainer
           key={restaurant.id}
           restaurant={restaurant}
         />

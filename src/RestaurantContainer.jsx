@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Restaurant({ restaurant }) {
+export default function RestaurantContainer({ restaurant }) {
   return (
     <li>{restaurant.name}</li>
   );
