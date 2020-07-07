@@ -12,7 +12,7 @@ jest.mock('react-redux');
 
 test('RestaurantDetailContainer', () => {
   useSelector.mockImplementation((selector) => selector({
-    retaurant: RESTAURANT,
+    restaurant: RESTAURANT,
   }));
 
   const { getByText } = render((
