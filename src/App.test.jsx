@@ -31,6 +31,7 @@ test('App', () => {
 describe('App', () => {
   it('About 링크가 있다', () => {
     const { getByText } = render(<App />, { wrapper: MemoryRouter });
+
     expect(getByText('About')).not.toBeNull();
   });
 
