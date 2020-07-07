@@ -20,11 +20,11 @@ import { Switch, Route } from 'react-router-dom';
  * - 페이지 이름("About")이 보인다.
  * - 관련 내용("About...")이 보인다.
  * 4. RestaurantsPage
- * - 페이지 이름("RestaurantsList")이 보인다. (임의로 추가함)
+ * - 페이지 이름("Restaurants")이 보인다. (임의로 추가함)
  * - 지역과 카테고리를 모두 선택하면, 레스토랑 목록이 보인다.
  * - 레스토랑을 클릭하면, 레스토랑 상세 페이지로 이동한다.
  * 5. RestaurantPage
- * - 페이지 이름("RestaurantsDetail")이 보인다. (임의로 추가함)
+ * - 페이지 이름("Restaurant")이 보인다. (임의로 추가함)
  * - 레스토랑에 대한 정보들(이름, 주소, 메뉴 목록)이 보인다.
  * 6. NotFoundPage
  * - 페이지 이름("404 Not Found")이 보인다. (임의로 추가함)

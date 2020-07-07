@@ -31,11 +31,13 @@ describe('App with router', () => {
     });
   });
 
-  // context('with URL included /RestaurantsPage', () => {
-  //   it('shows page name', () => {
+  context('with URL included /RestaurantsPage', () => {
+    it('shows page name', () => {
+      const { container } = renderApp({ path: '/restaurants' });
 
-  //   });
-  // });
+      expect(container).toHaveTextContent('Restaurants');
+    });
+  });
 
   // context('with URL included /RestaurantPage', () => {
   //   it('shows page name', () => {
