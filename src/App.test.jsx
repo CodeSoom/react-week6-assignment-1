@@ -23,6 +23,20 @@ describe('App', () => {
     }));
   });
 
+  context('/에 들어가면', () => {
+    it('기본 메인 페이지가 나온다.', () => {
+      const { getByText } = render((
+        <MemoryRouter initialEntries={['/']}>
+          <App />
+        </MemoryRouter>
+      ));
+
+      expect(getByText('Home')).toBeInTheDocument();
+      expect(getByText('About')).toBeInTheDocument();
+      expect(getByText('Restaurants')).toBeInTheDocument();
+    });
+  });
+
   context('About을 클릭하면', () => {
     it('About 페이지로 들어간다.', () => {
       const { getByText } = render((
