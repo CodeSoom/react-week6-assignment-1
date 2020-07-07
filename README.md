@@ -101,8 +101,8 @@ npm run test:e2e
 - [X] `RestaurantDetailPage` 컴포넌트 구현
 - [X] `RestaurantDetailContainer` 컴포넌트 구현
 - [X] `RestaurantDetail` 컴포넌트 구현
-- [ ] reducer에서 setRestaurant 구현
-- [ ] actions에서 loadRestaurant 구현
+- [X] reducer에서 setRestaurant 구현
+- [X] actions에서 loadRestaurant 구현
 - [ ] `Restaurants` 컴포넌트에 Link 렌더링 적용
 
 ### 의문점

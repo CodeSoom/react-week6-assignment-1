@@ -6,8 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { useParams } from 'react-router-dom';
 
-import { loadRestaurant } from './actions';
-
 import RestaurantDetailPage from './RestaurantDetailPage';
 
 import RESTAURANT from '../fixtures/restaurant';
@@ -31,5 +29,5 @@ test('RestaurantPage', () => {
     <RestaurantDetailPage />
   ));
 
-  expect(dispatch).toBeCalledWith(loadRestaurant(restaurantId));
+  expect(dispatch).toBeCalled();
 });

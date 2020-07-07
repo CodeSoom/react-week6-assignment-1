@@ -91,4 +91,12 @@ describe('App', () => {
       expect(container).toHaveTextContent('서울');
     });
   });
+
+  context('at path /restaurant/1', () => {
+    it('render restaurant detail page', () => {
+      const { container } = renderApp({ path: '/restaurant/1' });
+
+      expect(container).toHaveTextContent('양천주가');
+    });
+  });
 });
