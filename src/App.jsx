@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Switch, Route } from 'react-router-dom';
 
+import AboutPage from './AboutPage';
 import HomePage from './HomePage';
 import RestaurantsPage from './RestaurantsPage';
 
@@ -11,6 +12,7 @@ export default function App() {
       <h1>헤더</h1>
       <Switch>
         <Route exact path="/" component={HomePage} />
+        <Route path="/about" component={AboutPage} />
         <Route path="/restaurants" component={RestaurantsPage} />
       </Switch>
     </div>
