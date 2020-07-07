@@ -5,28 +5,15 @@ import { render } from '@testing-library/react';
 
 import RestaurantsDetail from './RestaurantsDetail';
 
+import RESTAURANT from '../fixtures/restaurant';
+
 describe('RestaurantsDetail', () => {
   const dispatch = jest.fn();
 
   beforeEach(() => {
     useDispatch.mockImplementation(() => dispatch);
     useSelector.mockImplementation((selector) => selector({
-      selectedRestaurant: {
-        id: 1,
-        name: '홍콩반점',
-        menuItems: [
-          {
-            id: 16,
-            restaurantId: 1,
-            name: '탕수육',
-          },
-          {
-            id: 17,
-            restaurantId: 1,
-            name: '팔보채',
-          },
-        ],
-      },
+      selectedRestaurant: RESTAURANT,
     }));
   });
 
@@ -37,6 +24,17 @@ describe('RestaurantsDetail', () => {
       </MemoryRouter>,
     );
 
-    expect(getByText(/홍콩반점/)).not.toBeNull();
+    expect(getByText(/양천주가/)).not.toBeNull();
+    expect(getByText(/탕수육/)).not.toBeNull();
+  });
+
+  it('dispatch 가 실행된다.', () => {
+    render(
+      <MemoryRouter initialEntries={['/restaurants/10']}>
+        <RestaurantsDetail />
+      </MemoryRouter>,
+    );
+
+    expect(dispatch).toBeCalled();
   });
 });
