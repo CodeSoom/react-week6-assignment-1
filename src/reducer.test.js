@@ -8,6 +8,8 @@ import {
   selectCategory,
 } from './actions';
 
+import { restaurant } from '../fixtures/restaurant';
+
 describe('reducer', () => {
   context('when previous state is undefined', () => {
     const initialState = {
@@ -106,6 +108,18 @@ describe('reducer', () => {
         id: 1,
         name: '한식',
       });
+    });
+  });
+
+  describe('setRestaurant', () => {
+    it('changes restaurant', () => {
+      const initialState = {
+        restaurants: {},
+      };
+
+      const state = reducer(initialState, setRestaurant(restaurant));
+
+      expect(state.restaurant).toHaveLength(restaurant);
     });
   });
 });
