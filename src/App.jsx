@@ -37,12 +37,18 @@ function HomePage() {
   );
 }
 
+function AboutPage() {
+  return (
+    <h2>About</h2>
+  );
+}
+
 export default function App() {
   return (
     <Switch>
       <Route exact path="/" component={HomePage} />
-      {/* <AboutPage />
-      <RestaurantsPage />
+      <Route path="/about" component={AboutPage} />
+      {/* <RestaurantsPage />
       <RestaurantPage />
       <NotFoundPage /> */}
     </Switch>
