@@ -61,7 +61,7 @@ describe('App', () => {
       </MemoryRouter>,
     );
 
-    expect(getByText('Not Found')).not.toBeNull();
+    expect(getByText('404 Not Found')).not.toBeNull();
   });
 
   it('Restaurants 링크가 있다.', () => {

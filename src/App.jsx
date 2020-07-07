@@ -15,6 +15,9 @@ import RestaurantsDetail from './RestaurantsDetail';
 export default function App() {
   return (
     <>
+      <h1>
+        <a href="/">헤더</a>
+      </h1>
       <ul>
         <li>
           <Link to="/">Home</Link>
