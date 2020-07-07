@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -28,6 +28,14 @@ describe('App', () => {
       categories: CATEGORIES,
       restaurants: RESTAURANTS,
     }));
+  });
+
+  context('헤더를 클릭하면', () => {
+    it('메인 페이지로 돌아간다.', () => {
+      const { getByText } = renderApp({ path: '/' });
+      fireEvent.click(getByText('헤더'));
+      expect(getByText('Home')).toBeInTheDocument();
+    });
   });
 
   context('/에 접속하면', () => {
