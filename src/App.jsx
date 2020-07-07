@@ -1,14 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
-import { useDispatch } from 'react-redux';
-
-import RegionsContainer from './RegionsContainer';
-import CategoriesContainer from './CategoriesContainer';
-import RestaurantsContainer from './RestaurantsContainer';
-
-import {
-  loadInitialData,
-} from './actions';
+import { Switch, Route } from 'react-router-dom';
 
 // 0. 지역, 분류 목록을 얻기
 // 1. 지역 선택 - Regions <- API (0)
@@ -37,20 +29,22 @@ import {
  * 6. NotFoundPage
  * - 페이지 이름("404 Not Found")이 보인다. (임의로 추가함)
  * - 존재하지 않는 URL로 접근했을 때, 404 Not Found 페이지가 보인다.
- */
+*/
+
+function HomePage() {
+  return (
+    <h2>Home</h2>
+  );
+}
 
 export default function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(loadInitialData());
-  });
-
   return (
-    <div>
-      <RegionsContainer />
-      <CategoriesContainer />
-      <RestaurantsContainer />
-    </div>
+    <Switch>
+      <Route exact path="/" component={HomePage} />
+      {/* <AboutPage />
+      <RestaurantsPage />
+      <RestaurantPage />
+      <NotFoundPage /> */}
+    </Switch>
   );
 }
