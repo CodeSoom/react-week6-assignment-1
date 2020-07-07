@@ -9,6 +9,7 @@ import {
   loadRestaurants,
   setRestaurants,
   setRestaurant,
+  loadRestaurant,
 } from './actions';
 
 import RESTAURANT from '../fixtures/restaurant';
@@ -20,13 +21,6 @@ jest.mock('./services/api');
 
 describe('actions', () => {
   let store;
-  const mockFetch = (data) => {
-    global.fetch = jest.fn().mockResolvedValue({
-      async json() {
-        return data;
-      },
-    });
-  };
 
   describe('loadInitialData', () => {
     beforeEach(() => {
@@ -95,14 +89,27 @@ describe('actions', () => {
   });
 
   describe('loadRestaurant', () => {
+    beforeEach(() => {
+      store = mockStore({
+        selectedRestaurant: null,
+      });
+    });
     context('with restaurantId', () => {
       it('runs setRestaurant', async () => {
-        mockFetch(RESTAURANT);
-        await store.dispatch(loadRestaurant('1'));
+        await store.dispatch(loadRestaurant(1));
 
         const actions = store.getActions();
 
-        expect(actions[0]).toEqual(setRestaurant(RESTAURANT));
+        expect(actions).toHaveLength(1);
+      });
+    });
+    context('without restaurantId', () => {
+      it('runs setRestaurant', async () => {
+        await store.dispatch(loadRestaurant());
+
+        const actions = store.getActions();
+
+        expect(actions).toHaveLength(0);
       });
     });
   });
