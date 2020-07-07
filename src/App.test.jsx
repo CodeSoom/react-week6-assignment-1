@@ -19,11 +19,17 @@ describe('App with router', () => {
     });
   });
 
-  // context('with URL included /AboutPage', () => {
-  //   it('shows page name', () => {
+  context('with URL included /AboutPage', () => {
+    it('shows page name', () => {
+      const { container } = render(
+        <MemoryRouter initialEntries={['/about']}>
+          <App />
+        </MemoryRouter>,
+      );
 
-  //   });
-  // });
+      expect(container).toHaveTextContent('About');
+    });
+  });
 
   // context('with URL included /RestaurantsPage', () => {
   //   it('shows page name', () => {
