@@ -13,10 +13,6 @@ import App from './App';
 describe('App', () => {
   const dispatch = jest.fn();
 
-  const SEOUL = REGIONS[0];
-  const KOREAN_FOOD = CATEGORIES[0];
-  const RESTAURANT = RESTAURANTS[0];
-
   function renderApp({ path }) {
     return render((
       <MemoryRouter initialEntries={[path]}>
@@ -28,9 +24,9 @@ describe('App', () => {
   beforeEach(() => {
     useDispatch.mockImplementation(() => dispatch);
     useSelector.mockImplementation((selector) => selector({
-      regions: [SEOUL],
-      categories: [KOREAN_FOOD],
-      restaurants: [RESTAURANT],
+      regions: REGIONS,
+      categories: CATEGORIES,
+      restaurants: RESTAURANTS,
     }));
   });
 
