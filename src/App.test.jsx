@@ -6,14 +6,18 @@ import { MemoryRouter } from 'react-router-dom';
 
 import App from './App';
 
+function renderApp({ path }) {
+  return render(
+    <MemoryRouter initialEntries={[path]}>
+      <App />
+    </MemoryRouter>,
+  );
+}
+
 describe('App with router', () => {
   context('with URL included /HomePage', () => {
     it('shows page name', () => {
-      const { container } = render(
-        <MemoryRouter initialEntries={['/']}>
-          <App />
-        </MemoryRouter>,
-      );
+      const { container } = renderApp({ path: '/' });
 
       expect(container).toHaveTextContent('Home');
     });
@@ -21,11 +25,7 @@ describe('App with router', () => {
 
   context('with URL included /AboutPage', () => {
     it('shows page name', () => {
-      const { container } = render(
-        <MemoryRouter initialEntries={['/about']}>
-          <App />
-        </MemoryRouter>,
-      );
+      const { container } = renderApp({ path: '/about' });
 
       expect(container).toHaveTextContent('About');
     });
