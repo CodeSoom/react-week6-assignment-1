@@ -16,6 +16,8 @@ function renderApp({ path }) {
   ));
   return {
     queryByText: (text) => screen.queryByText(text),
+    getByText: (text) => screen.getByText(text),
+    getLinkByName: (name) => screen.getByRole('link', { name }),
   };
 }
 
@@ -24,6 +26,16 @@ describe('App', () => {
 
   beforeEach(() => {
     useDispatch.mockImplementation(() => dispatch);
+  });
+
+  context('with path /', () => {
+    it('renders home page', () => {
+      const { getByText, getLinkByName } = renderApp({ path: '/' });
+
+      expect(getByText('Home')).toBeInTheDocument();
+      expect(getLinkByName('About')).toBeInTheDocument();
+      expect(getLinkByName('Restaurants')).toBeInTheDocument();
+    });
   });
 
   context('with path /restaurants', () => {
