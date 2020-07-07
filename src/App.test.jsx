@@ -82,4 +82,14 @@ describe('App', () => {
 
     expect(getByText('Restaurants Page')).not.toBeNull();
   });
+
+  it('검색된 레스토랑이 있다.', () => {
+    const { getByText } = render(
+      <MemoryRouter initialEntries={['/restaurants']}>
+        <App />
+      </MemoryRouter>,
+    );
+
+    expect(getByText('마법사주방')).not.toBeNull();
+  });
 });

@@ -22,7 +22,7 @@ export default function App() {
           <Link to="/about">About</Link>
         </li>
         <li>
-          <Link to="/Restaurants">Restaurants</Link>
+          <Link to="/restaurants">Restaurants</Link>
         </li>
         <li>
           <Link to="/invalid">Invalid</Link>
