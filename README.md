@@ -98,9 +98,11 @@ npm run test:e2e
 - [X] `AboutPage` 컴포넌트 구현
 - [X] `HomePage` 컴포넌트 구현
 - [X] App 컴포넌트에 라우팅 적용
-- [ ] `RestaurantDetailPage` 컴포넌트 구현
-- [ ] `RestaurantDetailContainer` 컴포넌트 구현
-- [ ] `RestaurantDetail` 컴포넌트 구현
+- [X] `RestaurantDetailPage` 컴포넌트 구현
+- [X] `RestaurantDetailContainer` 컴포넌트 구현
+- [X] `RestaurantDetail` 컴포넌트 구현
+- [ ] reducer에서 setRestaurant 구현
+- [ ] actions에서 loadRestaurant 구현
 - [ ] `Restaurants` 컴포넌트에 Link 렌더링 적용
 
 ### 의문점
