@@ -12,18 +12,16 @@ test('App', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
-    regions: [
-      { id: 1, name: '서울' },
-    ],
+    regions: [],
     categories: [],
     restaurants: [],
   }));
 
   const { container } = render((
-    <MemoryRouter initialEntries={['/restaurants']}>
+    <MemoryRouter initialEntries={['/']}>
       <App />
     </MemoryRouter>
   ));
 
-  expect(container).toHaveTextContent('서울');
+  expect(container).toHaveTextContent('Home');
 });
