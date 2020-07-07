@@ -68,6 +68,15 @@ export function loadRestaurants() {
   };
 }
 
+export function setRestaurant(restaurant) {
+  return {
+    type: 'setRestaurant',
+    payload: {
+      restaurant,
+    },
+  };
+}
+
 export function loadRestaurant(id) {
   return null;
 }

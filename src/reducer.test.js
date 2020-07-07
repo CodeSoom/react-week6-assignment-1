@@ -10,7 +10,6 @@ import {
 } from './actions';
 
 import RESTAURANT from '../fixtures/restaurant';
-import { executablePath } from 'puppeteer';
 
 describe('reducer', () => {
   context('when previous state is undefined', () => {
@@ -20,6 +19,7 @@ describe('reducer', () => {
       restaurants: [],
       selectedRegion: null,
       selectedCategory: null,
+      restaurant: null,
     };
 
     it('returns initialState', () => {
