@@ -37,16 +37,16 @@ describe('App', () => {
       expect(getByText('Restaurants')).not.toBeNull();
     });
   });
-  // context('with path "/about"', () => {
-  //   it('renders About Page', () => {
-  //     const { getByText } = render(
-  //       <MemoryRouter initialEntries={['/about']}>
-  //         <App />
-  //       </MemoryRouter>,
-  //     );
-  //     expect(getByText('About')).not.toBeNull();
-  //   });
-  // });
+  context('with path "/about"', () => {
+    it('renders About Page', () => {
+      const { getByText } = render(
+        <MemoryRouter initialEntries={['/about']}>
+          <App />
+        </MemoryRouter>,
+      );
+      expect(getByText('About')).not.toBeNull();
+    });
+  });
   // context('with path "/restaurant"', () => {
   //   it('redners Restaurant Page', () => {
   //     const { getByText } = render(
