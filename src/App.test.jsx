@@ -78,4 +78,10 @@ describe('App', () => {
       expect(getByText(/Not Found/)).toBeInTheDocument();
     });
   });
+
+  it('renders header', () => {
+    const { getLinkByName } = renderApp({ path: '/' });
+
+    expect(getLinkByName('헤더')).toBeInTheDocument();
+  });
 });
