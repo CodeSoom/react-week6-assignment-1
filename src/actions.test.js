@@ -83,4 +83,18 @@ describe('actions', () => {
       });
     });
   });
+
+  describe('loadRestaurant', () => {
+    beforeEach(() => {
+      store = mockStore({});
+    });
+
+    it('runs setRestaurant', async () => {
+      await store.dispatch(loadRestaurant());
+
+      const actions = store.getActions();
+
+      expect(actions[0]).toEqual(setRestaurant({}));
+    });
+  });
 });
