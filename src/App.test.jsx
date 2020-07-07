@@ -17,23 +17,25 @@ function renderApp({ path }) {
 
 describe('App with router', () => {
   context('with URL included /HomePage', () => {
-    it('shows page name', () => {
+    it('shows header and page name', () => {
       const { container } = renderApp({ path: '/' });
 
+      expect(container).toHaveTextContent('헤더');
       expect(container).toHaveTextContent('Home');
     });
   });
 
   context('with URL included /AboutPage', () => {
-    it('shows page name', () => {
+    it('shows header and page name', () => {
       const { container } = renderApp({ path: '/about' });
 
+      expect(container).toHaveTextContent('헤더');
       expect(container).toHaveTextContent('About');
     });
   });
 
   context('with URL included /RestaurantsPage', () => {
-    it('shows page name', () => {
+    it('shows header and page name', () => {
       useSelector.mockImplementation((selector) => selector({
         regions: [],
         categories: [],
@@ -45,14 +47,16 @@ describe('App with router', () => {
 
       const { container } = renderApp({ path: '/restaurants' });
 
+      expect(container).toHaveTextContent('헤더');
       expect(container).toHaveTextContent('Restaurants');
     });
   });
 
   context('with URL included /RestaurantPage', () => {
-    it('shows page name', () => {
+    it('shows header and page name', () => {
       const { container } = renderApp({ path: '/restaurant/1' });
 
+      expect(container).toHaveTextContent('헤더');
       expect(container).toHaveTextContent('Restaurant1');
     });
   });
