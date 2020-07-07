@@ -9,6 +9,10 @@ import {
 } from './actions';
 import HomePage from './HomePage';
 
+function AboutPage() {
+  return 'About';
+}
+
 export default function App() {
   const dispatch = useDispatch();
 
@@ -21,6 +25,7 @@ export default function App() {
       <h1><Link to="/">헤더</Link></h1>
       <Switch>
         <Route exact path="/" component={HomePage} />
+        <Route path="/about" component={AboutPage} />
       </Switch>
     </div>
   );
