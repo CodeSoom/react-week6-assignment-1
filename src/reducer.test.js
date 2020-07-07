@@ -121,7 +121,7 @@ describe('reducer', () => {
 
       const state = reducer(initialState, setRestaurant(restaurant));
 
-      expect(state.restaurant).not.toBeNull();
+      expect(state.restaurant).toEqual(restaurant);
     });
   });
 });
