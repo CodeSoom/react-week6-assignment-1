@@ -25,8 +25,17 @@ export default function App() {
 
   return (
     <>
-      <Link to="/">Home</Link>
-      <Link to="/about">About</Link>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/about">About</Link>
+        </li>
+        <li>
+          <Link to="/invalid">Not Found</Link>
+        </li>
+      </ul>
 
       <Switch>
         <Route exact path="/" component={Home} />

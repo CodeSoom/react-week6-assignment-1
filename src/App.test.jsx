@@ -74,4 +74,10 @@ describe('App', () => {
 
     expect(getByText('Not Found')).not.toBeNull();
   });
+
+  it('Restaurants 링크가 있다.', () => {
+    const { getByText } = render(<App />, { wrapper: MemoryRouter });
+
+    expect(getByText('Restaurants')).not.toBeNull();
+  });
 });
