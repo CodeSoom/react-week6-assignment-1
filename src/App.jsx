@@ -7,11 +7,9 @@ import { Link, Switch, Route } from 'react-router-dom';
 import {
   loadInitialData,
 } from './actions';
-import HomePage from './HomePage';
 
-function AboutPage() {
-  return 'About';
-}
+import HomePage from './HomePage';
+import AboutPage from './AboutPage';
 
 export default function App() {
   const dispatch = useDispatch();
