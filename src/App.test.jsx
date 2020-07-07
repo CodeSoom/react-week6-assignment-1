@@ -2,10 +2,13 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import { MemoryRouter } from 'react-router-dom';
+import { useParams, MemoryRouter } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
+
 import App from './App';
+
+jest.mock('react-router-dom');
 
 function renderApp({ path }) {
   return render(
@@ -53,6 +56,10 @@ describe('App with router', () => {
   });
 
   context('with URL included /RestaurantPage', () => {
+    beforeEach(() => {
+      useParams.mockReturnValue({ restaurantId: 1 });
+    });
+
     it('shows header and page name', () => {
       const { container } = renderApp({ path: '/restaurant/1' });
 
