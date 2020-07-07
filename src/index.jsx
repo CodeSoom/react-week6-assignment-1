@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import { Provider } from 'react-redux';
 
-import { BrowerRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 import App from './App';
 
@@ -12,9 +12,9 @@ import store from './store';
 ReactDOM.render(
   (
     <Provider store={store}>
-      <BrowerRouter>
+      <BrowserRouter>
         <App />
-      </BrowerRouter>
+      </BrowserRouter>
     </Provider>
   ),
   document.getElementById('app'),
