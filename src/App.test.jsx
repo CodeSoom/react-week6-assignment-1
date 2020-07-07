@@ -27,13 +27,17 @@ describe('App', () => {
     }));
   });
 
+  function renderApp({ path }) {
+    return render((
+      <MemoryRouter initialEntries={[path]}>
+        <App />
+      </MemoryRouter>
+    ));
+  }
+
   context('at all path', () => {
     it('render header', () => {
-      const { getByText } = render((
-        <MemoryRouter initialEntries={['/']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const { getByText } = renderApp({ path: '/' });
 
       expect(getByText('헤더')).not.toBeNull();
     });
@@ -41,11 +45,7 @@ describe('App', () => {
 
   context('at path /', () => {
     it('render home', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const { container } = renderApp({ path: '/' });
 
       expect(container).toHaveTextContent('Home');
       expect(container).toHaveTextContent('About');
@@ -55,11 +55,7 @@ describe('App', () => {
 
   context('at path /about', () => {
     it('render about', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/about']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const { container } = renderApp({ path: '/about' });
 
       expect(container).toHaveTextContent('페이지입니다.');
     });
@@ -67,11 +63,7 @@ describe('App', () => {
 
   context('at path /restaurants', () => {
     it('render about', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/restaurants']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const { container } = renderApp({ path: '/restaurants' });
 
       expect(container).toHaveTextContent('서울');
     });
