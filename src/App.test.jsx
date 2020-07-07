@@ -38,6 +38,14 @@ describe('App', () => {
     });
   });
 
+  context('with path /about', () => {
+    it('renders about page', () => {
+      const { getByText } = renderApp({ path: '/' });
+
+      expect(getByText('About')).toBeInTheDocument();
+    });
+  });
+
   context('with path /restaurants', () => {
     beforeEach(() => {
       useSelector.mockImplementation((selector) => selector({
