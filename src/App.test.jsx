@@ -11,24 +11,25 @@ test('App', () => {
 
   useDispatch.mockImplementation(() => dispatch);
 
-  useSelector.mockImplementation((selector) => selector({
-    regions: [
-      { id: 1, name: '서울' },
-    ],
-    categories: [
-      { id: 1, name: '한식' },
-    ],
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
-  }));
+  useSelector.mockImplementation((selector) =>
+    selector({
+      regions: [{ id: 1, name: '서울' }],
+      categories: [{ id: 1, name: '한식' }],
+      restaurants: [{ id: 1, name: '마법사주방' }],
+    }),
+  );
 
-  const { queryByText } = render((
-    <App />
-  ));
+  const { queryByText } = render(<App />);
 
   expect(dispatch).toBeCalled();
 
   expect(queryByText('서울')).not.toBeNull();
   expect(queryByText('한식')).not.toBeNull();
+});
+
+describe('App', () => {
+  it('About 링크가 있다', () => {
+    const { getByText } = render(<App />);
+    expect(getByText('About')).not.toBeNull();
+  });
 });
