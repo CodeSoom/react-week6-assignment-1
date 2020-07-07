@@ -52,4 +52,18 @@ describe('App', () => {
       expect(getByText('About 페이지 입니다.')).toBeInTheDocument();
     });
   });
+
+  context('/restaurants에 접속하면', () => {
+    it('레스토랑 페이지로 들어간다.', () => {
+      const { getByText } = renderApp({ path: '/restaurants' });
+
+      REGIONS.forEach(({ name }) => {
+        expect(getByText(name)).toBeInTheDocument();
+      });
+
+      CATEGORIES.forEach(({ name }) => {
+        expect(getByText(name)).toBeInTheDocument();
+      });
+    });
+  });
 });
