@@ -60,6 +60,20 @@ describe('App', () => {
       expect(container).toHaveTextContent('About');
       expect(container).toHaveTextContent('Restaurants');
     });
+
+    it('click About', () => {
+      const { getByText } = renderApp({ path: '/' });
+
+      fireEvent.click(getByText('About'));
+      expect(getByText(/페이지입니다/)).not.toBeNull();
+    });
+
+    it('click Restaurants', () => {
+      const { getByText } = renderApp({ path: '/' });
+
+      fireEvent.click(getByText('Restaurants'));
+      expect(getByText(/서울/)).not.toBeNull();
+    });
   });
 
   context('at path /about', () => {
@@ -71,7 +85,7 @@ describe('App', () => {
   });
 
   context('at path /restaurants', () => {
-    it('render about', () => {
+    it('render restaurants', () => {
       const { container } = renderApp({ path: '/restaurants' });
 
       expect(container).toHaveTextContent('서울');
