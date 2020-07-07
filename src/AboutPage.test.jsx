@@ -4,8 +4,16 @@ import { render } from '@testing-library/react';
 
 import AboutPage from './AboutPage';
 
-test('AboutPage', () => {
-  const { container } = render(<AboutPage />);
+describe('<AboutPage />', () => {
+  it('shows page name', () => {
+    const { container } = render(<AboutPage />);
 
-  expect(container).toHaveTextContent('About');
+    expect(container).toHaveTextContent('About');
+  });
+
+  it('shows page content', () => {
+    const { container } = render(<AboutPage />);
+
+    expect(container).toHaveTextContent('This is ....');
+  });
 });
