@@ -51,10 +51,7 @@ export function loadInitialData() {
 
 export function loadRestaurants() {
   return async (dispatch, getState) => {
-    const {
-      selectedRegion: region,
-      selectedCategory: category,
-    } = getState();
+    const { selectedRegion: region, selectedCategory: category } = getState();
 
     if (!region || !category) {
       return;
@@ -65,5 +62,14 @@ export function loadRestaurants() {
       categoryId: category.id,
     });
     dispatch(setRestaurants(restaurants));
+  };
+}
+
+export function setRestaurant(restaurant) {
+  return {
+    type: 'setRestaurant',
+    payload: {
+      restaurant,
+    },
   };
 }
