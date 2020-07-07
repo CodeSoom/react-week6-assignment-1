@@ -21,6 +21,10 @@ describe('<RestaurantPage />', () => {
   });
 
   it('shows page name', () => {
+    useSelector.mockImplementation((selector) => selector({
+      restaurant,
+    }));
+
     const { container } = render(<RestaurantPage />);
 
     expect(container).toHaveTextContent('Restaurant');
@@ -37,7 +41,7 @@ describe('<RestaurantPage />', () => {
 
     expect(container).toHaveTextContent('Restaurant1');
     expect(container).toHaveTextContent('양천주가');
-    expect(container).toHaveTextContent(/서울시 강남구/i);
+    expect(container).toHaveTextContent(/서울 강남구/i);
     expect(container).toHaveTextContent(/탕수육/i);
     expect(container).toHaveTextContent(/팔보채/i);
   });
