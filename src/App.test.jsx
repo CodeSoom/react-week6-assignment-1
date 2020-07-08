@@ -32,6 +32,10 @@ describe('App', () => {
     renderComponent({ path: '/' });
   });
 
+  it('with path /about', () => {
+    renderComponent({ path: '/about' });
+  });
+
   it('with path /restaurant', () => {
     renderComponent({ path: '/restaurant' });
   });
