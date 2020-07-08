@@ -5,12 +5,7 @@ import { Switch, Route } from 'react-router-dom';
 import HomePage from './HomePage';
 import AboutPage from './AboutPage';
 import RestaurantsPage from './RestaurantsPage';
-
-function NotFoundPage() {
-  return (
-    <p>Not Found</p>
-  );
-}
+import NotFoundPage from './NotFoundPage';
 
 export default function App() {
   return (
