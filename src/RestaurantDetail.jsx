@@ -1,7 +1,18 @@
 import React from 'react';
 
+import { useDispatch, useSelector } from 'react-redux';
+
 export default function RestaurantDetail({ params }) {
   const menu = [];
+
+  const dispatch = useDispatch();
+
+  const restaurant = useSelector(get('restaurant'));
+
+  function handleClick(regionId) {
+    dispatch(selectRegion(regionId));
+    dispatch(loadRestaurants());
+  }
 
   return (
     <div>
