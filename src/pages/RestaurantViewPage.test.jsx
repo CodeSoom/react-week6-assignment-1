@@ -4,6 +4,8 @@ import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import { MemoryRouter } from 'react-router-dom';
+
 import RestaurantViewPage from './RestaurantViewPage';
 
 import RESTAURANT from '../../fixtures/restaurant';
@@ -18,7 +20,9 @@ test('RestaurantViewPage', () => {
   }));
 
   const { queryByText } = render((
-    <RestaurantViewPage />
+    <MemoryRouter>
+      <RestaurantViewPage match={{ params: { id: RESTAURANT.id } }} />
+    </MemoryRouter>
   ));
 
   expect(dispatch).toBeCalled();

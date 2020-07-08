@@ -4,16 +4,16 @@ import { useDispatch } from 'react-redux';
 
 import RestaurantContainer from '../RestaurantContainer';
 
-import {
-  getRestaurant,
-} from '../actions';
+import { getRestaurantById } from '../actions';
 
-export default function RestaurantViewPage() {
+export default function RestaurantViewPage({ match }) {
+  const { params: { id } } = match;
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getRestaurant());
-  });
+    dispatch(getRestaurantById(id));
+  }, []);
 
   return (
     <div>
