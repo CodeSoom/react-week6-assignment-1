@@ -51,7 +51,7 @@ describe('App', () => {
     });
   });
   context('with path "/restaurant"', () => {
-    it('redners Restaurant Page', () => {
+    it('renders Restaurant Page', () => {
       const { getByText } = renderWithRouter(['/restaurants']);
 
       expect(getByText(/서울/)).not.toBeNull();
