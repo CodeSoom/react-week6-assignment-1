@@ -4,6 +4,7 @@ import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import { MemoryRouter } from 'react-router-dom';
 import RestaurantsPage from './RestaurantsPage';
 
 describe('RestaurantsPage', () => {
@@ -25,7 +26,9 @@ describe('RestaurantsPage', () => {
 
   it('renders restaurant page', () => {
     render(
-      <RestaurantsPage />,
+      <MemoryRouter>
+        <RestaurantsPage />
+      </MemoryRouter>,
     );
   });
 });
