@@ -19,7 +19,11 @@ describe('RestaurantPage', () => {
   context('레스토랑 id가 있으면', () => {
     it('해당 레스토랑 정보를 보여준다.', () => {
       const { getByText } = render((
-        <RestaurantPage />
+        <RestaurantPage
+          match={{
+            params: { id: 1 }, isExact: true, path: '', url: '',
+          }}
+        />
       ));
 
       expect(getByText(RESTAURANT.name)).toBeInTheDocument();
@@ -27,7 +31,12 @@ describe('RestaurantPage', () => {
     });
 
     it('dispatch가 호출된다.', () => {
-      render((<RestaurantPage />));
+      render((
+        <RestaurantPage
+          match={{
+            params: { id: 1 }, isExact: true, path: '', url: '',
+          }}
+        />));
       expect(dispatch).toBeCalled();
     });
   });
