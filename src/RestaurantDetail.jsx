@@ -1,6 +1,12 @@
 import React from 'react';
 
 export default function RestaurantDetail({ restaurant }) {
+  if (restaurant === null) {
+    return (
+      <p>로딩중입니다...</p>
+    );
+  }
+
   const { name, address, menuItems } = restaurant;
 
   return (
