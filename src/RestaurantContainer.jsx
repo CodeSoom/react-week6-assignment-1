@@ -17,7 +17,7 @@ export default function RestaurantContainer() {
 
       <h2>메뉴</h2>
       <ul>
-        {menuItems.map((menu) => <li key={menu.id}>{menu.name}</li>)}
+        {menuItems && menuItems.map((menu) => <li key={menu.id}>{menu.name}</li>)}
       </ul>
     </div>
   );
