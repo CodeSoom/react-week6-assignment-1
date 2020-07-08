@@ -19,7 +19,6 @@ describe('<RestaurantContainer />', () => {
 
       const { container } = render(<RestaurantContainer />);
 
-      expect(container).toHaveTextContent('Restaurant1');
       expect(container).toHaveTextContent('양천주가');
       expect(container).toHaveTextContent(/서울 강남구/i);
       expect(container).toHaveTextContent(/탕수육/i);
