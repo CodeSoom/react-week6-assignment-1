@@ -51,4 +51,12 @@ describe('App', () => {
       expect(container).toHaveTextContent('마법사주방');
     });
   });
+
+  context('with path /about', () => {
+    it('AboutPage가 렌더된다.', () => {
+      const { container } = renderApp({ path: '/about' });
+
+      expect(container).toHaveTextContent('About');
+    });
+  });
 });
