@@ -9,5 +9,5 @@ test('NotFoundPage', () => {
     <NotFoundPage />,
   );
 
-  expect(container).toHaveTextContent('Page Not Found');
+  expect(container).toHaveTextContent('404 Not Found');
 });
