@@ -6,7 +6,7 @@ import { get } from './utils';
 
 export default function Restaurant() {
   const { name, address } = useSelector(get('restaurant'));
-  const menu = useSelector(get('menu'));
+  const menuItems = useSelector(get('menuItems'));
 
   return (
     <div>
@@ -18,9 +18,9 @@ export default function Restaurant() {
       </p>
       <h2>메뉴</h2>
       <ul>
-        {menu.map((item) => (
-          <li key={item.id}>
-            {item.name}
+        {menuItems.map((menu) => (
+          <li key={menu.id}>
+            {menu.name}
           </li>
         ))}
       </ul>

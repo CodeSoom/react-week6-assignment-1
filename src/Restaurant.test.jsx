@@ -11,7 +11,7 @@ import restaurants from '../fixtures/restaurants';
 test('Restaurant', () => {
   useSelector.mockImplementation((selector) => selector({
     restaurant: restaurants[0],
-    menu: [
+    menuItems: [
       { id: 1, name: '탕수육' },
     ],
   }));
