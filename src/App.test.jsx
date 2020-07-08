@@ -74,4 +74,16 @@ describe('App', () => {
       expect(container).toHaveTextContent('달빛술담');
     });
   });
+
+  context('without matched pathname', () => {
+    it('renders the not found page', () => {
+      const { container } = render((
+        <MemoryRouter initialEntries={['/nosuchpage']}>
+          <App />
+        </MemoryRouter>
+      ));
+
+      expect(container).toHaveTextContent('Page Not Found');
+    });
+  });
 });
