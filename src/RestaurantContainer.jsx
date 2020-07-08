@@ -14,8 +14,8 @@ export default function RestaurantContainer() {
       </p>
       <h3>메뉴</h3>
       <ul>
-        {menuItems.forEach((item) => (
-          <li>{item.name}</li>
+        {menuItems.map((item) => (
+          <li key={item.id}>{item.name}</li>
         ))}
       </ul>
     </div>
