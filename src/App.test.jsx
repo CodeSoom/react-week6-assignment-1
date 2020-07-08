@@ -26,6 +26,18 @@ describe('App', () => {
     }));
   });
 
+  context('with path /', () => {
+    it('HomePage가 렌더된다.', () => {
+      const { container } = render(
+        <MemoryRouter initialEntries={['/']}>
+          <App />
+        </MemoryRouter>,
+      );
+
+      expect(container).toHaveTextContent('Home');
+    });
+  });
+
   context('with path /restaurants', () => {
     it('RestaurantsPage가 렌더된다.', () => {
       const { container } = render(
