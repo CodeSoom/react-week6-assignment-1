@@ -26,7 +26,7 @@ describe('RestaurantsPage', () => {
     }));
   });
   it('renders RestaurantsPage', () => {
-    const { getByText } = render(
+    const { getByText, container } = render(
       <MemoryRouter>
         <RestaurantsPage />
       </MemoryRouter>,
@@ -35,5 +35,7 @@ describe('RestaurantsPage', () => {
     expect(getByText('한식')).not.toBeNull();
     expect(getByText('김밥제국')).not.toBeNull();
     expect(getByText('서울')).not.toBeNull();
+    expect(container.querySelector('a')).not.toBeNull();
+    expect(container.querySelector('a').href).toMatch(/restaurants\/1/);
   });
 });
