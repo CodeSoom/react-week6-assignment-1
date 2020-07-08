@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { MemoryRouter } from 'react-router-dom';
 
-import RESTAURANT from '../fixtures/restaurant';
+import restaurant from '../fixtures/restaurant';
 
 import App from './App';
 
@@ -26,7 +26,7 @@ describe('App', () => {
       restaurants: [
         { id: 1, name: '마법사주방' },
       ],
-      restaurant: RESTAURANT,
+      restaurant,
     }));
   });
 
