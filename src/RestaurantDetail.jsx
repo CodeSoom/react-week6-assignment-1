@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function RestaurantDetail({ params }) {
-  console.log(params.id);
   const menu = [];
 
   return (
