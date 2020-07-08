@@ -12,7 +12,7 @@ test('RestaurantContainer', () => {
       name: '레스토랑 이름',
       address: '레스토랑 주소',
       menuItems: [
-        { name: '메뉴 이름' },
+        { id: 1, name: '메뉴 이름' },
       ],
     },
   }));
