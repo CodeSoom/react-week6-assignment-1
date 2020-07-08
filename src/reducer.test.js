@@ -16,8 +16,12 @@ describe('reducer', () => {
       regions: [],
       categories: [],
       restaurants: [],
-      restaurant: null,
-      restaurantId: null,
+      restaurant: {
+        name: '',
+        address: '',
+        menuItems: [],
+      },
+      restaurantId: '',
       selectedRegion: null,
       selectedCategory: null,
     };
@@ -116,7 +120,7 @@ describe('reducer', () => {
   describe('setRestaurant', () => {
     it('change restaurant', () => {
       const initialState = {
-        restaurant: null,
+        restaurant: {},
       };
 
       const restaurant = { id: 1, name: '한식' };
@@ -130,7 +134,7 @@ describe('reducer', () => {
   describe('setRestaurantId', () => {
     it('change restaurant id', () => {
       const initialState = {
-        restaurantId: null,
+        restaurantId: '',
       };
 
       const restaurantId = 1;
