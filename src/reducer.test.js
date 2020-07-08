@@ -10,6 +10,11 @@ import {
   selectCategory,
 } from './actions';
 
+import CATEGORIES from '../fixtures/categories';
+import REGIONS from '../fixtures/regions';
+import RESTAURANTS from '../fixtures/restaurants';
+import restaurant from '../fixtures/restaurant';
+
 describe('reducer', () => {
   context('when previous state is undefined', () => {
     const initialState = {
@@ -39,9 +44,7 @@ describe('reducer', () => {
         regions: [],
       };
 
-      const regions = [
-        { id: 1, name: '서울' },
-      ];
+      const regions = [REGIONS[0]];
 
       const state = reducer(initialState, setRegions(regions));
 
@@ -55,9 +58,7 @@ describe('reducer', () => {
         categories: [],
       };
 
-      const categories = [
-        { id: 1, name: '한식' },
-      ];
+      const categories = [CATEGORIES[0]];
 
       const state = reducer(initialState, setCategories(categories));
 
@@ -71,9 +72,7 @@ describe('reducer', () => {
         restaurants: [],
       };
 
-      const restaurants = [
-        { id: 1, name: '마법사주방' },
-      ];
+      const restaurants = [RESTAURANTS[0]];
 
       const state = reducer(initialState, setRestaurants(restaurants));
 
@@ -84,36 +83,26 @@ describe('reducer', () => {
   describe('selectRegion', () => {
     it('changes selected region', () => {
       const initialState = {
-        regions: [
-          { id: 1, name: '서울' },
-        ],
+        regions: [REGIONS[0]],
         selectedRegion: null,
       };
 
       const state = reducer(initialState, selectRegion(1));
 
-      expect(state.selectedRegion).toEqual({
-        id: 1,
-        name: '서울',
-      });
+      expect(state.selectedRegion).toEqual(REGIONS[0]);
     });
   });
 
   describe('selectCategory', () => {
     it('changes selected category', () => {
       const initialState = {
-        categories: [
-          { id: 1, name: '한식' },
-        ],
+        categories: [CATEGORIES[0]],
         selectedCategory: null,
       };
 
       const state = reducer(initialState, selectCategory(1));
 
-      expect(state.selectedCategory).toEqual({
-        id: 1,
-        name: '한식',
-      });
+      expect(state.selectedCategory).toEqual(CATEGORIES[0]);
     });
   });
 
@@ -122,8 +111,6 @@ describe('reducer', () => {
       const initialState = {
         restaurant: {},
       };
-
-      const restaurant = { id: 1, name: '한식' };
 
       const state = reducer(initialState, setRestaurant(restaurant));
 
@@ -137,7 +124,7 @@ describe('reducer', () => {
         restaurantId: '',
       };
 
-      const restaurantId = 1;
+      const restaurantId = restaurant.id;
       const state = reducer(initialState, setRestaurantId(restaurantId));
       expect(state.restaurantId).toEqual(restaurantId);
     });
