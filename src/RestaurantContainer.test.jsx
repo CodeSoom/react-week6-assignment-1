@@ -26,17 +26,15 @@ describe('<RestaurantContainer />', () => {
     });
   });
 
-  // context('without restaurant', () => {
-  //   it('shows loading message', () => {
-  //     useSelector.mockImplementation((selector) => selector({
-  //       restaurant: null,
-  //     }));
+  context('without restaurant', () => {
+    it('shows loading message', () => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurant: null,
+      }));
 
-  //     const { container } = render(<RestaurantContainer />);
+      const { container } = render(<RestaurantContainer />);
 
-  //     expect(dispatch).toBeCalled();
-
-  //     expect(container).toHaveTextContent('식당 정보를 불러오고 있습니다...');
-  //   });
-  // });
+      expect(container).toHaveTextContent('식당 정보를 불러오고 있습니다...');
+    });
+  });
 });
