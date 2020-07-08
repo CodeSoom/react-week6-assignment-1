@@ -5,6 +5,7 @@ import {
   setCategories,
   setRestaurants,
   setRestaurant,
+  setRestaurantId,
   selectRegion,
   selectCategory,
 } from './actions';
@@ -16,6 +17,7 @@ describe('reducer', () => {
       categories: [],
       restaurants: [],
       restaurant: null,
+      restaurantId: null,
       selectedRegion: null,
       selectedCategory: null,
     };
