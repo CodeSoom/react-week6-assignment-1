@@ -59,4 +59,12 @@ describe('App', () => {
       expect(container).toHaveTextContent('About');
     });
   });
+
+  context('with invalid path', () => {
+    it('NotFoundPage가 렌더된다.', () => {
+      const { container } = renderApp({ path: '/any_not_exist_url' });
+
+      expect(container).toHaveTextContent('Not Found');
+    });
+  });
 });
