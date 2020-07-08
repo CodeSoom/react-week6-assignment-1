@@ -103,7 +103,7 @@ npm run test:e2e
 - [X] `RestaurantDetail` 컴포넌트 구현
 - [X] reducer에서 setRestaurant 구현
 - [X] actions에서 loadRestaurant 구현
-- [ ] `Restaurants` 컴포넌트에 Link 렌더링 적용
+- [X] `Restaurants` 컴포넌트에 Link 렌더링 적용
 
 ### 의문점
 1. 현상
@@ -124,6 +124,6 @@ npm run test:e2e
 - [X] context 관련 테스트는 when, with, without 중 적합한 문구로 시작하자
 - [X] 테스트 케이스는 완결된 문장으로 적자
 - [X] fixture는 상수로 표현하지 않는다.
-- [ ] DOM을 반드시 얻어서 처리해야될 때만 getBy~, queryBy~ 를 사용한다.
-- [ ] RestaurantDetailPage에서 useParams를 걷어낸다.
+- [X] DOM을 반드시 얻어서 처리해야될 때만 getBy~, queryBy~ 를 사용한다.
+- [X] RestaurantDetailPage에서 useParams를 걷어낸다.
 - [X] Link 클릭 이벤트 관련 테스트는 E2E에 맡긴다.
