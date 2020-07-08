@@ -20,7 +20,7 @@ function renderApp({ path }) {
 }
 
 describe('App with router', () => {
-  context('with URL included /HomePage', () => {
+  context('with URL included /', () => {
     it('shows header and page name', () => {
       const { container } = renderApp({ path: '/' });
 
@@ -29,7 +29,7 @@ describe('App with router', () => {
     });
   });
 
-  context('with URL included /AboutPage', () => {
+  context('with URL included /about', () => {
     it('shows header and page name', () => {
       const { container } = renderApp({ path: '/about' });
 
@@ -38,7 +38,7 @@ describe('App with router', () => {
     });
   });
 
-  context('with URL included /RestaurantsPage', () => {
+  context('with URL included /restaurants', () => {
     const dispatch = jest.fn();
 
     beforeEach(() => {
@@ -58,7 +58,7 @@ describe('App with router', () => {
     });
   });
 
-  context('with URL included /RestaurantPage', () => {
+  context('with URL included /restaurants/:restaurantId', () => {
     const dispatch = jest.fn();
 
     beforeEach(() => {
@@ -79,7 +79,7 @@ describe('App with router', () => {
     });
   });
 
-  context('with URL included /any_not_exist_url', () => {
+  context('with invalid path', () => {
     it('shows Not Found', () => {
       const { container } = renderApp({ path: '/any_not_exist_url' });
 
