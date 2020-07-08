@@ -17,15 +17,17 @@ import restaurant from '../fixtures/restaurant';
 
 describe('reducer', () => {
   context('when previous state is undefined', () => {
+    const initialRestaurant = {
+      name: '',
+      address: '',
+      menuItems: [],
+    };
+
     const initialState = {
       regions: [],
       categories: [],
       restaurants: [],
-      restaurant: {
-        name: '',
-        address: '',
-        menuItems: [],
-      },
+      restaurant: initialRestaurant,
       restaurantId: '',
       selectedRegion: null,
       selectedCategory: null,

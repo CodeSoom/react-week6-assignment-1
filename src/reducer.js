@@ -1,14 +1,16 @@
 import { equal } from './utils';
 
+const initialRestaurant = {
+  name: '',
+  address: '',
+  menuItems: [],
+};
+
 const initialState = {
   regions: [],
   categories: [],
   restaurants: [],
-  restaurant: {
-    name: '',
-    address: '',
-    menuItems: [],
-  },
+  restaurant: initialRestaurant,
   restaurantId: '',
   selectedRegion: null,
   selectedCategory: null,
