@@ -69,13 +69,6 @@ export function loadRestaurants() {
   };
 }
 
-export function selectRestaurant(restaurantId) {
-  return {
-    type: 'selectRestaurant',
-    payload: { restaurantId },
-  };
-}
-
 export function setRestaurant(restaurant) {
   return {
     type: 'setRestaurant',
@@ -83,15 +76,13 @@ export function setRestaurant(restaurant) {
   };
 }
 
-export function getRestaurant() {
-  return async (dispatch, getState) => {
-    const { selectedRestaurant } = getState();
-
-    if (!selectedRestaurant) {
+export function getRestaurantById(restaurantId) {
+  return async (dispatch) => {
+    if (!restaurantId) {
       return;
     }
 
-    const restaurant = await fetchRestaurant({ restaurantId: selectedRestaurant.id });
+    const restaurant = await fetchRestaurant({ restaurantId });
     dispatch(setRestaurant(restaurant));
   };
 }

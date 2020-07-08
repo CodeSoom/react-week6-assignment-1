@@ -8,7 +8,7 @@ import {
   setCategories,
   loadRestaurants,
   setRestaurants,
-  getRestaurant,
+  getRestaurantById,
   setRestaurant,
 } from './actions';
 
@@ -86,18 +86,18 @@ describe('actions', () => {
     });
   });
 
-  describe('getRestaurant', () => {
-    context('with selectedRestaurant', () => {
-      beforeEach(() => {
-        store = mockStore({
-          selectedRestaurant: {
-            id: 1, name: '김밥제국', category: '분식', address: '서울시 강남구 역삼동',
-          },
-        });
+  describe('getRestaurantById', () => {
+    beforeEach(() => {
+      store = mockStore({
+        restaurant: {},
       });
+    });
+
+    context('with restaurantId', () => {
+      const restaurantId = 1;
 
       it('runs setRestaurant', async () => {
-        await store.dispatch(getRestaurant());
+        await store.dispatch(getRestaurantById(restaurantId));
 
         const actions = store.getActions();
 
@@ -105,15 +105,11 @@ describe('actions', () => {
       });
     });
 
-    context('without selectedRestaurant', () => {
-      beforeEach(() => {
-        store = mockStore({
-          selectedRestaurant: null,
-        });
-      });
+    context('without restaurantId', () => {
+      const restaurantId = null;
 
       it('does\'nt run any actions', async () => {
-        await store.dispatch(getRestaurant());
+        await store.dispatch(getRestaurantById(restaurantId));
 
         const actions = store.getActions();
 
