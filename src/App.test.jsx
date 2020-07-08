@@ -29,14 +29,20 @@ describe('App', () => {
   });
 
   it('with path /', () => {
-    renderComponent({ path: '/' });
+    const { queryByText } = renderComponent({ path: '/' });
+
+    expect(queryByText('헤더')).not.toBeNull();
   });
 
   it('with path /about', () => {
-    renderComponent({ path: '/about' });
+    const { queryByText } = renderComponent({ path: '/about' });
+
+    expect(queryByText('헤더')).not.toBeNull();
   });
 
   it('with path /restaurant', () => {
-    renderComponent({ path: '/restaurant' });
+    const { queryByText } = renderComponent({ path: '/restaurant' });
+
+    expect(queryByText('헤더')).not.toBeNull();
   });
 });
