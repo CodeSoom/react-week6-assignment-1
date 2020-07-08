@@ -14,5 +14,5 @@ test('HomePage', () => {
   ));
 
   expect(queryByText('About')).not.toBeNull();
-  expect(queryByText('레스토랑')).not.toBeNull();
+  expect(queryByText('Restaurants')).not.toBeNull();
 });
