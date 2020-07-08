@@ -4,8 +4,12 @@ const initialState = {
   regions: [],
   categories: [],
   restaurants: [],
-  restaurant: null,
-  restaurantId: null,
+  restaurant: {
+    name: '',
+    address: '',
+    menuItems: [],
+  },
+  restaurantId: '',
   selectedRegion: null,
   selectedCategory: null,
 };
