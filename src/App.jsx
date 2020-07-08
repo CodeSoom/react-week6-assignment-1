@@ -5,6 +5,7 @@ import { Switch, Route, Link } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import RestaurantListPage from './pages/RestaurantListPage';
+import RestaurantViewPage from './pages/RestaurantViewPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 export default function App() {
@@ -16,7 +17,8 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/about" component={AboutPage} />
-        <Route path="/restaurants" component={RestaurantListPage} />
+        <Route exact path="/restaurants" component={RestaurantListPage} />
+        <Route path="/restaurants/:id" component={RestaurantViewPage} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>

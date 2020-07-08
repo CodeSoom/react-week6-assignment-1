@@ -25,6 +25,13 @@ describe('App', () => {
       regions: [],
       categories: [],
       restaurants: [],
+      restaurant: {
+        name: '레스토랑 이름',
+        address: '레스토랑 주소',
+        menuItems: [
+          { id: 1, name: '메뉴 이름' },
+        ],
+      },
     }));
   });
 
@@ -42,6 +49,12 @@ describe('App', () => {
 
   it('with path /restaurants', () => {
     const { queryByText } = renderComponent({ path: '/restaurants' });
+
+    expect(queryByText('헤더')).not.toBeNull();
+  });
+
+  it('with path /restaurant/1', () => {
+    const { queryByText } = renderComponent({ path: '/restaurants/1' });
 
     expect(queryByText('헤더')).not.toBeNull();
   });
