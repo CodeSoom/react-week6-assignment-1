@@ -1,22 +1,22 @@
 import React from 'react';
 
+import {
+  Switch,
+  Route,  
+} from 'react-router-dom';
+
 import HomePage from './HomePage';
 import AboutPage from './AboutPage';
 import RestaurantsPage from './RestaurantsPage';
 import NotFoundPage from './NotFoundPage';
 
 export default function App() {
-  const { location: { pathname } } = window;
-
-  const MyComponent = {
-    '/': HomePage,
-    '/about': AboutPage,
-    '/Restaurants': RestaurantsPage,
-  }[pathname] || NotFoundPage;
-
   return (
-    <div>
-      <MyComponent />
-    </div>
+    <Switch>
+      <Route exact path="/" component={HomePage} />
+      <Route exact path="/about" component={AboutPage} />
+      <Route exact path="/restaurants" component={RestaurantsPage} />
+      <Route component={NotFoundPage} />
+    </Switch>
   );
 }
