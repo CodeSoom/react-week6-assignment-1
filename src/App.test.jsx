@@ -38,6 +38,7 @@ describe('App', () => {
     it('HomePage가 렌더된다.', () => {
       const { container } = renderApp({ path: '/' });
 
+      expect(container).toHaveTextContent('헤더');
       expect(container).toHaveTextContent('Home');
     });
   });
