@@ -8,6 +8,14 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
+function renderWithRouter(path) {
+  return render(
+    <MemoryRouter initialEntries={path}>
+      <App />
+    </MemoryRouter>,
+  );
+}
+
 describe('App', () => {
   beforeEach(() => {
     const dispatch = jest.fn();
@@ -25,13 +33,11 @@ describe('App', () => {
       ],
     }));
   });
+
   context('with path "/"', () => {
     it('renders Home Page', () => {
-      const { getByText } = render(
-        <MemoryRouter initialEntries={['/']}>
-          <App />
-        </MemoryRouter>,
-      );
+      const { getByText } = renderWithRouter(['/']);
+
       expect(getByText('Home')).not.toBeNull();
       expect(getByText('About')).not.toBeNull();
       expect(getByText('Restaurants')).not.toBeNull();
@@ -39,21 +45,14 @@ describe('App', () => {
   });
   context('with path "/about"', () => {
     it('renders About Page', () => {
-      const { getByText } = render(
-        <MemoryRouter initialEntries={['/about']}>
-          <App />
-        </MemoryRouter>,
-      );
+      const { getByText } = renderWithRouter(['/about']);
+
       expect(getByText('About')).not.toBeNull();
     });
   });
   context('with path "/restaurant"', () => {
     it('redners Restaurant Page', () => {
-      const { getByText } = render(
-        <MemoryRouter initialEntries={['/restaurants']}>
-          <App />
-        </MemoryRouter>,
-      );
+      const { getByText } = renderWithRouter(['/restaurants']);
 
       expect(getByText(/서울/)).not.toBeNull();
       expect(getByText(/한식/)).not.toBeNull();
