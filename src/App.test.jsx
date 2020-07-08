@@ -6,6 +6,10 @@ import { MemoryRouter } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import REGIONS from '../fixtures/regions';
+import CATEGORIES from '../fixtures/categories';
+import RESTAURANTS from '../fixtures/restaurants';
+
 import App from './App';
 
 function renderWithRouter(path) {
@@ -22,15 +26,9 @@ describe('App', () => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
-      regions: [
-        { id: 1, name: '서울' },
-      ],
-      categories: [
-        { id: 1, name: '한식' },
-      ],
-      restaurants: [
-        { id: 1, name: '마법사주방' },
-      ],
+      regions: REGIONS,
+      categories: CATEGORIES,
+      restaurants: RESTAURANTS,
     }));
   });
 
@@ -56,6 +54,16 @@ describe('App', () => {
 
       expect(getByText(/서울/)).not.toBeNull();
       expect(getByText(/한식/)).not.toBeNull();
+    });
+  });
+  context('with path "restaurant/{id}', () => {
+    it('renders details of restaurant no {id}', () => {
+      const { getByText } = renderWithRouter(['/restaurants/1']);
+
+      expect(getByText('서울시 강남구 역삼동')).not.toBeNull();
+      expect(getByText('김밥제국')).not.toBeNull();
+      expect(getByText('떡볶이')).not.toBeNull();
+      expect(getByText('라면')).not.toBeNull();
     });
   });
 });
