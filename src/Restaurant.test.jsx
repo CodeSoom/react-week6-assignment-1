@@ -2,13 +2,16 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
+import { MemoryRouter } from 'react-router-dom';
 import Restaurant from './Restaurant';
 
 import restaurants from '../fixtures/restaurants';
 
 test('Restaurant', () => {
+  const dispatch = jest.fn();
+  useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
     restaurant: {
       ...restaurants[0],
@@ -19,7 +22,9 @@ test('Restaurant', () => {
   }));
 
   const { container } = render((
-    <Restaurant />
+    <MemoryRouter>
+      <Restaurant />
+    </MemoryRouter>
   ));
 
   expect(container).toHaveTextContent('주소: 서울시 강남구 역삼동');
