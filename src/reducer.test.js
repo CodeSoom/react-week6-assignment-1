@@ -15,6 +15,7 @@ describe('reducer', () => {
       regions: [],
       categories: [],
       restaurants: [],
+      restaurant: null,
       selectedRegion: null,
       selectedCategory: null,
     };
