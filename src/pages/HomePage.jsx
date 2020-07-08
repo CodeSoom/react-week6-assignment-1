@@ -9,7 +9,7 @@ export default function HomePage() {
         <Link to="/">Home</Link>
       </li>
       <li>
-        <Link to="/restaurant">레스토랑</Link>
+        <Link to="/restaurants">레스토랑</Link>
       </li>
     </ul>
   );

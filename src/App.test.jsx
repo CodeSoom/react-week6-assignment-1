@@ -40,8 +40,8 @@ describe('App', () => {
     expect(queryByText('헤더')).not.toBeNull();
   });
 
-  it('with path /restaurant', () => {
-    const { queryByText } = renderComponent({ path: '/restaurant' });
+  it('with path /restaurants', () => {
+    const { queryByText } = renderComponent({ path: '/restaurants' });
 
     expect(queryByText('헤더')).not.toBeNull();
   });
