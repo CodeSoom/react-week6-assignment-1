@@ -8,6 +8,10 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import RestaurantsPage from './RestaurantsPage';
 
+import REGIONS from '../fixtures/regions';
+import CATEGORIES from '../fixtures/categories';
+import RESTAURANTS from '../fixtures/restaurants';
+
 jest.mock('react-redux');
 
 describe('RestaurantsPage', () => {
@@ -16,24 +20,20 @@ describe('RestaurantsPage', () => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
-      regions: [
-        { id: 1, name: '서울' },
-      ],
-      categories: [
-        { id: 1, name: '한식' },
-      ],
-      restaurants: [
-        { id: 1, name: '마법사주방' },
-      ],
+      regions: REGIONS,
+      categories: CATEGORIES,
+      restaurants: RESTAURANTS,
     }));
   });
   it('renders RestaurantsPage', () => {
-    const { container } = render(
+    const { getByText } = render(
       <MemoryRouter>
         <RestaurantsPage />
       </MemoryRouter>,
     );
 
-    expect(container).toHaveTextContent('마법사주방');
+    expect(getByText('한식')).not.toBeNull();
+    expect(getByText('김밥제국')).not.toBeNull();
+    expect(getByText('서울')).not.toBeNull();
   });
 });
