@@ -16,27 +16,26 @@ describe('RestaurantPage', () => {
     })));
   });
 
+  function renderRestaurantPage() {
+    return render((
+      <RestaurantPage
+        match={{
+          params: { id: RESTAURANT.id }, isExact: true, path: '', url: '',
+        }}
+      />
+    ));
+  }
+
   context('레스토랑 id가 있으면', () => {
     it('해당 레스토랑 정보를 보여준다.', () => {
-      const { getByText } = render((
-        <RestaurantPage
-          match={{
-            params: { id: 1 }, isExact: true, path: '', url: '',
-          }}
-        />
-      ));
+      const { getByText } = renderRestaurantPage();
 
       expect(getByText(RESTAURANT.name)).toBeInTheDocument();
       expect(getByText(`주소: ${RESTAURANT.address}`)).toBeInTheDocument();
     });
 
     it('dispatch가 호출된다.', () => {
-      render((
-        <RestaurantPage
-          match={{
-            params: { id: 1 }, isExact: true, path: '', url: '',
-          }}
-        />));
+      renderRestaurantPage();
       expect(dispatch).toBeCalled();
     });
   });
