@@ -19,7 +19,11 @@ test('RestaurantsPage', () => {
     restaurants: [{ id: 1, name: '마법사주방' }],
   }));
 
-  const { queryByText } = render(<MemoryRouter><RestaurantsPage /></MemoryRouter>);
+  const { queryByText } = render((
+    <MemoryRouter>
+      <RestaurantsPage />
+    </MemoryRouter>
+  ));
 
   expect(dispatch).toBeCalled();
 
