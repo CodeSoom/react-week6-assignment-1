@@ -8,12 +8,12 @@ import { MemoryRouter } from 'react-router-dom';
 
 import RestaurantContainer from './RestaurantContainer';
 
-import RESTAURANTS from '../fixtures/restaurants';
+import RESTAURANT from '../fixtures/restaurant';
 
 describe('RestaurantContainer', () => {
   it('레스토랑 정보를 보여준다.', () => {
     useSelector.mockImplementation((selector) => selector({
-      restaurants: RESTAURANTS,
+      restaurant: RESTAURANT,
     }));
 
     const { container } = render((
@@ -22,6 +22,6 @@ describe('RestaurantContainer', () => {
       </MemoryRouter>
     ));
 
-    expect(container).toHaveTextContent('양천주가');
+    expect(container).toHaveTextContent(RESTAURANT.name);
   });
 });
