@@ -1,13 +1,9 @@
 import React from 'react';
 
 import { Switch, Route } from 'react-router-dom';
-import RestaurantsPage from './RestaurantsPage';
 
-function HomePage() {
-  return (
-    <p>Home</p>
-  );
-}
+import HomePage from './HomePage';
+import RestaurantsPage from './RestaurantsPage';
 
 export default function App() {
   return (
