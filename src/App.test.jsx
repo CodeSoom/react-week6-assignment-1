@@ -8,8 +8,6 @@ import { MemoryRouter } from 'react-router-dom';
 
 import App from './App';
 
-import routes from '../fixtures/routes';
-
 describe('App', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
@@ -26,6 +24,12 @@ describe('App', () => {
   }));
 
   it('renders header all the time', () => {
+    const routes = [
+      '/',
+      '/about',
+      '/restaurants',
+      '/restaurants/1',
+    ];
     const containers = routes.map((route) => {
       const { container } = render(
         <MemoryRouter initialEntries={[route]}>
