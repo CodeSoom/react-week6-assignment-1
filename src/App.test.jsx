@@ -2,7 +2,7 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import { useParams, MemoryRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -10,8 +10,6 @@ import App from './App';
 
 import restaurants from '../fixtures/restaurants';
 import restaurant from '../fixtures/restaurant';
-
-jest.mock('react-router-dom');
 
 function renderApp({ path }) {
   return render(
@@ -64,7 +62,6 @@ describe('App with router', () => {
     const dispatch = jest.fn();
 
     beforeEach(() => {
-      useParams.mockReturnValue({ restaurantId: 1 });
       useSelector.mockImplementation((selector) => selector({
         regions: [],
         categories: [],

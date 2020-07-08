@@ -10,8 +10,8 @@ import {
 
 import { get } from './utils';
 
-export default function RestaurantPage() {
-  const { restaurantId } = useParams();
+export default function RestaurantPage({ params }) {
+  const { restaurantId } = params || useParams();
 
   const dispatch = useDispatch();
 

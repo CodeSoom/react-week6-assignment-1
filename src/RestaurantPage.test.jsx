@@ -4,20 +4,15 @@ import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { useParams } from 'react-router-dom';
-
 import RestaurantPage from './RestaurantPage';
 
 import restaurant from '../fixtures/restaurant';
-
-jest.mock('react-router-dom');
 
 describe('<RestaurantPage />', () => {
   const dispatch = jest.fn();
 
   beforeEach(() => {
     useDispatch.mockImplementation(() => dispatch);
-    useParams.mockReturnValue({ restaurantId: 1 });
   });
 
   it('shows page name', () => {
@@ -25,7 +20,7 @@ describe('<RestaurantPage />', () => {
       restaurant,
     }));
 
-    const { container } = render(<RestaurantPage />);
+    const { container } = render(<RestaurantPage params={{ restaurantId: 1 }} />);
 
     expect(container).toHaveTextContent('Restaurant');
   });
@@ -36,7 +31,7 @@ describe('<RestaurantPage />', () => {
         restaurant,
       }));
 
-      const { container } = render(<RestaurantPage />);
+      const { container } = render(<RestaurantPage params={{ restaurantId: 1 }} />);
 
       expect(dispatch).toBeCalled();
 
@@ -49,12 +44,12 @@ describe('<RestaurantPage />', () => {
   });
 
   context('without restaurant', () => {
-    it('shows restaurant info', () => {
+    it('shows loading message', () => {
       useSelector.mockImplementation((selector) => selector({
         restaurant: null,
       }));
 
-      const { container } = render(<RestaurantPage />);
+      const { container } = render(<RestaurantPage params={{ restaurantId: null }} />);
 
       expect(dispatch).toBeCalled();
 
