@@ -38,16 +38,8 @@ describe('App', () => {
     ));
   }
 
-  context('at all path', () => {
-    it('render header', () => {
-      const { getByText } = renderApp({ path: '/' });
-
-      expect(getByText('헤더')).not.toBeNull();
-    });
-  });
-
-  context('click header', () => {
-    it('render home', () => {
+  describe('click header', () => {
+    it('renders the home page', () => {
       const { getByText } = renderApp({ path: '/restaurants' });
 
       fireEvent.click(getByText('헤더'));
@@ -55,48 +47,42 @@ describe('App', () => {
     });
   });
 
-  context('at path /', () => {
-    it('render home', () => {
+  context('with all path', () => {
+    it('renders the header element', () => {
+      const { getByText } = renderApp({ path: '/' });
+
+      expect(getByText('헤더')).not.toBeNull();
+    });
+  });
+
+  context('with path /', () => {
+    it('renders the home page', () => {
       const { container } = renderApp({ path: '/' });
 
       expect(container).toHaveTextContent('Home');
       expect(container).toHaveTextContent('About');
       expect(container).toHaveTextContent('Restaurants');
     });
-
-    it('click About', () => {
-      const { getByText } = renderApp({ path: '/' });
-
-      fireEvent.click(getByText('About'));
-      expect(getByText(/페이지입니다/)).not.toBeNull();
-    });
-
-    it('click Restaurants', () => {
-      const { getByText } = renderApp({ path: '/' });
-
-      fireEvent.click(getByText('Restaurants'));
-      expect(getByText(/서울/)).not.toBeNull();
-    });
   });
 
-  context('at path /about', () => {
-    it('render about', () => {
+  context('with path /about', () => {
+    it('renders the about page', () => {
       const { container } = renderApp({ path: '/about' });
 
       expect(container).toHaveTextContent('페이지입니다.');
     });
   });
 
-  context('at path /restaurants', () => {
-    it('render restaurants', () => {
+  context('with path /restaurants', () => {
+    it('renders the restaurants page', () => {
       const { container } = renderApp({ path: '/restaurants' });
 
       expect(container).toHaveTextContent('서울');
     });
   });
 
-  context('at path /restaurant/1', () => {
-    it('render restaurant detail page', () => {
+  context('with path /restaurant/1', () => {
+    it('renders the restaurant detail page', () => {
       const { container } = renderApp({ path: '/restaurants/1' });
 
       expect(container).toHaveTextContent('양천주가');
