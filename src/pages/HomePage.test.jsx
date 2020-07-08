@@ -13,6 +13,6 @@ test('HomePage', () => {
     </MemoryRouter>
   ));
 
-  expect(queryByText('Home')).not.toBeNull();
+  expect(queryByText('About')).not.toBeNull();
   expect(queryByText('레스토랑')).not.toBeNull();
 });
