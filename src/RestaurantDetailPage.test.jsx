@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantDetailPage from './RestaurantDetailPage';
 
-import RESTAURANT from '../fixtures/restaurant';
+import restaurant from '../fixtures/restaurant';
 
 jest.mock('react-redux');
 
@@ -16,7 +16,7 @@ test('RestaurantPage', () => {
 
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
-    restaurant: RESTAURANT,
+    restaurant,
   }));
 
   render((
