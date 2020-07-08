@@ -102,5 +102,21 @@ describe('actions', () => {
         expect(actions[0]).toEqual(setRestaurant({}));
       });
     });
+
+    context('without restaurantId', () => {
+      beforeEach(() => {
+        store = mockStore({
+          restaurantId: null,
+        });
+      });
+
+      it('does\'nt run any actions', async () => {
+        await store.dispatch(loadRestaurant());
+
+        const actions = store.getActions();
+
+        expect(actions).toHaveLength(0);
+      });
+    });
   });
 });
