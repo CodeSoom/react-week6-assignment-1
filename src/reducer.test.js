@@ -124,4 +124,16 @@ describe('reducer', () => {
       expect(state.restaurant).toEqual(restaurant);
     });
   });
+
+  describe('setRestaurantId', () => {
+    it('change restaurant id', () => {
+      const initialState = {
+        restaurantId: null,
+      };
+
+      const restaurantId = 1;
+      const state = reducer(initialState, setRestaurantId(restaurantId));
+      expect(state.restaurantId).toEqual(restaurantId);
+    });
+  });
 });
