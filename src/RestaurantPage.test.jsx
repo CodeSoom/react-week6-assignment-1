@@ -36,6 +36,8 @@ test('RestaurantPage', () => {
     <RestaurantPage />
   ));
 
+  expect(dispatch).toBeCalled();
+
   expect(queryByText('양천주가')).not.toBeNull();
   expect(queryByText('서울 강남구')).not.toBeNull();
   expect(queryByText('탕수육')).not.toBeNull();
