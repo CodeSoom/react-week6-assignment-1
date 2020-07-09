@@ -4,9 +4,9 @@ import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
-import RestaurantPage from './RestaurantPage';
+import RestaurantContainer from './RestaurantContainer';
 
-test('RestaurantPage', () => {
+test('RestaurantContainer', () => {
   useSelector.mockImplementation((selector) => selector({
     restaurant: {
       id: 1,
@@ -29,7 +29,7 @@ test('RestaurantPage', () => {
   }));
 
   const { queryByText } = render((
-    <RestaurantPage />
+    <RestaurantContainer />
   ));
 
   expect(queryByText('양천주가')).not.toBeNull();
