@@ -77,7 +77,7 @@ describe('reducer', () => {
       const loading = true;
       const state = reducer(initialState, setLoading(loading));
 
-      expect(state.loading).toBeFalsy();
+      expect(state.loading).toBeTruthy();
     });
   });
 
