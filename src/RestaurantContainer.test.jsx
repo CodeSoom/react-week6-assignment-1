@@ -8,36 +8,37 @@ import { MemoryRouter } from 'react-router-dom';
 
 import RestaurantContainer from './RestaurantContainer';
 
-import RESTAURANT from '../fixtures/restaurant';
+import restaurant from '../fixtures/restaurant';
 
 describe('RestaurantContainer', () => {
-  it('레스토랑 정보를 보여준다.', () => {
-    useSelector.mockImplementation((selector) => selector({
-      restaurant: RESTAURANT,
-      loading: false,
-    }));
-
-    const { container } = render((
+  function renderRestaurantContainer() {
+    return render((
       <MemoryRouter>
         <RestaurantContainer />
       </MemoryRouter>
     ));
+  }
 
-    expect(container).toHaveTextContent(RESTAURANT.name);
-  });
+  context('when loading', () => {
+    it('is false show restaurant page', () => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurant,
+        loading: false,
+      }));
 
-  it('loading이 true이면 로딩 페이지를 보여준다.', () => {
-    useSelector.mockImplementation((selector) => selector({
-      restaurant: RESTAURANT,
-      loading: true,
-    }));
+      const { container } = renderRestaurantContainer();
 
-    const { container } = render((
-      <MemoryRouter>
-        <RestaurantContainer />
-      </MemoryRouter>
-    ));
+      expect(container).toHaveTextContent(restaurant.name);
+    });
+    it('is true show loading page', () => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurant,
+        loading: true,
+      }));
 
-    expect(container).toHaveTextContent('Loading...');
+      const { container } = renderRestaurantContainer();
+
+      expect(container).toHaveTextContent('Loading...');
+    });
   });
 });
