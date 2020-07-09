@@ -11,5 +11,5 @@ export async function fetchRestaurants() {
 }
 
 export async function fetchRestaurantDetails() {
-  return [];
+  return {};
 }
