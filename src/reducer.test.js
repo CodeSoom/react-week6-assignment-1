@@ -30,6 +30,7 @@ describe('reducer', () => {
       restaurants: [],
       restaurant: initialRestaurant,
       restaurantId: '',
+      loading: false,
       selectedRegion: null,
       selectedCategory: null,
     };
