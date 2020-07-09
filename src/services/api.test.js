@@ -8,7 +8,6 @@ import {
 import REGIONS from '../../fixtures/regions';
 import CATEGORIES from '../../fixtures/categories';
 import RESTAURANTS from '../../fixtures/restaurants';
-import RESTAURANT from '../../fixtures/restaurant';
 
 describe('api', () => {
   const mockFetch = (data) => {
@@ -57,6 +56,20 @@ describe('api', () => {
   });
 
   describe('fetchRestaurant', () => {
+    const RESTAURANT = {
+      id: 1,
+      categoryId: 1,
+      name: '김밥제국',
+      category: '분식',
+      address: '서울시 강남구 역삼동',
+      menuItems: [
+        {
+          id: 1,
+          name: '김밥',
+        },
+      ],
+    };
+
     beforeEach(() => {
       mockFetch(RESTAURANT);
     });
