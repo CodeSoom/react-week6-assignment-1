@@ -99,9 +99,9 @@ describe('actions', () => {
 
         const actions = store.getActions();
 
-        expect(actions[0]).toEqual(setRestaurantDetails([]));
+        expect(actions[0]).toEqual(setRestaurantDetails({}));
       });
     });
-    // TODO: with selectedRestaurant
+    // TODO: without selectedRestaurant
   });
 });
