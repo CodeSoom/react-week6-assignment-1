@@ -91,8 +91,10 @@ describe('actions', () => {
       store = mockStore({});
     });
 
+    const restaurantId = 1;
+
     it('runs setRestaurantDetail', async () => {
-      await store.dispatch(loadRestaurantDetail());
+      await store.dispatch(loadRestaurantDetail({ restaurantId }));
 
       const actions = store.getActions();
 
