@@ -31,6 +31,13 @@ const reducers = {
     };
   },
 
+  setLoading(state, { payload: { loading } }) {
+    return {
+      ...state,
+      loading,
+    };
+  },
+
   setRestaurants(state, { payload: { restaurants } }) {
     return {
       ...state,

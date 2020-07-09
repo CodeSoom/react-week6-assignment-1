@@ -19,6 +19,13 @@ export function setCategories(categories) {
   };
 }
 
+export function setLoading(loading) {
+  return {
+    type: 'setLoading',
+    payload: { loading },
+  };
+}
+
 export function setRestaurants(restaurants) {
   return {
     type: 'setRestaurants',
