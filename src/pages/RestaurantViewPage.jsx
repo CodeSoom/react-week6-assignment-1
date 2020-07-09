@@ -17,6 +17,7 @@ export default function RestaurantViewPage({ match }) {
 
   return (
     <div>
+      <h2>Restaurant View</h2>
       <RestaurantContainer />
     </div>
   );

@@ -10,12 +10,12 @@ export default function RestaurantContainer() {
 
   return (
     <div>
-      <h2>{name}</h2>
+      <h3>{name}</h3>
 
-      <h2>주소</h2>
+      <h3>주소</h3>
       <p>{address}</p>
 
-      <h2>메뉴</h2>
+      <h3>메뉴</h3>
       <ul>
         {menuItems && menuItems.map((menu) => <li key={menu.id}>{menu.name}</li>)}
       </ul>

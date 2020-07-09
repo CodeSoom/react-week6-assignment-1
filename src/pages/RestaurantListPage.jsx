@@ -19,6 +19,7 @@ export default function RestaurantListPage() {
 
   return (
     <div>
+      <h2>Restaurant List</h2>
       <RegionsContainer />
       <CategoriesContainer />
       <RestaurantsContainer />
