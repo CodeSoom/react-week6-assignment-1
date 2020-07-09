@@ -6,7 +6,6 @@ import { get } from './utils';
 
 export default function RestaurantContainer() {
   const { name, address, menuItems } = useSelector(get('restaurant'));
-
   return (
     <div>
       <h2>{name}</h2>

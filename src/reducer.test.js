@@ -6,6 +6,7 @@ import {
   setRestaurants,
   setRestaurant,
   setRestaurantId,
+  setLoading,
   selectRegion,
   selectCategory,
 } from './actions';
@@ -65,6 +66,18 @@ describe('reducer', () => {
       const state = reducer(initialState, setCategories(categories));
 
       expect(state.categories).toHaveLength(1);
+    });
+  });
+
+  describe('setLoading', () => {
+    it('changes loading', () => {
+      const initialState = {
+        loading: false,
+      };
+      const loading = true;
+      const state = reducer(initialState, setLoading(loading));
+
+      expect(state.loading).toBeFalsy();
     });
   });
 
