@@ -67,3 +67,7 @@ export function loadRestaurants() {
     dispatch(setRestaurants(restaurants));
   };
 }
+
+export function loadDetailData() {
+  return null;
+}
