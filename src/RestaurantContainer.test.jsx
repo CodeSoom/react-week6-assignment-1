@@ -2,7 +2,7 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantContainer from './RestaurantContainer';
 
@@ -11,13 +11,19 @@ import restaurant from '../fixtures/restaurant';
 jest.mock('react-redux');
 
 describe('<RestaurantContainer />', () => {
+  const dispatch = jest.fn();
+
+  beforeEach(() => {
+    useDispatch.mockImplementation(() => dispatch);
+  });
+
   context('with restaurant', () => {
     it('shows restaurant info', () => {
       useSelector.mockImplementation((selector) => selector({
         restaurant,
       }));
 
-      const { container } = render(<RestaurantContainer />);
+      const { container } = render(<RestaurantContainer restaurantId={1} />);
 
       expect(container).toHaveTextContent('양천주가');
       expect(container).toHaveTextContent(/서울 강남구/i);
@@ -32,7 +38,7 @@ describe('<RestaurantContainer />', () => {
         restaurant: null,
       }));
 
-      const { container } = render(<RestaurantContainer />);
+      const { container } = render(<RestaurantContainer restaurantId={null} />);
 
       expect(container).toHaveTextContent('식당 정보를 불러오고 있습니다...');
     });
