@@ -10,8 +10,8 @@ import RESTAURANT from '../fixtures/restaurant';
 describe('RestaurantsDetail', () => {
   const dispatch = jest.fn();
 
-  const renderRestaurantsDetail = () => render(
-    <MemoryRouter initialEntries={['/restaurants/10']}>
+  const renderRestaurantsDetail = ({ path }) => render(
+    <MemoryRouter initialEntries={[path]}>
       <RestaurantsDetail />
     </MemoryRouter>,
   );
@@ -23,15 +23,19 @@ describe('RestaurantsDetail', () => {
     }));
   });
 
+  afterEach(() => {
+    dispatch.mockClear();
+  });
+
   it('레스토랑 상세 정보가 보인다.', () => {
-    const { getByText } = renderRestaurantsDetail();
+    const { getByText } = renderRestaurantsDetail({ path: '/restaurants/10' });
 
     expect(getByText(/양천주가/)).not.toBeNull();
     expect(getByText(/탕수육/)).not.toBeNull();
   });
 
   it('dispatch 가 실행된다.', () => {
-    renderRestaurantsDetail();
+    renderRestaurantsDetail({ path: '/restaurants/10' });
 
     expect(dispatch).toBeCalled();
   });
