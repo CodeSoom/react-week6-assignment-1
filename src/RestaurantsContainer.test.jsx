@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { MemoryRouter } from 'react-router-dom';
+
 import { render, screen } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
@@ -14,7 +16,9 @@ test('RestaurantsContainer', () => {
   }));
 
   render((
-    <RestaurantsContainer />
+    <MemoryRouter>
+      <RestaurantsContainer />
+    </MemoryRouter>
   ));
 
   expect(screen.getByRole('link', { name: '마법사주방' })).toBeInTheDocument();
