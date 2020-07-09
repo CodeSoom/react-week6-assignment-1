@@ -80,7 +80,7 @@ export function loadRestaurant(restaurantId) {
     if (!restaurantId) {
       return;
     }
-    const restaurants = await fetchRestaurant(restaurantId);
-    dispatch(setRestaurant(restaurants));
+    const restaurant = await fetchRestaurant(restaurantId);
+    dispatch(setRestaurant(restaurant));
   };
 }

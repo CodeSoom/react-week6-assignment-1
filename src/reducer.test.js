@@ -102,17 +102,18 @@ describe('reducer', () => {
   });
 
   describe('setRestaurant', () => {
-    it('changes selected restaurant', () => {
-      const initialState = {
-        selectedRestaurant: null,
-      };
+    const initialState = {
+      selectedRestaurant: null,
+    };
+    const restaurant = {
+      id: 1,
+      name: '홍콩반점',
+    };
 
+    it('changes selected restaurant', () => {
       const state = reducer(
         initialState,
-        setRestaurant({
-          id: 1,
-          name: '홍콩반점',
-        }),
+        setRestaurant(restaurant),
       );
 
       expect(state.selectedRestaurant).toEqual({

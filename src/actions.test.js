@@ -92,6 +92,7 @@ describe('actions', () => {
         selectedRestaurant: null,
       });
     });
+
     context('with restaurantId', () => {
       it('runs setRestaurant', async () => {
         await store.dispatch(loadRestaurant(1));
@@ -102,8 +103,9 @@ describe('actions', () => {
         expect(actions[0]).toEqual(setRestaurant([]));
       });
     });
+
     context('without restaurantId', () => {
-      it('runs setRestaurant', async () => {
+      it('does\'nt runs setRestaurant', async () => {
         await store.dispatch(loadRestaurant());
 
         const actions = store.getActions();

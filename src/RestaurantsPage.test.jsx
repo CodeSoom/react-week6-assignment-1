@@ -3,9 +3,9 @@ import { MemoryRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { render } from '@testing-library/react';
 
-import Restaurants from './Restaurants';
+import RestaurantsPage from './RestaurantsPage';
 
-describe('Restaurants', () => {
+describe('RestaurantsPage', () => {
   const dispatch = jest.fn();
 
   beforeEach(() => {
@@ -17,12 +17,17 @@ describe('Restaurants', () => {
     }));
   });
 
+  afterEach(() => {
+    dispatch.mockClear();
+  })
+
   it('dispatch가 호출된다.', () => {
-    render(<Restaurants />, { wrapper: MemoryRouter });
+    render(<RestaurantsPage />, { wrapper: MemoryRouter });
     expect(dispatch).toBeCalled();
   });
+
   it('지역과 카테고리 버튼이 있다.', () => {
-    const { queryByText } = render(<Restaurants />, { wrapper: MemoryRouter });
+    const { queryByText } = render(<RestaurantsPage />, { wrapper: MemoryRouter });
 
     expect(queryByText('서울')).not.toBeNull();
     expect(queryByText('한식')).not.toBeNull();

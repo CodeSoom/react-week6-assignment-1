@@ -64,12 +64,13 @@ describe('App', () => {
     expect(getByText('404 Not Found')).not.toBeNull();
   });
 
-  it('Restaurants 링크가 있다.', () => {
+  it('RestaurantsPage 링크가 있다.', () => {
     const { getByText } = render(<App />, { wrapper: MemoryRouter });
 
     expect(getByText('Restaurants')).not.toBeNull();
   });
-  it('Restaurants 링크를 클릭 시 Restaurants 페이지가 보인다.', () => {
+
+  it('RestaurantsPage 링크를 클릭 시 RestaurantsPage 페이지가 보인다.', () => {
     const { getByText } = render(
       <MemoryRouter>
         <App />
@@ -100,9 +101,9 @@ describe('App', () => {
 
     fireEvent.click(getByText('마법사주방'));
 
-    expect(container.innerHTML).toMatch('Restaurants Detail');
-    expect(container.innerHTML).toMatch('상호명');
-    expect(container.innerHTML).toMatch('주소');
-    expect(container.innerHTML).toMatch('메뉴');
+    expect(container).toHaveTextContent(/Restaurants Detail/);
+    expect(container).toHaveTextContent(/상호명/);
+    expect(container).toHaveTextContent(/주소/);
+    expect(container).toHaveTextContent(/메뉴/);
   });
 });
