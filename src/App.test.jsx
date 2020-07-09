@@ -29,7 +29,7 @@ describe('App', () => {
         </MemoryRouter>
       ));
 
-      expect(container).toHaveTextContent('6-1');
+      expect(container).toHaveTextContent('헤더');
     });
   });
 
