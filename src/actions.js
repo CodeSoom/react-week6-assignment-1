@@ -25,6 +25,10 @@ export function setRestaurants(restaurants) {
   };
 }
 
+export function setRestaurant() {
+  return null;
+}
+
 export function selectRegion(regionId) {
   return {
     type: 'selectRegion',
