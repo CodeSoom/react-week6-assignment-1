@@ -14,25 +14,29 @@ export default function Restaurant() {
   useEffect(() => {
     dispatch(loadRestaurantData(id));
   });
-  // const { name, address, menuItems } = useSelector(get('restaurant'));
+
   const restaurant = useSelector(get('restaurant'));
 
   return (
     <div>
-      <h2>{restaurant && restaurant.name}</h2>
-      <p>
-        주소:
-        {' '}
-        {restaurant && restaurant.address}
-      </p>
-      <h2>메뉴</h2>
-      <ul>
-        {restaurant && restaurant.menuItems.map((menu) => (
-          <li key={menu.id}>
-            {menu.name}
-          </li>
-        ))}
-      </ul>
+      {restaurant ? (
+        <>
+          <h2>{restaurant.name}</h2>
+          <p>
+            주소:
+            {' '}
+            {restaurant.address}
+          </p>
+          <h2>메뉴</h2>
+          <ul>
+            {restaurant.menuItems.map((menu) => (
+              <li key={menu.id}>
+                {menu.name}
+              </li>
+            ))}
+          </ul>
+        </>
+      ) : null}
     </div>
   );
 }
