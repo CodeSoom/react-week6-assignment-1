@@ -24,4 +24,19 @@ describe('RestaurantContainer', () => {
 
     expect(container).toHaveTextContent(RESTAURANT.name);
   });
+
+  it('loading이 true이면 로딩 페이지를 보여준다.', () => {
+    useSelector.mockImplementation((selector) => selector({
+      restaurant: RESTAURANT,
+      loading: true,
+    }));
+
+    const { container } = render((
+      <MemoryRouter>
+        <RestaurantContainer />
+      </MemoryRouter>
+    ));
+
+    expect(container).toHaveTextContent('Loading...');
+  });
 });
