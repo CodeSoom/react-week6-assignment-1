@@ -12,7 +12,7 @@ import RESTAURANTS from '../fixtures/restaurants';
 
 import App from './App';
 
-function renderWithRouter(path) {
+function renderApp(path) {
   return render(
     <MemoryRouter initialEntries={path}>
       <App />
@@ -34,7 +34,7 @@ describe('App', () => {
 
   context('with path "/"', () => {
     it('renders Home Page', () => {
-      const { getByText } = renderWithRouter(['/']);
+      const { getByText } = renderApp(['/']);
 
       expect(getByText('Home')).not.toBeNull();
       expect(getByText('About')).not.toBeNull();
@@ -43,14 +43,14 @@ describe('App', () => {
   });
   context('with path "/about"', () => {
     it('renders About Page', () => {
-      const { getByText } = renderWithRouter(['/about']);
+      const { getByText } = renderApp(['/about']);
 
       expect(getByText('About')).not.toBeNull();
     });
   });
   context('with path "/restaurant"', () => {
     it('renders Restaurant Page', () => {
-      const { getByText } = renderWithRouter(['/restaurants']);
+      const { getByText } = renderApp(['/restaurants']);
 
       expect(getByText(/서울/)).not.toBeNull();
       expect(getByText(/한식/)).not.toBeNull();
@@ -58,7 +58,7 @@ describe('App', () => {
   });
   context('with path "restaurant/{id}', () => {
     it('renders details of restaurant no {id}', () => {
-      const { getByText } = renderWithRouter(['/restaurants/1']);
+      const { getByText } = renderApp(['/restaurants/1']);
 
       expect(getByText('서울시 강남구 역삼동')).not.toBeNull();
       expect(getByText('김밥제국')).not.toBeNull();
