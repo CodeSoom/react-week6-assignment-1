@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { MemoryRouter } from 'react-router-dom';
+
 import { render, fireEvent } from '@testing-library/react';
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -18,7 +20,9 @@ test('RestaurantsContainer', () => {
   }));
 
   const { getByText } = render((
-    <RestaurantsContainer />
+    <MemoryRouter>
+      <RestaurantsContainer />
+    </MemoryRouter>
   ));
 
   expect(getByText('양천주가')).not.toBeNull();
