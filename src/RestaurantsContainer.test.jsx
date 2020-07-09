@@ -21,6 +21,4 @@ test('RestaurantsContainer', () => {
   ));
 
   expect(container).toHaveTextContent('마법사주방');
-
-  // TODO: 링크 작동 테스트 할 방법 생각해보기
 });
