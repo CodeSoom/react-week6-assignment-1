@@ -11,9 +11,9 @@ describe('RestaurantsDetail', () => {
   const dispatch = jest.fn();
 
   const renderRestaurantsDetail = () => render(
-      <MemoryRouter initialEntries={['/restaurants/10']}>
-        <RestaurantsDetail />
-      </MemoryRouter>,
+    <MemoryRouter initialEntries={['/restaurants/10']}>
+      <RestaurantsDetail />
+    </MemoryRouter>,
   );
 
   beforeEach(() => {

@@ -19,7 +19,7 @@ describe('RestaurantsPage', () => {
 
   afterEach(() => {
     dispatch.mockClear();
-  })
+  });
 
   it('dispatch가 호출된다.', () => {
     render(<RestaurantsPage />, { wrapper: MemoryRouter });
