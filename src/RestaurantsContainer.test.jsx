@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
@@ -13,9 +13,9 @@ test('RestaurantsContainer', () => {
     ],
   }));
 
-  const { container } = render((
+  render((
     <RestaurantsContainer />
   ));
 
-  expect(container).toHaveTextContent('마법사주방');
+  expect(screen.getByRole('link', { name: '마법사주방' })).toBeInTheDocument();
 });
