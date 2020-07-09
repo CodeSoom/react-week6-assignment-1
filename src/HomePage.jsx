@@ -1,11 +1,13 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom';
+
 export default function HomePage() {
   return (
     <div>
       <ul>
-        <li>About</li>
-        <li>Restaurants</li>
+        <li><Link to="/about">About</Link></li>
+        <li><Link to="/restaurants">Restaurants</Link></li>
       </ul>
     </div>
   );
