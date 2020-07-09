@@ -32,6 +32,13 @@ export function selectRegion(regionId) {
   };
 }
 
+export function selectRestaurant(restaurantId) {
+  return {
+    type: 'selectRestaurant',
+    payload: { restaurantId },
+  };
+}
+
 export function selectCategory(categoryId) {
   return {
     type: 'selectCategory',
