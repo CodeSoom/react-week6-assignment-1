@@ -26,6 +26,7 @@ test('RestaurantContainer', () => {
         },
       ],
     },
+    loading: false,
   }));
 
   const { queryByText } = render((
