@@ -8,8 +8,9 @@ export default function RestaurantContainer() {
   const loading = useSelector(get('loading'));
   const { name, address, menuItems } = useSelector(get('restaurant'));
 
-  if (loading) return (<div>Loading...</div>);
-  return (
+  return loading ? (
+    <div>Loading...</div>
+  ) : (
     <div>
       <h2>{name}</h2>
       <p>{`주소: ${address}`}</p>
