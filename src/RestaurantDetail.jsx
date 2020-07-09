@@ -1,6 +1,10 @@
 import React from 'react';
 
 export default function RestaurantDetail({ restaurant }) {
+  if (!restaurant) {
+    return <p>식당 정보를 불러오고 있습니다...</p>;
+  }
+
   return (
     <div>
       <h3>{restaurant.name}</h3>
