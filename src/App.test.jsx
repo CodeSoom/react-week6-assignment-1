@@ -36,31 +36,34 @@ describe('App', () => {
     }));
   });
 
-  describe('with path /', () => {
-    it('return Home Page', () => {
+  describe('with any page', () => {
+    it('have Header', () => {
       const { queryByText } = renderComponent({ path: '/' });
       expect(queryByText('헤더')).not.toBeNull();
     });
   });
 
+  describe('with path /', () => {
+    it('return Home Page', () => {
+      renderComponent({ path: '/' });
+    });
+  });
+
   describe('with path /about', () => {
     it('return About Page', () => {
-      const { queryByText } = renderComponent({ path: '/about' });
-      expect(queryByText('헤더')).not.toBeNull();
+      renderComponent({ path: '/about' });
     });
   });
 
   describe('with path /restaurants', () => {
     it('return Restaurant List Page', () => {
-      const { queryByText } = renderComponent({ path: '/restaurants' });
-      expect(queryByText('헤더')).not.toBeNull();
+      renderComponent({ path: '/restaurants' });
     });
   });
 
   describe('with path /restaurant/1', () => {
     it('return Restaurant View Page', () => {
-      const { queryByText } = renderComponent({ path: '/restaurants/1' });
-      expect(queryByText('헤더')).not.toBeNull();
+      renderComponent({ path: '/restaurants/1' });
     });
   });
 });
