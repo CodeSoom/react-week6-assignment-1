@@ -105,7 +105,7 @@ describe('actions', () => {
       });
     });
 
-    context('without restaurantId', () => {
+    context('with null', () => {
       const restaurantId = null;
 
       it('does\'nt run any actions', async () => {
