@@ -1,6 +1,12 @@
 import React from 'react';
 
 export default function RestaurantDetail({ restaurant }) {
+  if (restaurant === null) {
+    return (
+      <p>continue loading...</p>
+    );
+  }
+
   return (
     <div>
       <h2>{restaurant.name}</h2>
