@@ -4,9 +4,10 @@ import {
   setRegions,
   setCategories,
   setRestaurants,
+  setRestaurant,
+  setLoading,
   selectRegion,
   selectCategory,
-  setRestaurant,
 } from './actions';
 
 describe('reducer', () => {
@@ -103,6 +104,16 @@ describe('reducer', () => {
       const state = reducer(initialState, setRestaurant(restaurant));
 
       expect(state.restaurant).toBe(restaurant);
+    });
+  });
+
+  describe('setLoading', () => {
+    it('changes is loading', () => {
+      const initialState = { loading: false };
+
+      const state = reducer(initialState, setLoading(true));
+
+      expect(state.loading).toBe(true);
     });
   });
 

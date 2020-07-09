@@ -33,6 +33,13 @@ export function setRestaurant(restaurant) {
   };
 }
 
+export function setLoading(loading) {
+  return {
+    type: 'setLoading',
+    payload: { loading },
+  };
+}
+
 export function selectRegion(regionId) {
   return {
     type: 'selectRegion',
