@@ -8,8 +8,8 @@ import {
 
 import HomePage from './HomePage';
 import AboutPage from './AboutPage';
-import RestaurantsPage from './RestaurantsPage';
 import NotFoundPage from './NotFoundPage';
+import RestaurantsPage from './RestaurantsPage';
 import RestaurantPage from './RestaurantPage';
 
 export default function App() {
