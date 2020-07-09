@@ -21,6 +21,14 @@ describe('App', () => {
     restaurants: [
       { id: 1, name: '달빛술담' },
     ],
+    restaurant: {
+      id: 1,
+      name: '양천주가',
+      address: '서울 강남구 역삼동',
+      menuItems: [
+        { id: 1, name: '탕수육' },
+      ],
+    },
   }));
 
   function renderApp({ path }) {
@@ -68,6 +76,16 @@ describe('App', () => {
       expect(container).toHaveTextContent('서울');
       expect(container).toHaveTextContent('한식');
       expect(container).toHaveTextContent('달빛술담');
+    });
+  });
+
+  context('with path /restaurants/:id', () => {
+    it('renders the restaurant page', () => {
+      const { container } = renderApp({ path: '/restaurants/1' });
+
+      expect(container).toHaveTextContent('양천주가');
+      expect(container).toHaveTextContent('서울 강남구 역삼동');
+      expect(container).toHaveTextContent('탕수육');
     });
   });
 
