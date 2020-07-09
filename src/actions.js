@@ -102,5 +102,6 @@ export function loadRestaurant() {
       restaurantId,
     });
     dispatch(setRestaurant(restaurant));
+    dispatch(setLoading(false));
   };
 }

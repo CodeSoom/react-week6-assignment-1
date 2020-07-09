@@ -14,6 +14,7 @@ describe('RestaurantContainer', () => {
   it('레스토랑 정보를 보여준다.', () => {
     useSelector.mockImplementation((selector) => selector({
       restaurant: RESTAURANT,
+      loading: false,
     }));
 
     const { container } = render((
