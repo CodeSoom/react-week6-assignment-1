@@ -22,6 +22,7 @@ describe('RestaurantPage', () => {
   }
 
   beforeEach(() => {
+    dispatch.mockClear();
     useDispatch.mockImplementation(() => dispatch);
     useSelector.mockImplementation((selector) => selector(({
       restaurant,

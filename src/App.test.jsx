@@ -22,6 +22,7 @@ describe('App', () => {
   }
 
   beforeEach(() => {
+    dispatch.mockClear();
     useDispatch.mockImplementation(() => dispatch);
     useSelector.mockImplementation((selector) => selector({
       regions: REGIONS,
