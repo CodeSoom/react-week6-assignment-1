@@ -11,21 +11,21 @@ import {
 export default function RestaurantDetailContainer({ restauranId }) {
   const dispatch = useDispatch();
 
-  const selectRestaurant = useSelector(get('selectRestaurant'));
+  const restaurantDetail = useSelector(get('restaurantDetail'));
 
   useEffect(() => {
-    dispatch(loadRestaurantDetail);
+    dispatch(loadRestaurantDetail());
   }, restauranId);
 
-  const { menuItems } = selectRestaurant;
+  const { menuItems } = restaurantDetail;
 
   return (
     <div>
-      <h2>{selectRestaurant.name}</h2>
+      <h2>{restaurantDetail.name}</h2>
       <p>
         주소:
         {' '}
-        {selectRestaurant.address}
+        {restaurantDetail.address}
       </p>
       <h2>메뉴</h2>
       <ul>
