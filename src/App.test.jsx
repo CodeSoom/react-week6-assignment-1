@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
+import RESTAURANT from '../fixtures/restaurant';
+
 describe('App', () => {
   const dispatch = jest.fn();
 
@@ -26,13 +28,7 @@ describe('App', () => {
       regions: [],
       categories: [],
       restaurants: [],
-      restaurant: {
-        name: '레스토랑 이름',
-        address: '레스토랑 주소',
-        menuItems: [
-          { id: 1, name: '메뉴 이름' },
-        ],
-      },
+      restaurant: RESTAURANT,
     }));
   });
 

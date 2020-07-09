@@ -6,22 +6,18 @@ import { useSelector } from 'react-redux';
 
 import RestaurantContainer from './RestaurantContainer';
 
+import RESTAURANT from '../fixtures/restaurant';
+
 test('RestaurantContainer', () => {
   useSelector.mockImplementation((selector) => selector({
-    restaurant: {
-      name: '레스토랑 이름',
-      address: '레스토랑 주소',
-      menuItems: [
-        { id: 1, name: '메뉴 이름' },
-      ],
-    },
+    restaurant: RESTAURANT,
   }));
 
   const { container } = render((
     <RestaurantContainer />
   ));
 
-  expect(container).toHaveTextContent('레스토랑 이름');
-  expect(container).toHaveTextContent('레스토랑 주소');
-  expect(container).toHaveTextContent('메뉴 이름');
+  expect(container).toHaveTextContent(RESTAURANT.name);
+  expect(container).toHaveTextContent(RESTAURANT.address);
+  expect(container).toHaveTextContent(RESTAURANT.menuItems[0].name);
 });

@@ -9,6 +9,11 @@ import {
   setRestaurant,
 } from './actions';
 
+import CATEGORIES from '../fixtures/categories';
+import REGIONS from '../fixtures/regions';
+import RESTAURANTS from '../fixtures/restaurants';
+import RESTAURANT from '../fixtures/restaurant';
+
 describe('reducer', () => {
   context('when previous state is undefined', () => {
     const initialState = {
@@ -34,13 +39,11 @@ describe('reducer', () => {
         regions: [],
       };
 
-      const regions = [
-        { id: 1, name: '서울' },
-      ];
+      const regions = REGIONS;
 
       const state = reducer(initialState, setRegions(regions));
 
-      expect(state.regions).toHaveLength(1);
+      expect(state.regions).toHaveLength(regions.length);
     });
   });
 
@@ -50,13 +53,11 @@ describe('reducer', () => {
         categories: [],
       };
 
-      const categories = [
-        { id: 1, name: '한식' },
-      ];
+      const categories = CATEGORIES;
 
       const state = reducer(initialState, setCategories(categories));
 
-      expect(state.categories).toHaveLength(1);
+      expect(state.categories).toHaveLength(categories.length);
     });
   });
 
@@ -66,49 +67,41 @@ describe('reducer', () => {
         restaurants: [],
       };
 
-      const restaurants = [
-        { id: 1, name: '마법사주방' },
-      ];
+      const restaurants = RESTAURANTS;
 
       const state = reducer(initialState, setRestaurants(restaurants));
 
-      expect(state.restaurants).toHaveLength(1);
+      expect(state.restaurants).toHaveLength(restaurants.length);
     });
   });
 
   describe('selectRegion', () => {
     it('changes selected region', () => {
       const initialState = {
-        regions: [
-          { id: 1, name: '서울' },
-        ],
+        regions: REGIONS,
         selectedRegion: null,
       };
 
-      const state = reducer(initialState, selectRegion(1));
+      const selectedRegion = REGIONS[0];
 
-      expect(state.selectedRegion).toEqual({
-        id: 1,
-        name: '서울',
-      });
+      const state = reducer(initialState, selectRegion(selectedRegion.id));
+
+      expect(state.selectedRegion).toEqual(selectedRegion);
     });
   });
 
   describe('selectCategory', () => {
     it('changes selected category', () => {
       const initialState = {
-        categories: [
-          { id: 1, name: '한식' },
-        ],
+        categories: CATEGORIES,
         selectedCategory: null,
       };
 
-      const state = reducer(initialState, selectCategory(1));
+      const selectedCategory = CATEGORIES[0];
 
-      expect(state.selectedCategory).toEqual({
-        id: 1,
-        name: '한식',
-      });
+      const state = reducer(initialState, selectCategory(selectedCategory.id));
+
+      expect(state.selectedCategory).toEqual(selectedCategory);
     });
   });
 
@@ -118,13 +111,7 @@ describe('reducer', () => {
         restaurant: {},
       };
 
-      const restaurant = {
-        name: '레스토랑 이름',
-        address: '레스토랑 주소',
-        menuItems: [
-          { name: '메뉴 이름' },
-        ],
-      };
+      const restaurant = RESTAURANT;
 
       const state = reducer(initialState, setRestaurant(restaurant));
 
