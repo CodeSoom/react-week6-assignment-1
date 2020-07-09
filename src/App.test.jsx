@@ -2,33 +2,70 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
+import { MemoryRouter } from 'react-router-dom';
+
 import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
-test('App', () => {
+describe('App', () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
     regions: [
-      { id: 1, name: '서울' },
+      { id: 100, name: '경기도 용인' },
     ],
-    categories: [
-      { id: 1, name: '한식' },
-    ],
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
+    categories: [],
+    restaurants: [],
   }));
 
-  const { queryByText } = render((
-    <App />
-  ));
+  context('link to /', () => {
+    it('renders HomePage', () => {
+      const { container } = render((
+        <MemoryRouter>
+          <App />
+        </MemoryRouter>
+      ));
 
-  expect(dispatch).toBeCalled();
+      expect(container).toHaveTextContent('6-1');
+    });
+  });
 
-  expect(queryByText('서울')).not.toBeNull();
-  expect(queryByText('한식')).not.toBeNull();
+  context('link to /about', () => {
+    it('renders AboutPage', () => {
+      const { container } = render((
+        <MemoryRouter initialEntries={['/about']}>
+          <App />
+        </MemoryRouter>
+      ));
+
+      expect(container).toHaveTextContent('This service is for 6-1 assignment');
+    });
+  });
+
+  context('link to /restaurants', () => {
+    it('renders RestaurantsPage', () => {
+      const { container } = render((
+        <MemoryRouter initialEntries={['/restaurants']}>
+          <App />
+        </MemoryRouter>
+      ));
+
+      expect(container).toHaveTextContent('경기도 용인');
+    });
+  });
+
+  context('fail to link', () => {
+    it('renders NotFoundPage', () => {
+      const { container } = render((
+        <MemoryRouter initialEntries={['/fail link']}>
+          <App />
+        </MemoryRouter>
+      ));
+
+      expect(container).toHaveTextContent('404');
+    });
+  });
 });
