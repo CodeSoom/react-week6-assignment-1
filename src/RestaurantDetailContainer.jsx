@@ -17,7 +17,7 @@ export default function RestaurantDetailContainer({ restauranId }) {
     dispatch(loadRestaurantDetail);
   }, restauranId);
 
-  const { menus } = selectRestaurant;
+  const { menuItems } = selectRestaurant;
 
   return (
     <div>
@@ -29,7 +29,7 @@ export default function RestaurantDetailContainer({ restauranId }) {
       </p>
       <h2>메뉴</h2>
       <ul>
-        {menus.map((menu) => (
+        {menuItems.map((menu) => (
           <li key={menu.id}>{menu.name}</li>
         ))}
       </ul>
