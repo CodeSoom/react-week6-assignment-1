@@ -38,6 +38,13 @@ const reducers = {
     };
   },
 
+  setLoading(state, { payload: { loading } }) {
+    return {
+      ...state,
+      loading,
+    };
+  },
+
   selectRegion(state, { payload: { regionId } }) {
     const { regions } = state;
     return {
