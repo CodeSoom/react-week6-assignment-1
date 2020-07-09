@@ -17,15 +17,15 @@ export default function RestaurantDetailContainer({ restauranId }) {
     dispatch(loadRestaurantDetail());
   }, restauranId);
 
-  const { menuItems } = restaurantDetail;
+  const { name, address, menuItems } = restaurantDetail;
 
   return (
     <div>
-      <h2>{restaurantDetail.name}</h2>
+      <h2>{name}</h2>
       <p>
         주소:
         {' '}
-        {restaurantDetail.address}
+        {address}
       </p>
       <h2>메뉴</h2>
       <ul>
