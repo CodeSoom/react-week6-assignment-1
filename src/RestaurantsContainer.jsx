@@ -25,7 +25,7 @@ export default function RestaurantsContainer() {
         <li key={restaurant.id}>
           <button
             type="button"
-            onClick={handleClick}
+            onClick={() => handleClick(restaurant.id)}
           >
             {restaurant.name}
           </button>
