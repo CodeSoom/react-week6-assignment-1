@@ -11,23 +11,23 @@ test('RestaurantDetailContainer', () => {
 
   useDispatch.mockImplementation(() => dispatch);
 
-  useSelector.mockImplementation((selector) => selector({
-    restaurantDetail: {
-      id: 1,
-      name: '김밥제국',
-      category: '한식',
-      address: '서울시 강남구',
-      menuItems: [
-        { id: 1, name: '김밥' },
-      ],
-    },
-  }));
+  const restaurantDetail = {
+    id: 1,
+    name: '김밥제국',
+    category: '한식',
+    address: '서울시 강남구',
+    menuItems: [
+      { id: 1, name: '김밥' },
+    ],
+  };
 
-  const restaurantId = 1;
+  useSelector.mockImplementation((selector) => selector({
+    restaurantDetail,
+  }));
 
   const { container } = render(
     <RestaurantDetailContainer
-      restaurantId={restaurantId}
+      restaurantId={restaurantDetail.id}
     />,
   );
 
