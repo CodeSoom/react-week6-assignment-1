@@ -28,7 +28,7 @@ export function setRestaurants(restaurants) {
 
 export function setRestaurantDetail(restaurantDetail) {
   return {
-    type: 'setRestaurants',
+    type: 'setRestaurantDetail',
     payload: { restaurantDetail },
   };
 }
