@@ -12,7 +12,7 @@ test('RestaurantDetailContainer', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
-    selectRestaurant: {
+    restaurantDetail: {
       id: 1,
       name: '김밥제국',
       category: '한식',
