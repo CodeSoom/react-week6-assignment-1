@@ -8,7 +8,7 @@ import {
   setCategories,
   loadRestaurants,
   setRestaurants,
-  loadRestauranDetail,
+  loadRestaurantDetail,
   setRestaurantDetail,
 } from './actions';
 
@@ -92,7 +92,7 @@ describe('actions', () => {
     });
 
     it('runs setRestaurantDetail', async () => {
-      await store.dispatch(loadRestauranDetail());
+      await store.dispatch(loadRestaurantDetail());
 
       const actions = store.getActions();
 
