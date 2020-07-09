@@ -7,6 +7,8 @@ import {
   loadRestaurants,
 } from '../store/actions';
 
+import ButtonList from '../components/ButtonList';
+
 import { get } from '../utils';
 
 export default function CategoriesContainer() {
@@ -15,28 +17,16 @@ export default function CategoriesContainer() {
   const categories = useSelector(get('categories'));
   const selectedCategory = useSelector(get('selectedCategory'));
 
-  function handleClick(categoryId) {
+  function handleClickCategory(categoryId) {
     dispatch(selectCategory(categoryId));
     dispatch(loadRestaurants());
   }
 
   return (
-    <ul>
-      {categories.map((category) => (
-        <li key={category.id}>
-          <button
-            type="button"
-            onClick={() => handleClick(category.id)}
-          >
-            {category.name}
-            {selectedCategory ? (
-              <>
-                {category.id === selectedCategory.id ? '(V)' : null}
-              </>
-            ) : null}
-          </button>
-        </li>
-      ))}
-    </ul>
+    <ButtonList
+      items={categories}
+      selectedItem={selectedCategory}
+      handleClickItem={handleClickCategory}
+    />
   );
 }
