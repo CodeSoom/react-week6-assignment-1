@@ -76,15 +76,12 @@ export function loadRestaurants() {
   };
 }
 
-export function loadRestaurantDetail() {
-  return async (dispatch, getState) => {
-    const {
-      selectedRestaurant,
-    } = getState();
-
+export function loadRestaurantDetail({ restaurantId }) {
+  return async (dispatch) => {
     const restaurant = await fetchRestaurantDetail({
-      restaurantId: selectedRestaurant.id,
+      restaurantId,
     });
+
     dispatch(setRestaurantDetail(restaurant));
   };
 }
