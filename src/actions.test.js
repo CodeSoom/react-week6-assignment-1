@@ -92,7 +92,7 @@ describe('actions', () => {
     });
 
     it('runs setRestaurant', async () => {
-      await store.dispatch(loadDetailData());
+      await store.dispatch(loadDetailData(1));
 
       const actions = store.getActions();
 

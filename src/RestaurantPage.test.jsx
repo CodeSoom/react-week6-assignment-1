@@ -33,7 +33,9 @@ test('RestaurantPage', () => {
   }));
 
   const { queryByText } = render((
-    <RestaurantPage />
+    <RestaurantPage
+      match={{ params: { id: 1 } }}
+    />
   ));
 
   expect(dispatch).toBeCalled();

@@ -8,11 +8,11 @@ import {
   loadDetailData,
 } from './actions';
 
-export default function RestaurantPage() {
+export default function RestaurantPage({ match: { params: { id } } }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadDetailData());
+    dispatch(loadDetailData(id));
   });
 
   return (
