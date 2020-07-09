@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
-import RestaurantContainer from '../RestaurantContainer';
+import RestaurantContainer from '../containers/RestaurantContainer';
 
-import { getRestaurantById } from '../actions';
+import { getRestaurantById } from '../store/actions';
 
 export default function RestaurantViewPage({ match }) {
   const { params: { id } } = match;

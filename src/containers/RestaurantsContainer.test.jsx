@@ -8,7 +8,7 @@ import { MemoryRouter } from 'react-router-dom';
 
 import RestaurantsContainer from './RestaurantsContainer';
 
-import RESTAURANTS from '../fixtures/restaurants';
+import RESTAURANTS from '../../fixtures/restaurants';
 
 test('RestaurantsContainer', () => {
   useSelector.mockImplementation((selector) => selector({

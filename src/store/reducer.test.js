@@ -9,10 +9,10 @@ import {
   setRestaurant,
 } from './actions';
 
-import CATEGORIES from '../fixtures/categories';
-import REGIONS from '../fixtures/regions';
-import RESTAURANTS from '../fixtures/restaurants';
-import RESTAURANT from '../fixtures/restaurant';
+import CATEGORIES from '../../fixtures/categories';
+import REGIONS from '../../fixtures/regions';
+import RESTAURANTS from '../../fixtures/restaurants';
+import RESTAURANT from '../../fixtures/restaurant';
 
 describe('reducer', () => {
   context('when previous state is undefined', () => {
