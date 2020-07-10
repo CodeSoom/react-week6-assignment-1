@@ -14,18 +14,9 @@ export default function App() {
       <h1><Link to="/">헤더</Link></h1>
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route
-          path="/about"
-          component={AboutPage}
-        />
-        <Route
-          path="/restaurants"
-          component={RestaurantsPage}
-        />
-        <Route
-          path="/restaurant-details"
-          component={RestaurantDetailsPage}
-        />
+        <Route path="/about" component={AboutPage} />
+        <Route path="/restaurants" component={RestaurantsPage} />
+        <Route path="/restaurant-details" component={RestaurantDetailsPage} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>
