@@ -4,6 +4,7 @@ import {
   setRegions,
   setCategories,
   setRestaurants,
+  setRestaurantDetail,
   selectRegion,
   selectCategory,
 } from './actions';
@@ -14,6 +15,7 @@ describe('reducer', () => {
       regions: [],
       categories: [],
       restaurants: [],
+      restaurantDetail: [],
       selectedRegion: null,
       selectedCategory: null,
     };
@@ -25,7 +27,7 @@ describe('reducer', () => {
     });
   });
 
-  describe('setRegions', () => {
+  context('setRegions', () => {
     it('changes regions', () => {
       const initialState = {
         regions: [],
@@ -41,7 +43,7 @@ describe('reducer', () => {
     });
   });
 
-  describe('setCategories', () => {
+  context('setCategories', () => {
     it('changes categories', () => {
       const initialState = {
         categories: [],
@@ -57,7 +59,7 @@ describe('reducer', () => {
     });
   });
 
-  describe('setRestaurants', () => {
+  context('setRestaurants', () => {
     it('changes restaurants', () => {
       const initialState = {
         restaurants: [],
@@ -73,7 +75,23 @@ describe('reducer', () => {
     });
   });
 
-  describe('selectRegion', () => {
+  context('setRestaurantDetail', () => {
+    it('changes restaurants', () => {
+      const initialState = {
+        restaurantDetail: [],
+      };
+
+      const restaurantDetail = [
+        { id: 1, categoryId: 1, name: "양천주가", address: "서울 강남구", },
+      ];
+      
+      const state = reducer(initialState, setRestaurantDetail(restaurantDetail));
+
+      expect(state.restaurantDetail).toHaveLength(1);
+    });
+  });
+
+  context('selectRegion', () => {
     it('changes selected region', () => {
       const initialState = {
         regions: [
@@ -91,7 +109,7 @@ describe('reducer', () => {
     });
   });
 
-  describe('selectCategory', () => {
+  context('selectCategory', () => {
     it('changes selected category', () => {
       const initialState = {
         categories: [
