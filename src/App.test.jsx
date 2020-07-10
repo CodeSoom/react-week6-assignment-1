@@ -38,7 +38,7 @@ describe('App', () => {
   context('경로가 /about 일떄', () => {
     it('AboutPage가 렌더된다.', () => {
       const { container } = render((
-        <MemoryRouter initialEntries={['/']}>
+        <MemoryRouter initialEntries={['/about']}>
           <App />
         </MemoryRouter>
       ));
