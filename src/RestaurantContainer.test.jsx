@@ -19,25 +19,30 @@ describe('RestaurantContainer', () => {
     ));
   }
 
-  context('when loading', () => {
-    it('is false show restaurant page', () => {
+  context('when loading is done', () => {
+    beforeEach(() => {
       useSelector.mockImplementation((selector) => selector({
         restaurant,
         loading: false,
       }));
+    });
 
+    it('renders restaurant', () => {
       const { container } = renderRestaurantContainer();
-
       expect(container).toHaveTextContent(restaurant.name);
     });
-    it('is true show loading page', () => {
+  });
+
+  context('when is loading', () => {
+    beforeEach(() => {
       useSelector.mockImplementation((selector) => selector({
         restaurant,
         loading: true,
       }));
+    });
 
+    it('renders loading', () => {
       const { container } = renderRestaurantContainer();
-
       expect(container).toHaveTextContent('Loading...');
     });
   });
