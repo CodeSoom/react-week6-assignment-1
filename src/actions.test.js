@@ -83,4 +83,14 @@ describe('actions', () => {
       });
     });
   });
+
+  describe('loadRestaurantDetail', () => {
+    it('selectRestaurants가 실행된다.', async () => {
+      await store.dispatch(loadRestaurantDetail());
+
+      const actions = store.getActions();
+
+      expect(actions[0]).toEqual(selectRestaurants([]));
+    });
+  });
 });
