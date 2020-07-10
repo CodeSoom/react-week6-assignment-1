@@ -15,7 +15,9 @@ describe('App', () => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
-      regions: [],
+      regions: [
+        { id: 1, name: '서울' },
+      ],
       categories: [],
       restaurants: [],
     }));
@@ -23,11 +25,13 @@ describe('App', () => {
 
   context('경로가 /restaurants 일떄', () => {
     it('RestaurantsPage가 렌더된다.', () => {
-      render((
+      const { container } = render((
         <MemoryRouter initialEntries={['/restaurants']}>
           <App />
         </MemoryRouter>
       ));
+
+      expect(container).toHaveTextContent('서울');
     });
   });
 });
