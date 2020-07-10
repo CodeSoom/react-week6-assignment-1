@@ -1,30 +1,25 @@
 import React from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
-
-export default function RestaurantDetail({ params }) {
-  const menu = [];
-
-  const dispatch = useDispatch();
-
-  const restaurant = useSelector(get('restaurant'));
-
-  function handleClick(regionId) {
-    dispatch(selectRegion(regionId));
-    dispatch(loadRestaurants());
+export default function RestaurantDetail({ restaurant }) {
+  if (!restaurant) {
+    return (
+      <p>레스토랑 상세 로딩중...</p>
+    );
   }
 
   return (
     <div>
-      <h2>마법사주방</h2>
-      <p>서울 강남구</p>
+      <h2>{restaurant.name}</h2>
+      주소 :
+      {' '}
+      {restaurant.address}
       <h3>메뉴</h3>
       <ul>
-        {menu.map((item) => (
-          <li key={item.id}>
-            {item.name}
-          </li>
-        ))}
+        {
+          restaurant.menuItems.map((menu) => (
+            <li key={menu.id}>{menu.name}</li>
+          ))
+        }
       </ul>
     </div>
   );
