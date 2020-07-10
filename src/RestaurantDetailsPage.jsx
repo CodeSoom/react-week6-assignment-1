@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import { get } from './utils';
 
-export default function RegionsContainer() {
+export default function RestaurantDetailsPage() {
   const {
     name, address, menuItems,
   } = useSelector(get('restaurantDetails'));
