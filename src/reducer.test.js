@@ -12,6 +12,7 @@ import {
 describe('reducer', () => {
   context('when previous state is undefined', () => {
     const initialState = {
+      restaurant: {},
       regions: [],
       categories: [],
       restaurants: [],
@@ -111,7 +112,7 @@ describe('reducer', () => {
     });
   });
 
-  describe('setRestaurantDetail', () => {
+  describe('setRestaurant', () => {
     it('change restaurant', () => {
       const initialState = {
         restaurant: {},
