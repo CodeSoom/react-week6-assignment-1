@@ -12,13 +12,12 @@ import {
 describe('reducer', () => {
   context('when previous state is undefined', () => {
     const initialState = {
-      restaurant: {},
+      restaurant: null,
       regions: [],
       categories: [],
       restaurants: [],
       selectedRegion: null,
       selectedCategory: null,
-      selectedRestaurantId: null,
     };
 
     it('returns initialState', () => {

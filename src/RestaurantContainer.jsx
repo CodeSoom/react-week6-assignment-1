@@ -6,13 +6,14 @@ import { get } from './utils';
 
 export default function RestaurantContainer() {
   const restaurant = useSelector(get('restaurant'));
-  const { name, address, menuItems } = restaurant;
 
-  if (name === undefined) {
+  if (restaurant === undefined || Object.keys(restaurant).length === 0) {
     return (
       <h1>Loading...</h1>
     );
   }
+
+  const { name, address, menuItems } = restaurant;
 
   return (
     <div>

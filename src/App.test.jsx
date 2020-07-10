@@ -51,7 +51,7 @@ describe('App', () => {
     it('renders AboutPage', () => {
       const { container } = renderApp({ path: '/about' });
 
-      expect(container).toHaveTextContent('20명에게 추천');
+      expect(container).toHaveTextContent('About');
     });
   });
 

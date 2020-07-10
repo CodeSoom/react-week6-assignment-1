@@ -22,9 +22,9 @@ export default function App() {
       </header>
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route exact path="/about" component={AboutPage} />
+        <Route path="/about" component={AboutPage} />
         <Route exact path="/restaurants" component={RestaurantsPage} />
-        <Route path="/restaurants/:restaurantId" component={RestaurantPage} />
+        <Route path="/restaurants/:id" component={RestaurantPage} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>
