@@ -31,6 +31,14 @@ describe('App', () => {
     ));
   }
 
+  context('with any paths', () => {
+    it('renders header', () => {
+      const { container } = renderApp({ path: '/restaurants' });
+
+      expect(container).toHaveTextContent('헤더');
+    });
+  });
+
   context('with path /', () => {
     it('renders HomePage', () => {
       const { container } = renderApp({ path: '/' });
