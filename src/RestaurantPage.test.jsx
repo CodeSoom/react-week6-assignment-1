@@ -36,5 +36,6 @@ test('RestaurantPage', () => {
   expect(dispatch).toBeCalled();
 
   expect(queryByText('양천주가')).toBeInTheDocument();
-  expect(queryByText('서울 강남구')).toBeInTheDocument();
+  expect(queryByText('주소: 서울 강남구')).toBeInTheDocument();
+  expect(queryByText('탕수육')).toBeInTheDocument();
 });
