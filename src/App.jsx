@@ -16,7 +16,7 @@ export default function App() {
   return (
     <>
       <h1>
-        <a href="/">헤더</a>
+        <Link to="/">헤더</Link>
       </h1>
       <ul>
         <li>

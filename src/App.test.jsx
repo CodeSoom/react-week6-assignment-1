@@ -7,9 +7,15 @@ import { MemoryRouter } from 'react-router-dom';
 
 import App from './App';
 
+const renderApp = (path = '') => render(
+  <MemoryRouter initialEntries={[path]}>
+    <App />
+  </MemoryRouter>,
+);
+
 describe('App', () => {
+  const dispatch = jest.fn();
   beforeEach(() => {
-    const dispatch = jest.fn();
     useDispatch.mockImplementation(() => dispatch);
     useSelector.mockImplementation((selector) => selector({
       regions: [{ id: 1, name: '서울' }],
@@ -18,18 +24,18 @@ describe('App', () => {
     }));
   });
 
+  afterEach(() => {
+    dispatch.mockClear();
+  });
+
   it('Home 링크가 있다', () => {
-    const { getByText } = render(<App />, { wrapper: MemoryRouter });
+    const { getByText } = renderApp();
 
     expect(getByText('Home')).not.toBeNull();
   });
 
   it('Home 링크를 클릭 시 home 페이지가 보인다.', () => {
-    const { getByText } = render(
-      <MemoryRouter>
-        <App />
-      </MemoryRouter>,
-    );
+    const { getByText } = renderApp();
 
     fireEvent.click(getByText('Home'));
 
@@ -37,17 +43,13 @@ describe('App', () => {
   });
 
   it('About 링크가 있다', () => {
-    const { getByText } = render(<App />, { wrapper: MemoryRouter });
+    const { getByText } = renderApp();
 
     expect(getByText('About')).not.toBeNull();
   });
 
   it('About 링크를 클릭 시 about 페이지가 보인다.', () => {
-    const { getByText } = render(
-      <MemoryRouter>
-        <App />
-      </MemoryRouter>,
-    );
+    const { getByText } = renderApp();
 
     fireEvent.click(getByText('About'));
 
@@ -55,11 +57,7 @@ describe('App', () => {
   });
 
   it('관련 링크가 없을 시 Not Found 페이지가 보인다.', () => {
-    const { getByText } = render(
-      <MemoryRouter initialEntries={['/404']}>
-        <App />
-      </MemoryRouter>,
-    );
+    const { getByText } = renderApp('/404');
 
     expect(getByText('404 Not Found')).not.toBeNull();
   });
@@ -71,11 +69,7 @@ describe('App', () => {
   });
 
   it('RestaurantsPage 링크를 클릭 시 RestaurantsPage 페이지가 보인다.', () => {
-    const { getByText } = render(
-      <MemoryRouter>
-        <App />
-      </MemoryRouter>,
-    );
+    const { getByText } = renderApp();
 
     fireEvent.click(getByText('Restaurants'));
 
@@ -83,21 +77,13 @@ describe('App', () => {
   });
 
   it('검색된 레스토랑이 있다.', () => {
-    const { getByText } = render(
-      <MemoryRouter initialEntries={['/restaurants']}>
-        <App />
-      </MemoryRouter>,
-    );
+    const { getByText } = renderApp('/restaurants');
 
     expect(getByText('마법사주방')).not.toBeNull();
   });
 
   it('레스토랑을 클릭시 상세페이지로 이동한다.', () => {
-    const { getByText, container } = render(
-      <MemoryRouter initialEntries={['/restaurants']}>
-        <App />
-      </MemoryRouter>,
-    );
+    const { getByText, container } = renderApp('/restaurants');
 
     fireEvent.click(getByText('마법사주방'));
 
