@@ -21,6 +21,6 @@ export async function fetchRestaurants({ regionName, categoryId }) {
 }
 
 export async function fetchRestaurantDetail({ restaurantId }) {
-  const restaurant = await commonFetch(`restaurants/${restaurantId}`);
+  const restaurant = await commonFetch(`/restaurants/${restaurantId}`);
   return restaurant;
 }
