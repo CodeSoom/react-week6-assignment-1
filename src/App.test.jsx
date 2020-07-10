@@ -35,6 +35,18 @@ describe('App', () => {
     });
   });
 
+  context('경로가 /about 일떄', () => {
+    it('AboutPage가 렌더된다.', () => {
+      const { container } = render((
+        <MemoryRouter initialEntries={['/']}>
+          <App />
+        </MemoryRouter>
+      ));
+
+      expect(container).toHaveTextContent('이 홈페이지에 대하여');
+    });
+  });
+
   context('경로가 /restaurants 일떄', () => {
     it('RestaurantsPage가 렌더된다.', () => {
       const { container } = render((
