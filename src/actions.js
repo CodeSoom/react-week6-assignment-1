@@ -40,13 +40,6 @@ export function setRestaurant(restaurant) {
   };
 }
 
-export function setRestaurantId(restaurantId) {
-  return {
-    type: 'setRestaurantId',
-    payload: { restaurantId },
-  };
-}
-
 export function selectRegion(regionId) {
   return {
     type: 'selectRegion',

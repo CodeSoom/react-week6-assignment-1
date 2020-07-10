@@ -5,7 +5,6 @@ import {
   setCategories,
   setRestaurants,
   setRestaurant,
-  setRestaurantId,
   setLoading,
   selectRegion,
   selectCategory,
@@ -131,18 +130,6 @@ describe('reducer', () => {
       const state = reducer(initialState, setRestaurant(restaurant));
 
       expect(state.restaurant).toEqual(restaurant);
-    });
-  });
-
-  describe('setRestaurantId', () => {
-    it('change restaurant id', () => {
-      const initialState = {
-        restaurantId: '',
-      };
-
-      const restaurantId = restaurant.id;
-      const state = reducer(initialState, setRestaurantId(restaurantId));
-      expect(state.restaurantId).toEqual(restaurantId);
     });
   });
 });
