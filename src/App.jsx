@@ -7,6 +7,12 @@ import AboutPage from './AboutPage';
 import RestaurantsPage from './RestaurantsPage';
 import NotFoundPage from './NotFoundPage';
 
+function RestaurantDetailPage() {
+  return (
+    <p>양천주가</p>
+  );
+}
+
 export default function App() {
   return (
     <div>
@@ -19,6 +25,7 @@ export default function App() {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/about" component={AboutPage} />
         <Route path="/restaurants" component={RestaurantsPage} />
+        <Route path="/restaurant/:id" component={RestaurantDetailPage} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>
