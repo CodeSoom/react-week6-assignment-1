@@ -3,6 +3,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { get } from './utils';
+import { loadRestaurantDetail } from './actions';
 
 export default function RestaurantsContainer() {
   const restaurants = useSelector(get('restaurants'));
