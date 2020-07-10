@@ -3,13 +3,8 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import HomePage from './HomePage';
+import AboutPage from './AboutPage';
 import RestaurantsPage from './RestaurantsPage';
-
-function AboutPage() {
-  return (
-    <p>이 홈페이지에 대하여</p>
-  );
-}
 
 export default function App() {
   return (
