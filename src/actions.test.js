@@ -88,12 +88,10 @@ describe('actions', () => {
 
   describe('loadRestaurantDetail', () => {
     beforeEach(() => {
-      store = mockStore({
-        selectedRestaurantId: 1,
-      });
+      store = mockStore({});
     });
 
-    it('runs setRestaurantDetail', async () => {
+    it('runs setRestaurant', async () => {
       await store.dispatch(loadRestaurantDetail());
 
       const actions = store.getActions();

@@ -48,6 +48,13 @@ const reducers = {
     };
   },
 
+  selectRestaurant(state, { payload: { restaurantId } }) {
+    return {
+      ...state,
+      selectedRestaurantId: restaurantId,
+    };
+  },
+
   setRestaurant(state, { payload: { restaurant } }) {
     return {
       ...state,
