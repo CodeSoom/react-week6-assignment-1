@@ -56,6 +56,14 @@ describe('App', () => {
     });
   });
 
+  context('경로가 /restaurant/id 일떄', () => {
+    it('RestaurantDetailPage가 렌더된다.', () => {
+      const { container } = renderApp({ path: '/restaurants/1' });
+
+      expect(container).toHaveTextContent('양천주가');
+    });
+  });
+
   context('경로가 잘못됐을 때', () => {
     it('NotFoundPage가 렌더된다.', () => {
       const { container } = renderApp({ path: '/xxx' });
