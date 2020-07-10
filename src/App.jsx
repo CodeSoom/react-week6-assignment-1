@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Link, Route } from 'react-router-dom';
 
 import Home from './Home';
 import About from './About';
@@ -15,6 +15,10 @@ import RestaurantsDetail from './RestaurantsDetailContainer';
 export default function App() {
   return (
     <>
+
+      <h1>
+        <Link to="/">헤더</Link>
+      </h1>
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />

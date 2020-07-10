@@ -6,10 +6,6 @@ export default function Home() {
   return (
     <>
       <h2>Home Page</h2>
-
-      <h1>
-        <Link to="/">헤더</Link>
-      </h1>
       <ul>
         <li>
           <Link to="/">Home</Link>
