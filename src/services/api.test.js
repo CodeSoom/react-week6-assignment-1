@@ -1,4 +1,9 @@
-import { fetchRegions, fetchCategories, fetchRestaurants } from './api';
+import {
+  fetchRegions,
+  fetchCategories,
+  fetchRestaurants,
+  fetchRestaurantDetail,
+} from './api';
 
 import REGIONS from '../../fixtures/regions';
 import CATEGORIES from '../../fixtures/categories';
@@ -57,7 +62,9 @@ describe('api', () => {
     });
 
     it('returns restaurant', async () => {
-      const restaurant = await fetchRestaurantDetail();
+      const restaurant = await fetchRestaurantDetail({
+        restaurantId: 1,
+      });
 
       expect(restaurant).toEqual(RESTAURANT);
     });
