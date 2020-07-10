@@ -90,10 +90,8 @@ export function loadRestaurants() {
   };
 }
 
-export function loadRestaurant() {
-  return async (dispatch, getState) => {
-    const { restaurantId } = getState();
-
+export function loadRestaurant(restaurantId) {
+  return async (dispatch) => {
     if (!restaurantId) {
       return;
     }
