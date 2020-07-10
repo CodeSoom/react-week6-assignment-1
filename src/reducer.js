@@ -45,6 +45,13 @@ const reducers = {
       selectedCategory: categories.find(equal('id', categoryId)),
     };
   },
+
+  setRestaurant(state, { payload: { restaurant } }) {
+    return {
+      ...state,
+      restaurant,
+    };
+  },
 };
 
 function defaultReducer(state) {

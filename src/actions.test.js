@@ -9,7 +9,7 @@ import {
   loadRestaurants,
   setRestaurants,
   loadRestaurantDetail,
-  selectRestaurant,
+  setRestaurant,
 } from './actions';
 
 const middlewares = [thunk];
@@ -92,7 +92,7 @@ describe('actions', () => {
 
       const actions = store.getActions();
 
-      expect(actions[0]).toEqual(selectRestaurant([]));
+      expect(actions[0]).toEqual(setRestaurant([]));
     });
   });
 });

@@ -69,9 +69,9 @@ export function loadRestaurants() {
   };
 }
 
-export function selectRestaurant(restaurant) {
+export function setRestaurant(restaurant) {
   return {
-    type: 'selectRestaurant',
+    type: 'setRestaurant',
     payload: { restaurant },
   };
 }
@@ -79,6 +79,6 @@ export function selectRestaurant(restaurant) {
 export function loadRestaurantDetail(restaurantId) {
   return async (dispatch) => {
     const restaurant = await fetchRestaurantDetail({ restaurantId });
-    dispatch(selectRestaurant(restaurant));
+    dispatch(setRestaurant(restaurant));
   };
 }
