@@ -2,10 +2,10 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import NotFountPage from './NotFountPage';
+import NotFoundPage from './NotFoundPage';
 
-test('NotFountPage', () => {
+test('NotFoundPage', () => {
   render(
-    <NotFountPage />,
+    <NotFoundPage />,
   );
 });

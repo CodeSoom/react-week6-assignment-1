@@ -33,13 +33,19 @@ describe('App', () => {
     });
   });
 
-  context('link to /about', () => {
-    it('renders AboutPage', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/about']}>
+  function renderComponent(address) {
+    return (
+      render((
+        <MemoryRouter initialEntries={[address]}>
           <App />
         </MemoryRouter>
-      ));
+      ))
+    );
+  }
+
+  context('link to /about', () => {
+    it('renders AboutPage', () => {
+      const { container } = renderComponent('/about');
 
       expect(container).toHaveTextContent('This service is for 6-1 assignment');
     });
@@ -47,11 +53,7 @@ describe('App', () => {
 
   context('link to /restaurants', () => {
     it('renders RestaurantsPage', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/restaurants']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const { container } = renderComponent('/restaurants');
 
       expect(container).toHaveTextContent('경기도 용인');
     });
@@ -59,11 +61,7 @@ describe('App', () => {
 
   context('fail to link', () => {
     it('renders NotFoundPage', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/fail link']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const { container } = renderComponent('/fail to render');
 
       expect(container).toHaveTextContent('404');
     });

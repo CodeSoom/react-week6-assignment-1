@@ -7,9 +7,13 @@ import { MemoryRouter } from 'react-router-dom';
 import HomePage from './HomePage';
 
 test('HomePage', () => {
-  render((
+  const { container } = render(
     <MemoryRouter>
       <HomePage />
-    </MemoryRouter>
-  ));
+    </MemoryRouter>,
+  );
+
+  expect(container).toHaveTextContent('About');
+  expect(container).toHaveTextContent('Restaurants');
+  expect(container).toHaveTextContent('NotFoundPage');
 });

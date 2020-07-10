@@ -2,17 +2,17 @@ import React from 'react';
 
 import { Switch, Route } from 'react-router-dom';
 
-import HeaderPage from './HeaderPage';
+import Header from './Header';
 import RestaurantsPage from './RestaurantsPage';
 import HomePage from './HomePage';
 import AboutPage from './AboutPage';
-import NotFoundPage from './NotFountPage';
+import NotFoundPage from './NotFoundPage';
 
 export default function App() {
   return (
     <div>
       <header>
-        <HeaderPage />
+        <Header />
       </header>
       <Switch>
         <Route exact path="/" component={HomePage} />
