@@ -23,13 +23,17 @@ describe('App', () => {
     }));
   });
 
+  function renderApp({ path }) {
+    return render((
+      <MemoryRouter initialEntries={[path]}>
+        <App />
+      </MemoryRouter>
+    ));
+  }
+
   context('경로가 / 일떄', () => {
     it('HomePage가 렌더된다.', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const { container } = renderApp({ path: '/' });
 
       expect(container).toHaveTextContent('Home');
     });
@@ -37,11 +41,7 @@ describe('App', () => {
 
   context('경로가 /about 일떄', () => {
     it('AboutPage가 렌더된다.', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/about']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const { container } = renderApp({ path: '/about' });
 
       expect(container).toHaveTextContent('이 홈페이지에 대하여');
     });
@@ -49,11 +49,7 @@ describe('App', () => {
 
   context('경로가 /restaurants 일떄', () => {
     it('RestaurantsPage가 렌더된다.', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/restaurants']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const { container } = renderApp({ path: '/restaurants' });
 
       expect(container).toHaveTextContent('서울');
     });
@@ -61,11 +57,7 @@ describe('App', () => {
 
   context('경로가 잘못됐을 때', () => {
     it('NotFoundPage가 렌더된다.', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/xxx']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const { container } = renderApp({ path: '/xxx' });
 
       expect(container).toHaveTextContent('404 Not Found');
     });
