@@ -98,6 +98,7 @@ export function loadRestaurant() {
       return;
     }
 
+    dispatch(setLoading(true));
     const restaurant = await fetchRestaurant({
       restaurantId,
     });
