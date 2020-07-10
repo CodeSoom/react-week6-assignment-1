@@ -5,7 +5,7 @@ import Home from './Home';
 import About from './About';
 import NotFound from './NotFound';
 import RestaurantsPage from './RestaurantsPage';
-import RestaurantsDetail from './RestaurantsDetail';
+import RestaurantsDetail from './RestaurantsDetailContainer';
 
 // 0. 지역, 분류 목록을 얻기
 // 1. 지역 선택 - Regions <- API (0)

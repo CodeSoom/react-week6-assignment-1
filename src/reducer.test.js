@@ -116,10 +116,7 @@ describe('reducer', () => {
         setRestaurant(restaurant),
       );
 
-      expect(state.selectedRestaurant).toEqual({
-        id: 1,
-        name: '홍콩반점',
-      });
+      expect(state.selectedRestaurant).toEqual(restaurant);
     });
   });
 });
