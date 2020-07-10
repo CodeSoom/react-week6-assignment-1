@@ -6,7 +6,7 @@ import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import RestaurantPages from './RestaurantsPage';
+import RestaurantsPage from './RestaurantsPage';
 
 test('RestaurantPage', () => {
   const dispatch = jest.fn();
@@ -27,7 +27,7 @@ test('RestaurantPage', () => {
 
   const { queryByText } = render((
     <MemoryRouter>
-      <RestaurantPages />
+      <RestaurantsPage />
     </MemoryRouter>
   ));
 
