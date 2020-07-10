@@ -8,6 +8,8 @@ import {
   setCategories,
   loadRestaurants,
   setRestaurants,
+  loadRestaurantDetail,
+  selectRestaurant,
 } from './actions';
 
 const middlewares = [thunk];
@@ -90,7 +92,7 @@ describe('actions', () => {
 
       const actions = store.getActions();
 
-      expect(actions[0]).toEqual(selectRestaurants([]));
+      expect(actions[0]).toEqual(selectRestaurant([]));
     });
   });
 });
