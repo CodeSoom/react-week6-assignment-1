@@ -67,3 +67,17 @@ export function loadRestaurants() {
     dispatch(setRestaurants(restaurants));
   };
 }
+
+export function selectRestaurant(restaurant) {
+  return {
+    type: 'selectRestaurant',
+    payload: { restaurant },
+  };
+}
+
+export function loadRestaurantDetail(restaurantId) {
+  return async (dispatch) => {
+    const restaurant = await fetchRestaurantDetail({ restaurantId });
+    dispatch(selectRestaurant(restaurant));
+  };
+}
