@@ -27,13 +27,6 @@ describe('RestaurantsDetailContainer', () => {
     dispatch.mockClear();
   });
 
-  it('레스토랑 상세 정보가 보인다.', () => {
-    const { getByText } = renderRestaurantsDetailContainer({ path: '/restaurants/10' });
-
-    expect(getByText(/양천주가/)).not.toBeNull();
-    expect(getByText(/탕수육/)).not.toBeNull();
-  });
-
   it('dispatch 가 실행된다.', () => {
     renderRestaurantsDetailContainer({ path: '/restaurants/10' });
 
