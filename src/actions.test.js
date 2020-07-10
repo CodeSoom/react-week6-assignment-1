@@ -87,12 +87,18 @@ describe('actions', () => {
   });
 
   describe('loadRestaurantDetail', () => {
+    beforeEach(() => {
+      store = mockStore({
+        selectedRestaurantId: 1,
+      });
+    });
+
     it('runs setRestaurantDetail', async () => {
       await store.dispatch(loadRestaurantDetail());
 
       const actions = store.getActions();
 
-      expect(actions[0]).toEqual(setRestaurantDetail([]));
+      expect(actions[0]).toEqual(setRestaurantDetail());
     });
   });
 });
