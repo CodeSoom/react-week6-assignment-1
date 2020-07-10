@@ -58,4 +58,16 @@ describe('App', () => {
       expect(container).toHaveTextContent('서울');
     });
   });
+
+  context('경로가 잘못됐을 때', () => {
+    it('NotFoundPage가 렌더된다.', () => {
+      const { container } = render((
+        <MemoryRouter initialEntries={['/xxx']}>
+          <App />
+        </MemoryRouter>
+      ));
+
+      expect(container).toHaveTextContent('404 Not Found');
+    });
+  });
 });
