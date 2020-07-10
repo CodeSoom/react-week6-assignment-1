@@ -23,6 +23,18 @@ describe('App', () => {
     }));
   });
 
+  context('경로가 / 일떄', () => {
+    it('HomePage가 렌더된다.', () => {
+      const { container } = render((
+        <MemoryRouter initialEntries={['/']}>
+          <App />
+        </MemoryRouter>
+      ));
+
+      expect(container).toHaveTextContent('Home');
+    });
+  });
+
   context('경로가 /restaurants 일떄', () => {
     it('RestaurantsPage가 렌더된다.', () => {
       const { container } = render((
