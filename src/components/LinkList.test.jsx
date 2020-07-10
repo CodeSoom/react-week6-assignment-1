@@ -6,24 +6,20 @@ import { render } from '@testing-library/react';
 
 import LinkList from './LinkList';
 
+import LINKS from '../../fixtures/links';
+
 describe('<LinkList />', () => {
-  const renderComponent = (restaurants) => render((
+  const renderComponent = (links) => render((
     <MemoryRouter>
-      <LinkList items={restaurants} />
+      <LinkList items={links} />
     </MemoryRouter>
   ));
 
-  const itemsWithLink = [
-    { id: 1, name: '아이템 이름 1', link: '아이템 링크 1' },
-    { id: 2, name: '아이템 이름 2', link: '아이템 링크 2' },
-    { id: 3, name: '아이템 이름 3', link: '아이템 링크 3' },
-  ];
-
   context('with items', () => {
     it('display list', () => {
-      const { getByRole, getAllByRole } = renderComponent(itemsWithLink);
-      expect(getByRole('list').children).toHaveLength(itemsWithLink.length);
-      expect(getAllByRole('listitem')).toHaveLength(itemsWithLink.length);
+      const { getByRole, getAllByRole } = renderComponent(LINKS);
+      expect(getByRole('list').children).toHaveLength(LINKS.length);
+      expect(getAllByRole('listitem')).toHaveLength(LINKS.length);
     });
   });
 

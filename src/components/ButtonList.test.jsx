@@ -4,14 +4,14 @@ import { render, fireEvent } from '@testing-library/react';
 
 import ButtonList from './ButtonList';
 
-import CATEGORIES from '../../fixtures/categories';
+import ITEMS from '../../fixtures/items';
 
 describe('<ButtonList />', () => {
   const handleClickItem = jest.fn();
 
-  const renderComponent = (categories, selectedItem = null) => render((
+  const renderComponent = (items, selectedItem = null) => render((
     <ButtonList
-      items={categories}
+      items={items}
       selectedItem={selectedItem}
       handleClickItem={handleClickItem}
     />
@@ -27,29 +27,29 @@ describe('<ButtonList />', () => {
 
   context('with categories', () => {
     it('display category-buttons', () => {
-      const { container } = renderComponent(CATEGORIES);
+      const { container } = renderComponent(ITEMS);
       const categoryButtons = container.querySelector('#button-list').children;
-      expect(categoryButtons.length).toEqual(CATEGORIES.length);
+      expect(categoryButtons.length).toEqual(ITEMS.length);
     });
 
     context('when click category-button', () => {
       it('fired click event', () => {
-        const { getAllByRole } = renderComponent(CATEGORIES);
+        const { getAllByRole } = renderComponent(ITEMS);
         // When
         const categoryButtons = getAllByRole('button');
         categoryButtons.forEach((button) => fireEvent.click(button));
         // Then
-        expect(handleClickItem).toBeCalledTimes(CATEGORIES.length);
+        expect(handleClickItem).toBeCalledTimes(ITEMS.length);
       });
     });
 
     context('when select button', () => {
       it('selected-button contains checked-string', () => {
-        const { getAllByRole } = renderComponent(CATEGORIES, CATEGORIES[0]);
+        const { getAllByRole } = renderComponent(ITEMS, ITEMS[0]);
         // When
         const categoryButtons = getAllByRole('button');
         // Then
-        expect(categoryButtons[0].textContent).toBe(`${CATEGORIES[0].name}(V)`);
+        expect(categoryButtons[0].textContent).toBe(`${ITEMS[0].name}(V)`);
       });
     });
   });
