@@ -39,11 +39,9 @@ describe('reducer', () => {
         regions: [],
       };
 
-      const regions = REGIONS;
+      const state = reducer(initialState, setRegions(REGIONS));
 
-      const state = reducer(initialState, setRegions(regions));
-
-      expect(state.regions).toHaveLength(regions.length);
+      expect(state.regions).toHaveLength(REGIONS.length);
     });
   });
 
@@ -53,11 +51,9 @@ describe('reducer', () => {
         categories: [],
       };
 
-      const categories = CATEGORIES;
+      const state = reducer(initialState, setCategories(CATEGORIES));
 
-      const state = reducer(initialState, setCategories(categories));
-
-      expect(state.categories).toHaveLength(categories.length);
+      expect(state.categories).toHaveLength(CATEGORIES.length);
     });
   });
 
@@ -67,11 +63,9 @@ describe('reducer', () => {
         restaurants: [],
       };
 
-      const restaurants = RESTAURANTS;
+      const state = reducer(initialState, setRestaurants(RESTAURANTS));
 
-      const state = reducer(initialState, setRestaurants(restaurants));
-
-      expect(state.restaurants).toHaveLength(restaurants.length);
+      expect(state.restaurants).toHaveLength(RESTAURANTS.length);
     });
   });
 
@@ -111,11 +105,9 @@ describe('reducer', () => {
         restaurant: {},
       };
 
-      const restaurant = RESTAURANT;
+      const state = reducer(initialState, setRestaurant(RESTAURANT));
 
-      const state = reducer(initialState, setRestaurant(restaurant));
-
-      expect(state.restaurant).toEqual(restaurant);
+      expect(state.restaurant).toEqual(RESTAURANT);
     });
   });
 });
