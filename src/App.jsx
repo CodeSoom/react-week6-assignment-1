@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Link, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import Home from './Home';
 import About from './About';
@@ -15,24 +15,6 @@ import RestaurantsDetail from './RestaurantsDetailContainer';
 export default function App() {
   return (
     <>
-      <h1>
-        <Link to="/">헤더</Link>
-      </h1>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-        <li>
-          <Link to="/restaurants">Restaurants</Link>
-        </li>
-        <li>
-          <Link to="/invalid">Invalid</Link>
-        </li>
-      </ul>
-
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
