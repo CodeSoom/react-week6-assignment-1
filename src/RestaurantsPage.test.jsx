@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { MemoryRouter } from 'react-router-dom';
+
 import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -24,7 +26,9 @@ test('RestaurantPage', () => {
   }));
 
   const { queryByText } = render((
-    <RestaurantPages />
+    <MemoryRouter>
+      <RestaurantPages />
+    </MemoryRouter>
   ));
 
   expect(dispatch).toBeCalled();
