@@ -13,13 +13,15 @@ test('RestaurantDetails', () => {
     restaurantDetails: DETAILS,
   }));
 
-  const { getByText } = render((
+  const { container } = render((
     <RestaurantDetailsContainer />
   ));
 
-  expect(getByText('양천주가')).not.toBeNull();
+  const MENU_ITEM = DETAILS.menuItems[0];
 
-  expect(getByText(/서울시 강남구/)).not.toBeNull();
+  expect(container).toHaveTextContent(DETAILS.name);
 
-  expect(getByText(/탕수육/)).not.toBeNull();
+  expect(container).toHaveTextContent(DETAILS.address);
+
+  expect(container).toHaveTextContent(MENU_ITEM.name);
 });

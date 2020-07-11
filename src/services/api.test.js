@@ -8,6 +8,7 @@ import {
 import REGIONS from '../../fixtures/regions';
 import CATEGORIES from '../../fixtures/categories';
 import RESTAURANTS from '../../fixtures/restaurants';
+import DETAILS from '../../fixtures/details';
 
 describe('api', () => {
   const mockFetch = (data) => {
@@ -56,25 +57,14 @@ describe('api', () => {
   });
 
   describe('fetchRestaurantDetails', () => {
-    // TODO: Refactor mock data
-    const restaurantDetails = {
-      id: 1,
-      name: '양천주가',
-      address: '서울시 강남구',
-      menuItems: [
-        { id: 1, name: '탕수육' },
-      ],
-    };
-
     beforeEach(() => {
-      mockFetch(restaurantDetails);
+      mockFetch(DETAILS);
     });
 
     it('returns restaurants', async () => {
-      // TODO: Modify name after refactoring mock data
-      const fetched = await fetchRestaurantDetails(1);
+      const restaurantDetails = await fetchRestaurantDetails(DETAILS.id);
 
-      expect(fetched).toEqual(restaurantDetails);
+      expect(restaurantDetails).toEqual(DETAILS);
     });
   });
 });
