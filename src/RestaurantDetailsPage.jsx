@@ -1,19 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-import { get } from './utils';
+import { useParams } from 'react-router-dom';
 
 import RestaurantDetails from './RestaurantDetails';
 
+import { loadRestaurantDetails } from './actions';
+
 export default function RestaurantDetailsPage() {
-  const restaurantDetails = useSelector(get('restaurantDetails'));
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadRestaurantDetails(1));
+  });
 
   return (
     <div>
-      <RestaurantDetails
-        restaurantDetails={restaurantDetails}
-      />
+      양천주가
     </div>
   );
 }
