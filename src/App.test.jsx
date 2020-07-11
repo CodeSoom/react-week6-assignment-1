@@ -65,7 +65,7 @@ describe('App', () => {
     it('renders NotFoundPage', () => {
       const { getByText } = renderApp({ path: '/invalidpath' });
 
-      expect(getByText(/파멸의 길/)).not.toBeNull();
+      expect(getByText(/404 Not Found/)).not.toBeNull();
     });
   });
 });

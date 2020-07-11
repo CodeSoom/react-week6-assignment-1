@@ -3,8 +3,7 @@ import React from 'react';
 export default function NotFoundPage() {
   return (
     <div>
-      <h2>404</h2>
-      <p>파멸의 길</p>
+      <h2>404 Not Found</h2>
     </div>
   );
 }
