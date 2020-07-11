@@ -19,12 +19,4 @@ describe('<RestaurantDetail />', () => {
       expect(container).toHaveTextContent(/팔보채/i);
     });
   });
-
-  // context('without restaurant', () => {
-  //   it('shows loading message', () => {
-  //     const { container } = render(<RestaurantDetail restaurant={restaurant} />);
-
-  //     expect(container).toHaveTextContent('식당 정보를 불러오고 있습니다...');
-  //   });
-  // });
 });
