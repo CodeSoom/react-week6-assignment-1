@@ -10,11 +10,11 @@ import {
 
 import RestaurantDetail from './RestaurantDetail';
 
-export default function RestaurantDetailContainer({ restauranId }) {
+export default function RestaurantDetailContainer({ restaurantId }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadRestaurantDetail(restauranId));
+    dispatch(loadRestaurantDetail(restaurantId));
   });
 
   const restaurantDetail = useSelector(get('restaurantDetail'));

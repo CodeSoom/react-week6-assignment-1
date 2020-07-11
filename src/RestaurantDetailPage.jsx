@@ -7,7 +7,7 @@ export default function RestaurantDetailPage({ match }) {
 
   return (
     <RestaurantDetailContainer
-      restauranId={id}
+      restaurantId={id}
     />
   );
 }
