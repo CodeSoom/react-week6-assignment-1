@@ -25,10 +25,13 @@ describe('App', () => {
     const dispatch = jest.fn();
     useDispatch.mockImplementation(() => dispatch);
 
+    const restaurant = restaurants[0];
+
     useSelector.mockImplementation((selector) => selector({
       regions,
       categories,
       restaurants,
+      restaurant,
     }));
   });
 
@@ -54,17 +57,6 @@ describe('App', () => {
 
       expect(getByText(/서울/)).not.toBeNull();
       expect(getByText(/한식/)).not.toBeNull();
-    });
-  });
-  context('with path "restaurant/{id}', () => {
-    it('renders details of restaurant no {id}', () => {
-      const firstRestaurants = restaurants[0];
-      const { container } = renderApp(['/restaurants/1']);
-
-      expect(container).toHaveTextContent(firstRestaurants.name);
-      expect(container).toHaveTextContent(firstRestaurants.address);
-      expect(container).toHaveTextContent(firstRestaurants.menuItems[0].name);
-      expect(container).toHaveTextContent(firstRestaurants.menuItems[1].name);
     });
   });
 });

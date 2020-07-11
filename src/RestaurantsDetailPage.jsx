@@ -1,15 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-export default function RestaurantsDetailPage() {
+import { useSelector, useDispatch } from 'react-redux';
+import { useParams, withRouter } from 'react-router-dom';
+
+import RestaurantDetail from './RestaurantDetail';
+
+import loadRestaurant from './actions';
+
+import { get } from './utils';
+
+function RestaurantsDetailPage({ params }) {
+  const { id } = params || useParams();
+  const dispatch = useDispatch();
+
+  const restaurant = useSelector(get('restaurant'));
+
+  useEffect(() => {
+    console.log(id);
+    dispatch(loadRestaurant(id));
+    console.log(id);
+  }, []);
+
   return (
     <>
-      <h1>김밥제국</h1>
-      <p>주소: 서울시 강남구 역삼동</p>
-      <h2>메뉴</h2>
-      <ul>
-        <li>탕수육</li>
-        <li>팔보채</li>
-      </ul>
+      <RestaurantDetail restaurant={restaurant} />
     </>
   );
 }
+
+export default withRouter(RestaurantsDetailPage);
