@@ -58,9 +58,9 @@ describe('App', () => {
 
   context('경로가 /restaurant/id 일떄', () => {
     it('RestaurantDetailPage가 렌더된다.', () => {
-      const { container } = renderApp({ path: '/restaurant/1' });
+      const { container } = renderApp({ path: '/restaurants/1' });
 
-      expect(container).toHaveTextContent('양천주가');
+      expect(container).toHaveTextContent('Loading...');
     });
   });
 

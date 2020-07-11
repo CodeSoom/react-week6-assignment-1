@@ -2,7 +2,10 @@ import React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
+import { Link, useRouteMatch } from 'react-router-dom';
+
 import { get } from './utils';
+
 import { loadRestaurantDetail } from './actions';
 
 export default function RestaurantsContainer() {
@@ -10,8 +13,9 @@ export default function RestaurantsContainer() {
 
   const dispatch = useDispatch();
 
-  function handleClick(event, id) {
-    event.preventDefault();
+  const match = useRouteMatch();
+
+  function handleClick(id) {
     dispatch(loadRestaurantDetail(id));
   }
 
@@ -19,9 +23,9 @@ export default function RestaurantsContainer() {
     <ul>
       {restaurants.map((restaurant) => (
         <li key={restaurant.id}>
-          <a href="/" onClick={(event) => handleClick(event, restaurant.id)}>
+          <Link to={`${match.path}/${restaurant.id}`} onClick={() => handleClick(restaurant.id)}>
             {restaurant.name}
-          </a>
+          </Link>
         </li>
       ))}
     </ul>

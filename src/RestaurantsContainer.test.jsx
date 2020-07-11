@@ -4,6 +4,8 @@ import { render, fireEvent } from '@testing-library/react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
+import { MemoryRouter } from 'react-router-dom';
+
 import RestaurantsContainer from './RestaurantsContainer';
 
 describe('RestaurantsContainer', () => {
@@ -19,7 +21,9 @@ describe('RestaurantsContainer', () => {
     }));
 
     const { container, getByText } = render((
-      <RestaurantsContainer />
+      <MemoryRouter>
+        <RestaurantsContainer />
+      </MemoryRouter>
     ));
 
     expect(container).toHaveTextContent('마법사주방');

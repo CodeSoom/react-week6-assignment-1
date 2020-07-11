@@ -26,6 +26,13 @@ export function setRestaurants(restaurants) {
   };
 }
 
+export function setRestaurant(restaurant) {
+  return {
+    type: 'setRestaurant',
+    payload: { restaurant },
+  };
+}
+
 export function selectRegion(regionId) {
   return {
     type: 'selectRegion',
@@ -47,6 +54,8 @@ export function loadInitialData() {
 
     const categories = await fetchCategories();
     dispatch(setCategories(categories));
+
+    dispatch(setRestaurant(null));
   };
 }
 
@@ -66,13 +75,6 @@ export function loadRestaurants() {
       categoryId: category.id,
     });
     dispatch(setRestaurants(restaurants));
-  };
-}
-
-export function setRestaurant(restaurant) {
-  return {
-    type: 'setRestaurant',
-    payload: { restaurant },
   };
 }
 
