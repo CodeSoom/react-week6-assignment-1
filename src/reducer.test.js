@@ -9,7 +9,7 @@ import {
   setRestaurant,
 } from './actions';
 
-import YANGCHEON_JUGA from '../fixtures/restaurant';
+import restaurant from '../fixtures/restaurant';
 
 describe('reducer', () => {
   context('when previous state is undefined', () => {
@@ -119,9 +119,9 @@ describe('reducer', () => {
         restaurant: null,
       };
 
-      const state = reducer(initialState, setRestaurant(YANGCHEON_JUGA));
+      const state = reducer(initialState, setRestaurant(restaurant));
 
-      expect(state.restaurant).toEqual(YANGCHEON_JUGA);
+      expect(state.restaurant).toEqual(restaurant);
     });
   });
 });

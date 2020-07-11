@@ -8,50 +8,25 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import RestaurantDetailPage from './RestaurantDetailPage';
 
-import YANGCHEON_JUGA from '../fixtures/restaurant';
+import restaurant from '../fixtures/restaurant';
 
-describe('RestaurantDetailPage', () => {
+test('RestaurantDetailPage', () => {
   const dispatch = jest.fn();
 
-  beforeEach(() => {
-    dispatch.mockClear();
+  useDispatch.mockImplementation(() => dispatch);
 
-    useDispatch.mockImplementation(() => dispatch);
-  });
+  useSelector.mockImplementation((selector) => selector({
+    restaurant,
+  }));
 
-  context('레스토랑 상세가 있으면', () => {
-    beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({
-        restaurant: YANGCHEON_JUGA,
-      }));
-    });
+  const { queryByText } = render((
+    <MemoryRouter>
+      <RestaurantDetailPage />
+    </MemoryRouter>
+  ));
 
-    it('레스토랑 상세 정보화면이 표시된다.', () => {
-      const { container } = render((
-        <MemoryRouter>
-          <RestaurantDetailPage />
-        </MemoryRouter>
-      ));
+  expect(dispatch).toBeCalled();
 
-      expect(container).toHaveTextContent('양천주가');
-    });
-  });
-
-  context('레스토랑 상세가 없으면', () => {
-    beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({
-        restaurant: null,
-      }));
-    });
-
-    it('loading... 문구가 뜨게된다.', () => {
-      const { container } = render((
-        <MemoryRouter>
-          <RestaurantDetailPage />
-        </MemoryRouter>
-      ));
-
-      expect(container).toHaveTextContent('Loading');
-    });
-  });
+  expect(queryByText('양천주가')).not.toBeNull();
+  expect(queryByText('탕수육')).not.toBeNull();
 });
