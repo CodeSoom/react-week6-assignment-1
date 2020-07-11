@@ -7,7 +7,7 @@ import { get } from './utils';
 export default function RestaurantContainer() {
   const restaurant = useSelector(get('restaurant'));
 
-  if (restaurant === undefined || Object.keys(restaurant).length === 0) {
+  if (restaurant === null || restaurant === undefined) {
     return (
       <h1>Loading...</h1>
     );
