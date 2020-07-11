@@ -1,9 +1,13 @@
 import React from 'react';
 
-export default function RestaurantDetails({ restaurantDetails }) {
+import { useSelector } from 'react-redux';
+
+import { get } from './utils';
+
+export default function RestaurantDetailsContainer() {
   const {
     name, address, menuItems,
-  } = restaurantDetails;
+  } = useSelector(get('restaurantDetails'));
 
   return (
     <div>

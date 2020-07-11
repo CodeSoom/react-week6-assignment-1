@@ -2,15 +2,19 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import RestaurantDetails from './RestaurantDetails';
+import { useSelector } from 'react-redux';
+
+import RestaurantDetailsContainer from './RestaurantDetailsContainer';
 
 import DETAILS from '../fixtures/details';
 
 test('RestaurantDetails', () => {
+  useSelector.mockImplementation((selector) => selector({
+    restaurantDetails: DETAILS,
+  }));
+
   const { getByText } = render((
-    <RestaurantDetails
-      restaurantDetails={DETAILS}
-    />
+    <RestaurantDetailsContainer />
   ));
 
   expect(getByText('양천주가')).not.toBeNull();
