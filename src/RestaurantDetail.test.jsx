@@ -21,4 +21,12 @@ describe('restaurantDetail', () => {
       expect(container).toHaveTextContent(firstRestaurants.menuItems[1].name);
     });
   });
+
+  context('without restaurant', () => {
+    it('renders empty message', () => {
+      const { getByText } = render(<RestaurantDetail />);
+
+      expect(getByText(/레스토랑을 불러오는 중이거나 없습니다./)).not.toBeNull();
+    });
+  });
 });
