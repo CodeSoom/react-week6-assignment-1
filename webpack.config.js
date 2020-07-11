@@ -11,6 +11,9 @@ module.exports = {
       },
     ],
   },
+  output: {
+    publicPath: '/',
+  },
   resolve: {
     extensions: ['.js', '.jsx'],
   },
