@@ -23,6 +23,14 @@ describe('App', () => {
       restaurants: [
         { id: 1, name: '마법사주방' },
       ],
+      restaurantDetail: {
+        id: 1,
+        name: '마법사주방',
+        address: '서울시 강남구',
+        menuItems: [
+          { id: 1, name: '탕수육' },
+        ],
+      },
     }));
   });
 
@@ -50,6 +58,16 @@ describe('App', () => {
       expect(container).toHaveTextContent('서울');
       expect(container).toHaveTextContent('한식');
       expect(container).toHaveTextContent('마법사주방');
+    });
+  });
+
+  context('with path /restaurants/1', () => {
+    it('RestaurantsDetailPage가 렌더된다.', () => {
+      const { container } = renderApp({ path: '/restaurants/1' });
+
+      expect(container).toHaveTextContent('마법사주방');
+      expect(container).toHaveTextContent('서울시 강남구');
+      expect(container).toHaveTextContent('탕수육');
     });
   });
 
