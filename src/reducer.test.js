@@ -6,6 +6,7 @@ import {
   setRestaurants,
   selectRegion,
   selectCategory,
+  selectRestaurantId,
 } from './actions';
 
 describe('reducer', () => {
@@ -106,6 +107,16 @@ describe('reducer', () => {
         id: 1,
         name: '한식',
       });
+    });
+  });
+
+  describe('selectedRestaurantId', () => {
+    it('changes selected restaurant id', () => {
+      const state = reducer({
+        selectedRestaurantId: null,
+      }, selectRestaurantId(1));
+
+      expect(state.selectedRestaurantId).toBe(1);
     });
   });
 });
