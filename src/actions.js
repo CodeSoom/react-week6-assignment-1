@@ -67,3 +67,10 @@ export function loadRestaurants() {
     dispatch(setRestaurants(restaurants));
   };
 }
+
+export function selectedRestaurantId(restaurantsId) {
+  return {
+    type: 'selectRestaurantId',
+    payload: { restaurantsId },
+  };
+}
