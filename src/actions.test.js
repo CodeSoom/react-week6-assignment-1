@@ -12,8 +12,6 @@ import {
   setRestaurant,
 } from './actions';
 
-import restaurants from '../fixtures/restaurants';
-
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 
@@ -22,22 +20,21 @@ jest.mock('./services/api');
 describe('actions', () => {
   let store;
 
-  // describe('loadRestaurant', () => {
-  //   beforeEach(() => {
-  //     store = mockStore({
-  //       selectedRestaurant: 1,
-  //     });
-  //   });
+  describe('loadRestaurant', () => {
+    beforeEach(() => {
+      store = mockStore({
+        selectedRestaurant: 1,
+      });
+    });
 
-  //   it('setRestaurant', async () => {
-  //     await store.dispatch(loadRestaurant());
+    it('setRestaurant', async () => {
+      await store.dispatch(loadRestaurant());
 
-  //     const actions = store.getActions();
-  //     console.log(actions);
+      const actions = store.getActions();
 
-  //     expect(actions).toEqual(setRestaurant([]));
-  //   });
-  // });
+      expect(actions[0]).toEqual(setRestaurant([]));
+    });
+  });
 
   describe('loadInitialData', () => {
     beforeEach(() => {
