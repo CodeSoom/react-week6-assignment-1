@@ -19,12 +19,12 @@ describe('RestaurantsDetailPage', () => {
     });
 
     it('renders details of restaurant', () => {
-      const { container, getByText } = render((
+      const { container } = render((
         <RestaurantsDetailPage />
       ));
 
-      expect(getByText(firstRestaurants.name)).not.toBeNull();
-      expect(getByText(firstRestaurants.address)).not.toBeNull();
+      expect(container).toHaveTextContent(firstRestaurants.name);
+      expect(container).toHaveTextContent(firstRestaurants.address);
       expect(container).toHaveTextContent(firstRestaurants.menuItems[0].name);
       expect(container).toHaveTextContent(firstRestaurants.menuItems[1].name);
     });
