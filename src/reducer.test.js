@@ -6,7 +6,7 @@ import {
   setRestaurants,
   selectRegion,
   selectCategory,
-  selectRestaurantId,
+  selectedRestaurantId,
 } from './actions';
 
 describe('reducer', () => {
@@ -17,6 +17,7 @@ describe('reducer', () => {
       restaurants: [],
       selectedRegion: null,
       selectedCategory: null,
+      selectedRestaurantId: null,
     };
 
     it('returns initialState', () => {
@@ -114,7 +115,7 @@ describe('reducer', () => {
     it('changes selected restaurant id', () => {
       const state = reducer({
         selectedRestaurantId: null,
-      }, selectRestaurantId(1));
+      }, selectedRestaurantId(1));
 
       expect(state.selectedRestaurantId).toBe(1);
     });
