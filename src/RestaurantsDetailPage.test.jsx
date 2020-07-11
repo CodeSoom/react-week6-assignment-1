@@ -6,15 +6,15 @@ import { useSelector } from 'react-redux';
 
 import RestaurantsDetailPage from './RestaurantsDetailPage';
 
-import RESTAURANTS from '../fixtures/restaurants';
+import restaurants from '../fixtures/restaurants';
 
 describe('RestaurantsDetailPage', () => {
-  const FIRST_RESTAURANTS = RESTAURANTS[0];
+  const firstRestaurants = restaurants[0];
 
   context('with restaurant', () => {
     beforeEach(() => {
       useSelector.mockImplementation((selector) => selector({
-        selectedRestaurant: FIRST_RESTAURANTS,
+        selectedRestaurant: firstRestaurants,
       }));
     });
 
@@ -23,10 +23,10 @@ describe('RestaurantsDetailPage', () => {
         <RestaurantsDetailPage />
       ));
 
-      expect(getByText(FIRST_RESTAURANTS.name)).not.toBeNull();
-      expect(getByText(FIRST_RESTAURANTS.address)).not.toBeNull();
-      expect(container).toHaveTextContent(FIRST_RESTAURANTS.menuItems[0].name);
-      expect(container).toHaveTextContent(FIRST_RESTAURANTS.menuItems[1].name);
+      expect(getByText(firstRestaurants.name)).not.toBeNull();
+      expect(getByText(firstRestaurants.address)).not.toBeNull();
+      expect(container).toHaveTextContent(firstRestaurants.menuItems[0].name);
+      expect(container).toHaveTextContent(firstRestaurants.menuItems[1].name);
     });
   });
 });
