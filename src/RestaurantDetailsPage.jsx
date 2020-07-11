@@ -15,7 +15,6 @@ export default function RestaurantDetailsPage() {
 
   return (
     <div>
-      <h2>양천주가</h2>
       <RestaurantDetailsContainer />
     </div>
   );

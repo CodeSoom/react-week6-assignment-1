@@ -8,6 +8,8 @@ import { MemoryRouter } from 'react-router-dom';
 
 import App from './App';
 
+import DETAILS from '../fixtures/details';
+
 describe('App', () => {
   beforeEach(() => {
     const dispatch = jest.fn();
@@ -24,6 +26,7 @@ describe('App', () => {
       restaurants: [
         { id: 1, name: '마법사주방' },
       ],
+      restaurantDetails: DETAILS,
     }));
   });
 
