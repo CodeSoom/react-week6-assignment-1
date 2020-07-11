@@ -44,6 +44,14 @@ describe('App', () => {
     });
   });
 
+  context('with path /about', () => {
+    it('renders RestaurantsPage', () => {
+      const { getByText } = renderApp({ path: '/about' });
+
+      expect(getByText(/About이지롱/)).not.toBeNull();
+    });
+  });
+
   context('with path /restaurants', () => {
     it('renders RestaurantsPage', () => {
       const { queryByText } = renderApp({ path: '/restaurants' });
@@ -53,11 +61,11 @@ describe('App', () => {
     });
   });
 
-  context('with path /about', () => {
-    it('renders RestaurantsPage', () => {
-      const { getByText } = renderApp({ path: '/about' });
+  context('with path /restaurants/:id', () => {
+    it('renders RestaurantDetailsPage', () => {
+      const { getByText } = renderApp({ path: '/restaurants/1' });
 
-      expect(getByText(/About이지롱/)).not.toBeNull();
+      expect(getByText(/양천주가/)).not.toBeNull();
     });
   });
 
