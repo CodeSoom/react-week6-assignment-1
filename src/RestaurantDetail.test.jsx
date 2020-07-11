@@ -13,7 +13,7 @@ describe('restaurantDetail', () => {
     it('renders restarant detail', () => {
       const firstRestaurants = restaurant[0];
 
-      const { container } = render(<RestaurantDetail restaurant={restaurant} />);
+      const { container } = render(<RestaurantDetail restaurant={firstRestaurants} />);
 
       expect(container).toHaveTextContent(firstRestaurants.name);
       expect(container).toHaveTextContent(firstRestaurants.address);
