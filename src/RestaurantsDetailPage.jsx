@@ -5,7 +5,7 @@ import { useParams, withRouter } from 'react-router-dom';
 
 import RestaurantDetail from './RestaurantDetail';
 
-import loadRestaurant from './actions';
+import { loadRestaurant } from './actions';
 
 import { get } from './utils';
 
@@ -16,9 +16,7 @@ function RestaurantsDetailPage({ params }) {
   const restaurant = useSelector(get('restaurant'));
 
   useEffect(() => {
-    console.log(id);
     dispatch(loadRestaurant(id));
-    console.log(id);
   }, []);
 
   return (
