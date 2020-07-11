@@ -47,13 +47,6 @@ const reducers = {
       selectedCategory: categories.find(equal('id', categoryId)),
     };
   },
-
-  selectRestaurantId(state, { payload: { restaurantsId } }) {
-    return {
-      ...state,
-      selectedRestaurantId: restaurantsId,
-    };
-  },
   setRestaurant(state, { payload: { restaurant } }) {
     return {
       ...state,
