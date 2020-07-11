@@ -6,6 +6,12 @@ import { render } from '@testing-library/react';
 
 import RestaurantDetailPage from './RestaurantDetailPage';
 
+jest.mock('react-router-dom', () => ({
+  useParams: () => ({
+    id: 1,
+  }),
+}));
+
 test('RestaurantDetailPage', () => {
   const dispatch = jest.fn();
 
@@ -25,14 +31,8 @@ test('RestaurantDetailPage', () => {
     restaurantDetail,
   }));
 
-  const match = {
-    params: { id: 1 },
-  };
-
   const { container } = render(
-    <RestaurantDetailPage
-      match={match}
-    />,
+    <RestaurantDetailPage />,
   );
 
   expect(container).toHaveTextContent('김밥제국');
