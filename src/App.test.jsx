@@ -59,4 +59,11 @@ describe('App', () => {
       expect(getByText(/한식/)).not.toBeNull();
     });
   });
+  context('with not found path', () => {
+    it('renders not found page', () => {
+      const { getByText } = renderApp(['awdawdawd']);
+
+      expect(getByText(/이 페이지는 없는 페이지입니다/)).not.toBeNull();
+    });
+  });
 });
