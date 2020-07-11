@@ -33,6 +33,13 @@ export function selectRegion(regionId) {
   };
 }
 
+export function selectRestaurant(restaurantId) {
+  return {
+    type: 'selectRestaurant',
+    payload: { restaurantId },
+  };
+}
+
 export function selectCategory(categoryId) {
   return {
     type: 'selectCategory',
@@ -48,12 +55,16 @@ export function setRestaurantDetail(restaurantDetail) {
 }
 
 export function loadRestaurantDetailData() {
-  return async (dispatch) => {
-    const restaurantDetail = await fetchRestaurantDetail();
+  return async (dispatch, getState) => {
+    const {
+      selectedRestaurant: restaurant,
+    } = getState();
+    
+    const restaurantDetail = await fetchRestaurantDetail({
+      restaurantId: restaurant.id,
+    });
+
     dispatch(setRestaurantDetail(restaurantDetail));
-    console.log("11111");
-    console.log(restaurantDetail);
-    console.log("22222");
   };
 }
 

@@ -5,13 +5,25 @@ import { useSelector } from 'react-redux';
 import { get } from './utils';
 
 export default function RestaurantDetailContainer() {
-  const setRestaurantDetail = useSelector(get('setRestaurantDetail'));
+  //const restaurantDetail = useSelector(get('restaurantDetail'));
+  //console.log(restaurantDetail);
   
-  console.log(setRestaurantDetail);
-  
+  const { name, address, menuItems } = useSelector(get('restaurantDetail'));
+  //console.log(menuItems);
+
+  // <ul>
+  //   {menuItems.map((menuItem) => (
+  //     <li key={menuItem.id}>
+  //       {menuItem.name}
+  //     </li>
+  //   ))}
+  // </ul>     
+
   return (
     <div>
-      <p>11111</p>
+      <h1>{name}</h1>
+      <p>{address}</p> 
+      <h1>메뉴</h1>
     </div>
   );
 }

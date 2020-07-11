@@ -23,6 +23,7 @@ test('RestaurantsPage', () => {
     restaurants: [
       { id: 1, name: '마법사주방' },
     ],
+    restaurantDetail: [],
   }));
 
   const { queryByText } = render((

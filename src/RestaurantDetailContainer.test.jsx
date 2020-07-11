@@ -3,11 +3,21 @@ import React from 'react';
 import { render } from '@testing-library/react';
 
 import RestaurantDetailContainer from './RestaurantDetailContainer';
+import { useSelector } from 'react-redux';
 
 test('RestaurantDetailContainer', () => {
-  const { container } = render((
+  useSelector.mockImplementation((selector) => selector({
+    restaurantDetail: [
+      { 
+        name: '알부자', 
+        address: '강남',
+      },
+    ],
+  })); 
+  
+  const { queryByText } = render((
     <RestaurantDetailContainer />
   ));
 
-  expect(container).toHaveTextContent('Restaurant Detail Container');
+  //expect(queryByText('서울')).not.toBeNull();
 });

@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import Header from './Header';
 import Restaurants from './RestaurantsPage';
-import RestaurantDetail from './RestaurantDetailPage';
+import RestaurantDetail from './RestaurantDetailContainer';
 import Home from './HomePage';
 import About from './AboutPage';
 import NotFound from './NotFoundPage';
