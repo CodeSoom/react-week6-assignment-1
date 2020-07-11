@@ -2,16 +2,27 @@ import React from 'react';
 
 import { useSelector } from 'react-redux';
 
-import RestaurantDetail from './RestaurantDetail';
-
 export default function RestaurantDetailContainer() {
   const { restaurant } = useSelector((state) => ({
     restaurant: state.restaurant,
   }));
 
+  if (restaurant === null) {
+    return (
+      <p>continue loading...</p>
+    );
+  }
+
   return (
-    <RestaurantDetail
-      restaurant={restaurant}
-    />
+    <div>
+      <h2>{restaurant.name}</h2>
+      {restaurant.address}
+      <h3>메뉴</h3>
+      {restaurant.menuItems.map((item) => (
+        <li key={item.id}>
+          {item.name}
+        </li>
+      ))}
+    </div>
   );
 }
