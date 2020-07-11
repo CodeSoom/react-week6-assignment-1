@@ -8,26 +8,53 @@ import RestaurantDetailContainer from './RestaurantDetailContainer';
 
 import restaurantDetail from '../fixtures/restaurantDetail';
 
-test('RestaurantDetailContainer', () => {
+describe('RestaurantDetailContainer', () => {
   const dispatch = jest.fn();
 
-  useDispatch.mockImplementation(() => dispatch);
+  beforeEach(() => {
+    dispatch.mockClear();
+    useDispatch.mockImplementation(() => dispatch);
+  });
 
-  useSelector.mockImplementation((selector) => selector({
-    restaurantDetail,
-  }));
+  context('with restaurantDetail', () => {
+    beforeEach(() => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurantDetail,
+      }));
+    });
 
-  const { container } = render(
-    <RestaurantDetailContainer
-      restaurantId={restaurantDetail.id}
-    />,
-  );
+    it('renders restaurant detail informations', () => {
+      const { container } = render(
+        <RestaurantDetailContainer
+          restaurantId={restaurantDetail.id}
+        />,
+      );
 
-  const { name, address, menuItems } = restaurantDetail;
+      const { name, address, menuItems } = restaurantDetail;
 
-  expect(container).toHaveTextContent(name);
-  expect(container).toHaveTextContent(address);
-  menuItems.forEach((menu) => {
-    expect(container).toHaveTextContent(menu.name);
+      expect(container).toHaveTextContent(name);
+      expect(container).toHaveTextContent(address);
+      menuItems.forEach((menu) => {
+        expect(container).toHaveTextContent(menu.name);
+      });
+    });
+  });
+
+  context('without restaurantDetail', () => {
+    beforeEach(() => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurantDetail: null,
+      }));
+    });
+
+    it('renders loading', () => {
+      const { container } = render(
+        <RestaurantDetailContainer
+          restaurantId={restaurantDetail.id}
+        />,
+      );
+
+      expect(container).toHaveTextContent('Loading');
+    });
   });
 });
