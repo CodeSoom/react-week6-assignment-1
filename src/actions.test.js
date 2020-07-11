@@ -8,7 +8,11 @@ import {
   setCategories,
   loadRestaurants,
   setRestaurants,
+  loadRestaurant,
+  setRestaurant,
 } from './actions';
+
+import restaurants from '../fixtures/restaurants';
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
@@ -17,6 +21,23 @@ jest.mock('./services/api');
 
 describe('actions', () => {
   let store;
+
+  // describe('loadRestaurant', () => {
+  //   beforeEach(() => {
+  //     store = mockStore({
+  //       selectedRestaurant: 1,
+  //     });
+  //   });
+
+  //   it('setRestaurant', async () => {
+  //     await store.dispatch(loadRestaurant());
+
+  //     const actions = store.getActions();
+  //     console.log(actions);
+
+  //     expect(actions).toEqual(setRestaurant([]));
+  //   });
+  // });
 
   describe('loadInitialData', () => {
     beforeEach(() => {
