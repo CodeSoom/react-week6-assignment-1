@@ -20,7 +20,7 @@ function renderApp({ path }) {
 }
 
 describe('App with router', () => {
-  context('with URL included /', () => {
+  context('with path /', () => {
     it('shows header and page name', () => {
       const { container } = renderApp({ path: '/' });
 
@@ -29,7 +29,7 @@ describe('App with router', () => {
     });
   });
 
-  context('with URL included /about', () => {
+  context('with path /about', () => {
     it('shows header and page name', () => {
       const { container } = renderApp({ path: '/about' });
 
@@ -38,7 +38,7 @@ describe('App with router', () => {
     });
   });
 
-  context('with URL included /restaurants', () => {
+  context('with path /restaurants', () => {
     const dispatch = jest.fn();
 
     beforeEach(() => {
@@ -58,7 +58,7 @@ describe('App with router', () => {
     });
   });
 
-  context('with URL included /restaurants/:restaurantId', () => {
+  context('with path /restaurants/:restaurantId', () => {
     const dispatch = jest.fn();
 
     beforeEach(() => {
