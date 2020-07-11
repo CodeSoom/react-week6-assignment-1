@@ -8,6 +8,7 @@ import {
   loadRestaurantDetail,
 } from './actions';
 
+import Loading from './Loading';
 import RestaurantDetail from './RestaurantDetail';
 
 export default function RestaurantDetailContainer({ restaurantId }) {
@@ -21,7 +22,7 @@ export default function RestaurantDetailContainer({ restaurantId }) {
 
   if (!restaurantDetail) {
     return (
-      <p>Loading...</p>
+      <Loading />
     );
   }
 
