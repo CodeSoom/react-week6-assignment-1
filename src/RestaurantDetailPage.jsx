@@ -13,11 +13,11 @@ import RestaurantDetail from './RestaurantDetail';
 export default function RestaurantDetailPage({ match: { params: { restaurantId } } }) {
   const dispatch = useDispatch();
 
+  const restaurant = useSelector(get('restaurant'));
+
   useEffect(() => {
     dispatch(loadRestaurant(restaurantId));
   }, []);
-
-  const restaurant = useSelector(get('restaurant'));
 
   return (
     <div>

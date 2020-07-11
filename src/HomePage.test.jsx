@@ -7,11 +7,15 @@ import { MemoryRouter } from 'react-router-dom';
 import HomePage from './HomePage';
 
 test('HomePage', () => {
+  const links = ['About', 'Restaurants'];
+
   const { container } = render((
     <MemoryRouter>
       <HomePage />
     </MemoryRouter>
   ));
 
-  expect(container).toHaveTextContent('About');
+  links.forEach((link) => {
+    expect(container).toHaveTextContent(link);
+  });
 });

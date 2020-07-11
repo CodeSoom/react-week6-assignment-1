@@ -17,7 +17,7 @@ describe('RestaurantsContainer', () => {
     }));
   });
 
-  function renderApp() {
+  function renderRestaurantsContainer() {
     return render((
       <MemoryRouter>
         <RestaurantsContainer />
@@ -27,7 +27,7 @@ describe('RestaurantsContainer', () => {
 
   context('display restaurant', () => {
     it('renders restaurant', () => {
-      const { container } = renderApp();
+      const { container } = renderRestaurantsContainer();
 
       expect(container).toHaveTextContent('마법사주방');
     });
