@@ -8,21 +8,27 @@ import { useSelector } from 'react-redux';
 
 import RestaurantContainer from './RestaurantContainer';
 
-describe('RestaurantsContainer', () => {
-  context('without restaurant id', () => {
+describe('RestaurantContainer', () => {
+  const renderRestaurantContainer = () => render((
+    <MemoryRouter>
+      <RestaurantContainer />
+    </MemoryRouter>
+  ));
+
+  context('without restaurant', () => {
+    beforeEach(() => {
+      useSelector.mockImplementation((selector) => selector({}));
+    });
+
     it('renders loading page', () => {
-      const { container } = render((
-        <MemoryRouter>
-          <RestaurantContainer />
-        </MemoryRouter>
-      ));
+      const { container } = renderRestaurantContainer();
 
       expect(container).toHaveTextContent('Loading');
     });
   });
 
-  context('with restaurant id', () => {
-    it('renders restaurant', () => {
+  context('with restaurant', () => {
+    beforeEach(() => {
       useSelector.mockImplementation((selector) => selector({
         restaurant: {
           id: 1,
@@ -36,12 +42,9 @@ describe('RestaurantsContainer', () => {
           information: '양천주가 in 서울 강남구',
         },
       }));
-
-      const { container } = render((
-        <MemoryRouter>
-          <RestaurantContainer />
-        </MemoryRouter>
-      ));
+    });
+    it('renders restaurant', () => {
+      const { container } = renderRestaurantContainer();
 
       expect(container).toHaveTextContent('양천주가');
       expect(container).toHaveTextContent('서울 강남구');
