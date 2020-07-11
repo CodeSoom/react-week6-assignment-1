@@ -7,6 +7,15 @@ import { MemoryRouter } from 'react-router-dom';
 import App from './App';
 
 describe('App', () => {
+  function renderApp(initialEntry) {
+    const { container } = render((
+      <MemoryRouter initialEntries={[initialEntry]}>
+        <App />
+      </MemoryRouter>
+    ));
+
+    return container;
+  }
   beforeEach(() => {
     const dispatch = jest.fn();
     useDispatch.mockImplementation(() => dispatch);
@@ -24,11 +33,7 @@ describe('App', () => {
 
   context('with path /', () => {
     it('renders the home page', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const container = renderApp('/');
 
       expect(container).toHaveTextContent('Home');
     });
@@ -36,11 +41,7 @@ describe('App', () => {
 
   context('with path /about', () => {
     it('renders the about page', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/about']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const container = renderApp('/about');
 
       expect(container).toHaveTextContent('About 페이지 입니다.');
     });
@@ -48,11 +49,7 @@ describe('App', () => {
 
   context('with path /restaurants', () => {
     it('renders the restaurants page', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/restaurants']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const container = renderApp('/restaurants');
 
       expect(container).toHaveTextContent('서울');
     });
@@ -60,11 +57,7 @@ describe('App', () => {
 
   context('with invalid path', () => {
     it('renders the not found page', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/xxx']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const container = renderApp('/xxx');
 
       expect(container).toHaveTextContent('404 Not Found');
     });

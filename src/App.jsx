@@ -16,7 +16,9 @@ export default function App() {
   return (
     <div>
       <header>
-        <Link to="/"><h1>헤더</h1></Link>
+        <h1>
+          <Link to="/">헤더</Link>
+        </h1>
       </header>
       <Switch>
         <Route exact path="/" component={HomePage} />

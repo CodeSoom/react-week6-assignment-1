@@ -50,8 +50,10 @@ describe('RestaurantDetailPage', () => {
       expect(queryByText(/탕수육/)).not.toBeNull();
       expect(queryByText(/팔보채/)).not.toBeNull();
     });
+  });
 
-    it('숫자가 아닌 경우 에러 페이지를 띄운다', () => {
+  context('param에 restarauntId가 잘못된 값이 있으면', () => {
+    it('에러 페이지를 띄운다', () => {
       const restaurant = {};
       const dispatch = jest.fn();
 
