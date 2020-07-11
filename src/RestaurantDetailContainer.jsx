@@ -19,6 +19,12 @@ export default function RestaurantDetailContainer({ restauranId }) {
 
   const restaurantDetail = useSelector(get('restaurantDetail'));
 
+  if (!restaurantDetail) {
+    return (
+      <p>Loading...</p>
+    );
+  }
+
   return (
     <RestaurantDetail
       restaurantDetail={restaurantDetail}
