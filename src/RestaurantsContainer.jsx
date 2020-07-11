@@ -18,7 +18,7 @@ export default function RestaurantsContainer() {
 
   function handleClick(restaurantId) {
     dispatch(selectRestaurant(restaurantId));
-    dispatch(loadRestaurantDetails());
+    dispatch(loadRestaurantDetails(restaurantId));
   }
 
   return (
