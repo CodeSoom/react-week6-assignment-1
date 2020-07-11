@@ -4,6 +4,8 @@ import {
   setRegions,
   setCategories,
   setRestaurants,
+  setRestaurant,
+  setLoading,
   selectRegion,
   selectCategory,
 } from './actions';
@@ -14,8 +16,16 @@ describe('reducer', () => {
       regions: [],
       categories: [],
       restaurants: [],
+      restaurant: {
+        id: 0,
+        categoryId: 0,
+        name: '',
+        address: '',
+        menuItems: [],
+      },
       selectedRegion: null,
       selectedCategory: null,
+      loading: false,
     };
 
     it('returns initialState', () => {
@@ -70,6 +80,47 @@ describe('reducer', () => {
       const state = reducer(initialState, setRestaurants(restaurants));
 
       expect(state.restaurants).toHaveLength(1);
+    });
+  });
+
+  describe('setRestaurant', () => {
+    it('changes restaurant', () => {
+      const initialState = {
+        restaurant: {},
+      };
+
+      const restaurant = {
+        id: 1,
+        categoryId: 1,
+        name: '양천주가',
+        address: '서울 강남구',
+        menuItems: [
+          {
+            id: 16,
+            restaurantId: 1,
+            name: '탕수육',
+          },
+          {
+            id: 17,
+            restaurantId: 1,
+            name: '팔보채',
+          },
+        ],
+      };
+
+      const state = reducer(initialState, setRestaurant(restaurant));
+
+      expect(state.restaurant).toBe(restaurant);
+    });
+  });
+
+  describe('setLoading', () => {
+    it('changes is loading', () => {
+      const initialState = { loading: false };
+
+      const state = reducer(initialState, setLoading(true));
+
+      expect(state.loading).toBe(true);
     });
   });
 

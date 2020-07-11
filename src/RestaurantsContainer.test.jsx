@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
+
+import { render, screen } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
@@ -13,9 +15,11 @@ test('RestaurantsContainer', () => {
     ],
   }));
 
-  const { container } = render((
-    <RestaurantsContainer />
+  render((
+    <MemoryRouter>
+      <RestaurantsContainer />
+    </MemoryRouter>
   ));
 
-  expect(container).toHaveTextContent('마법사주방');
+  expect(screen.getByRole('link', { name: '마법사주방' })).toBeInTheDocument();
 });
