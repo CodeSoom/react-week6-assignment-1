@@ -8,7 +8,7 @@ import RestaurantDetailsContainer from './RestaurantDetailsContainer';
 
 import DETAILS from '../fixtures/details';
 
-test('RestaurantDetails', () => {
+test('RestaurantDetailsContainer', () => {
   useSelector.mockImplementation((selector) => selector({
     restaurantDetails: DETAILS,
   }));
