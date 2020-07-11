@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function RestaurantDetail({ restaurant }) {
-  if (!restaurant) {
+  if (restaurant.length === 0 || !restaurant) {
     return <>레스토랑을 불러오거나 없습니다.</>;
   }
 
