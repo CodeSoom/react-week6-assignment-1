@@ -6,9 +6,9 @@ import { MemoryRouter } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import REGIONS from '../fixtures/regions';
-import CATEGORIES from '../fixtures/categories';
-import RESTAURANTS from '../fixtures/restaurants';
+import regions from '../fixtures/regions';
+import categories from '../fixtures/categories';
+import restaurants from '../fixtures/restaurants';
 
 import App from './App';
 
@@ -26,9 +26,9 @@ describe('App', () => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
-      regions: REGIONS,
-      categories: CATEGORIES,
-      restaurants: RESTAURANTS,
+      regions,
+      categories,
+      restaurants,
     }));
   });
 
@@ -58,12 +58,13 @@ describe('App', () => {
   });
   context('with path "restaurant/{id}', () => {
     it('renders details of restaurant no {id}', () => {
-      const { getByText } = renderApp(['/restaurants/1']);
+      const firstRestaurants = restaurants[0];
+      const { container } = renderApp(['/restaurants/1']);
 
-      expect(getByText('서울시 강남구 역삼동')).not.toBeNull();
-      expect(getByText('김밥제국')).not.toBeNull();
-      expect(getByText('떡볶이')).not.toBeNull();
-      expect(getByText('라면')).not.toBeNull();
+      expect(container).toHaveTextContent(firstRestaurants.name);
+      expect(container).toHaveTextContent(firstRestaurants.address);
+      expect(container).toHaveTextContent(firstRestaurants.menuItems[0].name);
+      expect(container).toHaveTextContent(firstRestaurants.menuItems[1].name);
     });
   });
 });
