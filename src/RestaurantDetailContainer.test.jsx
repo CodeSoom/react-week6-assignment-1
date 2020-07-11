@@ -6,20 +6,12 @@ import { render } from '@testing-library/react';
 
 import RestaurantDetailContainer from './RestaurantDetailContainer';
 
+import restaurantDetail from '../fixtures/restaurantDetail';
+
 test('RestaurantDetailContainer', () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
-
-  const restaurantDetail = {
-    id: 1,
-    name: '김밥제국',
-    category: '한식',
-    address: '서울시 강남구',
-    menuItems: [
-      { id: 1, name: '김밥' },
-    ],
-  };
 
   useSelector.mockImplementation((selector) => selector({
     restaurantDetail,
@@ -31,7 +23,11 @@ test('RestaurantDetailContainer', () => {
     />,
   );
 
-  expect(container).toHaveTextContent('김밥제국');
-  expect(container).toHaveTextContent('서울시 강남구');
-  expect(container).toHaveTextContent('김밥');
+  const { name, address, menuItems } = restaurantDetail;
+
+  expect(container).toHaveTextContent(name);
+  expect(container).toHaveTextContent(address);
+  menuItems.forEach((menu) => {
+    expect(container).toHaveTextContent(menu.name);
+  });
 });
