@@ -115,16 +115,6 @@ describe('reducer', () => {
     });
   });
 
-  describe('selectedRestaurantId', () => {
-    it('changes selected restaurant id', () => {
-      const state = reducer({
-        selectedRestaurantId: null,
-      }, selectedRestaurantId(1));
-
-      expect(state.selectedRestaurantId).toBe(1);
-    });
-  });
-
   describe('setRestaurant', () => {
     it('changes selected restaurant', () => {
       const state = reducer({
