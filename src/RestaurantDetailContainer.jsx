@@ -8,6 +8,8 @@ import {
   loadRestaurantDetail,
 } from './actions';
 
+import RestaurantDetail from './RestaurantDetail';
+
 export default function RestaurantDetailContainer({ restauranId }) {
   const dispatch = useDispatch();
 
@@ -17,22 +19,9 @@ export default function RestaurantDetailContainer({ restauranId }) {
 
   const restaurantDetail = useSelector(get('restaurantDetail'));
 
-  const { name, address, menuItems } = restaurantDetail;
-
   return (
-    <div>
-      <h2>{name}</h2>
-      <p>
-        주소:
-        {' '}
-        {address}
-      </p>
-      <h2>메뉴</h2>
-      <ul>
-        {menuItems.map((menu) => (
-          <li key={menu.id}>{menu.name}</li>
-        ))}
-      </ul>
-    </div>
+    <RestaurantDetail
+      restaurantDetail={restaurantDetail}
+    />
   );
 }
