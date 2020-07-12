@@ -10,10 +10,10 @@ import { loadRestaurantDetails } from './actions';
 
 export default function RestaurantDetailsPage() {
   const dispatch = useDispatch();
-  const param = useParams();
+  const { id } = useParams();
 
   useEffect(() => {
-    dispatch(loadRestaurantDetails(param.id));
+    dispatch(loadRestaurantDetails(id));
   });
 
   return (
