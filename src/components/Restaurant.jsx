@@ -2,7 +2,7 @@ import React from 'react';
 
 import List from './List';
 
-export default function RestaurantViewPanel({ restaurant: { name, address, menuItems } }) {
+export default function Restaurant({ restaurant: { name, address, menuItems } }) {
   return (
     <div>
       <h3>{name}</h3>

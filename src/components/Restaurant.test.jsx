@@ -2,13 +2,13 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import RestaurantViewPanel from './RestaurantViewPanel';
+import Restaurant from './Restaurant';
 
 import RESTAURANT from '../../fixtures/restaurant';
 
-describe('<RestaurantViewPanel />', () => {
+describe('<Restaurant />', () => {
   const renderComponent = (restaurant) => render((
-    <RestaurantViewPanel restaurant={restaurant} />
+    <Restaurant restaurant={restaurant} />
   ));
 
   context('with restaurant', () => {
