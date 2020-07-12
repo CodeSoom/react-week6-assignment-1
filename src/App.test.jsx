@@ -2,33 +2,88 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { MemoryRouter } from 'react-router-dom';
+
+import { useSelector, useDispatch } from 'react-redux';
 
 import App from './App';
 
-test('App', () => {
-  const dispatch = jest.fn();
+import restaurants from '../fixtures/restaurants';
+import restaurant from '../fixtures/restaurant';
 
-  useDispatch.mockImplementation(() => dispatch);
+function renderApp({ path }) {
+  return render(
+    <MemoryRouter initialEntries={[path]}>
+      <App />
+    </MemoryRouter>,
+  );
+}
 
-  useSelector.mockImplementation((selector) => selector({
-    regions: [
-      { id: 1, name: '서울' },
-    ],
-    categories: [
-      { id: 1, name: '한식' },
-    ],
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
-  }));
+describe('App with router', () => {
+  context('with path /', () => {
+    it('shows header and page name', () => {
+      const { container } = renderApp({ path: '/' });
 
-  const { queryByText } = render((
-    <App />
-  ));
+      expect(container).toHaveTextContent('헤더');
+      expect(container).toHaveTextContent('Home');
+    });
+  });
 
-  expect(dispatch).toBeCalled();
+  context('with path /about', () => {
+    it('shows header and page name', () => {
+      const { container } = renderApp({ path: '/about' });
 
-  expect(queryByText('서울')).not.toBeNull();
-  expect(queryByText('한식')).not.toBeNull();
+      expect(container).toHaveTextContent('헤더');
+      expect(container).toHaveTextContent('About');
+    });
+  });
+
+  context('with path /restaurants', () => {
+    const dispatch = jest.fn();
+
+    beforeEach(() => {
+      useSelector.mockImplementation((selector) => selector({
+        regions: [],
+        categories: [],
+        restaurants,
+      }));
+      useDispatch.mockImplementation(() => dispatch);
+    });
+
+    it('shows header and page name', () => {
+      const { container } = renderApp({ path: '/restaurants' });
+
+      expect(container).toHaveTextContent('헤더');
+      expect(container).toHaveTextContent('Restaurants');
+    });
+  });
+
+  context('with path /restaurants/:restaurantId', () => {
+    const dispatch = jest.fn();
+
+    beforeEach(() => {
+      useSelector.mockImplementation((selector) => selector({
+        regions: [],
+        categories: [],
+        restaurants,
+        restaurant,
+      }));
+      useDispatch.mockImplementation(() => dispatch);
+    });
+
+    it('shows header and page name', () => {
+      const { container } = renderApp({ path: '/restaurants/1' });
+
+      expect(container).toHaveTextContent('헤더');
+      expect(container).toHaveTextContent('Restaurant1');
+    });
+  });
+
+  context('with invalid path', () => {
+    it('shows Not Found', () => {
+      const { container } = renderApp({ path: '/any_not_exist_url' });
+
+      expect(container).toHaveTextContent('404 Not Found');
+    });
+  });
 });
