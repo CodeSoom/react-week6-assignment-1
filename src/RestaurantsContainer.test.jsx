@@ -1,21 +1,35 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { MemoryRouter } from 'react-router-dom';
 
 import RestaurantsContainer from './RestaurantsContainer';
 
-test('RestaurantsContainer', () => {
-  useSelector.mockImplementation((selector) => selector({
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
-  }));
+describe('RestaurantsContainer', () => {
+  it('레스토랑 목록이 표시되고 클릭할 수 있다.', () => {
+    const dispatch = jest.fn();
 
-  const { container } = render((
-    <RestaurantsContainer />
-  ));
+    useDispatch.mockImplementation(() => dispatch);
 
-  expect(container).toHaveTextContent('마법사주방');
+    useSelector.mockImplementation((selector) => selector({
+      restaurants: [
+        { id: 1, name: '마법사주방' },
+      ],
+    }));
+
+    const { container, getByText } = render((
+      <MemoryRouter>
+        <RestaurantsContainer />
+      </MemoryRouter>
+    ));
+
+    expect(container).toHaveTextContent('마법사주방');
+
+    fireEvent.click(getByText('마법사주방'));
+
+    expect(dispatch).toBeCalled();
+  });
 });

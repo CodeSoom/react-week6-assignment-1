@@ -4,31 +4,71 @@ import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import { MemoryRouter } from 'react-router-dom';
+
 import App from './App';
 
-test('App', () => {
+describe('App', () => {
   const dispatch = jest.fn();
 
-  useDispatch.mockImplementation(() => dispatch);
+  beforeEach(() => {
+    useDispatch.mockImplementation(() => dispatch);
 
-  useSelector.mockImplementation((selector) => selector({
-    regions: [
-      { id: 1, name: '서울' },
-    ],
-    categories: [
-      { id: 1, name: '한식' },
-    ],
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
-  }));
+    useSelector.mockImplementation((selector) => selector({
+      regions: [
+        { id: 1, name: '서울' },
+      ],
+      categories: [],
+      restaurants: [],
+    }));
+  });
 
-  const { queryByText } = render((
-    <App />
-  ));
+  function renderApp({ path }) {
+    return render((
+      <MemoryRouter initialEntries={[path]}>
+        <App />
+      </MemoryRouter>
+    ));
+  }
 
-  expect(dispatch).toBeCalled();
+  context('경로가 / 일떄', () => {
+    it('HomePage가 렌더된다.', () => {
+      const { container } = renderApp({ path: '/' });
 
-  expect(queryByText('서울')).not.toBeNull();
-  expect(queryByText('한식')).not.toBeNull();
+      expect(container).toHaveTextContent('Home');
+      expect(container).toHaveTextContent('헤더');
+    });
+  });
+
+  context('경로가 /about 일떄', () => {
+    it('AboutPage가 렌더된다.', () => {
+      const { container } = renderApp({ path: '/about' });
+
+      expect(container).toHaveTextContent('이 홈페이지에 대하여');
+    });
+  });
+
+  context('경로가 /restaurants 일떄', () => {
+    it('RestaurantsPage가 렌더된다.', () => {
+      const { container } = renderApp({ path: '/restaurants' });
+
+      expect(container).toHaveTextContent('서울');
+    });
+  });
+
+  context('경로가 /restaurant/id 일떄', () => {
+    it('RestaurantDetailPage가 렌더된다.', () => {
+      const { container } = renderApp({ path: '/restaurants/1' });
+
+      expect(container).toHaveTextContent('Loading...');
+    });
+  });
+
+  context('경로가 잘못됐을 때', () => {
+    it('NotFoundPage가 렌더된다.', () => {
+      const { container } = renderApp({ path: '/xxx' });
+
+      expect(container).toHaveTextContent('404 Not Found');
+    });
+  });
 });
