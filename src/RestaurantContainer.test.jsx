@@ -33,7 +33,7 @@ describe('RestaurantContainer', () => {
     });
   });
 
-  context('when is loading', () => {
+  context('when loading', () => {
     beforeEach(() => {
       useSelector.mockImplementation((selector) => selector({
         restaurant,
