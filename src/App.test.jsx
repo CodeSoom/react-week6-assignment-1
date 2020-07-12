@@ -33,32 +33,32 @@ describe('App', () => {
   });
 
   describe('with any page', () => {
-    it('have Header', () => {
+    it('has header', () => {
       const { queryByText } = renderComponent({ path: '/' });
       expect(queryByText('헤더')).not.toBeNull();
     });
   });
 
   describe('with path /', () => {
-    it('return Home Page', () => {
+    it('renders Home Page', () => {
       renderComponent({ path: '/' });
     });
   });
 
   describe('with path /about', () => {
-    it('return About Page', () => {
+    it('renders About Page', () => {
       renderComponent({ path: '/about' });
     });
   });
 
   describe('with path /restaurants', () => {
-    it('return Restaurant List Page', () => {
+    it('renders Restaurant List Page', () => {
       renderComponent({ path: '/restaurants' });
     });
   });
 
   describe('with path /restaurant/1', () => {
-    it('return Restaurant View Page', () => {
+    it('renders Restaurant View Page', () => {
       renderComponent({ path: '/restaurants/1' });
     });
   });
