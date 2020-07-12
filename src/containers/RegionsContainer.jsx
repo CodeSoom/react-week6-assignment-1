@@ -26,7 +26,7 @@ export default function RegionsContainer() {
     <ButtonList
       items={regions}
       selectedItem={selectedRegion}
-      handleClickItem={handleClickRegion}
+      onClick={handleClickRegion}
     />
   );
 }

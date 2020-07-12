@@ -26,7 +26,7 @@ export default function CategoriesContainer() {
     <ButtonList
       items={categories}
       selectedItem={selectedCategory}
-      handleClickItem={handleClickCategory}
+      onClick={handleClickCategory}
     />
   );
 }
