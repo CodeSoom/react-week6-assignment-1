@@ -89,7 +89,7 @@ describe('actions', () => {
   describe('getRestaurantById', () => {
     beforeEach(() => {
       store = mockStore({
-        restaurant: {},
+        restaurant: null,
       });
     });
 
