@@ -7,13 +7,13 @@ import Restaurant from './Restaurant';
 import RESTAURANT from '../../fixtures/restaurant';
 
 describe('<Restaurant />', () => {
-  const renderComponent = (restaurant) => render((
+  const renderComponent = ({ restaurant }) => render((
     <Restaurant restaurant={restaurant} />
   ));
 
   context('with restaurant', () => {
-    it('display view-panel', () => {
-      const { container } = renderComponent(RESTAURANT);
+    it('display Restaurant Info', () => {
+      const { container } = renderComponent({ restaurant: RESTAURANT });
       expect(container).toHaveTextContent(RESTAURANT.name);
       expect(container).toHaveTextContent(RESTAURANT.address);
       expect(container).toHaveTextContent(RESTAURANT.menuItems[0].name);
@@ -21,11 +21,9 @@ describe('<Restaurant />', () => {
   });
 
   context('without restaurant', () => {
-    it('display empty view-panel', () => {
-      const { container } = renderComponent({});
-      expect(container).not.toHaveTextContent(RESTAURANT.name);
-      expect(container).not.toHaveTextContent(RESTAURANT.address);
-      expect(container).not.toHaveTextContent(RESTAURANT.menuItems[0].name);
+    it('display No Restaurant Info', () => {
+      const { container } = renderComponent({ restaurant: undefined });
+      expect(container).toHaveTextContent('no-restaurant-info');
     });
   });
 });
