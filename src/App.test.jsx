@@ -1,34 +1,81 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
-
+import { render, fireEvent } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+
+import CATEGORIES from '../fixtures/categories';
+import REGIONS from '../fixtures/regions';
+import RESTAURANTS from '../fixtures/restaurants';
 
 import App from './App';
 
-test('App', () => {
+describe('App', () => {
   const dispatch = jest.fn();
 
-  useDispatch.mockImplementation(() => dispatch);
+  function renderApp({ path }) {
+    return render((
+      <MemoryRouter initialEntries={[path]}>
+        <App />
+      </MemoryRouter>
+    ));
+  }
 
-  useSelector.mockImplementation((selector) => selector({
-    regions: [
-      { id: 1, name: '서울' },
-    ],
-    categories: [
-      { id: 1, name: '한식' },
-    ],
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
-  }));
+  beforeEach(() => {
+    dispatch.mockClear();
+    useDispatch.mockImplementation(() => dispatch);
+    useSelector.mockImplementation((selector) => selector({
+      regions: REGIONS,
+      categories: CATEGORIES,
+      restaurants: RESTAURANTS,
+    }));
+  });
 
-  const { queryByText } = render((
-    <App />
-  ));
+  context('헤더를 클릭하면', () => {
+    it('메인 페이지로 돌아간다.', () => {
+      const { getByText } = renderApp({ path: '/' });
+      fireEvent.click(getByText('헤더'));
+      expect(getByText('Home')).toBeInTheDocument();
+    });
+  });
 
-  expect(dispatch).toBeCalled();
+  context('/에 접속하면', () => {
+    it('기본 메인 페이지가 나온다.', () => {
+      const { getByText } = renderApp({ path: '/' });
 
-  expect(queryByText('서울')).not.toBeNull();
-  expect(queryByText('한식')).not.toBeNull();
+      expect(getByText('Home')).toBeInTheDocument();
+      expect(getByText('About')).toBeInTheDocument();
+      expect(getByText('Restaurants')).toBeInTheDocument();
+    });
+  });
+
+  context('/about에 접속하면', () => {
+    it('About 페이지로 들어간다.', () => {
+      const { getByText } = renderApp({ path: '/about' });
+
+      expect(getByText('About')).toBeInTheDocument();
+      expect(getByText('About 페이지 입니다.')).toBeInTheDocument();
+    });
+  });
+
+  context('/restaurants에 접속하면', () => {
+    it('레스토랑 페이지로 들어간다.', () => {
+      const { getByText } = renderApp({ path: '/restaurants' });
+
+      REGIONS.forEach(({ name }) => {
+        expect(getByText(name)).toBeInTheDocument();
+      });
+
+      CATEGORIES.forEach(({ name }) => {
+        expect(getByText(name)).toBeInTheDocument();
+      });
+    });
+  });
+
+  context('잘못된 경로에 들어가면', () => {
+    it('Not found 페이지가 나온다.', () => {
+      const { container } = renderApp({ path: '/some/unknow' });
+      expect(container).toHaveTextContent('404 Not Found');
+    });
+  });
 });

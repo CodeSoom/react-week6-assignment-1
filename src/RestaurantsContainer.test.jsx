@@ -4,18 +4,21 @@ import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
+import { MemoryRouter } from 'react-router-dom';
 import RestaurantsContainer from './RestaurantsContainer';
+
+import RESTAURANTS from '../fixtures/restaurants';
 
 test('RestaurantsContainer', () => {
   useSelector.mockImplementation((selector) => selector({
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
+    restaurants: RESTAURANTS,
   }));
 
   const { container } = render((
-    <RestaurantsContainer />
+    <MemoryRouter>
+      <RestaurantsContainer />
+    </MemoryRouter>
   ));
 
-  expect(container).toHaveTextContent('마법사주방');
+  expect(container).toHaveTextContent(RESTAURANTS[0].name);
 });
