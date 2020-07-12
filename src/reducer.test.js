@@ -44,28 +44,24 @@ describe('reducer', () => {
   describe('setRegions', () => {
     it('changes regions', () => {
       const initialState = {
-        regions: [],
+        regions: REGIONS,
       };
 
-      const regions = [REGIONS[0]];
+      const state = reducer(initialState, setRegions(REGIONS));
 
-      const state = reducer(initialState, setRegions(regions));
-
-      expect(state.regions).toHaveLength(1);
+      expect(state.regions).toHaveLength(2);
     });
   });
 
   describe('setCategories', () => {
     it('changes categories', () => {
       const initialState = {
-        categories: [],
+        categories: CATEGORIES,
       };
 
-      const categories = [CATEGORIES[0]];
+      const state = reducer(initialState, setCategories(CATEGORIES));
 
-      const state = reducer(initialState, setCategories(categories));
-
-      expect(state.categories).toHaveLength(1);
+      expect(state.categories).toHaveLength(2);
     });
   });
 
@@ -84,21 +80,19 @@ describe('reducer', () => {
   describe('setRestaurants', () => {
     it('changes restaurants', () => {
       const initialState = {
-        restaurants: [],
+        restaurants: RESTAURANTS,
       };
 
-      const restaurants = [RESTAURANTS[0]];
+      const state = reducer(initialState, setRestaurants(RESTAURANTS));
 
-      const state = reducer(initialState, setRestaurants(restaurants));
-
-      expect(state.restaurants).toHaveLength(1);
+      expect(state.restaurants).toHaveLength(2);
     });
   });
 
   describe('selectRegion', () => {
     it('changes selected region', () => {
       const initialState = {
-        regions: [REGIONS[0]],
+        regions: REGIONS,
         selectedRegion: null,
       };
 
@@ -111,7 +105,7 @@ describe('reducer', () => {
   describe('selectCategory', () => {
     it('changes selected category', () => {
       const initialState = {
-        categories: [CATEGORIES[0]],
+        categories: CATEGORIES,
         selectedCategory: null,
       };
 
