@@ -22,6 +22,7 @@ import {
 
 import HomePage from './HomePage';
 import AboutPage from './AboutPage';
+import RestaurantsPage from './RestaurantsPage';
 
 export default function App() {
   return (
@@ -30,6 +31,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/about" component={AboutPage} />
+        <Route path="/restaurants" component={RestaurantsPage} />
       </Switch>
     </div>
   );
