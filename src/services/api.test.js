@@ -1,45 +1,50 @@
 import {
-  fetchRegions, fetchCategories, fetchRestaurants, fetchRestaurant,
+  fetchRegions,
+  fetchCategories,
+  fetchRestaurants,
+  fetchRestaurant,
 } from './api';
 
-import REGIONS from '../../fixtures/regions';
-import CATEGORIES from '../../fixtures/categories';
-import RESTAURANTS from '../../fixtures/restaurants';
+import regionsMockData from '../../fixtures/regions';
+import categoriesMockData from '../../fixtures/categories';
+import restaurantsMockData from '../../fixtures/restaurants';
 
 describe('api', () => {
   const mockFetch = (data) => {
     global.fetch = jest.fn().mockResolvedValue({
-      async json() { return data; },
+      async json() {
+        return data;
+      },
     });
   };
 
   describe('fetchRegions', () => {
     beforeEach(() => {
-      mockFetch(REGIONS);
+      mockFetch(regionsMockData);
     });
 
     it('returns regions', async () => {
       const regions = await fetchRegions();
 
-      expect(regions).toEqual(REGIONS);
+      expect(regions).toEqual(regionsMockData);
     });
   });
 
   describe('fetchCategories', () => {
     beforeEach(() => {
-      mockFetch(CATEGORIES);
+      mockFetch(categoriesMockData);
     });
 
     it('returns categories', async () => {
       const categories = await fetchCategories();
 
-      expect(categories).toEqual(CATEGORIES);
+      expect(categories).toEqual(categoriesMockData);
     });
   });
 
   describe('fetchRestaurants', () => {
     beforeEach(() => {
-      mockFetch(RESTAURANTS);
+      mockFetch(restaurantsMockData);
     });
 
     it('returns restaurants', async () => {
@@ -48,13 +53,13 @@ describe('api', () => {
         categoryId: 1,
       });
 
-      expect(restaurants).toEqual(RESTAURANTS);
+      expect(restaurants).toEqual(restaurantsMockData);
     });
   });
 
   describe('fetchRestaurant', () => {
     beforeEach(() => {
-      mockFetch(RESTAURANTS);
+      mockFetch(restaurantsMockData);
     });
 
     it('returns restaurants', async () => {
@@ -62,7 +67,7 @@ describe('api', () => {
         restaurantId: 1,
       });
 
-      expect(restaurant).toEqual(RESTAURANTS);
+      expect(restaurant).toEqual(restaurantsMockData);
     });
   });
 });
