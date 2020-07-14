@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, withRouter } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import RestaurantDetail from './RestaurantDetail';
 
@@ -26,4 +26,4 @@ function RestaurantsDetailPage({ params }) {
   );
 }
 
-export default withRouter(RestaurantsDetailPage);
+export default RestaurantsDetailPage;
