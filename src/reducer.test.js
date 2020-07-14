@@ -6,7 +6,6 @@ import {
   setRestaurants,
   selectRegion,
   selectCategory,
-  selectedRestaurantId,
   setRestaurant,
 } from './actions';
 
@@ -68,10 +67,6 @@ describe('reducer', () => {
       const initialState = {
         restaurants: [],
       };
-
-      const restaurants = [
-        { id: 1, name: '마법사주방' },
-      ];
 
       const state = reducer(initialState, setRestaurants(restaurants));
 
