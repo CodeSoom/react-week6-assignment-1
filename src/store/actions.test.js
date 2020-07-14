@@ -8,12 +8,14 @@ import {
   setCategories,
   loadRestaurants,
   setRestaurants,
+  getRestaurantById,
+  setRestaurant,
 } from './actions';
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 
-jest.mock('./services/api');
+jest.mock('../services/api');
 
 describe('actions', () => {
   let store;
@@ -76,6 +78,38 @@ describe('actions', () => {
 
       it('does\'nt run any actions', async () => {
         await store.dispatch(loadRestaurants());
+
+        const actions = store.getActions();
+
+        expect(actions).toHaveLength(0);
+      });
+    });
+  });
+
+  describe('getRestaurantById', () => {
+    beforeEach(() => {
+      store = mockStore({
+        restaurant: null,
+      });
+    });
+
+    context('with restaurantId', () => {
+      const restaurantId = 1;
+
+      it('runs setRestaurant', async () => {
+        await store.dispatch(getRestaurantById(restaurantId));
+
+        const actions = store.getActions();
+
+        expect(actions[0]).toEqual(setRestaurant({}));
+      });
+    });
+
+    context('with null', () => {
+      const restaurantId = null;
+
+      it('does\'nt run any actions', async () => {
+        await store.dispatch(getRestaurantById(restaurantId));
 
         const actions = store.getActions();
 
