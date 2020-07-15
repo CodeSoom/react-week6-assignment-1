@@ -69,12 +69,6 @@ describe('App', () => {
     });
   });
 
-  context('with path /restaurant', () => {
-    it('renders Not Found page', () => {
-      renderApp({ path: '/restaurant' });
-    });
-  });
-
   context('with invalid path', () => {
     it('renders Not Found page', () => {
       const { container } = renderApp({ path: '/xxx' });

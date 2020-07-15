@@ -1,15 +1,24 @@
 import React from 'react';
 
+import { useSelector, useDispatch } from 'react-redux';
+
 import { render } from '@testing-library/react';
 
 import RestaurantPage from './RestaurantPage';
 
-describe('RestaurantPage', () => {
-  it('render Home page', () => {
-    const { container } = render((
-      <RestaurantPage />
-    ));
+jest.mock('react-redux');
+jest.mock('./services/api');
 
-    expect(container).toHaveTextContent('상세페이지입니다.');
-  });
+test('RestaurantPage', () => {
+  const dispatch = jest.fn();
+  useDispatch.mockImplementation(() => dispatch);
+  useSelector.mockImplementation((selector) => selector({
+    restaurant: {},
+  }));
+
+  render((
+    <RestaurantPage />
+  ));
+
+  expect(dispatch).toBeCalledTimes(1);
 });

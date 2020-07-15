@@ -1,9 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-export default function RestaurantPage() {
+import { useDispatch } from 'react-redux';
+
+import RestaurantContainer from './RestaurantContainer';
+
+import {
+  loadRestaurant,
+} from './actions';
+
+export default function RestaurantPage({ location }) {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadRestaurant({ restaurantId: location && location.search.split('=')[1] * 1 }));
+  }, []);
+
   return (
     <div>
-      <h2>상세페이지입니다.</h2>
+      <RestaurantContainer />
     </div>
   );
 }
