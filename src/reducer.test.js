@@ -15,7 +15,7 @@ describe('reducer', () => {
       regions: [],
       categories: [],
       restaurants: [],
-      restaurant: {},
+      restaurant: null,
       selectedRegion: null,
       selectedCategory: null,
     };
@@ -107,7 +107,8 @@ describe('reducer', () => {
 
       const state = reducer(initialState, setRestaurant(restaurant));
 
-      expect(state.restaurant).not.toBeNull();
+      expect(state.restaurant.id).toBe(1);
+      expect(state.restaurant.name).toBe('양천주가');
     });
   });
 

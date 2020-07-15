@@ -1,23 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { get } from './utils';
 
-export default function RestaurantContainer() {
+import RestaurantDetail from './RestaurantDetail';
+
+import {
+  loadRestaurant,
+} from './actions';
+
+export default function RestaurantContainer({ restaurantId }) {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadRestaurant({ restaurantId }));
+  }, []);
   const restaurant = useSelector(get('restaurant'));
+
+  if (!restaurant) {
+    return <p>Loading....</p>;
+  }
+
   return (
-    <div>
-      <h2>{restaurant.name && restaurant.name}</h2>
-      <h3>{restaurant.address && restaurant.address}</h3>
-      <h2>메뉴</h2>
-      <ul>
-        {restaurant.menuItems && restaurant.menuItems.map((menuItem) => (
-          <li key={menuItem.id}>
-            {menuItem.name}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <RestaurantDetail restaurant={restaurant} />
   );
 }
