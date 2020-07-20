@@ -83,32 +83,15 @@ describe('reducer', () => {
 
       const restaurant = {
         id: 1,
-        categoryId: 1,
         name: '양천주가',
-        address: '서울 강남구e',
-        menuItems: [
-          {
-            id: 16,
-            restaurantId: 1,
-            name: '탕수육',
-          },
-        ],
-        reviews: [
-          {
-            id: 1,
-            restaurantId: 1,
-            name: '테스터',
-            score: 5,
-            description: '훌륭하다 훌륭하다 지구인놈들',
-          },
-        ],
-        information: '양천주가 in 서울 강남구e',
       };
 
       const state = reducer(initialState, setRestaurant(restaurant));
 
-      expect(state.restaurant.id).toBe(1);
-      expect(state.restaurant.name).toBe('양천주가');
+      expect(state.restaurant).toEqual({
+        id: 1,
+        name: '양천주가',
+      });
     });
   });
 

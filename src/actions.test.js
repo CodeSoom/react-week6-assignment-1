@@ -37,15 +37,16 @@ describe('actions', () => {
 
   describe('loadRestaurant', () => {
     beforeEach(() => {
-      store = mockStore(null);
+      store = mockStore({});
     });
 
     it('runs loadRestaurant', async () => {
-      await store.dispatch(loadRestaurant(1));
+      await store.dispatch(loadRestaurant({ restaurantId: 1 }));
 
       const actions = store.getActions();
 
       expect(actions[0]).toEqual(setRestaurant(null));
+      expect(actions[1]).toEqual(setRestaurant({ }));
     });
   });
 

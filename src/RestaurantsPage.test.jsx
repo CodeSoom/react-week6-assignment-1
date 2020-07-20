@@ -4,12 +4,18 @@ import { MemoryRouter } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import RestaurantsPage from './RestaurantsPage';
 
-jest.mock('react-redux');
-jest.mock('./services/api');
+const mockPush = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useHistory() {
+    return { push: mockPush };
+  },
+}));
 
 describe('RestaurantsPage', () => {
   const dispatch = jest.fn();
@@ -48,5 +54,13 @@ describe('RestaurantsPage', () => {
     const { container } = renderRestaurantsPage();
 
     expect(container.innerHTML).toContain('<a href="');
+  });
+
+  it('lick restaurant', () => {
+    const { getByText } = renderRestaurantsPage();
+
+    fireEvent.click(getByText('한신포차'));
+
+    expect(mockPush).toBeCalledWith('/restaurants/1');
   });
 });
