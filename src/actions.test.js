@@ -7,7 +7,9 @@ import {
   setRegions,
   setCategories,
   loadRestaurants,
+  loadRestaurant,
   setRestaurants,
+  setRestaurant,
 } from './actions';
 
 const middlewares = [thunk];
@@ -30,6 +32,21 @@ describe('actions', () => {
 
       expect(actions[0]).toEqual(setRegions([]));
       expect(actions[1]).toEqual(setCategories([]));
+    });
+  });
+
+  describe('loadRestaurant', () => {
+    beforeEach(() => {
+      store = mockStore({});
+    });
+
+    it('runs loadRestaurant', async () => {
+      await store.dispatch(loadRestaurant({ restaurantId: 1 }));
+
+      const actions = store.getActions();
+
+      expect(actions[0]).toEqual(setRestaurant(null));
+      expect(actions[1]).toEqual(setRestaurant({ }));
     });
   });
 
