@@ -92,3 +92,38 @@ npm run coverage
 ```bash
 npm run test:e2e
 ```
+
+### Todo
+- [X] App의 Restaurants 관련 관심사 분리 (=> RestaurantsPage)
+- [X] `AboutPage` 컴포넌트 구현
+- [X] `HomePage` 컴포넌트 구현
+- [X] App 컴포넌트에 라우팅 적용
+- [X] `RestaurantDetailPage` 컴포넌트 구현
+- [X] `RestaurantDetailContainer` 컴포넌트 구현
+- [X] `RestaurantDetail` 컴포넌트 구현
+- [X] reducer에서 setRestaurant 구현
+- [X] actions에서 loadRestaurant 구현
+- [X] `Restaurants` 컴포넌트에 Link 렌더링 적용
+
+### 의문점
+1. 현상
+- 'react-router-dom' 모듈의 useParams를 모킹 처리하면 'undefined'가 발생함
+
+2. 추정 원인
+- 로그를 찍었을 때 jest.mock('react-router-dom')을 통해 모킹 시 useParams가 존재하지 않는다.
+  - 모킹하지 않은 실제 객체를 불러오면 useParams가 존재한다.
+- 그 외에도 [getter] 타입으로 분류된 MemoryRouter 등의 객체는 사라지는 것을 확인.
+
+3. 해결
+- jest.mock의 factory 인자를 전달해서 해결
+- [공식 문서 참조](https://jestjs.io/docs/en/jest-object#jestmockmodulename-factory-options)
+
+4. 왜 이러는지 정확한 원인은 모름..
+
+### 1차 피드백
+- [X] context 관련 테스트는 when, with, without 중 적합한 문구로 시작하자
+- [X] 테스트 케이스는 완결된 문장으로 적자
+- [X] fixture는 상수로 표현하지 않는다.
+- [X] DOM을 반드시 얻어서 처리해야될 때만 getBy~, queryBy~ 를 사용한다.
+- [X] RestaurantDetailPage에서 useParams를 걷어낸다.
+- [X] Link 클릭 이벤트 관련 테스트는 E2E에 맡긴다.
