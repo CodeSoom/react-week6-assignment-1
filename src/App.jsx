@@ -10,6 +10,7 @@ export default function App() {
     <div>
       <Switch>
         <Route exact path="/" component={HomePage} />
+        <Route path="/restaurants" component={RestaurantsPage} />
       </Switch>
     </div>
   );
