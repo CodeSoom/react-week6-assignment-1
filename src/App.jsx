@@ -1,5 +1,6 @@
 import React from 'react';
 
+import ErrorPage from './ErrorPage';
 import HomePage from './HomePage';
 import RestaurantsPage from './RestaurantsPage';
 
@@ -9,7 +10,7 @@ export default function App() {
   const Page = {
     '/': HomePage,
     '/restaurants': RestaurantsPage,
-  }[pathname];
+  }[pathname] || ErrorPage;
 
   return (
     <Page />
