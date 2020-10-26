@@ -23,11 +23,15 @@ describe('App', () => {
     ],
   }));
 
+  const mockLocation = (pathname) => {
+    delete window.location;
+    window.location = new URL(`..${pathname}`, 'https://www.example.com');
+  };
+
   describe('routes pages through pathname', () => {
     context('when pathname is /restaurants', () => {
       beforeEach(() => {
-        delete window.location;
-        window.location = new URL('../restaurants', 'https://www.example.com');
+        mockLocation('/restaurants');
       });
 
       it('shows restaurants page', () => {
@@ -42,8 +46,7 @@ describe('App', () => {
 
     context('when pathname is /', () => {
       beforeEach(() => {
-        delete window.location;
-        window.location = new URL('../', 'https://www.example.com');
+        mockLocation('/');
       });
 
       it('shows home page', () => {
