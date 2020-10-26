@@ -4,6 +4,8 @@ import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import { MemoryRouter } from 'react-router-dom';
+
 import App from './App';
 
 test('App', () => {
@@ -24,11 +26,15 @@ test('App', () => {
   }));
 
   const { queryByText } = render((
-    <App />
+    <MemoryRouter>
+      <App />
+    </MemoryRouter>
   ));
 
   expect(dispatch).toBeCalled();
 
   expect(queryByText('서울')).not.toBeNull();
   expect(queryByText('한식')).not.toBeNull();
+
+  expect(queryByText('헤더')).not.toBeNull();
 });
