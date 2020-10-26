@@ -28,7 +28,7 @@ describe('App', () => {
       delete window.location;
       window.location = new URL('../restaurants', 'https://www.example.com');
 
-      it('shows regions and categories', () => {
+      it('shows restaurants page', () => {
         const { queryByText } = render((
           <App />
         ));
