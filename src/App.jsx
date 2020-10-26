@@ -20,6 +20,7 @@ import {
 // TODO: "/About" 링크에 가면 "About 페이지입니다." 텍스트가 보인다.
 // TODO: "/Restaurants" 링크에 가면 지역, 분류 버튼들이 있으며 각각 클릭 시 하단에 음식점 링크들이 나타난다.
 // TODO: "/Restaurants/:id" 링크에서는 음식점의 정보가 나온다.
+// TODO: 등록된 링크가 아니면 404 페이지를 띄워준다.
 
 export default function App() {
   const dispatch = useDispatch();
