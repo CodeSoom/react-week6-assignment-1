@@ -24,6 +24,7 @@ export default function App() {
 
   return (
     <div>
+      헤더
       <RegionsContainer />
       <CategoriesContainer />
       <RestaurantsContainer />
