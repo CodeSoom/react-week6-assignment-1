@@ -58,4 +58,18 @@ describe('App', () => {
       });
     });
   });
+
+  context('when path doesnt exist', () => {
+    beforeEach(() => {
+      mockLocation('/404');
+    });
+
+    it('shows error message', () => {
+      const { queryByText } = render((
+        <App />
+      ));
+
+      expect(queryByText('존재하지 않는 페이지 입니다')).not.toBeNull();
+    });
+  });
 });
