@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
-test('App', () => {
+describe('App', () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
@@ -23,12 +23,21 @@ test('App', () => {
     ],
   }));
 
-  const { queryByText } = render((
-    <App />
-  ));
+  describe('routes pages through pathname', () => {
+    context('when pathname is /restaurants', () => {
+      delete window.location;
+      window.location = new URL('../restaurants', 'https://www.example.com');
 
-  expect(dispatch).toBeCalled();
+      it('shows regions and categories', () => {
+        const { queryByText } = render((
+          <App />
+        ));
 
-  expect(queryByText('서울')).not.toBeNull();
-  expect(queryByText('한식')).not.toBeNull();
+        expect(dispatch).toBeCalled();
+
+        expect(queryByText('서울')).not.toBeNull();
+        expect(queryByText('한식')).not.toBeNull();
+      });
+    });
+  });
 });
