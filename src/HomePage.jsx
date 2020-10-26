@@ -4,8 +4,10 @@ export default function HomePage() {
   return (
     <div>
       <h2>Home</h2>
-      About
-      Restaurants
+      <ul>
+        <li>About</li>
+        <li>Restaurants</li>
+      </ul>
     </div>
   );
 }
