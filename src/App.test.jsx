@@ -44,4 +44,16 @@ describe('App', () => {
       expect(container).toHaveTextContent('서울');
     });
   });
+
+  context('with path /about', () => {
+    it('renders AboutPage', () => {
+      const { container } = render((
+        <MemoryRouter initialEntries={['/about']}>
+          <App />
+        </MemoryRouter>
+      ));
+
+      expect(container).toHaveTextContent('이 페이지는 소개 페이지 입니다.');
+    });
+  });
 });
