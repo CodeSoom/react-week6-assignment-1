@@ -15,13 +15,14 @@ describe('App', () => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
-      regions: [],
+      regions: [{ id: 1, name: '서울' }],
       categories: [],
       restaurants: [],
     }));
   });
+
   context('with path /', () => {
-    it('render HomePage', () => {
+    it('renders HomePage', () => {
       const { container } = render((
         <MemoryRouter initialEntries={['/']}>
           <App />
@@ -29,6 +30,18 @@ describe('App', () => {
       ));
 
       expect(container).toHaveTextContent('Home');
+    });
+  });
+
+  context('with path /restaurants', () => {
+    it('renders RestaurantsPage', () => {
+      const { container } = render((
+        <MemoryRouter initialEntries={['/restaurants']}>
+          <App />
+        </MemoryRouter>
+      ));
+
+      expect(container).toHaveTextContent('서울');
     });
   });
 });

@@ -8,7 +8,6 @@ import HomePage from './HomePage';
 export default function App() {
   return (
     <div>
-      <RestaurantsPage />
       <Switch>
         <Route exact path="/" component={HomePage} />
       </Switch>
