@@ -25,8 +25,10 @@ describe('App', () => {
 
   describe('routes pages through pathname', () => {
     context('when pathname is /restaurants', () => {
-      delete window.location;
-      window.location = new URL('../restaurants', 'https://www.example.com');
+      beforeEach(() => {
+        delete window.location;
+        window.location = new URL('../restaurants', 'https://www.example.com');
+      });
 
       it('shows restaurants page', () => {
         const { queryByText } = render((
@@ -35,6 +37,21 @@ describe('App', () => {
 
         expect(queryByText('서울')).not.toBeNull();
         expect(queryByText('한식')).not.toBeNull();
+      });
+    });
+
+    context('when pathname is /', () => {
+      beforeEach(() => {
+        delete window.location;
+        window.location = new URL('../', 'https://www.example.com');
+      });
+
+      it('shows home page', () => {
+        const { queryByText } = render((
+          <App />
+        ));
+
+        expect(queryByText('Home')).not.toBeNull();
       });
     });
   });
