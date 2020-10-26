@@ -34,4 +34,16 @@ describe('<App />', () => {
     // Then
     expect(getByText('헤더')).toBeInTheDocument();
   });
+
+  context('with path /', () => {
+    it('renders the home page', () => {
+      // When
+      const { getByRole } = render((
+        <App />
+      ));
+
+      // Then
+      expect(getByRole('heading')).toHaveTextContent('Home');
+    });
+  });
 });
