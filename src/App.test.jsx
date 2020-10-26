@@ -38,12 +38,12 @@ describe('<App />', () => {
   context('with path /', () => {
     it('renders the home page', () => {
       // When
-      const { getByRole } = render((
+      const { getByText } = render((
         <App />
       ));
 
       // Then
-      expect(getByRole('heading')).toHaveTextContent('Home');
+      expect(getByText('Home')).toBeInTheDocument();
     });
   });
 });
