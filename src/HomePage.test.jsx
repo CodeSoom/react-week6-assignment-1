@@ -8,4 +8,6 @@ test('HomePage', () => {
   const { container } = render(<HomePage />);
 
   expect(container).toHaveTextContent('Home');
+  expect(container).toHaveTextContent('About');
+  expect(container).toHaveTextContent('Restaurants');
 });
