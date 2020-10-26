@@ -7,8 +7,6 @@ import RestaurantsPage from './RestaurantsPage';
 export default function App() {
   const { location: { pathname } } = window;
 
-  console.log(window.location);
-
   const Page = {
     '/': HomePage,
     '/restaurants': RestaurantsPage,
