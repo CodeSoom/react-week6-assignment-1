@@ -89,4 +89,14 @@ describe('<App />', () => {
       expect(queryByText('메뉴')).toBeInTheDocument();
     });
   });
+
+  context('without any matched path', () => {
+    it('renders 404 not found page', () => {
+      // When
+      const { queryByText } = renderApp(['/xxx']);
+
+      // Then
+      expect(queryByText(/404/)).toBeInTheDocument();
+    });
+  });
 });
