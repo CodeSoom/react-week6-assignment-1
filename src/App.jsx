@@ -23,7 +23,7 @@ export default function App() {
   return(
     <Switch>
       <Route exact path="/" component={HomePage} />
-      <Route path='/about' component={AboutPage} />
+      <Route path='/AboutPage' component={AboutPage} />
     </Switch>
   );
   // return (

@@ -31,7 +31,7 @@ describe('App', () => {
   context('with path /about', () => {
     it('renders About', () => {
       const { container } = render((
-        <MemoryRouter initialEntries={['/about']}>
+        <MemoryRouter initialEntries={['/AboutPage']}>
           <App />
         </MemoryRouter>
       ));
