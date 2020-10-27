@@ -8,6 +8,10 @@ describe('App', () => {
   const renderApp = () => render(<App />);
 
   it('renders App', () => {
-    renderApp();
+    const { container } = renderApp();
+
+    expect(container).toHaveTextContent('Home');
+    expect(container).toHaveTextContent('About');
+    expect(container).toHaveTextContent('Restaurants');
   });
 });
