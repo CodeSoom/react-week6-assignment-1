@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { withRouter } from 'react-router-dom';
-import { loadRestaurantDetail } from './actions';
+import { loadRestaurantDetail, resetRestaurantDetail } from './actions';
 
 import RestaurantDetailContainer from './RestaurantDetailContainer';
 
@@ -13,6 +13,9 @@ function RestaurantDetailPage({ match }) {
 
   useEffect(() => {
     dispatch(loadRestaurantDetail(id));
+    return () => {
+      dispatch(resetRestaurantDetail());
+    };
   }, []);
 
   return (
