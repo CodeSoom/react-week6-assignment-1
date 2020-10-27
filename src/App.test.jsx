@@ -25,6 +25,17 @@ describe('App', () => {
         </MemoryRouter>
       ));
       expect(container).toHaveTextContent('Home');
-    })
+    });
+  });  
+
+  context('with path /about', () => {
+    it('renders About', () => {
+      const { container } = render((
+        <MemoryRouter initialEntries={['/about']}>
+          <App />
+        </MemoryRouter>
+      ));
+      expect(container).toHaveTextContent('About 페이지 입니다.');
+    })  
   });
 });
