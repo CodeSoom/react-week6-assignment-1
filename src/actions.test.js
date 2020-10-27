@@ -7,6 +7,7 @@ import {
   setRegions,
   setCategories,
   loadRestaurants,
+  loadRestaurant,
   setRestaurants,
 } from './actions';
 
@@ -80,6 +81,22 @@ describe('actions', () => {
         const actions = store.getActions();
 
         expect(actions).toHaveLength(0);
+      });
+    });
+  });
+
+  describe('loadRestaurant', () => {
+    store = mockStore({});
+
+    it('run setRestaurant', async () => {
+      await store.dispatch(loadRestaurant());
+
+      const actions = store.getActions();
+
+      expect(actions[0]).toEqual({
+        type: 'setRestaurant',
+        payload:
+         { restaurant: {} },
       });
     });
   });
