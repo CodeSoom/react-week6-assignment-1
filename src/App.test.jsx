@@ -56,4 +56,16 @@ describe('App', () => {
       expect(container).toHaveTextContent('이 페이지는 소개 페이지 입니다.');
     });
   });
+
+  context('with invalid path ', () => {
+    it('renders NotFoundPage', () => {
+      const { container } = render((
+        <MemoryRouter initialEntries={['/www']}>
+          <App />
+        </MemoryRouter>
+      ));
+
+      expect(container).toHaveTextContent('Not Found');
+    });
+  });
 });
