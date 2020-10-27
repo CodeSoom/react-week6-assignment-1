@@ -3,6 +3,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import Loading from './Loading';
+import Restaurant from './Restaurant';
 
 export default function RestaurantContainer({ restaurantId }) {
   const { restaurants } = useSelector((state) => ({
@@ -15,12 +16,9 @@ export default function RestaurantContainer({ restaurantId }) {
     );
   }
 
-  const { name, address } = restaurants.find(({ id }) => id === restaurantId);
+  const restaurant = restaurants.find(({ id }) => id === restaurantId);
 
   return (
-    <div>
-      <h2>{name}</h2>
-      <p>{address}</p>
-    </div>
+    <Restaurant restaurant={restaurant} />
   );
 }
