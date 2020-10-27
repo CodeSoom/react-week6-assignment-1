@@ -1,13 +1,6 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 
-import { get } from './utils';
-
-export default function RestaurantsDetailsPage() {
-  const restaurantDetails = useSelector(get('restaurantDetails'));
-
-  const { name, address, menuItems } = restaurantDetails;
-
+export default function RestaurantsDetailsPage({ name, address, menuItems }) {
   if (!name) {
     return <h2>Loading...</h2>;
   }
