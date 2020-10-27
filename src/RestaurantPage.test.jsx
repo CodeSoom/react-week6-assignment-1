@@ -13,27 +13,54 @@ import RestaurantPage from './RestaurantPage';
 
 jest.mock('react-redux');
 
-test('RestaurantPage', () => {
+describe('RestaurantPage', () => {
   const dispatch = jest.fn();
 
-  useDispatch.mockImplementation(() => dispatch);
+  beforeEach(() => {
+    useDispatch.mockImplementation(() => dispatch);
+  });
 
-  useSelector.mockImplementation((selector) => selector({
-    restaurants: RESTAURANTS,
-    restaurant: RESTAURANT,
-  }));
+  context('with restaurant', () => {
+    it('renders RestaurantDetail', () => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurants: RESTAURANTS,
+        restaurant: RESTAURANT,
+      }));
 
-  const match = { params: { restaurantId: '1' } };
+      const match = { params: { restaurantId: '1' } };
 
-  const { container } = render((
-    <MemoryRouter>
-      <RestaurantPage match={match} />
-    </MemoryRouter>
-  ));
+      const { container } = render((
+        <MemoryRouter>
+          <RestaurantPage match={match} />
+        </MemoryRouter>
+      ));
 
-  expect(container).toHaveTextContent('김밥제국');
+      expect(container).toHaveTextContent('김밥제국');
 
-  // New test
-  expect(dispatch).toBeCalled();
-  expect(container).toHaveTextContent(RESTAURANT.name);
+      // New test
+      expect(dispatch).toBeCalled();
+
+      expect(container).toHaveTextContent(RESTAURANT.name);
+    });
+  });
+
+  context('with restaurant', () => {
+    it('renders Loading', () => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurants: RESTAURANTS,
+        restaurant: [],
+      }));
+
+      const match = { params: { restaurantId: '1' } };
+
+      const { container } = render((
+        <MemoryRouter>
+          <RestaurantPage match={match} />
+        </MemoryRouter>
+      ));
+
+      // New test
+      expect(container).toHaveTextContent('loading ...');
+    });
+  });
 });
