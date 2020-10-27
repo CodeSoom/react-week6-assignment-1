@@ -6,17 +6,18 @@ import Loading from './Loading';
 import Restaurant from './Restaurant';
 
 export default function RestaurantContainer({ restaurantId }) {
-  const { restaurants } = useSelector((state) => ({
-    restaurants: state.restaurants,
+  const state = useSelector(({ restaurants, restaurant }) => ({
+    restaurants,
+    restaurant,
   }));
 
-  if (restaurants.length === 0) {
+  if (state.restaurants.length === 0) {
     return (
       <Loading />
     );
   }
 
-  const restaurant = restaurants.find(({ id }) => id === restaurantId);
+  const restaurant = state.restaurants.find(({ id }) => id === restaurantId);
 
   return (
     <div>
