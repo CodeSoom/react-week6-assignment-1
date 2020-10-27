@@ -1,29 +1,50 @@
 import React from 'react';
 
 import { render } from '@testing-library/react';
+import { createMemoryHistory } from 'history';
 
-import { MemoryRouter } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantDetailPage from './RestaurantDetailPage';
 import RESTAURANT_DETAIL from '../fixtures/restaurantDetail';
 
-test('RestaurantDetailPage', () => {
+describe('RestaurantDetailPage', () => {
   const dispatch = jest.fn();
 
-  useDispatch.mockImplementation(() => dispatch);
+  beforeEach(() => {
+    useDispatch.mockImplementation(() => dispatch);
 
-  useSelector.mockImplementation((selector) => selector({
-    selectedRestaurant: RESTAURANT_DETAIL,
-  }));
+    useSelector.mockImplementation((selector) => selector({
+      selectedRestaurant: RESTAURANT_DETAIL,
+    }));
+  });
 
-  const { container } = render((
-    <MemoryRouter>
-      <RestaurantDetailPage />
-    </MemoryRouter>
-  ));
+  function renderRestaurantDetailPage({ history }) {
+    return render((
+      <Router history={history}>
+        <RestaurantDetailPage />
+      </Router>
+    ));
+  }
 
-  expect(dispatch).toBeCalled();
+  it('renders restaurant detail', () => {
+    const history = createMemoryHistory();
+    history.push('/restaurant/1');
 
-  expect(container).toHaveTextContent(RESTAURANT_DETAIL.name);
+    const { container } = renderRestaurantDetailPage({ history });
+    expect(dispatch).toBeCalled();
+
+    expect(container).toHaveTextContent(RESTAURANT_DETAIL.name);
+  });
+
+  it('renders initial restaurant', () => {
+    const history = createMemoryHistory();
+    history.push('/');
+
+    renderRestaurantDetailPage({ history });
+    expect(dispatch).toBeCalledWith({
+      type: 'resetRestaurantDetail',
+    });
+  });
 });
