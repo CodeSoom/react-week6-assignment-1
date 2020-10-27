@@ -29,6 +29,11 @@ describe('<App />', () => {
       restaurants: [
         { id: 1, name: '마법사주방' },
       ],
+      restaurant: {
+        name: '',
+        address: '',
+        menuItems: [],
+      },
     }));
   });
 
@@ -70,6 +75,18 @@ describe('<App />', () => {
       expect(queryByText('Home')).not.toBeInTheDocument();
       expect(queryByText('서울')).toBeInTheDocument();
       expect(queryByText('한식')).toBeInTheDocument();
+    });
+  });
+
+  context('with path /restaurants/:restaurantId', () => {
+    it('renders the restaurant detail page', () => {
+      // When
+      const { queryByText } = renderApp(['/restaurants/1']);
+
+      // Then
+      expect(queryByText('Home')).not.toBeInTheDocument();
+      expect(queryByText(/주소/)).toBeInTheDocument();
+      expect(queryByText('메뉴')).toBeInTheDocument();
     });
   });
 });
