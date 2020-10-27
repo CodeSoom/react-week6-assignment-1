@@ -1,4 +1,4 @@
-# 레스토랑 상세 페이지 구현하기
+# 레스토랑 상세 페이지 구현하기 by EHOTO
 
 ![](https://user-images.githubusercontent.com/14071105/86525302-4d69d080-bec0-11ea-825b-18174b9c65bb.gif)
 
