@@ -3,6 +3,7 @@ import React from 'react';
 import {
   Switch,
   Route,
+  Link,
 } from 'react-router-dom';
 
 import AboutPage from './AboutPage';
@@ -17,7 +18,7 @@ export default function App() {
   return (
     <>
       <header>
-        <h1>헤더</h1>
+        <h1><Link to="/">헤더</Link></h1>
       </header>
       <Switch>
         <Route exact path="/" component={HomePage} />
