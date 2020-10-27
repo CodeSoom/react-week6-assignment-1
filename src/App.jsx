@@ -5,15 +5,17 @@ import {
   Route,
 } from 'react-router-dom';
 
-import AboutPage from './AboutPage';
+import Header from './Header';
 
 import HomePage from './HomePage';
 
+import AboutPage from './AboutPage';
+
 import RestaurantsPage from './RestaurantsPage';
 
-import NotFoundPage from './NotFoundPage';
+import RestaurantsDetailsPage from './RestaurantDetailsPage';
 
-import Header from './Header';
+import NotFoundPage from './NotFoundPage';
 
 export default function App() {
   return (
@@ -23,6 +25,7 @@ export default function App() {
         <Route exact path="/" component={HomePage} />
         <Route path="/about" component={AboutPage} />
         <Route path="/restaurants" component={RestaurantsPage} />
+        <Route path="/details" component={RestaurantsDetailsPage} />
         <Route component={NotFoundPage} />
       </Switch>
     </>
