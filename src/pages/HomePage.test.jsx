@@ -12,10 +12,10 @@ describe('HomePage', () => {
       </MemoryRouter>,
     );
 
-    const { container } = screen;
+    const { getByText } = screen;
 
-    expect(container).toHaveTextContent('Home');
-    expect(container).toHaveTextContent('About');
-    expect(container).toHaveTextContent('Restaurants');
+    expect(getByText('Home')).toBeInTheDocument();
+    expect(getByText('About')).toBeInTheDocument();
+    expect(getByText('Restaurants')).toBeInTheDocument();
   });
 });
