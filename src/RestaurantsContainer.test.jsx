@@ -33,7 +33,7 @@ describe('RestaurantsContainer', () => {
   });
 
   context('when click restaurant name', () => {
-    it('calls handleClick function', () => {
+    it('calls loadRestaurants dispatch function', () => {
       const { getByText } = render((
         <MemoryRouter>
           <RestaurantsContainer />
