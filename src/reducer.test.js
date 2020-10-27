@@ -6,6 +6,7 @@ import {
   setRestaurants,
   selectRegion,
   selectCategory,
+  selectRestaurant,
 } from './actions';
 
 describe('reducer', () => {
@@ -16,6 +17,7 @@ describe('reducer', () => {
       restaurants: [],
       selectedRegion: null,
       selectedCategory: null,
+      selectedRestaurant: null,
     };
 
     it('returns initialState', () => {
@@ -106,6 +108,21 @@ describe('reducer', () => {
         id: 1,
         name: '한식',
       });
+    });
+  });
+
+  describe('selectRestaurant', () => {
+    it('selected restaurant show detail', () => {
+      const initialState = {
+        restaurants: [
+          { id: 1, name: '양천주가' },
+        ],
+        selectedRestaurant: null,
+      };
+
+      const state = reducer(initialState, selectRestaurant(1));
+
+      expect(state.selectedRestaurant).toEqual(1);
     });
   });
 });
