@@ -1,24 +1,44 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
 import { MemoryRouter } from 'react-router-dom';
 import RestaurantsContainer from './RestaurantsContainer';
 
-test('RestaurantsContainer', () => {
-  useSelector.mockImplementation((selector) => selector({
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
-  }));
+describe('RestaurantsContainer', () => {
+  const handleClick = jest.fn();
 
-  const { container } = render((
-    <MemoryRouter>
-      <RestaurantsContainer />
-    </MemoryRouter>
-  ));
+  beforeEach(() => {
+    useSelector.mockImplementation((selector) => selector({
+      restaurants: [
+        { id: 1, name: '마법사주방' },
+      ],
+    }));
+  });
 
-  expect(container).toHaveTextContent('마법사주방');
+  it('renders restaurants', () => {
+    const { container } = render((
+      <MemoryRouter>
+        <RestaurantsContainer />
+      </MemoryRouter>
+    ));
+
+    expect(container).toHaveTextContent('마법사주방');
+  });
+
+  context('when click restaurant name', () => {
+    it('calls handleClick function', () => {
+      const { getByText } = render((
+        <MemoryRouter>
+          <RestaurantsContainer />
+        </MemoryRouter>
+      ));
+
+      fireEvent.click(getByText('마법사주방'));
+
+      expect(handleClick).toBeCalled();
+    });
+  });
 });
