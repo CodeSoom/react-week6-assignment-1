@@ -15,7 +15,11 @@ describe('reducer', () => {
       regions: [],
       categories: [],
       restaurants: [],
-      restaurantDetails: null,
+      restaurantDetails: {
+        name: '',
+        address: '',
+        menuItems: [],
+      },
       selectedRegion: null,
       selectedCategory: null,
     };
@@ -118,7 +122,7 @@ describe('reducer', () => {
       };
 
       const restaurantDetails = {
-        id: 1, name: '양천 주가', address: '부산시 해운대구', menuItems: [],
+        name: '양천 주가', address: '부산시 해운대구', menuItems: [],
       };
 
       const state = reducer(initialState, setRestaurantDetails(restaurantDetails));

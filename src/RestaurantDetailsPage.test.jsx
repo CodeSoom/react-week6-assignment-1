@@ -17,9 +17,11 @@ describe('RestaurantDetailsPage', () => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
-      restaurants: [
-        { id: 1, name: '양천 주가' },
-      ],
+      restaurantDetails: {
+        name: '양천 주가',
+        address: '서울시 강남구',
+        menuItems: [],
+      },
     }));
   });
 
