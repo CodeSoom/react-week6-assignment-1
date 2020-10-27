@@ -19,6 +19,10 @@ export default function RestaurantPage({ match: { params: { restaurantId } } }) 
 
   const restaurant = useSelector(get('restaurant'));
 
+  if (!restaurant.id) {
+    return 'loading ...';
+  }
+
   return ((
     <div>
       <RestaurantContainer restaurantId={id} />
