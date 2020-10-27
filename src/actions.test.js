@@ -9,6 +9,7 @@ import {
   loadRestaurants,
   loadRestaurant,
   setRestaurants,
+  setRestaurant,
 } from './actions';
 
 const middlewares = [thunk];
@@ -93,11 +94,7 @@ describe('actions', () => {
 
       const actions = store.getActions();
 
-      expect(actions[0]).toEqual({
-        type: 'setRestaurant',
-        payload:
-         { restaurant: {} },
-      });
+      expect(actions[0]).toEqual(setRestaurant({}));
     });
   });
 });
