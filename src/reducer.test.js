@@ -6,6 +6,7 @@ import {
   setRestaurants,
   selectRegion,
   selectCategory,
+  setRestaurantDetails,
 } from './actions';
 
 describe('reducer', () => {
@@ -106,6 +107,22 @@ describe('reducer', () => {
         id: 1,
         name: '한식',
       });
+    });
+  });
+
+  describe('setRestaurantsDetails', () => {
+    it('changes selected category', () => {
+      const initialState = {
+        restaurantDetails: {},
+      };
+
+      const restaurantDetails = {
+        id: 1, name: '양천 주가', address: '부산시 해운대구', menuItems: [],
+      };
+
+      const state = reducer(initialState, setRestaurantDetails(restaurantDetails));
+
+      expect(state.restaurantDetails).toEqual(restaurantDetails);
     });
   });
 });
