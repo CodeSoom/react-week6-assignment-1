@@ -13,7 +13,7 @@ import AboutPage from './AboutPage';
 
 import RestaurantsPage from './RestaurantsPage';
 
-import RestaurantsDetailsPage from './RestaurantDetailsPage';
+import RestaurantsDetailsPageContainer from './RestaurantDetailsPageContainer';
 
 import NotFoundPage from './NotFoundPage';
 
@@ -25,7 +25,7 @@ export default function App() {
         <Route exact path="/" component={HomePage} />
         <Route path="/about" component={AboutPage} />
         <Route path="/restaurants" component={RestaurantsPage} />
-        <Route path="/details" component={RestaurantsDetailsPage} />
+        <Route path="/details" component={RestaurantsDetailsPageContainer} />
         <Route component={NotFoundPage} />
       </Switch>
     </>

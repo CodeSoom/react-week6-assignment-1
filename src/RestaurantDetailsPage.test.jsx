@@ -2,36 +2,34 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import { useDispatch, useSelector } from 'react-redux';
-
 import { MemoryRouter } from 'react-router-dom';
 
 import RestaurantDetailsPage from './RestaurantDetailsPage';
 
 describe('RestaurantDetailsPage', () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
+  const renderDetailsPage = ({ name, address, menuItems }) => render((
+    <MemoryRouter>
+      <RestaurantDetailsPage
+        name={name}
+        address={address}
+        menuItems={menuItems}
+      />
+    </MemoryRouter>
+  ));
 
-    const dispatch = jest.fn();
+  context('with restaurant details', () => {
+    it('renders restaurant details page', () => {
+      const { container } = renderDetailsPage({ name: '양천 주가', address: '서울 강남구', menuItems: [{ id: 1, name: '밥' }] });
 
-    useDispatch.mockImplementation(() => dispatch);
-
-    useSelector.mockImplementation((selector) => selector({
-      restaurantDetails: {
-        name: '양천 주가',
-        address: '서울시 강남구',
-        menuItems: [],
-      },
-    }));
+      expect(container).toHaveTextContent('양천 주가');
+    });
   });
 
-  it('renders restaurant details page', () => {
-    const { container } = render((
-      <MemoryRouter>
-        <RestaurantDetailsPage />
-      </MemoryRouter>
-    ));
+  context('without restaurant details', () => {
+    it("renders 'Loading...'", () => {
+      const { container } = renderDetailsPage({ name: '', address: '', menuItems: [] });
 
-    expect(container).toHaveTextContent('양천 주가');
+      expect(container).toHaveTextContent('Loading...');
+    });
   });
 });
