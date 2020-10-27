@@ -16,7 +16,7 @@ describe('App', () => {
       restaurants: [],
     }));
   });
-  
+
   context('with path /', () => {
     it('renders HomePage', () => {
       const { container } = render((
@@ -26,7 +26,7 @@ describe('App', () => {
       ));
       expect(container).toHaveTextContent('Home');
     });
-  });  
+  });
 
   context('with path /AboutPage', () => {
     it('renders About', () => {
@@ -36,9 +36,8 @@ describe('App', () => {
         </MemoryRouter>
       ));
       expect(container).toHaveTextContent('About 페이지 입니다.');
-    })  
+    });
   });
-
 
   context('with path /RestaurantsPage', () => {
     it('renders RestaurantsPage', () => {
@@ -49,6 +48,6 @@ describe('App', () => {
       ));
       expect(container).toHaveTextContent('서울');
       expect(container).toHaveTextContent('한식');
-    })  
+    });
   });
 });
