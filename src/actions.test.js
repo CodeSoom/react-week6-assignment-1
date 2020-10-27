@@ -9,7 +9,7 @@ import {
   loadRestaurants,
   setRestaurants,
   loadRestaurantDetail,
-  selectRestaurant,
+  setRestaurantDetail,
 } from './actions';
 
 const middlewares = [thunk];
@@ -89,29 +89,25 @@ describe('actions', () => {
   describe('loadRestaurantDetail', () => {
     context('with selectedRestaurant', () => {
       beforeEach(() => {
-        store = mockStore({
-          selectedRestaurant: 1,
-        });
+        store = mockStore({});
       });
 
       it('runs selectRestaurant', async () => {
-        await store.dispatch(loadRestaurantDetail());
+        await store.dispatch(loadRestaurantDetail(1));
 
         const actions = store.getActions();
 
-        expect(actions[0]).toEqual(selectRestaurant([]));
+        expect(actions[0]).toEqual(setRestaurantDetail([]));
       });
     });
 
     context('without selectedRestaurant', () => {
       beforeEach(() => {
-        store = mockStore({
-          selectedRestaurant: null,
-        });
+        store = mockStore({});
       });
 
       it('does\'nt run any actions', async () => {
-        await store.dispatch(loadRestaurants());
+        await store.dispatch(loadRestaurantDetail());
 
         const actions = store.getActions();
 
