@@ -9,6 +9,7 @@ import {
   loadRestaurants,
   setRestaurants,
   loadRestaurantDetails,
+  setRestaurantDetails,
 } from './actions';
 
 const middlewares = [thunk];
@@ -89,12 +90,14 @@ describe('actions', () => {
   context('with restaurant details', () => {
     beforeEach(() => {
       store = mockStore({
-        restaurantsDetails: { name: '양천주가', address: '서울시 강남구', menuItems: [] },
+        restaurantsDetails: {
+          id: 1, name: '양천주가', address: '서울시 강남구', menuItems: [],
+        },
       });
     });
 
     it('runs setRestaurantDetails', async () => {
-      await store.dispatch(loadRestaurantDetails({ restaurantId: 0 }));
+      await store.dispatch(loadRestaurantDetails({ restaurantId: 1 }));
 
       const actions = store.getActions();
 
