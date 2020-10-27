@@ -1,10 +1,8 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
 
 import RestaurantContainer from './RestaurantContainer';
 
-export default function RestaurantPage() {
-  const { restaurantId } = useParams();
+export default function RestaurantPage({ match: { params: { restaurantId } } }) {
   const id = Number(restaurantId);
 
   return ((
