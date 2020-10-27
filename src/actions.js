@@ -69,5 +69,11 @@ export function loadRestaurants() {
 }
 
 export function loadRestaurant() {
-  return async () => [];
+  return async (dispatch) => {
+    dispatch({
+      type: 'setRestaurant',
+      payload:
+       { restaurant: {} },
+    });
+  };
 }
