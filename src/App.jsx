@@ -1,6 +1,7 @@
 import React from 'react';
+import { Route, Switch } from 'react-router-dom';
 
-import { Switch } from 'react-router-dom';
+import RestaurantsPage from './pages/RestaurantsPage';
 
 // 0. 지역, 분류 목록을 얻기
 // 1. 지역 선택 - Regions <- API (0)
@@ -15,6 +16,8 @@ import { Switch } from 'react-router-dom';
 
 export default function App() {
   return (
-    <Switch />
+    <Switch>
+      <Route path="/restaurants" component={RestaurantsPage} />
+    </Switch>
   );
 }

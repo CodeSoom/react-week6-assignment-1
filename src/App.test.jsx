@@ -25,7 +25,7 @@ test('App', () => {
   }));
 
   const { queryByText } = render((
-    <MemoryRouter>
+    <MemoryRouter initialEntries={[{ pathname: '/restaurants' }]}>
       <App />
     </MemoryRouter>
   ));
