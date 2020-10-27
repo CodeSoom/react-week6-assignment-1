@@ -60,4 +60,16 @@ describe('<App />', () => {
       expect(queryByText('About')).toBeInTheDocument();
     });
   });
+
+  context('with path /restaurants', () => {
+    it('renders the restaurants page', () => {
+      // When
+      const { queryByText } = renderApp(['/restaurants']);
+
+      // Then
+      expect(queryByText('Home')).not.toBeInTheDocument();
+      expect(queryByText('서울')).toBeInTheDocument();
+      expect(queryByText('한식')).toBeInTheDocument();
+    });
+  });
 });
