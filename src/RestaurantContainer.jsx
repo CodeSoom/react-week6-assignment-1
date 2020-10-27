@@ -7,6 +7,14 @@ export default function RestaurantContainer({ restaurantId }) {
     restaurants: state.restaurants,
   }));
 
+  if (restaurants.length === 0) {
+    return (
+      <div>
+        <h2>loading ...</h2>
+      </div>
+    );
+  }
+
   const { name, address } = restaurants.find(({ id }) => id === restaurantId);
 
   return (
