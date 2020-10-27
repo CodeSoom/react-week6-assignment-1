@@ -3,14 +3,10 @@ import React from 'react';
 import { Route, Switch, Link } from 'react-router-dom';
 
 import RestaurantsPage from './RestaurantsPage';
+import RestaurantPage from './RestaurantPage';
 import HomePage from './HomePage';
 import AboutPage from './AboutPage';
 import NotFoundPage from './NotFoundPage';
-
-function RestaurantPage() {
-  return '양천주가';
-}
-
 export default function App() {
   return (
     <div>
