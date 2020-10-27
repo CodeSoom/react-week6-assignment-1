@@ -1,3 +1,9 @@
+import React from 'react';
+
 export default function Restaurant() {
-  return '김밥제국';
+  return ((
+    <div>
+      <h2>김밥제국</h2>
+    </div>
+  ));
 }
