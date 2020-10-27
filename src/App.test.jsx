@@ -21,13 +21,19 @@ describe('App', () => {
     }));
   });
 
+  function renderApp({ path }) {
+    return render((
+      <MemoryRouter initialEntries={[path]}>
+        <App />
+      </MemoryRouter>
+    ));
+  }
+
   context('with path /', () => {
     it('renders HomePage', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const path = '/';
+
+      const { container } = renderApp({ path });
 
       expect(container).toHaveTextContent('Home');
     });
@@ -35,11 +41,9 @@ describe('App', () => {
 
   context('with path /restaurants', () => {
     it('renders RestaurantsPage', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/restaurants']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const path = '/restaurants';
+
+      const { container } = renderApp({ path });
 
       expect(container).toHaveTextContent('서울');
     });
@@ -47,11 +51,9 @@ describe('App', () => {
 
   context('with path /about', () => {
     it('renders AboutPage', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/about']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const path = '/about';
+
+      const { container } = renderApp({ path });
 
       expect(container).toHaveTextContent('이 페이지는 소개 페이지 입니다.');
     });
@@ -59,11 +61,9 @@ describe('App', () => {
 
   context('with invalid path ', () => {
     it('renders NotFoundPage', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/www']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const path = '/www';
+
+      const { container } = renderApp({ path });
 
       expect(container).toHaveTextContent('Not Found');
     });
