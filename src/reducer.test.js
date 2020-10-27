@@ -4,6 +4,7 @@ import {
   setRegions,
   setCategories,
   setRestaurants,
+  setRestaurant,
   selectRegion,
   selectCategory,
 } from './actions';
@@ -116,43 +117,7 @@ describe('reducer', () => {
         restaurant: {},
       };
 
-      const action = {
-        type: 'setRestaurant',
-        payload: {
-          restaurant: {
-            id: 1,
-            categoryId: 1,
-            name: '양천주가',
-            address: '서울 강남구 123456',
-            menuItems: [
-              {
-                id: 1,
-                restaurantId: 1,
-                name: '비빔밥',
-              },
-              {
-                id: 2,
-                restaurantId: 1,
-                name: '짬뽕',
-              },
-              {
-                id: 16,
-                restaurantId: 1,
-                name: '탕수육',
-              },
-              {
-                id: 17,
-                restaurantId: 1,
-                name: '팔보채',
-              },
-            ],
-          },
-        },
-      };
-
-      const state = reducer(initialState, action);
-
-      expect(state.restaurant).toEqual({
+      const restaurant = {
         id: 1,
         categoryId: 1,
         name: '양천주가',
@@ -179,7 +144,11 @@ describe('reducer', () => {
             name: '팔보채',
           },
         ],
-      });
+      };
+
+      const state = reducer(initialState, setRestaurant(restaurant));
+
+      expect(state.restaurant).toEqual(restaurant);
     });
   });
 });
