@@ -28,7 +28,7 @@ describe('App', () => {
     });
   });  
 
-  context('with path /about', () => {
+  context('with path /AboutPage', () => {
     it('renders About', () => {
       const { container } = render((
         <MemoryRouter initialEntries={['/AboutPage']}>
@@ -36,6 +36,19 @@ describe('App', () => {
         </MemoryRouter>
       ));
       expect(container).toHaveTextContent('About 페이지 입니다.');
+    })  
+  });
+
+
+  context('with path /RestaurantsPage', () => {
+    it('renders RestaurantsPage', () => {
+      const { container } = render((
+        <MemoryRouter initialEntries={['/RestaurantsPage']}>
+          <App />
+        </MemoryRouter>
+      ));
+      expect(container).toHaveTextContent('서울');
+      expect(container).toHaveTextContent('한식');
     })  
   });
 });
