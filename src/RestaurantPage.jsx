@@ -1,3 +1,7 @@
+import React from 'react';
+
 export default function RestaurantPage() {
-  return '양천주가';
+  return (
+    <h2>양천주가</h2>
+  )
 }
