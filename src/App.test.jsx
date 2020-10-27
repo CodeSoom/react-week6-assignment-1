@@ -29,6 +29,16 @@ describe('App', () => {
     ));
   }
 
+  it('renders Header', () => {
+    const { container } = render((
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
+    ));
+
+    expect(container).toHaveTextContent('헤더');
+  });
+
   context('with path /', () => {
     it('renders HomePage', () => {
       const path = '/';
