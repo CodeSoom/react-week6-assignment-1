@@ -53,6 +53,13 @@ const reducers = {
       selectedRestaurant: restaurant,
     };
   },
+
+  resetRestaurantDetail(state) {
+    return {
+      ...state,
+      selectedRestaurant: null,
+    };
+  },
 };
 
 function defaultReducer(state) {
