@@ -7,6 +7,7 @@ import {
   selectRegion,
   selectCategory,
   setRestaurantDetail,
+  resetRestaurantDetail,
 } from './actions';
 
 describe('reducer', () => {
@@ -122,6 +123,21 @@ describe('reducer', () => {
       const state = reducer(initialState, setRestaurantDetail(restaurant));
 
       expect(state.selectedRestaurant).toEqual(restaurant);
+    });
+  });
+
+  describe('resetRestaurantDetail', () => {
+    it('initial restaurant', () => {
+      const initialState = {
+        selectedCategory: {
+          id: 1,
+          name: '양천주가',
+        },
+      };
+
+      const state = reducer(initialState, resetRestaurantDetail());
+
+      expect(state.selectedRestaurant).toEqual(null);
     });
   });
 });
