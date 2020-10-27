@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
-test('App', () => {
+describe('App', () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
@@ -23,12 +23,16 @@ test('App', () => {
     ],
   }));
 
-  const { queryByText } = render((
-    <App />
-  ));
+  const renderApp = () => render(<App />);
 
-  expect(dispatch).toBeCalled();
+  context('with RestaurantsPage', () => {
+    it('renders regions, categories and restaurants', () => {
+      const { queryByText } = renderApp();
 
-  expect(queryByText('서울')).not.toBeNull();
-  expect(queryByText('한식')).not.toBeNull();
+      expect(dispatch).toBeCalled();
+
+      expect(queryByText('서울')).not.toBeNull();
+      expect(queryByText('한식')).not.toBeNull();
+    });
+  });
 });
