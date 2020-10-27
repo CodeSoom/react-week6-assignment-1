@@ -19,20 +19,12 @@ describe('RestaurantInfoContainer', () => {
       expect(screen.getByText(RESTAURANT_INFO.name)).toBeInTheDocument();
       expect(screen.getByText(RESTAURANT_INFO.address)).toBeInTheDocument();
 
-      const menuWrapper = screen.getByTestId('menu');
-
       RESTAURANT_INFO.menuItems.forEach((item) => {
-        const itemId = menuWrapper.children[item.id - 1].textContent;
-
-        expect(itemId).toBe(item.name);
+        expect(screen.getByTestId(`menu${item.id}`)).toBeInTheDocument();
       });
 
       RESTAURANT_INFO.reviews.forEach((review) => {
-        const wrapper = screen.getByTestId(review.id);
-
-        expect(wrapper.querySelector('.name').textContent).toBe(review.name);
-        expect(wrapper.querySelector('.score').textContent).toBe(review.score);
-        expect(wrapper.querySelector('.description').textContent).toBe(review.description);
+        expect(screen.getByTestId(`review${review.id}`)).toBeInTheDocument();
       });
     });
   });
