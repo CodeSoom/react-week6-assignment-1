@@ -7,7 +7,6 @@ export default function HomePage() {
     <div>
       <h1>Home</h1>
       <ul>
-        <li><Link to='/'>Home</Link></li>
         <li><Link to="/AboutPage">About</Link></li>
         <li><Link to="/">Restaurants</Link></li>
       </ul>
