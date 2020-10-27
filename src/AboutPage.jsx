@@ -2,6 +2,6 @@ import React from 'react';
 
 export default function AboutPage() {
   return (
-    <p>About...</p>
+    <p>이 서비스에 대해서...</p>
   );
 }
