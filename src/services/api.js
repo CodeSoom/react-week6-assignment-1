@@ -1,3 +1,5 @@
+import RESTAURANT from '../../fixtures/restaurant';
+
 export async function fetchRegions() {
   const url = 'https://eatgo-customer-api.ahastudio.com/regions';
   const response = await fetch(url);
@@ -21,5 +23,5 @@ export async function fetchRestaurants({ regionName, categoryId }) {
 }
 
 export async function fetchRestaurant(restaurantId) {
-  return {};
+  return RESTAURANT;
 }
