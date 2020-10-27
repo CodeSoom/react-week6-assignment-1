@@ -7,6 +7,7 @@ import RestaurantPage from './RestaurantPage';
 import HomePage from './HomePage';
 import AboutPage from './AboutPage';
 import NotFoundPage from './NotFoundPage';
+
 export default function App() {
   return (
     <div>
