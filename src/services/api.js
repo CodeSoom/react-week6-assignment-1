@@ -19,3 +19,7 @@ export async function fetchRestaurants({ regionName, categoryId }) {
   const data = await response.json();
   return data;
 }
+
+export async function fetchRestaurant(restaurantId) {
+  return {};
+}
