@@ -12,7 +12,7 @@ export default function RestaurantPage({ match: { params: { restaurantId } } }) 
   const id = Number(restaurantId);
 
   useEffect(() => {
-    dispatch(loadRestaurant());
+    dispatch(loadRestaurant(restaurantId));
   }, []);
 
   return ((

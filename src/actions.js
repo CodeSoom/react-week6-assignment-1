@@ -75,7 +75,7 @@ export function loadRestaurants() {
   };
 }
 
-export function loadRestaurant() {
+export function loadRestaurant(restaurantId) {
   return async (dispatch) => {
     const restaurant = {};
 
