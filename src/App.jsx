@@ -1,14 +1,9 @@
 import React from 'react';
+import AboutPage from './AboutPage';
 
 import HomePage from './HomePage';
 
 import RestaurantsPage from './RestaurantsPage';
-
-function AboutPage() {
-  return (
-    <p>About...</p>
-  );
-}
 
 function NotFoundPage() {
   return (
