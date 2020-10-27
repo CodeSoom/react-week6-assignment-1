@@ -2,8 +2,12 @@ import React from 'react';
 
 export default function HomePage() {
   return (
-    <div>
-      HomePage
-    </div>
+    <>
+      <h2>HomePage</h2>
+      <ul>
+        <li>About</li>
+        <li>Restaurants</li>
+      </ul>
+    </>
   );
 }
