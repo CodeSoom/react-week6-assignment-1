@@ -1,4 +1,5 @@
 import React from 'react';
+import { MemoryRouter } from 'react-router-dom';
 
 import { render } from '@testing-library/react';
 
@@ -26,7 +27,11 @@ describe('<Restaurants />', () => {
   });
 
   it('renders restaurant regions and categories', () => {
-    const { queryByText } = render(<Restaurants />);
+    const { queryByText } = render((
+      <MemoryRouter>
+        <Restaurants />
+      </MemoryRouter>
+    ));
 
     expect(queryByText('서울')).not.toBeNull();
     expect(queryByText('한식')).not.toBeNull();
