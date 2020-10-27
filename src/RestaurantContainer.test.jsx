@@ -5,6 +5,7 @@ import { render } from '@testing-library/react';
 import { useSelector } from 'react-redux';
 
 import RESTAURANTS from '../fixtures/restaurants';
+import RESTAURANT from '../fixtures/restaurant';
 
 import RestaurantContainer from './RestaurantContainer';
 
@@ -17,6 +18,7 @@ describe('RestaurantContainer', () => {
     it('renders Restaurant', () => {
       useSelector.mockImplementation((selector) => selector({
         restaurants: RESTAURANTS,
+        restaurant: RESTAURANT,
       }));
 
       const { container } = render((
@@ -24,6 +26,9 @@ describe('RestaurantContainer', () => {
       ));
 
       expect(container).toHaveTextContent('서울시 강남구');
+
+      // New test
+      expect(container).toHaveTextContent(RESTAURANT.address);
     });
   });
 
