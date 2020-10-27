@@ -5,7 +5,7 @@ import { Switch, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import HomePage from './HomePage';
-import About from './About';
+import AboutPage from './AboutPage';
 
 // import RegionsContainer from './RegionsContainer';
 // import CategoriesContainer from './CategoriesContainer';
@@ -23,7 +23,7 @@ export default function App() {
   return(
     <Switch>
       <Route exact path="/" component={HomePage} />
-      <Route path='/about' component={About} />
+      <Route path='/about' component={AboutPage} />
     </Switch>
   );
   // return (
