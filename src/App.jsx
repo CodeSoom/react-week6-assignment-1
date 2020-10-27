@@ -7,7 +7,7 @@ export default function App() {
 
   if (pathname === '/') {
     return (
-      <p>home</p>
+      <p>Home</p>
     );
   }
 
