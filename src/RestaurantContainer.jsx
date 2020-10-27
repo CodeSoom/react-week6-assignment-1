@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { useSelector } from 'react-redux';
 
 export default function RestaurantContainer({ restaurantId }) {
@@ -6,7 +7,12 @@ export default function RestaurantContainer({ restaurantId }) {
     restaurants: state.restaurants,
   }));
 
-  const selectedRestaurant = restaurants.find(({ id }) => id === restaurantId);
+  const { name, address } = restaurants.find(({ id }) => id === restaurantId);
 
-  return selectedRestaurant.address;
+  return (
+    <div>
+      <h2>{name}</h2>
+      <p>{address}</p>
+    </div>
+  );
 }
