@@ -2,10 +2,6 @@ import React, { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
-import RegionsContainer from './RegionsContainer';
-import CategoriesContainer from './CategoriesContainer';
-import RestaurantsContainer from './RestaurantsContainer';
-
 import {
   loadInitialData,
 } from './actions';
@@ -15,13 +11,16 @@ export default function App() {
 
   useEffect(() => {
     dispatch(loadInitialData());
-  });
+  }, []);
 
   return (
     <div>
-      <RegionsContainer />
-      <CategoriesContainer />
-      <RestaurantsContainer />
+      <h1>헤더</h1>
+      <h2>Home</h2>
+      <ul>
+        <li>About</li>
+        <li>Restaurants</li>
+      </ul>
     </div>
   );
 }
