@@ -17,7 +17,7 @@ function renderApp({ path }) {
       <App />
     </MemoryRouter>
   ));
-};
+}
 
 describe('App', () => {
   beforeEach(() => {
