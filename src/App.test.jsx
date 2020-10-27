@@ -56,7 +56,7 @@ describe('App', () => {
 
   context('with path /restaurant', () => {
     it('renders the nothing restaurant', () => {
-      const { container } = renderApp({ path: '/restaurant/1' });
+      const { container } = renderApp({ path: '/restaurants/1' });
 
       expect(container).toHaveTextContent('로딩중...');
     });

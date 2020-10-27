@@ -19,8 +19,8 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/about" component={AboutPage} />
+        <Route path="/restaurants/:id" component={RestaurantDetailPage} />
         <Route path="/restaurants" component={RestaurantsPage} />
-        <Route path="/restaurant/:id" component={RestaurantDetailPage} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>
