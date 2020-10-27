@@ -12,6 +12,7 @@ import HomePage from './HomePage';
 import RestaurantsPage from './RestaurantsPage';
 
 import NotFoundPage from './NotFoundPage';
+
 import Header from './Header';
 
 export default function App() {
