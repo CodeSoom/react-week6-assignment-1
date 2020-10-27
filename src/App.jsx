@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import AboutPage from './pages/AboutPage';
 
 import HomePage from './pages/HomePage';
-import NotFoundPage from './pages/NotFoundPage';
+import AboutPage from './pages/AboutPage';
 import RestaurantsPage from './pages/RestaurantsPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 // 0. 지역, 분류 목록을 얻기
 // 1. 지역 선택 - Regions <- API (0)
