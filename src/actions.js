@@ -82,7 +82,7 @@ export function loadRestaurantDetail(restaurantId) {
       return;
     }
 
-    const restaurantDetail = await fetchRestaurantDetail({ restaurantId });
+    const restaurantDetail = await fetchRestaurantDetail(restaurantId);
     dispatch(setRestaurantDetail(restaurantDetail));
   };
 }
