@@ -8,6 +8,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import App from './App';
 
 describe('<App />', () => {
+  const renderApp = (initialEntries) => render((
+    <MemoryRouter initialEntries={initialEntries}>
+      <App />
+    </MemoryRouter>
+  ));
+
   beforeEach(() => {
     const dispatch = jest.fn();
 
@@ -28,11 +34,7 @@ describe('<App />', () => {
 
   it('renders header', () => {
     // When
-    const { getByText } = render((
-      <MemoryRouter>
-        <App />
-      </MemoryRouter>
-    ));
+    const { getByText } = renderApp();
 
     // Then
     expect(getByText('헤더')).toBeInTheDocument();
@@ -41,11 +43,7 @@ describe('<App />', () => {
   context('with path /', () => {
     it('renders the home page', () => {
       // When
-      const { getByText } = render((
-        <MemoryRouter initialEntries={['/']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const { getByText } = renderApp(['/']);
 
       // Then
       expect(getByText('Home')).toBeInTheDocument();
@@ -55,11 +53,7 @@ describe('<App />', () => {
   context('with path /about', () => {
     it('renders the about page', () => {
       // When
-      const { queryByText } = render((
-        <MemoryRouter initialEntries={['/about']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const { queryByText } = renderApp(['/about']);
 
       // Then
       expect(queryByText('Home')).not.toBeInTheDocument();
