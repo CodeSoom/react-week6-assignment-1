@@ -16,12 +16,13 @@ import NotFoundPage from './NotFoundPage';
 export default function App() {
   return (
     <div>
+      <h1>헤더</h1>
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/about" component={AboutPage} />
         <Route exact path="/restaurants" component={RestaurantsPage} />
         <Route exact component={NotFoundPage} />
       </Switch>
-    </div >
+    </div>
   );
 }
