@@ -10,6 +10,7 @@ import NotFoundPage from './NotFoundPage';
 export default function App() {
   return (
     <div>
+      헤더
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/restaurants" component={RestaurantsPage} />
