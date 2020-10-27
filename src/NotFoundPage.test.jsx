@@ -13,5 +13,5 @@ test('NotFoundPage', () => {
     </MemoryRouter>
   ));
 
-  expect(container).toHaveTextContent('404: Not Found');
+  expect(container).toHaveTextContent('404 Not Found');
 });
