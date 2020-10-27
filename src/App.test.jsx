@@ -69,6 +69,16 @@ describe('App', () => {
     });
   });
 
+  context('with path /restaurants/restaurantId ', () => {
+    it('renders RestaurantPage', () => {
+      const path = '/restaurants/1';
+
+      const { container } = renderApp({ path });
+
+      expect(container).toHaveTextContent('양천주가');
+    });
+  });
+
   context('with invalid path ', () => {
     it('renders NotFoundPage', () => {
       const path = '/www';
