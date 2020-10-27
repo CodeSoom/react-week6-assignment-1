@@ -22,6 +22,7 @@ export default function RestaurantContainer({ restaurantId }) {
     <div>
       <Restaurant restaurant={restaurant} />
       양천주가
+      서울 강남구 123456
     </div>
   );
 }
