@@ -1,4 +1,5 @@
 import React from 'react';
+import { MemoryRouter } from 'react-router-dom';
 
 import { render } from '@testing-library/react';
 
@@ -13,9 +14,11 @@ test('RestaurantsContainer', () => {
     ],
   }));
 
-  const { container } = render((
-    <RestaurantsContainer />
+  const { getByRole } = render((
+    <MemoryRouter>
+      <RestaurantsContainer />
+    </MemoryRouter>
   ));
 
-  expect(container).toHaveTextContent('마법사주방');
+  expect(getByRole('link')).toHaveTextContent('마법사주방');
 });
