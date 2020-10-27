@@ -2,6 +2,8 @@ import React from 'react';
 
 import { useSelector } from 'react-redux';
 
+import Loading from './Loading';
+
 export default function RestaurantContainer({ restaurantId }) {
   const { restaurants } = useSelector((state) => ({
     restaurants: state.restaurants,
@@ -9,9 +11,7 @@ export default function RestaurantContainer({ restaurantId }) {
 
   if (restaurants.length === 0) {
     return (
-      <div>
-        <h2>loading ...</h2>
-      </div>
+      <Loading />
     );
   }
 
