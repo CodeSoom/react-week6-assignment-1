@@ -8,6 +8,7 @@ import {
   setCategories,
   loadRestaurants,
   setRestaurants,
+  loadRestaurantDetails,
 } from './actions';
 
 const middlewares = [thunk];
@@ -82,6 +83,22 @@ describe('actions', () => {
 
         expect(actions).toHaveLength(0);
       });
+    });
+  });
+
+  context('with restaurant details', () => {
+    beforeEach(() => {
+      store = mockStore({
+        restaurantsDetails: { name: '양천주가', address: '서울시 강남구', menuItems: [] },
+      });
+    });
+
+    it('runs setRestaurantDetails', async () => {
+      await store.dispatch(loadRestaurantDetails({ restaurantId: 0 }));
+
+      const actions = store.getActions();
+
+      expect(actions[0]).toEqual(setRestaurantDetails([]));
     });
   });
 });
