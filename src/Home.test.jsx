@@ -1,11 +1,16 @@
 import React from 'react';
+import { MemoryRouter } from 'react-router-dom';
 
 import { render } from '@testing-library/react';
 
 import Home from './Home';
 
 describe('<Home />', () => {
-  const renderHome = () => render(<Home />);
+  const renderHome = () => render((
+    <MemoryRouter>
+      <Home />
+    </MemoryRouter>
+  ));
 
   it('renders heading home', () => {
     // When
