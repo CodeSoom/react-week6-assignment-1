@@ -16,9 +16,6 @@ export default function RestaurantPage({ match: { params: { restaurantId } } }) 
   }, []);
 
   return ((
-    <div>
-      <RestaurantContainer restaurantId={id} />
-      양천주가
-    </div>
+    <RestaurantContainer restaurantId={id} />
   ));
 }

@@ -19,6 +19,9 @@ export default function RestaurantContainer({ restaurantId }) {
   const restaurant = restaurants.find(({ id }) => id === restaurantId);
 
   return (
-    <Restaurant restaurant={restaurant} />
+    <div>
+      <Restaurant restaurant={restaurant} />
+      양천주가
+    </div>
   );
 }
