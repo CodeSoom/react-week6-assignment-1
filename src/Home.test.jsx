@@ -15,12 +15,12 @@ describe('<Home />', () => {
     expect(getByRole('heading')).toHaveTextContent('Home');
   });
 
-  it('renders about and restaurants link', () => {
+  it('renders About and Restaurants link', () => {
     // When
     const { getByText } = renderHome();
 
     // Then
-    expect(getByText('about')).toBeInTheDocument();
-    expect(getByText('restaurants')).toBeInTheDocument();
+    expect(getByText('About')).toBeInTheDocument();
+    expect(getByText('Restaurants')).toBeInTheDocument();
   });
 });
