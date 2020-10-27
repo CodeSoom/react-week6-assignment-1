@@ -6,10 +6,10 @@ export default function Home() {
       <h2>Home</h2>
       <ul>
         <li>
-          <a href="/about">about</a>
+          <a href="/about">About</a>
         </li>
         <li>
-          <a href="/restaurants">restaurants</a>
+          <a href="/restaurants">Restaurants</a>
         </li>
       </ul>
     </>
