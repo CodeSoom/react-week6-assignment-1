@@ -75,7 +75,7 @@ describe('App', () => {
 
       const { container } = renderApp({ path });
 
-      expect(container).toHaveTextContent('양천주가');
+      expect(container).toHaveTextContent('김밥제국');
     });
   });
 

@@ -13,5 +13,5 @@ test('RestaurantPage', () => {
     </MemoryRouter>
   ));
 
-  expect(container).toHaveTextContent('양천주가');
+  expect(container).toHaveTextContent('김밥제국');
 });
