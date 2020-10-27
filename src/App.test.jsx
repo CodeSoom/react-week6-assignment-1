@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { MemoryRouter } from 'react-router-dom';
 
+import RESTAURANTS from '../fixtures/restaurants';
+
 import App from './App';
 
 describe('App', () => {
@@ -17,7 +19,7 @@ describe('App', () => {
     useSelector.mockImplementation((selector) => selector({
       regions: [{ id: 1, name: '서울' }],
       categories: [],
-      restaurants: [],
+      restaurants: RESTAURANTS,
     }));
   });
 
