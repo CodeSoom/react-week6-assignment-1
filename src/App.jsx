@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import RestaurantsPage from './RestaurantsPage';
+import HomePage from './HomePage';
 
 import {
   loadInitialData,
@@ -16,6 +17,9 @@ export default function App() {
   });
 
   return (
-    <RestaurantsPage />
+    <>
+      <HomePage />
+      <RestaurantsPage />
+    </>
   );
 }
