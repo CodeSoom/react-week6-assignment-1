@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 
 import RESTAURANTS from '../fixtures/restaurants';
+import RESTAURANT from '../fixtures/restaurant';
 
 import RestaurantPage from './RestaurantPage';
 
@@ -19,6 +20,7 @@ test('RestaurantPage', () => {
 
   useSelector.mockImplementation((selector) => selector({
     restaurants: RESTAURANTS,
+    restaurant: RESTAURANT,
   }));
 
   const match = { params: { restaurantId: '1' } };
@@ -33,5 +35,5 @@ test('RestaurantPage', () => {
 
   // New test
   expect(dispatch).toBeCalled();
-
+  expect(container).toHaveTextContent(RESTAURANT.name);
 });
