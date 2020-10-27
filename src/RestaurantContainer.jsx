@@ -1,5 +1,12 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
-export default function RestaurantContainer() {
-  return '서울시 강남구';
+export default function RestaurantContainer({ restaurantId }) {
+  const { restaurants } = useSelector((state) => ({
+    restaurants: state.restaurants,
+  }));
+
+  const selectedRestaurant = restaurants.find(({ id }) => id === restaurantId);
+
+  return selectedRestaurant.address;
 }
