@@ -24,4 +24,23 @@ describe('App', () => {
       expect(container).toHaveTextContent('Home');
     });
   });
+  context('without valid pathname', () => {
+    it('renders notFoundPage', () => {
+      const dispatch = jest.fn();
+
+      useDispatch.mockImplementation(() => dispatch);
+
+      useSelector.mockImplementation((selector) => selector({
+        regions: [],
+        categories: [],
+        restaurants: [],
+      }));
+
+      const MyComponent = null;
+
+      const { container } = render((<App MyComponent={MyComponent} />));
+
+      expect(container).not.toHaveTextContent('Home');
+    });
+  });
 });
