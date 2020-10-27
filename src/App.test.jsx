@@ -1,4 +1,5 @@
 import React from 'react';
+import { MemoryRouter } from 'react-router-dom';
 
 import { render } from '@testing-library/react';
 
@@ -28,7 +29,9 @@ describe('<App />', () => {
   it('renders header', () => {
     // When
     const { getByText } = render((
-      <App />
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
     ));
 
     // Then
@@ -39,11 +42,28 @@ describe('<App />', () => {
     it('renders the home page', () => {
       // When
       const { getByText } = render((
-        <App />
+        <MemoryRouter initialEntries={['/']}>
+          <App />
+        </MemoryRouter>
       ));
 
       // Then
       expect(getByText('Home')).toBeInTheDocument();
+    });
+  });
+
+  context('with path /about', () => {
+    it('renders the about page', () => {
+      // When
+      const { queryByText } = render((
+        <MemoryRouter initialEntries={['/about']}>
+          <App />
+        </MemoryRouter>
+      ));
+
+      // Then
+      expect(queryByText('Home')).not.toBeInTheDocument();
+      expect(queryByText('About')).toBeInTheDocument();
     });
   });
 });
