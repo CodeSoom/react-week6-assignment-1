@@ -56,7 +56,7 @@ describe('App', () => {
 
   context('with path /restaurant', () => {
     it('renders the restaurants page', () => {
-      const { container } = renderApp({ path: '/restaurant' });
+      const { container } = renderApp({ path: '/restaurant/1' });
 
       expect(container).toHaveTextContent('Detail');
     });
