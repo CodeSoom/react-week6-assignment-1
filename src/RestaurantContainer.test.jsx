@@ -10,16 +10,34 @@ import RestaurantContainer from './RestaurantContainer';
 
 jest.mock('react-redux');
 
-test('RestaurantContainer', () => {
+describe('RestaurantContainer', () => {
   const restaurantId = 1;
 
-  useSelector.mockImplementation((selector) => selector({
-    restaurants: RESTAURANTS,
-  }));
+  context('with restaurants', () => {
+    it('renders Restaurant', () => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurants: RESTAURANTS,
+      }));
 
-  const { container } = render((
-    <RestaurantContainer restaurantId={restaurantId} />
-  ));
+      const { container } = render((
+        <RestaurantContainer restaurantId={restaurantId} />
+      ));
 
-  expect(container).toHaveTextContent('서울시 강남구');
+      expect(container).toHaveTextContent('서울시 강남구');
+    });
+  });
+
+  context('without restaurants', () => {
+    it('renders Loading', () => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurants: [],
+      }));
+
+      const { container } = render((
+        <RestaurantContainer restaurantId={restaurantId} />
+      ));
+
+      expect(container).toHaveTextContent('loading ...');
+    });
+  });
 });
