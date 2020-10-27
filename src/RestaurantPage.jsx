@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from '../__mocks__/react-redux';
 
 import RestaurantContainer from './RestaurantContainer';
+import Loading from './Loading';
 
 import { loadRestaurant } from './actions';
 
@@ -20,7 +21,7 @@ export default function RestaurantPage({ match: { params: { restaurantId } } }) 
   const restaurant = useSelector(get('restaurant'));
 
   if (!restaurant.id) {
-    return 'loading ...';
+    return (<Loading />);
   }
 
   return ((
