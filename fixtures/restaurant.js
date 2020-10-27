@@ -1,4 +1,4 @@
-const restaurants = {
+const restaurant = {
   id: 1,
   categoryId: 1,
   name: '양천주가',
@@ -27,4 +27,4 @@ const restaurants = {
   ],
 };
 
-export default restaurants;
+export default restaurant;
