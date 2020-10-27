@@ -1,7 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
-export default function RestaurantDetailPage() {
+import { withRouter } from 'react-router-dom';
+import { loadRestaurantDetail } from './actions';
+
+import RestaurantDetailContainer from './RestaurantDetailContainer';
+
+function RestaurantDetailPage({ match }) {
+  const { id } = match.params;
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadRestaurantDetail(id));
+  }, []);
+
   return (
-    <h2>Detail</h2>
+    <RestaurantDetailContainer />
   );
 }
+
+export default withRouter(RestaurantDetailPage);
