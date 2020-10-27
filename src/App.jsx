@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 
-import { Switch } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
 
+import HomePage from './HomePage';
 // import RegionsContainer from './RegionsContainer';
 // import CategoriesContainer from './CategoriesContainer';
 // import RestaurantsContainer from './RestaurantsContainer';

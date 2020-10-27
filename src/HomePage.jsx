@@ -4,9 +4,12 @@ import { Link } from 'react-router-dom';
 
 export default function HomePage() {
   return (
-    <ul>
-      <li><Link to="/">About</Link></li>
-      <li><Link to="/">Restaurants</Link></li>
-    </ul>
+    <div>
+      <h1>Home</h1>
+      <ul>
+        <li><Link to="/">About</Link></li>
+        <li><Link to="/">Restaurants</Link></li>
+      </ul>
+    </div>
   );
 }
