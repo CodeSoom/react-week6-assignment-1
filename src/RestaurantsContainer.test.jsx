@@ -2,15 +2,19 @@ import React from 'react';
 
 import { fireEvent, render } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { MemoryRouter } from 'react-router-dom';
 import RestaurantsContainer from './RestaurantsContainer';
 
 describe('RestaurantsContainer', () => {
-  const handleClick = jest.fn();
+  const dispatch = jest.fn();
 
   beforeEach(() => {
+    jest.clearAllMocks();
+
+    useDispatch.mockImplementation(() => dispatch);
+
     useSelector.mockImplementation((selector) => selector({
       restaurants: [
         { id: 1, name: '마법사주방' },
@@ -38,7 +42,7 @@ describe('RestaurantsContainer', () => {
 
       fireEvent.click(getByText('마법사주방'));
 
-      expect(handleClick).toBeCalled();
+      expect(dispatch).toBeCalled();
     });
   });
 });

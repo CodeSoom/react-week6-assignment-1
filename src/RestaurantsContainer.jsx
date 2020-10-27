@@ -9,6 +9,10 @@ import { get } from './utils';
 export default function RestaurantsContainer() {
   const restaurants = useSelector(get('restaurants'));
 
+  function handleClick({ restaurantId }) {
+    dispatch(loadRestaurantDetails({ restaurantId }));
+  }
+
   return (
     <ul>
       {restaurants.map((restaurant) => (
