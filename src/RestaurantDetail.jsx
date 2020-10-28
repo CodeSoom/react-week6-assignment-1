@@ -1,5 +1,9 @@
 import React from 'react';
 
-export default function RestaurantDatail() {
-  return '양천주가';
+export default function RestaurantDatail({ restaurant }) {
+  return (
+    <div>
+      <h2>{restaurant.name}</h2>
+    </div>
+  );
 }
