@@ -4,15 +4,13 @@ import { render } from '@testing-library/react';
 
 import RestaurantDetailPage from './RestaurantDetailPage';
 
-jest.mock('react-redux');
-
 describe('RestaurantDetailPage', () => {
-  it('show restaurant detail  ', () => {
+  it('show restaurant detail', () => {
     const { container } = render((
       <RestaurantDetailPage />
     ));
 
-    expect(container).toHaveTextContent('양천주가');
-    expect(container).toHaveTextContent('서울 강남구 123456');
+    expect(container).toHaveTextContent('About');
+    expect(container).toHaveTextContent('About 페이지 입니다.');
   });
 });
