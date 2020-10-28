@@ -3,7 +3,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import HomePage from './HomePage';
-import ErrorPage from './ErrorPage';
+import ErrorPage from './NotFoundPage';
 
 export default function App() {
   return (
