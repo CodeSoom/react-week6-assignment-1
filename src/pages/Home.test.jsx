@@ -11,4 +11,6 @@ test('Home', () => {
 
   expect(getByText('Home')).not.toBeNull();
   expect(container).toHaveTextContent('Home');
+  expect(container).toHaveTextContent('About');
+  expect(container).toHaveTextContent('Restaurants');
 });
