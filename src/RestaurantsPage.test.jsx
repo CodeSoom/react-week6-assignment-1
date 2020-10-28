@@ -3,8 +3,17 @@ import React from 'react';
 import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
+import { MemoryRouter } from 'react-router-dom';
 
 import RestaurantsPage from './RestaurantsPage';
+
+function renderRestaurantPage() {
+  return render((
+    <MemoryRouter>
+      <RestaurantsPage />
+    </MemoryRouter>
+  ));
+}
 
 test('RestaurantsPage', () => {
   const dispatch = jest.fn();
@@ -23,9 +32,7 @@ test('RestaurantsPage', () => {
     ],
   }));
 
-  const { queryByText } = render((
-    <RestaurantsPage />
-  ));
+  const { queryByText } = renderRestaurantPage();
 
   expect(dispatch).toBeCalled();
 
