@@ -1,29 +1,24 @@
 import React from 'react';
 
-import { createMemoryHistory } from 'history';
-
 import { fireEvent, render } from '@testing-library/react';
 
 import { MemoryRouter } from 'react-router-dom';
+import { createMemoryHistory } from 'history';
 import HomePage from './HomePage';
 
 describe('HomePage', () => {
+  const history = createMemoryHistory();
+
   function renderHomePage() {
-    const history = createMemoryHistory();
-    const rendering = render((
+    return render((
       <MemoryRouter history={history}>
         <HomePage />
       </MemoryRouter>
     ));
-
-    return {
-      history,
-      rendering,
-    };
   }
 
   it('show home title, About and Restaurants', () => {
-    const { rendering: { container, getByText } } = renderHomePage();
+    const { container, getByText } = renderHomePage();
 
     expect(container).toHaveTextContent('Home');
     expect(getByText('About')).not.toBeNull();
@@ -32,21 +27,21 @@ describe('HomePage', () => {
 
   describe('click About', () => {
     it('go to the About page', () => {
-      const { rendering: { getByText }, history } = renderHomePage();
+      const { getByText } = renderHomePage();
 
       fireEvent.click(getByText('About'));
 
-      expect(history.location.pathname).toBe('about');
+      expect(history.location.pathname).toBe('/about');
     });
   });
 
   describe('click Restaurants', () => {
     it('go to the About page', () => {
-      const { rendering: { getByText }, history } = renderHomePage();
+      const { getByText } = renderHomePage();
 
       fireEvent.click(getByText('Restaurants'));
 
-      expect(history.location.pathname).toBe('restaurants');
+      expect(history.location.pathname).toBe('/restaurants');
     });
   });
 });
