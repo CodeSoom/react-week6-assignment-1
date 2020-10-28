@@ -4,10 +4,12 @@ import { render } from '@testing-library/react';
 
 import HomePage from './HomePage';
 
-test('HomePage', () => {
-  const { queryByText } = render((
-    <HomePage />
-  ));
+describe('HomePage', () => {
+  it('shows heading', () => {
+    const { container } = render((
+      <HomePage />
+    ));
 
-  expect(queryByText('Home')).not.toBeNull();
+    expect(container).toHaveTextContent('Home');
+  });
 });
