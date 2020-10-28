@@ -16,11 +16,7 @@ export default function App() {
   return (
     <div>
       <h1>헤더</h1>
-      <h2>Home</h2>
-      <ul>
-        <li>About</li>
-        <li>Restaurants</li>
-      </ul>
+      <HomePage />
     </div>
   );
 }
