@@ -7,17 +7,19 @@ import { MemoryRouter } from 'react-router-dom';
 import App from './App';
 
 describe('App', () => {
-  const renderApp = () => render(
-    <MemoryRouter>
+  const renderApp = ({ path }) => render(
+    <MemoryRouter initialEntries={[path]}>
       <App />
     </MemoryRouter>,
   );
 
-  it('renders App', () => {
-    const { container } = renderApp();
+  context('with path /', () => {
+    it('renders home page', () => {
+      const { container } = renderApp({ path: '/' });
 
-    expect(container).toHaveTextContent('Home');
-    expect(container).toHaveTextContent('About');
-    expect(container).toHaveTextContent('Restaurants');
+      expect(container).toHaveTextContent('Home');
+      expect(container).toHaveTextContent('About');
+      expect(container).toHaveTextContent('Restaurants');
+    });
   });
 });
