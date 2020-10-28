@@ -28,4 +28,10 @@ describe('App', () => {
 
     expect(container).toHaveTextContent('Home');
   });
+
+  it('shows not found page with not existing path', () => {
+    const { container } = render(<App />);
+
+    expect(container).toHaveTextContent('존재하지 않는 페이지 입니다');
+  });
 });
