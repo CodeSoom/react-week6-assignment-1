@@ -20,7 +20,7 @@ export default function RestaurantsPage() {
 
   useEffect(() => {
     dispatch(loadInitialData());
-  });
+  }, []);
 
   return (
     <div>
