@@ -10,8 +10,8 @@ export default function App() {
   return (
     <Switch>
       <Route exact path="/" component={HomePage} />
-      <Route path="/AboutPage" component={AboutPage} />
-      <Route path="/RestaurantsPage" component={RestaurantsPage} />
+      <Route path="/about" component={AboutPage} />
+      <Route path="/restaurants" component={RestaurantsPage} />
     </Switch>
   );
 }
