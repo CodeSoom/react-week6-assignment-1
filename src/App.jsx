@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
+import { Switch, Route } from 'react-router-dom';
+
 import RegionsContainer from './RegionsContainer';
 import CategoriesContainer from './CategoriesContainer';
 import RestaurantsContainer from './RestaurantsContainer';
@@ -26,6 +28,9 @@ export default function App() {
   return (
     <div>
       <Header />
+      <Switch>
+        <Route exact path="/" component={Home} />
+      </Switch>
       <RegionsContainer />
       <CategoriesContainer />
       <RestaurantsContainer />
