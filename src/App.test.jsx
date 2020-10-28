@@ -37,6 +37,12 @@ describe('App', () => {
     expect(container).toHaveTextContent('Home');
   });
 
+  it('shows about-page with path /about', () => {
+    const { container } = renderAppWith({ path: '/about' });
+
+    expect(container).toHaveTextContent('About');
+  });
+
   it('shows not-found-page with not existing path', () => {
     const { container } = renderAppWith({ path: '/404' });
 
