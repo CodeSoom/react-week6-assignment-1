@@ -1,14 +1,18 @@
 import React from 'react';
 
-export default function RestaurantDatail({ restaurant }) {
+export default function RestaurantDatail({
+  restaurant: {
+    name,
+    address,
+    menuItems,
+  },
+}) {
   return (
     <div>
-      <h2>{restaurant.name}</h2>
-      <p>{restaurant.address}</p>
-      비빔밥
-      짬뽕
-      탕수육
-      팔보채
+      <h2>{name}</h2>
+      <p>{address}</p>
+      <h3>Menu</h3>
+      {menuItems.map((menuItem) => (<p>{menuItem.name}</p>))}
     </div>
   );
 }
