@@ -27,7 +27,6 @@ describe('App', () => {
       </MemoryRouter>
     ));
 
-    expect(dispatch).toBeCalled();
     expect(getByText('헤더')).not.toBeNull();
   });
 
@@ -57,14 +56,14 @@ describe('App', () => {
 
   context('with path /restaurants', () => {
     it('renders the Restaurants page', () => {
-      const { queryByText } = render((
+      const { container } = render((
         <MemoryRouter initialEntries={['/restaurants']}>
           <App />
         </MemoryRouter>
       ));
 
-      expect(queryByText('서울')).not.toBeNull();
-      expect(queryByText('한식')).not.toBeNull();
+      expect(container).toHaveTextContent('서울');
+      expect(container).toHaveTextContent('한식');
     });
   });
 

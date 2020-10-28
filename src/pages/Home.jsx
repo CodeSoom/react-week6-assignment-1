@@ -10,6 +10,8 @@ export default function About() {
       <ul>
         <li>
           <Link to="/about">About</Link>
+        </li>
+        <li>
           <Link to="/restaurants">Restaurants</Link>
         </li>
       </ul>
