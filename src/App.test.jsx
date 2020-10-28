@@ -14,27 +14,14 @@ test('App', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
-    regions: [
-      { id: 1, name: '서울' },
-    ],
-    categories: [
-      { id: 1, name: '한식' },
-    ],
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
+    regions: [],
+    categories: [],
+    restaurants: [],
   }));
 
-  const { queryByText } = render((
+  render((
     <MemoryRouter>
       <App />
     </MemoryRouter>
   ));
-
-  expect(dispatch).toBeCalled();
-
-  expect(queryByText('서울')).not.toBeNull();
-  expect(queryByText('한식')).not.toBeNull();
-
-  expect(queryByText('헤더')).not.toBeNull();
 });
