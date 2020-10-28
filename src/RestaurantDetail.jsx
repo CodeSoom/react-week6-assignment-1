@@ -13,7 +13,11 @@ export default function RestaurantDatail({
       <p>{address}</p>
       <h3>Menu</h3>
       <ul>
-        {menuItems.map((menuItem) => (<li>{menuItem.name}</li>))}
+        {menuItems.map((menuItem) => (
+          <li key={menuItem.id}>
+            {menuItem.name}
+          </li>
+        ))}
       </ul>
     </div>
   );
