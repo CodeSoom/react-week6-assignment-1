@@ -4,6 +4,8 @@ import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import { MemoryRouter } from 'react-router-dom';
+
 import App from './App';
 
 describe('App', () => {
@@ -24,13 +26,21 @@ describe('App', () => {
   }));
 
   it('shows Home page with path /', () => {
-    const { container } = render(<App />);
+    const { container } = render((
+      <MemoryRouter initialEntries={['/']}>
+        <App />
+      </MemoryRouter>
+    ));
 
     expect(container).toHaveTextContent('Home');
   });
 
   it('shows not found page with not existing path', () => {
-    const { container } = render(<App />);
+    const { container } = render((
+      <MemoryRouter initialEntries={['/404']}>
+        <App />
+      </MemoryRouter>
+    ));
 
     expect(container).toHaveTextContent('존재하지 않는 페이지 입니다');
   });

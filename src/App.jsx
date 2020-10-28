@@ -1,12 +1,17 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+
+import { Switch, Route } from 'react-router-dom';
 
 import HomePage from './HomePage';
+import ErrorPage from './ErrorPage';
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <HomePage />
-    </BrowserRouter>
+    <Switch>
+      <Route exact path="/">
+        <HomePage />
+      </Route>
+      <ErrorPage />
+    </Switch>
   );
 }
