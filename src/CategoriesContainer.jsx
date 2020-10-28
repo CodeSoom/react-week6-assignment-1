@@ -2,10 +2,7 @@ import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import {
-  selectCategory,
-  loadRestaurants,
-} from './actions';
+import { selectCategory, loadRestaurants } from './actions';
 
 import { get } from './utils';
 

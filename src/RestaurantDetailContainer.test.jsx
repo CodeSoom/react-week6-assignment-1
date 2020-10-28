@@ -3,10 +3,9 @@ import React from 'react';
 import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
-
 import { MemoryRouter } from 'react-router-dom';
-import RestaurantDetailContainer from './RestaurantDetailContainer';
 
+import RestaurantDetailContainer from './RestaurantDetailContainer';
 import RESTAURANT_DETAIL from '../fixtures/restaurantDetail';
 
 describe('RestaurantDetailContainer', () => {

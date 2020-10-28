@@ -5,7 +5,6 @@ import { render, fireEvent } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import CategoriesContainer from './CategoriesContainer';
-
 import CATEGORIES from '../fixtures/categories';
 
 describe('CategoriesContainer', () => {
