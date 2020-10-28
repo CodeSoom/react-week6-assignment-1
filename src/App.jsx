@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 
 import HomePage from './HomePage';
+import AboutPage from './AboutPage';
 
 import {
   loadInitialData,
@@ -24,7 +25,8 @@ export default function App() {
     <div>
       <h1>헤더</h1>
       <Switch>
-        <Route path="/" component={HomePage} />
+        <Route exact path="/" component={HomePage} />
+        <Route path="/about" component={AboutPage} />
       </Switch>
 
     </div>

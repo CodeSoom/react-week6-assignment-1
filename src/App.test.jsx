@@ -8,7 +8,7 @@ import App from './App';
 
 jest.mock('react-redux');
 
-test('App', () => {
+describe('App', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
 
@@ -16,14 +16,36 @@ test('App', () => {
     dispatch.mockClear();
   });
 
-  const { container } = render((
-    <MemoryRouter>
-      <App />
-    </MemoryRouter>
-  ));
+  function renderApp({ path }) {
+    return render((
+      <MemoryRouter initialEntries={[path]}>
+        <App />
+      </MemoryRouter>
+    ));
+  }
 
-  expect(container).toHaveTextContent('Home');
-  expect(container).toHaveTextContent('About');
-  expect(container).toHaveTextContent('Restaurants');
-  expect(container).toHaveTextContent('헤더');
+  it('show home', () => {
+    const { container } = renderApp({ path: '' });
+
+    expect(container).toHaveTextContent('Home');
+    expect(container).toHaveTextContent('About');
+    expect(container).toHaveTextContent('Restaurants');
+    expect(container).toHaveTextContent('헤더');
+  });
+
+  describe('/about', () => {
+    it('go to the About page', () => {
+      const { getByText } = renderApp({ path: '/about' });
+
+      expect(getByText('About 페이지 입니다.')).toBeInTheDocument();
+    });
+  });
+
+  describe('/restaurants', () => {
+    it('go to the About page', () => {
+      const { getByText } = renderApp({ path: '/restaurants' });
+
+      expect(getByText('서울')).toBeInTheDocument();
+    });
+  });
 });
