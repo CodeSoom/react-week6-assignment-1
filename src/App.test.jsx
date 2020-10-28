@@ -2,8 +2,13 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
+
+import regions from '../fixtures/regions';
+import categories from '../fixtures/categories';
+import restaurants from '../fixtures/restaurants';
+
 import App from './App';
 
 jest.mock('react-redux');
@@ -11,6 +16,12 @@ jest.mock('react-redux');
 describe('App', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
+
+  useSelector.mockImplementation((selector) => selector({
+    regions,
+    categories,
+    restaurants,
+  }));
 
   beforeEach(() => {
     dispatch.mockClear();
@@ -42,7 +53,7 @@ describe('App', () => {
   });
 
   describe('/restaurants', () => {
-    it('go to the About page', () => {
+    it('go to the Restaurants page', () => {
       const { getByText } = renderApp({ path: '/restaurants' });
 
       expect(getByText('서울')).toBeInTheDocument();

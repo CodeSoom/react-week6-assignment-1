@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import {
   Switch,
   Route,
+  Router,
 } from 'react-router-dom';
 
 import HomePage from './HomePage';
@@ -13,6 +14,7 @@ import AboutPage from './AboutPage';
 import {
   loadInitialData,
 } from './actions';
+import RestaurantsPage from './RestaurantsPage';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -27,6 +29,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/about" component={AboutPage} />
+        <Route path="/restaurants" component={RestaurantsPage} />
       </Switch>
 
     </div>
