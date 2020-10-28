@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from '../__mocks__/react-redux';
 
 import RestaurantContainer from './RestaurantContainer';
+import RestaurantDetail from './RestaurantDetail';
 import Loading from './Loading';
 
 import { loadRestaurant } from './actions';
@@ -27,8 +28,7 @@ export default function RestaurantPage({ match: { params: { restaurantId } } }) 
   return ((
     <div>
       <RestaurantContainer restaurantId={id} />
-      {restaurant.name}
-      {restaurant.menuItems.map(({ name }) => <p>{name}</p>)}
+    <RestaurantDetail restaurant={restaurant} />
     </div>
   ));
 }
