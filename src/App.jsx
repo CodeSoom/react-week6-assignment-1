@@ -4,6 +4,7 @@ import HomePage from './HomePage';
 import AboutPage from './AboutPage';
 import RestaurantsPage from './RestaurantsPage';
 import NotFoundPage from './NotFoundPage';
+import Header from './Header';
 
 export default function App() {
   const { location: { pathname } } = window;
@@ -15,6 +16,9 @@ export default function App() {
   }[pathname] || NotFoundPage;
 
   return (
-    <MyComponent />
+    <div>
+      <Header />
+      <MyComponent />
+    </div>
   );
 }
