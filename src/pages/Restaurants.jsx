@@ -2,16 +2,13 @@ import React, { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
-import { Switch, Route } from 'react-router-dom';
-
-import Header from './Header';
-import Home from './pages/Home';
-import About from './pages/About';
-import Restaurants from './pages/Restaurants';
+import RegionsContainer from '../RegionsContainer';
+import CategoriesContainer from '../CategoriesContainer';
+import RestaurantsContainer from '../RestaurantsContainer';
 
 import {
   loadInitialData,
-} from './actions';
+} from '../actions';
 
 // 0. 지역, 분류 목록을 얻기
 // 1. 지역 선택 - Regions <- API (0)
@@ -26,13 +23,10 @@ export default function App() {
   });
 
   return (
-    <div>
-      <Header />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/about" component={About} />
-        <Route path="/restaurants" component={Restaurants} />
-      </Switch>
-    </div>
+    <>
+      <RegionsContainer />
+      <CategoriesContainer />
+      <RestaurantsContainer />
+    </>
   );
 }
