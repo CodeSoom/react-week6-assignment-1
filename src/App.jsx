@@ -9,6 +9,7 @@ import CategoriesContainer from './CategoriesContainer';
 import RestaurantsContainer from './RestaurantsContainer';
 import Header from './Header';
 import Home from './pages/Home';
+import About from './pages/About';
 
 import {
   loadInitialData,
@@ -31,6 +32,7 @@ export default function App() {
       <Header />
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route path="/about" component={About} />
       </Switch>
       <RegionsContainer />
       <CategoriesContainer />
