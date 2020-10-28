@@ -12,7 +12,9 @@ export default function RestaurantDatail({
       <h2>{name}</h2>
       <p>{address}</p>
       <h3>Menu</h3>
-      {menuItems.map((menuItem) => (<p>{menuItem.name}</p>))}
+      <ul>
+        {menuItems.map((menuItem) => (<li>{menuItem.name}</li>))}
+      </ul>
     </div>
   );
 }
