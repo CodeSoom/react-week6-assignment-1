@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { MemoryRouter } from 'react-router-dom';
 
-import RESTAURANTS from '../fixtures/restaurants';
 import RESTAURANT from '../fixtures/restaurant';
 
 import RestaurantPage from './RestaurantPage';
@@ -23,7 +22,6 @@ describe('RestaurantPage', () => {
   context('with restaurant', () => {
     it('renders RestaurantDetail', () => {
       useSelector.mockImplementation((selector) => selector({
-        restaurants: RESTAURANTS,
         restaurant: RESTAURANT,
       }));
 
@@ -34,8 +32,6 @@ describe('RestaurantPage', () => {
           <RestaurantPage match={match} />
         </MemoryRouter>
       ));
-
-      expect(container).toHaveTextContent('김밥제국');
 
       // New test
       expect(dispatch).toBeCalled();
@@ -51,7 +47,6 @@ describe('RestaurantPage', () => {
   context('without restaurant', () => {
     it('renders Loading', () => {
       useSelector.mockImplementation((selector) => selector({
-        restaurants: RESTAURANTS,
         restaurant: [],
       }));
 

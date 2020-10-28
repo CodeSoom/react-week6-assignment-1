@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from '../__mocks__/react-redux';
 
-import RestaurantContainer from './RestaurantContainer';
 import RestaurantDetail from './RestaurantDetail';
 import Loading from './Loading';
 
@@ -12,8 +11,6 @@ import { get } from './utils';
 
 export default function RestaurantPage({ match: { params: { restaurantId } } }) {
   const dispatch = useDispatch();
-
-  const id = Number(restaurantId);
 
   useEffect(() => {
     dispatch(loadRestaurant(restaurantId));
@@ -26,9 +23,6 @@ export default function RestaurantPage({ match: { params: { restaurantId } } }) 
   }
 
   return ((
-    <div>
-      <RestaurantContainer restaurantId={id} />
     <RestaurantDetail restaurant={restaurant} />
-    </div>
   ));
 }
