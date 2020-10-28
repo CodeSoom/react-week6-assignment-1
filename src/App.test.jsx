@@ -2,34 +2,47 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
+import { MemoryRouter } from 'react-router-dom';
+
 import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
-test('App', () => {
+describe('App', () => {
   const dispatch = jest.fn();
+  beforeEach(() => {
+    useDispatch.mockImplementation(() => dispatch);
 
-  useDispatch.mockImplementation(() => dispatch);
+    useSelector.mockImplementation((selector) => selector({
+      regions: [],
+      categories: [],
+      restaurants: [],
+    }));
+  });
 
-  useSelector.mockImplementation((selector) => selector({
-    regions: [
-      { id: 1, name: '서울' },
-    ],
-    categories: [
-      { id: 1, name: '한식' },
-    ],
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
-  }));
+  it('renders App', () => {
+    const { getByText } = render((
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
+    ));
 
-  const { queryByText, getByText } = render((
-    <App />
-  ));
+    expect(dispatch).toBeCalled();
+    expect(getByText('헤더')).not.toBeNull();
+  });
 
-  expect(dispatch).toBeCalled();
+  context('with path /', () => {
+    it('renders the Home page', () => {
+      const { container } = render((
+        <MemoryRouter>
+          <App />
+        </MemoryRouter>
+      ));
 
-  expect(queryByText('서울')).not.toBeNull();
-  expect(queryByText('한식')).not.toBeNull();
-  expect(getByText('헤더')).not.toBeNull();
+      expect(container).toHaveTextContent('Home');
+    });
+  });
+
+  // expect(queryByText('서울')).not.toBeNull();
+  // expect(queryByText('한식')).not.toBeNull();
 });
