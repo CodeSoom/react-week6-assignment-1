@@ -36,8 +36,10 @@ describe('RestaurantPage', () => {
   }
 
   context('with restaurant', () => {
+    const restaurant = RESTAURANT;
+
     it('renders RestaurantDetail', () => {
-      mockUseSelector(RESTAURANT);
+      mockUseSelector(restaurant);
 
       const { container } = renderRestaurantPage();
 
