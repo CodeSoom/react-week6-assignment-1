@@ -57,6 +57,20 @@ describe('App', () => {
         expect(queryByText('Home')).not.toBeNull();
       });
     });
+
+    context('when pathname is /about', () => {
+      beforeEach(() => {
+        mockLocation('/about');
+      });
+
+      it('shows about page', () => {
+        const { queryByText } = render((
+          <App />
+        ));
+
+        expect(queryByText('About')).not.toBeNull();
+      });
+    });
   });
 
   context('when path doesnt exist', () => {
