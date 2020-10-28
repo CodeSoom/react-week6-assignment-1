@@ -41,10 +41,14 @@ describe('RestaurantPage', () => {
       expect(dispatch).toBeCalled();
 
       expect(container).toHaveTextContent(RESTAURANT.name);
+
+      RESTAURANT.menuItems.forEach((menuItem) => {
+        expect(container).toHaveTextContent(menuItem.name);
+      });
     });
   });
 
-  context('with restaurant', () => {
+  context('without restaurant', () => {
     it('renders Loading', () => {
       useSelector.mockImplementation((selector) => selector({
         restaurants: RESTAURANTS,
