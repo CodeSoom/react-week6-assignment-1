@@ -5,13 +5,17 @@ import { render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 
+import { fetchRestaurantDetail } from './services/api';
+
 import regions from '../fixtures/regions';
 import categories from '../fixtures/categories';
 import restaurants from '../fixtures/restaurants';
+import restaurant from '../fixtures/restaurant';
 
 import App from './App';
 
 jest.mock('react-redux');
+jest.mock('./services/api');
 
 describe('App', () => {
   const dispatch = jest.fn();
@@ -69,6 +73,7 @@ describe('App', () => {
   });
 
   describe('/restaurants/id', () => {
+    fetchRestaurantDetail.mockImplementation(() => (restaurant));
     it('go to the restaurant detail page', () => {
       const { container } = renderApp({ path: '/restaurants/1' });
 
