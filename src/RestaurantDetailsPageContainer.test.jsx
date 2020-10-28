@@ -2,18 +2,22 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { MemoryRouter } from 'react-router-dom';
 
 import RestaurantDetailsPage from './RestaurantDetailsPage';
 
 describe('RestaurantDetailsPage', () => {
+  const dispatch = jest.fn();
+
   beforeEach(() => {
     jest.clearAllMocks();
 
+    useDispatch.mockImplementation(() => dispatch);
+
     useSelector.mockImplementation((selector) => selector({
-      restaurantDetails: {
+      restaurantDetail: {
         name: '양천 주가',
         address: '서울시 강남구',
         menuItems: [],
@@ -23,7 +27,7 @@ describe('RestaurantDetailsPage', () => {
 
   context('with restaurant details', () => {
     it('renders restaurant details page', () => {
-      const restaurantDetails = {
+      const restaurantDetail = {
         name: '양천 주가',
         address: '서울시 강남구',
         menuItems: [],
@@ -32,9 +36,7 @@ describe('RestaurantDetailsPage', () => {
       const { container } = render((
         <MemoryRouter>
           <RestaurantDetailsPage
-            name={restaurantDetails.name}
-            address={restaurantDetails.address}
-            menuItems={restaurantDetails.menuItems}
+            restaurant={restaurantDetail}
           />
         </MemoryRouter>
       ));

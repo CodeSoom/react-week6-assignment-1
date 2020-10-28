@@ -54,15 +54,15 @@ describe('api', () => {
 
   describe('fetchRestaurantDetails', () => {
     beforeEach(() => {
-      mockFetch({ restaurantDetails: { name: '마법사주방', address: '부산시 해운대구', menuItems: [] } });
+      mockFetch({ restaurantDetail: { name: '마법사주방', address: '부산시 해운대구', menuItems: [] } });
     });
 
-    it('returns restaurantDetails', async () => {
+    it('returns restaurantDetail', async () => {
       const restaurants = await fetchRestaurantDetails({
         restaurantId: 1,
       });
 
-      expect(restaurants).toEqual({ restaurantDetails: { name: '마법사주방', address: '부산시 해운대구', menuItems: [] } });
+      expect(restaurants).toEqual({ restaurantDetail: { name: '마법사주방', address: '부산시 해운대구', menuItems: [] } });
     });
   });
 });

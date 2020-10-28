@@ -20,8 +20,8 @@ export async function fetchRestaurants({ regionName, categoryId }) {
   return data;
 }
 
-export async function fetchRestaurantDetails({ restaurantId }) {
-  const url = `https://eatgo-customer-api.ahastudio.com/restaurants/${restaurantId}`;
+export async function fetchRestaurantDetails({ id }) {
+  const url = `https://eatgo-customer-api.ahastudio.com/restaurants/${id}`;
   const response = await fetch(url);
   const data = await response.json();
   return data;

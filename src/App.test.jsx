@@ -10,8 +10,6 @@ import App from './App';
 
 describe('App', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
-
     const dispatch = jest.fn();
 
     useDispatch.mockImplementation(() => dispatch);
@@ -20,7 +18,7 @@ describe('App', () => {
       regions: [{ id: 1, name: '서울' }],
       categories: [],
       restaurants: [],
-      restaurantDetails: {
+      restaurantDetail: {
         name: '마법사 주방',
         address: '',
         menuItems: [],
@@ -60,9 +58,9 @@ describe('App', () => {
     });
   });
 
-  context('with path /details', () => {
+  context('with path /restaurants/:id', () => {
     it('renders the restaurants details page', () => {
-      const { container } = renderApp({ path: '/details' });
+      const { container } = renderApp({ path: '/restaurants/1' });
 
       expect(container).toHaveTextContent('마법사 주방');
     });

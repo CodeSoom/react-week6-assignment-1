@@ -15,7 +15,7 @@ describe('reducer', () => {
       regions: [],
       categories: [],
       restaurants: [],
-      restaurantDetails: {
+      restaurantDetail: {
         name: '',
         address: '',
         menuItems: [],
@@ -118,16 +118,16 @@ describe('reducer', () => {
   describe('setRestaurantsDetails', () => {
     it('changes selected category', () => {
       const initialState = {
-        restaurantDetails: {},
+        restaurantDetail: {},
       };
 
-      const restaurantDetails = {
+      const restaurantDetail = {
         name: '양천 주가', address: '부산시 해운대구', menuItems: [],
       };
 
-      const state = reducer(initialState, setRestaurantDetails(restaurantDetails));
+      const state = reducer(initialState, setRestaurantDetails(restaurantDetail));
 
-      expect(state.restaurantDetails).toEqual(restaurantDetails);
+      expect(state.restaurantDetail).toEqual(restaurantDetail);
     });
   });
 });

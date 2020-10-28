@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function RestaurantsDetailsPage({ name, address, menuItems }) {
+export default function RestaurantsDetailsPage({ restaurant: { name, address, menuItems } }) {
   if (!name) {
     return <h2>Loading...</h2>;
   }
@@ -14,8 +14,8 @@ export default function RestaurantsDetailsPage({ name, address, menuItems }) {
       </p>
       <h2>메뉴</h2>
       <ul>
-        {menuItems.map((menuItem) => (
-          <li key={menuItem.id}>{menuItem.name}</li>
+        {menuItems.map(({ name: itemName, id }) => (
+          <li key={id}>{itemName}</li>
         ))}
       </ul>
     </>
