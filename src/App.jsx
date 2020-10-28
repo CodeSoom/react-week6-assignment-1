@@ -6,6 +6,7 @@ import HomePage from './HomePage';
 import AboutPage from './AboutPage';
 import RestaurantsPage from './RestaurantsPage';
 import NotFoundPage from './NotFoundPage';
+import RestaurantDetailPage from './RestaurantDetailPage';
 
 // TODO:
 // Home Page 구현
@@ -21,6 +22,7 @@ export default function App() {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/about" component={AboutPage} />
         <Route exact path="/restaurants" component={RestaurantsPage} />
+        <Route exact path="/restaurant/:id" component={RestaurantDetailPage} />
         <Route exact component={NotFoundPage} />
       </Switch>
     </div>

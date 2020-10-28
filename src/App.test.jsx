@@ -76,6 +76,14 @@ describe('App', () => {
     });
   });
 
+  context('path가 "/restaurant/1"일 때,', () => {
+    it('AboutPage의 "About" 문구가 출력됩니다.', () => {
+      const { container } = renderApp({ path: '/restaurant/1' });
+
+      expect(container).toHaveTextContent('RestaurantDetailPage');
+    });
+  });
+
   context('path가 잘못된 url일 때,', () => {
     it('NotFoundPage의 "NotFoundPage" 문구가 출력됩니다.', () => {
       const { container } = renderApp({ path: '/wrong-url' });
