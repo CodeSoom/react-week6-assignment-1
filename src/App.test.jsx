@@ -43,6 +43,17 @@ describe('App', () => {
     });
   });
 
+  context('with path /about', () => {
+    it('renders the About page', () => {
+      const { container } = render((
+        <MemoryRouter initialEntries={['/about']}>
+          <App />
+        </MemoryRouter>
+      ));
+
+      expect(container).toHaveTextContent('About');
+    });
+  });
   // expect(queryByText('서울')).not.toBeNull();
   // expect(queryByText('한식')).not.toBeNull();
 });
