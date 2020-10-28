@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 import {
   Switch,
   Route,
-  Router,
 } from 'react-router-dom';
 
 import HomePage from './HomePage';
@@ -30,6 +29,7 @@ export default function App() {
         <Route exact path="/" component={HomePage} />
         <Route path="/about" component={AboutPage} />
         <Route path="/restaurants" component={RestaurantsPage} />
+
       </Switch>
 
     </div>

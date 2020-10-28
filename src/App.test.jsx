@@ -46,9 +46,9 @@ describe('App', () => {
 
   describe('/about', () => {
     it('go to the About page', () => {
-      const { getByText } = renderApp({ path: '/about' });
+      const { container } = renderApp({ path: '/about' });
 
-      expect(getByText('About 페이지 입니다.')).toBeInTheDocument();
+      expect(container).toHaveTextContent('About 페이지 입니다.');
     });
   });
 
@@ -57,6 +57,14 @@ describe('App', () => {
       const { getByText } = renderApp({ path: '/restaurants' });
 
       expect(getByText('서울')).toBeInTheDocument();
+    });
+  });
+
+  describe('/any_not_exist_url', () => {
+    it('go to the 404 not found page', () => {
+      const { container } = renderApp({ path: '/any_not_exist_url' });
+
+      expect(container).toHaveTextContent('404 Not Found');
     });
   });
 });
