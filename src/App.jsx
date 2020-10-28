@@ -13,7 +13,9 @@ import AboutPage from './AboutPage';
 import {
   loadInitialData,
 } from './actions';
+
 import RestaurantsPage from './RestaurantsPage';
+import NotFoundPage from './NotFoundPage';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -30,6 +32,7 @@ export default function App() {
         <Route path="/about" component={AboutPage} />
         <Route path="/restaurants" component={RestaurantsPage} />
 
+        <Route component={NotFoundPage} />
       </Switch>
 
     </div>
