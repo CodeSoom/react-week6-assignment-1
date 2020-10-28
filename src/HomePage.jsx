@@ -2,6 +2,13 @@ import React from 'react';
 
 export default function HomePage() {
   return (
-    <h1>Home</h1>
+    <div>
+      <h1>Home</h1>
+      <nav>
+        <a href="/about">
+          About
+        </a>
+      </nav>
+    </div>
   );
 }
