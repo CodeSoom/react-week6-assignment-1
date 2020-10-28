@@ -10,7 +10,7 @@ describe('RestaurantDetailPage', () => {
       <RestaurantDetailPage />
     ));
 
-    expect(container).toHaveTextContent('About');
-    expect(container).toHaveTextContent('About 페이지 입니다.');
+    expect(container).toHaveTextContent('양천주가');
+    expect(container).toHaveTextContent('서울 강남구 12345');
   });
 });
