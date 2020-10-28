@@ -2,12 +2,16 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
+import { MemoryRouter } from 'react-router-dom';
 import RestaurantDetailPage from './RestaurantDetailPage';
 
 describe('RestaurantDetailPage', () => {
   it('show restaurant detail', () => {
     const { container } = render((
-      <RestaurantDetailPage />
+      <MemoryRouter initialEntries={['/restaurants/1']}>
+        <RestaurantDetailPage />
+      </MemoryRouter>
+
     ));
 
     expect(container).toHaveTextContent('양천주가');

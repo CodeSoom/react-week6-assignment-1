@@ -1,48 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { fetchRestaurantDetail } from './services/api';
-
-async function loadRestaurantDetail({ restaurantId, setState, state }) {
-  const data = await fetchRestaurantDetail({ restaurantId });
-  setState({
-    ...state,
-    restaurant: data,
-  });
-}
+import React from 'react';
 
 export default function RestaurantDetailPage() {
-  const [state, setState] = useState({
-    restaurant: {
-      id: null,
-      categoryId: null,
-      name: '',
-      address: '',
-      menuItems: [],
-      reviews: [],
-      information: '',
-    },
-  });
-
-  const { id } = useParams();
-
-  useEffect(() => {
-    loadRestaurantDetail({ restaurantId: id, setState, state });
-  }, []);
-
-  const { name, address, menuItems } = state.restaurant;
-
   return (
     <div>
-      <h2>{name}</h2>
-      <p>{address}</p>
+      <h2>양천주가</h2>
+      <p>서울 강남구 123456</p>
 
       <h3>메뉴</h3>
       <ul>
-        {
-          menuItems.map((menu) => (
-            <li key={menu.id}>{menu.name}</li>
-          ))
-        }
+        <li>탕어쩌구</li>
+        <li>저쩌구</li>
+        <li>얼씨구</li>
       </ul>
     </div>
   );

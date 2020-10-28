@@ -2,8 +2,6 @@ import React from 'react';
 
 import { useSelector } from 'react-redux';
 
-import { Link } from 'react-router-dom';
-
 import { get } from './utils';
 
 export default function RestaurantsContainer() {
@@ -13,9 +11,7 @@ export default function RestaurantsContainer() {
     <ul>
       {restaurants.map((restaurant) => (
         <li key={restaurant.id}>
-          <Link to={`restaurants/${restaurant.id}`}>
-            {restaurant.name}
-          </Link>
+          {restaurant.name}
         </li>
       ))}
     </ul>

@@ -9,5 +9,3 @@ export async function fetchCategories() {
 export async function fetchRestaurants() {
   return [];
 }
-
-export const fetchRestaurantDetail = jest.fn(async () => ({}));
