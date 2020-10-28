@@ -1,4 +1,9 @@
-import { fetchRegions, fetchCategories, fetchRestaurants } from './api';
+import {
+  fetchRegions,
+  fetchCategories,
+  fetchRestaurants,
+  fetchRestaurantDetail,
+} from './api';
 
 import REGIONS from '../../fixtures/regions';
 import CATEGORIES from '../../fixtures/categories';
