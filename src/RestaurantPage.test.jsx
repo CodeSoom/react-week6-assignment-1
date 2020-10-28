@@ -19,46 +19,46 @@ describe('RestaurantPage', () => {
     useDispatch.mockImplementation(() => dispatch);
   });
 
+  function mockUseSelector(restaurant) {
+    return useSelector.mockImplementation((selector) => selector({
+      restaurant,
+    }));
+  }
+
+  const match = { params: { restaurantId: RESTAURANT.id } };
+
+  function renderRestaurantPage() {
+    return render((
+      <MemoryRouter>
+        <RestaurantPage match={match} />
+      </MemoryRouter>
+    ));
+  }
+
   context('with restaurant', () => {
     it('renders RestaurantDetail', () => {
-      useSelector.mockImplementation((selector) => selector({
-        restaurant: RESTAURANT,
-      }));
+      mockUseSelector(RESTAURANT);
 
-      const match = { params: { restaurantId: '1' } };
+      const { container } = renderRestaurantPage();
 
-      const { container } = render((
-        <MemoryRouter>
-          <RestaurantPage match={match} />
-        </MemoryRouter>
-      ));
-
-      // New test
       expect(dispatch).toBeCalled();
 
       expect(container).toHaveTextContent(RESTAURANT.name);
 
-      RESTAURANT.menuItems.forEach((menuItem) => {
-        expect(container).toHaveTextContent(menuItem.name);
+      RESTAURANT.menuItems.forEach(({ name }) => {
+        expect(container).toHaveTextContent(name);
       });
     });
   });
 
   context('without restaurant', () => {
+    const restaurant = [];
+
     it('renders Loading', () => {
-      useSelector.mockImplementation((selector) => selector({
-        restaurant: [],
-      }));
+      mockUseSelector(restaurant);
 
-      const match = { params: { restaurantId: '1' } };
+      const { container } = renderRestaurantPage();
 
-      const { container } = render((
-        <MemoryRouter>
-          <RestaurantPage match={match} />
-        </MemoryRouter>
-      ));
-
-      // New test
       expect(container).toHaveTextContent('loading ...');
     });
   });
