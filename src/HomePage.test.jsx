@@ -12,4 +12,12 @@ describe('HomePage', () => {
 
     expect(container).toHaveTextContent('Home');
   });
+
+  it('shows about link', () => {
+    const { container } = render((
+      <HomePage />
+    ));
+
+    expect(container).toHaveTextContent('About');
+  });
 });
