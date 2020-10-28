@@ -9,9 +9,10 @@ describe('AboutPage', () => {
     <AboutPage />
   ));
 
-  it('shows heading', () => {
+  it('shows text contents', () => {
     const { container } = renderAboutPage();
 
     expect(container).toHaveTextContent('About');
+    expect(container).toHaveTextContent('맛집을 추천');
   });
 });
