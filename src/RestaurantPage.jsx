@@ -9,7 +9,11 @@ import { loadRestaurant } from './actions';
 
 import { get } from './utils';
 
-export default function RestaurantPage({ match: { params: { restaurantId } } }) {
+export default function RestaurantPage({
+  match: {
+    params: { restaurantId },
+  },
+}) {
   const dispatch = useDispatch();
 
   useEffect(() => {
