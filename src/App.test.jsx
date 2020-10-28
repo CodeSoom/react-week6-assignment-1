@@ -25,22 +25,20 @@ describe('App', () => {
     ],
   }));
 
-  it('shows Home page with path /', () => {
-    const { container } = render((
-      <MemoryRouter initialEntries={['/']}>
-        <App />
-      </MemoryRouter>
-    ));
+  const renderAppWith = ({ path }) => render((
+    <MemoryRouter initialEntries={[path]}>
+      <App />
+    </MemoryRouter>
+  ));
+
+  it('shows home-page with path /', () => {
+    const { container } = renderAppWith({ path: '/' });
 
     expect(container).toHaveTextContent('Home');
   });
 
-  it('shows not found page with not existing path', () => {
-    const { container } = render((
-      <MemoryRouter initialEntries={['/404']}>
-        <App />
-      </MemoryRouter>
-    ));
+  it('shows not-found-page with not existing path', () => {
+    const { container } = renderAppWith({ path: '/404' });
 
     expect(container).toHaveTextContent('존재하지 않는 페이지 입니다');
   });
