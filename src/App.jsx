@@ -16,6 +16,7 @@ import {
 
 import RestaurantsPage from './RestaurantsPage';
 import NotFoundPage from './NotFoundPage';
+import RestaurantDetailPage from './RestaurantDetailPage';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ export default function App() {
         <Route exact path="/" component={HomePage} />
         <Route path="/about" component={AboutPage} />
         <Route exact path="/restaurants" component={RestaurantsPage} />
+        <Route path="/restaurants/:id" component={RestaurantDetailPage} />
 
         <Route component={NotFoundPage} />
       </Switch>
