@@ -7,12 +7,16 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: 'babel-loader',
+        use: ['babel-loader'],
+      },
+      {
+        test: /\.css?$/,
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', 'css'],
   },
   devServer: {
     historyApiFallback: {

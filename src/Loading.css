@@ -1,0 +1,44 @@
+.loading {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-circle {
+  width: 54px;
+  height: 54px;
+  animation: loading-spin-ani 0.5s infinite linear;
+}
+
+.loading-circle circle {
+  stroke: #000;
+  stroke-width: 4;
+  fill: none;
+  stroke-dasharray: 157;
+  stroke-dashoffset: 157;
+  animation: loading-circle-ani 1s infinite;
+}
+
+@keyframes loading-circle-ani {
+  0% {
+      stroke-dashoffset: 0;
+  }
+  65% {
+      stroke-dashoffset: -147;
+  }
+  100% {
+      stroke-dashoffset: -157;
+  }
+}
+
+@keyframes loading-spin-ani {
+  to {
+      transform: rotate(360deg);
+  }
+}
