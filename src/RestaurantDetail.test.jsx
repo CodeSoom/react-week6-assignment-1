@@ -12,4 +12,5 @@ test('RestaurantDetail', () => {
   ));
 
   expect(container).toHaveTextContent(RESTAURANT.name);
+  expect(container).toHaveTextContent(RESTAURANT.address);
 });
