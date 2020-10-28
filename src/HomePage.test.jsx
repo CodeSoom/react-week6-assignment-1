@@ -19,9 +19,10 @@ describe('HomePage', () => {
     expect(container).toHaveTextContent('Home');
   });
 
-  it('shows about link', () => {
+  it('shows links', () => {
     const { container } = renderHomePage();
 
     expect(container).toHaveTextContent('About');
+    expect(container).toHaveTextContent('Restaurants');
   });
 });
