@@ -33,6 +33,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
+        <Route path="/restaurants" component={Restaurants} />
       </Switch>
       <RegionsContainer />
       <CategoriesContainer />
