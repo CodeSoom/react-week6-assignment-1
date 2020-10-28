@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import RegionsContainer from './RegionsContainer';
 import CategoriesContainer from './CategoriesContainer';
 import RestaurantsContainer from './RestaurantsContainer';
+import Header from './Header';
 
 import {
   loadInitialData,
@@ -24,6 +25,7 @@ export default function App() {
 
   return (
     <div>
+      <Header />
       <RegionsContainer />
       <CategoriesContainer />
       <RestaurantsContainer />
