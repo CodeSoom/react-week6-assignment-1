@@ -54,6 +54,29 @@ describe('App', () => {
       expect(container).toHaveTextContent('About');
     });
   });
-  // expect(queryByText('서울')).not.toBeNull();
-  // expect(queryByText('한식')).not.toBeNull();
+
+  context('with path /restaurants', () => {
+    it('renders the Restaurants page', () => {
+      const { queryByText } = render((
+        <MemoryRouter initialEntries={['/restaurants']}>
+          <App />
+        </MemoryRouter>
+      ));
+
+      expect(queryByText('서울')).not.toBeNull();
+      expect(queryByText('한식')).not.toBeNull();
+    });
+  });
+
+  context('without path', () => {
+    it('renders the NotFound page', () => {
+      const { container } = render((
+        <MemoryRouter initialEntries={['/xxxx']}>
+          <App />
+        </MemoryRouter>
+      ));
+
+      expect(container).toHaveTextContent('404 Not Found');
+    });
+  });
 });
