@@ -28,10 +28,7 @@ export default function RestaurantPage({ match: { params: { restaurantId } } }) 
     <div>
       <RestaurantContainer restaurantId={id} />
       {restaurant.name}
-      비빔밥
-      짬뽕
-      탕수육
-      팔보채
+      {restaurant.menuItems.map(({ name }) => <p>{name}</p>)}
     </div>
   ));
 }
