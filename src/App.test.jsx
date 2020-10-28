@@ -43,7 +43,7 @@ describe('App', () => {
     expect(container).toHaveTextContent('About');
   });
 
-  it('shows about-page with path /restaurants', () => {
+  it('shows restaurants-page with path /restaurants', () => {
     const { container } = renderAppWith({ path: '/restaurants' });
 
     expect(container).toHaveTextContent('서울');
