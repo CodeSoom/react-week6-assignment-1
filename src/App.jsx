@@ -8,6 +8,7 @@ import RegionsContainer from './RegionsContainer';
 import CategoriesContainer from './CategoriesContainer';
 import RestaurantsContainer from './RestaurantsContainer';
 import Header from './Header';
+import Home from './pages/Home';
 
 import {
   loadInitialData,
