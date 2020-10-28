@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { useDispatch, useSelector } from '../__mocks__/react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantDetail from './RestaurantDetail';
 import Loading from './Loading';
