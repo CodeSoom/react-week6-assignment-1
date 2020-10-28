@@ -3,7 +3,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import HomePage from './HomePage';
-import ErrorPage from './NotFoundPage';
+import NotFoundPage from './NotFoundPage';
 import AboutPage from './AboutPage';
 import RestaurantsPage from './RestaurantsPage';
 
@@ -19,7 +19,7 @@ export default function App() {
       <Route path="/restaurants">
         <RestaurantsPage />
       </Route>
-      <ErrorPage />
+      <NotFoundPage />
     </Switch>
   );
 }
