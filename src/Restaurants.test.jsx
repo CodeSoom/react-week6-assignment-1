@@ -4,16 +4,21 @@ import { render } from '@testing-library/react';
 
 import Restaurants from './Restaurants';
 
-test('Restaurants', () => {
+describe('Restaurants', () => {
   const restaurants = [
     { id: 1, name: '양천주가' },
     { id: 2, name: '마법사주방' },
   ];
-  const { container } = render(
+
+  const renderRestaurants = () => render(
     <Restaurants restaurants={restaurants} />,
   );
 
-  restaurants.forEach((restaurant) => {
-    expect(container).toHaveTextContent(restaurant.name);
+  it('render restaurants', () => {
+    const { container } = renderRestaurants();
+
+    restaurants.forEach((restaurant) => {
+      expect(container).toHaveTextContent(restaurant.name);
+    });
   });
 });
