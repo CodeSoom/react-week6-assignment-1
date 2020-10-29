@@ -1,6 +1,7 @@
 import React from 'react';
 
 import RestaurantsPage from './RestaurantsPage';
+import AboutPage from './AboutPage';
 
 export default function App() {
   const { location: { pathname } } = window;
@@ -17,16 +18,10 @@ export default function App() {
     );
   }
 
-  function AboutPage() {
-    return (
-      <h2>About</h2>
-    );
-  }
-
   const MyComponent = {
     '/': HomePage,
     '/restaurants': RestaurantsPage,
-    '/About': AboutPage,
+    '/about': AboutPage,
   }[pathname] || NotFoundPage;
 
   return (
