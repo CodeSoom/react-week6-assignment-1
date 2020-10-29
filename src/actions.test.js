@@ -87,10 +87,10 @@ describe('actions', () => {
     });
   });
 
-  context('with restaurant details', () => {
+  context('when loaded and fetched restaurant detail', () => {
     beforeEach(() => {
       store = mockStore({
-        restaurantsDetails: {
+        restaurantDetail: {
           id: 1, name: '양천주가', address: '서울시 강남구', menuItems: [],
         },
       });
