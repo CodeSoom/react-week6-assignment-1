@@ -7,14 +7,9 @@ import {
 
 import RestaurantsPage from './RestaurantsPage';
 import AboutPage from './AboutPage';
+import NotFoundPage from './NotFoundPage';
 
 export default function App() {
-  function NotFoundPage() {
-    return (
-      <p>404 not found</p>
-    );
-  }
-
   function HomePage() {
     return (
       <h2>Home</h2>
