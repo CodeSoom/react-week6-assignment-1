@@ -7,7 +7,6 @@ import { MemoryRouter } from 'react-router-dom';
 import App from './App';
 
 describe('App', () => {
-
   function renderApp({ path }) {
     return render(
       <MemoryRouter initialEntries={[path]}>
