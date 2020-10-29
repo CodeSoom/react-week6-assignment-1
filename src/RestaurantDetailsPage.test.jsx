@@ -16,16 +16,28 @@ describe('RestaurantDetailsPage', () => {
   ));
 
   context('with restaurant detail', () => {
+    const restaurant = {
+      name: '양천 주가',
+      address: '서울 강남구',
+      menuItems: [{ id: 1, name: '밥' }],
+    };
+
     it('renders restaurant details page', () => {
-      const { container } = renderDetailsPage({ name: '양천 주가', address: '서울 강남구', menuItems: [{ id: 1, name: '밥' }] });
+      const { container } = renderDetailsPage(restaurant);
 
       expect(container).toHaveTextContent('양천 주가');
     });
   });
 
   context('without restaurant detail', () => {
+    const restaurant = {
+      name: '',
+      address: '',
+      menuItems: [],
+    };
+
     it('shows loading text', () => {
-      const { container } = renderDetailsPage({ name: '', address: '', menuItems: [] });
+      const { container } = renderDetailsPage(restaurant);
 
       expect(container).toHaveTextContent('Loading...');
     });
