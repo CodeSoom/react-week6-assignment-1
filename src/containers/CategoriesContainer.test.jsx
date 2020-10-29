@@ -6,12 +6,12 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import CategoriesContainer from './CategoriesContainer';
 
-import CATEGORIES from '../../fixtures/categories';
+import categories from '../../fixtures/categories';
 
 describe('CategoriesContainer', () => {
   const dispatch = jest.fn();
 
-  const KOREAN_FOOD = CATEGORIES[0];
+  const KOREAN_FOOD = categories[0];
 
   beforeEach(() => {
     dispatch.mockClear();
@@ -21,7 +21,7 @@ describe('CategoriesContainer', () => {
   context('with selectedCategory', () => {
     beforeEach(() => {
       useSelector.mockImplementation((selector) => selector({
-        categories: CATEGORIES,
+        categories,
         selectedCategory: KOREAN_FOOD,
       }));
     });
@@ -38,7 +38,7 @@ describe('CategoriesContainer', () => {
   context('without selectedCategory', () => {
     beforeEach(() => {
       useSelector.mockImplementation((selector) => selector({
-        categories: CATEGORIES,
+        categories,
       }));
     });
 

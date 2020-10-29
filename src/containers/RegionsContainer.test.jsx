@@ -6,12 +6,12 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
 
-import REGIONS from '../../fixtures/regions';
+import regions from '../../fixtures/regions';
 
 describe('RegionsContainer', () => {
   const dispatch = jest.fn();
 
-  const SEOUL = REGIONS[0];
+  const SEOUL = regions[0];
 
   beforeEach(() => {
     dispatch.mockClear();
@@ -21,7 +21,7 @@ describe('RegionsContainer', () => {
   context('with selectedRegion', () => {
     beforeEach(() => {
       useSelector.mockImplementation((selector) => selector({
-        regions: REGIONS,
+        regions,
         selectedRegion: SEOUL,
       }));
     });
@@ -38,7 +38,7 @@ describe('RegionsContainer', () => {
   context('without selectedRegion', () => {
     beforeEach(() => {
       useSelector.mockImplementation((selector) => selector({
-        regions: REGIONS,
+        regions,
       }));
     });
 
