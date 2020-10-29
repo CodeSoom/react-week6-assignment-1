@@ -2,6 +2,8 @@ import React from 'react';
 
 import { fireEvent, render } from '@testing-library/react';
 
+import { MemoryRouter } from 'react-router-dom';
+
 import Restaurants from './Restaurants';
 
 describe('Restaurants', () => {
@@ -13,10 +15,12 @@ describe('Restaurants', () => {
   ];
 
   const renderRestaurants = () => render(
-    <Restaurants
-      restaurants={restaurants}
-      onClickRestaurant={handleClickRestaurant}
-    />,
+    <MemoryRouter>
+      <Restaurants
+        restaurants={restaurants}
+        onClickRestaurant={handleClickRestaurant}
+      />
+    </MemoryRouter>,
   );
 
   it('render restaurants', () => {
