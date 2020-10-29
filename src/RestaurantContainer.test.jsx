@@ -36,4 +36,16 @@ describe('RestaurantContainer', () => {
       });
     });
   });
+
+  context('without restaurant', () => {
+    const restaurant = [];
+
+    it('renders Loading', () => {
+      mockUseSelector(restaurant);
+
+      const { container } = renderRestaurantPage();
+
+      expect(container).toHaveTextContent('loading ...');
+    });
+  });
 });
