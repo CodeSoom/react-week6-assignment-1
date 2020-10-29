@@ -4,6 +4,8 @@ import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
+import { MemoryRouter } from 'react-router-dom';
+
 import App from './App';
 
 describe('App', () => {
@@ -18,7 +20,9 @@ describe('App', () => {
   context('with path /', () => {
     it('renders homepage', () => {
       const { container } = render((
-        <App />
+        <MemoryRouter>
+          <App />
+        </MemoryRouter>
       ));
 
       expect(container).toHaveTextContent('Home');
