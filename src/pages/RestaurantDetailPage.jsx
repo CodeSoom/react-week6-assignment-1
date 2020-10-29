@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { withRouter } from 'react-router-dom';
-import { loadRestaurantDetail, resetRestaurantDetail } from './actions';
+import { loadRestaurantDetail, resetRestaurantDetail } from '../actions';
 
-import RestaurantDetailContainer from './RestaurantDetailContainer';
+import RestaurantDetailContainer from '../containers/RestaurantDetailContainer';
 
 function RestaurantDetailPage({ match }) {
   const { id } = match.params;

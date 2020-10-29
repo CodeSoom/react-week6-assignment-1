@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 
 import RestaurantDetailContainer from './RestaurantDetailContainer';
-import RESTAURANT_DETAIL from '../fixtures/restaurantDetail';
+import RESTAURANT_DETAIL from '../../fixtures/restaurantDetail';
 
 describe('RestaurantDetailContainer', () => {
   context('with selectedRestaurant', () => {
