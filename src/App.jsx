@@ -1,13 +1,15 @@
 import React from 'react';
 
-import { BrowserRouter } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+} from 'react-router-dom';
 
 import RestaurantsPage from './RestaurantsPage';
 import AboutPage from './AboutPage';
 
 export default function App() {
-  const { location: { pathname } } = window;
-
   function NotFoundPage() {
     return (
       <p>404 not found</p>
@@ -20,16 +22,15 @@ export default function App() {
     );
   }
 
-  const MyComponent = {
-    '/': HomePage,
-    '/restaurants': RestaurantsPage,
-    '/about': AboutPage,
-  }[pathname] || NotFoundPage;
-
   return (
     <div>
       <BrowserRouter>
-        <MyComponent />
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/restaurants" component={RestaurantsPage} />
+          <Route path="/about" component={AboutPage} />
+          <Route component={NotFoundPage} />
+        </Switch>
       </BrowserRouter>
     </div>
   );
