@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Item from '../common/Item';
+
 const CategoryList = ({ categories, onSelectCategoryClick, selectedCategory }) => {
   if (categories.length === 0) {
     return null;
@@ -8,19 +10,12 @@ const CategoryList = ({ categories, onSelectCategoryClick, selectedCategory }) =
   return (
     <ul>
       {categories.map(({ id, name }) => (
-        <li key={id}>
-          <button
-            type="button"
-            onClick={() => onSelectCategoryClick(id)}
-          >
-            {name}
-            {selectedCategory ? (
-              <>
-                {id === selectedCategory.id ? '(V)' : null}
-              </>
-            ) : null}
-          </button>
-        </li>
+        <Item
+          key={id}
+          name={name}
+          check={selectedCategory && id === selectedCategory.id}
+          onClick={() => onSelectCategoryClick(id)}
+        />
       ))}
     </ul>
   );
