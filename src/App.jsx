@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {
-  BrowserRouter,
   Switch,
   Route,
 } from 'react-router-dom';
@@ -24,14 +23,12 @@ export default function App() {
 
   return (
     <div>
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/restaurants" component={RestaurantsPage} />
-          <Route path="/about" component={AboutPage} />
-          <Route component={NotFoundPage} />
-        </Switch>
-      </BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/restaurants" component={RestaurantsPage} />
+        <Route path="/about" component={AboutPage} />
+        <Route component={NotFoundPage} />
+      </Switch>
     </div>
   );
 }
