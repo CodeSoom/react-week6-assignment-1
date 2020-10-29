@@ -1,13 +1,13 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 
-import RestaurantMenu from './RestaurantMenu';
+import RestaurantMenus from './RestaurantMenus';
 import restaurant from '../../fixtures/restaurant';
 
-describe('RestaurantMenu', () => {
+describe('RestaurantMenus', () => {
   context('with menus', () => {
     it('renders menus', () => {
-      render(<RestaurantMenu menus={restaurant.menuItems} />);
+      render(<RestaurantMenus menus={restaurant.menuItems} />);
 
       expect(screen.getByText('메뉴')).toBeInTheDocument();
       expect(screen.getByText('비빔밥')).toBeInTheDocument();

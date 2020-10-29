@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function RestaurantMenu({ menus }) {
+export default function RestaurantMenus({ menus }) {
   return (
     <>
       <h3>메뉴</h3>
