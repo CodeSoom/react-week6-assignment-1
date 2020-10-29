@@ -3,7 +3,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 
-import { Router } from 'react-router-dom';
+import { MemoryRouter, Router } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantDetailPage from './RestaurantDetailPage';
@@ -20,19 +20,13 @@ describe('RestaurantDetailPage', () => {
     }));
   });
 
-  function renderRestaurantDetailPage({ history }) {
-    return render((
-      <Router history={history}>
-        <RestaurantDetailPage />
-      </Router>
-    ));
-  }
-
   it('renders restaurant detail', () => {
-    const history = createMemoryHistory();
-    history.push('/restaurant/1');
+    const { container } = render((
+      <MemoryRouter>
+        <RestaurantDetailPage match={{ params: 1 }} />
+      </MemoryRouter>
+    ));
 
-    const { container } = renderRestaurantDetailPage({ history });
     expect(dispatch).toBeCalled();
 
     expect(container).toHaveTextContent(RESTAURANT_DETAIL.name);
@@ -42,7 +36,12 @@ describe('RestaurantDetailPage', () => {
     const history = createMemoryHistory();
     history.push('/');
 
-    renderRestaurantDetailPage({ history });
+    render((
+      <Router history={history}>
+        <RestaurantDetailPage match={{ params: { id: null } }} />
+      </Router>
+    ));
+
     expect(dispatch).toBeCalledWith({
       type: 'resetRestaurantDetail',
     });
