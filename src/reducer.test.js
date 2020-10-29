@@ -116,7 +116,7 @@ describe('reducer', () => {
   });
 
   describe('setRestaurantsDetails', () => {
-    it('changes selected category', () => {
+    it('changes restaurant detail', () => {
       const initialState = {
         restaurantDetail: {},
       };
