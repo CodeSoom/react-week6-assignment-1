@@ -9,9 +9,7 @@ describe('RestaurantContainer', () => {
   context('with restaurant info', () => {
     it('renders restaurant info', () => {
       useSelector.mockImplementation((selector) => selector({
-        restaurant: {
-          info: restaurant,
-        },
+        restaurant,
       }));
 
       render(<RestaurantContainer />);

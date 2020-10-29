@@ -8,13 +8,13 @@ export default function RestaurantContainer() {
 
   return (
     <div>
-      <h2>{restaurant.info.name}</h2>
-      <address>{restaurant.info.address}</address>
+      <h2>{restaurant.name}</h2>
+      <address>{restaurant.address}</address>
 
       <h3>메뉴</h3>
       <ul>
         {
-          restaurant.info.menuItems.map((item) => (
+          restaurant.menuItems.map((item) => (
             <li
               key={item.id}
               data-testid={`menu${item.id}`}
@@ -28,7 +28,7 @@ export default function RestaurantContainer() {
       <h3>평가</h3>
       <ul>
         {
-          restaurant.info.reviews.map((review) => (
+          restaurant.reviews.map((review) => (
             <li
               key={review.id}
               data-testid={`review${review.id}`}
