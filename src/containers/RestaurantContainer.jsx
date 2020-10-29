@@ -38,7 +38,7 @@ export default function RestaurantContainer() {
               </p>
               <p>
                 점수 :
-                {`점수 : ${'★ ' * review.score}${'☆ ' * (5 - review.score)}`}
+                {`점수 : ${'★'.repeat(review.score)}${'☆'.repeat(5 - review.score)}`}
               </p>
               <p>
                 {`평가 : ${review.description}`}
