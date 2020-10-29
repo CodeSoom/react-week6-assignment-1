@@ -53,8 +53,14 @@ describe('api', () => {
   });
 
   describe('fetchRestaurantDetails', () => {
+    const restaurantDetail = {
+      name: '마법사주방',
+      address: '부산시 해운대구',
+      menuItems: [],
+    };
+
     beforeEach(() => {
-      mockFetch({ restaurantDetail: { name: '마법사주방', address: '부산시 해운대구', menuItems: [] } });
+      mockFetch({ restaurantDetail });
     });
 
     it('returns restaurantDetail', async () => {
