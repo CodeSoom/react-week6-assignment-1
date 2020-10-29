@@ -87,6 +87,9 @@ describe('actions', () => {
   });
 
   describe('loadRestaurant', () => {
+    beforeEach(() => {
+      store = mockStore({});
+    });
     it('runs setRestaurant', async () => {
       await store.dispatch(loadRestaurant({ restaurantId: 1 }));
 
