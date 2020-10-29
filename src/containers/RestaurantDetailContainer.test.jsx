@@ -9,6 +9,12 @@ import RestaurantDetailContainer from './RestaurantDetailContainer';
 import RESTAURANT_DETAIL from '../../fixtures/restaurantDetail';
 
 describe('RestaurantDetailContainer', () => {
+  const RestaurantDetailContainerRender = () => render((
+    <MemoryRouter>
+      <RestaurantDetailContainer />
+    </MemoryRouter>
+  ));
+
   context('with selectedRestaurant', () => {
     beforeEach(() => {
       useSelector.mockImplementation((selector) => selector({
@@ -17,11 +23,7 @@ describe('RestaurantDetailContainer', () => {
     });
 
     it('renders restaurant Detail', () => {
-      const { container } = render((
-        <MemoryRouter>
-          <RestaurantDetailContainer />
-        </MemoryRouter>
-      ));
+      const { container } = RestaurantDetailContainerRender();
 
       expect(container).toHaveTextContent(RESTAURANT_DETAIL.name);
     });
@@ -35,11 +37,7 @@ describe('RestaurantDetailContainer', () => {
     });
 
     it('renders loading...', () => {
-      const { container } = render((
-        <MemoryRouter>
-          <RestaurantDetailContainer />
-        </MemoryRouter>
-      ));
+      const { container } = RestaurantDetailContainerRender();
 
       expect(container).toHaveTextContent('로딩중...');
     });
