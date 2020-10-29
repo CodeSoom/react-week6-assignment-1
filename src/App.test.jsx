@@ -76,9 +76,9 @@ describe('App', () => {
     });
   });
 
-  context('path가 "/restaurant/1"일 때,', () => {
+  context('path가 "/restaurants/1"일 때,', () => {
     it('RestuarantDetailPage의 "주소" 문구가 출력됩니다.', () => {
-      const { container } = renderApp({ path: '/restaurant/1' });
+      const { container } = renderApp({ path: '/restaurants/1' });
 
       expect(container).toHaveTextContent('주소');
     });
