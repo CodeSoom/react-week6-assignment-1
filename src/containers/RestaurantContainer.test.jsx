@@ -16,14 +16,6 @@ describe('RestaurantContainer', () => {
 
       expect(screen.getByText(restaurant.name)).toBeInTheDocument();
       expect(screen.getByText(restaurant.address)).toBeInTheDocument();
-
-      restaurant.menuItems.forEach((item) => {
-        expect(screen.getByTestId(`menu${item.id}`)).toBeInTheDocument();
-      });
-
-      restaurant.reviews.forEach((review) => {
-        expect(screen.getByTestId(`review${review.id}`)).toBeInTheDocument();
-      });
     });
   });
 });

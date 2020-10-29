@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { get } from '../utils';
 import RestaurantMenus from '../components/RestaurantMenus';
+import RestaurantReviews from '../components/RestaurantReviews';
 
 export default function RestaurantContainer() {
   const restaurant = useSelector(get('restaurant'));
@@ -11,31 +12,8 @@ export default function RestaurantContainer() {
     <div>
       <h2>{restaurant.name}</h2>
       <address>{restaurant.address}</address>
-
       <RestaurantMenus menus={restaurant.menuItems} />
-
-      <h3>평가</h3>
-      <ul>
-        {
-          restaurant.reviews.map((review) => (
-            <li
-              key={review.id}
-              data-testid={`review${review.id}`}
-            >
-              <p>
-                {`닉네임 : ${review.name}`}
-              </p>
-              <p>
-                점수 :
-                {`점수 : ${'★'.repeat(review.score)}${'☆'.repeat(5 - review.score)}`}
-              </p>
-              <p>
-                {`평가 : ${review.description}`}
-              </p>
-            </li>
-          ))
-        }
-      </ul>
+      <RestaurantReviews reviews={restaurant.reviews} />
     </div>
   );
 }
