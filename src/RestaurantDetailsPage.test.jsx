@@ -29,7 +29,7 @@ describe('RestaurantDetailsPage', () => {
     });
   });
 
-  context('without restaurant detail', () => {
+  context('when empty restaurant detail', () => {
     const restaurant = {
       name: '',
       address: '',
