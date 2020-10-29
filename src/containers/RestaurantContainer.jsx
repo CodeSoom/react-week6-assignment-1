@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { get } from '../utils';
 
-export default function RestaurantInfoContainer() {
+export default function RestaurantContainer() {
   const restaurant = useSelector(get('restaurant'));
 
   return (
