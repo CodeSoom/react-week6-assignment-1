@@ -40,4 +40,16 @@ describe('App', () => {
       expect(container).toHaveTextContent('About');
     });
   });
+
+  context('without valid path', () => {
+    it('renders error page', () => {
+      const { container } = render((
+        <MemoryRouter initialEntries={['/xxx']}>
+          <App />
+        </MemoryRouter>
+      ));
+
+      expect(container).toHaveTextContent('404 not found');
+    });
+  });
 });
