@@ -16,11 +16,11 @@ describe('RestaurantContainer', () => {
   }
 
   context('with restaurant', () => {
-    useSelector.mockImplementation((selector) => selector({
-      restaurant: RESTAURANT,
-    }));
-
     it('renders restaurant info', () => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurant: RESTAURANT,
+      }));
+
       const { container } = renderRestaurantPage();
       expect(container).toHaveTextContent('양천주가');
       expect(container).toHaveTextContent(/서울/);
@@ -30,10 +30,10 @@ describe('RestaurantContainer', () => {
   });
 
   context('without restaurant', () => {
-    useSelector.mockImplementation((selector) => selector({
-      restaurant: null,
-    }));
     it('renders restaurant info', () => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurant: null,
+      }));
       const { container } = renderRestaurantPage();
 
       expect(container).toHaveTextContent('로딩중...');
