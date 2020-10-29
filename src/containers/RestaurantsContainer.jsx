@@ -1,22 +1,16 @@
 import React from 'react';
 
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 
+import RestaurantList from '../components/restaurant/RestaurantList';
 import { get } from '../utils';
 
 export default function RestaurantsContainer() {
   const restaurants = useSelector(get('restaurants'));
 
   return (
-    <ul>
-      {restaurants.map(({ id, name }) => (
-        <li key={id}>
-          <Link to={`restaurants/${id}`}>
-            {name}
-          </Link>
-        </li>
-      ))}
-    </ul>
+    <RestaurantList
+      restaurants={restaurants}
+    />
   );
 }
