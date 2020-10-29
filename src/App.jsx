@@ -3,6 +3,7 @@ import React from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
 
 import HomePage from './HomePage';
+import AboutPage from './AboutPage';
 
 export default function App() {
   return (
@@ -10,7 +11,7 @@ export default function App() {
       <h1><Link to="/">헤더</Link></h1>
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <p>About</p>
+        <Route path="/about" component={AboutPage} />
       </Switch>
     </div>
   );
