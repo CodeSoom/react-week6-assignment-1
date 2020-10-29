@@ -4,6 +4,7 @@ import { Switch, Route, Link } from 'react-router-dom';
 
 import HomePage from './HomePage';
 import AboutPage from './AboutPage';
+import NotFoundPage from './NotFoundPage';
 
 export default function App() {
   return (
@@ -12,7 +13,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/about" component={AboutPage} />
-        <p>404 Not Found</p>
+        <Route component={NotFoundPage} />
       </Switch>
     </div>
   );
