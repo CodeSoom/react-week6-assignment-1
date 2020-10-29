@@ -11,7 +11,6 @@ describe('RestaurantDetailPage', () => {
       <MemoryRouter initialEntries={['/restaurants/1']}>
         <RestaurantDetailPage />
       </MemoryRouter>
-
     ));
 
     expect(container).toHaveTextContent('양천주가');
