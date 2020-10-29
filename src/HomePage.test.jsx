@@ -6,7 +6,7 @@ import { MemoryRouter } from 'react-router-dom';
 
 import HomePage from './HomePage';
 
-test('AboutPage', () => {
+test('HomePage', () => {
   render((
     <MemoryRouter>
       <HomePage />
