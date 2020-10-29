@@ -3,6 +3,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { selectCategory, loadRestaurants } from '../actions';
+import CategoryList from '../components/category/CategoryList';
 
 import { get } from '../utils';
 
@@ -18,22 +19,10 @@ export default function CategoriesContainer() {
   }
 
   return (
-    <ul>
-      {categories.map(({ id, name }) => (
-        <li key={id}>
-          <button
-            type="button"
-            onClick={() => handleClick(id)}
-          >
-            {name}
-            {selectedCategory ? (
-              <>
-                {id === selectedCategory.id ? '(V)' : null}
-              </>
-            ) : null}
-          </button>
-        </li>
-      ))}
-    </ul>
+    <CategoryList
+      categories={categories}
+      selectedCategory={selectedCategory}
+      onSelectCategoryClick={handleClick}
+    />
   );
 }
