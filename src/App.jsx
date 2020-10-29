@@ -10,6 +10,7 @@ export default function App() {
       <h1><Link to="/">헤더</Link></h1>
       <Switch>
         <Route exact path="/" component={HomePage} />
+        <p>About</p>
       </Switch>
     </div>
   );
