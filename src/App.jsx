@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { BrowserRouter } from 'react-router-dom';
+
 import RestaurantsPage from './RestaurantsPage';
 import AboutPage from './AboutPage';
 
@@ -14,7 +16,7 @@ export default function App() {
 
   function HomePage() {
     return (
-      <p>Home</p>
+      <h2>Home</h2>
     );
   }
 
@@ -26,7 +28,9 @@ export default function App() {
 
   return (
     <div>
-      <MyComponent />
+      <BrowserRouter>
+        <MyComponent />
+      </BrowserRouter>
     </div>
   );
 }
