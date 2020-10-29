@@ -8,8 +8,8 @@ import RestaurantContainer from './RestaurantContainer';
 
 import { loadRestaurant } from './actions';
 
-export default function RestaurantsPage() {
-  const { restaurantId } = useParams();
+export default function RestaurantsPage({ params }) {
+  const { restaurantId } = params || useParams();
 
   const dispatch = useDispatch();
 
