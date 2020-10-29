@@ -25,11 +25,19 @@ describe('App', () => {
   });
 
   context('with path /about', () => {
-    it('shows header and page name', () => {
+    it('renders about page', () => {
       const { container } = renderApp({ path: '/about' });
 
       expect(container).toHaveTextContent('헤더');
       expect(container).toHaveTextContent('About');
+    });
+  });
+
+  context('with invalid path', () => {
+    it('renders not found page', () => {
+      const { container } = renderApp({ path: '/notExistPage' });
+
+      expect(container).toHaveTextContent('404 Not Found');
     });
   });
 });
