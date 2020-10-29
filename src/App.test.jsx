@@ -11,6 +11,7 @@ import App from './App';
 import regions from '../fixtures/regions';
 import categories from '../fixtures/categories';
 import restaurants from '../fixtures/restaurants';
+import restaurant from '../fixtures/restaurant';
 
 describe('App', () => {
   const dispatch = jest.fn();
@@ -20,6 +21,7 @@ describe('App', () => {
       regions,
       categories,
       restaurants,
+      restaurant,
     }));
     useDispatch.mockImplementation(() => dispatch);
   });
