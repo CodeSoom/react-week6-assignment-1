@@ -6,7 +6,15 @@ const initialState = {
   restaurants: [],
   selectedRegion: null,
   selectedCategory: null,
-  restaurant: {},
+  restaurant: {
+    id: null,
+    categoryId: null,
+    name: '',
+    address: '',
+    menuItems: [],
+    reviews: [],
+    information: '',
+  },
 };
 
 const reducers = {

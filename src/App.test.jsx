@@ -21,6 +21,15 @@ describe('App', () => {
     regions,
     categories,
     restaurants,
+    restaurant: {
+      id: null,
+      categoryId: null,
+      name: '',
+      address: '',
+      menuItems: [],
+      reviews: [],
+      information: ',',
+    },
   }));
 
   beforeEach(() => {
@@ -72,7 +81,7 @@ describe('App', () => {
     it('go to the restaurant detail page', () => {
       const { container } = renderApp({ path: '/restaurants/1' });
 
-      expect(container).toHaveTextContent('양천주가');
+      expect(container).toHaveTextContent('메뉴');
     });
   });
 });
