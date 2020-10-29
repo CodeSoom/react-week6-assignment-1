@@ -2,9 +2,9 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import RESTAURANT from '../fixtures/restaurant';
+import RestaurantDetail from './RestaurantDatail';
 
-import RestaurantDetail from './RestaurantDetail';
+import RESTAURANT from '../fixtures/restaurant';
 
 test('RestaurantDetail', () => {
   const { container } = render((
