@@ -2,6 +2,8 @@ import React from 'react';
 
 import { Switch, Route, Link } from 'react-router-dom';
 
+import HomePage from './HomePage';
+
 export default function App() {
   return (
     <div>
