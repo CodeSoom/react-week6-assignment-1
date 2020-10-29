@@ -22,7 +22,7 @@ test('RestaurantContainer', () => {
   ));
 
   expect(container).toHaveTextContent('양천주가');
-  expect(container).toHaveTextContent(/서울시/);
+  expect(container).toHaveTextContent(/서울/);
   expect(container).toHaveTextContent(/탕수육/);
   expect(container).toHaveTextContent(/팔보채/);
 });
