@@ -1,3 +1,9 @@
-export default function RestaurantMenu() {
-  return '비빔밥 짬뽕 탕수육 팔보채';
+import React from 'react';
+
+export default function RestaurantMenu({ menu }) {
+  return (
+    <ul>
+      {menu.map(({ name }) => (<li>{name}</li>))}
+    </ul>
+  );
 }
