@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom';
+import Restaurant from './Restaurant';
 
 const RestaurantList = ({ restaurants }) => {
   if (restaurants.length === 0) {
@@ -9,12 +9,11 @@ const RestaurantList = ({ restaurants }) => {
 
   return (
     <ul>
-      {restaurants.map(({ id, name }) => (
-        <li key={id}>
-          <Link to={`restaurants/${id}`}>
-            {name}
-          </Link>
-        </li>
+      {restaurants.map((restaurant) => (
+        <Restaurant
+          key={restaurant.id}
+          restaurant={restaurant}
+        />
       ))}
     </ul>
   );
