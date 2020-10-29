@@ -8,7 +8,7 @@ import {
 import REGIONS from '../../fixtures/regions';
 import CATEGORIES from '../../fixtures/categories';
 import RESTAURANTS from '../../fixtures/restaurants';
-import RESTAURANT_INFO from '../../fixtures/restaurantInfo';
+import RESTAURANT_INFO from '../../fixtures/restaurant';
 
 describe('api', () => {
   const mockFetch = (data) => {

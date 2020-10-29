@@ -1,5 +1,5 @@
 import React from 'react';
 
 export default function RestaurantMenu() {
-  return (<></>);
+  return (<li>탕수육</li>);
 }
