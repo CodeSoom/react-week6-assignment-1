@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import { get } from '../utils';
+import RestaurantMenu from '../components/RestaurantMenu';
 
 export default function RestaurantContainer() {
   const restaurant = useSelector(get('restaurant'));
@@ -11,19 +12,7 @@ export default function RestaurantContainer() {
       <h2>{restaurant.name}</h2>
       <address>{restaurant.address}</address>
 
-      <h3>메뉴</h3>
-      <ul>
-        {
-          restaurant.menuItems.map((item) => (
-            <li
-              key={item.id}
-              data-testid={`menu${item.id}`}
-            >
-              {item.name}
-            </li>
-          ))
-        }
-      </ul>
+      <RestaurantMenu menus={restaurant.menuItems} />
 
       <h3>평가</h3>
       <ul>
