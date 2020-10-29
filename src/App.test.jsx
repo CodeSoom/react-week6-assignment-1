@@ -2,7 +2,7 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { MemoryRouter } from 'react-router-dom';
 
@@ -38,6 +38,22 @@ describe('App', () => {
       ));
 
       expect(container).toHaveTextContent('About');
+    });
+  });
+
+  context('with path /restaurants', () => {
+    it('renders restaurants page', () => {
+      const dispatch = jest.fn();
+
+      useDispatch.mockImplementation(() => dispatch);
+
+      const { container } = render((
+        <MemoryRouter initialEntries={['/restaurants']}>
+          <App />
+        </MemoryRouter>
+      ));
+
+      expect(container).toHaveTextContent('Restaurants');
     });
   });
 
