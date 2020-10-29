@@ -10,7 +10,7 @@ describe('RestaurantReviews', () => {
       render(<RestaurantReviews reviews={restaurant.reviews} />);
 
       expect(screen.getByText('평가')).toBeInTheDocument();
-      expect(screen.getByText('훌륭하다 훌륭하다 지구인놈들')).toBeInTheDocument();
+      expect(screen.getByText(/훌륭하다 훌륭하다 지구인놈들/)).toBeInTheDocument();
     });
   });
 });
