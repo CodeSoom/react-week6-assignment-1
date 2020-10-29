@@ -1,13 +1,10 @@
 import React, { useEffect } from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-import RestaurantDetail from './RestaurantDetail';
-import Loading from './Loading';
+import RestaurantContainer from './RestaurantContainer';
 
 import { loadRestaurant } from './actions';
-
-import { get } from './utils';
 
 export default function RestaurantPage({
   match: {
@@ -20,13 +17,7 @@ export default function RestaurantPage({
     dispatch(loadRestaurant(restaurantId));
   }, []);
 
-  const restaurant = useSelector(get('restaurant'));
-
-  if (!restaurant.id) {
-    return (<Loading />);
-  }
-
   return ((
-    <RestaurantDetail restaurant={restaurant} />
+    <RestaurantContainer />
   ));
 }
