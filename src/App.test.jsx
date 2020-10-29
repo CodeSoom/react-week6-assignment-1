@@ -25,15 +25,7 @@ describe('App', () => {
     }));
   });
 
-  function renderApp(path) {
-    if (!path) {
-      return render((
-        <MemoryRouter>
-          <App />
-        </MemoryRouter>
-      ));
-    }
-
+  function renderApp(path = '/') {
     return render((
       <MemoryRouter initialEntries={[path]}>
         <App />
