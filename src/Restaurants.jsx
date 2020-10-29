@@ -1,11 +1,16 @@
 import React from 'react';
 
-export default function Restaurants({ restaurants }) {
+export default function Restaurants({ restaurants, onClickRestaurant }) {
   return (
     <ul>
       {restaurants.map(({ id, name }) => (
         <li key={id}>
-          {name}
+          <a
+            href="/"
+            onClick={onClickRestaurant}
+          >
+            {name}
+          </a>
         </li>
       ))}
     </ul>
