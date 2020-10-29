@@ -1,5 +1,7 @@
 import React from 'react';
 
+import RestaurantMenuItems from './RestaurantMenuItems';
+
 export default function RestaurantsDetailsPage({ restaurant: { name, address, menuItems } }) {
   if (!name) {
     return <h2>Loading...</h2>;
@@ -12,12 +14,7 @@ export default function RestaurantsDetailsPage({ restaurant: { name, address, me
         주소 :
         {address}
       </p>
-      <h2>메뉴</h2>
-      <ul>
-        {menuItems.map(({ name: itemName, id }) => (
-          <li key={id}>{itemName}</li>
-        ))}
-      </ul>
+      <RestaurantMenuItems menuItems={menuItems} />
     </>
   );
 }
