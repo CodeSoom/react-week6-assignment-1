@@ -1,14 +1,16 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, useRouteMatch } from 'react-router-dom';
 
 export default function Restaurants({ restaurants, onClickRestaurant }) {
+  const { url } = useRouteMatch();
+
   return (
     <ul>
       {restaurants.map(({ id, name }) => (
         <li key={id}>
           <Link
-            to="/"
+            to={`${url}/${id}`}
             onClick={onClickRestaurant}
           >
             {name}
