@@ -2,14 +2,18 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantPage from './RestaurantPage';
 
 import restaurant from '../fixtures/restaurant';
 
 describe('RestaurantPage', () => {
+  const dispatch = jest.fn();
+
   beforeEach(() => {
+    useDispatch.mockImplementation(() => dispatch);
+
     useSelector.mockImplementation((selector) => selector({
       restaurant,
     }));
@@ -18,6 +22,8 @@ describe('RestaurantPage', () => {
   context('with restaurant', () => {
     it('renders restaurant info', () => {
       const { container } = render(<RestaurantPage params={{ restaurantId: 1 }} />);
+
+      expect(dispatch).toBeCalled();
 
       expect(container).toHaveTextContent('양천주가');
       expect(container).toHaveTextContent(/서울시/);
