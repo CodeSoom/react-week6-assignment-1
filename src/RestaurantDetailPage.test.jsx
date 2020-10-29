@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 
 import { MemoryRouter } from 'react-router-dom';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantDetailPage from './RestaurantDetailPage';
 
@@ -17,6 +17,13 @@ describe('RestaurantDetailPage', () => {
     restaurant: RESTAURANT,
   }));
 
+  const dispatch = jest.fn();
+  useDispatch.mockImplementation(() => dispatch);
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('show restaurant detail', () => {
     const { container } = render((
       <MemoryRouter initialEntries={['/restaurants/1']}>
@@ -26,5 +33,9 @@ describe('RestaurantDetailPage', () => {
 
     expect(container).toHaveTextContent('양천주가');
     expect(container).toHaveTextContent('서울 강남구 12345');
+  });
+
+  it('call loadRestaurant action', () => {
+    expect(dispatch).toBeCalled();
   });
 });
