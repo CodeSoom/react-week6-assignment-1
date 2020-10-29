@@ -5,10 +5,10 @@ import { useSelector } from 'react-redux';
 import RestaurantDetail from './RestaurantDetail';
 import Loading from './Loading';
 
+import { get } from './utils';
+
 export default function RestaurantContainer() {
-  const { restaurant } = useSelector((state) => ({
-    restaurant: state.restaurant,
-  }));
+  const restaurant = useSelector(get('restaurant'));
 
   if (!restaurant.id) {
     return (<Loading />);
