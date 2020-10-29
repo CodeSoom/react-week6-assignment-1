@@ -13,6 +13,7 @@ test('Restaurants', () => {
     <Restaurants restaurants={restaurants} />,
   );
 
-  expect(container).toHaveTextContent('양천주가');
-  expect(container).toHaveTextContent('마법사주방');
+  restaurants.forEach((restaurant) => {
+    expect(container).toHaveTextContent(restaurant.name);
+  });
 });
