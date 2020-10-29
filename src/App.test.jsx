@@ -2,11 +2,28 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
+import { useSelector, useDispatch } from 'react-redux';
+
 import { MemoryRouter } from 'react-router-dom';
 
 import App from './App';
 
+import regions from '../fixtures/regions';
+import categories from '../fixtures/categories';
+import restaurants from '../fixtures/restaurants';
+
 describe('App', () => {
+  const dispatch = jest.fn();
+
+  beforeEach(() => {
+    useSelector.mockImplementation((selector) => selector({
+      regions,
+      categories,
+      restaurants,
+    }));
+    useDispatch.mockImplementation(() => dispatch);
+  });
+
   function renderApp({ path }) {
     return render(
       <MemoryRouter initialEntries={[path]}>
@@ -24,12 +41,23 @@ describe('App', () => {
     });
   });
 
-  context('with path /about', () => {
+  context('with path "/about"', () => {
     it('renders about page', () => {
       const { container } = renderApp({ path: '/about' });
 
       expect(container).toHaveTextContent('헤더');
       expect(container).toHaveTextContent('About');
+    });
+  });
+
+  context('with path "/restaurants"', () => {
+    it('renders restaurants page', () => {
+      const { container } = renderApp({ path: '/restaurants' });
+
+      expect(container).toHaveTextContent('헤더');
+      expect(container).toHaveTextContent('서울');
+
+      expect(dispatch).toBeCalled();
     });
   });
 
