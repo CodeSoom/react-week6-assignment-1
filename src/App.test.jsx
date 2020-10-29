@@ -2,22 +2,26 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import App from './App';
 
-test('App', () => {
-  const dispatch = jest.fn();
+describe('App', () => {
+  beforeEach(() => {
+    useSelector.mockImplementation((selector) => selector({
+      regions: [],
+      categories: [],
+      restaurants: [],
+    }));
+  });
 
-  useDispatch.mockImplementation(() => dispatch);
+  context('with path /', () => {
+    it('renders homepage', () => {
+      const { container } = render((
+        <App />
+      ));
 
-  useSelector.mockImplementation((selector) => selector({
-    regions: [],
-    categories: [],
-    restaurants: [],
-  }));
-
-  render(
-    <App />,
-  );
+      expect(container).toHaveTextContent('Home');
+    });
+  });
 });
