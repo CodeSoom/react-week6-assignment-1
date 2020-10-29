@@ -8,14 +8,32 @@ import RESTAURANT from '../fixtures/restaurant';
 
 import RestaurantContainer from './RestaurantContainer';
 
-test('RestaurantContainer', () => {
-  useSelector.mockImplementation((selector) => selector({
-    restaurant: RESTAURANT,
-  }));
+describe('RestaurantContainer', () => {
+  function mockUseSelector(restaurant) {
+    useSelector.mockImplementation((selector) => selector({
+      restaurant,
+    }));
+  }
 
-  const { container } = render((
-    <RestaurantContainer />
-  ));
+  function renderRestaurantPage() {
+    return render((
+      <RestaurantContainer />
+    ));
+  }
 
-  expect(container).toHaveTextContent(RESTAURANT.name);
+  context('with restaurant', () => {
+    const restaurant = RESTAURANT;
+
+    it('renders RestaurantDetail', () => {
+      mockUseSelector(restaurant);
+
+      const { container } = renderRestaurantPage();
+
+      expect(container).toHaveTextContent(RESTAURANT.name);
+
+      RESTAURANT.menuItems.forEach(({ name }) => {
+        expect(container).toHaveTextContent(name);
+      });
+    });
+  });
 });
