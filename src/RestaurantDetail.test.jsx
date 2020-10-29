@@ -14,7 +14,7 @@ test('RestaurantDetail', () => {
   expect(container).toHaveTextContent(RESTAURANT.name);
   expect(container).toHaveTextContent(RESTAURANT.address);
 
-  RESTAURANT.menuItems.forEach((menuItem) => {
-    expect(container).toHaveTextContent(menuItem.name);
+  RESTAURANT.menuItems.forEach(({ name }) => {
+    expect(container).toHaveTextContent(name);
   });
 });
