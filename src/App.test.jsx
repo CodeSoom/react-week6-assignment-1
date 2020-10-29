@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
@@ -51,6 +51,16 @@ describe('App', () => {
     expect(container).toHaveTextContent('About');
     expect(container).toHaveTextContent('Restaurants');
     expect(container).toHaveTextContent('헤더');
+  });
+
+  describe('click 헤더', () => {
+    it('go to home page', () => {
+      const { getByText, container } = renderApp({ path: '/about' });
+
+      fireEvent.click(getByText('헤더'));
+
+      expect(container).toHaveTextContent('Home');
+    });
   });
 
   describe('/about', () => {
