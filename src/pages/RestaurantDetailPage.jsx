@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { withRouter } from 'react-router-dom';
 import { loadRestaurantDetail, resetRestaurantDetail } from '../actions';
 
 import RestaurantDetailContainer from '../containers/RestaurantDetailContainer';
@@ -23,4 +22,4 @@ function RestaurantDetailPage({ match }) {
   );
 }
 
-export default withRouter(RestaurantDetailPage);
+export default RestaurantDetailPage;
