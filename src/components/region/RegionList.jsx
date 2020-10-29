@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Item from '../common/Item';
+
 const RegionList = ({ regions, onSelectRegionClick, selectedRegion }) => {
   if (regions.length === 0) {
     return null;
@@ -8,19 +10,12 @@ const RegionList = ({ regions, onSelectRegionClick, selectedRegion }) => {
   return (
     <ul>
       {regions.map(({ id, name }) => (
-        <li key={id}>
-          <button
-            type="button"
-            onClick={() => onSelectRegionClick(id)}
-          >
-            {name}
-            {selectedRegion ? (
-              <>
-                {id === selectedRegion.id ? '(V)' : null}
-              </>
-            ) : null}
-          </button>
-        </li>
+        <Item
+          key={id}
+          name={name}
+          check={selectedRegion && id === selectedRegion.id}
+          onClick={() => onSelectRegionClick(id)}
+        />
       ))}
     </ul>
   );
