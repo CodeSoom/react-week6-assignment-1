@@ -1,5 +1,7 @@
 import React from 'react';
 
+import RestaurantMenu from './RestaurantMenu';
+
 export default function RestaurantDatail({
   restaurant: {
     name,
@@ -12,13 +14,7 @@ export default function RestaurantDatail({
       <h2>{name}</h2>
       <p>{address}</p>
       <h3>Menu</h3>
-      <ul>
-        {menuItems.map((menuItem) => (
-          <li key={menuItem.id}>
-            {menuItem.name}
-          </li>
-        ))}
-      </ul>
+      <RestaurantMenu menu={menuItems} />
     </div>
   );
 }
