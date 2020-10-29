@@ -17,9 +17,16 @@ export default function App() {
     );
   }
 
+  function AboutPage() {
+    return (
+      <h2>About</h2>
+    );
+  }
+
   const MyComponent = {
     '/': HomePage,
     '/restaurants': RestaurantsPage,
+    '/About': AboutPage,
   }[pathname] || NotFoundPage;
 
   return (
