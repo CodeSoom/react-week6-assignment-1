@@ -27,7 +27,7 @@ describe('RestaurantDetailsPage', () => {
 
   context('with restaurant details', () => {
     it('renders restaurant details page', () => {
-      const restaurantDetail = {
+      const restaurant = {
         name: '양천 주가',
         address: '서울시 강남구',
         menuItems: [],
@@ -36,7 +36,7 @@ describe('RestaurantDetailsPage', () => {
       const { container } = render((
         <MemoryRouter>
           <RestaurantDetailsPage
-            restaurant={restaurantDetail}
+            restaurant={restaurant}
           />
         </MemoryRouter>
       ));
