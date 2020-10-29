@@ -3,6 +3,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { selectRegion, loadRestaurants } from '../actions';
+import RegionList from '../components/region/RegionList';
 
 import { get } from '../utils';
 
@@ -18,22 +19,10 @@ export default function RegionsContainer() {
   }
 
   return (
-    <ul>
-      {regions.map(({ id, name }) => (
-        <li key={id}>
-          <button
-            type="button"
-            onClick={() => handleClick(id)}
-          >
-            {name}
-            {selectedRegion ? (
-              <>
-                {id === selectedRegion.id ? '(V)' : null}
-              </>
-            ) : null}
-          </button>
-        </li>
-      ))}
-    </ul>
+    <RegionList
+      regions={regions}
+      selectedRegion={selectedRegion}
+      onSelectRegionClick={handleClick}
+    />
   );
 }
