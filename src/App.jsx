@@ -12,6 +12,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/about" component={AboutPage} />
+        <p>404 Not Found</p>
       </Switch>
     </div>
   );
