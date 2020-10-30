@@ -30,10 +30,6 @@ describe('RestaurantContainer', () => {
       const { container } = renderRestaurantPage();
 
       expect(container).toHaveTextContent(RESTAURANT.name);
-
-      RESTAURANT.menuItems.forEach(({ name }) => {
-        expect(container).toHaveTextContent(name);
-      });
     });
   });
 
