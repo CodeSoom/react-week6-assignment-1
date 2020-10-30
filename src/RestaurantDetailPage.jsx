@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { loadRestaurantDetail } from './actions';
-import RestaurantDetail from './RestaurantDetail';
+import RestaurantDetailContainer from './RestaurantDetailContainer';
 
 import { get } from './utils';
 // 1. useEffect를 통해서 id를 통해서 fetchRestaurantDetail을 통해서 정보를 얻는다
@@ -20,6 +20,6 @@ export default function RestaurantDetailPage() {
   const { done } = useSelector(get('selectedRestaurantDetail'));
 
   return (
-    done === false ? <div>loading</div> : <div>unloading</div>
+    done === false ? <div>loading</div> : <RestaurantDetailContainer />
   );
 }
