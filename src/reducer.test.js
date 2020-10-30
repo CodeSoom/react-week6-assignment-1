@@ -108,4 +108,40 @@ describe('reducer', () => {
       });
     });
   });
+
+  describe('setRestaurant', () => {
+    it('changes restaurant', () => {
+      const initialState = {
+        restaurant: null,
+      };
+
+      const restaurant = {
+        id: 1,
+        categoryId: 1,
+        name: '양천주가',
+        address: '서울 강남구 123456',
+        menus: [
+          {
+            id: 1,
+            restaurantId: 1,
+            name: '비빔밥',
+          },
+          {
+            id: 2,
+            restaurantId: 1,
+            name: '짬뽕',
+          },
+          {
+            id: 16,
+            restaurantId: 1,
+            name: '탕수육',
+          },
+        ],
+      };
+
+      const state = reducer(initialState, setRestaurant(restaurant));
+
+      expect(state.restaurant).toEqual(restaurant);
+    });
+  });
 });
