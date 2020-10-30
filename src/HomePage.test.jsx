@@ -7,9 +7,10 @@ import { MemoryRouter } from 'react-router-dom';
 import HomePage from './HomePage';
 
 test('HomePage', () => {
-  render((
+  const { container } = render((
     <MemoryRouter>
       <HomePage />
     </MemoryRouter>
   ));
+  expect(container).toHaveTextContent('Home');
 });
