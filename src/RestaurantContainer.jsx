@@ -19,6 +19,7 @@ export default function RestaurantConatiner() {
         주소:
         {address}
       </p>
+      <h3>메뉴</h3>
       <ul>
         {menuItems.map(({ name: menuName }) => (
           <li>{menuName}</li>
