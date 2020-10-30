@@ -5,5 +5,7 @@ import { render } from '@testing-library/react';
 import NotFoundPage from './NotFoundPage';
 
 test('NotFound', () => {
-  render((<NotFoundPage />));
+  const { getByText } = render((<NotFoundPage />));
+
+  expect(getByText('404 Not Found')).not.toBeNull();
 });
