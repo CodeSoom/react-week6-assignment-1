@@ -64,4 +64,13 @@ describe('App', () => {
       expect(container).toHaveTextContent('Not Found');
     });
   });
+
+  context('with path restaurants/{id}', () => {
+    it('renders the restaurant id', () => {
+      const { container } = renderApp({ path: '/restaurants/1' });
+
+      expect(container).toHaveTextContent('양천주가');
+      expect(container).toHaveTextContent('서울 강남구 123456');
+    });
+  });
 });
