@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 
 import { loadRestaurant } from './actions';
 
-import RestaurantConatiner from './RestaurantContainer';
+import RestaurantContainer from './RestaurantContainer';
 
 export default function RestaurantPage() {
   const { id } = useParams();
@@ -17,6 +17,6 @@ export default function RestaurantPage() {
   }, []);
 
   return (
-    <RestaurantConatiner />
+    <RestaurantContainer />
   );
 }
