@@ -7,6 +7,7 @@ import {
   setRestaurant,
   selectRegion,
   selectCategory,
+  selectRestaurant,
 } from './actions';
 
 describe('reducer', () => {
@@ -26,6 +27,7 @@ describe('reducer', () => {
       },
       selectedRegion: null,
       selectedCategory: null,
+      selectedRestaurant: null,
     };
 
     it('returns initialState', () => {
@@ -138,6 +140,20 @@ describe('reducer', () => {
         id: 1,
         name: '한식',
       });
+    });
+  });
+
+  describe('selectRestaurant', () => {
+    it('changes selected Restaurant', () => {
+      const initialState = {
+        selectedRestaurant: null,
+      };
+
+      const restaurantId = 1;
+
+      const state = reducer(initialState, selectRestaurant(restaurantId));
+
+      expect(state.selectedRestaurant).toBe(restaurantId);
     });
   });
 });
