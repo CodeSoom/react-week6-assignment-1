@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { get } from './utils';
 
 export default function RestaurantConatiner() {
-  const restaurant = useSelector(get('restaurant'));
+  const { name, address } = useSelector(get('restaurant'));
   const loading = useSelector(get('restaurantLoading'));
 
   if (loading) {
@@ -14,8 +14,11 @@ export default function RestaurantConatiner() {
 
   return (
     <div>
-      <p>{restaurant.name}</p>
-      <p>{restaurant.address}</p>
+      <h2>{name}</h2>
+      <p>
+        주소:
+        {address}
+      </p>
     </div>
   );
 }
