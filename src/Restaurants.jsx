@@ -11,7 +11,7 @@ export default function Restaurants({ restaurants, onClickRestaurant }) {
         <li key={id}>
           <Link
             to={`${url}/${id}`}
-            onClick={onClickRestaurant}
+            onClick={() => onClickRestaurant(id)}
           >
             {name}
           </Link>
