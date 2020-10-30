@@ -99,9 +99,8 @@ describe('actions', () => {
 
       expect(actions).toEqual(
         [
-          setRestaurantLoading(true),
+          setRestaurant(null),
           setRestaurant({}),
-          setRestaurantLoading(false),
         ],
       );
     });

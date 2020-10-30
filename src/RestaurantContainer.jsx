@@ -7,9 +7,8 @@ import { get } from './utils';
 
 export default function RestaurantConatiner() {
   const restaurant = useSelector(get('restaurant'));
-  const loading = useSelector(get('restaurantLoading'));
 
-  if (!restaurant || loading) {
+  if (!restaurant) {
     return 'loading...';
   }
 

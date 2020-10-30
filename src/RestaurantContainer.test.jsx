@@ -9,9 +9,8 @@ import RestaurantContainer from './RestaurantContainer';
 import RESTAURANT from '../fixtures/restaurant';
 
 describe('RestaurantContainer', () => {
-  const setState = ({ restaurant, loading }) => {
+  const setState = ({ restaurant }) => {
     useSelector.mockImplementation((selector) => selector({
-      restaurantLoading: loading,
       restaurant,
     }));
   };
@@ -19,8 +18,7 @@ describe('RestaurantContainer', () => {
   context('when restaurant is being loaded', () => {
     beforeEach(() => {
       setState({
-        restaurant: {},
-        loading: true,
+        restaurant: null,
       });
     });
 
