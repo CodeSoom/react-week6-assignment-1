@@ -9,11 +9,11 @@ import RestaurantContainer from './RestaurantContainer';
 import { loadRestaurant } from './actions';
 
 export default function RestaurantPage({ params }) {
-  const { restaurantId } = params || useParams();
+  const { id } = params || useParams();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadRestaurant(restaurantId));
+    dispatch(loadRestaurant(id));
   }, []);
 
   return (
