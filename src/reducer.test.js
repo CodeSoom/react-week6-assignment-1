@@ -7,6 +7,7 @@ import {
   selectRegion,
   selectCategory,
   setRestaurant,
+  setRestaurantLoading,
 } from './actions';
 
 describe('reducer', () => {
