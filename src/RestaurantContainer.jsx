@@ -1,17 +1,13 @@
 import React from 'react';
 
+import { useSelector } from 'react-redux';
+
 import Restaurant from './Restaurant';
 
+import { get } from './utils';
+
 export default function RestaurantContainer() {
-  const restaurant = {
-    id: 1,
-    name: '양천주가',
-    address: '서울 강남구',
-    menuItems: [
-      { id: 1, name: '비빔밥' },
-      { id: 2, name: '짬뽕' },
-    ],
-  };
+  const restaurant = useSelector(get('restaurant'));
 
   return (
     <Restaurant restaurant={restaurant} />
