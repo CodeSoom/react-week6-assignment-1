@@ -63,6 +63,6 @@ describe('App', () => {
   it('shows not-found-page with not existing path', () => {
     const { container } = renderAppWith({ path: '/404' });
 
-    expect(container).toHaveTextContent('존재하지 않는 페이지 입니다');
+    expect(container).toHaveTextContent('404 Not Found');
   });
 });
