@@ -6,8 +6,9 @@ import {
   loadInitialData,
   setRegions,
   setCategories,
-  loadRestaurants,
+  setRestaurants,
   setRestaurant,
+  loadRestaurants,
   loadRestaurant,
 } from './actions';
 
