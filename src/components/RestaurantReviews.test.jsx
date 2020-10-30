@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import RestaurantReviews from './RestaurantReviews';
 import restaurant from '../../fixtures/restaurant';
@@ -7,10 +7,17 @@ import restaurant from '../../fixtures/restaurant';
 describe('RestaurantReviews', () => {
   context('with reviews', () => {
     it('renders reviews', () => {
-      render(<RestaurantReviews reviews={restaurant.reviews} />);
+      const { container } = render(<RestaurantReviews reviews={restaurant.reviews} />);
 
-      expect(screen.getByText('평가')).toBeInTheDocument();
-      expect(screen.getByText(/훌륭하다 훌륭하다 지구인놈들/)).toBeInTheDocument();
+      const items = container.querySelectorAll('li');
+
+      items.forEach(({ textContent }, i) => {
+        const { name, description, score } = restaurant.reviews[i];
+
+        expect(textContent.includes(name)).toBe(true);
+        expect(textContent.includes(description)).toBe(true);
+        expect(textContent.includes(`${'★'.repeat(score)}${'☆'.repeat(5 - score)}`)).toBe(true);
+      });
     });
   });
 });
