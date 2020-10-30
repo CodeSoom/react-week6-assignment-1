@@ -1,6 +1,12 @@
 import React from 'react';
 
-export default function RestaurantDetail({ name, address, menuItems }) {
+import { useSelector } from 'react-redux';
+
+import { get } from './utils';
+
+export default function RestaurantDetailContainer() {
+  const { info: { name, address, menuItems } } = useSelector(get('selectedRestaurantDetail'));
+
   return (
     <>
       <h2>{name}</h2>
