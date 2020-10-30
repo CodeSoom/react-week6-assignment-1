@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import {
-  loadRestaurantInfomation,
+  loadRestaurant,
 } from './actions';
 
 export default function RestaurantPage() {
@@ -14,7 +14,7 @@ export default function RestaurantPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadRestaurantInfomation());
+    dispatch(loadRestaurant());
   });
 
   return (
