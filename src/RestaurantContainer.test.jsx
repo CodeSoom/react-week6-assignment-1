@@ -38,7 +38,7 @@ describe('RestaurantContainer', () => {
   });
 
   context('without restaurant', () => {
-    const restaurant = [];
+    const restaurant = {};
 
     it('renders Loading', () => {
       mockUseSelector(restaurant);
