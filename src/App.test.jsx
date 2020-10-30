@@ -57,6 +57,15 @@ describe('App', () => {
     });
   });
 
+  context('with path /restaurants/:restaurantId', () => {
+    it('renders restaurant information page', () => {
+      const restaurantId = 1;
+      const { container } = renderApp({ path: `/restaurants/${restaurantId}` });
+
+      expect(container).toHaveTextContent('양천주가');
+    });
+  });
+
   context('with undefined path', () => {
     it('renders not found page ', () => {
       const { container } = renderApp({ path: '/undefined' });
