@@ -44,5 +44,11 @@ describe('RestaurantContainer', () => {
 
       expect(container).toHaveTextContent(RESTAURANT.name);
     });
+
+    it('renders restaurant name', () => {
+      const { container } = render(<RestaurantContainer />);
+
+      expect(container).toHaveTextContent(RESTAURANT.address);
+    });
   });
 });
