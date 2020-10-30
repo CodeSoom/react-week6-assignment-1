@@ -49,6 +49,12 @@ describe('App', () => {
     expect(container).toHaveTextContent('서울');
   });
 
+  it('shows restaurant-detail-page with path /restaurants/{id}', () => {
+    const { container } = renderAppWith({ path: '/restaurants/1' });
+
+    expect(container).toHaveTextContent('restaurant detail');
+  });
+
   it('shows not-found-page with not existing path', () => {
     const { container } = renderAppWith({ path: '/404' });
 
