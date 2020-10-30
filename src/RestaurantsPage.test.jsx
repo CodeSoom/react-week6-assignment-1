@@ -1,12 +1,14 @@
 import React from 'react';
 
-import { MemoryRouter } from 'react-router-dom';
-
 import { render } from '@testing-library/react';
+
+import { MemoryRouter } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantsPage from './RestaurantsPage';
+
+jest.unmock('react-router-dom');
 
 test('RestaurantsPage', () => {
   const dispatch = jest.fn();

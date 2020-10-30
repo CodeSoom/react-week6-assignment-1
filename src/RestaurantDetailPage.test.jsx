@@ -8,6 +8,8 @@ import { useParams } from 'react-router-dom';
 
 import RestaurantDetailPage from './RestaurantDetailPage';
 
+jest.mock('react-router-dom');
+
 test('RestaurantDetailPage', () => {
   const dispatch = jest.fn();
 

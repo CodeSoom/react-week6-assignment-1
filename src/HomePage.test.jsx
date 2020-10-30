@@ -6,6 +6,8 @@ import { MemoryRouter } from 'react-router-dom';
 
 import HomePage from './HomePage';
 
+jest.unmock('react-router-dom');
+
 describe('HomePage', () => {
   const renderHomePage = () => render((
     <MemoryRouter>
