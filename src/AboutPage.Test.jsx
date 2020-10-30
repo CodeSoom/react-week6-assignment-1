@@ -7,9 +7,10 @@ import { MemoryRouter } from 'react-router-dom';
 import AboutPage from './AboutPage';
 
 test('AboutPage', () => {
-  render((
+  const { container } = render((
     <MemoryRouter>
       <AboutPage />
     </MemoryRouter>
   ));
+  expect(container).toHaveTextContent('About');
 });
