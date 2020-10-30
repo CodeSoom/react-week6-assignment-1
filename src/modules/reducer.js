@@ -6,7 +6,10 @@ const initialState = {
   restaurants: [],
   selectedRegion: null,
   selectedCategory: null,
-  restaurant: {},
+  restaurant: {
+    menuItems: [],
+    reviews: [],
+  },
 };
 
 const reducers = {
