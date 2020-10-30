@@ -50,5 +50,13 @@ describe('RestaurantContainer', () => {
 
       expect(container).toHaveTextContent(RESTAURANT.address);
     });
+
+    it('renders menu items', () => {
+      const { container } = render(<RestaurantContainer />);
+
+      RESTAURANT.menuItems.forEach(({ name }) => {
+        expect(container).toHaveTextContent(name);
+      });
+    });
   });
 });
