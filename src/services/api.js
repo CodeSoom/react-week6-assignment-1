@@ -19,6 +19,6 @@ export function fetchRestaurants({ regionName, categoryId }) {
   );
 }
 
-export function fetchRestaurantInfo(restaurantId) {
+export function fetchRestaurant(restaurantId) {
   return fetchGetJson(`https://eatgo-customer-api.ahastudio.com/restaurants/${restaurantId}`);
 }
