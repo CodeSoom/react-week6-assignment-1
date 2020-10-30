@@ -36,6 +36,21 @@ describe('App', () => {
     </MemoryRouter>
   ));
 
+  context('with any path', () => {
+    const paths = [
+      '/',
+      '/about',
+      '/restaurants',
+    ];
+    it('shows header', () => {
+      paths.forEach((path) => {
+        const { container } = renderAppWith({ path });
+
+        expect(container).toHaveTextContent('헤더');
+      });
+    });
+  });
+
   it('shows home-page with path /', () => {
     const { container } = renderAppWith({ path: '/' });
 
