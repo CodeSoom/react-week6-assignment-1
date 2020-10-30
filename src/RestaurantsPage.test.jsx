@@ -6,6 +6,10 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { MemoryRouter } from 'react-router-dom';
 
+import regions from '../fixtures/regions';
+import categories from '../fixtures/categories';
+import restaurants from '../fixtures/restaurants';
+
 import RestaurantsPage from './RestaurantsPage';
 
 test('RestaurantsPage', () => {
@@ -14,15 +18,9 @@ test('RestaurantsPage', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
-    regions: [
-      { id: 1, name: '서울' },
-    ],
-    categories: [
-      { id: 1, name: '한식' },
-    ],
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
+    regions,
+    categories,
+    restaurants,
   }));
 
   const { queryByText } = render((
@@ -33,6 +31,15 @@ test('RestaurantsPage', () => {
 
   expect(dispatch).toBeCalled();
 
-  expect(queryByText('서울')).not.toBeNull();
-  expect(queryByText('한식')).not.toBeNull();
+  regions.forEach((region) => {
+    expect(queryByText(region.name)).not.toBeNull();
+  });
+
+  categories.forEach((category) => {
+    expect(queryByText(category.name)).not.toBeNull();
+  });
+
+  restaurants.forEach((restaurant) => {
+    expect(queryByText(restaurant.name)).not.toBeNull();
+  });
 });
