@@ -87,6 +87,7 @@ export function loadRestaurantDetail(restaurantId) {
     if (!restaurantId) {
       return;
     }
+    dispatch(resetRestaurantDetail());
 
     const restaurantDetail = await fetchRestaurantDetail(restaurantId);
     dispatch(setRestaurantDetail(restaurantDetail));
