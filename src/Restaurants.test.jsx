@@ -4,15 +4,12 @@ import { fireEvent, render } from '@testing-library/react';
 
 import { MemoryRouter } from 'react-router-dom';
 
+import restaurants from '../fixtures/restaurants';
+
 import Restaurants from './Restaurants';
 
 describe('Restaurants', () => {
   const handleClickRestaurant = jest.fn();
-
-  const restaurants = [
-    { id: 1, name: '양천주가' },
-    { id: 2, name: '마법사주방' },
-  ];
 
   const renderRestaurants = () => render(
     <MemoryRouter>
@@ -39,7 +36,7 @@ describe('Restaurants', () => {
         fireEvent.click(getByText(restaurant.name));
       });
 
-      expect(handleClickRestaurant).toBeCalledTimes(2);
+      expect(handleClickRestaurant).toBeCalledTimes(restaurants.length);
     });
   });
 });

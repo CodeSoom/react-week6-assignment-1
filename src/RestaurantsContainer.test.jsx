@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { MemoryRouter } from 'react-router-dom';
 
+import restaurants from '../fixtures/restaurants';
+
 import RestaurantsContainer from './RestaurantsContainer';
 
 jest.mock('react-redux');
@@ -16,9 +18,7 @@ describe('RestaurantsContainer', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
+    restaurants,
   }));
 
   const renderRestaurantsContainer = () => render(
@@ -30,16 +30,20 @@ describe('RestaurantsContainer', () => {
   it('renders Restaurants', () => {
     const { container } = renderRestaurantsContainer();
 
-    expect(container).toHaveTextContent('마법사주방');
+    restaurants.forEach((restaurant) => {
+      expect(container).toHaveTextContent(restaurant.name);
+    });
   });
 
   context('when restaurant link is clicked', () => {
     it('dispatch selectRestaurant and loadRestaurant', () => {
       const { getByText } = renderRestaurantsContainer();
 
-      fireEvent.click(getByText('마법사주방'));
+      restaurants.forEach((restaurant) => {
+        fireEvent.click(getByText(restaurant.name));
+      });
 
-      expect(dispatch).toBeCalledTimes(2);
+      expect(dispatch).toBeCalledTimes(restaurants.length * 2);
     });
   });
 });
