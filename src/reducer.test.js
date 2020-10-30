@@ -146,4 +146,14 @@ describe('reducer', () => {
       expect(state.restaurant).toEqual(restaurant);
     });
   });
+
+  describe('setRestaurantLoading', () => {
+    it('changes restaurant loading state', () => {
+      const state = reducer({
+        restaurantLoading: false,
+      }, setRestaurantLoading(true));
+
+      expect(state.restaurantLoading).toEqual(true);
+    });
+  });
 });
