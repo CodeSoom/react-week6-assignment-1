@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function Restaurant(
-  { restaurant: { name, address, menuItems } },
+  { restaurant: { name = '', address = '', menuItems = [] } },
 ) {
   return (
     <div>
