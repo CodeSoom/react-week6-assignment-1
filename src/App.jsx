@@ -10,20 +10,26 @@ import RestaurantDetailPage from './RestaurantPage';
 
 export default function App() {
   return (
-    <Switch>
-      <Route exact path="/">
-        <HomePage />
-      </Route>
-      <Route path="/about">
-        <AboutPage />
-      </Route>
-      <Route exact path="/restaurants">
-        <RestaurantsPage />
-      </Route>
-      <Route path="/restaurants/:id">
-        <RestaurantDetailPage />
-      </Route>
-      <NotFoundPage />
-    </Switch>
+    <>
+      <h1>
+        헤더
+      </h1>
+
+      <Switch>
+        <Route exact path="/">
+          <HomePage />
+        </Route>
+        <Route path="/about">
+          <AboutPage />
+        </Route>
+        <Route exact path="/restaurants">
+          <RestaurantsPage />
+        </Route>
+        <Route path="/restaurants/:id">
+          <RestaurantDetailPage />
+        </Route>
+        <NotFoundPage />
+      </Switch>
+    </>
   );
 }
