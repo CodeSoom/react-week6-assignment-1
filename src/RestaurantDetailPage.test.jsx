@@ -15,13 +15,28 @@ test('RestaurantDetailPage', () => {
 
   useSelector.mockImplementation((selector) => selector({}));
 
-  useParams.mockImplementation(() => ({
-    id: 1,
-  }));
+  useParams.mockImplementation(() => (
+    {
+      restaurant: {
+        id: 1,
+        categoryId: 1,
+        name: '양천주가',
+        address: '서울 강남구 123456',
+        menuItems: [
+          {
+            id: 1,
+            restaurantId: 1,
+            name: '비빔밥',
+          },
+        ],
+      },
+    }));
 
-  render((
+  const { queryByText } = render((
     <RestaurantDetailPage />
   ));
 
   expect(dispatch).toBeCalled();
+
+  expect(queryByText('양천주가')).not.toBeNull();
 });
