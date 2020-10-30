@@ -88,14 +88,32 @@ describe('actions', () => {
 
   describe('loadRestaurant', () => {
     context('with selectedRestaurant', () => {
-      it('runs setRestaurant', () => {
-        // TODO
+      beforeEach(() => {
+        store = mockStore({
+          selectedRestaurant: 1,
+        });
+      });
+
+      it('runs setRestaurant', async () => {
+        await store.dispatch(loadRestaurant());
+
+        const actions = store.getActions();
+
+        expect(actions[0]).toEqual(setRestaurant([]));
       });
     });
 
     context('without selectedRestaurant', () => {
+      beforeEach(() => {
+        store = mockStore({});
+      });
+
       it('does not run any actions', async () => {
-        // TODO
+        await store.dispatch(loadRestaurant());
+
+        const actions = store.getActions();
+
+        expect(actions).toHaveLength(0);
       });
     });
   });
