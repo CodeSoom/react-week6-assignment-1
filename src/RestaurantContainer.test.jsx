@@ -4,21 +4,15 @@ import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
+import restaurant from '../fixtures/restaurant';
+
 import RestaurantContainer from './RestaurantContainer';
 
 jest.mock('react-redux');
 
 describe('RestaurantContainer', () => {
   useSelector.mockImplementation((selector) => selector({
-    restaurant: {
-      id: 1,
-      name: '양천주가',
-      address: '서울 강남구',
-      menuItems: [
-        { id: 1, name: '비빔밥' },
-        { id: 2, name: '짬뽕' },
-      ],
-    },
+    restaurant,
   }));
 
   const renderRestaurantContainer = () => render(
@@ -28,7 +22,11 @@ describe('RestaurantContainer', () => {
   it('renders restaurant', () => {
     const { container } = renderRestaurantContainer();
 
-    expect(container).toHaveTextContent('양천주가');
-    expect(container).toHaveTextContent(/서울 강남구/);
+    expect(container).toHaveTextContent(restaurant.name);
+    expect(container).toHaveTextContent(restaurant.address);
+
+    restaurant.menuItems.forEach((menuItem) => {
+      expect(container).toHaveTextContent(menuItem.name);
+    });
   });
 });
