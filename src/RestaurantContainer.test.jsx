@@ -39,24 +39,10 @@ describe('RestaurantContainer', () => {
       });
     });
 
-    it('renders restaurant name', () => {
+    it('renders restaurant', () => {
       const { container } = render(<RestaurantContainer />);
 
       expect(container).toHaveTextContent(RESTAURANT.name);
-    });
-
-    it('renders restaurant address', () => {
-      const { container } = render(<RestaurantContainer />);
-
-      expect(container).toHaveTextContent(RESTAURANT.address);
-    });
-
-    it('renders menu items', () => {
-      const { container } = render(<RestaurantContainer />);
-
-      RESTAURANT.menuItems.forEach(({ name }) => {
-        expect(container).toHaveTextContent(name);
-      });
     });
   });
 });
