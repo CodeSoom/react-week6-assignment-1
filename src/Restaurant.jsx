@@ -1,10 +1,8 @@
 import React from 'react';
 
-export default function Restaurant({ restaurant }) {
-  const {
-    name, address, menuItems,
-  } = restaurant;
-
+export default function Restaurant(
+  { restaurant: { name, address, menuItems } },
+) {
   return (
     <div>
       <h1>{name}</h1>
