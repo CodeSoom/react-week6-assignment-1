@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Link } from 'react-router-dom';
 
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
@@ -16,12 +16,15 @@ import NotFoundPage from './pages/NotFoundPage';
 
 export default function App() {
   return (
-    <Switch>
-      <Route exact path="/" component={HomePage} />
-      <Route path="/about" component={AboutPage} />
-      <Route exact path="/restaurants" component={RestaurantsPage} />
-      <Route path="/restaurants/:id" component={RestaurantPage} />
-      <Route component={NotFoundPage} />
-    </Switch>
+    <>
+      <Link to="/">홈으로</Link>
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/about" component={AboutPage} />
+        <Route exact path="/restaurants" component={RestaurantsPage} />
+        <Route path="/restaurants/:id" component={RestaurantPage} />
+        <Route component={NotFoundPage} />
+      </Switch>
+    </>
   );
 }
