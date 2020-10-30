@@ -22,4 +22,12 @@ describe('App', () => {
       expect(container).toHaveTextContent('Restaurants');
     });
   });
+
+  context('with path /about', () => {
+    it('renders about page', () => {
+      const { container } = renderApp({ path: '/about' });
+
+      expect(container).toHaveTextContent(/About 페이지/);
+    });
+  });
 });
