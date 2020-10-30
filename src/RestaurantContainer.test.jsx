@@ -6,6 +6,8 @@ import { useSelector } from 'react-redux';
 
 import RestaurantContainer from './RestaurantContainer';
 
+import RESTAURANT from '../fixtures/restaurant';
+
 describe('RestaurantContainer', () => {
   const setState = ({ restaurant, loading }) => {
     useSelector.mockImplementation((selector) => selector({
@@ -26,6 +28,21 @@ describe('RestaurantContainer', () => {
       const { container } = render(<RestaurantContainer />);
 
       expect(container).toHaveTextContent('loading');
+    });
+  });
+
+  context('when restaurant has been loaded', () => {
+    beforeEach(() => {
+      setState({
+        restaurant: RESTAURANT,
+        loading: false,
+      });
+    });
+
+    it('renders restaurant name', () => {
+      const { container } = render(<RestaurantContainer />);
+
+      expect(container).toHaveTextContent(RESTAURANT.name);
     });
   });
 });
