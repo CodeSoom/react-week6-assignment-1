@@ -79,7 +79,7 @@ describe('App', () => {
     });
   });
 
-  context('with invalid path ', () => {
+  context('with undefined path ', () => {
     const path = '/www';
 
     it('renders NotFoundPage', () => {
