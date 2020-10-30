@@ -20,6 +20,7 @@ describe('HomePage', () => {
 
     expect(container).toHaveTextContent('Home');
   });
+
   it('shows links', () => {
     const { container } = renderHomePage();
 
