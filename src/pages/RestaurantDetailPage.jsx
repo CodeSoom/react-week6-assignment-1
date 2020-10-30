@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { loadRestaurantDetail, resetRestaurantDetail } from '../actions';
+import { loadRestaurantDetail } from '../actions';
 
 import RestaurantDetailContainer from '../containers/RestaurantDetailContainer';
 
@@ -12,9 +12,6 @@ function RestaurantDetailPage({ match }) {
 
   useEffect(() => {
     dispatch(loadRestaurantDetail(id));
-    return () => {
-      dispatch(resetRestaurantDetail());
-    };
   }, []);
 
   return (
