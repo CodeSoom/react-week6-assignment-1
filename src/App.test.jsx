@@ -25,6 +25,9 @@ describe('App', () => {
     restaurants: [
       { id: 1, name: '마법사주방' },
     ],
+    restaurant: {
+      name: '양천주가',
+    },
   }));
 
   const renderAppWith = ({ path }) => render((
@@ -54,7 +57,7 @@ describe('App', () => {
   it('shows restaurant-detail-page with path /restaurants/{id}', () => {
     const { container } = renderAppWith({ path: '/restaurants/555' });
 
-    expect(container).toHaveTextContent('restaurant detail');
+    expect(container).toHaveTextContent('양천주가');
   });
 
   it('shows not-found-page with not existing path', () => {
