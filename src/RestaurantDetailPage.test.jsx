@@ -7,9 +7,10 @@ import { render } from '@testing-library/react';
 import RestaurantDetailPage from './RestaurantDetailPage';
 
 function renderRestaurantDetailPage() {
+  const match = { params: { id: 1 } };
   return render((
     <MemoryRouter>
-      <RestaurantDetailPage />
+      <RestaurantDetailPage match={match} />
     </MemoryRouter>
   ));
 }
