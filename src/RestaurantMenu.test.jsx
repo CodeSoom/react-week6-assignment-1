@@ -28,7 +28,7 @@ test('RestaurantMenu', () => {
     },
   ];
 
-  const { container } = render((<RestaurantMenu menu={menu} />));
+  const { container } = render(<RestaurantMenu menu={menu} />);
 
   menu.forEach(({ name }) => {
     expect(container).toHaveTextContent(name);

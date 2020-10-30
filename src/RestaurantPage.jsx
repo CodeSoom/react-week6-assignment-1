@@ -17,7 +17,7 @@ export default function RestaurantPage({
     dispatch(loadRestaurant(restaurantId));
   }, []);
 
-  return ((
+  return (
     <RestaurantContainer />
-  ));
+  );
 }

@@ -14,7 +14,7 @@ export default function RestaurantContainer() {
     return (<Loading />);
   }
 
-  return ((
+  return (
     <RestaurantDetail restaurant={restaurant} />
-  ));
+  );
 }
