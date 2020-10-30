@@ -8,7 +8,7 @@ export default function HomePage() {
       <h1>Home</h1>
       <ul>
         <li>
-          <a href="/about">About</a>
+          <Link to="/about">About</Link>
         </li>
         <li>
           <Link to="/restaurants">Restaurants</Link>
