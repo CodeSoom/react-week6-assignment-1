@@ -30,4 +30,12 @@ describe('App', () => {
       expect(container).toHaveTextContent(/About 페이지/);
     });
   });
+
+  context('with unknown path', () => {
+    it('renders Not Found page', () => {
+      const { container } = renderApp({ path: '/test' });
+
+      expect(container).toHaveTextContent(/404 - Not Found/);
+    });
+  });
 });
