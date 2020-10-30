@@ -6,7 +6,7 @@ import HomePage from './HomePage';
 import NotFoundPage from './NotFoundPage';
 import AboutPage from './AboutPage';
 import RestaurantsPage from './RestaurantsPage';
-import RestaurantDetailPage from './RestaurantDetailPage';
+import RestaurantDetailPage from './RestaurantPage';
 
 export default function App() {
   return (
