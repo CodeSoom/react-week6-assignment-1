@@ -12,8 +12,6 @@ import NotFoundPage from './pages/NotFoundPage';
 // 2. 분류 선택 - Categories - 한식, 중식, 일식, ... <- API (0)
 // 3. 식당 목록 - Restaurants <- API (with region, category) -> 1, 2 모두 완료된 경우
 
-// TODO: "/" 페이지가 아니면 상단에 "뒤로가기" 텍스트가 보이며, 클릭할 수 있다.
-
 export default function App() {
   return (
     <>
