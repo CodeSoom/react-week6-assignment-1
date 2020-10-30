@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
 
 import HomePage from './HomePage';
 import NotFoundPage from './NotFoundPage';
@@ -12,7 +12,9 @@ export default function App() {
   return (
     <>
       <h1>
-        헤더
+        <Link to="/">
+          헤더
+        </Link>
       </h1>
 
       <Switch>
