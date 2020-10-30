@@ -11,6 +11,5 @@ export default function HomePage() {
         <li><Link to="/about">About</Link></li>
       </ul>
     </div>
-
   );
 }
