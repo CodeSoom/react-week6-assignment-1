@@ -17,6 +17,7 @@ describe('reducer', () => {
       restaurants: [],
       selectedRegion: null,
       selectedCategory: null,
+      restaurant: {},
     };
 
     it('returns initialState', () => {
@@ -70,7 +71,7 @@ describe('reducer', () => {
 
       const state = reducer(initialState, setRestaurants(restaurants));
 
-      expect(state.restaurant).toHaveLength(1);
+      expect(state.restaurants).toHaveLength(1);
     });
   });
 
