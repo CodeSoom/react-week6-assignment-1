@@ -27,6 +27,7 @@ describe('App', () => {
     ],
     restaurant: {
       name: '양천주가',
+      menuItems: [],
     },
   }));
 
