@@ -26,6 +26,13 @@ export function setRestaurants(restaurants) {
   };
 }
 
+export function setRestaurant(restaurant) {
+  return {
+    type: 'setRestaurant',
+    payload: { restaurant },
+  };
+}
+
 export function selectRegion(regionId) {
   return {
     type: 'selectRegion',
@@ -72,5 +79,6 @@ export function loadRestaurants() {
 export function loadRestaurant() {
   return async (dispatch) => {
     const restaurant = await fetchRestaurant();
+    dispatch(setRestaurant(restaurant));
   };
 }
