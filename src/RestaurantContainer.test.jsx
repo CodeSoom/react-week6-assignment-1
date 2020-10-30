@@ -45,7 +45,7 @@ describe('RestaurantContainer', () => {
       expect(container).toHaveTextContent(RESTAURANT.name);
     });
 
-    it('renders restaurant name', () => {
+    it('renders restaurant address', () => {
       const { container } = render(<RestaurantContainer />);
 
       expect(container).toHaveTextContent(RESTAURANT.address);
