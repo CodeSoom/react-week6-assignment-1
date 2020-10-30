@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
+import RESTAURANT from '../fixtures/restaurant';
+
 describe('App', () => {
   const dispatch = jest.fn();
 
@@ -20,6 +22,7 @@ describe('App', () => {
       ],
       categories: [],
       restaurants: [],
+      restaurant: RESTAURANT,
     }));
   });
 
@@ -62,7 +65,8 @@ describe('App', () => {
       const id = 1;
       const { container } = renderApp({ path: `/restaurants/${id}` });
 
-      expect(container).not.toBeNull();
+      expect(container).toHaveTextContent('주소');
+      expect(container).toHaveTextContent('메뉴');
     });
   });
 
