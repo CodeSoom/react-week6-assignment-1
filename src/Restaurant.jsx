@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function RestaurantDetail({ restaurant }) {
+export default function Restaurant({ restaurant }) {
   const {
     name, address, menuItems,
   } = restaurant;

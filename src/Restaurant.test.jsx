@@ -2,9 +2,9 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import RestaurantDetail from './RestaurantDetail';
+import Restaurant from './Restaurant';
 
-describe('RestaurantDetail', () => {
+describe('Restaurant', () => {
   const restaurant = {
     id: 1,
     name: '양천주가',
@@ -15,12 +15,12 @@ describe('RestaurantDetail', () => {
     ],
   };
 
-  const renderRestaurantDetail = () => render(
-    <RestaurantDetail restaurant={restaurant} />,
+  const renderRestaurant = () => render(
+    <Restaurant restaurant={restaurant} />,
   );
 
   it('renders restaurant detail information', () => {
-    const { container } = renderRestaurantDetail();
+    const { container } = renderRestaurant();
 
     expect(container).toHaveTextContent(restaurant.name);
     expect(container).toHaveTextContent(restaurant.address);
