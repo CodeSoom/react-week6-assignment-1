@@ -72,7 +72,7 @@ describe('App', () => {
     it('renders Not Found page', () => {
       const { container } = renderApp({ path: '/test' });
 
-      expect(container).toHaveTextContent(/404 - Not Found/);
+      expect(container).toHaveTextContent(/404 Not Found/);
     });
   });
 });
