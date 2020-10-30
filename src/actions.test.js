@@ -8,6 +8,8 @@ import {
   setCategories,
   loadRestaurants,
   setRestaurants,
+  loadRestaurant,
+  setRestaurant,
 } from './actions';
 
 const middlewares = [thunk];
@@ -80,6 +82,20 @@ describe('actions', () => {
         const actions = store.getActions();
 
         expect(actions).toHaveLength(0);
+      });
+    });
+  });
+
+  describe('loadRestaurant', () => {
+    context('with selectedRestaurant', () => {
+      it('runs setRestaurant', () => {
+        // TODO
+      });
+    });
+
+    context('without selectedRestaurant', () => {
+      it('does not run any actions', async () => {
+        // TODO
       });
     });
   });
