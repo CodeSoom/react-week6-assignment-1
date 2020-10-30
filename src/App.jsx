@@ -6,6 +6,7 @@ import HomePage from './HomePage';
 import NotFoundPage from './NotFoundPage';
 import AboutPage from './AboutPage';
 import RestaurantsPage from './RestaurantsPage';
+import RestaurantDetailPage from './RestaurantDetailPage';
 
 export default function App() {
   return (
@@ -16,8 +17,11 @@ export default function App() {
       <Route path="/about">
         <AboutPage />
       </Route>
-      <Route path="/restaurants">
+      <Route exact path="/restaurants">
         <RestaurantsPage />
+      </Route>
+      <Route path="/restaurants/:id">
+        <RestaurantDetailPage />
       </Route>
       <NotFoundPage />
     </Switch>

@@ -52,7 +52,7 @@ describe('App', () => {
   it('shows restaurant-detail-page with path /restaurants/{id}', () => {
     const { container } = renderAppWith({ path: '/restaurants/555' });
 
-    expect(container).toHaveTextContent('restaurant 555 detail');
+    expect(container).toHaveTextContent('restaurant detail');
   });
 
   it('shows not-found-page with not existing path', () => {
