@@ -14,7 +14,7 @@ export default function RestaurantPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadRestaurant());
+    dispatch(loadRestaurant({ id }));
   });
 
   return (
