@@ -1,8 +1,12 @@
 import React, { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
+
 import { useParams } from 'react-router-dom';
+
 import { loadRestaurant } from './actions';
+
+import RestaurantDetailConatiner from './RestaurantDetailContainer';
 
 export default function RestaurantDetailPage() {
   const { id } = useParams();
@@ -13,6 +17,6 @@ export default function RestaurantDetailPage() {
   });
 
   return (
-    <p>restaurant detail is showing</p>
+    <RestaurantDetailConatiner />
   );
 }

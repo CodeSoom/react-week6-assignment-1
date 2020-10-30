@@ -13,24 +13,25 @@ test('RestaurantDetailPage', () => {
 
   useDispatch.mockImplementation(() => dispatch);
 
-  useSelector.mockImplementation((selector) => selector({}));
+  useSelector.mockImplementation((selector) => selector({
+    restaurant: {
+      id: 1,
+      categoryId: 1,
+      name: '양천주가',
+      address: '서울 강남구 123456',
+      menuItems: [
+        {
+          id: 1,
+          restaurantId: 1,
+          name: '비빔밥',
+        },
+      ],
+    },
+  }));
 
-  useParams.mockImplementation(() => (
-    {
-      restaurant: {
-        id: 1,
-        categoryId: 1,
-        name: '양천주가',
-        address: '서울 강남구 123456',
-        menuItems: [
-          {
-            id: 1,
-            restaurantId: 1,
-            name: '비빔밥',
-          },
-        ],
-      },
-    }));
+  useParams.mockImplementation(() => ({
+    id: 1,
+  }));
 
   const { queryByText } = render((
     <RestaurantDetailPage />
