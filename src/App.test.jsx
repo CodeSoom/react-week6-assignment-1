@@ -59,9 +59,9 @@ describe('App', () => {
     });
   });
 
-  context('with path /restaurant/:restaurantId', () => {
+  context('with path /restaurants/:restaurantId', () => {
     it('render restaurantPage', () => {
-      const { container } = renderApp({ path: '/restaurant/1' });
+      const { container } = renderApp({ path: '/restaurants/1' });
 
       expect(container).not.toBeNull();
     });

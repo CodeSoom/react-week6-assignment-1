@@ -4,15 +4,20 @@ import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
-import RestaurantContainer from './RestaurantContainer';
+import RestaurantsDetailContainer from './RestaurantsDetailContainer';
 
-test('RestaurantContainer', () => {
+test('RestaurantsDetailContainer', () => {
   useSelector.mockImplementation((selector) => selector({
-    restaurant: {},
+    restaurant: {
+      id: null,
+      name: null,
+      address: null,
+      menuItems: [],
+    },
   }));
 
   const { container } = render((
-    <RestaurantContainer />
+    <RestaurantsDetailContainer />
   ));
 
   expect(container).not.toBeNull();

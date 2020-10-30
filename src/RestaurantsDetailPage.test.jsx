@@ -6,20 +6,25 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { MemoryRouter } from 'react-router-dom';
 
-import RestaurantPage from './RestaurantPage';
+import RestaurantsDetailPage from './RestaurantsDetailPage';
 
-test('RestaurantPage', () => {
+test('RestaurantsDetailPage', () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
-    restaurant: {},
+    restaurant: {
+      id: null,
+      name: null,
+      address: null,
+      menuItems: [],
+    },
   }));
 
   render((
     <MemoryRouter>
-      <RestaurantPage />
+      <RestaurantsDetailPage />
     </MemoryRouter>
   ));
 

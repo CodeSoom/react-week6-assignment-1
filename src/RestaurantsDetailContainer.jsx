@@ -4,25 +4,27 @@ import { useSelector } from 'react-redux';
 
 import { get } from './utils';
 
-export default function RestaurantsContainer() {
+export default function RestaurantContainer() {
   const restaurant = useSelector(get('restaurant'));
+
+  const { name, address, menuItems } = restaurant;
 
   return (
     <div>
-      <h1>{restaurant.name}</h1>
-      {/* <p>
+      <h1>{name}</h1>
+      <p>
         주소:
         &nbsp;
-        {restaurant.address}
+        {address}
       </p>
       <h2>메뉴</h2>
       <ul>
-        {restaurant.menuItems.map((item) => (
+        {menuItems.map((item) => (
           <li key={item.id}>
             {item.name}
           </li>
         ))}
-      </ul> */}
+      </ul>
     </div>
   );
 }

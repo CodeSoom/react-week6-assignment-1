@@ -17,7 +17,12 @@ describe('reducer', () => {
       restaurants: [],
       selectedRegion: null,
       selectedCategory: null,
-      restaurant: {},
+      restaurant: {
+        id: null,
+        name: null,
+        address: null,
+        menuItems: [],
+      },
     };
 
     it('returns initialState', () => {

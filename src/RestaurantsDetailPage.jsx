@@ -4,13 +4,13 @@ import { useDispatch } from 'react-redux';
 
 import { useParams } from 'react-router-dom';
 
-import RestaurantContainer from './RestaurantContainer';
+import RestaurantsDetailContainer from './RestaurantsDetailContainer';
 
 import {
   loadRestaurant,
 } from './actions';
 
-export default function RestaurantsPage() {
+export default function RestaurantsDetailPage() {
   const { restaurantId } = useParams();
 
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ export default function RestaurantsPage() {
 
   return (
     <div>
-      <RestaurantContainer />
+      <RestaurantsDetailContainer />
     </div>
   );
 }
