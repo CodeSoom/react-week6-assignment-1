@@ -8,6 +8,14 @@ import { MemoryRouter } from 'react-router-dom';
 
 import App from './App';
 
+function renderPage(path) {
+  return render((
+    <MemoryRouter initialEntries={[path]}>
+      <App />
+    </MemoryRouter>
+  ));
+}
+
 describe('App', () => {
   beforeEach(() => {
     useSelector.mockImplementation((selector) => selector({
@@ -19,11 +27,7 @@ describe('App', () => {
 
   context('with path /', () => {
     it('renders homepage', () => {
-      const { container } = render((
-        <MemoryRouter>
-          <App />
-        </MemoryRouter>
-      ));
+      const { container } = renderPage('/');
 
       expect(container).toHaveTextContent('Home');
     });
@@ -31,11 +35,7 @@ describe('App', () => {
 
   context('with path /about', () => {
     it('renders about page', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/about']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const { container } = renderPage('/about');
 
       expect(container).toHaveTextContent('About');
     });
@@ -47,23 +47,15 @@ describe('App', () => {
 
       useDispatch.mockImplementation(() => dispatch);
 
-      const { container } = render((
-        <MemoryRouter initialEntries={['/restaurants']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const { container } = renderPage('/restaurants');
 
       expect(container).toHaveTextContent('Restaurants');
     });
   });
 
-  context('without valid path', () => {
+  context('with a path that does not exist', () => {
     it('renders error page', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/xxx']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const { container } = renderPage('/xxx');
 
       expect(container).toHaveTextContent('404 not found');
     });
