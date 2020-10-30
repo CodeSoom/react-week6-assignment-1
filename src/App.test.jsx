@@ -10,6 +10,7 @@ import App from './App';
 import categories from '../fixtures/categories';
 import regions from '../fixtures/regions';
 import restaurants from '../fixtures/restaurants';
+import restaurantDetail from '../fixtures/restaurantDetail';
 
 function renderApp({ path }) {
   return render((
@@ -24,7 +25,13 @@ describe('App', () => {
     const dispatch = jest.fn();
     useDispatch.mockImplementation(() => dispatch);
     useSelector.mockImplementation((selector) => selector({
-      categories, regions, restaurants,
+      categories,
+      regions,
+      restaurants,
+      selectedRestaurantDetail: {
+        done: true,
+        info: restaurantDetail,
+      },
     }));
   });
 
