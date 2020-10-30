@@ -1,7 +1,18 @@
 import React from 'react';
 
+import { useParams } from 'react-router-dom';
+
 export default function RestaurantPage() {
+  const { id } = useParams();
+
+  console.log(id);
+
   return (
-    <h2>RestaurantPage 페이지입니다.</h2>
+    <div>
+      <h3>
+        ID:
+        {id}
+      </h3>
+    </div>
   );
 }

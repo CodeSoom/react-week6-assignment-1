@@ -57,12 +57,12 @@ describe('App', () => {
     });
   });
 
-  context('with path /restaurants/:restaurantId', () => {
+  context('with path /restaurants/:id', () => {
     it('renders restaurant information page', () => {
-      const restaurantId = 1;
-      const { container } = renderApp({ path: `/restaurants/${restaurantId}` });
+      const id = 1;
+      const { container } = renderApp({ path: `/restaurants/${id}` });
 
-      expect(container).toHaveTextContent('양천주가');
+      expect(container).not.toBeNull();
     });
   });
 
