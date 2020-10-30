@@ -58,7 +58,7 @@ describe('App', () => {
     it('renders error page', () => {
       const { container } = renderPage('/xxx');
 
-      expect(container).toHaveTextContent('404 not found');
+      expect(container).toHaveTextContent('404 Not Found');
     });
   });
 });
