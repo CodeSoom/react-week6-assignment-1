@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom';
+
 export default function HomePage() {
   return (
     <div>
@@ -9,7 +11,7 @@ export default function HomePage() {
           <a href="/about">About</a>
         </li>
         <li>
-          <a href="/restaurants">Restaurants</a>
+          <Link to="/restaurants">Restaurants</Link>
         </li>
       </ul>
     </div>
