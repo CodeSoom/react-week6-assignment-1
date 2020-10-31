@@ -47,12 +47,6 @@ export function setRestaurantDetail(restaurant) {
   };
 }
 
-export function resetRestaurantDetail() {
-  return {
-    type: 'resetRestaurantDetail',
-  };
-}
-
 export function loadInitialData() {
   return async (dispatch) => {
     const regions = await fetchRegions();
