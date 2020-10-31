@@ -5,8 +5,8 @@ export default function RestaurantMenuItems({ menuItems }) {
     <>
       <h2>메뉴</h2>
       <ul>
-        {menuItems.map(({ name: itemName, id }) => (
-          <li key={id}>{itemName}</li>
+        {menuItems.map(({ name, id }) => (
+          <li key={id}>{name}</li>
         ))}
       </ul>
     </>
