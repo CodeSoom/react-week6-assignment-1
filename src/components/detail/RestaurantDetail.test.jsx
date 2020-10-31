@@ -13,7 +13,7 @@ describe('RestaurantDetail', () => {
   ));
 
   context('with restaurant', () => {
-    it('see renders restaurant', () => {
+    it('renders restaurant', () => {
       const { getByText } = restaurantDetailRender({
         restaurant: RESTAURANT_DETAIL,
       });
