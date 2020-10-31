@@ -47,13 +47,6 @@ export function selectCategory(categoryId) {
   };
 }
 
-export function setRestaurantLoading(restaurantLoading) {
-  return {
-    type: 'setRestaurantLoading',
-    payload: { restaurantLoading },
-  };
-}
-
 export function loadInitialData() {
   return async (dispatch) => {
     const regions = await fetchRegions();

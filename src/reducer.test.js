@@ -7,7 +7,6 @@ import {
   selectRegion,
   selectCategory,
   setRestaurant,
-  setRestaurantLoading,
 } from './actions';
 
 describe('reducer', () => {
@@ -145,16 +144,6 @@ describe('reducer', () => {
       const state = reducer(initialState, setRestaurant(restaurant));
 
       expect(state.restaurant).toEqual(restaurant);
-    });
-  });
-
-  describe('setRestaurantLoading', () => {
-    it('changes restaurant loading state', () => {
-      const state = reducer({
-        restaurantLoading: false,
-      }, setRestaurantLoading(true));
-
-      expect(state.restaurantLoading).toEqual(true);
     });
   });
 });
