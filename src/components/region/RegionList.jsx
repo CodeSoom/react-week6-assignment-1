@@ -2,7 +2,7 @@ import React from 'react';
 
 import Item from '../common/Item';
 
-const RegionList = ({ regions, onSelectRegionClick, selectedRegion }) => {
+const RegionList = ({ regions, onRegionClick, selectedRegion }) => {
   if (regions.length === 0) {
     return null;
   }
@@ -14,7 +14,7 @@ const RegionList = ({ regions, onSelectRegionClick, selectedRegion }) => {
           key={id}
           name={name}
           check={selectedRegion && id === selectedRegion.id}
-          onClick={() => onSelectRegionClick(id)}
+          onClick={() => onRegionClick(id)}
         />
       ))}
     </ul>
