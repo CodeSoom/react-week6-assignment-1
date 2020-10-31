@@ -14,7 +14,7 @@ describe('CategoryList', () => {
     <CategoryList
       categories={categories}
       selectedCategory={selectedCategory}
-      onSelectCategoryClick={handleSelectClick}
+      onCategoryClick={handleSelectClick}
     />
   ));
 
