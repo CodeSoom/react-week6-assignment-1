@@ -10,6 +10,7 @@ import categories from '../fixtures/categories';
 import restaurants from '../fixtures/restaurants';
 
 import App from './App';
+import { initialRestaurant } from './initialObject';
 
 jest.mock('react-redux');
 
@@ -21,15 +22,7 @@ describe('App', () => {
     regions,
     categories,
     restaurants,
-    restaurant: {
-      id: null,
-      categoryId: null,
-      name: '',
-      address: '',
-      menuItems: [],
-      reviews: [],
-      information: ',',
-    },
+    restaurant: initialRestaurant,
   }));
 
   beforeEach(() => {
