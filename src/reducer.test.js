@@ -17,11 +17,21 @@ import {
 
 describe('reducer', () => {
   context('when previous state is undefined', () => {
+    const initialRestaurant = {
+      id: '',
+      categoryId: '',
+      name: '',
+      address: '',
+      menuItems: [],
+      reviews: [],
+      information: '',
+    };
+
     const initialState = {
       regions: [],
       categories: [],
       restaurants: [],
-      restaurant: {},
+      restaurant: initialRestaurant,
       selectedRegion: null,
       selectedCategory: null,
       selectedRestaurant: null,
