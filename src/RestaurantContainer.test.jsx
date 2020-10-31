@@ -8,16 +8,44 @@ import RestaurantContainer from './RestaurantContainer';
 
 import RESTAURANT from '../fixtures/restaurant';
 
-test('RestaurantContainer', () => {
-  useSelector.mockImplementation((selector) => selector({
-    restaurant: RESTAURANT,
-  }));
-
-  const { container } = render((
+function renderRestaurant() {
+  return render((
     <RestaurantContainer />
   ));
+}
 
-  expect(container).toHaveTextContent('양천주가');
-  expect(container).toHaveTextContent('서울 강남구 123456');
-  expect(container).toHaveTextContent('비빔밥');
+describe('RestaurantContainer', () => {
+  context('with a restaurant', () => {
+    beforeEach(() => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurant: RESTAURANT,
+      }));
+    });
+
+    it('render the information of restaurant', () => {
+      const { container } = renderRestaurant();
+
+      expect(container).toHaveTextContent(RESTAURANT.name);
+      expect(container).toHaveTextContent(RESTAURANT.address);
+
+      const menuList = RESTAURANT.menuItems;
+      menuList.forEach((menu) => {
+        expect(container).toHaveTextContent(menu.name);
+      });
+    });
+  });
+
+  context('without a restaurant', () => {
+    beforeEach(() => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurant: [],
+      }));
+    });
+
+    it('renders a message without information', () => {
+      const { container } = renderRestaurant();
+
+      expect(container).toHaveTextContent('해당 레스토랑은 상세정보가 없습니다');
+    });
+  });
 });
