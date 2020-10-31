@@ -114,13 +114,13 @@ describe('reducer', () => {
   describe('setRestaurantDetail', () => {
     it('set selected detail', () => {
       const initialState = {
-        selectedRestaurant: { done: false, info: null },
+        selectedRestaurantDetail: { done: false, info: null },
       };
 
       const restaurantDetail = { done: true, info: {} };
       const state = reducer(initialState, setRestaurantDetail(restaurantDetail));
 
-      expect(state.selectedRestaurant).toEqual(restaurantDetail);
+      expect(state.selectedRestaurantDetail).toEqual(restaurantDetail);
     });
   });
 });

@@ -50,7 +50,7 @@ const reducers = {
   setRestaurantDetail(state, { payload: { done, info } }) {
     return {
       ...state,
-      selectedRestaurant: { done, info },
+      selectedRestaurantDetail: { done, info },
     };
   },
 };
