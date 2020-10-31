@@ -38,7 +38,7 @@ describe('App', () => {
     it('renders home page', () => {
       const { container } = renderApp({ path: '/' });
 
-      expect(container).toHaveTextContent('Home');
+      expect(container).toHaveTextContent('헤더');
       expect(container).toHaveTextContent('About');
       expect(container).toHaveTextContent('Restaurants');
     });
