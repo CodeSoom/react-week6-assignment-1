@@ -74,7 +74,7 @@ describe('App', () => {
     it('renders not found page ', () => {
       const { container } = renderApp({ path: '/undefined' });
 
-      expect(container).toHaveTextContent('404 - Page Not Found');
+      expect(container).toHaveTextContent('404 Not Found');
     });
   });
 });
