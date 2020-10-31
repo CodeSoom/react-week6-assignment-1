@@ -2,6 +2,8 @@ import React from 'react';
 
 import { useSelector } from 'react-redux';
 
+import Restaurant from './Restaurant';
+
 import { get } from './utils';
 
 function isEmpty(param) {
@@ -15,23 +17,7 @@ export default function RestaurantContainer() {
     return <p>해당 레스토랑은 상세정보가 없습니다!</p>;
   }
 
-  const { name, address, menuItems } = restaurant;
-
   return (
-    <div>
-      <h2>{name}</h2>
-      <p>
-        주소:
-        {address}
-      </p>
-      <h2>메뉴</h2>
-      <ul>
-        {menuItems.map((menu) => (
-          <li key={menu.id}>
-            {menu.name}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Restaurant restaurant={restaurant} />
   );
 }
