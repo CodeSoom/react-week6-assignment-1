@@ -17,7 +17,7 @@ export default function RestaurantContainer({ restaurantId }) {
 
   const restaurant = useSelector(get('restaurant'));
 
-  if (!restaurant) {
+  if (!restaurant || restaurant.id !== Number(restaurantId)) {
     return <p>로딩중...</p>;
   }
 
