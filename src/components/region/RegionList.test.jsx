@@ -14,7 +14,7 @@ describe('RegionList', () => {
     <RegionList
       regions={regions}
       selectedRegion={selectedRegion}
-      onSelectRegionClick={handleSelectClick}
+      onRegionClick={handleSelectClick}
     />
   ));
 
