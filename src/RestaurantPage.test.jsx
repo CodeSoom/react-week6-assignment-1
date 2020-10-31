@@ -21,7 +21,7 @@ describe('RestaurantPage', () => {
 
   context('with restaurant', () => {
     it('renders restaurant info', () => {
-      const { container } = render(<RestaurantPage params={{ restaurantId: 1 }} />);
+      const { container } = render(<RestaurantPage params={{ id: 1 }} />);
 
       expect(container).toHaveTextContent('양천주가');
       expect(container).toHaveTextContent(/서울/);
