@@ -23,7 +23,7 @@ export default function App() {
         <Route exact path="/about" component={AboutPage} />
         <Route exact path="/restaurants" component={RestaurantsPage} />
         <Route exact path="/restaurants/:id" component={RestaurantDetailPage} />
-        <Route exact component={NotFoundPage} />
+        <Route component={NotFoundPage} />
       </Switch>
     </div>
   );
