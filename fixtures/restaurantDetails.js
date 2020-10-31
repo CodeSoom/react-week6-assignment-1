@@ -1,4 +1,4 @@
-const restaurantsDetails = {
+const restaurantDetails = {
   id: 1,
   categoryId: 1,
   name: '양천주가',
@@ -34,4 +34,4 @@ const restaurantsDetails = {
   information: '양천주가 in 서울 강남구 123456',
 };
 
-export default restaurantsDetails;
+export default restaurantDetails;
