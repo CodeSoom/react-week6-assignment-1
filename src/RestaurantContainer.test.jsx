@@ -26,13 +26,6 @@ describe('RestaurantContainer', () => {
     jest.clearAllMocks();
   });
 
-  it('render restaurant', () => {
-    const { container } = renderRestaurantContainer();
-
-    expect(container).toHaveTextContent(restaurant.name);
-    expect(container).toHaveTextContent(restaurant.address);
-  });
-
   it('call loadRestaurant action', () => {
     renderRestaurantContainer();
 
