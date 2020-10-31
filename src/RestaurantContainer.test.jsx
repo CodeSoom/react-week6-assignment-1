@@ -17,7 +17,7 @@ describe('RestaurantContainer', () => {
 
   function renderRestaurantPage(id) {
     return render((
-      <RestaurantContainer resutanrtId={id} />
+      <RestaurantContainer restaurantId={id} />
     ));
   }
 
