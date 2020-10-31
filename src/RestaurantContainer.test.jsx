@@ -9,9 +9,9 @@ import RestaurantContainer from './RestaurantContainer';
 import RESTAURANT from '../fixtures/restaurant';
 
 describe('RestaurantContainer', () => {
-  function renderRestaurantPage() {
+  function renderRestaurantPage(id) {
     return render((
-      <RestaurantContainer />
+      <RestaurantContainer resutanrtId={id} />
     ));
   }
 
@@ -21,7 +21,7 @@ describe('RestaurantContainer', () => {
         restaurant: RESTAURANT,
       }));
 
-      const { container } = renderRestaurantPage();
+      const { container } = renderRestaurantPage(1);
       expect(container).toHaveTextContent('양천주가');
       expect(container).toHaveTextContent(/서울/);
       expect(container).toHaveTextContent(/탕수육/);
