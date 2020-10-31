@@ -8,7 +8,7 @@ import HomePage from './HomePage';
 import NotFoundPage from './NotFoundPage';
 import AboutPage from './AboutPage';
 import RestaurantsPage from './RestaurantsPage';
-import RestaurantDetailPage from './RestaurantPage';
+import RestaurantPage from './RestaurantPage';
 
 export default function App() {
   return (
@@ -26,7 +26,7 @@ export default function App() {
           <RestaurantsPage />
         </Route>
         <Route path="/restaurants/:id">
-          <RestaurantDetailPage />
+          <RestaurantPage />
         </Route>
         <NotFoundPage />
       </Switch>
