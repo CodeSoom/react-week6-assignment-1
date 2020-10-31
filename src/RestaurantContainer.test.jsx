@@ -5,33 +5,32 @@ import { render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import restaurant from '../fixtures/restaurant';
-import RestaurantsContainer from './RestaurantsContainer';
+import RestaurantContainer from './RestaurantContainer';
 
 jest.mock('react-redux');
 
 describe('RestaurantContainer', () => {
-  const dispatch = jest.mock();
-
+  const dispatch = jest.fn();
+  useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
     restaurant,
   }));
 
   function renderRestaurantContainer() {
     return render((
-      <RestaurantsContainer />
+      <RestaurantContainer />
     ));
   }
+
   beforeEach(() => {
-    dispatch.mockClear();
     jest.clearAllMocks();
-    useDispatch.mockImplementation(() => dispatch);
   });
 
   it('render restaurant', () => {
     const { container } = renderRestaurantContainer();
 
-    expect(container).toBe(restaurant.name);
-    expect(container).toBe(restaurant.address);
+    expect(container).toHaveTextContent(restaurant.name);
+    expect(container).toHaveTextContent(restaurant.address);
   });
 
   it('call loadRestaurant action', () => {
