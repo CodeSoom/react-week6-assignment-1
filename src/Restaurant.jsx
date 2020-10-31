@@ -12,8 +12,10 @@ export default function Restaurant({
       </p>
       <h3>메뉴</h3>
       <ul>
-        {menuItems.map(({ name: menuName }) => (
-          <li>{menuName}</li>
+        {menuItems.map(({ id, name: menuName }) => (
+          <li key={id}>
+            {menuName}
+          </li>
         ))}
       </ul>
     </div>
