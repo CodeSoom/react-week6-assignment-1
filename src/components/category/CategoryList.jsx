@@ -2,7 +2,7 @@ import React from 'react';
 
 import Item from '../common/Item';
 
-const CategoryList = ({ categories, onSelectCategoryClick, selectedCategory }) => {
+const CategoryList = ({ categories, onCategoryClick, selectedCategory }) => {
   if (categories.length === 0) {
     return null;
   }
@@ -14,7 +14,7 @@ const CategoryList = ({ categories, onSelectCategoryClick, selectedCategory }) =
           key={id}
           name={name}
           check={selectedCategory && id === selectedCategory.id}
-          onClick={() => onSelectCategoryClick(id)}
+          onClick={() => onCategoryClick(id)}
         />
       ))}
     </ul>
