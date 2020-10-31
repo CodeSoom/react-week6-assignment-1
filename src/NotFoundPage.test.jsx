@@ -6,6 +6,8 @@ import NotFoundPage from './NotFoundPage';
 
 describe('NotFoundPage', () => {
   it('renders not found page', () => {
-    render(<NotFoundPage />);
+    const { container } = render(<NotFoundPage />);
+
+    expect(container).toHaveTextContent('404');
   });
 });
