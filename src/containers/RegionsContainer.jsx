@@ -22,7 +22,7 @@ export default function RegionsContainer() {
     <RegionList
       regions={regions}
       selectedRegion={selectedRegion}
-      onSelectRegionClick={handleClick}
+      onRegionClick={handleClick}
     />
   );
 }
