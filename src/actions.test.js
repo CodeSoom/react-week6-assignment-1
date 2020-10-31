@@ -9,8 +9,9 @@ import {
   loadRestaurants,
   loadRestaurant,
   setRestaurants,
-  setRestaurant,
 } from './actions';
+
+import RESTAURANT from '../fixtures/restaurant';
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
@@ -87,14 +88,22 @@ describe('actions', () => {
   });
 
   describe('loadRestaurant', () => {
-    store = mockStore({});
+    beforeEach(() => {
+      store = mockStore({
+        restaurant: RESTAURANT,
+      });
+    });
 
-    it('run setRestaurant', async () => {
+    it('run setRestaurant twice', async () => {
       await store.dispatch(loadRestaurant());
 
       const actions = store.getActions();
 
-      expect(actions[0]).toEqual(setRestaurant({}));
+      expect(actions).toHaveLength(2);
+
+      actions.forEach(({ type }) => {
+        expect(type).toEqual('setRestaurant');
+      });
     });
   });
 });
