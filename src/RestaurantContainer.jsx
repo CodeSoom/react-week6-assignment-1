@@ -9,7 +9,7 @@ import {
 export default function RestaurantContainer({ restaurantId }) {
   const dispatch = useDispatch();
 
-  const { restaurant: { name, address, menuItems } } = useSelector((state) => ({
+  const { restaurant } = useSelector((state) => ({
     restaurant: state.restaurant,
   }));
 
@@ -19,17 +19,7 @@ export default function RestaurantContainer({ restaurantId }) {
 
   return (
     <div>
-      <h2>{name}</h2>
-      <p>{address}</p>
-
-      <h3>메뉴</h3>
-      <ul>
-        {
-          menuItems.map((menu) => (
-            <li key={menu.id}>{menu.name}</li>
-          ))
-        }
-      </ul>
+      <Restaurant restaurant={restaurant} />
     </div>
   );
 }
