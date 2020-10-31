@@ -22,7 +22,7 @@ export default function CategoriesContainer() {
     <CategoryList
       categories={categories}
       selectedCategory={selectedCategory}
-      onSelectCategoryClick={handleClick}
+      onCategoryClick={handleClick}
     />
   );
 }
