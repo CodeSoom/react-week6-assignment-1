@@ -9,6 +9,7 @@ import { MemoryRouter } from 'react-router-dom';
 import App from './App';
 
 jest.unmock('react-router-dom');
+jest.mock('react-redux');
 
 describe('App', () => {
   const dispatch = jest.fn();
