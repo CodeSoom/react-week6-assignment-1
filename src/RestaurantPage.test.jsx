@@ -23,8 +23,6 @@ describe('RestaurantPage', () => {
     it('renders restaurant info', () => {
       const { container } = render(<RestaurantPage params={{ restaurantId: 1 }} />);
 
-      expect(dispatch).toBeCalled();
-
       expect(container).toHaveTextContent('양천주가');
       expect(container).toHaveTextContent(/서울/);
       expect(container).toHaveTextContent(/탕수육/);
