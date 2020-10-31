@@ -1,5 +1,7 @@
 import React from 'react';
-import { Route, Switch, Link } from 'react-router-dom';
+import {
+  Route, Switch, Link, useLocation,
+} from 'react-router-dom';
 
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
@@ -13,9 +15,13 @@ import NotFoundPage from './pages/NotFoundPage';
 // 3. 식당 목록 - Restaurants <- API (with region, category) -> 1, 2 모두 완료된 경우
 
 export default function App() {
+  const { pathname } = useLocation();
+
   return (
     <>
-      <Link to="/">홈으로</Link>
+      {
+        pathname === '/' ? null : <Link to="/">홈으로</Link>
+      }
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/about" component={AboutPage} />
