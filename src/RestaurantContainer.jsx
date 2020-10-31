@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import Restaurant from './Restaurant';
+
 import {
   loadRestaurant,
 } from './actions';
