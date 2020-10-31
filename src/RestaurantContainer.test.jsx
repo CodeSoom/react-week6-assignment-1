@@ -2,13 +2,19 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import RestaurantContainer from './RestaurantContainer';
 
 import RESTAURANT from '../fixtures/restaurant';
 
 describe('RestaurantContainer', () => {
+  const dispatch = jest.fn();
+
+  beforeEach(() => {
+    useDispatch.mockImplementation(() => dispatch);
+  });
+
   function renderRestaurantPage(id) {
     return render((
       <RestaurantContainer resutanrtId={id} />
