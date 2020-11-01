@@ -83,12 +83,8 @@ export function loadRestaurants() {
   };
 }
 
-export function loadRestaurant() {
-  return async (dispatch, getState) => {
-    const {
-      selectedRestaurant: restaurantId,
-    } = getState();
-
+export function loadRestaurant(restaurantId) {
+  return async (dispatch) => {
     if (!restaurantId) {
       return;
     }
