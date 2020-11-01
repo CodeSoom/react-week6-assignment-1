@@ -6,9 +6,7 @@ import Restaurant from './Restaurant';
 
 import { get } from './utils';
 
-function isEmpty(param) {
-  return Object.keys(param).length === 0;
-}
+const isEmpty = (param) => Object.keys(param).length === 0;
 
 export default function RestaurantContainer() {
   const restaurant = useSelector(get('restaurant'));
