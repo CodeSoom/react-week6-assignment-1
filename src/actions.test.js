@@ -89,12 +89,17 @@ describe('actions', () => {
   });
 
   describe('loadRestaurant', () => {
+    beforeEach(() => {
+      store = mockStore({
+        restaurant: RESTAURANT,
+      });
+    });
     it('runs loadRestaurant with restaurantId 1', async () => {
       await store.dispatch(loadRestaurant({ restaurantId: 1 }));
 
       const actions = store.getActions();
 
-      expect(actions[0]).toEqual(setRestaurant(RESTAURANT));
+      expect(actions[0]).toEqual(setRestaurant({}));
     });
   });
 });
