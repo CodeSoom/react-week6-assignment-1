@@ -68,7 +68,7 @@ describe('App', () => {
     });
   });
 
-  context('with unknown path', () => {
+  context('with wrong path', () => {
     it('renders Not Found page', () => {
       const { container } = renderApp({ path: '/test' });
 
