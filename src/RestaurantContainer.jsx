@@ -14,7 +14,7 @@ export default function RestaurantContainer() {
   const restaurant = useSelector(get('restaurant'));
 
   if (isEmpty(restaurant)) {
-    return <p>해당 레스토랑은 상세정보가 없습니다!</p>;
+    return <p>Loading...</p>;
   }
 
   return (

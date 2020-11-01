@@ -42,10 +42,10 @@ describe('RestaurantContainer', () => {
       }));
     });
 
-    it('renders a message without information', () => {
+    it('renders a loading message', () => {
       const { container } = renderRestaurant();
 
-      expect(container).toHaveTextContent('해당 레스토랑은 상세정보가 없습니다');
+      expect(container).toHaveTextContent('Loading');
     });
   });
 });

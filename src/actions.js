@@ -78,6 +78,7 @@ export function loadRestaurants() {
 
 export function loadRestaurant({ id }) {
   return async (dispatch) => {
+    dispatch(setRestaurant({}));
     const restaurant = await fetchRestaurant({ id });
     dispatch(setRestaurant(restaurant));
   };
