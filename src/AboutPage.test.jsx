@@ -6,10 +6,8 @@ import AboutPage from './AboutPage';
 
 describe('AboutPage', () => {
   it('renders about page', () => {
-    const { getByText } = render(<AboutPage />);
+    const { container } = render(<AboutPage />);
 
-    expect(getByText('About')).not.toBeNull();
-
-    expect(getByText('About 페이지입니다.')).not.toBeNull();
+    expect(container).toHaveTextContent('About 페이지입니다.');
   });
 });
