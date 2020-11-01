@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { loadRestaurant } from './actions';
 
+import Restaurant from './Restaurant';
+
 export default function RestaurantContainer() {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -17,20 +19,10 @@ export default function RestaurantContainer() {
   }, []);
 
   return (
-    <>
-      <h2>{name}</h2>
-      <p>
-        주소:&nbsp;
-        {address}
-      </p>
-      <h3>메뉴</h3>
-      <ul>
-        {menuItems.map(({ id: menuId, name: menuName }) => (
-          <li key={menuId}>
-            {menuName}
-          </li>
-        ))}
-      </ul>
-    </>
+    <Restaurant
+      name={name}
+      address={address}
+      menuItems={menuItems}
+    />
   );
 }
