@@ -12,7 +12,6 @@ import {
   setRestaurant,
   selectRegion,
   selectCategory,
-  selectRestaurant,
 } from './actions';
 
 describe('reducer', () => {
@@ -115,20 +114,6 @@ describe('reducer', () => {
       const state = reducer(initialState, selectCategory(1));
 
       expect(state.selectedCategory).toEqual(categories[0]);
-    });
-  });
-
-  describe('selectRestaurant', () => {
-    it('changes selected Restaurant', () => {
-      const initialState = {
-        selectedRestaurant: null,
-      };
-
-      const restaurantId = 1;
-
-      const state = reducer(initialState, selectRestaurant(restaurantId));
-
-      expect(state.selectedRestaurant).toBe(restaurantId);
     });
   });
 });
