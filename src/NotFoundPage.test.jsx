@@ -2,9 +2,9 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import NotFoundPage from './AboutPage';
+import NotFoundPage from './NotFoundPage';
 
-test('AboutPage', () => {
+test('NotFoundPage', () => {
   render((
     <NotFoundPage />
   ));
