@@ -6,6 +6,7 @@ import {
   loadInitialData,
   setRegions,
   setCategories,
+  setRestaurant,
   loadRestaurants,
   loadRestaurant,
   setRestaurants,
@@ -94,16 +95,15 @@ describe('actions', () => {
       });
     });
 
-    it('run setRestaurant twice', async () => {
+    it('run setRestaurant', async () => {
       await store.dispatch(loadRestaurant());
 
       const actions = store.getActions();
 
-      expect(actions).toHaveLength(2);
-
-      actions.forEach(({ type }) => {
-        expect(type).toEqual('setRestaurant');
-      });
+      expect(actions).toEqual([
+        setRestaurant({}),
+        setRestaurant({}),
+      ]);
     });
   });
 });
