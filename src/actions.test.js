@@ -8,7 +8,13 @@ import {
   setCategories,
   loadRestaurants,
   setRestaurants,
+  setRestaurantDetails,
+  loadRestaurantDetails,
 } from './actions';
+
+import RESTAURANT_DETAILS from '../fixtures/restaurantDetails';
+
+import { fetchRestaurantDetails } from './services/api';
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
@@ -81,6 +87,27 @@ describe('actions', () => {
 
         expect(actions).toHaveLength(0);
       });
+    });
+  });
+
+  describe('loadRestaurantDetails', () => {
+    beforeEach(() => {
+      fetchRestaurantDetails.mockResolvedValue(RESTAURANT_DETAILS);
+
+      store = mockStore({
+        restaurantDetails: RESTAURANT_DETAILS,
+      });
+    });
+
+    it('runs setRestaurantDetails', async () => {
+      await store.dispatch(loadRestaurantDetails());
+
+      const actions = store.getActions();
+
+      expect(actions).toEqual([
+        setRestaurantDetails(null),
+        setRestaurantDetails(RESTAURANT_DETAILS),
+      ]);
     });
   });
 });
