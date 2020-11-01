@@ -45,7 +45,7 @@ describe('RestaurantsContainer', () => {
 
       fireEvent.click(getByText('양천주가'));
 
-      expect(history.push).toHaveBeenCalledWith('restaurants/1');
+      expect(history.push).toHaveBeenCalledWith('/restaurants/1');
     });
   });
 });

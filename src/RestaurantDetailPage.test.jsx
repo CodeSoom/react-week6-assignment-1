@@ -2,9 +2,9 @@ import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { MemoryRouter } from 'react-router-dom';
-
 import { render } from '@testing-library/react';
+
+import { MemoryRouter } from 'react-router-dom';
 
 import RestaurantDetailPage from './RestaurantDetailPage';
 
@@ -19,11 +19,11 @@ test('RestaurantDetailPage', () => {
     restaurant: RESTAURANT,
   }));
 
-  const { container } = render((
+  const { container } = render(
     <MemoryRouter>
       <RestaurantDetailPage />
-    </MemoryRouter>
-  ));
+    </MemoryRouter>,
+  );
 
   expect(dispatch).toBeCalledTimes(1);
 

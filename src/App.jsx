@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import {
   Link,
@@ -31,8 +31,8 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/about" component={AboutPage} />
-        <Route path="/restaurants" component={RestaurantsPage} />
-        <Route path="/restaurants/:restaurantId" component={RestaurantDetailPage} />
+        <Route exact path="/restaurants" component={RestaurantsPage} />
+        <Route path="/restaurants/:id" component={RestaurantDetailPage} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>
