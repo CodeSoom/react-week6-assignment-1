@@ -11,16 +11,13 @@ import RestaurantContainer from './RestaurantContainer';
 jest.mock('react-redux');
 
 describe('RestaurantContainer', () => {
-  useSelector.mockImplementation((selector) => selector({
-    restaurant,
-  }));
-
-  const renderRestaurantContainer = () => render(
-    <RestaurantContainer />,
-  );
-
   it('renders restaurant', () => {
-    const { container } = renderRestaurantContainer();
+    useSelector.mockImplementation((selector) => selector({
+      restaurant,
+      loading: false,
+    }));
+
+    const { container } = render(<RestaurantContainer />);
 
     expect(container).toHaveTextContent(restaurant.name);
     expect(container).toHaveTextContent(restaurant.address);
@@ -28,5 +25,16 @@ describe('RestaurantContainer', () => {
     restaurant.menuItems.forEach((menuItem) => {
       expect(container).toHaveTextContent(menuItem.name);
     });
+  });
+
+  it('renders loading message', () => {
+    useSelector.mockImplementation((selector) => selector({
+      restaurant,
+      loading: true,
+    }));
+
+    const { container } = render(<RestaurantContainer />);
+
+    expect(container).toHaveTextContent(/Loading/);
   });
 });
