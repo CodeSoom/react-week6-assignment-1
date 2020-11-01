@@ -8,9 +8,12 @@ import {
   setCategories,
   loadRestaurants,
   setRestaurants,
+  loadRestaurantDetails,
+  setRestaurantDetails,
 } from './actions';
 
 const middlewares = [thunk];
+
 const mockStore = configureStore(middlewares);
 
 jest.mock('./services/api');
@@ -81,6 +84,24 @@ describe('actions', () => {
 
         expect(actions).toHaveLength(0);
       });
+    });
+  });
+
+  context('when loaded and fetched restaurant detail', () => {
+    beforeEach(() => {
+      store = mockStore({
+        restaurantDetail: {
+          id: 1, name: '양천주가', address: '서울시 강남구', menuItems: [],
+        },
+      });
+    });
+
+    it('runs setRestaurantDetails', async () => {
+      await store.dispatch(loadRestaurantDetails({ restaurantId: 1 }));
+
+      const actions = store.getActions();
+
+      expect(actions[0]).toEqual(setRestaurantDetails([]));
     });
   });
 });
