@@ -43,7 +43,7 @@ describe('RestaurantsContainer', () => {
         fireEvent.click(getByText(restaurant.name));
       });
 
-      expect(dispatch).toBeCalledTimes(restaurants.length * 2);
+      expect(dispatch).toBeCalledTimes(restaurants.length);
     });
   });
 });
