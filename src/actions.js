@@ -40,6 +40,13 @@ export function selectRegion(regionId) {
   };
 }
 
+export function setLoading(loading) {
+  return {
+    type: 'setLoading',
+    payload: { loading },
+  };
+}
+
 export function selectCategory(categoryId) {
   return {
     type: 'selectCategory',
