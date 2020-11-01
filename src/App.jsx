@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 
+import { Switch, Route } from 'react-router-dom';
+
 import { useDispatch } from 'react-redux';
 
 import {
@@ -12,16 +14,23 @@ function HomePage() {
   );
 }
 
+function AboutPage() {
+  return (
+    <h2>About</h2>
+  );
+}
+
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(loadInitialData());
-  });
+  }, []);
 
   return (
-    <div>
-      <HomePage />
-    </div>
+    <Switch>
+      <Route exact path="/" component={HomePage} />
+      <Route path="/about" component={AboutPage} />
+    </Switch>
   );
 }
