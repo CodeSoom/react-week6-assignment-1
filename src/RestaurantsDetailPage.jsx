@@ -11,12 +11,12 @@ import {
 } from './actions';
 
 export default function RestaurantsDetailPage() {
-  const { restaurantId } = useParams();
+  const { id } = useParams();
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadRestaurant(restaurantId));
+    dispatch(loadRestaurant(id));
   });
 
   return (
