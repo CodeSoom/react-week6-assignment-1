@@ -33,6 +33,13 @@ export function setRestaurant(restaurant) {
   };
 }
 
+export function setLoading(loading) {
+  return {
+    type: 'setLoading',
+    payload: { loading },
+  };
+}
+
 export function selectRegion(regionId) {
   return {
     type: 'selectRegion',
@@ -82,7 +89,10 @@ export function loadRestaurant(restaurantId) {
       return;
     }
 
+    dispatch(setLoading(true));
+
     const restaurant = await fetchRestaurant({ restaurantId });
     dispatch(setRestaurant(restaurant));
+    dispatch(setLoading(false));
   };
 }
