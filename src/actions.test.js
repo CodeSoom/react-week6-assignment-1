@@ -6,9 +6,20 @@ import {
   loadInitialData,
   setRegions,
   setCategories,
+  setRestaurant,
   loadRestaurants,
+  loadRestaurant,
   setRestaurants,
 } from './actions';
+
+import RESTAURANT from '../fixtures/restaurant';
+import RESTAURANTS from '../fixtures/restaurants';
+import REGIONS from '../fixtures/regions';
+import CATEGORIES from '../fixtures/categories';
+
+import {
+  fetchRegions, fetchCategories, fetchRestaurant, fetchRestaurants,
+} from './services/api';
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
@@ -20,6 +31,9 @@ describe('actions', () => {
 
   describe('loadInitialData', () => {
     beforeEach(() => {
+      fetchRegions.mockResolvedValue(REGIONS);
+      fetchCategories.mockResolvedValue(CATEGORIES);
+
       store = mockStore({});
     });
 
@@ -28,14 +42,16 @@ describe('actions', () => {
 
       const actions = store.getActions();
 
-      expect(actions[0]).toEqual(setRegions([]));
-      expect(actions[1]).toEqual(setCategories([]));
+      expect(actions[0]).toEqual(setRegions(REGIONS));
+      expect(actions[1]).toEqual(setCategories(CATEGORIES));
     });
   });
 
   describe('loadRestaurants', () => {
     context('with selectedRegion and selectedCategory', () => {
       beforeEach(() => {
+        fetchRestaurants.mockResolvedValue(RESTAURANTS);
+
         store = mockStore({
           selectedRegion: { id: 1, name: '서울' },
           selectedCategory: { id: 1, name: '한식' },
@@ -47,7 +63,7 @@ describe('actions', () => {
 
         const actions = store.getActions();
 
-        expect(actions[0]).toEqual(setRestaurants([]));
+        expect(actions[0]).toEqual(setRestaurants(RESTAURANTS));
       });
     });
 
@@ -81,6 +97,27 @@ describe('actions', () => {
 
         expect(actions).toHaveLength(0);
       });
+    });
+  });
+
+  describe('loadRestaurant', () => {
+    beforeEach(() => {
+      fetchRestaurant.mockResolvedValue(RESTAURANT);
+
+      store = mockStore({
+        restaurant: RESTAURANT,
+      });
+    });
+
+    it('run setRestaurant', async () => {
+      await store.dispatch(loadRestaurant());
+
+      const actions = store.getActions();
+
+      expect(actions).toEqual([
+        setRestaurant({}),
+        setRestaurant(RESTAURANT),
+      ]);
     });
   });
 });
