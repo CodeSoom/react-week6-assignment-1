@@ -97,7 +97,7 @@ describe('actions', () => {
 
         const actions = store.getActions();
 
-        expect(actions[0]).toEqual(setRestaurant([]));
+        expect(actions[2]).toEqual(setRestaurant([]));
       });
     });
 
