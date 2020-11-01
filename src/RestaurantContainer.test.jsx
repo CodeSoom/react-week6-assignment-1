@@ -11,30 +11,35 @@ import RestaurantContainer from './RestaurantContainer';
 jest.mock('react-redux');
 
 describe('RestaurantContainer', () => {
-  it('renders restaurant', () => {
+  const useSelectorMockImplementation = (loading = false) => {
     useSelector.mockImplementation((selector) => selector({
       restaurant,
-      loading: false,
+      loading,
     }));
+  };
 
-    const { container } = render(<RestaurantContainer />);
+  context('without loading', () => {
+    it('renders restaurant', () => {
+      useSelectorMockImplementation();
 
-    expect(container).toHaveTextContent(restaurant.name);
-    expect(container).toHaveTextContent(restaurant.address);
+      const { container } = render(<RestaurantContainer />);
 
-    restaurant.menuItems.forEach((menuItem) => {
-      expect(container).toHaveTextContent(menuItem.name);
+      expect(container).toHaveTextContent(restaurant.name);
+      expect(container).toHaveTextContent(restaurant.address);
+
+      restaurant.menuItems.forEach((menuItem) => {
+        expect(container).toHaveTextContent(menuItem.name);
+      });
     });
   });
 
-  it('renders loading message', () => {
-    useSelector.mockImplementation((selector) => selector({
-      restaurant,
-      loading: true,
-    }));
+  context('with loading', () => {
+    it('renders loading message', () => {
+      useSelectorMockImplementation(true);
 
-    const { container } = render(<RestaurantContainer />);
+      const { container } = render(<RestaurantContainer />);
 
-    expect(container).toHaveTextContent(/Loading/);
+      expect(container).toHaveTextContent(/Loading/);
+    });
   });
 });
