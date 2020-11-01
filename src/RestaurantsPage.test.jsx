@@ -8,31 +8,33 @@ import { MemoryRouter } from 'react-router-dom';
 
 import RestaurantsPage from './RestaurantsPage';
 
-test('RestaurantsPage', () => {
-  const dispatch = jest.fn();
+describe('RestaurantsPage', () => {
+  it('rendering', () => {
+    const dispatch = jest.fn();
 
-  useDispatch.mockImplementation(() => dispatch);
+    useDispatch.mockImplementation(() => dispatch);
 
-  useSelector.mockImplementation((selector) => selector({
-    regions: [
-      { id: 1, name: '서울' },
-    ],
-    categories: [
-      { id: 1, name: '한식' },
-    ],
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
-  }));
+    useSelector.mockImplementation((selector) => selector({
+      regions: [
+        { id: 1, name: '서울' },
+      ],
+      categories: [
+        { id: 1, name: '한식' },
+      ],
+      restaurants: [
+        { id: 1, name: '마법사주방' },
+      ],
+    }));
 
-  const { queryByText } = render((
-    <MemoryRouter>
-      <RestaurantsPage />
-    </MemoryRouter>
-  ));
+    const { queryByText } = render((
+      <MemoryRouter>
+        <RestaurantsPage />
+      </MemoryRouter>
+    ));
 
-  expect(dispatch).toBeCalled();
+    expect(dispatch).toBeCalled();
 
-  expect(queryByText('서울')).not.toBeNull();
-  expect(queryByText('한식')).not.toBeNull();
+    expect(queryByText('서울')).not.toBeNull();
+    expect(queryByText('한식')).not.toBeNull();
+  });
 });
