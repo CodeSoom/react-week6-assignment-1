@@ -44,4 +44,12 @@ describe('App', () => {
       expect(container).toHaveTextContent('Home');
     });
   });
+
+  context('with /about as path', () => {
+    it('renders AboutPage', () => {
+      const { container } = renderApp({ path: '/about' });
+
+      expect(container).toHaveTextContent('About');
+    });
+  });
 });
