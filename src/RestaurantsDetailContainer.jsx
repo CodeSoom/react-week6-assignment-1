@@ -4,10 +4,26 @@ import { useSelector } from 'react-redux';
 
 import { get } from './utils';
 
-export default function RestaurantContainer() {
+export default function RestaurantDetailContainer() {
+  const loading = useSelector(get('loading'));
+
   const restaurant = useSelector(get('restaurant'));
 
+  if (loading) {
+    return (
+      <div>Loading...</div>
+    );
+  }
+
   const { name, address, menuItems } = restaurant;
+
+  if (!name) {
+    return (
+      <div>
+        레스토랑의 정보가 없습니다.
+      </div>
+    );
+  }
 
   return (
     <div>
