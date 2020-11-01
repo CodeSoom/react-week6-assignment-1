@@ -1,13 +1,27 @@
 import React from 'react';
 
+import { MemoryRouter } from 'react-router-dom';
+
 import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
-test('App', () => {
+describe('App', () => {
   const dispatch = jest.fn();
+
+  function renderApp({ path }) {
+    const { container } = render((
+      <MemoryRouter initialEntries={[path]}>
+        <App />
+      </MemoryRouter>
+    ));
+
+    return {
+      container,
+    };
+  }
 
   useDispatch.mockImplementation(() => dispatch);
 
@@ -23,12 +37,11 @@ test('App', () => {
     ],
   }));
 
-  const { queryByText } = render((
-    <App />
-  ));
+  context('with / as path', () => {
+    it('renders HomePage', () => {
+      const { container } = renderApp({ path: '/' });
 
-  expect(dispatch).toBeCalled();
-
-  expect(queryByText('서울')).not.toBeNull();
-  expect(queryByText('한식')).not.toBeNull();
+      expect(container).toHaveTextContent('Home');
+    });
+  });
 });
