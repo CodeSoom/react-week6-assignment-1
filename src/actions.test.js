@@ -87,15 +87,13 @@ describe('actions', () => {
   });
 
   describe('loadRestaurant', () => {
-    context('with selectedRestaurant', () => {
-      beforeEach(() => {
-        store = mockStore({
-          selectedRestaurant: 1,
-        });
-      });
-
+    context('with restaurantId', () => {
       it('runs setRestaurant', async () => {
-        await store.dispatch(loadRestaurant());
+        beforeEach(() => {
+          store = mockStore({});
+        });
+
+        await store.dispatch(loadRestaurant(1));
 
         const actions = store.getActions();
 
@@ -103,12 +101,12 @@ describe('actions', () => {
       });
     });
 
-    context('without selectedRestaurant', () => {
-      beforeEach(() => {
-        store = mockStore({});
-      });
-
+    context('without restaurantId', () => {
       it('does not run any actions', async () => {
+        beforeEach(() => {
+          store = mockStore({});
+        });
+
         await store.dispatch(loadRestaurant());
 
         const actions = store.getActions();
