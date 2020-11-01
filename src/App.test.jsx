@@ -70,7 +70,7 @@ describe('App', () => {
 
   context('with wrong path', () => {
     it('renders Not Found page', () => {
-      const { container } = renderApp({ path: '/test' });
+      const { container } = renderApp({ path: '/xxxx' });
 
       expect(container).toHaveTextContent(/404 Not Found/);
     });
