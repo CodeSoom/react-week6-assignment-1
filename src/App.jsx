@@ -16,7 +16,7 @@ export default function App() {
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
         <Route exact path="/restaurants" component={Restaurants} />
-        <Route path="/restaurants/:restaurantId" component={RestaurantContainer} />
+        <Route path="/restaurants/:id" component={RestaurantContainer} />
         <Route component={NotFoundPage} />
       </Switch>
     </>

@@ -78,7 +78,7 @@ describe('<App />', () => {
     });
   });
 
-  context('with path /restaurants/:restaurantId', () => {
+  context('with path /restaurants/:id', () => {
     it('renders the restaurant detail page', () => {
       // When
       const { queryByText } = renderApp(['/restaurants/1']);

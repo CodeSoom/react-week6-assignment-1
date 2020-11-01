@@ -7,13 +7,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loadRestaurant } from './actions';
 
 export default function RestaurantContainer() {
-  const { restaurantId } = useParams();
+  const { id } = useParams();
   const dispatch = useDispatch();
   const { restaurant } = useSelector((state) => state);
   const { name, address, menuItems } = restaurant;
 
   useEffect(() => {
-    dispatch(loadRestaurant(restaurantId));
+    dispatch(loadRestaurant(id));
   }, []);
 
   return (
