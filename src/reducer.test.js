@@ -12,6 +12,7 @@ import {
   setRestaurant,
   selectRegion,
   selectCategory,
+  setLoading,
 } from './actions';
 
 describe('reducer', () => {
@@ -34,6 +35,7 @@ describe('reducer', () => {
       selectedRegion: null,
       selectedCategory: null,
       selectedRestaurant: null,
+      loading: false,
     };
 
     it('returns initialState', () => {
@@ -114,6 +116,18 @@ describe('reducer', () => {
       const state = reducer(initialState, selectCategory(1));
 
       expect(state.selectedCategory).toEqual(categories[0]);
+    });
+  });
+
+  describe('setLoading', () => {
+    it('changes loading', () => {
+      const initialState = {
+        loading: false,
+      };
+
+      const state = reducer(initialState, setLoading(true));
+
+      expect(state.loading).toBe(true);
     });
   });
 });
