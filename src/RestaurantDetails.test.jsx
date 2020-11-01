@@ -2,11 +2,11 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import RestaurantsDetails from './RestaurantsDetails';
+import RestaurantDetails from './RestaurantDetails';
 
 test('RestaurantsDetails', () => {
   const { container } = render((
-    <RestaurantsDetails />
+    <RestaurantDetails />
   ));
 
   expect(container).toHaveTextContent('주소');

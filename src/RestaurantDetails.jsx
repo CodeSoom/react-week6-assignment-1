@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function RestaurantsDetails() {
+export default function RestaurantDetails() {
   const restaurants = [
     {
       id: 1,
