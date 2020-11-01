@@ -8,6 +8,8 @@ import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import RESTAURANT from '../fixtures/restaurant';
+
 import App from './App';
 
 describe('App', () => {
@@ -22,6 +24,7 @@ describe('App', () => {
       ],
       categories: [],
       restaurants: [],
+      restaurant: RESTAURANT,
     }));
   });
 
@@ -57,8 +60,8 @@ describe('App', () => {
     });
   });
 
-  context('with invalid path ', () => {
-    it('renders the restaurants page', () => {
+  context('not found path', () => {
+    it('renders the not found page', () => {
       const { container } = renderApp({ path: '/xxx' });
 
       expect(container).toHaveTextContent('Not Found');
