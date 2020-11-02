@@ -1,9 +1,18 @@
 import { equal } from './utils';
 
+const restaurantInitialState = {
+  id: null,
+  categoryId: null,
+  name: null,
+  address: null,
+  menuItems: [],
+};
+
 const initialState = {
   regions: [],
   categories: [],
   restaurants: [],
+  restaurant: restaurantInitialState,
   selectedRegion: null,
   selectedCategory: null,
 };
@@ -27,6 +36,13 @@ const reducers = {
     return {
       ...state,
       restaurants,
+    };
+  },
+
+  setRestaurant(state, { payload: { restaurant } }) {
+    return {
+      ...state,
+      restaurant,
     };
   },
 
