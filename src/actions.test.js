@@ -8,6 +8,8 @@ import {
   setCategories,
   loadRestaurants,
   setRestaurants,
+  loadRestaurantDetail,
+  setRestaurantDetail,
 } from './actions';
 
 const middlewares = [thunk];
@@ -76,6 +78,37 @@ describe('actions', () => {
 
       it('does\'nt run any actions', async () => {
         await store.dispatch(loadRestaurants());
+
+        const actions = store.getActions();
+
+        expect(actions).toHaveLength(0);
+      });
+    });
+  });
+
+  describe('loadRestaurantDetail', () => {
+    context('with selectedRestaurant', () => {
+      beforeEach(() => {
+        store = mockStore({});
+      });
+
+      it('runs selectRestaurant', async () => {
+        await store.dispatch(loadRestaurantDetail(1));
+
+        const actions = store.getActions();
+
+        expect(actions[0]).toEqual(setRestaurantDetail(null));
+        expect(actions[1]).toEqual(setRestaurantDetail([]));
+      });
+    });
+
+    context('without selectedRestaurant', () => {
+      beforeEach(() => {
+        store = mockStore({});
+      });
+
+      it('does\'nt run any actions', async () => {
+        await store.dispatch(loadRestaurantDetail());
 
         const actions = store.getActions();
 
