@@ -6,9 +6,13 @@ import {
   loadInitialData,
   setRegions,
   setCategories,
-  loadRestaurants,
   setRestaurants,
+  setRestaurant,
+  loadRestaurants,
+  loadRestaurant,
 } from './actions';
+
+import RESTAURANT from '../fixtures/restaurant';
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
@@ -81,6 +85,21 @@ describe('actions', () => {
 
         expect(actions).toHaveLength(0);
       });
+    });
+  });
+
+  describe('loadRestaurant', () => {
+    beforeEach(() => {
+      store = mockStore(RESTAURANT);
+    });
+
+    it('runs setRestaurant', async () => {
+      const id = { id: 1 };
+      await store.dispatch(loadRestaurant(id));
+
+      const actions = store.getActions();
+
+      expect(actions[0]).toEqual(setRestaurant({}));
     });
   });
 });
