@@ -1,4 +1,5 @@
 import { equal } from './utils';
+import { initialRestaurant } from './initialObject';
 
 const initialState = {
   regions: [],
@@ -6,6 +7,7 @@ const initialState = {
   restaurants: [],
   selectedRegion: null,
   selectedCategory: null,
+  restaurant: initialRestaurant,
 };
 
 const reducers = {
@@ -43,6 +45,13 @@ const reducers = {
     return {
       ...state,
       selectedCategory: categories.find(equal('id', categoryId)),
+    };
+  },
+
+  setRestaurant(state, { payload: { restaurant } }) {
+    return {
+      ...state,
+      restaurant,
     };
   },
 };
