@@ -1,8 +1,14 @@
-import { fetchRegions, fetchCategories, fetchRestaurants } from './api';
+import {
+  fetchRegions,
+  fetchCategories,
+  fetchRestaurants,
+  fetchRestaurant,
+} from './api';
 
-import REGIONS from '../../fixtures/regions';
-import CATEGORIES from '../../fixtures/categories';
-import RESTAURANTS from '../../fixtures/restaurants';
+import regions from '../../fixtures/regions';
+import categories from '../../fixtures/categories';
+import restaurants from '../../fixtures/restaurants';
+import restaurant from '../../fixtures/restaurant';
 
 describe('api', () => {
   const mockFetch = (data) => {
@@ -13,40 +19,52 @@ describe('api', () => {
 
   describe('fetchRegions', () => {
     beforeEach(() => {
-      mockFetch(REGIONS);
+      mockFetch(regions);
     });
 
     it('returns regions', async () => {
-      const regions = await fetchRegions();
+      const fetchedRegions = await fetchRegions();
 
-      expect(regions).toEqual(REGIONS);
+      expect(fetchedRegions).toEqual(regions);
     });
   });
 
   describe('fetchCategories', () => {
     beforeEach(() => {
-      mockFetch(CATEGORIES);
+      mockFetch(categories);
     });
 
     it('returns categories', async () => {
-      const categories = await fetchCategories();
+      const fetchedCategories = await fetchCategories();
 
-      expect(categories).toEqual(CATEGORIES);
+      expect(fetchedCategories).toEqual(categories);
     });
   });
 
   describe('fetchRestaurants', () => {
     beforeEach(() => {
-      mockFetch(RESTAURANTS);
+      mockFetch(restaurants);
     });
 
     it('returns restaurants', async () => {
-      const restaurants = await fetchRestaurants({
+      const fetchedRestaurants = await fetchRestaurants({
         regionName: '서울',
         categoryId: 1,
       });
 
-      expect(restaurants).toEqual(RESTAURANTS);
+      expect(fetchedRestaurants).toEqual(restaurants);
+    });
+  });
+
+  describe('fetchRestaurant', () => {
+    beforeEach(() => {
+      mockFetch(restaurant);
+    });
+
+    it('returns restaurant info', async () => {
+      const fetchedRestaurant = await fetchRestaurant(1);
+
+      expect(fetchedRestaurant).toEqual(restaurant);
     });
   });
 });

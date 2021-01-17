@@ -5,9 +5,9 @@ import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import App from './App';
+import RestaurantsPage from './RestaurantsPage';
 
-test('App', () => {
+test('RestaurantsPage', () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
@@ -25,8 +25,8 @@ test('App', () => {
   }));
 
   const { queryByText } = render((
-    <MemoryRouter initialEntries={[{ pathname: '/restaurants' }]}>
-      <App />
+    <MemoryRouter>
+      <RestaurantsPage />
     </MemoryRouter>
   ));
 

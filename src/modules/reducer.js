@@ -1,4 +1,4 @@
-import { equal } from './utils';
+import { equal } from '../utils';
 
 const initialState = {
   regions: [],
@@ -6,6 +6,10 @@ const initialState = {
   restaurants: [],
   selectedRegion: null,
   selectedCategory: null,
+  restaurant: {
+    menuItems: [],
+    reviews: [],
+  },
 };
 
 const reducers = {
@@ -27,6 +31,13 @@ const reducers = {
     return {
       ...state,
       restaurants,
+    };
+  },
+
+  setRestaurant(state, { payload: { restaurant } }) {
+    return {
+      ...state,
+      restaurant,
     };
   },
 
