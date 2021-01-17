@@ -1,21 +1,49 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { MemoryRouter } from 'react-router-dom';
+
+import restaurants from '../fixtures/restaurants';
 
 import RestaurantsContainer from './RestaurantsContainer';
 
-test('RestaurantsContainer', () => {
+jest.mock('react-redux');
+
+describe('RestaurantsContainer', () => {
+  const dispatch = jest.fn();
+
+  useDispatch.mockImplementation(() => dispatch);
+
   useSelector.mockImplementation((selector) => selector({
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
+    restaurants,
   }));
 
-  const { container } = render((
-    <RestaurantsContainer />
-  ));
+  const renderRestaurantsContainer = () => render(
+    <MemoryRouter>
+      <RestaurantsContainer />
+    </MemoryRouter>,
+  );
 
-  expect(container).toHaveTextContent('마법사주방');
+  it('renders Restaurants', () => {
+    const { container } = renderRestaurantsContainer();
+
+    restaurants.forEach((restaurant) => {
+      expect(container).toHaveTextContent(restaurant.name);
+    });
+  });
+
+  context('when restaurant link is clicked', () => {
+    it('dispatch selectRestaurant and loadRestaurant', () => {
+      const { getByText } = renderRestaurantsContainer();
+
+      restaurants.forEach((restaurant) => {
+        fireEvent.click(getByText(restaurant.name));
+      });
+
+      expect(dispatch).toBeCalledTimes(restaurants.length);
+    });
+  });
 });
