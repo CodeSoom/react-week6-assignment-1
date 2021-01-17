@@ -6,14 +6,28 @@ import {
   setRestaurants,
   selectRegion,
   selectCategory,
+  setRestaurant,
 } from './actions';
+
+import SELECTED_RESTAURANT from '../fixtures/restaurant';
 
 describe('reducer', () => {
   context('when previous state is undefined', () => {
+    const initailRestaurantState = {
+      id: 0,
+      categoryId: 0,
+      name: '',
+      address: '',
+      menuItems: [],
+      reviews: [],
+      information: '',
+    };
+
     const initialState = {
       regions: [],
       categories: [],
       restaurants: [],
+      restaurant: initailRestaurantState,
       selectedRegion: null,
       selectedCategory: null,
     };
@@ -70,6 +84,20 @@ describe('reducer', () => {
       const state = reducer(initialState, setRestaurants(restaurants));
 
       expect(state.restaurants).toHaveLength(1);
+    });
+  });
+
+  describe('setRestaurant', () => {
+    it('changes selected restaurant', () => {
+      const initialState = {
+        restaurant: null,
+      };
+
+      const restaurant = SELECTED_RESTAURANT;
+
+      const state = reducer(initialState, setRestaurant(restaurant));
+
+      expect(state.restaurant).toEqual(SELECTED_RESTAURANT);
     });
   });
 
