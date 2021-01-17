@@ -4,6 +4,8 @@ import {
   setRegions,
   setCategories,
   setRestaurants,
+  setRestaurant,
+  setLoading,
   selectRegion,
   selectCategory,
 } from './actions';
@@ -16,6 +18,13 @@ describe('reducer', () => {
       restaurants: [],
       selectedRegion: null,
       selectedCategory: null,
+      restaurant: {
+        id: null,
+        name: null,
+        address: null,
+        menuItems: [],
+      },
+      loading: false,
     };
 
     it('returns initialState', () => {
@@ -70,6 +79,32 @@ describe('reducer', () => {
       const state = reducer(initialState, setRestaurants(restaurants));
 
       expect(state.restaurants).toHaveLength(1);
+    });
+  });
+
+  describe('setRestaurant', () => {
+    it('show restaurant', () => {
+      const initialState = {
+        restaurant: {},
+      };
+
+      const restaurant = {};
+
+      const state = reducer(initialState, setRestaurant(restaurant));
+
+      expect(state.restaurant).not.toBeNull();
+    });
+  });
+
+  describe('setLoading', () => {
+    it('show Loading', () => {
+      const initialState = {
+        loading: false,
+      };
+
+      const state = reducer(initialState, setLoading(true));
+
+      expect(state.loading).toEqual(true);
     });
   });
 
