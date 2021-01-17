@@ -1,34 +1,109 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
-
 import { useDispatch, useSelector } from 'react-redux';
+
+import { render } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 
 import App from './App';
 
-test('App', () => {
-  const dispatch = jest.fn();
+import categories from '../fixtures/categories';
+import regions from '../fixtures/regions';
+import restaurants from '../fixtures/restaurants';
+import restaurantDetail from '../fixtures/restaurantDetail';
 
-  useDispatch.mockImplementation(() => dispatch);
-
-  useSelector.mockImplementation((selector) => selector({
-    regions: [
-      { id: 1, name: '서울' },
-    ],
-    categories: [
-      { id: 1, name: '한식' },
-    ],
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
-  }));
-
-  const { queryByText } = render((
-    <App />
+function renderApp({ path }) {
+  return render((
+    <MemoryRouter initialEntries={[path]}>
+      <App />
+    </MemoryRouter>
   ));
+}
 
-  expect(dispatch).toBeCalled();
+describe('App', () => {
+  beforeEach(() => {
+    const dispatch = jest.fn();
+    useDispatch.mockImplementation(() => dispatch);
+    useSelector.mockImplementation((selector) => selector({
+      categories,
+      regions,
+      restaurants,
+      selectedRestaurantDetail: {
+        done: true,
+        info: restaurantDetail,
+      },
+    }));
+  });
 
-  expect(queryByText('서울')).not.toBeNull();
-  expect(queryByText('한식')).not.toBeNull();
+  it('"헤더" 문구가 출력됩니다.', () => {
+    const { container } = renderApp({ path: '/' });
+
+    expect(container).toHaveTextContent('헤더');
+  });
+
+  context('path가 "/"일 때,', () => {
+    it('HomePage의 "Home" 문구가 출력됩니다.', () => {
+      const { container } = renderApp({ path: '/' });
+
+      expect(container).toHaveTextContent('Home');
+    });
+  });
+
+  context('path가 "/about"일 때,', () => {
+    it('AboutPage의 "About" 문구가 출력됩니다.', () => {
+      const { container } = renderApp({ path: '/about' });
+
+      expect(container).toHaveTextContent('About');
+    });
+  });
+
+  context('path가 "/restaurants"일 때,', () => {
+    it('RestaurantsPage의 regions 목록이 출력됩니다.', () => {
+      const { container } = renderApp({ path: '/restaurants' });
+
+      regions.forEach((region) => (
+        expect(container).toHaveTextContent(region.name)
+      ));
+    });
+
+    it('RestaurantsPage의 categories 목록이 출력됩니다.', () => {
+      const { container } = renderApp({ path: '/restaurants' });
+
+      categories.forEach((category) => (
+        expect(container).toHaveTextContent(category.name)
+      ));
+    });
+
+    it('RestaurantsPage의 restaurants 목록이 출력됩니다.', () => {
+      const { container } = renderApp({ path: '/restaurants' });
+
+      restaurants.forEach((restaurant) => (
+        expect(container).toHaveTextContent(restaurant.name)
+      ));
+    });
+  });
+
+  context('path가 "/restaurants/1"일 때,', () => {
+    it('RestuarantDetailPage의 "주소" 문구가 출력됩니다.', () => {
+      const { container } = renderApp({ path: '/restaurants/1' });
+
+      expect(container).toHaveTextContent('주소');
+    });
+  });
+
+  context('path가 잘못된 url일 때,', () => {
+    it('NotFoundPage의 "NotFoundPage" 문구가 출력됩니다.', () => {
+      const { container } = renderApp({ path: '/wrong-url' });
+
+      expect(container).toHaveTextContent('NotFoundPage');
+    });
+  });
+});
+
+test('App', () => {
+  render((
+    <MemoryRouter>
+      <App />
+    </MemoryRouter>
+  ));
 });
