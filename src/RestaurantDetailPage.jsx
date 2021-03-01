@@ -6,20 +6,19 @@ import { loadRestaurant } from './actions';
 
 import MenuItems from './MenuItems';
 
-export default function RestaurantDetail({ match }) {
+export default function RestaurantDetailPage({ match }) {
   const dispatch = useDispatch();
   const { id } = match.params;
 
   dispatch(loadRestaurant(id));
 
-  const restaurant = useSelector((state) => state.restaurant);
-  const { name, address, menuItems } = restaurant;
+  const { name, address, menuItems } = useSelector((state) => state.restaurant);
+
   return (
     <div>
       <h2>{name}</h2>
       <p>
-        주소:
-        {address}
+        {`주소: ${address}`}
       </p>
       <h3>메뉴</h3>
       <MenuItems menuItems={menuItems} />
