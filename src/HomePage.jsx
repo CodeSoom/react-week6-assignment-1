@@ -3,9 +3,11 @@ import React from 'react';
 export default function HomePage() {
   return (
     <div>
-      <p>Home</p>
-      <p>About</p>
-      <p>Restaurants</p>
+      <h1>Home</h1>
+      <ul>
+        <li><a href="/about">About</a></li>
+        <li><a href="/restaurants">Restaurants</a></li>
+      </ul>
     </div>
   );
 }
