@@ -8,13 +8,12 @@ import {
   Link,
 } from 'react-router-dom';
 
-import HomePage from './HomePage';
-
-import AboutPage from './AboutPage';
-
 import {
   loadInitialData,
 } from './actions';
+
+import HomePage from './HomePage';
+import AboutPage from './AboutPage';
 import RestaurantsPage from './RestaurantsPage';
 import NotFoundPage from './NotFoundPage';
 
