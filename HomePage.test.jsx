@@ -7,7 +7,7 @@ import { MemoryRouter } from 'react-router-dom';
 import HomePage from './HomePage';
 
 describe('HomePage', () => {
-  it('renders', () => {
+  it('renders Home Page', () => {
     const { container } = render((
       <MemoryRouter initialEntries={['/']}>
         <HomePage />
