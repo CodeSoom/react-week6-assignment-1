@@ -43,6 +43,13 @@ describe('App', () => {
       expect(queryByText('About')).not.toBeNull();
       expect(queryByText('Restaurants')).not.toBeNull();
     });
+
+    it('Header links exist', () => {
+      renderApp({ path: '/' });
+
+      const aTags = document.querySelectorAll('a');
+      expect(aTags[0].getAttribute('href')).toEqual('/');
+    });
   });
 
   context('Show about page with path /about', () => {
