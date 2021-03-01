@@ -17,13 +17,17 @@ export default function App() {
 
   return (
     <div>
-      <p><Link to="/">헤더</Link></p>
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/about" component={AboutPage} />
-        <Route path="/restaurants" component={RestaurantsPage} />
-        <Route component={NotFoundPage} />
-      </Switch>
+      <header>
+        <p><Link to="/">헤더</Link></p>
+      </header>
+      <main>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/about" component={AboutPage} />
+          <Route path="/restaurants" component={RestaurantsPage} />
+          <Route component={NotFoundPage} />
+        </Switch>
+      </main>
     </div>
   );
 }
