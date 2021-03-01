@@ -60,4 +60,12 @@ describe('App', () => {
       expect(queryByText('서울')).not.toBeNull();
     });
   });
+
+  context('Show not found page', () => {
+    it('renders the not found page', () => {
+      const { queryByText } = renderApp({ path: '/notFoundTest' });
+
+      expect(queryByText('404 Not Found')).not.toBeNull();
+    });
+  });
 });
