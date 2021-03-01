@@ -6,29 +6,22 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
-test('App', () => {
+describe('App', () => {
   const dispatch = jest.fn();
 
-  useDispatch.mockImplementation(() => dispatch);
+  beforeEach(() => {
+    jest.clearAllMocks();
 
-  useSelector.mockImplementation((selector) => selector({
-    regions: [
-      { id: 1, name: '서울' },
-    ],
-    categories: [
-      { id: 1, name: '한식' },
-    ],
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
-  }));
+    useDispatch.mockImplementation(() => dispatch);
 
-  const { queryByText } = render((
-    <App />
-  ));
+    useSelector.mockImplementation((selector) => selector({
+      regions: [],
+      categories: [],
+      restaurants: [],
+    }));
+  });
 
-  expect(dispatch).toBeCalled();
-
-  expect(queryByText('서울')).not.toBeNull();
-  expect(queryByText('한식')).not.toBeNull();
+  it('renders links', () => {
+    render(<App />);
+  });
 });
