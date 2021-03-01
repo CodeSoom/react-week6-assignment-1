@@ -37,7 +37,7 @@ describe('App', () => {
   });
 
   it('HomePage를 그린다.', () => {
-    const { queryByText } = renderAppWithPath({ paht: '/' });
+    const { queryByText } = renderAppWithPath({ path: '/' });
 
     expect(queryByText('헤더').getAttribute('href')).toBe('/');
     expect(queryByText('헤더')).toBeInTheDocument();
