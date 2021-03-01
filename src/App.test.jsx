@@ -52,6 +52,7 @@ describe('App', () => {
       expect(getByText('About 페이지 입니다')).toBeInTheDocument();
     });
   });
+
   context('with path /restaurants', () => {
     it('renders restaurants page', () => {
       const { queryByText, getByRole } = renderApp('/restaurants');
@@ -63,6 +64,15 @@ describe('App', () => {
       expect(queryByText('서울')).not.toBeNull();
       expect(queryByText('한식')).not.toBeNull();
       expect(queryByText('마법사주방')).not.toBeNull();
+    });
+  });
+
+  context('with path /any_not_exist_url', () => {
+    it('renders NotFound', () => {
+      const { getByRole } = renderApp('/any_not_exist_url');
+
+      expect(dispatch).not.toBeCalled();
+      expect(getByRole('heading', { name: '404 Not Found' })).toBeInTheDocument();
     });
   });
 });
