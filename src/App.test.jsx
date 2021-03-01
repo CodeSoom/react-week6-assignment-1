@@ -52,4 +52,12 @@ describe('App', () => {
       expect(queryByText('소개 페이지입니다.')).not.toBeNull();
     });
   });
+
+  context('Show restaurants page with path /', () => {
+    it('renders the restaurants page', () => {
+      const { queryByText } = renderApp({ path: '/restaurants' });
+
+      expect(queryByText('서울')).not.toBeNull();
+    });
+  });
 });
