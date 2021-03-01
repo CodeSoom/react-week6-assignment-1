@@ -10,6 +10,14 @@ import App from './App';
 
 describe('App', () => {
   const dispatch = jest.fn();
+
+  function renderApp(path) {
+    return render((
+      <MemoryRouter initialEntries={[path]}>
+        <App />
+      </MemoryRouter>
+    ));
+  }
   beforeEach(() => {
     dispatch.mockClear();
     useDispatch.mockImplementation(() => dispatch);
@@ -28,13 +36,12 @@ describe('App', () => {
 
   context('with path /restaurants', () => {
     it('renders restaurants page', () => {
-      const { queryByText } = render((
-        <MemoryRouter initialEntries={['/restaurants']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const { queryByText, getByRole } = renderApp('/restaurants');
 
       expect(dispatch).toBeCalled();
+      expect(getByRole('link')).toHaveAttribute('href', '/');
+      expect(getByRole('heading', { name: '헤더' })).toBeInTheDocument();
+
       expect(queryByText('서울')).not.toBeNull();
       expect(queryByText('한식')).not.toBeNull();
       expect(queryByText('마법사주방')).not.toBeNull();
