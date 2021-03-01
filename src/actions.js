@@ -54,11 +54,6 @@ export function loadInitialData() {
 
     const categories = await fetchCategories();
     dispatch(setCategories(categories));
-
-    const restaurantDetail = await fetchRestaurantDetail({
-      restaurantId: 1,
-    });
-    dispatch(setRestaurantDetail(restaurantDetail));
   };
 }
 
