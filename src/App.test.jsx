@@ -11,6 +11,14 @@ import App from './App';
 describe('App', () => {
   const dispatch = jest.fn();
 
+  function renderApp({ path }) {
+    return render((
+      <MemoryRouter initialEntries={[path]}>
+        <App />
+      </MemoryRouter>
+    ));
+  }
+
   beforeEach(() => {
     jest.clearAllMocks();
 
@@ -45,11 +53,7 @@ describe('App', () => {
 
   context('with path /about', () => {
     it('renders the about page', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/about']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const { container } = renderApp({ path: '/' });
 
       expect(container).toHaveTextContent('About');
     });
@@ -57,11 +61,7 @@ describe('App', () => {
 
   context('with path /restaurnats', () => {
     it('renders the restaurants page', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/restaurants']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const { container } = renderApp({ path: '/restaurants' });
 
       expect(container).toHaveTextContent('서울');
       expect(container).toHaveTextContent('한식');
@@ -69,13 +69,9 @@ describe('App', () => {
     });
   });
 
-  context('with unspecified path /kdaskhkajsdh', () => {
+  context('with unspecified path such as /kdaskhkajsdh', () => {
     it('renders the NotFound page', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/kdaskhkajsdh']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const { container } = renderApp({ path: '/kdaskhkajsdh' });
 
       expect(container).toHaveTextContent('404 Not Found');
     });
