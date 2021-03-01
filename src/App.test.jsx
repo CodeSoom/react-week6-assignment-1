@@ -36,30 +36,25 @@ describe('App', () => {
     }));
   });
 
-  it('Header는 올바른 pathName에 연결되어 있다.', () => {
-    const { queryByText } = renderAppWithPath({ path: '/' });
-
-    expect(queryByText('Header').getAttribute('href')).toBe('/');
-  });
-
   it('HomePage를 그린다.', () => {
     const { queryByText } = renderAppWithPath({ paht: '/' });
 
-    expect(queryByText('Header')).toBeInTheDocument();
+    expect(queryByText('헤더').getAttribute('href')).toBe('/');
+    expect(queryByText('헤더')).toBeInTheDocument();
     expect(queryByText('Home')).toBeInTheDocument();
   });
 
   it('AboutPage를 그린다.', () => {
     const { queryByText } = renderAppWithPath({ path: '/About' });
 
-    expect(queryByText('Header')).toBeInTheDocument();
+    expect(queryByText('헤더')).toBeInTheDocument();
     expect(queryByText('About 페이지 입니다.')).toBeInTheDocument();
   });
 
   it('RestaurantsPage를 그린다.', () => {
     const { queryByText } = renderAppWithPath({ path: '/Restaurants' });
 
-    expect(queryByText('Header')).toBeInTheDocument();
+    expect(queryByText('헤더')).toBeInTheDocument();
     expect(queryByText('서울')).toBeInTheDocument();
   });
 });
