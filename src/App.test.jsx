@@ -33,7 +33,16 @@ describe('App', () => {
       ],
     }));
   });
+  context('with path /', () => {
+    it('renders HomePage', () => {
+      const { getByRole } = renderApp('/');
 
+      expect(dispatch).not.toBeCalled();
+      expect(getByRole('heading', { name: 'Home' })).toBeInTheDocument();
+      expect(getByRole('link', { name: 'About' })).toHaveAttribute('href', '/about');
+      expect(getByRole('link', { name: 'Restaurants' })).toHaveAttribute('href', '/restaurants');
+    });
+  });
   context('with path /restaurants', () => {
     it('renders restaurants page', () => {
       const { queryByText, getByRole } = renderApp('/restaurants');
