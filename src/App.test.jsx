@@ -43,6 +43,15 @@ describe('App', () => {
       expect(getByRole('link', { name: 'Restaurants' })).toHaveAttribute('href', '/restaurants');
     });
   });
+  context('with path /about', () => {
+    it('renders About', () => {
+      const { getByRole, getByText } = renderApp('/about');
+
+      expect(dispatch).not.toBeCalled();
+      expect(getByRole('heading', { name: 'About' })).toBeInTheDocument();
+      expect(getByText('About 페이지 입니다')).toBeInTheDocument();
+    });
+  });
   context('with path /restaurants', () => {
     it('renders restaurants page', () => {
       const { queryByText, getByRole } = renderApp('/restaurants');
