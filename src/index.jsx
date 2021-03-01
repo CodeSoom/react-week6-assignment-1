@@ -14,7 +14,6 @@ ReactDOM.render(
   (
     <Provider store={store}>
       <BrowserRouter>
-        <p><Link to="/">헤더</Link></p>
         <App />
       </BrowserRouter>
     </Provider>

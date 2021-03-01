@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Link } from 'react-router-dom';
 
 import AboutPage from '../AboutPage';
 
@@ -16,11 +16,14 @@ export default function App() {
   // 2. Restaurants Detail <- API (with restaurantId)
 
   return (
-    <Switch>
-      <Route exact path="/" component={HomePage} />
-      <Route path="/about" component={AboutPage} />
-      <Route path="/restaurants" component={RestaurantsPage} />
-      <Route component={NotFoundPage} />
-    </Switch>
+    <div>
+      <p><Link to="/">헤더</Link></p>
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/about" component={AboutPage} />
+        <Route path="/restaurants" component={RestaurantsPage} />
+        <Route component={NotFoundPage} />
+      </Switch>
+    </div>
   );
 }
