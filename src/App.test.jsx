@@ -45,7 +45,7 @@ describe('App', () => {
     });
   });
 
-  context('Show about page with path /', () => {
+  context('Show about page with path /about', () => {
     it('renders the about page', () => {
       const { queryByText } = renderApp({ path: '/about' });
 
@@ -53,7 +53,7 @@ describe('App', () => {
     });
   });
 
-  context('Show restaurants page with path /', () => {
+  context('Show restaurants page with path /restaurants', () => {
     it('renders the restaurants page', () => {
       const { queryByText } = renderApp({ path: '/restaurants' });
 
