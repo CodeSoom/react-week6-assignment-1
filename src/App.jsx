@@ -1,19 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
-import { useDispatch } from 'react-redux';
+import { Route, Switch } from 'react-router-dom';
 
 import RestaurantPage from './RestaurantPage';
 
-import { loadInitialData } from './actions';
-
 export default function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(loadInitialData());
-  });
-
   return (
-    <RestaurantPage />
+    <div>
+      <Switch>
+        <Route exact path="/restaurants" component={RestaurantPage} />
+      </Switch>
+    </div>
+
   );
 }
