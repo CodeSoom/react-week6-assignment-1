@@ -7,9 +7,12 @@ import { render } from '@testing-library/react';
 import HomePage from './HomePage';
 
 test('HomePage', () => {
-  render((
+  const { queryByText } = render((
     <MemoryRouter>
       <HomePage />
     </MemoryRouter>
   ));
+  expect(queryByText('Home')).not.toBeNull();
+  expect(queryByText('Restaurants')).not.toBeNull();
+  expect(queryByText('About')).not.toBeNull();
 });
