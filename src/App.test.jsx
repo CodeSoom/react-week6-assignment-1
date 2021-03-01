@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { MemoryRouter } from 'react-router-dom';
+
 import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -25,15 +27,29 @@ describe('App', () => {
     }));
   });
 
+  function renderApp({ path }) {
+    return render((
+      <MemoryRouter initialEntries={[path]}>
+        <App />
+      </MemoryRouter>
+    ));
+  }
+
   context('Show homepage with path /', () => {
     it('renders the index page', () => {
-      const { queryByText } = render((
-        <App />
-      ));
+      const { queryByText } = renderApp({ path: '/' });
 
       expect(queryByText('헤더')).not.toBeNull();
       expect(queryByText('About')).not.toBeNull();
       expect(queryByText('Restaurants')).not.toBeNull();
+    });
+  });
+
+  context('Show about page with path /', () => {
+    it('renders the about page', () => {
+      const { queryByText } = renderApp({ path: '/about' });
+
+      expect(queryByText('소개 페이지입니다.')).not.toBeNull();
     });
   });
 });
