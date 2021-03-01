@@ -45,6 +45,7 @@ describe('App', () => {
         </MemoryRouter>
       ));
 
+      expect(container).toHaveTextContent('헤더');
       expect(container).toHaveTextContent('Home');
       expect(container).toHaveTextContent('About');
       expect(container).toHaveTextContent('Restaurants');
@@ -55,6 +56,7 @@ describe('App', () => {
     it('renders the about page', () => {
       const { container } = renderApp({ path: '/' });
 
+      expect(container).toHaveTextContent('헤더');
       expect(container).toHaveTextContent('About');
     });
   });
@@ -63,6 +65,7 @@ describe('App', () => {
     it('renders the restaurants page', () => {
       const { container } = renderApp({ path: '/restaurants' });
 
+      expect(container).toHaveTextContent('헤더');
       expect(container).toHaveTextContent('서울');
       expect(container).toHaveTextContent('한식');
       expect(container).toHaveTextContent('마법사주방');
@@ -73,6 +76,7 @@ describe('App', () => {
     it('renders the NotFound page', () => {
       const { container } = renderApp({ path: '/kdaskhkajsdh' });
 
+      expect(container).toHaveTextContent('헤더');
       expect(container).toHaveTextContent('404 Not Found');
     });
   });
