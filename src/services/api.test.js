@@ -62,11 +62,11 @@ describe('api', () => {
     });
 
     it('returns restaurant detail', async () => {
-      const restaurants = await fetchRestaurantDetail({
+      const restaurantDetail = await fetchRestaurantDetail({
         restaurantId: 1,
       });
 
-      expect(restaurants).toEqual(RESTAURANT_DETAIL);
+      expect(restaurantDetail).toEqual(RESTAURANT_DETAIL);
     });
   });
 });
