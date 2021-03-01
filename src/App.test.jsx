@@ -25,13 +25,15 @@ describe('App', () => {
     }));
   });
 
-  context('with path /', () => {
+  context('Show homepage with path /', () => {
     it('renders the index page', () => {
       const { queryByText } = render((
         <App />
       ));
 
       expect(queryByText('헤더')).not.toBeNull();
+      expect(queryByText('About')).not.toBeNull();
+      expect(queryByText('Restaurants')).not.toBeNull();
     });
   });
 });
