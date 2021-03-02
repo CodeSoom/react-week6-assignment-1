@@ -2,6 +2,9 @@ import React from 'react';
 
 export default function RestaurantsDetail({ restaurantsDetail }) {
   const { name, address, menuItems } = restaurantsDetail;
+  if (!restaurantsDetail.name) {
+    return <h2>Loading</h2>;
+  }
 
   return (
     <>
