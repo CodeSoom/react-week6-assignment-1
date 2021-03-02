@@ -15,6 +15,20 @@ export default function App() {
   // 1. Create Link to re-render to the corresponding componets.
   // 2. Restaurants Detail <- API (with restaurantId)
 
+  function RestaurnatDetailPage() {
+    return (
+      <div>
+        <h1>마법사주방</h1>
+        <address>주소: 서울 강남구 강남대로94길 9</address>
+        <h2>메뉴</h2>
+        <ul>
+          <li>맛나는 거</li>
+          <li>짠 거</li>
+        </ul>
+      </div>
+    );
+  }
+
   return (
     <div>
       <header>
@@ -24,7 +38,8 @@ export default function App() {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/about" component={AboutPage} />
-          <Route path="/restaurants" component={RestaurantsPage} />
+          <Route exact path="/restaurants" component={RestaurantsPage} />
+          <Route path="/restaurants/:id" component={RestaurnatDetailPage} />
           <Route component={NotFoundPage} />
         </Switch>
       </main>
