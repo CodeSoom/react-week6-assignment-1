@@ -26,9 +26,10 @@ describe('RestaurantsDetailPage', () => {
           <RestaurantsDetailPage />
         </MemoryRouter>
       ));
-
-      expect(container).toHaveTextContent('서울 강남구');
-      expect(container).toHaveTextContent('짬뽕');
+      expect(container)
+        .toHaveTextContent('양천주가');
+      expect(container)
+        .toHaveTextContent('서울 강남구');
     });
   });
 });
