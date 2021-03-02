@@ -32,6 +32,14 @@ function AboutPage() {
   );
 }
 
+function notFoundPage() {
+  return (
+    <div>
+      404 Not Found
+    </div>
+  );
+}
+
 export default function App() {
   return (
     <>
@@ -42,6 +50,7 @@ export default function App() {
         <Route exact path="/" component={HomePage} />
         <Route path="/about" component={AboutPage} />
         <Route path="/restaurants" component={RestaurantsPage} />
+        <Route component={notFoundPage} />
       </Switch>
     </>
   );
