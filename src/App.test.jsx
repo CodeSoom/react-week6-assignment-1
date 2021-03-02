@@ -61,8 +61,7 @@ describe('App', () => {
       const { queryByText, getByRole } = renderApp('/restaurants');
 
       expect(dispatch).toBeCalled();
-      expect(getByRole('link')).toHaveAttribute('href', '/');
-      expect(getByRole('heading', { name: '헤더' })).toBeInTheDocument();
+      expect(getByRole('link', { name: '헤더' })).toHaveAttribute('href', '/');
 
       expect(queryByText('서울')).not.toBeNull();
       expect(queryByText('한식')).not.toBeNull();
