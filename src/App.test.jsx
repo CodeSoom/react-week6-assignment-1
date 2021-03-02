@@ -80,7 +80,7 @@ describe('App', () => {
     it('renders restaurant detail page', () => {
       const {
         getByRole, getByText, getAllByRole,
-      } = renderApp('/restaurant/4');
+      } = renderApp('/restaurants/4');
 
       expect(dispatch).toBeCalled();
 
