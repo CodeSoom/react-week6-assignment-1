@@ -18,6 +18,7 @@ describe('App', () => {
       </MemoryRouter>
     ));
   }
+
   beforeEach(() => {
     dispatch.mockClear();
     useDispatch.mockImplementation(() => dispatch);
@@ -33,6 +34,7 @@ describe('App', () => {
       ],
     }));
   });
+
   context('with path /', () => {
     it('renders HomePage', () => {
       const { getByRole } = renderApp('/');
@@ -43,6 +45,7 @@ describe('App', () => {
       expect(getByRole('link', { name: 'Restaurants' })).toHaveAttribute('href', '/restaurants');
     });
   });
+
   context('with path /about', () => {
     it('renders About', () => {
       const { getByRole, getByText } = renderApp('/about');
