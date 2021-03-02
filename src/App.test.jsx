@@ -26,6 +26,16 @@ describe('App', () => {
     }));
   });
 
+  it('renders header', () => {
+    const { queryByText } = render((
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
+    ));
+
+    expect(queryByText('헤더')).not.toBeNull();
+  });
+
   context('with path /', () => {
     it('renders home page', () => {
       const { queryByText } = render((
