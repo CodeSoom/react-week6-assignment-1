@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { 
-  MemoryRouter, 
+import {
+  MemoryRouter,
 } from 'react-router-dom';
 
 import { render } from '@testing-library/react';
@@ -31,31 +31,31 @@ describe('App', () => {
       </MemoryRouter>
     ));
   }
-  
+
   context('with path /', () => {
     it('renders HomePage', () => {
-      const { container } = renderApp({ path:'/' });
+      const { container } = renderApp({ path: '/' });
       expect(container).toHaveTextContent('Home');
     });
   });
 
   context('with path /about', () => {
     it('renders the about page', () => {
-      const { container } = renderApp({ path:'/about' });
+      const { container } = renderApp({ path: '/about' });
       expect(container).toHaveTextContent('화이팅!');
     });
   });
 
   context('with path /restaurants', () => {
     it('renders the restaurants page', () => {
-      const { container } = renderApp({ path:'/restaurants' });
+      const { container } = renderApp({ path: '/restaurants' });
       expect(container).toHaveTextContent('서울');
     });
   });
 
   context('with invalid path', () => {
     it('renders the not found page', () => {
-      const { container } = renderApp({ path:'/xxx' });
+      const { container } = renderApp({ path: '/xxx' });
       expect(container).toHaveTextContent('404');
     });
   });
