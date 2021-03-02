@@ -5,4 +5,3 @@ export default function AboutPage() {
     <p>About</p>
   );
 }
-

@@ -1,14 +1,14 @@
 import React from 'react';
 
+import {
+  Switch,
+  Route,
+  Link,
+} from 'react-router-dom';
+
 import RestaurantsPage from './RestaurantsPage';
 
 import HomePage from './HomePage';
-
-import { 
-  Switch,
-  Route,
-  Link
-} from 'react-router-dom';
 
 function AboutPage() {
   return (
@@ -23,17 +23,16 @@ function NotFoundPage() {
 }
 
 export default function App() {
-  const { location: { pathname } } = window;
   return (
     <div>
       <h1>
         <Link to="/">헤더</Link>
       </h1>
       <Switch>
-        <Route exact path="/" component={HomePage} ></Route>
-        <Route path="/about" component={AboutPage} ></Route>
-        <Route path="/restaurants" component={RestaurantsPage} ></Route>
-        <Route component={NotFoundPage} ></Route>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/about" component={AboutPage} />
+        <Route path="/restaurants" component={RestaurantsPage} />
+        <Route component={NotFoundPage} />
       </Switch>
     </div>
   );

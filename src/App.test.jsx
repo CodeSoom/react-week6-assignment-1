@@ -8,22 +8,20 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
-const renderApp = ({ path }) => {
-  return render((
-    <MemoryRouter initialEntries={[path]}>
-      <App />
-    </MemoryRouter>
-  ));
-}
+const renderApp = ({ path }) => (render((
+  <MemoryRouter initialEntries={[path]}>
+    <App />
+  </MemoryRouter>
+)));
 
 describe('App', () => {
   beforeEach(() => {
     const dispatch = jest.fn();
     useDispatch.mockImplementation(() => dispatch);
-    
+
     useSelector.mockImplementation((selector) => selector({
       regions: [
-        {id: 1, name: '서울'},
+        { id: 1, name: '서울' },
       ],
       categories: [],
       restaurants: [],
@@ -52,7 +50,7 @@ describe('App', () => {
       const { container } = renderApp({
         path: '/restaurants',
       });
-      
+
       expect(container).toHaveTextContent('서울');
     });
   });
@@ -62,7 +60,7 @@ describe('App', () => {
       const { container } = renderApp({
         path: '/xxx',
       });
-      
+
       expect(container).toHaveTextContent('Not Found');
     });
   });

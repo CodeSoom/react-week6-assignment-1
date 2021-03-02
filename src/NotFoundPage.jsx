@@ -5,4 +5,3 @@ export default function NotFoundPage() {
     <p>404 Not Found</p>
   );
 }
-
