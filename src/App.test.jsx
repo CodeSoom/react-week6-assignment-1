@@ -68,19 +68,6 @@ describe('App', () => {
     });
   });
 
-  context('Show restaurant detail page with path /restaurants/:id', () => {
-    it('renders the restaurant detail page', () => {
-      // Todo: useLocation() 테스트 할 수 있는 방법 찾기
-      // Todo: path: '/restaurant/1' 바로 호출했을 때 데이터 뜨게하는 법 알아내기
-
-
-      // const { queryByText } = renderApp({ path: '/restaurant/1' });
-
-      // expect(queryByText('양천주가')).not.toBeNull();
-      // expect(queryByText('서울 강남구')).not.toBeNull();
-    });
-  });
-
   context('Show not found page', () => {
     it('renders the not found page', () => {
       const { queryByText } = renderApp({ path: '/notFoundTest' });
