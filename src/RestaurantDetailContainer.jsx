@@ -9,7 +9,7 @@ import RestaurantDetail from './RestaurantDetail';
 import { loadRestaurantDetail } from './actions';
 
 export default function RestaurantDetailContainer() {
-  const restaurant = useSelector(get('restaurant'));
+  const restaurantDetail = useSelector(get('restaurantDetail'));
 
   const dispatch = useDispatch();
   const { restaurantId } = useParams();
@@ -19,6 +19,6 @@ export default function RestaurantDetailContainer() {
   }, [restaurantId]);
 
   return (
-    <RestaurantDetail restaurant={restaurant} />
+    <RestaurantDetail restaurantDetail={restaurantDetail} />
   );
 }
