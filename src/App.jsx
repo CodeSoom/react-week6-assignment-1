@@ -2,11 +2,11 @@ import React from 'react';
 
 import { Route, Switch, Link } from 'react-router-dom';
 
-import AboutPage from '../AboutPage';
+import AboutPage from './AboutPage';
 
-import HomePage from '../HomePage';
+import HomePage from './HomePage';
 
-import NotFoundPage from '../NotFoundPage';
+import NotFoundPage from './NotFoundPage';
 
 import RestaurantsPage from './RestaurantsPage';
 
