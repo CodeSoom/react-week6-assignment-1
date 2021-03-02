@@ -33,6 +33,23 @@ describe('App', () => {
       restaurants: [
         { id: 1, name: '마법사주방' },
       ],
+      restaurantsDetail: {
+        id: 1,
+        name: '마법사 주방',
+        address: '서울시 강남구 강남대로 94길 9',
+        menuItems: [
+          {
+            id: 14,
+            restaurantsId: 3,
+            name: '맛나는거',
+          },
+          {
+            id: 15,
+            restaurantsId: 3,
+            name: '짠거',
+          },
+        ],
+      },
     }));
   });
 
@@ -61,6 +78,15 @@ describe('App', () => {
 
       expect(queryByText('헤더')).toBeInTheDocument();
       expect(queryByText('서울')).toBeInTheDocument();
+    });
+  });
+
+  context('pathName이 /Restaurants/1인 경우에', () => {
+    it('RestaurantsDetailContainer를 그린다.', () => {
+      const { queryByText } = renderApp({ path: '/Restaurants/1' });
+
+      expect(queryByText('헤더')).toBeInTheDocument();
+      expect(queryByText(/서울시 강남구 강남대로 94길 9/)).toBeInTheDocument();
     });
   });
 });
