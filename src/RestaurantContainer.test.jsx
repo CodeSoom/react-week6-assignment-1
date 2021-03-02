@@ -8,7 +8,7 @@ import given from 'given2';
 
 import restaurant from '../fixtures/restaurant';
 
-import RestaurantDetailPage from './RestaurantDetailPage';
+import RestaurantContainer from './RestaurantContainer';
 
 describe('RestaurantDetailPage', () => {
   given('restaurant', () => restaurant);
@@ -20,7 +20,7 @@ describe('RestaurantDetailPage', () => {
   });
 
   it('renders restaurant', () => {
-    const { queryByText } = render(<RestaurantDetailPage />);
+    const { queryByText } = render(<RestaurantContainer />);
 
     expect(queryByText('마법사주방')).not.toBeNull();
     expect(queryByText('주소: 서울 강남구 강남대로94길 9')).not.toBeNull();
@@ -35,7 +35,7 @@ describe('RestaurantDetailPage', () => {
         name: '',
       }));
 
-      const { queryByText } = render(<RestaurantDetailPage />);
+      const { queryByText } = render(<RestaurantContainer />);
 
       expect(queryByText('loading')).not.toBeNull();
     });
@@ -49,7 +49,7 @@ describe('RestaurantDetailPage', () => {
         menuItems: null,
       }));
 
-      const { queryByText } = render(<RestaurantDetailPage />);
+      const { queryByText } = render(<RestaurantContainer />);
 
       expect(queryByText('메뉴가 없어요')).not.toBeNull();
     });
