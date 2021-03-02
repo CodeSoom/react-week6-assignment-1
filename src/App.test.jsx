@@ -45,12 +45,12 @@ describe('App', () => {
     it('renders about page', () => {
       const { container } = renderApp({ path: '/about' });
 
-      expect(container).toHaveTextContent(/about 페이지입니다/);
+      expect(container).toHaveTextContent(/About 페이지입니다/);
     });
   });
 
-  context('with restaurant path', () => {
-    it('renders restaurant page', () => {
+  context('with restaurants path', () => {
+    it('renders restaurants page', () => {
       const { container } = renderApp({ path: '/restaurants' });
 
       expect(container).toHaveTextContent('서울');
@@ -59,7 +59,7 @@ describe('App', () => {
 
   context('with invalid path', () => {
     it('renders not found page', () => {
-      const { container } = renderApp({ path: '/somthing' });
+      const { container } = renderApp({ path: '/sdf' });
 
       expect(container).toHaveTextContent('잘못된 페이지입니다');
     });
