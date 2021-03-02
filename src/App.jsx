@@ -3,10 +3,10 @@ import React from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
 
 import HomePage from './HomePage';
-import RestaurantsPage from './restaurants/RestaurantsPage';
+import RestaurantsPage from './RestaurantsPage';
 import AboutPage from './AboutPage';
 import NotFoundPage from './NotFoundPage';
-import DetailPage from './restaurants/DetailPage';
+import DetailPage from './DetailPage';
 
 export default function App() {
   return (

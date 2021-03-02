@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { loadRestaurant } from '../actions';
+import { loadRestaurant } from './actions';
 
 import MenuItems from './MenuItems';
 
