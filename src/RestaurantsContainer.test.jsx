@@ -2,7 +2,7 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import {
   BrowserRouter,
@@ -10,18 +10,34 @@ import {
 
 import RestaurantsContainer from './RestaurantsContainer';
 
-test('RestaurantsContainer', () => {
-  useSelector.mockImplementation((selector) => selector({
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
-  }));
+describe('RestaurantsContainer', () => {
+  const dispatch = jest.fn();
 
-  const { container } = render((
-    <BrowserRouter>
-      <RestaurantsContainer />
-    </BrowserRouter>
-  ));
+  beforeEach(() => {
+    dispatch.mockClear();
+    useDispatch.mockImplementation(() => dispatch);
+  });
 
-  expect(container).toHaveTextContent('마법사주방');
+  context('with restaurants mock id and name', () => {
+    beforeEach(() => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurants: [
+          {
+            id: 1,
+            name: '마법사주방',
+          },
+        ],
+      }));
+    });
+
+    it('renders restaurants with mock id and name', () => {
+      const { container } = render((
+        <BrowserRouter>
+          <RestaurantsContainer />
+        </BrowserRouter>
+      ));
+
+      expect(container).toHaveTextContent('마법사주방');
+    });
+  });
 });
