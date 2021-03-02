@@ -19,9 +19,8 @@ test('RestaurantsContainer', () => {
       <MemoryRouter>
         <RestaurantsContainer />
       </MemoryRouter>
-
     ),
   );
 
-  expect(getByRole('link', { name: '마법사주방' })).toHaveAttribute('href', '/1');
+  expect(getByRole('link', { name: '마법사주방' })).toHaveAttribute('href', '/restaurants/1');
 });
