@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
+import restaurantDetail from '../fixtures/restaurantDetail';
+
 describe('App', () => {
   const dispatch = jest.fn();
 
@@ -32,6 +34,7 @@ describe('App', () => {
       restaurants: [
         { id: 1, name: '마법사주방' },
       ],
+      restaurantDetail,
     }));
   });
 
@@ -66,6 +69,34 @@ describe('App', () => {
       expect(queryByText('서울')).not.toBeNull();
       expect(queryByText('한식')).not.toBeNull();
       expect(queryByText('마법사주방')).not.toBeNull();
+    });
+  });
+
+  context('with path /restaurants/:restaurantId', () => {
+    const {
+      name, address, menuItems, reviews, information,
+    } = restaurantDetail;
+
+    it('renders restaurant detail page', () => {
+      const {
+        getByRole, getByText, getAllByRole,
+      } = renderApp('/restaurant/4');
+
+      expect(dispatch).toBeCalled();
+
+      expect(getByRole('heading', { name })).toBeInTheDocument();
+      expect(getByText(address)).toBeInTheDocument();
+      expect(getByText(information)).toBeInTheDocument();
+
+      expect(getByRole('heading', { name: '메뉴' })).toBeInTheDocument();
+      menuItems.forEach((menuItem) => {
+        expect(getAllByRole('list')[0]).toHaveTextContent(menuItem.name);
+      });
+
+      expect(getByRole('heading', { name: '리뷰' })).toBeInTheDocument();
+      reviews.forEach((review) => {
+        expect(getAllByRole('list')[1]).toHaveTextContent(review.name);
+      });
     });
   });
 
