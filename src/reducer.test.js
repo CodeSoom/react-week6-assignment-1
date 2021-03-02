@@ -77,7 +77,7 @@ describe('reducer', () => {
   describe('setRestaurantDetail', () => {
     it('changes restaurantDetail', () => {
       const initialState = {
-        restaurantDetail: [],
+        restaurant: [],
       };
 
       const restaurant = [{
@@ -86,7 +86,7 @@ describe('reducer', () => {
 
       const state = reducer(initialState, setRestaurantDetail(restaurant));
 
-      expect(state.restaurantDetail).toHaveLength(1);
+      expect(state.restaurant).toHaveLength(1);
     });
   });
 

@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantDetailContainer from './RestaurantDetailContainer';
 
-import restaurants from '../fixtures/restaurantDetail';
+import restaurant from '../fixtures/restaurantDetail';
 
 describe('RestaurantDetailContainer', () => {
   const dispatch = jest.fn();
@@ -23,7 +23,7 @@ describe('RestaurantDetailContainer', () => {
   context('with restaurant detail', () => {
     beforeEach(() => {
       useSelector.mockImplementation((selector) => selector({
-        restaurantDetail: restaurants,
+        restaurant,
       }));
     });
 

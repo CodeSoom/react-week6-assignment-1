@@ -5,8 +5,8 @@ import { useSelector } from 'react-redux';
 import { get } from './utils';
 
 export default function RestaurantDetailContainer() {
-  const restaurantDetail = useSelector(get('restaurantDetail'));
-  if (restaurantDetail === undefined) {
+  const restaurant = useSelector(get('restaurant'));
+  if (restaurant === undefined) {
     return (
       <div>
         페이지를 로딩중입니다..
@@ -16,14 +16,14 @@ export default function RestaurantDetailContainer() {
 
   return (
     <div>
-      <h2>{restaurantDetail.name}</h2>
+      <h2>{restaurant.name}</h2>
       <h4>
         주소:
-        {restaurantDetail.address}
+        {restaurant.address}
       </h4>
       <h3>메뉴</h3>
       <ul>
-        {restaurantDetail.menuItems.map((menuItem) => (
+        {restaurant.menuItems.map((menuItem) => (
           <li key={menuItem.id}>
             {menuItem.name}
           </li>

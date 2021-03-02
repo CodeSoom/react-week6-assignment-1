@@ -30,10 +30,10 @@ const reducers = {
     };
   },
 
-  setRestaurantDetail(state, { payload: { restaurantDetail } }) {
+  setRestaurantDetail(state, { payload: { restaurant } }) {
     return {
       ...state,
-      restaurantDetail,
+      restaurant,
     };
   },
 
