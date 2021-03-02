@@ -42,7 +42,7 @@ describe('App', () => {
 
   context('경로가 /about', () => {
     it('About을 그려준다.', () => {
-      const { container } = renderApp({ path: '/about' })
+      const { container } = renderApp({ path: '/about' });
 
       expect(container).toHaveTextContent('헤더');
 
