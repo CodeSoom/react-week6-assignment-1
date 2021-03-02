@@ -11,7 +11,7 @@ describe('Detail', () => {
     const { queryByText } = render((<Detail restaurant={restaurant} />));
 
     expect(queryByText('우리집')).not.toBeNull();
-    expect(queryByText('성남시')).not.toBeNull();
+    expect(queryByText('주소: 성남시')).not.toBeNull();
     expect(queryByText('버내너')).not.toBeNull();
   });
 });
