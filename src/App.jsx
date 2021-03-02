@@ -13,10 +13,6 @@ import RestaurantsPage from './RestaurantsPage';
 import RestaurantDetailPage from './RestaurantDetailPage';
 
 export default function App() {
-  // 0. Create Home / About/ RestaurantsConainer / NotFound
-  // 1. Create Link to re-render to the corresponding componets.
-  // 2. Restaurants Detail <- API (with restaurantId)
-
   return (
     <div>
       <header>
