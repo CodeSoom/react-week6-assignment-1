@@ -9,7 +9,7 @@ export default function RestaurantsDetail({ restaurantsDetail }) {
       <p>{`주소 : ${address}`}</p>
       <h3>메뉴</h3>
       <ul>
-        {menuItems.map(({ id, restaurantsId, name: menuName }) => (
+        {menuItems?.map(({ id, restaurantsId, name: menuName }) => (
           <li key={`${restaurantsId}-${id}`}>
             {menuName}
           </li>

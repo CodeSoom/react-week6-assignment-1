@@ -2,21 +2,21 @@ import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { useParams } from 'react-router-dom';
-import { loadRestaurantsDetail } from './actions';
 import RestaurantsDetail from './RestaurantsDetail';
+
+import { loadRestaurantsDetail } from './actions';
+
 import { get } from './utils';
 
-export default function RestaurantsDetailContainer() {
+export default function RestaurantsDetailContainer({ match }) {
   const dispatch = useDispatch();
-  const { id } = useParams();
+  const restaurantsDetail = useSelector(get('restaurantsDetail'));
+
+  const { id } = match.params;
 
   useEffect(() => {
-    dispatch(loadRestaurantsDetail({ restaurantsId: 1 }));
-    // dispatch();
+    dispatch(loadRestaurantsDetail({ restaurantsId: id }));
   }, []);
-
-  const restaurantsDetail = useSelector(get('restaurantsDetail'));
 
   return <RestaurantsDetail restaurantsDetail={restaurantsDetail} />;
 }
