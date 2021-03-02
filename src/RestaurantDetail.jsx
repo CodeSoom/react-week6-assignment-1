@@ -8,22 +8,24 @@ export default function RestaurantDetail({
   return (
     <div>
       <h2>{name}</h2>
-      <p>
+      <div>
         {'주소 : '}
-        <span>{address}</span>
-      </p>
-      <p>
+        <p>{address}</p>
+      </div>
+      <div>
         {'정보 : '}
-        <span>{information}</span>
-      </p>
+        <p>{information}</p>
+      </div>
+
       <h3>메뉴</h3>
-      <ul className="menu-list">
+      <ul>
         {menuItems.map((menu) => (
           <li key={menu.id}>
             {menu.name}
           </li>
         ))}
       </ul>
+
       <h3>리뷰</h3>
       <ul>
         {reviews.map((review) => (
