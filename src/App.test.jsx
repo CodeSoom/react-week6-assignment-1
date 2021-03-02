@@ -73,4 +73,16 @@ describe('App', () => {
       expect(queryByText('마법사주방')).not.toBeNull();
     });
   });
+
+  context('with invalid path', () => {
+    it('renders not found page', () => {
+      const { queryByText } = render((
+        <MemoryRouter initialEntries={['/xxx']}>
+          <App />
+        </MemoryRouter>
+      ));
+
+      expect(queryByText('404 Not Found')).not.toBeNull();
+    });
+  });
 });
