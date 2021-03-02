@@ -27,28 +27,35 @@ describe('App', () => {
       restaurants: [],
     }));
   });
+  context('with path /', () => {
+    it('renders the home page', () => {
+      const { container } = renderApp({ path: '/' });
 
-  it('renders the home page with path /', () => {
-    const { container } = renderApp({ path: '/' });
-
-    expect(container).toHaveTextContent('Home');
+      expect(container).toHaveTextContent('Home');
+    });
   });
 
-  it('renders the about page with path /about', () => {
-    const { container } = renderApp({ path: '/about' });
+  context('with path /about', () => {
+    it('renders the about page', () => {
+      const { container } = renderApp({ path: '/about' });
 
-    expect(container).toHaveTextContent('About 페이지 입니다.');
+      expect(container).toHaveTextContent('About 페이지 입니다.');
+    });
   });
 
-  it('renders the restaurants page with path /restaurants', () => {
-    const { container } = renderApp({ path: '/restaurants' });
+  context('with path /restaurants', () => {
+    it('renders the restaurants page', () => {
+      const { container } = renderApp({ path: '/restaurants' });
 
-    expect(container).toHaveTextContent('서울');
+      expect(container).toHaveTextContent('서울');
+    });
   });
 
-  it('renders the not found page with invalid path', () => {
-    const { container } = renderApp({ path: '/xxx' });
+  context('with invalid path', () => {
+    it('renders not found page', () => {
+      const { container } = renderApp({ path: '/xxx' });
 
-    expect(container).toHaveTextContent('Not Found');
+      expect(container).toHaveTextContent('Not Found');
+    });
   });
 });

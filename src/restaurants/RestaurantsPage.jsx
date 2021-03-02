@@ -8,7 +8,7 @@ import RestaurantsContainer from './RestaurantsContainer';
 
 import {
   loadInitialData,
-} from './actions';
+} from '../actions';
 
 export default function RestaurantsPage() {
   const dispatch = useDispatch();

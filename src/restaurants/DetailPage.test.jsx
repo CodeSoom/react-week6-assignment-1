@@ -4,9 +4,9 @@ import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import RestaurantDetailPage from './RestaurantDetailPage';
+import DetailPage from './DetailPage';
 
-test('RestaurantDetailPage', () => {
+test('DetailPage', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
@@ -17,7 +17,7 @@ test('RestaurantDetailPage', () => {
     },
   }));
 
-  const { queryByText } = render((<RestaurantDetailPage match={{ params: 1 }} />));
+  const { queryByText } = render((<DetailPage match={{ params: 1 }} />));
 
   expect(dispatch).toBeCalled();
   expect(queryByText(/양천주가/)).not.toBeNull();
