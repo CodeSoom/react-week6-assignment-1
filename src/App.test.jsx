@@ -22,8 +22,6 @@ describe('App', () => {
   beforeEach(() => {
     jest.clearAllMocks();
 
-    useDispatch.mockImplementation(() => dispatch);
-
     useSelector.mockImplementation((selector) => selector({
       regions: [
         { id: 1, name: '서울' },
@@ -34,7 +32,27 @@ describe('App', () => {
       restaurants: [
         { id: 3, name: '마법사주방' },
       ],
+      restaurant: {
+        id: 3,
+        categoryId: 4,
+        name: '마법사주방',
+        address: '서울 강남구 강남대로94길 9',
+        menuItems: [
+          {
+            id: 14,
+            restaurantId: 3,
+            name: '맛나는 거',
+          },
+          {
+            id: 15,
+            restaurantId: 3,
+            name: '짠 거',
+          },
+        ],
+      },
     }));
+
+    useDispatch.mockImplementation(() => dispatch);
   });
 
   context('with path /', () => {
@@ -73,12 +91,14 @@ describe('App', () => {
   });
 
   context('with path /restaurants/:id', () => {
-    const { container } = renderApp({ path: '/restaurants/3' });
+    it('renders the restaurant detail', () => {
+      const { container } = renderApp({ path: '/restaurants/3' });
 
-    expect(container).toHaveTextContent('마법사주방');
-    expect(container).toHaveTextContent('서울 강남구 강남대로94길 9');
-    expect(container).toHaveTextContent('맛나는 거');
-    expect(container).toHaveTextContent('짠 거');
+      expect(container).toHaveTextContent('마법사주방');
+      expect(container).toHaveTextContent('서울 강남구 강남대로94길 9');
+      expect(container).toHaveTextContent('맛나는 거');
+      expect(container).toHaveTextContent('짠 거');
+    });
   });
 
   context('with unspecified path such as /kdaskhkajsdh', () => {
