@@ -10,6 +10,6 @@ describe('NotFoundPage', () => {
       <NotFoundPage />
     ));
 
-    expect(container).toHaveTextContent('Not Found');
+    expect(container).toHaveTextContent('잘못된 페이지입니다');
   });
 });
