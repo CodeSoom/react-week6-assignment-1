@@ -10,7 +10,7 @@ import { createMemoryHistory } from 'history';
 import RestaurantDetailContainer from './RestaurantDetailContainer';
 import restaurantDetail from '../fixtures/restaurantDetail';
 
-describe('RestaurantDetail', () => {
+describe('RestaurantDetailContainer', () => {
   const dispatch = jest.fn();
 
   const {
@@ -44,6 +44,8 @@ describe('RestaurantDetail', () => {
       getByRole, getByText, getAllByRole,
     } = renderRestaurantDetail('/restaurants/4');
 
+    expect(dispatch).toHaveBeenCalledTimes(1);
+
     expect(getByRole('heading', { name })).toBeInTheDocument();
     expect(getByText(address)).toBeInTheDocument();
     expect(getByText(information)).toBeInTheDocument();
@@ -57,11 +59,5 @@ describe('RestaurantDetail', () => {
     reviews.forEach((review) => {
       expect(getAllByRole('list')[1]).toHaveTextContent(review.name);
     });
-  });
-
-  it('gets params', () => {
-    renderRestaurantDetail('/restaurants/4');
-
-    expect(dispatch).toHaveBeenCalledTimes(1);
   });
 });
