@@ -5,7 +5,7 @@ import { fireEvent, render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
-  BrowserRouter,
+  MemoryRouter,
 } from 'react-router-dom';
 
 import RestaurantsContainer from './RestaurantsContainer';
@@ -32,9 +32,9 @@ describe('RestaurantsContainer', () => {
 
     it('renders restaurants with mock id and name', () => {
       const { container, getByText } = render((
-        <BrowserRouter>
+        <MemoryRouter>
           <RestaurantsContainer />
-        </BrowserRouter>
+        </MemoryRouter>
       ));
 
       expect(container).toHaveTextContent('마법사주방');
