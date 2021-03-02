@@ -2,16 +2,14 @@ import React from 'react';
 
 import { useSelector } from 'react-redux';
 
-import { useParams } from 'react-router-dom';
 import { get } from './utils';
 
 export default function RestaurantsDetailPage() {
-  const { id } = useParams();
   const restaurantDetail = useSelector(get('restaurantDetail'));
 
   return (
     <div>
-      <h2>{id}</h2>
+      <h2>{restaurantDetail.name}</h2>
       <h4>
         주소:
         {restaurantDetail.address}
