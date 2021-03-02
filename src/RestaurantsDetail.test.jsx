@@ -31,4 +31,10 @@ describe('RestaurantsDetail', () => {
     expect(queryByText(/맛나는거/)).toBeInTheDocument();
     expect(queryByText(/짠거/)).toBeInTheDocument();
   });
+
+  it('정보가 불러오지기 전이라면 Loading 화면을 보여준다.', () => {
+    const { queryByText } = render(<RestaurantsDetail restaurantsDetail={{}} />);
+
+    expect(queryByText(/Loading/)).toBeInTheDocument();
+  });
 });
