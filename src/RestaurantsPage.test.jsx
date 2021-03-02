@@ -4,6 +4,8 @@ import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import { MemoryRouter } from 'react-router-dom';
+
 import RestaurantsPage from './RestaurantsPage';
 
 describe('RestaurantsPage', () => {
@@ -24,7 +26,11 @@ describe('RestaurantsPage', () => {
   }));
 
   it('화면에 지역과 음식분류 목록을 보여준다.', () => {
-    const { queryByText } = render(<RestaurantsPage />);
+    const { queryByText } = render(
+      <MemoryRouter>
+        <RestaurantsPage />
+      </MemoryRouter>,
+    );
 
     expect(dispatch).toBeCalled();
 
