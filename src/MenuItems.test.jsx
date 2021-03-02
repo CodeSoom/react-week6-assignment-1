@@ -16,10 +16,10 @@ describe('MenuItems', () => {
   });
 
   context('with empty menuItmes', () => {
-    it('shows nothing', () => {
+    it('shows "값이 없어요!"', () => {
       const { queryByText } = render((<MenuItems />));
 
-      expect(queryByText(/맥도날드/)).toBeNull();
+      expect(queryByText(/값이 없어요!/)).not.toBeNull();
     });
   });
 });
