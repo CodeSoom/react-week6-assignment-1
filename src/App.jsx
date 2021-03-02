@@ -3,6 +3,7 @@ import React from 'react';
 import {
   Switch,
   Route,
+  Link,
 } from 'react-router-dom';
 
 import RestaurantsPage from './RestaurantsPage';
@@ -16,6 +17,11 @@ import NotFoundPage from './NotFoundPage';
 export default function App() {
   return (
     <div>
+      <header>
+        <h1>
+          <Link to="/">Header</Link>
+        </h1>
+      </header>
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/about" component={AboutPage} />
