@@ -1,17 +1,13 @@
 import React from 'react';
 
-import MenuItems from './MenuItems';
+import { useSelector } from 'react-redux';
 
-export default function DetailContainer({ restaurant }) {
-  const { name, address, menuItems } = restaurant;
+import Detail from './Detail';
+
+export default function DetailContainer() {
+  const restaurant = useSelector((state) => state.restaurant);
+
   return (
-    <div>
-      <h2>{name}</h2>
-      <p>
-        {`주소: ${address}`}
-      </p>
-      <h3>메뉴</h3>
-      <MenuItems menuItems={menuItems} />
-    </div>
+    <Detail restaurant={restaurant} />
   );
 }

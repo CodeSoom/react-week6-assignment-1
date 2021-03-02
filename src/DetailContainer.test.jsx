@@ -2,20 +2,18 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
+import { useSelector } from 'react-redux';
+
 import DetailContainer from './DetailContainer';
 
-test('DetailContainer', () => {
-  const restaurant = {
-    name: '우리집',
-    address: '성남시',
-    menuItems: [{
-      id: 23,
-      name: '버내너',
-    }],
-  };
+import restaurant from '../fixtures/restaurant';
 
-  const { queryByText } = render((<DetailContainer restaurant={restaurant} />));
+describe('DetailContainer', () => {
+  it('renders restaurant', () => {
+    useSelector.mockImplementation((selector) => selector({ restaurant }));
 
-  expect(queryByText('우리집')).not.toBeNull();
-  expect(queryByText('버내너')).not.toBeNull();
+    const { queryByText } = render((<DetailContainer />));
+
+    expect(queryByText(/우리집/)).not.toBeNull();
+  });
 });
