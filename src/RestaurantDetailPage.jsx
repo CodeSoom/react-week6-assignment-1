@@ -15,7 +15,7 @@ export default function RestaurantDetailPage() {
 
   useEffect(() => {
     dispatch(loadRestaurantDetail(id));
-  });
+  }, []);
 
   return (
     <div>
