@@ -1,6 +1,8 @@
 import React from 'react';
+import { Route, Switch } from 'react-router-dom';
 
-import Restraunts from './Restraunts';
+import HomePage from './HomePage';
+import About from './About';
 
 export default function App() {
   return (
@@ -10,11 +12,10 @@ export default function App() {
           헤더
         </h1>
       </header>
-      <ul>
-        <li>About</li>
-        <li>Restraunts</li>
-      </ul>
-      <Restraunts />
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/about" component={About} />
+      </Switch>
     </div>
   );
 }
