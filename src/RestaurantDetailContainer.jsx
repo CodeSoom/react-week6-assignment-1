@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import { get } from './utils';
 
 import RestaurantDetail from './RestaurantDetail';
+import { loadRestaurantDetail } from './actions';
 
 export default function RestaurantDetailContainer() {
   const restaurant = useSelector(get('restaurant'));
@@ -14,7 +15,7 @@ export default function RestaurantDetailContainer() {
   const { restaurantId } = useParams();
 
   useEffect(() => {
-    dispatch(restaurantId);
+    dispatch(loadRestaurantDetail(restaurantId));
   }, [restaurantId]);
 
   return (
