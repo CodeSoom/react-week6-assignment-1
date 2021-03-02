@@ -22,7 +22,7 @@ export default function RestaurantsContainer() {
       {restaurants.map((restaurant) => (
         <li key={restaurant.id} onClick={() => handleClick(restaurant.id)}>
           <Link to={{
-            pathname: `/restaurant/${restaurant.id}`,
+            pathname: `/restaurants/${restaurant.id}`,
           }}
           >
             {restaurant.name}

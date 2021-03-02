@@ -68,7 +68,7 @@ describe('App', () => {
     });
   });
 
-  context('Show restaurant detail page with path /restaurant/:id', () => {
+  context('Show restaurant detail page with path /restaurants/:id', () => {
     it('renders the restaurant detail page', () => {
       // Todo: useLocation() 테스트 할 수 있는 방법 찾기
       // Todo: path: '/restaurant/1' 바로 호출했을 때 데이터 뜨게하는 법 알아내기
