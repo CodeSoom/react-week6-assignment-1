@@ -29,10 +29,10 @@ describe('App', () => {
         { id: 1, name: '서울' },
       ],
       categories: [
-        { id: 1, name: '한식' },
+        { id: 2, name: '한식' },
       ],
       restaurants: [
-        { id: 1, name: '마법사주방' },
+        { id: 3, name: '마법사주방' },
       ],
     }));
   });
@@ -70,6 +70,15 @@ describe('App', () => {
       expect(container).toHaveTextContent('한식');
       expect(container).toHaveTextContent('마법사주방');
     });
+  });
+
+  context('with path /restaurants/:id', () => {
+    const { container } = renderApp({ path: '/restaurants/3' });
+
+    expect(container).toHaveTextContent('마법사주방');
+    expect(container).toHaveTextContent('서울 강남구 강남대로94길 9');
+    expect(container).toHaveTextContent('맛나는 거');
+    expect(container).toHaveTextContent('짠 거');
   });
 
   context('with unspecified path such as /kdaskhkajsdh', () => {
