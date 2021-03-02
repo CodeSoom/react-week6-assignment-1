@@ -25,9 +25,7 @@ export default function RestaurantDetailPage() {
       <ul>
         {restaurant.menuItems
           ? restaurant.menuItems.map((menu) => (
-            <li
-              key={menu.id}
-            >
+            <li key={menu.id}>
               {menu.name}
             </li>
           ))
