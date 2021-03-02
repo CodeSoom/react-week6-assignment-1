@@ -4,10 +4,22 @@ import { render } from '@testing-library/react';
 
 import MenuItems from './MenuItems';
 
-test('MenuItems', () => {
-  const menuItems = [{ id: 1, name: '맥도날드' }];
+describe('MenuItems', () => {
+  context('with filled menuItmes', () => {
+    it('shows menus', () => {
+      const menuItems = [{ id: 1, name: '맥도날드' }];
 
-  const { queryByText } = render((<MenuItems menuItems={menuItems} />));
+      const { queryByText } = render((<MenuItems menuItems={menuItems} />));
 
-  expect(queryByText(/맥도날드/)).not.toBeNull();
+      expect(queryByText(/맥도날드/)).not.toBeNull();
+    });
+  });
+
+  context('with empty menuItmes', () => {
+    it('shows nothing', () => {
+      const { queryByText } = render((<MenuItems />));
+
+      expect(queryByText(/맥도날드/)).toBeNull();
+    });
+  });
 });
