@@ -12,5 +12,4 @@ describe('About', () => {
 
     expect(queryByText('About this..')).not.toBeNull();
   });
-
 });
