@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -31,13 +31,17 @@ describe('RestaurantsContainer', () => {
     });
 
     it('renders restaurants with mock id and name', () => {
-      const { container } = render((
+      const { container, getByText } = render((
         <BrowserRouter>
           <RestaurantsContainer />
         </BrowserRouter>
       ));
 
       expect(container).toHaveTextContent('마법사주방');
+
+      fireEvent.click(getByText('마법사주방'));
+
+      expect(dispatch).toBeCalled();
     });
   });
 });
