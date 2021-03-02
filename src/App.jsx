@@ -19,7 +19,7 @@ export default function App() {
         <Route exact path="/" component={HomePage} />
         <Route path="/About" component={AboutPage} />
         <Route exact path="/Restaurants" component={RestaurantsPage} />
-        <Route path="/Restaurants/1" component={RestaurantsDetailContainer} />
+        <Route path="/Restaurants/:id" component={RestaurantsDetailContainer} />
       </Switch>
     </>
   );
