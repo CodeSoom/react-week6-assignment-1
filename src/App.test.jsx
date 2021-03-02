@@ -37,4 +37,16 @@ describe('App', () => {
       expect(queryByText('Home')).not.toBeNull();
     });
   });
+
+  context('with path /about', () => {
+    it('renders about page', () => {
+      const { queryByText } = render((
+        <MemoryRouter initialEntries={['/about']}>
+          <App />
+        </MemoryRouter>
+      ));
+
+      expect(queryByText('About')).not.toBeNull();
+    });
+  });
 });
