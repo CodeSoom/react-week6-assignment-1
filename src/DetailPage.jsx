@@ -9,12 +9,11 @@ import DetailContainer from './DetailContainer';
 export default function DetailPage({ match }) {
   const dispatch = useDispatch();
   const { id } = match.params;
+  const restaurant = useSelector((state) => state.restaurant);
 
   useEffect(() => {
     dispatch(loadRestaurant(id));
   });
-
-  const restaurant = useSelector((state) => state.restaurant);
 
   return (
     <DetailContainer restaurant={restaurant} />
