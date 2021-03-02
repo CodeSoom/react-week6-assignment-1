@@ -11,6 +11,10 @@ import RestaurantsPage from './RestaurantsPage';
 // 2. 분류 선택 - Categories - 한식, 중식, 일식, ... <- API (0)
 // 3. 식당 목록 - Restaurants <- API (with region, category) -> 1, 2 모두 완료된 경우
 
+function RestaurantsDetailePage() {
+  return <div>서울 강남구 123456</div>;
+}
+
 export default function App() {
   return (
     <>
@@ -20,7 +24,12 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/about" component={AboutPage} />
-        <Route path="/restaurants" component={RestaurantsPage} />
+        <Route
+          exact
+          path="/restaurants"
+          component={RestaurantsPage}
+        />
+        <Route path="/restaurants/:id" component={RestaurantsDetailePage} />
         <Route component={NotFoundPage} />
       </Switch>
     </>
