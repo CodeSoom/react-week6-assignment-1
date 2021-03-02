@@ -2,20 +2,15 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import RestaurantsDetailContainer from './RestaurantsDetailContainer';
 
 jest.mock('react-redux');
 
 describe('RestaurantsDetailContainer', () => {
-  const dispatch = jest.fn();
-
-  beforeEach(() => {
-    jest.clearAllMocks();
-
-    useDispatch.mockImplementation(() => dispatch);
-    useSelector.mockImplementation((selector) => selector({
+  useSelector.mockImplementation((selector) => selector({
+    restaurantsDetail: {
       id: 1,
       name: '마법사 주방',
       address: '서울시 강남구 강남대로 94길 9',
@@ -31,8 +26,8 @@ describe('RestaurantsDetailContainer', () => {
           name: '짠거',
         },
       ],
-    }));
-  });
+    },
+  }));
 
   it('화면에 레스토랑의 자세한 정보들을 보여준다.', () => {
     const { queryByText } = render(<RestaurantsDetailContainer />);
