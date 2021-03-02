@@ -68,5 +68,11 @@ describe('api', () => {
 
       expect(restaurantDetail).toEqual(RESTAURANT_DETAIL);
     });
+
+    it('returns restaurant detail with default parameter', async () => {
+      const restaurantDetail = await fetchRestaurantDetail(1);
+
+      expect(restaurantDetail).toEqual(RESTAURANT_DETAIL);
+    });
   });
 });
