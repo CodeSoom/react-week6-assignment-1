@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
-import RestaurantsPage from './RestaurantsPage';
+import RestaurantsPage from './pages/RestaurantsPage';
 
 import {
   loadInitialData,
