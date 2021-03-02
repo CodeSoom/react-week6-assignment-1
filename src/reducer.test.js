@@ -4,9 +4,12 @@ import {
   setRegions,
   setCategories,
   setRestaurants,
+  setRestaurant,
   selectRegion,
   selectCategory,
 } from './actions';
+
+import restaurant from '../fixtures/restaurant';
 
 describe('reducer', () => {
   context('when previous state is undefined', () => {
@@ -16,6 +19,7 @@ describe('reducer', () => {
       restaurants: [],
       selectedRegion: null,
       selectedCategory: null,
+      restaurant: {},
     };
 
     it('returns initialState', () => {
@@ -106,6 +110,22 @@ describe('reducer', () => {
         id: 1,
         name: '한식',
       });
+    });
+  });
+
+  describe('setRestaurant', () => {
+    it('changes restaurant', () => {
+      const initialState = {
+        restaurant: {},
+      };
+
+      const { restaurant: newRestaurant } = reducer(initialState, setRestaurant(restaurant));
+
+      expect(newRestaurant.name).toBe('마법사주방');
+      expect(newRestaurant.address).toBe('서울 강남구 강남대로94길 9');
+      expect(newRestaurant.menuItems).toHaveLength(2);
+      expect(newRestaurant.menuItems[0].name).toBe('맛나는 거');
+      expect(newRestaurant.menuItems[1].name).toBe('짠 거');
     });
   });
 });
