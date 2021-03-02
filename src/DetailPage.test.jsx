@@ -6,21 +6,16 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import DetailPage from './DetailPage';
 
-test('DetailPage', () => {
+import restaurant from '../fixtures/restaurant';
+
+describe('DetailPage', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
-  useSelector.mockImplementation((selector) => selector({
-    restaurant: {
-      name: '양천주가',
-      address: '서울시 강남구',
-      menuItems: [{ id: 1, name: '비빔밥' }],
-    },
-  }));
+  useSelector.mockImplementation((selector) => selector({ restaurant }));
 
-  const { queryByText } = render((<DetailPage match={{ params: 1 }} />));
+  it('dispatches loadRestaurant with restaurant id', () => {
+    render((<DetailPage match={{ params: 1 }} />));
 
-  expect(dispatch).toBeCalled();
-  expect(queryByText(/양천주가/)).not.toBeNull();
-  expect(queryByText(/주소: 서울시 강남구/)).not.toBeNull();
-  expect(queryByText(/비빔밥/)).not.toBeNull();
+    expect(dispatch).toBeCalled();
+  });
 });
