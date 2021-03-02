@@ -22,11 +22,20 @@ function HomePage() {
   );
 }
 
+function AboutPage() {
+  return (
+    <div>
+      <h2>About</h2>
+    </div>
+  );
+}
+
 export default function App() {
   return (
     <>
       <Switch>
-        <Route path="/" component={HomePage} />
+        <Route exact path="/" component={HomePage} />
+        <Route path="/about" component={AboutPage} />
       </Switch>
     </>
   );
