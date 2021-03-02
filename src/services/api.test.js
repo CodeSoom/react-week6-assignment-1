@@ -61,10 +61,10 @@ describe('api', () => {
       mockFetch(RESTAURANTSDETAIL);
     });
 
-    it('returns restaurants', async () => {
-      const restaurants = await fetchRestaurantsDetail({ restaurantsId: 1 });
+    it('returns restaurantsDetail', async () => {
+      const restaurantsDetail = await fetchRestaurantsDetail({ restaurantsId: 1 });
 
-      expect(restaurants).toEqual(RESTAURANTSDETAIL);
+      expect(restaurantsDetail).toEqual(RESTAURANTSDETAIL);
     });
   });
 });
