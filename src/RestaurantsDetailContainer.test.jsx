@@ -37,13 +37,13 @@ describe('RestaurantsDetailContainer', () => {
   });
 
   it('화면이 로딩될 때 자세한 레스토랑 정보를 불러와 state를 업데이트한다.', () => {
-    render(<RestaurantsDetailContainer />);
+    render(<RestaurantsDetailContainer match={{ params: { id: 1 } }} />);
 
     expect(dispatch).toBeCalled();
   });
 
   it('화면에 레스토랑의 자세한 정보들을 보여준다.', () => {
-    const { queryByText } = render(<RestaurantsDetailContainer />);
+    const { queryByText } = render(<RestaurantsDetailContainer match={{ params: { id: 1 } }} />);
 
     expect(queryByText(/마법사 주방/)).toBeInTheDocument();
     expect(queryByText(/서울시 강남구 강남대로 94길 9/)).toBeInTheDocument();
