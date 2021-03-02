@@ -35,7 +35,7 @@ describe('RestaurantDetail', () => {
     dispatch.mockClear();
     useDispatch.mockImplementation(() => dispatch);
     useSelector.mockImplementation((selector) => selector({
-      restaurant: restaurantDetail,
+      restaurantDetail,
     }));
   });
 
