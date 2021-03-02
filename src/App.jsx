@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch } from 'react-router-dom';
 
 // 0. 지역, 분류 목록을 얻기
 // 1. 지역 선택 - Regions <- API (0)
@@ -7,7 +7,19 @@ import { Route, Switch } from 'react-router-dom';
 // 3. 식당 목록 - Restaurants <- API (with region, category) -> 1, 2 모두 완료된 경우
 
 function HomePage() {
-  return <div>Home</div>;
+  return (
+    <div>
+      <h2>Home</h2>
+      <ul>
+        <li>
+          <Link to="/about">About</Link>
+        </li>
+        <li>
+          <Link to="/Restaurants">Restaurants</Link>
+        </li>
+      </ul>
+    </div>
+  );
 }
 
 export default function App() {
