@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Link } from 'react-router-dom';
+import Restaurants from './Restaurants';
 
 import { loadRestaurant, setRestaurant } from './actions';
 
@@ -20,17 +20,9 @@ export default function RestaurantsContainer() {
   }
 
   return (
-    <ul>
-      {restaurants.map(({ id, name }) => (
-        <li key={id}>
-          <Link
-            to={`/restaurants/${id}`}
-            onClick={() => handleClick(id)}
-          >
-            {name}
-          </Link>
-        </li>
-      ))}
-    </ul>
+    <Restaurants
+      restaurants={restaurants}
+      handleClick={handleClick}
+    />
   );
 }
