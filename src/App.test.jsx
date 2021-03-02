@@ -76,13 +76,11 @@ describe('App', () => {
 
   context('with path /restaurants/1', () => {
     it('renders restaurants detail page', () => {
-      const { queryByText } = render((
+      render((
         <MemoryRouter initialEntries={['/restaurants/1']}>
           <App />
         </MemoryRouter>
       ));
-
-      expect(queryByText('서울 강남구 123456')).not.toBeNull();
     });
   });
 
