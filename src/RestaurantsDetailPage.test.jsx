@@ -8,11 +8,11 @@ import {
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import RestaurantsDetailPage from './RestaurantsDetailPage';
+import RestaurantDetailPage from './RestaurantDetailPage';
 
 import restaurants from '../fixtures/restaurantDetail';
 
-describe('RestaurantsDetailPage', () => {
+describe('RestaurantDetailPage', () => {
   const dispatch = jest.fn();
 
   beforeEach(() => {
@@ -29,7 +29,7 @@ describe('RestaurantsDetailPage', () => {
     it('renders detail with restaurant detail', () => {
       render((
         <MemoryRouter>
-          <RestaurantsDetailPage />
+          <RestaurantDetailPage />
         </MemoryRouter>
       ));
 

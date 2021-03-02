@@ -8,7 +8,7 @@ import { loadRestaurantDetail } from './actions';
 
 import RestaurantDetailContainer from './RestaurantDetailContainer';
 
-export default function RestaurantsDetailPage() {
+export default function RestaurantDetailPage() {
   const { id } = useParams();
 
   const dispatch = useDispatch();
