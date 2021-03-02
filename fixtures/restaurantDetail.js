@@ -1,4 +1,4 @@
-export const mockRestaurant = {
+const restaurantDetail = {
   id: 4,
   categoryId: 1,
   name: '밀면넘어져요',
@@ -235,3 +235,5 @@ export const mockRestaurant = {
   ],
   information: '밀면넘어져요 in 부산 해운대구 좌동순환로 27',
 };
+
+export default restaurantDetail;
