@@ -5,7 +5,7 @@ import { render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
-  BrowserRouter,
+  MemoryRouter,
 } from 'react-router-dom';
 
 import RestaurantsPage from './RestaurantsPage';
@@ -28,9 +28,9 @@ test('RestaurantsPage', () => {
   }));
 
   const { queryByText } = render((
-    <BrowserRouter>
+    <MemoryRouter>
       <RestaurantsPage />
-    </BrowserRouter>
+    </MemoryRouter>
   ));
 
   expect(dispatch).toBeCalled();
