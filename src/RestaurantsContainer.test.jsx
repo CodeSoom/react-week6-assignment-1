@@ -13,6 +13,12 @@ import restaurant from '../fixtures/restaurant';
 describe('RestaurantsContainer', () => {
   const dispatch = jest.fn();
 
+  const renderRestaurantsContainer = ({ path }) => render((
+    <MemoryRouter initialEntries={[path]}>
+      <RestaurantsContainer />
+    </MemoryRouter>
+  ));
+
   beforeEach(() => {
     jest.clearAllMocks();
 
@@ -27,21 +33,13 @@ describe('RestaurantsContainer', () => {
   });
 
   it('renders name of the restaurants', () => {
-    const { container } = render((
-      <MemoryRouter initialEntries={['/restaurants']}>
-        <RestaurantsContainer />
-      </MemoryRouter>
-    ));
+    const { container } = renderRestaurantsContainer({ path: '/restaurants' });
 
     expect(container).toHaveTextContent('마법사주방');
   });
 
   it('renders Restaurant Detail', () => {
-    const { container, getByText } = render((
-      <MemoryRouter initialEntries={['/restaurants']}>
-        <RestaurantsContainer />
-      </MemoryRouter>
-    ));
+    const { container, getByText } = renderRestaurantsContainer({ path: '/restaurants' });
 
     expect(container).toHaveTextContent('마법사주방');
 
