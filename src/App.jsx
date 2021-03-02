@@ -10,6 +10,7 @@ import HomePage from './HomePage';
 import AboutPage from './AboutPage';
 import RestaurantsPage from './RestaurantsPage';
 import RestaurantsDetailContainer from './RestaurantsDetailContainer';
+import InvalidPage from './InvalidPage';
 
 export default function App() {
   return (
@@ -17,9 +18,10 @@ export default function App() {
       <h1><Link to="/">헤더</Link></h1>
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route path="/About" component={AboutPage} />
-        <Route exact path="/Restaurants" component={RestaurantsPage} />
-        <Route path="/Restaurants/:id" component={RestaurantsDetailContainer} />
+        <Route path="/about" component={AboutPage} />
+        <Route exact path="/restaurants" component={RestaurantsPage} />
+        <Route path="/restaurants/:id" component={RestaurantsDetailContainer} />
+        <Route component={InvalidPage} />
       </Switch>
     </>
   );

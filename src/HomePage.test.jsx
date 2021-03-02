@@ -26,7 +26,7 @@ describe('HomePage', () => {
       </MemoryRouter>,
     );
 
-    expect(queryByText('About').getAttribute('href')).toBe('/About');
-    expect(queryByText('Restaurants').getAttribute('href')).toBe('/Restaurants');
+    expect(queryByText('About').getAttribute('href')).toBe('/about');
+    expect(queryByText('Restaurants').getAttribute('href')).toBe('/restaurants');
   });
 });

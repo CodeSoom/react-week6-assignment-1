@@ -25,7 +25,7 @@ describe('RestaurantsContainer', () => {
 
     expect(container).toHaveTextContent('마법사주방');
     expect(container).toHaveTextContent('성전떡볶이');
-    expect(queryByText('마법사주방').getAttribute('href')).toBe('/Restaurants/1');
-    expect(queryByText('성전떡볶이').getAttribute('href')).toBe('/Restaurants/2');
+    expect(queryByText('마법사주방').getAttribute('href')).toBe('/restaurants/1');
+    expect(queryByText('성전떡볶이').getAttribute('href')).toBe('/restaurants/2');
   });
 });

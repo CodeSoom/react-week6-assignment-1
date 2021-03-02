@@ -65,7 +65,7 @@ describe('App', () => {
 
   context('pathName이 /About 인 경우에', () => {
     it('AboutPage를 그린다.', () => {
-      const { queryByText } = renderApp({ path: '/About' });
+      const { queryByText } = renderApp({ path: '/about' });
 
       expect(queryByText('헤더')).toBeInTheDocument();
       expect(queryByText('About 페이지 입니다.')).toBeInTheDocument();
@@ -74,7 +74,7 @@ describe('App', () => {
 
   context('pathName이 /Restaurants인 경우에', () => {
     it('RestaurantsPage를 그린다.', () => {
-      const { queryByText } = renderApp({ path: '/Restaurants' });
+      const { queryByText } = renderApp({ path: '/restaurants' });
 
       expect(queryByText('헤더')).toBeInTheDocument();
       expect(queryByText('서울')).toBeInTheDocument();
@@ -83,10 +83,19 @@ describe('App', () => {
 
   context('pathName이 /Restaurants/1인 경우에', () => {
     it('RestaurantsDetailContainer를 그린다.', () => {
-      const { queryByText } = renderApp({ path: '/Restaurants/1' });
+      const { queryByText } = renderApp({ path: '/restaurants/1' });
 
       expect(queryByText('헤더')).toBeInTheDocument();
       expect(queryByText(/서울시 강남구 강남대로 94길 9/)).toBeInTheDocument();
+    });
+  });
+
+  context('pathName이 유효하지 않은 경우', () => {
+    it('InvalidPage를 그린다.', () => {
+      const { queryByText } = renderApp({ path: '/wrong' });
+
+      expect(queryByText('헤더')).toBeInTheDocument();
+      expect(queryByText(/404/)).toBeInTheDocument();
     });
   });
 });
