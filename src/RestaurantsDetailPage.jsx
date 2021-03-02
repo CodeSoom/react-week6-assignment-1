@@ -1,27 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
-import { get } from './utils';
+import { useDispatch } from 'react-redux';
+
+import { loadRestaurantDetail } from './actions';
+
+import RestaurantDetailContainer from './RestaurantDetailContainer';
 
 export default function RestaurantsDetailPage() {
-  const restaurantDetail = useSelector(get('restaurantDetail'));
+  const { id } = useParams();
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadRestaurantDetail(id));
+  });
 
   return (
     <div>
-      <h2>{restaurantDetail.name}</h2>
-      <h4>
-        주소:
-        {restaurantDetail.address}
-      </h4>
-      <h3>메뉴</h3>
-      <ul>
-        {restaurantDetail.menuItems.map((menuItem) => (
-          <li key={menuItem.id}>
-            {menuItem.name}
-          </li>
-        ))}
-      </ul>
+      <RestaurantDetailContainer />
     </div>
   );
 }

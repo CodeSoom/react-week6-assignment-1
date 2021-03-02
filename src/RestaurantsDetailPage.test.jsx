@@ -6,13 +6,19 @@ import {
   MemoryRouter,
 } from 'react-router-dom';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantsDetailPage from './RestaurantsDetailPage';
 
 import restaurants from '../fixtures/restaurantDetail';
 
 describe('RestaurantsDetailPage', () => {
+  const dispatch = jest.fn();
+
+  beforeEach(() => {
+    useDispatch.mockImplementation(() => dispatch);
+  });
+
   context('with restaurant detail', () => {
     beforeEach(() => {
       useSelector.mockImplementation((selector) => selector({
@@ -21,15 +27,13 @@ describe('RestaurantsDetailPage', () => {
     });
 
     it('renders detail with restaurant detail', () => {
-      const { container } = render((
+      render((
         <MemoryRouter>
           <RestaurantsDetailPage />
         </MemoryRouter>
       ));
-      expect(container)
-        .toHaveTextContent('양천주가');
-      expect(container)
-        .toHaveTextContent('서울 강남구');
+
+      expect(dispatch).toBeCalled();
     });
   });
 });
