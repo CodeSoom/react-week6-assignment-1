@@ -6,9 +6,9 @@ import DetailContainer from './DetailContainer';
 
 test('DetailContainer', () => {
   const restaurant = {
-    id: 1,
     name: '우리집',
-    menuItem: [{
+    address: '성남시',
+    menuItems: [{
       id: 23,
       name: '버내너',
     }],

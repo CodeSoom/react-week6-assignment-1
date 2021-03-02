@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { loadRestaurant } from './actions';
 
-import MenuItems from './MenuItems';
+import DetailContainer from './DetailContainer';
 
 export default function DetailPage({ match }) {
   const dispatch = useDispatch();
@@ -14,16 +14,9 @@ export default function DetailPage({ match }) {
     dispatch(loadRestaurant(id));
   });
 
-  const { name, address, menuItems } = useSelector((state) => state.restaurant);
+  const restaurant = useSelector((state) => state.restaurant);
 
   return (
-    <div>
-      <h2>{name}</h2>
-      <p>
-        {`주소: ${address}`}
-      </p>
-      <h3>메뉴</h3>
-      <MenuItems menuItems={menuItems} />
-    </div>
+    <DetailContainer restaurant={restaurant} />
   );
 }
