@@ -1,14 +1,40 @@
 import React from 'react';
 
+import { useSelector } from 'react-redux';
+
+import { get } from './utils';
+
 export default function RestaurantDetailPage() {
+  const restaurant = useSelector(get('restaurant'));
+
+  if (!restaurant.name) {
+    return (
+      <p>loading</p>
+    );
+  }
+
   return (
     <div>
-      <h1>마법사주방</h1>
-      <address>주소: 서울 강남구 강남대로94길 9</address>
+      <h1>{restaurant.name}</h1>
+      <address>
+        주소:
+        {' '}
+        {restaurant.address}
+      </address>
       <h2>메뉴</h2>
       <ul>
-        <li>맛나는 거</li>
-        <li>짠 거</li>
+        {restaurant.menuItems
+          ? restaurant.menuItems.map((menu) => (
+            <li
+              key={menu.id}
+            >
+              {menu.name}
+            </li>
+          ))
+          : (
+            <p>메뉴가 없어요</p>
+          )}
+
       </ul>
     </div>
   );
