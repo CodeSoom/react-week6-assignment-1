@@ -6,29 +6,44 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantsPage from './RestaurantsPage';
 
-test('RestaurantsPage', () => {
+describe('RestaurantsPage', () => {
   const dispatch = jest.fn();
 
-  useDispatch.mockImplementation(() => dispatch);
+  beforeEach(() => {
+    dispatch.mockClear();
 
-  useSelector.mockImplementation((selector) => selector({
-    regions: [
-      { id: 1, name: '서울' },
-    ],
-    categories: [
-      { id: 1, name: '한식' },
-    ],
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
-  }));
+    useDispatch.mockImplementation(() => dispatch);
 
-  const { queryByText } = render((
-    <RestaurantsPage />
-  ));
+    useSelector.mockImplementation((selector) => selector({
+      regions: [
+        { id: 1, name: '서울' },
+      ],
+      categories: [
+        { id: 1, name: '한식' },
+      ],
+      restaurants: [
+        { id: 1, name: '마법사주방' },
+      ],
+    }));
+  });
 
-  expect(dispatch).toBeCalled();
+  it('renders region buttons', () => {
+    const { queryByText } = render((
+      <RestaurantsPage />
+    ));
 
-  expect(queryByText('서울')).not.toBeNull();
-  expect(queryByText('한식')).not.toBeNull();
+    expect(dispatch).toBeCalled();
+
+    expect(queryByText('서울')).not.toBeNull();
+  });
+
+  it('renders category buttons', () => {
+    const { queryByText } = render((
+      <RestaurantsPage />
+    ));
+
+    expect(dispatch).toBeCalled();
+
+    expect(queryByText('한식')).not.toBeNull();
+  });
 });
