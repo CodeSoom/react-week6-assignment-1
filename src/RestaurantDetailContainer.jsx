@@ -12,6 +12,7 @@ export default function RestaurantDetailContainer() {
   const restaurantDetail = useSelector(get('restaurantDetail'));
 
   const dispatch = useDispatch();
+
   const { restaurantId } = useParams();
 
   useEffect(() => {
