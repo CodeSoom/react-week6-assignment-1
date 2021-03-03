@@ -21,8 +21,16 @@ describe('App', () => {
         { id: 1, name: '한식' },
       ],
       restaurants: [
-        { id: 1, name: '마법사주방' },
+        { id: 1, name: '양천주가' },
       ],
+      restaurantDetail: {
+        id: 1,
+        name: '양천주가',
+        address: '서울 강남구 123456',
+        menuItems: [
+          { id: 1, name: '비빔밥' },
+        ],
+      },
     }));
   });
 
@@ -70,17 +78,22 @@ describe('App', () => {
 
       expect(queryByText('서울')).not.toBeNull();
       expect(queryByText('한식')).not.toBeNull();
-      expect(queryByText('마법사주방')).not.toBeNull();
+      expect(queryByText('양천주가')).not.toBeNull();
     });
   });
 
   context('with path /restaurants/1', () => {
     it('renders restaurants detail page', () => {
-      render((
+      const { queryByText } = render((
         <MemoryRouter initialEntries={['/restaurants/1']}>
           <App />
         </MemoryRouter>
       ));
+
+      expect(queryByText('양천주가')).not.toBeNull();
+      expect(queryByText('서울 강남구 123456')).not.toBeNull();
+      expect(queryByText('메뉴')).not.toBeNull();
+      expect(queryByText('비빔밥')).not.toBeNull();
     });
   });
 
