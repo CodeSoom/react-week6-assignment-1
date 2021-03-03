@@ -14,7 +14,7 @@ describe('HomePage', () => {
 
   it('알맞은 path에 연결합니다.', () => {
     const { queryByText } = render(<HomePage />);
-    expect(queryByText(/About/).href).toBe('/about');
-    expect(queryByText(/Restaurants/).href).toBe('/restaurants');
+    expect(queryByText(/About/).getAttribute('href')).toBe('/about');
+    expect(queryByText(/Restaurants/).getAttribute('href')).toBe('/restaurants');
   });
 });
