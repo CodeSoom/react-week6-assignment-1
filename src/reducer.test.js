@@ -4,6 +4,7 @@ import {
   setRegions,
   setCategories,
   setRestaurants,
+  setRestaurant,
   selectRegion,
   selectCategory,
 } from './actions';
@@ -16,6 +17,13 @@ describe('reducer', () => {
       restaurants: [],
       selectedRegion: null,
       selectedCategory: null,
+      restaurant: {
+        id: null,
+        categoryId: null,
+        name: null,
+        addres: null,
+        menuItems: [],
+      },
     };
 
     it('returns initialState', () => {
@@ -107,5 +115,29 @@ describe('reducer', () => {
         name: '한식',
       });
     });
+  });
+});
+
+describe('setRestaurant', () => {
+  it('changes restaurant', () => {
+    const initialState = {};
+
+    const restaurant = {
+      id: 1,
+      categoryId: 1,
+      name: '양천주가',
+      addres: '서울 강남구 123456',
+      menuItems: [
+        {
+          id: 1,
+          restaurantId: 1,
+          name: '비빔밥',
+        },
+      ],
+    };
+
+    const state = reducer(initialState, setRestaurant(restaurant));
+
+    expect(state.restaurant).toBe(restaurant);
   });
 });
