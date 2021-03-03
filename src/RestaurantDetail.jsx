@@ -13,12 +13,10 @@ export default function RestaurantDetail({ restaurantDetail }) {
     <div>
       <h2>{name}</h2>
       <div>
-        {'주소 : '}
-        <p>{address}</p>
+        {`주소 : ${address}`}
       </div>
       <div>
-        {'정보 : '}
-        <p>{information}</p>
+        {`정보 : ${information}`}
       </div>
 
       <h3>메뉴</h3>
