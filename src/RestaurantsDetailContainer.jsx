@@ -1,9 +1,19 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { loadRestaurantDetail } from './actions';
 import { get } from './utils';
 
 function RestaurantsDetailContainer() {
+  const dispatch = useDispatch();
+
+  const { id } = useParams();
+
   const restaurantDetail = useSelector(get('restaurantDetail'));
+
+  useEffect(() => {
+    dispatch(loadRestaurantDetail(id));
+  }, []);
 
   return (
     <>
@@ -15,7 +25,7 @@ function RestaurantsDetailContainer() {
             <dt>메뉴</dt>
             {
               restaurantDetail.menuItems.map((menu) => (
-                <dd>
+                <dd key={menu.id}>
                   {menu.name}
                 </dd>
               ))
