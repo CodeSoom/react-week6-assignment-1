@@ -4,9 +4,11 @@ export default function RestaurantDetail({ restaurantDetail }) {
   if (!restaurantDetail) {
     return <h3>텅~!</h3>;
   }
+
   const {
     name, address, menuItems, reviews, information,
   } = restaurantDetail;
+
   return (
     <div>
       <h2>{name}</h2>
