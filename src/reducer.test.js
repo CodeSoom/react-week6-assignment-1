@@ -6,7 +6,7 @@ import {
   setRestaurants,
   selectRegion,
   selectCategory,
-  setRestaurantDetail,
+  setRestaurant,
 } from './actions';
 
 import restaurantDetail from '../fixtures/restaurantDetail';
@@ -19,7 +19,7 @@ describe('reducer', () => {
       restaurants: [],
       selectedRegion: null,
       selectedCategory: null,
-      restaurantDetail: null,
+      restaurant: null,
     };
 
     it('returns initialState', () => {
@@ -113,15 +113,15 @@ describe('reducer', () => {
     });
   });
 
-  describe('setRestaurantDetail', () => {
-    it('changes restaurantDetail', () => {
+  describe('setRestaurant', () => {
+    it('changes restaurant', () => {
       const initialState = {
-        restaurantDetail: null,
+        restaurant: null,
       };
 
-      const state = reducer(initialState, setRestaurantDetail(restaurantDetail));
+      const state = reducer(initialState, setRestaurant(restaurantDetail));
 
-      expect(state.restaurantDetail).toEqual(restaurantDetail);
+      expect(state.restaurant).toEqual(restaurantDetail);
     });
   });
 });

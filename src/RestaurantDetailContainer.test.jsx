@@ -15,7 +15,7 @@ import restaurantDetail from '../fixtures/restaurantDetail';
 describe('RestaurantDetailContainer', () => {
   const dispatch = jest.fn();
 
-  given('restaurantDetail', () => restaurantDetail);
+  given('restaurant', () => restaurantDetail);
   const {
     name, address, menuItems, reviews, information,
   } = restaurantDetail;
@@ -38,12 +38,12 @@ describe('RestaurantDetailContainer', () => {
     dispatch.mockClear();
     useDispatch.mockImplementation(() => dispatch);
     useSelector.mockImplementation((selector) => selector({
-      restaurantDetail: given.restaurantDetail,
+      restaurant: given.restaurant,
     }));
   });
 
-  context('with restaurantDetail', () => {
-    it('renders RestaurantDetail', () => {
+  context('with restaurant', () => {
+    it('renders restaurant', () => {
       const {
         getByRole, getByText, getAllByRole,
       } = renderRestaurantDetail('/restaurants/4');
@@ -66,9 +66,9 @@ describe('RestaurantDetailContainer', () => {
     });
   });
 
-  context('without restaurantDetail', () => {
+  context('without restaurant', () => {
     it('renders "텅~!"', () => {
-      given('restaurantDetail', () => null);
+      given('restaurant', () => null);
       const {
         getByRole,
       } = renderRestaurantDetail('/restaurants/4');

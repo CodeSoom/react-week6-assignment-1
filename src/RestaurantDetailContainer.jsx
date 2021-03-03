@@ -6,20 +6,20 @@ import { useParams } from 'react-router-dom';
 import { get } from './utils';
 
 import RestaurantDetail from './RestaurantDetail';
-import { loadRestaurantDetail } from './actions';
+import { loadRestaurant } from './actions';
 
 export default function RestaurantDetailContainer() {
-  const restaurantDetail = useSelector(get('restaurantDetail'));
+  const restaurant = useSelector(get('restaurant'));
 
   const dispatch = useDispatch();
 
   const { id } = useParams();
 
   useEffect(() => {
-    dispatch(loadRestaurantDetail(id));
+    dispatch(loadRestaurant(id));
   }, [id]);
 
   return (
-    <RestaurantDetail restaurantDetail={restaurantDetail} />
+    <RestaurantDetail restaurant={restaurant} />
   );
 }

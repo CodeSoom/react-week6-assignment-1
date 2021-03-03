@@ -34,7 +34,7 @@ describe('App', () => {
       restaurants: [
         { id: 1, name: '마법사주방' },
       ],
-      restaurantDetail,
+      restaurant: restaurantDetail,
     }));
   });
 

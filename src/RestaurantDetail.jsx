@@ -1,13 +1,13 @@
 import React from 'react';
 
-export default function RestaurantDetail({ restaurantDetail }) {
-  if (!restaurantDetail) {
+export default function RestaurantDetail({ restaurant }) {
+  if (!restaurant) {
     return <h3>텅~!</h3>;
   }
 
   const {
     name, address, menuItems, reviews, information,
-  } = restaurantDetail;
+  } = restaurant;
 
   return (
     <div>
