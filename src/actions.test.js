@@ -8,6 +8,8 @@ import {
   setCategories,
   loadRestaurants,
   setRestaurants,
+  loadDetail,
+  setDetail,
 } from './actions';
 
 const middlewares = [thunk];
@@ -81,6 +83,19 @@ describe('actions', () => {
 
         expect(actions).toHaveLength(0);
       });
+    });
+  });
+  describe('loadDetail', () => {
+    beforeEach(() => {
+      store = mockStore({});
+    });
+
+    it('runs detail', async () => {
+      await store.dispatch(loadDetail({ restaurantId: 1 }));
+
+      const actions = store.getActions();
+
+      expect(actions[0]).toEqual(setDetail([]));
     });
   });
 });
