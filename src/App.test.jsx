@@ -34,5 +34,7 @@ describe('App', () => {
 
     expect(queryByText(/헤더/)).not.toBeNull();
     expect(queryByText(/Home/)).not.toBeNull();
+
+    expect(queryByText(/헤더/).getAttribute('href')).toBe('/');
   });
 });
