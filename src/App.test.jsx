@@ -8,22 +8,24 @@ import { MemoryRouter } from 'react-router-dom';
 
 import App from './App';
 
+function renderApp({ path }) {
+  return render((
+    <MemoryRouter initialEntries={[path]}>
+      <App />
+    </MemoryRouter>
+  ));
+}
+
 describe('App', () => {
-  function renderApp({ path }) {
-    return render((
-      <MemoryRouter initialEntries={[path]}>
-        <App />
-      </MemoryRouter>
-    ));
-  }
+  const dispatch = jest.fn();
 
   beforeEach(() => {
-    const dispatch = jest.fn();
+    jest.clearAllMocks();
 
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
-      regions: [],
+      regions: [{ id: 1, name: '서울' }],
       categories: [],
       restaurants: [],
     }));
@@ -36,7 +38,7 @@ describe('App', () => {
       expect(container).toHaveTextContent('헤더');
 
       expect(container).toHaveTextContent('About');
-      expect(container).toHaveTextContent('Restraunts');
+      expect(container).toHaveTextContent('Restaurants');
     });
   });
 
@@ -47,6 +49,16 @@ describe('App', () => {
       expect(container).toHaveTextContent('헤더');
 
       expect(container).toHaveTextContent('About this..');
+    });
+  });
+
+  context('경로가 /restaurants', () => {
+    it('Restaurants 그려준다.', () => {
+      const { container } = renderApp({ path: '/restaurants' });
+
+      expect(container).toHaveTextContent('헤더');
+
+      expect(container).toHaveTextContent('서울');
     });
   });
 });
