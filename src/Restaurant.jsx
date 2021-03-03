@@ -1,20 +1,20 @@
 import React from 'react';
 
-export default function Restaurant({ restaurant }) {
+export default function Restaurant({ restaurant: { name, address, menuItems } }) {
   return (
     <div>
-      <h1>{restaurant.name}</h1>
+      <h1>{name}</h1>
       <address>
         주소:
         {' '}
-        {restaurant.address}
+        {address}
       </address>
       <h2>메뉴</h2>
       <ul>
-        {restaurant.menuItems
-          ? restaurant.menuItems.map((menu) => (
-            <li key={menu.id}>
-              {menu.name}
+        {menuItems
+          ? menuItems.map(({ id, name: menuName }) => (
+            <li key={id}>
+              {menuName}
             </li>
           ))
           : (
