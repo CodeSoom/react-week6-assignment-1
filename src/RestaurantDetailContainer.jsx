@@ -16,9 +16,9 @@ export default function RestaurantDetailContainer() {
 
   const { id } = useParams();
 
-  const isValidParam = Number.isInteger(parseInt(id, 10));
+  const isInValidParam = !Number.isInteger(parseInt(id, 10));
 
-  if (!isValidParam) {
+  if (isInValidParam) {
     return <NotFound />;
   }
 
