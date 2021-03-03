@@ -17,7 +17,9 @@ describe('App', () => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
-      regions: [],
+      regions: [
+        { id: 1, name: '서울' },
+      ],
       categories: [],
       restaurants: [],
     }));
@@ -47,8 +49,8 @@ describe('App', () => {
     });
   });
 
-  context('with restaurants path', () => {
-    it('renders restaurants page', () => {
+  context('with path restaurnats', () => {
+    it('renders the restaurants page', () => {
       const { container } = renderApp({ path: '/restaurants' });
 
       expect(container).toHaveTextContent('서울');
