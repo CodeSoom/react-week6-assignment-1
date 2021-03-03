@@ -76,4 +76,15 @@ describe('RestaurantDetailContainer', () => {
       expect(getByRole('heading', { name: '텅~!' })).toBeInTheDocument();
     });
   });
+
+  context('with wrong parmas', () => {
+    it('renders NotFound', () => {
+      const {
+        getByRole,
+      } = renderRestaurantDetail('/restaurants/wrong-params');
+
+      expect(dispatch).not.toBeCalled();
+      expect(getByRole('heading', { name: '404 Not Found' })).toBeInTheDocument();
+    });
+  });
 });
