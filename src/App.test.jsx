@@ -57,11 +57,7 @@ describe('App', () => {
 
   context('with path /', () => {
     it('renders the home page', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const { container } = renderApp({ path: '/' });
 
       expect(container).toHaveTextContent('헤더');
       expect(container).toHaveTextContent('Home');
