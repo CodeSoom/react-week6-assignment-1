@@ -47,6 +47,12 @@ export function selectCategory(categoryId) {
   };
 }
 
+export function initializeState() {
+  return {
+    type: 'initializeState',
+  };
+}
+
 export function loadInitialData() {
   return async (dispatch) => {
     const regions = await fetchRegions();

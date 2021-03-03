@@ -53,6 +53,10 @@ const reducers = {
       selectedCategory: categories.find(equal('id', categoryId)),
     };
   },
+
+  initializeState() {
+    return initialState;
+  },
 };
 
 function defaultReducer(state) {
