@@ -1,6 +1,4 @@
-import React, { useEffect } from 'react';
-
-import { useDispatch } from 'react-redux';
+import React from 'react';
 
 import {
   Switch,
@@ -12,17 +10,7 @@ import AboutPage from './pages/AboutPage';
 import RestaurantsPage from './pages/RestaurantsPage';
 import NotFoundPage from './pages/NotFoundPage';
 
-import {
-  loadInitialData,
-} from './actions';
-
 export default function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(loadInitialData());
-  });
-
   return (
     <div>
       <Switch>

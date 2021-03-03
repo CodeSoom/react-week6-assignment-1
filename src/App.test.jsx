@@ -1,8 +1,6 @@
 import React from 'react';
 
-import {
-  MemoryRouter,
-} from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 
 import { render } from '@testing-library/react';
 
@@ -33,7 +31,7 @@ describe('App', () => {
     ));
   }
 
-  context('with default path', () => {
+  context('with home path', () => {
     it('renders home page', () => {
       const { container } = renderApp({ path: '/' });
 
