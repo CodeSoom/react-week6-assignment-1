@@ -2,14 +2,11 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 
-export default function Header({ handleClick }) {
+export default function Header() {
   return (
     <header>
       <p>
-        <Link
-          to="/"
-          onClick={handleClick}
-        >
+        <Link to="/">
           헤더
         </Link>
       </p>
