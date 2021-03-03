@@ -1,21 +1,21 @@
-import React, { useEffect } from 'react';
-
-import { useDispatch } from 'react-redux';
+import React from 'react';
 
 import RestaurantsPage from './RestaurantsPage';
 
-import {
-  loadInitialData,
-} from './actions';
+import HomePage from './HomePage';
 
 export default function App() {
-  const dispatch = useDispatch();
+  const { location: { pathname } } = window;
 
-  useEffect(() => {
-    dispatch(loadInitialData());
-  });
+  const MyComponent = {
+    '/': HomePage,
+  }[pathname];
 
   return (
-    <RestaurantsPage />
+    <div>
+      <h1>헤더</h1>
+      <MyComponent />
+      <RestaurantsPage />
+    </div>
   );
 }
