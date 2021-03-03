@@ -3,16 +3,16 @@ import React from 'react';
 export default function Regions({ regions, selectedRegion, onClick }) {
   return (
     <ul>
-      {regions.map((region) => (
-        <li key={region.id}>
+      {regions.map(({ id, name }) => (
+        <li key={id}>
           <button
             type="button"
-            onClick={() => onClick(region.id)}
+            onClick={() => onClick(id)}
           >
-            {region.name}
+            {name}
             {selectedRegion ? (
               <>
-                {region.id === selectedRegion.id ? '(V)' : null}
+                {id === selectedRegion.id ? '(V)' : null}
               </>
             ) : null}
           </button>
