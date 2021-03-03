@@ -15,6 +15,6 @@ describe('HomePage', () => {
     ));
 
     expect(queryByText('About')).not.toBeNull();
-    expect(queryByText('Restraunts')).not.toBeNull();
+    expect(queryByText('Restaurants')).not.toBeNull();
   });
 });

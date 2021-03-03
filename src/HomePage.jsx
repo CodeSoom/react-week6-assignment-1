@@ -6,7 +6,7 @@ export default function HomePage() {
   return (
     <ul>
       <li><Link to="/About">About</Link></li>
-      <li>Restraunts</li>
+      <li><Link to="/Restaurants">Restaurants</Link></li>
     </ul>
   );
 }
