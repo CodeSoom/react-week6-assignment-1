@@ -85,8 +85,8 @@ describe('App', () => {
       expect(dispatch).toBeCalled();
 
       expect(getByRole('heading', { name })).toBeInTheDocument();
-      expect(getByText(address)).toBeInTheDocument();
-      expect(getByText(information)).toBeInTheDocument();
+      expect(getByText(`주소 : ${address}`)).toBeInTheDocument();
+      expect(getByText(`정보 : ${information}`)).toBeInTheDocument();
 
       expect(getByRole('heading', { name: '메뉴' })).toBeInTheDocument();
       menuItems.forEach((menuItem) => {
