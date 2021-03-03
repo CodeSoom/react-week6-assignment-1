@@ -4,7 +4,7 @@ import { Link, Route, Switch } from 'react-router-dom';
 
 import HomePage from './HomePage';
 import About from './About';
-import RestaurantPage from './RestaurantPage';
+import RestaurantsPage from './RestaurantsPage';
 import RestaurantDetailContainer from './RestaurantDetailContainer';
 import NotFound from './NotFound';
 
@@ -17,7 +17,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/about" component={About} />
-        <Route exact path="/restaurants" component={RestaurantPage} />
+        <Route exact path="/restaurants" component={RestaurantsPage} />
         <Route exact path="/restaurants/:restaurantId" component={RestaurantDetailContainer} />
         <Route path="*" component={NotFound} />
       </Switch>
