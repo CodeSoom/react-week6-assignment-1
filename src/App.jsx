@@ -2,15 +2,15 @@ import React from 'react';
 
 import { Route, Switch, Link } from 'react-router-dom';
 
-import AboutPage from './AboutPage';
-
 import HomePage from './HomePage';
 
-import NotFoundPage from './NotFoundPage';
+import AboutPage from './AboutPage';
 
 import RestaurantsPage from './RestaurantsPage';
 
 import RestaurantContainer from './RestaurantContainer';
+
+import NotFoundPage from './NotFoundPage';
 
 export default function App() {
   return (
