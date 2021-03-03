@@ -34,7 +34,9 @@ export default function App() {
     );
   }
 
-  return (
-    <RestaurantsPage />
-  );
+  if (pathname === '/restaurants') {
+    return (
+      <RestaurantsPage />
+    );
+  }
 }
