@@ -1,6 +1,10 @@
 import React from 'react';
 
-import { Route, Switch } from 'react-router-dom';
+import {
+  Link,
+  Route,
+  Switch,
+} from 'react-router-dom';
 
 import HomePage from './HomePage';
 import About from './About';
@@ -11,7 +15,9 @@ export default function App() {
     <div>
       <header>
         <h1>
-          헤더
+          <Link to="/">
+            헤더
+          </Link>
         </h1>
       </header>
       <Switch>
