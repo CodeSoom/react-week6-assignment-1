@@ -7,6 +7,7 @@ import {
   setRestaurant,
   selectRegion,
   selectCategory,
+  initializeState,
 } from './actions';
 
 import restaurant from '../fixtures/restaurant';
@@ -127,5 +128,26 @@ describe('reducer', () => {
       expect(newRestaurant.menuItems[0].name).toBe('맛나는 거');
       expect(newRestaurant.menuItems[1].name).toBe('짠 거');
     });
+  });
+
+  describe('initializeState', () => {
+    const currentState = {
+      selectedRegion: '서울',
+      selectedCategory: '양식',
+      restaurant,
+    };
+
+    const initialState = {
+      regions: [],
+      categories: [],
+      restaurants: [],
+      selectedRegion: null,
+      selectedCategory: null,
+      restaurant: {},
+    };
+
+    const state = reducer(currentState, initializeState());
+
+    expect(state).toEqual(initialState);
   });
 });
