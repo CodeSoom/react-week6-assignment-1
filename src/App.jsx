@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Route, Switch, Link } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
-import Header from './Header';
+import HeaderContainer from './HeaderContainer';
 
 import HomePage from './HomePage';
 
@@ -17,7 +17,7 @@ import NotFoundPage from './NotFoundPage';
 export default function App() {
   return (
     <div>
-      <Header />
+      <HeaderContainer />
       <main>
         <Switch>
           <Route exact path="/" component={HomePage} />
