@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { useParams } from 'react-router-dom';
+
+import { loadRestaurant, setRestaurant } from './actions';
 
 import { get } from './utils';
 
 export default function RestaurantContainer() {
   const restaurant = useSelector(get('restaurant'));
+
+  const dispatch = useDispatch();
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    dispatch(setRestaurant({ id }));
+    dispatch(loadRestaurant());
+  }, []);
 
   if (!restaurant.name) {
     return (
