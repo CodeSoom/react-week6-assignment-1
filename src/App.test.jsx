@@ -72,7 +72,7 @@ describe('App', () => {
 
   context('with path /about', () => {
     it('renders the about page', () => {
-      const { container } = renderApp({ path: '/' });
+      const { container } = renderApp({ path: '/about' });
 
       expect(container).toHaveTextContent('헤더');
       expect(container).toHaveTextContent('About');
