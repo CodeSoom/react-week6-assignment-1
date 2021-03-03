@@ -2,7 +2,7 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import given from 'given2';
 
@@ -10,17 +10,33 @@ import restaurant from '../fixtures/restaurant';
 
 import RestaurantContainer from './RestaurantContainer';
 
+// naive solution for testing useParams
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useParams: () => ({
+    id: 3,
+  }),
+}));
+
 describe('RestaurantDetailPage', () => {
+  const dispatch = jest.fn();
+
   given('restaurant', () => restaurant);
 
   beforeEach(() => {
+    jest.clearAllMocks();
+
     useSelector.mockImplementation((selector) => selector({
       restaurant: given.restaurant,
     }));
+
+    useDispatch.mockImplementation(() => dispatch);
   });
 
   it('renders restaurant', () => {
     const { queryByText } = render(<RestaurantContainer />);
+
+    expect(dispatch).toBeCalled();
 
     expect(queryByText('마법사주방')).not.toBeNull();
     expect(queryByText('주소: 서울 강남구 강남대로94길 9')).not.toBeNull();
