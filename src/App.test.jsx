@@ -20,8 +20,12 @@ describe('App', () => {
       regions: [
         { id: 1, name: '서울' },
       ],
-      categories: [],
-      restaurants: [],
+      categories: [
+        { id: 1, name: '한식' },
+      ],
+      restaurants: [
+        { id: 1, name: '양천주가' },
+      ],
     }));
   });
 
@@ -54,6 +58,17 @@ describe('App', () => {
       const { container } = renderApp({ path: '/restaurants' });
 
       expect(container).toHaveTextContent('서울');
+      expect(container).toHaveTextContent('한식');
+    });
+  });
+
+  context('with path restaurnat', () => {
+    it('renders the restaurant page', () => {
+      const { container } = renderApp({ path: '/restaurants/:id' });
+
+      expect(container).toHaveTextContent('양천주가');
+      expect(container).toHaveTextContent('서울시 강남구');
+      expect(container).toHaveTextContent('메뉴');
     });
   });
 
