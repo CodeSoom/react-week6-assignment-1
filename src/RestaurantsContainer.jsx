@@ -6,7 +6,6 @@ import { get } from './utils';
 
 export default function RestaurantsContainer() {
   const restaurants = useSelector(get('restaurants'));
-
   return (
     <ul>
       {restaurants.map((restaurant) => (
