@@ -13,11 +13,11 @@ export default function RestaurantDetailContainer() {
 
   const dispatch = useDispatch();
 
-  const { restaurantId } = useParams();
+  const { id } = useParams();
 
   useEffect(() => {
-    dispatch(loadRestaurantDetail(restaurantId));
-  }, [restaurantId]);
+    dispatch(loadRestaurantDetail(id));
+  }, [id]);
 
   return (
     <RestaurantDetail restaurantDetail={restaurantDetail} />

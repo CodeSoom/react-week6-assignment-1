@@ -27,7 +27,7 @@ describe('RestaurantDetailContainer', () => {
         <Route
           exact
           history={history}
-          path="/restaurants/:restaurantId"
+          path="/restaurants/:id"
           component={RestaurantDetailContainer}
         />
       </MemoryRouter>

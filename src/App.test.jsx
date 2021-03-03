@@ -72,7 +72,7 @@ describe('App', () => {
     });
   });
 
-  context('with path /restaurants/:restaurantId', () => {
+  context('with path /restaurants/:id', () => {
     const {
       name, address, menuItems, reviews, information,
     } = restaurantDetail;
