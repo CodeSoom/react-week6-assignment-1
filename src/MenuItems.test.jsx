@@ -5,8 +5,8 @@ import { render } from '@testing-library/react';
 import MenuItems from './MenuItems';
 
 describe('MenuItems', () => {
-  context('with filled menuItmes', () => {
-    it('shows menus', () => {
+  context('with filled menuItems', () => {
+    it('shows menu', () => {
       const menuItems = [{ id: 1, name: '맥도날드' }];
 
       const { queryByText } = render((<MenuItems menuItems={menuItems} />));
@@ -15,7 +15,7 @@ describe('MenuItems', () => {
     });
   });
 
-  context('with empty menuItmes', () => {
+  context('with empty menuItems', () => {
     it('shows "값이 없어요!"', () => {
       const { queryByText } = render((<MenuItems />));
 

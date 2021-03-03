@@ -16,10 +16,12 @@ function renderHomePage() {
   );
 }
 
-test('HomePage', () => {
-  const { queryByText } = renderHomePage();
+describe('HomePage', () => {
+  it('renders home page', () => {
+    const { queryByText } = renderHomePage();
 
-  expect(queryByText('Home')).not.toBeNull();
-  expect(queryByText('About')).not.toBeNull();
-  expect(queryByText('Restaurants')).not.toBeNull();
+    expect(queryByText('Home')).not.toBeNull();
+    expect(queryByText('About')).not.toBeNull();
+    expect(queryByText('Restaurants')).not.toBeNull();
+  });
 });
