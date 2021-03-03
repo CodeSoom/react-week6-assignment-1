@@ -75,7 +75,7 @@ describe('reducer', () => {
     });
   });
 
-  describe('setRestaurantsDetail', () => {
+  describe('setRestaurantDetail', () => {
     it('changes restaurantDetail', () => {
       const initialState = {
         restaurantDetail: null,

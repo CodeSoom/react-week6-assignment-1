@@ -4,14 +4,22 @@ import { MemoryRouter } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import given from 'given2';
 
-import RestaurantsDetailContainer from './RestaurantsDetailContainer';
+import RestaurantDetailContainer from './RestaurantDetailContainer';
 
 import RESTAURANTDETAIL from '../fixtures/restaurantDetail';
 
 jest.mock('react-redux');
 
-describe('RestaurantsDetailContainer', () => {
+describe('RestaurantDetailContainer', () => {
   const dispatch = jest.fn();
+
+  function renderRestaurantDetail() {
+    return render((
+      <MemoryRouter>
+        <RestaurantDetailContainer />
+      </MemoryRouter>
+    ));
+  }
 
   beforeEach(() => {
     useDispatch.mockImplementation(() => dispatch);
@@ -24,11 +32,7 @@ describe('RestaurantsDetailContainer', () => {
     given('restaurantDetail', () => null);
 
     it('renders "로딩중..."', () => {
-      const { queryByText } = render((
-        <MemoryRouter>
-          <RestaurantsDetailContainer />
-        </MemoryRouter>
-      ));
+      const { queryByText } = renderRestaurantDetail();
 
       expect(queryByText('로딩중..')).not.toBeNull();
     });
@@ -38,11 +42,7 @@ describe('RestaurantsDetailContainer', () => {
     given('restaurantDetail', () => RESTAURANTDETAIL);
 
     it('renders restaurents detail', () => {
-      const { queryByText } = render((
-        <MemoryRouter>
-          <RestaurantsDetailContainer />
-        </MemoryRouter>
-      ));
+      const { queryByText } = renderRestaurantDetail();
 
       expect(dispatch).toBeCalled();
 

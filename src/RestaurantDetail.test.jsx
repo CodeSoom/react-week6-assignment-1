@@ -2,15 +2,15 @@ import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { render } from '@testing-library/react';
 
-import RestaurantsDetail from './RestaurantsDetail';
+import RestaurantDetail from './RestaurantDetail';
 
 import RESTAURANTDETAIL from '../fixtures/restaurantDetail';
 
-describe('RestaurantsDetail', () => {
+describe('RestaurantDetail', () => {
   function renderRestaursDetail(restaurant) {
     return render((
       <MemoryRouter>
-        <RestaurantsDetail restaurant={restaurant} />
+        <RestaurantDetail restaurant={restaurant} />
       </MemoryRouter>
     ));
   }

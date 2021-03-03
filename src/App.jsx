@@ -6,7 +6,7 @@ import {
 import AboutPage from './AboutPage';
 import HomePage from './HomePage';
 import NotFoundPage from './NotFoundPage';
-import RestaurantsDetailePage from './RestaurantsDetailPage';
+import RestaurantDetailPage from './RestaurantDetailPage';
 import RestaurantsPage from './RestaurantsPage';
 
 // 0. 지역, 분류 목록을 얻기
@@ -28,7 +28,7 @@ export default function App() {
           path="/restaurants"
           component={RestaurantsPage}
         />
-        <Route path="/restaurants/:id" component={RestaurantsDetailePage} />
+        <Route path="/restaurants/:id" component={RestaurantDetailPage} />
         <Route component={NotFoundPage} />
       </Switch>
     </>
