@@ -1,14 +1,22 @@
 import React from 'react';
 
-export default function RestaurantDetail() {
+export default function RestaurantDetail({ restaurant }) {
+  const { name, address, menus } = restaurant;
+
   return (
     <div>
-      <h1>양천주가</h1>
-      <p>주소: 서울시 강남구</p>
+      <h1>{name}</h1>
+      <p>
+        주소:
+        {address}
+      </p>
       <h2>메뉴</h2>
       <ul>
-        <li>탕수육</li>
-        <li>팔보채</li>
+        {menus.map(({ id, type }) => (
+          <li key={id}>
+            {type}
+          </li>
+        ))}
       </ul>
     </div>
   );
