@@ -8,7 +8,7 @@ import { loadRestaurantsDetail } from './actions';
 
 import { get } from './utils';
 
-export default function RestaurantsDetailContainer({ match }) {
+export default function RestaurantsDetailPage({ match }) {
   const dispatch = useDispatch();
   const restaurantsDetail = useSelector(get('restaurantsDetail'));
 

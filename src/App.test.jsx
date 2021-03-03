@@ -82,7 +82,7 @@ describe('App', () => {
   });
 
   context('pathName이 /Restaurants/1인 경우에', () => {
-    it('RestaurantsDetailContainer를 그린다.', () => {
+    it('RestaurantsDetailPage를 그린다.', () => {
       const { queryByText } = renderApp({ path: '/restaurants/1' });
 
       expect(queryByText('헤더')).toBeInTheDocument();
