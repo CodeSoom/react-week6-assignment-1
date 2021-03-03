@@ -16,12 +16,14 @@ describe('RestaurantDetailContainer', () => {
   const dispatch = jest.fn();
 
   given('restaurant', () => restaurantDetail);
+
   const {
     name, address, menuItems, reviews, information,
   } = restaurantDetail;
 
   function renderRestaurantDetail(path) {
     const history = createMemoryHistory();
+
     return render((
       <MemoryRouter initialEntries={[path]}>
         <Route
@@ -69,6 +71,7 @@ describe('RestaurantDetailContainer', () => {
   context('without restaurant', () => {
     it('renders "텅~!"', () => {
       given('restaurant', () => null);
+
       const {
         getByRole,
       } = renderRestaurantDetail('/restaurants/4');
