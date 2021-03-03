@@ -1,5 +1,7 @@
 import React from 'react';
 
+import List from './List';
+
 export default function RestaurantDetail({ restaurant }) {
   if (!restaurant) {
     return <h3>텅~!</h3>;
@@ -18,24 +20,14 @@ export default function RestaurantDetail({ restaurant }) {
       <div>
         {`정보 : ${information}`}
       </div>
-
-      <h3>메뉴</h3>
-      <ul>
-        {menuItems.map((menu) => (
-          <li key={menu.id}>
-            {menu.name}
-          </li>
-        ))}
-      </ul>
-
-      <h3>리뷰</h3>
-      <ul>
-        {reviews.map((review) => (
-          <li key={review.id}>
-            {review.name}
-          </li>
-        ))}
-      </ul>
+      <List
+        title="메뉴"
+        list={menuItems}
+      />
+      <List
+        title="리뷰"
+        list={reviews}
+      />
     </div>
   );
 }
