@@ -37,4 +37,15 @@ describe('App', () => {
 
     expect(queryByText(/헤더/).getAttribute('href')).toBe('/');
   });
+
+  it('AboutPage를 표시합니다.', () => {
+    const { queryByText } = render((
+      <MemoryRouter initialEntries={['/about']}>
+        <App />
+      </MemoryRouter>
+    ));
+
+    expect(queryByText(/헤더/)).not.toBeNull();
+    expect(queryByText(/About/)).not.toBeNull();
+  });
 });
