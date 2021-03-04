@@ -4,41 +4,19 @@ import { render } from '@testing-library/react';
 
 import given from 'given2';
 
-import { useSelector, useDispatch } from 'react-redux';
-
-import { MemoryRouter, Route } from 'react-router-dom';
-import { createMemoryHistory } from 'history';
+import { useSelector } from 'react-redux';
 
 import RestaurantDetailContainer from './RestaurantDetailContainer';
 import restaurantDetail from '../fixtures/restaurantDetail';
 
 describe('RestaurantDetailContainer', () => {
-  const dispatch = jest.fn();
-
   given('restaurant', () => restaurantDetail);
 
   const {
     name, address, menuItems, reviews, information,
   } = restaurantDetail;
 
-  function renderRestaurantDetail(path) {
-    const history = createMemoryHistory();
-
-    return render((
-      <MemoryRouter initialEntries={[path]}>
-        <Route
-          exact
-          history={history}
-          path="/restaurants/:id"
-          component={RestaurantDetailContainer}
-        />
-      </MemoryRouter>
-    ));
-  }
-
   beforeEach(() => {
-    dispatch.mockClear();
-    useDispatch.mockImplementation(() => dispatch);
     useSelector.mockImplementation((selector) => selector({
       restaurant: given.restaurant,
     }));
@@ -48,9 +26,7 @@ describe('RestaurantDetailContainer', () => {
     it('renders restaurant', () => {
       const {
         getByRole, getByText, getAllByRole,
-      } = renderRestaurantDetail('/restaurants/4');
-
-      expect(dispatch).toHaveBeenCalledTimes(1);
+      } = render(<RestaurantDetailContainer />);
 
       expect(getByRole('heading', { name })).toBeInTheDocument();
       expect(getByText(`주소 : ${address}`)).toBeInTheDocument();
@@ -74,20 +50,9 @@ describe('RestaurantDetailContainer', () => {
 
       const {
         getByRole,
-      } = renderRestaurantDetail('/restaurants/4');
+      } = render(<RestaurantDetailContainer />);
 
       expect(getByRole('heading', { name: '텅~!' })).toBeInTheDocument();
-    });
-  });
-
-  context('with wrong parmas', () => {
-    it('renders NotFound', () => {
-      const {
-        getByRole,
-      } = renderRestaurantDetail('/restaurants/wrong-params');
-
-      expect(dispatch).not.toBeCalled();
-      expect(getByRole('heading', { name: '404 Not Found' })).toBeInTheDocument();
     });
   });
 });
