@@ -8,6 +8,10 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
+import regions from '../fixtures/regions';
+import categories from '../fixtures/categories';
+import restaurants from '../fixtures/restaurants';
+
 describe('App', () => {
   beforeEach(() => {
     const dispatch = jest.fn();
@@ -15,9 +19,9 @@ describe('App', () => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
-      regions: [],
-      categories: [],
-      restaurants: [],
+      regions,
+      categories,
+      restaurants,
     }));
   });
 
@@ -64,6 +68,18 @@ describe('App', () => {
       fireEvent.click(getByText('Restaurants'));
 
       expect(container).toHaveTextContent('Restaurants');
+    });
+  });
+
+  context('with path /restaurants', () => {
+    it('goes to restaurant detail page when specific restaurant is clicked', () => {
+      const { container, getByText, debug } = renderApp({ path: '/restaurants' });
+
+      fireEvent.click(getByText('김밥제국'));
+
+      debug();
+
+      expect(container).toHaveTextContent('Restaurant Information');
     });
   });
 });

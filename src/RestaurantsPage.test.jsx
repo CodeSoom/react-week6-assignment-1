@@ -2,7 +2,7 @@ import React from 'react';
 
 import { MemoryRouter } from 'react-router-dom';
 
-import { render, fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
@@ -31,17 +31,5 @@ describe('RestaurantsPage', () => {
     expect(container).toHaveTextContent('Restaurants');
     expect(getByText('서울')).not.toBeNull();
     expect(getByText('한식')).not.toBeNull();
-  });
-
-  it('goes to restaurant detail page', () => {
-    const { container, getByText } = render((
-      <MemoryRouter>
-        <RestaurantsPage />
-      </MemoryRouter>
-    ));
-
-    fireEvent.click(getByText('김밥제국'));
-
-    expect(container).toHaveTextContent('Restaurant Information');
   });
 });
