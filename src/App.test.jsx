@@ -26,6 +26,19 @@ describe('App', () => {
       restaurants: [
         { id: 1, name: '양천주가' },
       ],
+      restaurant: {
+        id: 1,
+        categoryId: 1,
+        name: '양천주가',
+        address: '서울 강남구 123456',
+        menuItems: [
+          {
+            id: 1,
+            restaurantId: 1,
+            name: '비빔밥',
+          },
+        ],
+      },
     }));
   });
 
@@ -64,7 +77,7 @@ describe('App', () => {
 
   context('with path restaurnat', () => {
     it('renders the restaurant page', () => {
-      const { container } = renderApp({ path: '/restaurants/:id' });
+      const { container } = renderApp({ path: '/restaurants/1' });
 
       expect(container).toHaveTextContent('양천주가');
       expect(container).toHaveTextContent(/서울 강남구/);
