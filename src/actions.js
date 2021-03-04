@@ -39,6 +39,13 @@ export function selectCategory(categoryId) {
   };
 }
 
+export function selectRestaurant(restaurantId) {
+  return {
+    type: 'selectRestaurant',
+    payload: { restaurantId },
+  };
+}
+
 export function loadInitialData() {
   return async (dispatch) => {
     const regions = await fetchRegions();
@@ -63,6 +70,24 @@ export function loadRestaurants() {
     const restaurants = await fetchRestaurants({
       regionName: region.name,
       categoryId: category.id,
+    });
+    dispatch(setRestaurants(restaurants));
+  };
+}
+
+export function loadDetailRestaurant() {
+  return async (dispatch, getState) => {
+    const {
+      selectedRegion: region,
+      selectedCategory: category,
+    } = getState();
+
+    if (!restaurant) {
+      return;
+    }
+
+    const restaurants = await fetchDetailRestaurant({
+      restaurantId: restaurant.id,
     });
     dispatch(setRestaurants(restaurants));
   };
