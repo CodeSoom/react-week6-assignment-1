@@ -23,17 +23,28 @@ describe('RestaurantDetail', () => {
     <RestaurantDetail restaurant={restaurant} />
   ));
 
-  it('renders restaurant name and address', () => {
-    const { container } = renderRestaurantDetail();
+  context('with restaurant name', () => {
+    it('renders restaurant name and address', () => {
+      const { container } = renderRestaurantDetail();
 
-    expect(container).toHaveTextContent('양천주가');
-    expect(container).toHaveTextContent(/서울 강남구/);
+      expect(container).toHaveTextContent('양천주가');
+      expect(container).toHaveTextContent(/서울 강남구/);
+    });
+
+    it('renders restaurant menu', () => {
+      const { container } = renderRestaurantDetail();
+
+      expect(container).toHaveTextContent('메뉴');
+      expect(container).toHaveTextContent('비빔밥');
+    });
   });
 
-  it('renders restaurant menu', () => {
-    const { container } = renderRestaurantDetail();
+  context('without MenuItems', () => {
+    it('renders no MenuItems message', () => {
+      const { queryByText } = render((
+        <RestaurantDetail restaurant="" />));
 
-    expect(container).toHaveTextContent('메뉴');
-    expect(container).toHaveTextContent('비빔밥');
+      expect(queryByText('Loading')).not.toBeNull();
+    });
   });
 });
