@@ -4,6 +4,7 @@ import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import { MemoryRouter } from 'react-router-dom';
 import RestaurantPage from './RestaurantPage';
 
 describe('RestaurantPage', () => {
@@ -28,7 +29,9 @@ describe('RestaurantPage', () => {
 
   function renderRestaurantPage() {
     return render((
-      <RestaurantPage match={{ params: 1 }} />
+      <MemoryRouter>
+        <RestaurantPage />
+      </MemoryRouter>
     ));
   }
 
