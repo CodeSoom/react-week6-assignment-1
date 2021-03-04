@@ -82,9 +82,9 @@ export function loadRestaurants() {
   };
 }
 
-export function loadRestaurant(id) {
+export function loadRestaurant(restaurantId) {
   return async (dispatch) => {
-    const restaurant = await fetchRestaurant({ restaurantId: id });
+    const restaurant = await fetchRestaurant({ restaurantId });
 
     dispatch(setRestaurant(restaurant));
   };

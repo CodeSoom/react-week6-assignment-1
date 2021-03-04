@@ -11,10 +11,10 @@ import RestaurantContainer from './RestaurantContainer';
 export default function RestaurantPage() {
   const dispatch = useDispatch();
 
-  const { id } = useParams();
+  const { id: restaurantId } = useParams();
 
   useEffect(() => {
-    dispatch(loadRestaurant(id));
+    dispatch(loadRestaurant(restaurantId));
   }, []);
 
   return (
