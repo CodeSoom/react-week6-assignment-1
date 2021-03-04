@@ -10,7 +10,7 @@ import RestaurantInfoContainer from './RestaurantInfoContainer';
 
 describe('RestaurantInfoContainer', () => {
   useSelector.mockImplementation((selector) => selector({
-    selectedRestaurantInfo: {
+    restaurantInfo: {
       id: 1,
       name: '양천주가',
       address: '서울 강남구 123456',

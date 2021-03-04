@@ -9,9 +9,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import RestaurantsContainer from './RestaurantsContainer';
 
 describe('RestaurantsContainer', () => {
-  const dispatch = jest.fn;
+  const dispatch = jest.fn();
 
   beforeEach(() => {
+    jest.clearAllMocks();
+
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
@@ -40,6 +42,6 @@ describe('RestaurantsContainer', () => {
 
     fireEvent.click(getByText('마법사주방'));
 
-    expect(dispatch).toBeCalled();
+    expect(dispatch).toBeCalledTimes(2);
   });
 });

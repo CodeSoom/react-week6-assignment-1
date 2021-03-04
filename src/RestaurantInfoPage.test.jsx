@@ -11,7 +11,7 @@ import RestaurantInfoPage from './RestaurantInfoPage';
 describe('RestaurantInfoPage', () => {
   beforeEach(() => {
     useSelector.mockImplementation((selector) => selector({
-      selectedRestaurantInfo: {
+      restaurantInfo: {
         id: 1,
         name: '양천주가',
         address: '서울 강남구 123456',

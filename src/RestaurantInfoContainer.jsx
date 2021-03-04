@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { get } from './utils';
 
 export default function RestaurantInfoContainer() {
-  const { name, address, menuItems } = useSelector(get('selectedRestaurantInfo'));
+  const { name, address, menuItems } = useSelector(get('restaurantInfo'));
 
   return (
     <div>
