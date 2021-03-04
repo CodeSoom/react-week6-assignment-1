@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 import {
   selectRestaurant,
-  fetchDetailRestaurant,
+  loadDetailRestaurant,
 } from './actions';
 
 import { get } from './utils';
