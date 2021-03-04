@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 import RestaurantContainer from './RestaurantContainer';
 
-test('RestaurantContainer', () => {
+describe('RestaurantContainer', () => {
   useSelector.mockImplementation((selector) => selector({
     restaurant: {
       id: 1,
@@ -18,9 +18,27 @@ test('RestaurantContainer', () => {
     },
   }));
 
-  const { container } = render((
-    <RestaurantContainer />
-  ));
+  it('renders restaurant name', () => {
+    const { container } = render((
+      <RestaurantContainer />
+    ));
 
-  expect(container).toHaveTextContent('탕수육');
+    expect(container).toHaveTextContent('마법사주방');
+  });
+
+  it('renders restaurant adress', () => {
+    const { container } = render((
+      <RestaurantContainer />
+    ));
+
+    expect(container).toHaveTextContent('서울시 강남구');
+  });
+
+  it('renders restaurant menus', () => {
+    const { container } = render((
+      <RestaurantContainer />
+    ));
+
+    expect(container).toHaveTextContent('탕수육');
+  });
 });

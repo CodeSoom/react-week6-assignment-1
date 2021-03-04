@@ -2,6 +2,8 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
+import { MemoryRouter } from 'react-router-dom';
+
 import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantsPage from './RestaurantsPage';
@@ -27,10 +29,16 @@ describe('RestaurantsPage', () => {
     }));
   });
 
-  it('renders region buttons', () => {
-    const { queryByText } = render((
-      <RestaurantsPage />
+  function renderRestaurantsPage() {
+    return render((
+      <MemoryRouter>
+        <RestaurantsPage />
+      </MemoryRouter>
     ));
+  }
+
+  it('renders region buttons', () => {
+    const { queryByText } = renderRestaurantsPage();
 
     expect(dispatch).toBeCalled();
 
@@ -38,9 +46,7 @@ describe('RestaurantsPage', () => {
   });
 
   it('renders category buttons', () => {
-    const { queryByText } = render((
-      <RestaurantsPage />
-    ));
+    const { queryByText } = renderRestaurantsPage();
 
     expect(dispatch).toBeCalled();
 
