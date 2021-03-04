@@ -9,6 +9,8 @@ import {
 
 import Header from './Header';
 
+import HomePage from './HomePage';
+
 import RegionsContainer from './RegionsContainer';
 import CategoriesContainer from './CategoriesContainer';
 import RestaurantsContainer from './RestaurantsContainer';
@@ -16,14 +18,6 @@ import RestaurantsContainer from './RestaurantsContainer';
 import {
   loadInitialData,
 } from './actions';
-
-function HomePage() {
-  return (
-    <div>
-      <h2>Home</h2>
-    </div>
-  );
-}
 
 export default function App() {
   const dispatch = useDispatch();
