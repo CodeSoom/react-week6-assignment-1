@@ -1,7 +1,11 @@
 import React from 'react';
 
-export default function RestaurantsDetails() {
+import restaurantsDetails from '../fixtures/restaurantsDetails';
+
+import RestaurantsDetails from './RestaurantsDetails';
+
+export default function RestaurantsDetailsContainer() {
   return (
-    <div />
+    <RestaurantsDetails restaurantsDetails={restaurantsDetails} />
   );
 }
