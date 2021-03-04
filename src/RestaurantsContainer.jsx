@@ -15,12 +15,6 @@ export default function RestaurantsContainer() {
   const selectedRegion = useSelector(get('selectedRegion'));
   const selectedCategory = useSelector(get('selectedCategory'));
 
-  if (!restaurants.length) {
-    return (
-      <p>해당 지역에 선택하신 분야 식당이 없습니다.</p>
-    );
-  }
-
   if (selectedRegion && !selectedCategory) {
     return (
       <p>카테고리를 클릭해주세요.</p>
@@ -30,6 +24,18 @@ export default function RestaurantsContainer() {
   if (selectedCategory && !selectedRegion) {
     return (
       <p>지역를 클릭해주세요.</p>
+    );
+  }
+
+  if (selectedRegion && selectedCategory && !restaurants.length) {
+    return (
+      <p>해당 지역에 선택하신 분야 식당이 없습니다.</p>
+    );
+  }
+
+  if (!restaurants.length) {
+    return (
+      <p>지역과 카테고리를 클릭해주세요.</p>
     );
   }
 
