@@ -7,6 +7,7 @@ import {
   selectRegion,
   selectCategory,
   setRestaurantsDetail,
+  resetRestaurantsDetail,
 } from './actions';
 
 import restaurantsDetail from '../fixtures/restaurantsDetail';
@@ -122,6 +123,16 @@ describe('reducer', () => {
       const state = reducer(initialState, setRestaurantsDetail(restaurantsDetail));
 
       expect(state.restaurantsDetail.name).toBe('마법사 주방');
+    });
+  });
+
+  describe('resetRestaurantsDetail', () => {
+    it('reset restaurantsDetail', () => {
+      const initialState = { restaurantsDetail };
+
+      const state = reducer(initialState, resetRestaurantsDetail());
+
+      expect(state.restaurantsDetail.name).toBeUndefined();
     });
   });
 });
