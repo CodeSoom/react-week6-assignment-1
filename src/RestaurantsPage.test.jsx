@@ -26,6 +26,24 @@ describe('RestaurantsPage', () => {
       restaurants: [
         { id: 1, name: '마법사주방' },
       ],
+      restaurant: {
+        id: 3,
+        categoryId: 4,
+        name: '마법사주방',
+        address: '서울 강남구 강남대로94길 9',
+        menuItems: [
+          {
+            id: 14,
+            restaurantId: 3,
+            name: '맛나는 거',
+          },
+          {
+            id: 15,
+            restaurantId: 3,
+            name: '짠 거',
+          },
+        ],
+      },
     }));
   });
 
@@ -40,5 +58,15 @@ describe('RestaurantsPage', () => {
 
     expect(queryByText('서울')).not.toBeNull();
     expect(queryByText('한식')).not.toBeNull();
+  });
+
+  it('initializes restaurant', () => {
+    render((
+      <MemoryRouter initialEntries={['/restaurants']}>
+        <RestaurantsPage />
+      </MemoryRouter>
+    ));
+
+    expect(dispatch).toBeCalledTimes(2);
   });
 });
