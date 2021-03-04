@@ -1,9 +1,9 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Regions from './regions';
 
 export default function RegionsContainer() {
-  
+ 
 
   const { regions } = useSelector((state) => ({
     regions: state.regions
