@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import RestaurantsDetailContainer from './RestaurantsDetailContainer';
 
-import { loadRestaurantsDetail } from './actions';
+import { loadRestaurantsDetail, resetRestaurantsDetail } from './actions';
 
 export default function RestaurantsDetailPage({ match }) {
   const dispatch = useDispatch();
@@ -12,6 +12,7 @@ export default function RestaurantsDetailPage({ match }) {
   const { id } = match.params;
 
   useEffect(() => {
+    dispatch(resetRestaurantsDetail());
     dispatch(loadRestaurantsDetail({ restaurantsId: id }));
   }, []);
 
