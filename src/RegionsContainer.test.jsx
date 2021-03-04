@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 jest.mock('react-redux');
 
 test('RegionsContainer', () => {
+  const REGION = regions[0];
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector(
@@ -29,9 +30,8 @@ test('RegionsContainer', () => {
     {
       type: 'selectRegion',
       payload: {
-        id:1,
+        id: REGION.id,
       },
     },
   );
-  expect(getByText('서울(v)')).not.toBeNull();
 });
