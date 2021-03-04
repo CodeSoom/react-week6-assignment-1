@@ -8,11 +8,11 @@ export default function DetailPage({ detail }) {
       <h2>{name}</h2>
       <p>주소: {address}</p>
       <h3>메뉴</h3>
-      <ul>
-        {menuItems.map(({ id, name }) => (
-          <li key={id}>{name}</li>
-        ))}
-      </ul>
+      { menuItems ?
+        (<ul>
+          {menuItems.map(({ id, name }) => (<li key={id}>{name}</li>))}
+        </ul>)
+      : null}
     </div>
   )
 };
