@@ -33,6 +33,10 @@ export function setRestaurantsDetail(restaurantsDetail) {
   };
 }
 
+export function resetRestaurantsDetail() {
+  return { type: 'resetRestaurantsDetail' };
+}
+
 export function selectRegion(regionId) {
   return {
     type: 'selectRegion',
