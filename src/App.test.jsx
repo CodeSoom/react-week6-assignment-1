@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -19,11 +19,21 @@ describe('App', () => {
     }));
   });
 
-  it('renders headers', () => {
+  it('renders header', () => {
     const { container } = render((
       <App />
     ));
 
     expect(container).toHaveTextContent('헤더');
+  });
+
+  it('goes to home page when header is clicked', () => {
+    const { container, getByText } = render((
+      <App />
+    ));
+
+    fireEvent.click(getByText('헤더'));
+
+    expect(container).toHaveTextContent('Home');
   });
 });
