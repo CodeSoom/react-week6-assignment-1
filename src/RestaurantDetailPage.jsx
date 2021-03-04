@@ -1,4 +1,5 @@
 import React from 'react';
+
 import RestaurantDetailContainer from './RestaurantDetailContainer';
 
 function RestaurantDetailePage() {
