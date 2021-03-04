@@ -33,4 +33,5 @@ test('RegionsContainer', () => {
       },
     },
   );
+  expect(getByText('서울(v)')).not.toBeNull();
 });
