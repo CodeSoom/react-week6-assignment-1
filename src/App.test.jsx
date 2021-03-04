@@ -73,11 +73,9 @@ describe('App', () => {
 
   context('with path /restaurants', () => {
     it('goes to restaurant detail page when specific restaurant is clicked', () => {
-      const { container, getByText, debug } = renderApp({ path: '/restaurants' });
+      const { container, getByText } = renderApp({ path: '/restaurants' });
 
       fireEvent.click(getByText('김밥제국'));
-
-      debug();
 
       expect(container).toHaveTextContent('Restaurant Information');
     });

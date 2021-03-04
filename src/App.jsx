@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 import {
   Switch,
   Route,
-  useParams,
 } from 'react-router-dom';
 
 import Header from './Header';
@@ -13,25 +12,11 @@ import Header from './Header';
 import HomePage from './HomePage';
 import AboutPage from './AboutPage';
 import RestaurantsPage from './RestaurantsPage';
+import RestaurantInfoPage from './RestaurantInfoPage';
 
 import {
   loadInitialData,
 } from './actions';
-
-function RestaurantInfoPage() {
-  const { restaurantId } = useParams();
-
-  return (
-    <div>
-      <h2>Restaurant Information</h2>
-      <p>
-        Showing the information of
-        {' '}
-        {restaurantId}
-      </p>
-    </div>
-  );
-}
 
 export default function App() {
   const dispatch = useDispatch();
