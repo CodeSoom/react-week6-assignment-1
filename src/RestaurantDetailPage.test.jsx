@@ -2,13 +2,13 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import DetailPage from './DetailPage';
+import RestaurantDetailPage from './RestaurantDetailPage';
 
-import detail from '../fixtures/detail'
+import restaurantDetail from '../fixtures/restaurantDetail'
 
-test('DetailPage', () => {
+test('RestaurantDetailPage', () => {
   const { container } = render((
-    <DetailPage detail={detail}/>
+    <RestaurantDetailPage restaurantDetail={restaurantDetail}/>
   ));
 
   expect(container).toHaveTextContent('양천주가');

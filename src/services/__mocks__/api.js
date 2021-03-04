@@ -10,6 +10,6 @@ export async function fetchRestaurants() {
   return [];
 }
 
-export async function fetchDetail() {
+export async function fetchRestaurantDetail() {
   return [];
 }

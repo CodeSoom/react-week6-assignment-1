@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default function DetailPage({ detail }) {
-  const { name, address, menuItems } = detail;
+export default function RestaurantDetailPage({ restaurantDetail }) {
+  const { name, address, menuItems } = restaurantDetail;
 
   return (
     <div>

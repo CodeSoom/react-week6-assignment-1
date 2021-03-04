@@ -4,13 +4,13 @@ import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import DetailContainer from './DetailContainer';
+import RestaurantDetailContainer from './RestaurantDetailContainer';
 
-import detail from '../fixtures/detail';
+import restaurantDetail from '../fixtures/restaurantDetail';
 
 jest.mock('react-redux');
 
-describe('DetailContainer', () => {
+describe('RestaurantDetailContainer', () => {
   const dispatch = jest.fn();
 
   beforeEach(() => {
@@ -19,11 +19,11 @@ describe('DetailContainer', () => {
 
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
-    detail,
+    restaurantDetail,
   }))
 
-  it('renders detail', () => {
-    const { container } = render(<DetailContainer match={{ params: { id: 1  }}}/>);
+  it('renders restaurant detail', () => {
+    const { container } = render(<RestaurantDetailContainer match={{ params: { id: 1  }}}/>);
   
     expect(container).toHaveTextContent('양천주가');
     expect(container).toHaveTextContent('주소: 서울 강남구');

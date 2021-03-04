@@ -6,7 +6,7 @@ import {
   setRestaurants,
   selectRegion,
   selectCategory,
-  setDetail,
+  setRestaurantDetail,
 } from './actions';
 
 describe('reducer', () => {
@@ -17,7 +17,7 @@ describe('reducer', () => {
       restaurants: [],
       selectedRegion: null,
       selectedCategory: null,
-      detail: {},
+      restaurantDetail: {},
     };
 
     it('returns initialState', () => {
@@ -75,13 +75,13 @@ describe('reducer', () => {
     });
   });
 
-  describe('setDetail', () => {
+  describe('setRestaurantDetail', () => {
     it('shows selected restaurant detail', () => {
       const initialState = {
-        detail: {},
+        restaurantDetail: {},
       };
 
-      const detail = { 
+      const restaurantDetail = { 
         id: 1,
         name: '양천주가', 
         address: '서울 강남구',
@@ -94,9 +94,9 @@ describe('reducer', () => {
         ],
       };
 
-      const state = reducer(initialState, setDetail(detail));
+      const state = reducer(initialState, setRestaurantDetail(restaurantDetail));
 
-      expect(state.detail).toEqual({
+      expect(state.restaurantDetail).toEqual({
         id: 1,
         name: '양천주가', 
         address: '서울 강남구',
