@@ -11,25 +11,11 @@ import Header from './Header';
 
 import HomePage from './HomePage';
 import AboutPage from './AboutPage';
-
-import RegionsContainer from './RegionsContainer';
-import CategoriesContainer from './CategoriesContainer';
-import RestaurantsContainer from './RestaurantsContainer';
+import RestaurantsPage from './RestaurantsPage';
 
 import {
   loadInitialData,
 } from './actions';
-
-function RestaurantsPage() {
-  return (
-    <div>
-      <h2>Restaurants</h2>
-      <RegionsContainer />
-      <CategoriesContainer />
-      <RestaurantsContainer />
-    </div>
-  );
-}
 
 export default function App() {
   const dispatch = useDispatch();
