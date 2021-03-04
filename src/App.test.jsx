@@ -48,4 +48,15 @@ describe('App', () => {
     expect(queryByText(/헤더/)).not.toBeNull();
     expect(queryByText(/About page/)).not.toBeNull();
   });
+
+  it('RestaurantsPage를 표시합니다.', () => {
+    const { queryByText } = render((
+      <MemoryRouter initialEntries={['/restaurants']}>
+        <App />
+      </MemoryRouter>
+    ));
+
+    expect(queryByText(/헤더/)).not.toBeNull();
+    expect(queryByText(/서울/)).not.toBeNull();
+  });
 });
