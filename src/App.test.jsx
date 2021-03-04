@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { MemoryRouter } from 'react-router-dom';
+
 import { render, fireEvent } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -21,7 +23,9 @@ describe('App', () => {
 
   it('renders header', () => {
     const { container } = render((
-      <App />
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
     ));
 
     expect(container).toHaveTextContent('헤더');
@@ -29,7 +33,9 @@ describe('App', () => {
 
   it('goes to home page when header is clicked', () => {
     const { container, getByText } = render((
-      <App />
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
     ));
 
     fireEvent.click(getByText('헤더'));
