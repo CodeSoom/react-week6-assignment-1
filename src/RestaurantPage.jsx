@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
 
-import { loadRestaurant, setRestaurant } from './actions';
+import { loadRestaurant } from './actions';
 
 import RestaurantContainer from './RestaurantContainer';
 
@@ -14,8 +14,7 @@ export default function RestaurantPage() {
   const { id } = useParams();
 
   useEffect(() => {
-    dispatch(setRestaurant({ id }));
-    dispatch(loadRestaurant());
+    dispatch(loadRestaurant(id));
   }, []);
 
   return (
