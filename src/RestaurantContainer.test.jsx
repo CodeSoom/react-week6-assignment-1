@@ -58,7 +58,7 @@ describe('RestaurantContainer', () => {
       given('restaurant', () => ({
         id: 10,
         name: '홍콩반점',
-        menuItems: null,
+        menuItems: [],
       }));
 
       const { queryByText } = renderRestaurantContainer();

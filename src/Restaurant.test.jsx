@@ -31,7 +31,7 @@ describe('', () => {
       const { queryByText } = renderRestaurant({
         id: 10,
         name: '홍콩반점',
-        menuItems: null,
+        menuItems: [],
       });
 
       expect(queryByText('메뉴가 없어요')).not.toBeNull();
