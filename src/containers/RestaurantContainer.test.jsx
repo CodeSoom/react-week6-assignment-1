@@ -18,26 +18,26 @@ describe('RestaurantContainer', () => {
     },
   }));
 
-  it('renders restaurant name', () => {
-    const { container } = render((
-      <RestaurantContainer />
+  function renderRestaurantContainer() {
+    return render((
+      <RestaurantContainer restaurantid="1" />
     ));
+  }
+
+  it('renders restaurant name', () => {
+    const { container } = renderRestaurantContainer();
 
     expect(container).toHaveTextContent('마법사주방');
   });
 
   it('renders restaurant adress', () => {
-    const { container } = render((
-      <RestaurantContainer />
-    ));
+    const { container } = renderRestaurantContainer();
 
     expect(container).toHaveTextContent('서울시 강남구');
   });
 
   it('renders restaurant menus', () => {
-    const { container } = render((
-      <RestaurantContainer />
-    ));
+    const { container } = renderRestaurantContainer();
 
     expect(container).toHaveTextContent('탕수육');
   });
