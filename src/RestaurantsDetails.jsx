@@ -1,10 +1,6 @@
 import React from 'react';
 
-import restaurantsDetails from '../fixtures/restaurantsDetails';
-
-export default function RestaurantsDetails() {
-  const { name, address, menus } = restaurantsDetails;
-
+export default function RestaurantsDetails({ restaurantsDetails: { name, address, menus } }) {
   if (name === '') {
     return (
       <p>Now is loading</p>
