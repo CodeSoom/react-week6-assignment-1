@@ -18,8 +18,6 @@ export default function RestaurantDetailPage() {
   }, []);
 
   return (
-    <div>
-      <RestaurantDetailContainer />
-    </div>
+    <RestaurantDetailContainer />
   );
 }
