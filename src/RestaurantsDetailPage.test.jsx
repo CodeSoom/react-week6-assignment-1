@@ -17,15 +17,12 @@ describe('RestaurantDetailPage', () => {
 
   beforeEach(() => {
     useDispatch.mockImplementation(() => dispatch);
+    useSelector.mockImplementation((selector) => selector({
+      restaurant,
+    }));
   });
 
   context('with restaurant detail', () => {
-    beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({
-        restaurant,
-      }));
-    });
-
     it('renders detail with restaurant detail', () => {
       render((
         <MemoryRouter>
