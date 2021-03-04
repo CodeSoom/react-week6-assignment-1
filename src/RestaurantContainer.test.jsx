@@ -4,14 +4,24 @@ import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
+import { MemoryRouter } from 'react-router-dom';
+
 import given from 'given2';
 
 import restaurant from '../fixtures/restaurant';
 
 import RestaurantContainer from './RestaurantContainer';
 
-describe('RestaurantDetailPage', () => {
+describe('RestaurantContainer', () => {
   given('restaurant', () => restaurant);
+
+  const renderRestaurantContainer = (newRestaurant) => render((
+    <MemoryRouter initialEntries={['/restaurants/:id']}>
+      <RestaurantContainer
+        restaurant={newRestaurant}
+      />
+    </MemoryRouter>
+  ));
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -22,7 +32,7 @@ describe('RestaurantDetailPage', () => {
   });
 
   it('renders restaurant', () => {
-    const { queryByText } = render(<RestaurantContainer />);
+    const { queryByText } = renderRestaurantContainer();
 
     expect(queryByText('마법사주방')).not.toBeNull();
     expect(queryByText('주소: 서울 강남구 강남대로94길 9')).not.toBeNull();
@@ -37,7 +47,7 @@ describe('RestaurantDetailPage', () => {
         name: '',
       }));
 
-      const { queryByText } = render(<RestaurantContainer />);
+      const { queryByText } = renderRestaurantContainer();
 
       expect(queryByText('loading')).not.toBeNull();
     });
@@ -51,7 +61,7 @@ describe('RestaurantDetailPage', () => {
         menuItems: null,
       }));
 
-      const { queryByText } = render(<RestaurantContainer />);
+      const { queryByText } = renderRestaurantContainer();
 
       expect(queryByText('메뉴가 없어요')).not.toBeNull();
     });

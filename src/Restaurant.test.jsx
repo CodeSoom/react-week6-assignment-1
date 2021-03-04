@@ -2,15 +2,19 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
+import { MemoryRouter } from 'react-router-dom';
+
 import Restaurant from './Restaurant';
 
 import restaurant from '../fixtures/restaurant';
 
 describe('', () => {
   const renderRestaurant = (newRestaurant) => render((
-    <Restaurant
-      restaurant={newRestaurant}
-    />
+    <MemoryRouter initialEntries={['/restaurants/:id']}>
+      <Restaurant
+        restaurant={newRestaurant}
+      />
+    </MemoryRouter>
   ));
 
   it('renders restaurant', () => {
