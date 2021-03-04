@@ -6,9 +6,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { MemoryRouter } from 'react-router-dom';
 
-import RestaurantsContainer from './RestaurantsContainer';
+import given from 'given2';
 
-import restaurant from '../fixtures/restaurant';
+import RestaurantsContainer from './RestaurantsContainer';
 
 describe('RestaurantsContainer', () => {
   const dispatch = jest.fn();
@@ -19,32 +19,45 @@ describe('RestaurantsContainer', () => {
     </MemoryRouter>
   ));
 
+  given('restaurants', () => ([
+    { id: 3, name: '마법사주방' },
+  ]));
+
   beforeEach(() => {
     jest.clearAllMocks();
 
     useSelector.mockImplementation((selector) => selector({
-      restaurants: [
-        { id: 3, name: '마법사주방' },
-      ],
-      restaurant,
+      restaurants: given.restaurants,
     }));
 
     useDispatch.mockImplementation(() => dispatch);
   });
 
-  it('renders name of the restaurants', () => {
-    const { container } = renderRestaurantsContainer({ path: '/restaurants' });
+  context('without restaurants', () => {
+    it("renders the message that there isn't a restaurant unavailable", () => {
+      given('restaurants', () => ([]));
 
-    expect(container).toHaveTextContent('마법사주방');
+      const { container } = renderRestaurantsContainer({ path: '/restaurants' });
+
+      expect(container).toHaveTextContent('해당 지역에 선택하신 분야 식당이 없습니다.');
+    });
   });
 
-  it('renders Restaurant Detail', () => {
-    const { container, getByText } = renderRestaurantsContainer({ path: '/restaurants' });
+  context('with restaurants', () => {
+    it('renders name of the restaurants', () => {
+      const { container } = renderRestaurantsContainer({ path: '/restaurants' });
 
-    expect(container).toHaveTextContent('마법사주방');
+      expect(container).toHaveTextContent('마법사주방');
+    });
 
-    fireEvent.click(getByText('마법사주방'));
+    it('renders Restaurant Detail', () => {
+      const { container, getByText } = renderRestaurantsContainer({ path: '/restaurants' });
 
-    expect(dispatch).toBeCalled();
+      expect(container).toHaveTextContent('마법사주방');
+
+      fireEvent.click(getByText('마법사주방'));
+
+      expect(dispatch).toBeCalled();
+    });
   });
 });
