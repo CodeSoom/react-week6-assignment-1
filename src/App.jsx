@@ -20,6 +20,17 @@ import {
   loadInitialData,
 } from './actions';
 
+function RestaurantsPage() {
+  return (
+    <div>
+      <h2>Restaurants</h2>
+      <RegionsContainer />
+      <CategoriesContainer />
+      <RestaurantsContainer />
+    </div>
+  );
+}
+
 export default function App() {
   const dispatch = useDispatch();
 
@@ -33,10 +44,8 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/about" component={AboutPage} />
+        <Route path="/restaurants" component={RestaurantsPage} />
       </Switch>
-      <RegionsContainer />
-      <CategoriesContainer />
-      <RestaurantsContainer />
     </div>
   );
 }

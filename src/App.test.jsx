@@ -63,8 +63,7 @@ describe('App', () => {
 
       fireEvent.click(getByText('Restaurants'));
 
-      expect(container).toHaveTextContent('서울');
-      expect(container).toHaveTextContent('한식');
+      expect(container).toHaveTextContent('Restaurants');
     });
   });
 });
