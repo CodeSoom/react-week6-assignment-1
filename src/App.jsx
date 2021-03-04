@@ -1,11 +1,10 @@
 import React from 'react';
+import Regions from './regions';
 
 export default function App({ regions }) {
   return (
-    <ul>
-      {regions.map(({ id, name }) => (
-        <li key={id}>{region.name}</li>
-      ))}
-    </ul>
+    <Regions
+    regions={regions}
+    />
   );
 }
