@@ -1,23 +1,20 @@
 import React from 'react';
 
+import Menus from './Menus';
+
 export default function RestaurantDetail({ restaurant }) {
   const { name, address, menus } = restaurant;
 
   return (
     <div>
-      <h1>{name}</h1>
+      <h2>{name}</h2>
       <p>
         주소:
+        {' '}
         {address}
       </p>
-      <h2>메뉴</h2>
-      <ul>
-        {menus.map(({ id, type }) => (
-          <li key={id}>
-            {type}
-          </li>
-        ))}
-      </ul>
+      <h3>메뉴</h3>
+      <Menus menus={menus} />
     </div>
   );
 }

@@ -69,6 +69,7 @@ describe('App', () => {
       expect(container).toHaveTextContent('양천주가');
       expect(container).toHaveTextContent(/서울시 강남구/);
       expect(container).toHaveTextContent('메뉴');
+      expect(container).toHaveTextContent('탕수육');
     });
   });
 
