@@ -25,5 +25,12 @@ test('RegionsContainer', () => {
   expect(getByText('서울')).not.toBeNull();
   expect(getByText('대전')).not.toBeNull();
   fireEvent.click(getByText('서울'));
-  expect(dispatch).toBeCalled();
+  expect(dispatch).toBeCalledWith(
+    {
+      type: 'selectRegion',
+      payload: {
+        id:1,
+      },
+    },
+  );
 });
