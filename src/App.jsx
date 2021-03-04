@@ -10,6 +10,7 @@ import {
 import Header from './Header';
 
 import HomePage from './HomePage';
+import AboutPage from './AboutPage';
 
 import RegionsContainer from './RegionsContainer';
 import CategoriesContainer from './CategoriesContainer';
@@ -31,6 +32,7 @@ export default function App() {
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
+        <Route path="/about" component={AboutPage} />
       </Switch>
       <RegionsContainer />
       <CategoriesContainer />
