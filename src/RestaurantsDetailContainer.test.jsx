@@ -12,6 +12,12 @@ import RestaurantDetailContainer from './RestaurantDetailContainer';
 
 import restaurant from '../fixtures/restaurantDetail';
 
+function implementationSelector(mockData) {
+  useSelector.mockImplementation((selector) => selector({
+    restaurant: mockData,
+  }));
+}
+
 describe('RestaurantDetailContainer', () => {
   const dispatch = jest.fn();
 
@@ -22,9 +28,7 @@ describe('RestaurantDetailContainer', () => {
 
   context('with restaurant detail', () => {
     beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({
-        restaurant,
-      }));
+      implementationSelector(restaurant);
     });
 
     it('renders detail with restaurant detail', () => {
@@ -40,9 +44,7 @@ describe('RestaurantDetailContainer', () => {
 
   context('without restaurant detail', () => {
     beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({
-        undefined,
-      }));
+      implementationSelector(undefined);
     });
 
     it('renders loading text', () => {
