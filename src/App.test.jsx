@@ -29,25 +29,33 @@ describe('App', () => {
     ));
   }
 
-  it('renders header', () => {
-    const { container } = renderApp({ path: '/' });
-
-    expect(container).toHaveTextContent('헤더');
-  });
-
-  it('goes to home page when header is clicked', () => {
-    const { container, getByText } = renderApp({ path: '/' });
-
-    fireEvent.click(getByText('헤더'));
-
-    expect(container).toHaveTextContent('Home');
-  });
-
   context('with path /', () => {
+    it('renders header', () => {
+      const { container } = renderApp({ path: '/' });
+
+      expect(container).toHaveTextContent('헤더');
+    });
+
     it('renders home page', () => {
       const { container } = renderApp({ path: '/' });
 
       expect(container).toHaveTextContent('Home');
+    });
+
+    it('goes to home page when header is clicked', () => {
+      const { container, getByText } = renderApp({ path: '/' });
+
+      fireEvent.click(getByText('헤더'));
+
+      expect(container).toHaveTextContent('Home');
+    });
+
+    it('goes to about page when "about" is clicked', () => {
+      const { container, getByText } = renderApp({ path: '/' });
+
+      fireEvent.click(getByText('About'));
+
+      expect(container).toHaveTextContent('About');
     });
   });
 });
