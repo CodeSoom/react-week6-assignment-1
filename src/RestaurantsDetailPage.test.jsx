@@ -36,10 +36,10 @@ describe('RestaurantsDetailPage', () => {
     }));
   });
 
-  it(' 레스토랑 정보를 불러온다.', () => {
+  it(' 레스토랑 정보를 초기화한 후 불러온다.', () => {
     render(<RestaurantsDetailPage match={{ params: { id: 1 } }} />);
 
-    expect(dispatch).toBeCalled();
+    expect(dispatch).toBeCalledTimes(2);
   });
 
   it('화면에 레스토랑의 자세한 정보들을 보여준다.', () => {
