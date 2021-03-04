@@ -8,7 +8,7 @@ import {
   MemoryRouter,
 } from 'react-router-dom';
 
-import RestaurantsPage from './RestaurantsPage';
+import RestaurantsPage from '../pages/RestaurantsPage';
 
 test('RestaurantsPage', () => {
   const dispatch = jest.fn();

@@ -8,9 +8,9 @@ import {
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import RestaurantDetailContainer from './RestaurantDetailContainer';
+import RestaurantDetailContainer from '../containers/RestaurantDetailContainer';
 
-import restaurant from '../fixtures/restaurantDetail';
+import restaurant from '../../fixtures/restaurantDetail';
 
 function implementationSelector(mockData) {
   useSelector.mockImplementation((selector) => selector({

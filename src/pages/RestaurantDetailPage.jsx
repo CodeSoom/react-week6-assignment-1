@@ -4,9 +4,9 @@ import { useParams } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
 
-import { loadRestaurantDetail } from './actions';
+import { loadRestaurantDetail } from '../actions';
 
-import RestaurantDetailContainer from './RestaurantDetailContainer';
+import RestaurantDetailContainer from '../containers/RestaurantDetailContainer';
 
 export default function RestaurantDetailPage() {
   const { id } = useParams();

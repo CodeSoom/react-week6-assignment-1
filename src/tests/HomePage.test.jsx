@@ -4,7 +4,7 @@ import { MemoryRouter } from 'react-router-dom';
 
 import { render } from '@testing-library/react';
 
-import HomePage from './HomePage';
+import HomePage from '../pages/HomePage';
 
 function renderApp({ path }) {
   return render((

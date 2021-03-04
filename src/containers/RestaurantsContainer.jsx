@@ -6,8 +6,8 @@ import {
   Link,
 } from 'react-router-dom';
 
-import { get } from './utils';
-import { loadRestaurantDetail } from './actions';
+import { get } from '../utils';
+import { loadRestaurantDetail } from '../actions';
 
 export default function RestaurantsContainer() {
   const dispatch = useDispatch();
