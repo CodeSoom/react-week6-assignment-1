@@ -22,6 +22,8 @@ describe('RestaurantDetailContainer', () => {
   }
 
   beforeEach(() => {
+    jest.clearAllMocks();
+
     useDispatch.mockImplementation(() => dispatch);
     useSelector.mockImplementation((selector) => selector({
       restaurantDetail: given.restaurantDetail,
