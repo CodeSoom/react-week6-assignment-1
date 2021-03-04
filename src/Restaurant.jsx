@@ -16,7 +16,7 @@ export default function Restaurant({ restaurant: { name, address, menuItems } })
       </address>
       <h2>메뉴</h2>
       <ul>
-        {menuItems
+        {menuItems.length
           ? menuItems.map(({ id, name: menuName }) => (
             <li key={id}>
               {menuName}
