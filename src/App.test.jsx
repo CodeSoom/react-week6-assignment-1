@@ -46,6 +46,6 @@ describe('App', () => {
     ));
 
     expect(queryByText(/헤더/)).not.toBeNull();
-    expect(queryByText(/About/)).not.toBeNull();
+    expect(queryByText(/About page/)).not.toBeNull();
   });
 });
