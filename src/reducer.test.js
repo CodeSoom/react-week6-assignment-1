@@ -6,6 +6,8 @@ import {
   setRestaurants,
   selectRegion,
   selectCategory,
+  selectRestaurant,
+  setRestaurantInfo,
 } from './actions';
 
 describe('reducer', () => {
@@ -16,6 +18,7 @@ describe('reducer', () => {
       restaurants: [],
       selectedRegion: null,
       selectedCategory: null,
+      restaurantInfo: null,
     };
 
     it('returns initialState', () => {
@@ -106,6 +109,50 @@ describe('reducer', () => {
         id: 1,
         name: '한식',
       });
+    });
+  });
+
+  describe('selectRestaurant', () => {
+    it('changes selected restaurant', () => {
+      const initialState = {
+        restaurants: [
+          {
+            id: 1, name: '김밥제국', category: '분식', address: '서울시 강남구 역삼동',
+          },
+        ],
+        selectedRestaurant: null,
+      };
+
+      const state = reducer(initialState, selectRestaurant(1));
+
+      expect(state.selectedRestaurant).toEqual({
+        id: 1, name: '김밥제국', category: '분식', address: '서울시 강남구 역삼동',
+      });
+    });
+  });
+
+  describe('setRestaurantInfo', () => {
+    it('changes restaurant info', () => {
+      const initialState = {
+        restaurantInfo: null,
+      };
+
+      const restaurantInfo = {
+        id: 1,
+        name: '양천주가',
+        address: '서울 강남구 123456',
+        menuItems: [
+          {
+            id: 1,
+            restaurantId: 1,
+            name: '비빔밥',
+          },
+        ],
+      };
+
+      const state = reducer(initialState, setRestaurantInfo(restaurantInfo));
+
+      expect(state.restaurantInfo).toEqual(restaurantInfo);
     });
   });
 });

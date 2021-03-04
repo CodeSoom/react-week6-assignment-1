@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { get } from './utils';
 
 import {
-  setRestaurantInfo,
+  selectRestaurant,
   loadRestaurantInfo,
 } from './actions';
 
@@ -16,8 +16,8 @@ export default function RestaurantsContainer() {
 
   const restaurants = useSelector(get('restaurants'));
 
-  function handleClick({ restaurant }) {
-    dispatch(setRestaurantInfo({ restaurant }));
+  function handleClick(restaurantId) {
+    dispatch(selectRestaurant(restaurantId));
     dispatch(loadRestaurantInfo());
   }
 
@@ -27,7 +27,7 @@ export default function RestaurantsContainer() {
         <li key={restaurant.id}>
           <Link
             to={`/restaurants/${restaurant.id}`}
-            onClick={() => handleClick({ restaurant })}
+            onClick={() => handleClick(restaurant.id)}
           >
             {restaurant.name}
           </Link>

@@ -1,4 +1,4 @@
-const restaurant = {
+const restaurantInfo = {
   id: 1,
   name: '양천주가',
   address: '서울 강남구 123456',
@@ -11,4 +11,4 @@ const restaurant = {
   ],
 };
 
-export default restaurant;
+export default restaurantInfo;
