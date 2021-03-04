@@ -42,4 +42,18 @@ describe('App', () => {
 
     expect(container).toHaveTextContent('Home');
   });
+
+  context('with path /', () => {
+    it('renders home page', () => {
+      const { container } = render((
+        <MemoryRouter initialEntries={['/']}>
+          <App />
+        </MemoryRouter>
+      ));
+
+      expect(container).toHaveTextContent('Home');
+      expect(container).toHaveTextContent('About');
+      expect(container).toHaveTextContent('Restaurants');
+    });
+  });
 });
