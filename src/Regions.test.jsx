@@ -6,18 +6,33 @@ import Regions from './Regions';
 
 import regions from '../fixtures/regions';
 
-test('Regions', () => {
-
+describe('Regions', () => {
+  const REGION = regions[0]; 
   const handleClick = jest.fn();
+  test('when nothing is selected', () => {
+    const { getByText } = render((
+      <Regions
+        regions={regions}
+        onClick={handleClick}
+        selectedId={null}
+      />
+    ));
+    expect(getByText('서울')).not.toBeNull();
+  });
+  test('when something is selected', () => {
+    const { getByText } = render((
+      <Regions
+        regions={regions}
+        onClick={handleClick}
+        selectedId={REGION.id}
+      />
+    ));
+    expect(getByText(`${REGION.name}(v)`)).not.toBeNull();
+  });
 
-  const { getByText } = render((
-    <Regions
-      regions={regions}
-      onClick={handleClick}
-    />
-  ));
-  expect(getByText('서울')).not.toBeNull();
-  expect(getByText('대전')).not.toBeNull();
-  fireEvent.click(getByText('서울'));
-  expect(handleClick).toBeCalled();
+  // test('when clicked', () => {
+  //   fireEvent.click(getByText('서울'));
+  //   expect(handleClick).toBeCalled();
+  // });  
+ 
 });
