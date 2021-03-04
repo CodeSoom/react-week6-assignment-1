@@ -6,7 +6,7 @@ import AboutPage from './AboutPage';
 
 describe('AboutPage', () => {
   it('renders about page', () => {
-    const { queryByText } = render((<AboutPage />));
+    const { queryByText } = render(<AboutPage />);
 
     expect(queryByText(/About 페이지 입니다./)).not.toBeNull();
   });

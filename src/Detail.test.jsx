@@ -8,7 +8,7 @@ import restaurant from '../fixtures/restaurant';
 
 describe('Detail', () => {
   it('shows restaurant name, address and menu items', () => {
-    const { queryByText } = render((<Detail restaurant={restaurant} />));
+    const { queryByText } = render(<Detail restaurant={restaurant} />);
 
     expect(queryByText('우리집')).not.toBeNull();
     expect(queryByText('주소: 성남시')).not.toBeNull();

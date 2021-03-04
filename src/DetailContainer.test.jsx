@@ -12,7 +12,7 @@ describe('DetailContainer', () => {
   it('renders restaurant', () => {
     useSelector.mockImplementation((selector) => selector({ restaurant }));
 
-    const { queryByText } = render((<DetailContainer />));
+    const { queryByText } = render(<DetailContainer />);
 
     expect(queryByText(/우리집/)).not.toBeNull();
   });

@@ -12,6 +12,6 @@ export default function MenuItems({ menuItems }) {
           ))}
         </ul>
       )
-      : <p>값이 없어요!</p>
+      : (<p>값이 없어요!</p>)
   );
 }

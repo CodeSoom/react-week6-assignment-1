@@ -15,11 +15,11 @@ test('RestaurantsContainer', () => {
     ],
   }));
 
-  const { container } = render((
+  const { container } = render(
     <MemoryRouter>
       <RestaurantsContainer />
-    </MemoryRouter>
-  ));
+    </MemoryRouter>,
+  );
 
   expect(container).toHaveTextContent('마법사주방');
 });

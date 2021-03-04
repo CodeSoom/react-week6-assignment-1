@@ -12,11 +12,11 @@ describe('App', () => {
   const dispatch = jest.fn();
 
   function renderApp({ path }) {
-    return render((
+    return render(
       <MemoryRouter initialEntries={[path]}>
         <App />
-      </MemoryRouter>
-    ));
+      </MemoryRouter>,
+    );
   }
 
   beforeEach(() => {

@@ -25,11 +25,11 @@ test('RestaurantsPage', () => {
     ],
   }));
 
-  const { queryByText } = render((
+  const { queryByText } = render(
     <MemoryRouter>
       <RestaurantsPage />
-    </MemoryRouter>
-  ));
+    </MemoryRouter>,
+  );
 
   expect(dispatch).toBeCalled();
 

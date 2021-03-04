@@ -14,7 +14,7 @@ describe('DetailPage', () => {
   useSelector.mockImplementation((selector) => selector({ restaurant }));
 
   it('dispatches loadRestaurant with restaurant id', () => {
-    render((<DetailPage match={{ params: 1 }} />));
+    render(<DetailPage match={{ params: 1 }} />);
 
     expect(dispatch).toBeCalled();
   });

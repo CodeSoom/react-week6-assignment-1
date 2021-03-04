@@ -6,7 +6,7 @@ import NotFoundPage from './NotFoundPage';
 
 describe('NotFoundPage', () => {
   it('shows "404 Not Found"', () => {
-    const { queryByText } = render((<NotFoundPage />));
+    const { queryByText } = render(<NotFoundPage />);
 
     expect(queryByText(/404 Not Found/)).not.toBeNull();
   });

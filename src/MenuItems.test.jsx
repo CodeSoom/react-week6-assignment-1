@@ -17,7 +17,7 @@ describe('MenuItems', () => {
 
   context('with empty menuItems', () => {
     it('shows "값이 없어요!"', () => {
-      const { queryByText } = render((<MenuItems />));
+      const { queryByText } = render(<MenuItems />);
 
       expect(queryByText(/값이 없어요!/)).not.toBeNull();
     });
