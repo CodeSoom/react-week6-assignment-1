@@ -22,15 +22,39 @@ describe('RestaurantsContainer', () => {
   given('restaurants', () => ([
     { id: 3, name: '마법사주방' },
   ]));
+  given('selectedRegion', () => '서울');
+  given('selectedCategory', () => '양식');
 
   beforeEach(() => {
     jest.clearAllMocks();
 
     useSelector.mockImplementation((selector) => selector({
       restaurants: given.restaurants,
+      selectedRegion: given.selectedRegion,
+      selectedCategory: given.selectedCategory,
     }));
 
     useDispatch.mockImplementation(() => dispatch);
+  });
+
+  context('without selectedRegion', () => {
+    it('renders the message to let user click region button', () => {
+      given('selectedRegion', () => '');
+
+      const { container } = renderRestaurantsContainer({ path: '/restaurants' });
+
+      expect(container).toHaveTextContent('지역를 클릭해주세요.');
+    });
+  });
+
+  context('without selectedCategory', () => {
+    it('renders the message to let user click region button', () => {
+      given('selectedCategory', () => '');
+
+      const { container } = renderRestaurantsContainer({ path: '/restaurants' });
+
+      expect(container).toHaveTextContent('카테고리를 클릭해주세요.');
+    });
   });
 
   context('without restaurants', () => {
