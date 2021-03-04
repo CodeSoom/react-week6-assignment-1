@@ -1,21 +1,22 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { loadRestaurant } from './actions';
-import RestaurantsDetailContainer from './RestaurantsDetailContainer';
-import RestaurantsMenusContainer from './RestaurantsMenusContainer';
+import { useParams } from 'react-router-dom';
+import RestaurantContainer from './RestaurantContainer';
+import RestaurantsMenuContainer from './RestaurantsMenuContainer';
 
 export default function RestaurantPage() {
   const dispatch = useDispatch();
-  const { location: { pathname } } = window;
+  const { id } = useParams();
+
   useEffect(() => {
-    const id = pathname.split('/')[pathname.split('/').length - 1];
     dispatch(loadRestaurant(id));
   });
 
   return (
     <div>
-      <RestaurantsDetailContainer />
-      <RestaurantsMenusContainer />
+      <RestaurantContainer />
+      <RestaurantsMenuContainer />
     </div>
   );
 }
