@@ -18,8 +18,8 @@ export default function App() {
       <h1><Link to="/">헤더</Link></h1>
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route exact path="/restaurants" component={RestaurantsPage} />
         <Route path="/about" component={AboutPage} />
+        <Route exact path="/restaurants" component={RestaurantsPage} />
         <Route path="/restaurants/:id" component={RestaurantsDetailPage} />
         <Route component={InvalidPage} />
       </Switch>
