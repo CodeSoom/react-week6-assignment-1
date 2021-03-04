@@ -6,7 +6,7 @@ import { MemoryRouter } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
 
-import HomePage from './HomePage';
+import HomePage from '../HomePage';
 
 describe('HomePage', () => {
   const dispatch = jest.fn();

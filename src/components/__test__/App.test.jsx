@@ -6,7 +6,7 @@ import { MemoryRouter } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import App from './App';
+import App from '../App';
 
 describe('App', () => {
   const dispatch = jest.fn();

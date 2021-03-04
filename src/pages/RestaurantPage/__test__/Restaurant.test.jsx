@@ -4,9 +4,9 @@ import { render } from '@testing-library/react';
 
 import { MemoryRouter } from 'react-router-dom';
 
-import Restaurant from './Restaurant';
+import Restaurant from '../Restaurant';
 
-import { restaurant } from '../../../fixtures';
+import { restaurant } from '../../../../fixtures';
 
 describe('Restaurant', () => {
   const renderRestaurant = (newRestaurant) => render((

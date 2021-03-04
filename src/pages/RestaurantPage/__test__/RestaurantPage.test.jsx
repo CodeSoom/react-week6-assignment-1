@@ -8,9 +8,9 @@ import { MemoryRouter, Route } from 'react-router-dom';
 
 import { createMemoryHistory } from 'history';
 
-import RestaurantPage from './RestaurantPage';
+import RestaurantPage from '../RestaurantPage';
 
-import { restaurant } from '../../../fixtures';
+import { restaurant } from '../../../../fixtures';
 
 describe('RestaurantPage', () => {
   const dispatch = jest.fn();

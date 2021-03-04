@@ -2,9 +2,9 @@ import React from 'react';
 
 import { render, fireEvent } from '@testing-library/react';
 
-import Buttons from './Buttons';
+import Buttons from '../Buttons';
 
-import { REGIONS } from '../../../fixtures';
+import { REGIONS } from '../../../../fixtures';
 
 describe('Buttons', () => {
   const handleClick = jest.fn();

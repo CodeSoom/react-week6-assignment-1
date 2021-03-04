@@ -8,9 +8,9 @@ import { MemoryRouter } from 'react-router-dom';
 
 import given from 'given2';
 
-import { restaurant } from '../../../fixtures';
+import { restaurant } from '../../../../fixtures';
 
-import RestaurantContainer from './RestaurantContainer';
+import RestaurantContainer from '../RestaurantContainer';
 
 describe('RestaurantContainer', () => {
   given('restaurant', () => restaurant);

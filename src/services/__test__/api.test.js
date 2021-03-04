@@ -3,14 +3,14 @@ import {
   fetchCategories,
   fetchRestaurants,
   fetchRestaurant,
-} from './api';
+} from '../api';
 
 import {
   REGIONS,
   CATEGORIES,
   restaurants as RESTAURANTS,
   restaurant as RESTAURANT,
-} from '../../fixtures';
+} from '../../../fixtures';
 
 describe('api', () => {
   const mockFetch = (data) => {

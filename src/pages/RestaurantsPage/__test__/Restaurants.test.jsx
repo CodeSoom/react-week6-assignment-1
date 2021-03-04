@@ -4,9 +4,9 @@ import { render, fireEvent } from '@testing-library/react';
 
 import { MemoryRouter } from 'react-router-dom';
 
-import Restaurants from './Restaurants';
+import Restaurants from '../Restaurants';
 
-import { restaurants } from '../../../fixtures';
+import { restaurants } from '../../../../fixtures';
 
 describe('Restaurants', () => {
   const handleClick = jest.fn();

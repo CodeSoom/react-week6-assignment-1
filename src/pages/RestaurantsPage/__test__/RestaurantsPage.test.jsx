@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { MemoryRouter } from 'react-router-dom';
 
-import RestaurantsPage from './RestaurantsPage';
+import RestaurantsPage from '../RestaurantsPage';
 
 describe('RestaurantsPage', () => {
   const dispatch = jest.fn();
