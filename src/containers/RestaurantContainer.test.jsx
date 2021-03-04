@@ -35,21 +35,31 @@ describe('RestaurantContainer', () => {
     ));
   }
 
-  it('renders restaurant name', () => {
-    const { container } = renderRestaurantContainer();
+  context('with restaurant', () => {
+    it('renders restaurant name', () => {
+      const { container } = renderRestaurantContainer();
 
-    expect(container).toHaveTextContent('양천주가');
+      expect(container).toHaveTextContent('양천주가');
+    });
+
+    it('renders restaurant adress', () => {
+      const { container } = renderRestaurantContainer();
+
+      expect(container).toHaveTextContent('서울 강남구');
+    });
+
+    it('renders restaurant menus', () => {
+      const { container } = renderRestaurantContainer();
+
+      expect(container).toHaveTextContent('비빔밥');
+    });
   });
 
-  it('renders restaurant adress', () => {
-    const { container } = renderRestaurantContainer();
+  context('without restaurant', () => {
+    it('renders no restaurant message', () => {
+      const { queryByText } = renderRestaurantContainer();
 
-    expect(container).toHaveTextContent('서울 강남구');
-  });
-
-  it('renders restaurant menus', () => {
-    const { container } = renderRestaurantContainer();
-
-    expect(container).toHaveTextContent('비빔밥');
+      expect(queryByText(/Loading/)).not.toBeNull();
+    });
   });
 });
