@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default function Menus({ menus }) {
-  if (!menus) {
+export default function MenuItems({ menuItems }) {
+  if (!menuItems) {
     return (
       <p>메뉴가 없어요!</p>
     );
@@ -9,7 +9,7 @@ export default function Menus({ menus }) {
 
   return (
     <ul>
-      {menus.map(({ id, name }) => (
+      {menuItems.map(({ id, name }) => (
         <li key={id}>
           {name}
         </li>

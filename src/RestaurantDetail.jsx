@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Menus from './Menus';
+import MenuItems from './MenuItems';
 
 export default function RestaurantDetail({ restaurant }) {
-  const { name, address, menus } = restaurant;
+  const { name, address, menuItems } = restaurant;
 
   return (
     <div>
@@ -14,7 +14,7 @@ export default function RestaurantDetail({ restaurant }) {
         {address}
       </p>
       <h3>메뉴</h3>
-      <Menus menus={menus} />
+      <MenuItems menuItems={menuItems} />
     </div>
   );
 }

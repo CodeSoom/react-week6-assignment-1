@@ -7,10 +7,15 @@ import RestaurantDetail from './RestaurantDetail';
 describe('RestaurantDetail', () => {
   const restaurant = {
     id: 1,
+    categoryId: 1,
     name: '양천주가',
-    address: '서울시 강남구',
-    menus: [
-      { id: 1, name: '탕수육' },
+    address: '서울 강남구 123456',
+    menuItems: [
+      {
+        id: 1,
+        restaurantId: 1,
+        name: '비빔밥',
+      },
     ],
   };
 
@@ -22,13 +27,13 @@ describe('RestaurantDetail', () => {
     const { container } = renderRestaurantDetail();
 
     expect(container).toHaveTextContent('양천주가');
-    expect(container).toHaveTextContent(/서울시 강남구/);
+    expect(container).toHaveTextContent(/서울 강남구/);
   });
 
   it('renders restaurant menu', () => {
     const { container } = renderRestaurantDetail();
 
     expect(container).toHaveTextContent('메뉴');
-    expect(container).toHaveTextContent('탕수육');
+    expect(container).toHaveTextContent('비빔밥');
   });
 });

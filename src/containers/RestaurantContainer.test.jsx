@@ -13,10 +13,15 @@ describe('RestaurantContainer', () => {
     useSelector.mockImplementation((selector) => selector({
       restaurant: {
         id: 1,
-        name: '마법사주방',
-        address: '서울시 강남구',
-        menus: [
-          { id: 1, name: '탕수육' },
+        categoryId: 1,
+        name: '양천주가',
+        address: '서울 강남구 123456',
+        menuItems: [
+          {
+            id: 1,
+            restaurantId: 1,
+            name: '비빔밥',
+          },
         ],
       },
     }));
@@ -33,18 +38,18 @@ describe('RestaurantContainer', () => {
   it('renders restaurant name', () => {
     const { container } = renderRestaurantContainer();
 
-    expect(container).toHaveTextContent('마법사주방');
+    expect(container).toHaveTextContent('양천주가');
   });
 
   it('renders restaurant adress', () => {
     const { container } = renderRestaurantContainer();
 
-    expect(container).toHaveTextContent('서울시 강남구');
+    expect(container).toHaveTextContent('서울 강남구');
   });
 
   it('renders restaurant menus', () => {
     const { container } = renderRestaurantContainer();
 
-    expect(container).toHaveTextContent('탕수육');
+    expect(container).toHaveTextContent('비빔밥');
   });
 });
