@@ -6,7 +6,7 @@ import Regions from './Regions';
 
 import regions from '../fixtures/regions';
 
-test('regions', () => {
+test('Regions', () => {
   const { getByText } = render((
     <Regions
       regions={regions}

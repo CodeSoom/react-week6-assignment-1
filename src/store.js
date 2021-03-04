@@ -1,7 +1,9 @@
 import { createStore } from 'redux';
 
-const reducer = () => {};
+const reducer = (state, action) => {
+  return state;
+};
 
-const store = createStore();
+const store = createStore(reducer);
 
 export default reducer;

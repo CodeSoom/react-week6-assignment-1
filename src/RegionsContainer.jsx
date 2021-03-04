@@ -1,11 +1,17 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import Regions from './regions';
 
-export default function Regions({ regions }) {
+export default function RegionsContainer() {
+  
+
+  const { regions } = useSelector((state) => ({
+    regions: state.regions
+  }));
+
   return (
-    <ul>
-      {regions.map(({ id, name }) => (
-        <li key={id}>{name}</li>
-      ))}
-    </ul>
+    <Regions
+      regions={regions}
+    />
   );
 }

@@ -6,11 +6,16 @@ import RegionsContainer from './RegionsContainer';
 
 import regions from '../fixtures/regions';
 
+import { useSelector } from 'react-redux';
+
+jest.mock('react-redux');
+
 test('RegionsContainer', () => {
+  useSelector.mockImplementation((selector) => selector({
+      regions,
+    }));
   const { getByText } = render((
-    <RegionsContainer
-      regions={regions}
-    />
+    <RegionsContainer />
   ));
   expect(getByText('서울')).not.toBeNull();
   expect(getByText('대전')).not.toBeNull();
