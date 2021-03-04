@@ -4,6 +4,13 @@ import restaurantsDetails from '../fixtures/restaurantsDetails';
 
 export default function RestaurantsDetails() {
   const { name, address, menus } = restaurantsDetails;
+
+  if (name === '') {
+    return (
+      <p>Now is loading</p>
+    );
+  }
+
   return (
     <div>
       <h1>{name}</h1>
