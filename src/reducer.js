@@ -38,6 +38,13 @@ const reducers = {
     };
   },
 
+  resetRestaurantsDetail(state) {
+    return {
+      ...state,
+      restaurantsDetail: {},
+    };
+  },
+
   selectRegion(state, { payload: { regionId } }) {
     const { regions } = state;
     return {
