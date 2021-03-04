@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Restaurants from './Restaurants';
 
-import { loadRestaurant, setRestaurant } from './actions';
+import { loadRestaurant } from './actions';
 
 import { get } from './utils';
 
@@ -40,9 +40,7 @@ export default function RestaurantsContainer() {
   }
 
   function handleClick(restaurantId) {
-    dispatch(setRestaurant({ id: restaurantId }));
-
-    dispatch(loadRestaurant());
+    dispatch(loadRestaurant(restaurantId));
   }
 
   return (
