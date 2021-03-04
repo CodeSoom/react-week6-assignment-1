@@ -23,7 +23,7 @@ describe('DetailContainer', () => {
   }))
 
   it('renders detail', () => {
-    const { container } = render(<DetailContainer />);
+    const { container } = render(<DetailContainer match={{ params: { id: 1  }}}/>);
   
     expect(container).toHaveTextContent('양천주가');
     expect(container).toHaveTextContent('주소: 서울 강남구');
