@@ -22,6 +22,9 @@ describe('App', () => {
       regions,
       categories,
       restaurants,
+      selectedRestaurantInfo: {
+        menuItems: [],
+      },
     }));
   });
 

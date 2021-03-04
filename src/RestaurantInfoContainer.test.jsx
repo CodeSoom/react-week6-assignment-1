@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 
 import RestaurantInfoContainer from './RestaurantInfoContainer';
 
-test('RestaurantInfoContainer', () => {
+describe('RestaurantInfoContainer', () => {
   useSelector.mockImplementation((selector) => selector({
     selectedRestaurantInfo: {
       id: 1,
@@ -24,11 +24,13 @@ test('RestaurantInfoContainer', () => {
     },
   }));
 
-  const { container } = render((
-    <MemoryRouter>
-      <RestaurantInfoContainer />
-    </MemoryRouter>
-  ));
+  it('renders restaurant information', () => {
+    const { container } = render((
+      <MemoryRouter>
+        <RestaurantInfoContainer />
+      </MemoryRouter>
+    ));
 
-  expect(container).toHaveTextContent('양천주가');
+    expect(container).toHaveTextContent('양천주가');
+  });
 });
