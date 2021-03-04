@@ -36,7 +36,7 @@ describe('RestaurantsDetailPage', () => {
     }));
   });
 
-  it('화면이 로딩될 때 자세한 레스토랑 정보를 불러와 state를 업데이트한다.', () => {
+  it(' 레스토랑 정보를 불러온다.', () => {
     render(<RestaurantsDetailPage match={{ params: { id: 1 } }} />);
 
     expect(dispatch).toBeCalled();
