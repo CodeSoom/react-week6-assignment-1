@@ -4,12 +4,18 @@ import { MemoryRouter } from 'react-router-dom';
 
 import { render } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantInfoPage from './RestaurantInfoPage';
 
 describe('RestaurantInfoPage', () => {
+  const dispatch = jest.fn();
+
   beforeEach(() => {
+    jest.clearAllMocks();
+
+    useDispatch.mockImplementation(() => dispatch);
+
     useSelector.mockImplementation((selector) => selector({
       restaurantInfo: {
         id: 1,

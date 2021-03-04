@@ -5,7 +5,15 @@ import { useSelector } from 'react-redux';
 import { get } from './utils';
 
 export default function RestaurantInfoContainer() {
-  const { name, address, menuItems } = useSelector(get('restaurantInfo'));
+  const restaurantInfo = useSelector(get('restaurantInfo'));
+
+  if (!restaurantInfo) {
+    return (
+      <p>데이터가 없습니다.</p>
+    );
+  }
+
+  const { name, address, menuItems } = restaurantInfo;
 
   return (
     <div>
