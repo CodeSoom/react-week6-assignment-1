@@ -2,9 +2,8 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import List from './List';
-
-import restaurantDetail from '../fixtures/restaurantDetail';
+import List from '../List';
+import restaurantDetail from '../../../fixtures/restaurantDetail';
 
 describe('List', () => {
   const { menuItems } = restaurantDetail;

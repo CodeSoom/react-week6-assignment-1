@@ -6,8 +6,8 @@ import given from 'given2';
 
 import { useSelector } from 'react-redux';
 
-import RestaurantDetailContainer from './RestaurantDetailContainer';
-import restaurantDetail from '../fixtures/restaurantDetail';
+import RestaurantDetailContainer from '../RestaurantDetailContainer';
+import restaurantDetail from '../../../fixtures/restaurantDetail';
 
 describe('RestaurantDetailContainer', () => {
   given('restaurant', () => restaurantDetail);

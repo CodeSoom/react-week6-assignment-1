@@ -5,9 +5,9 @@ import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import NotFound from './NotFound';
-import RestaurantDetailContainer from './RestaurantDetailContainer';
+import RestaurantDetailContainer from '../container/RestaurantDetailContainer';
 
-import { loadRestaurant } from './actions';
+import { loadRestaurant } from '../actions';
 
 export default function RestaurantDetailPage() {
   const dispatch = useDispatch();

@@ -9,8 +9,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { MemoryRouter, Route } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 
-import RestaurantDetailPage from './RestaurantDetailPage';
-import restaurantDetail from '../fixtures/restaurantDetail';
+import RestaurantDetailPage from '../RestaurantDetailPage';
+import restaurantDetail from '../../../fixtures/restaurantDetail';
 
 describe('RestaurantDetailPage', () => {
   const dispatch = jest.fn();
