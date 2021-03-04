@@ -1,30 +1,13 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
 
-import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import { get } from './utils';
 
 import RestaurantDetail from './RestaurantDetail';
-import { loadRestaurant } from './actions';
-import NotFound from './NotFound';
 
 export default function RestaurantDetailContainer() {
   const restaurant = useSelector(get('restaurant'));
-
-  const dispatch = useDispatch();
-
-  const { id } = useParams();
-
-  const isInValidParam = !Number.isInteger(parseInt(id, 10));
-
-  if (isInValidParam) {
-    return <NotFound />;
-  }
-
-  useEffect(() => {
-    dispatch(loadRestaurant(id));
-  }, [id]);
 
   return (
     <RestaurantDetail restaurant={restaurant} />
