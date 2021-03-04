@@ -33,28 +33,34 @@ describe('App', () => {
     ],
   }));
 
-  it('HomePage를 표시합니다.', () => {
-    const { queryByText } = renderApp({ pathname: '/' });
+  context('path가 /인 경우, ', () => {
+    it('HomePage를 표시합니다.', () => {
+      const { queryByText } = renderApp({ pathname: '/' });
 
-    expect(queryByText(/헤더/)).not.toBeNull();
-    expect(queryByText(/Home/)).not.toBeNull();
+      expect(queryByText(/헤더/)).not.toBeNull();
+      expect(queryByText(/Home/)).not.toBeNull();
 
-    expect(queryByText(/헤더/).getAttribute('href')).toBe('/');
+      expect(queryByText(/헤더/).getAttribute('href')).toBe('/');
+    });
   });
 
-  it('AboutPage를 표시합니다.', () => {
-    const { queryByText } = renderApp({ pathname: '/about' });
+  context('path가 /about 인 경우, ', () => {
+    it('AboutPage를 표시합니다.', () => {
+      const { queryByText } = renderApp({ pathname: '/about' });
 
-    expect(queryByText(/헤더/)).not.toBeNull();
-    expect(queryByText(/About page/)).not.toBeNull();
+      expect(queryByText(/헤더/)).not.toBeNull();
+      expect(queryByText(/About page/)).not.toBeNull();
+    });
   });
 
-  it('RestaurantsPage를 표시합니다.', () => {
-    const { queryByText } = renderApp({ pathname: '/restaurants' });
+  context('path가 /restaurants 인 경우, ', () => {
+    it('RestaurantsPage를 표시합니다.', () => {
+      const { queryByText } = renderApp({ pathname: '/restaurants' });
 
-    expect(queryByText(/헤더/)).not.toBeNull();
-    expect(queryByText(/서울/)).not.toBeNull();
-    expect(queryByText(/한식/)).not.toBeNull();
-    expect(queryByText(/마법사주방/)).not.toBeNull();
+      expect(queryByText(/헤더/)).not.toBeNull();
+      expect(queryByText(/서울/)).not.toBeNull();
+      expect(queryByText(/한식/)).not.toBeNull();
+      expect(queryByText(/마법사주방/)).not.toBeNull();
+    });
   });
 });
