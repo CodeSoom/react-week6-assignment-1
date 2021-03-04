@@ -1,4 +1,4 @@
-import { get, equal } from './utils';
+import { get, equal, isInteger } from './utils';
 
 test('get', () => {
   const state = {
@@ -22,4 +22,12 @@ test('equal', () => {
 
   expect(f(state)).toBeTruthy();
   expect(g(state)).toBeFalsy();
+});
+
+test('isInteger', () => {
+  const numberId = 1;
+  const stringId = '잘못된 주소';
+
+  expect(isInteger(numberId)).toBeTruthy();
+  expect(isInteger(stringId)).toBeFalsy();
 });
