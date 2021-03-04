@@ -8,7 +8,7 @@ import { MemoryRouter } from 'react-router-dom';
 
 import given from 'given2';
 
-import restaurant from '../fixtures/restaurant';
+import { restaurant } from '../../../fixtures';
 
 import RestaurantContainer from './RestaurantContainer';
 

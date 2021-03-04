@@ -4,15 +4,15 @@ import { Route, Switch } from 'react-router-dom';
 
 import Header from './Header';
 
-import HomePage from './HomePage';
+import HomePage from '../pages/HomePage';
 
-import AboutPage from './AboutPage';
+import AboutPage from '../pages/AboutPage';
 
-import RestaurantsPage from './RestaurantsPage';
+import RestaurantsPage from '../pages/RestaurantsPage';
 
-import RestaurantPage from './RestaurantPage';
+import RestaurantPage from '../pages/RestaurantPage';
 
-import NotFoundPage from './NotFoundPage';
+import NotFoundPage from '../pages/NotFoundPage';
 
 export default function App() {
   return (

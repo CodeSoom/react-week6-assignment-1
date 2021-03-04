@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import CategoriesContainer from './CategoriesContainer';
 
-import CATEGORIES from '../fixtures/categories';
+import { CATEGORIES } from '../../../fixtures';
 
 describe('CategoriesContainer', () => {
   const dispatch = jest.fn();

@@ -10,7 +10,7 @@ import {
   initializeState,
 } from './actions';
 
-import restaurant from '../fixtures/restaurant';
+import { restaurant } from '../../fixtures';
 
 describe('reducer', () => {
   context('when previous state is undefined', () => {

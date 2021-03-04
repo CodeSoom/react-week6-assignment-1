@@ -8,7 +8,7 @@ import RestaurantsContainer from './RestaurantsContainer';
 
 import {
   loadInitialData, setRestaurant,
-} from './actions';
+} from '../../redux/actions';
 
 export default function RestaurantsPage() {
   const dispatch = useDispatch();

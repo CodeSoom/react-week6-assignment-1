@@ -8,7 +8,7 @@ import { MemoryRouter } from 'react-router-dom';
 
 import RestaurantPage from './RestaurantPage';
 
-import restaurant from '../fixtures/restaurant';
+import { restaurant } from '../../../fixtures';
 
 // naive solution for testing useParams
 jest.mock('react-router-dom', () => ({

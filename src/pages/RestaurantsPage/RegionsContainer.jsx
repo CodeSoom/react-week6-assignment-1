@@ -7,9 +7,9 @@ import Buttons from './Buttons';
 import {
   selectRegion,
   loadRestaurants,
-} from './actions';
+} from '../../redux/actions';
 
-import { get } from './utils';
+import { get } from '../../utils/utils';
 
 export default function RegionsContainer() {
   const dispatch = useDispatch();

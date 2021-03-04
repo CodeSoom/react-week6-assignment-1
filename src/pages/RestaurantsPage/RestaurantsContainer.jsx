@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Restaurants from './Restaurants';
 
-import { loadRestaurant } from './actions';
+import { loadRestaurant } from '../../redux/actions';
 
-import { get } from './utils';
+import { get } from '../../utils/utils';
 
 export default function RestaurantsContainer() {
   const dispatch = useDispatch();

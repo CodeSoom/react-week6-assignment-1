@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
-import { initializeState } from './actions';
+import { initializeState } from '../../redux/actions';
 
 import Home from './Home';
 

@@ -6,9 +6,9 @@ import { MemoryRouter } from 'react-router-dom';
 
 import Restaurant from './Restaurant';
 
-import restaurant from '../fixtures/restaurant';
+import { restaurant } from '../../../fixtures';
 
-describe('', () => {
+describe('Restaurant', () => {
   const renderRestaurant = (newRestaurant) => render((
     <MemoryRouter initialEntries={['/restaurants/:id']}>
       <Restaurant

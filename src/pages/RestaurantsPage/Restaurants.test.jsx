@@ -6,7 +6,7 @@ import { MemoryRouter } from 'react-router-dom';
 
 import Restaurants from './Restaurants';
 
-import restaurants from '../fixtures/restaurants';
+import { restaurants } from '../../../fixtures';
 
 describe('Restaurants', () => {
   const handleClick = jest.fn();
