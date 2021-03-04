@@ -13,6 +13,12 @@ export default function RestaurantsContainer() {
 
   const restaurants = useSelector(get('restaurants'));
 
+  if (!restaurants.length) {
+    return (
+      <p>해당 지역에 선택하신 분야 식당이 없습니다.</p>
+    );
+  }
+
   function handleClick(restaurantId) {
     dispatch(setRestaurant({ id: restaurantId }));
 
