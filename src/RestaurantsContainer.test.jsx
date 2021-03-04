@@ -57,13 +57,27 @@ describe('RestaurantsContainer', () => {
     });
   });
 
-  context('without restaurants', () => {
-    it("renders the message that there isn't a restaurant unavailable", () => {
+  context('without selectedRegion and selectedCategory', () => {
+    it('renders the message to let user click both buttons', () => {
+      given('selectedRegion', () => '');
+      given('selectedCategory', () => '');
       given('restaurants', () => ([]));
 
       const { container } = renderRestaurantsContainer({ path: '/restaurants' });
 
-      expect(container).toHaveTextContent('해당 지역에 선택하신 분야 식당이 없습니다.');
+      expect(container).toHaveTextContent('지역과 카테고리를 클릭해주세요.');
+    });
+  });
+
+  context('without restaurants', () => {
+    context('with selectedRegion and selectedCategory', () => {
+      it("renders the message that there isn't a restaurant unavailable", () => {
+        given('restaurants', () => ([]));
+
+        const { container } = renderRestaurantsContainer({ path: '/restaurants' });
+
+        expect(container).toHaveTextContent('해당 지역에 선택하신 분야 식당이 없습니다.');
+      });
     });
   });
 
