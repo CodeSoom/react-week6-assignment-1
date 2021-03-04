@@ -21,22 +21,22 @@ describe('App', () => {
     }));
   });
 
-  it('renders header', () => {
-    const { container } = render((
-      <MemoryRouter>
+  function renderApp({ path }) {
+    return render((
+      <MemoryRouter initialEntries={[path]}>
         <App />
       </MemoryRouter>
     ));
+  }
+
+  it('renders header', () => {
+    const { container } = renderApp({ path: '/' });
 
     expect(container).toHaveTextContent('헤더');
   });
 
   it('goes to home page when header is clicked', () => {
-    const { container, getByText } = render((
-      <MemoryRouter>
-        <App />
-      </MemoryRouter>
-    ));
+    const { container, getByText } = renderApp({ path: '/' });
 
     fireEvent.click(getByText('헤더'));
 
@@ -45,15 +45,9 @@ describe('App', () => {
 
   context('with path /', () => {
     it('renders home page', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const { container } = renderApp({ path: '/' });
 
       expect(container).toHaveTextContent('Home');
-      expect(container).toHaveTextContent('About');
-      expect(container).toHaveTextContent('Restaurants');
     });
   });
 });
