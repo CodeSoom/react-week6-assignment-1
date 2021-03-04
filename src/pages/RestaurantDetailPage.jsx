@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import NotFound from './NotFound';
-import RestaurantDetailContainer from '../container/RestaurantDetailContainer';
+import RestaurantDetailContainer from '../containers/RestaurantDetailContainer';
 
 import { loadRestaurant } from '../actions';
 
