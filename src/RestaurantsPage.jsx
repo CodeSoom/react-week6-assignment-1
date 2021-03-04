@@ -7,7 +7,7 @@ import CategoriesContainer from './CategoriesContainer';
 import RestaurantsContainer from './RestaurantsContainer';
 
 import {
-  loadInitialData,
+  loadInitialData, setRestaurant,
 } from './actions';
 
 export default function RestaurantsPage() {
@@ -15,6 +15,7 @@ export default function RestaurantsPage() {
 
   useEffect(() => {
     dispatch(loadInitialData());
+    dispatch(setRestaurant({}));
   }, []);
 
   return (
