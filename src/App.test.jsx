@@ -8,6 +8,14 @@ import { MemoryRouter } from 'react-router-dom';
 
 import App from './App';
 
+function renderApp({ pathname }) {
+  return render(
+    <MemoryRouter initialEntries={[pathname]}>
+      <App />
+    </MemoryRouter>,
+  );
+}
+
 describe('App', () => {
   const dispatch = jest.fn();
 
@@ -26,11 +34,7 @@ describe('App', () => {
   }));
 
   it('HomePage를 표시합니다.', () => {
-    const { queryByText } = render((
-      <MemoryRouter initialEntries={['/']}>
-        <App />
-      </MemoryRouter>
-    ));
+    const { queryByText } = renderApp({ pathname: '/' });
 
     expect(queryByText(/헤더/)).not.toBeNull();
     expect(queryByText(/Home/)).not.toBeNull();
@@ -39,22 +43,14 @@ describe('App', () => {
   });
 
   it('AboutPage를 표시합니다.', () => {
-    const { queryByText } = render((
-      <MemoryRouter initialEntries={['/about']}>
-        <App />
-      </MemoryRouter>
-    ));
+    const { queryByText } = renderApp({ pathname: '/about' });
 
     expect(queryByText(/헤더/)).not.toBeNull();
     expect(queryByText(/About page/)).not.toBeNull();
   });
 
   it('RestaurantsPage를 표시합니다.', () => {
-    const { queryByText } = render((
-      <MemoryRouter initialEntries={['/restaurants']}>
-        <App />
-      </MemoryRouter>
-    ));
+    const { queryByText } = renderApp({ pathname: '/restaurants' });
 
     expect(queryByText(/헤더/)).not.toBeNull();
     expect(queryByText(/서울/)).not.toBeNull();
