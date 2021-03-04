@@ -57,5 +57,14 @@ describe('App', () => {
 
       expect(container).toHaveTextContent('About');
     });
+
+    it('goes to restaurants page when "restaurants" is clicked', () => {
+      const { container, getByText } = renderApp({ path: '/' });
+
+      fireEvent.click(getByText('Restaurants'));
+
+      expect(container).toHaveTextContent('서울');
+      expect(container).toHaveTextContent('한식');
+    });
   });
 });
