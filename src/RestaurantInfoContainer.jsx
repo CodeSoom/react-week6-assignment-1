@@ -26,9 +26,9 @@ export default function RestaurantInfoContainer() {
       </p>
       <h4>메뉴</h4>
       <ul>
-        {menuItems.map((item) => (
-          <li key={item.id}>
-            {item.name}
+        {menuItems.map(({ id, name: menuName }) => (
+          <li key={id}>
+            {menuName}
           </li>
         ))}
       </ul>
