@@ -6,6 +6,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { MemoryRouter } from 'react-router-dom';
 
+import regions from '../../../fixtures/regions';
+import categories from '../../../fixtures/categories';
+import restaurants from '../../../fixtures/restaurants';
 import RestaurantsPage from '../RestaurantsPage';
 
 describe('RestaurantsPage', () => {
@@ -14,15 +17,9 @@ describe('RestaurantsPage', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
-    regions: [
-      { id: 1, name: '서울' },
-    ],
-    categories: [
-      { id: 1, name: '한식' },
-    ],
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
+    regions,
+    categories,
+    restaurants,
   }));
 
   it('화면에 지역과 음식분류 목록을 보여준다.', () => {
