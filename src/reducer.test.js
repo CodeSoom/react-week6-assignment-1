@@ -6,6 +6,18 @@ import categories from '../fixtures/categories';
 describe('reducer', () => {
   const REGION = regions[0];
   const CATEGORY = categories[0];
+  context(`when action type doesn't existed `, () => {
+    it('return previousState state', () => {
+      const previousState = {};
+      const state = reducer(previousState, {
+        type: '??',
+        payment: {
+          
+        }
+      });
+      expect(state).toEqual(previousState);
+    });
+  });
   context('when action type is selectRegion', () => {
     it('set selectedRegionId', () => {
       const previousState = {};

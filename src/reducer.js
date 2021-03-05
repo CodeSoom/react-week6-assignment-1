@@ -4,36 +4,46 @@ const defaultState = {
   selectedRegionId: null,
 };
 
-const reducer = (state = defaultState, action) => {
-  if(action.type === 'selectRegion') {
-    const { id } = action.payload;
+
+
+const reducers = {
+  selectRegion(state, payload) {
+    const { id } = payload;
     return {
       ...state,
       selectedRegionId: id,
-    }
-  }
-  if(action.type === 'setRegions'){
-    const { regions } = action.payload;
+    };
+  },
+  setRegions(state, payload) {
+    const { regions } = payload;
     return {
       ...state,
       regions,
     };
-  }
-  if(action.type === 'selectCategory') {
-    const { id } = action.payload;
+  },
+  selectCategory(state, payload) {
+    const { id } = payload;
     return {
       ...state,
       selectedCategoryId: id,
-    }
-  }
-  if(action.type === 'setCategories'){
-    const { categories } = action.payload;
+    };
+  },
+  setCategories(state, payload) {
+    const { categories } = payload;
     return {
       ...state,
       categories,
     };
-  }
+  },
+};
+
+function defaultReducer(state, payload) {
   return state;
+}
+
+const reducer = (state = defaultState, action) => {
+  const { type, payload } = action;
+  return (reducers[type] || defaultReducer)(state, payload);
 };
 
 export default reducer;
