@@ -7,7 +7,7 @@ export default function RestaurantsDetails({ restaurantsDetails }) {
     );
   }
 
-  const { name, address, menus } = restaurantsDetails;
+  const { name, address, menuItems } = restaurantsDetails;
 
   return (
     <div>
@@ -15,8 +15,8 @@ export default function RestaurantsDetails({ restaurantsDetails }) {
       <p>{`주소: ${address}`}</p>
       <h2>메뉴</h2>
       <ul>
-        {menus.map((menu) => (
-          <li key={menu.id}>{menu.name}</li>
+        {menuItems.map((item) => (
+          <li key={item.id}>{item.name}</li>
         ))}
       </ul>
     </div>

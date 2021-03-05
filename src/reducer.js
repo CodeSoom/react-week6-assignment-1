@@ -8,7 +8,7 @@ const initialState = {
     id: 0,
     name: '',
     address: '',
-    menus: [],
+    menuItems: [],
   },
   selectedRegion: null,
   selectedCategory: null,
