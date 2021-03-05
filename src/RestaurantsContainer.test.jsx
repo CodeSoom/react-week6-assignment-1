@@ -17,12 +17,12 @@ describe('RestaurantsContainer', () => {
 
   it('식당을 표시합니다.', () => {
     const { container, queryByText } = render(
-      <MemoryRouter initialEntries={['restaurants/1']}>
+      <MemoryRouter initialEntries={['/restaurants/1']}>
         <RestaurantsContainer />
       </MemoryRouter>,
     );
 
-    expect(queryByText(/마법사주방/).getAttribute('href')).toBe('restaurants/1');
+    expect(queryByText(/마법사주방/).getAttribute('href')).toBe('/restaurants/1');
     expect(container).toHaveTextContent('마법사주방');
   });
 });
