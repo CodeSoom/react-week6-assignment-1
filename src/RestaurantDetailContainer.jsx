@@ -19,8 +19,6 @@ export default function RestaurantDetailContainer() {
   }, []);
 
   return (
-    <>
-      <RestaurantDetail restaurant={restaurantDetail} />
-    </>
+    <RestaurantDetail restaurant={restaurantDetail} />
   );
 }
