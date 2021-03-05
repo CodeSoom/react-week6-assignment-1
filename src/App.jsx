@@ -4,6 +4,7 @@ import {
   Switch,
   Route,
   Link,
+  useParams,
 } from 'react-router-dom';
 
 import HomePage from './HomePage';
@@ -13,6 +14,8 @@ import RestaurantDetailContainer from './RestaurantDetailContainer';
 import NotFoundPage from './NotFoundPage';
 
 export default function App() {
+  const { id } = useParams();
+
   return (
     <div>
       <header>
