@@ -14,6 +14,6 @@ describe('HomePage', () => {
       </MemoryRouter>
     ));
 
-    expect(queryByText('Home')).not.toBeCalled();
+    expect(queryByText('Home')).not.toBeNull();
   });
 });
