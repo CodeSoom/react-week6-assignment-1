@@ -20,6 +20,9 @@ describe('Restaurant', () => {
   it('renders restaurant', () => {
     const { queryByText } = renderRestaurant(restaurant);
 
+    
+
+    expect(queryByText('레스토랑스 페이지로 가기')).not.toBeNull();
     expect(queryByText('마법사주방')).not.toBeNull();
     expect(queryByText('주소: 서울 강남구 강남대로94길 9')).not.toBeNull();
     expect(queryByText('맛나는 거')).not.toBeNull();
