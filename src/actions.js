@@ -1,5 +1,5 @@
-export function selectRegion(id) {
-  return (
+
+export const selectRegion = (id) => (
     {
       type: 'selectRegion',
       payload: {
@@ -7,4 +7,12 @@ export function selectRegion(id) {
       },
     }
   );
-}
+
+export const setRegions = (regions) => (
+  {
+    type: 'setRegions',
+    payload: {
+      regions
+    },
+  }
+);
