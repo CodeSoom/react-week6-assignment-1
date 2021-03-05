@@ -74,6 +74,14 @@ describe('App', () => {
     });
   });
 
+  context('with path /restaurants/:restaurantId', () => {
+    it('goes to restaurant information page', () => {
+      const { container } = renderApp({ path: '/restaurants/1' });
+
+      expect(container).toHaveTextContent('Restaurant Information');
+    });
+  });
+
   context('with path /restaurants', () => {
     it('goes to restaurant detail page when specific restaurant is clicked', () => {
       const { container, getByText } = renderApp({ path: '/restaurants' });
