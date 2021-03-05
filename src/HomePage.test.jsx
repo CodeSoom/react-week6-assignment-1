@@ -6,10 +6,14 @@ import { MemoryRouter } from 'react-router-dom';
 
 import HomePage from './HomePage';
 
-test('HomePage', () => {
-  render((
-    <MemoryRouter>
-      <HomePage />
-    </MemoryRouter>
-  ));
+describe('HomePage', () => {
+  it('renders HomePage', () => {
+    const { queryByText } = render((
+      <MemoryRouter>
+        <HomePage />
+      </MemoryRouter>
+    ));
+
+    expect(queryByText('Home')).not.toBeCalled();
+  });
 });
