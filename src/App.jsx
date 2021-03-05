@@ -1,11 +1,20 @@
 import React from 'react';
+import {
+  Switch,
+  Route,
+  Link,
+} from 'react-router-dom';
 
-import RestaurantsPage from './RestaurantsPage';
+// import RestaurantsPage from './RestaurantsPage';
 
 function HomePage() {
   return (
     <div>
       <h1>Home</h1>
+      <ul>
+        <li><Link to="/about">About</Link></li>
+        <li><Link to="/restaurants">Restaurants</Link></li>
+      </ul>
     </div>
   );
 }
@@ -20,23 +29,10 @@ function AboutPage() {
 }
 
 export default function App() {
-  const { location: { pathname } } = window;
-
-  if (pathname === '/') {
-    return (
-      <HomePage />
-    );
-  }
-
-  if (pathname === '/about') {
-    return (
-      <AboutPage />
-    );
-  }
-
-  if (pathname === '/restaurants') {
-    return (
-      <RestaurantsPage />
-    );
-  }
+  return (
+    <Switch>
+      <Route exact path="/" component={HomePage} />
+      <Route path="/about" component={AboutPage} />
+    </Switch>
+  );
 }
