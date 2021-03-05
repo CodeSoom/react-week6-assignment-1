@@ -1,13 +1,13 @@
 import React from 'react';
 
 export default function RestaurantsDetails({ restaurantsDetails }) {
-  const { name, address, menus } = restaurantsDetails;
-
-  if (name === '') {
+  if (!restaurantsDetails) {
     return (
       <p>Now is loading</p>
     );
   }
+
+  const { name, address, menus } = restaurantsDetails;
 
   return (
     <div>
