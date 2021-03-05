@@ -64,4 +64,12 @@ describe('RestaurantsDetailPage', () => {
       expect(queryByText(/짠거/)).toBeInTheDocument();
     });
   });
+
+  context('pathName이 존재하지 않는 경로일 때', () => {
+    it('InvalidPage를 보여준다.', () => {
+      const { queryByText } = renderDetailPage({ path: './restaurants/유효하지 않은 경로' });
+
+      expect(queryByText(/404 Not Found/)).toBeInTheDocument();
+    });
+  });
 });
