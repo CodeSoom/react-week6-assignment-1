@@ -1,4 +1,5 @@
-import { selectRegion } from './actions';
+import { selectRegion, setRegions } from './actions';
+import REGIONS from '../fixtures/regions';
 
 describe('Actions', () => {
   describe('selectRegion', () => {
@@ -8,6 +9,16 @@ describe('Actions', () => {
         payload: {
           id:1,
         },
+      });
+    });
+  });
+  describe('setRegions', () => {
+    it('create setRegions action', () => {
+      expect(setRegions(REGIONS)).toEqual({
+        type: 'setRegions',
+        payload: {
+          regions: REGIONS,
+        }
       });
     });
   });
