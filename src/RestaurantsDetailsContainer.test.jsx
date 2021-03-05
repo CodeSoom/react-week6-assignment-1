@@ -4,6 +4,7 @@ import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import { MemoryRouter } from 'react-router-dom';
 import restaurantsDetails from '../fixtures/restaurantsDetails';
 
 import RestaurantsDetailsContainer from './RestaurantsDetailsContainer';
@@ -16,7 +17,11 @@ describe('RestaurantsDetails', () => {
   useSelector.mockImplementation((selector) => selector({ restaurantsDetails }));
 
   it('식당의 상세 정보를 표시합니다.', () => {
-    const { queryByText } = render(<RestaurantsDetailsContainer />);
+    const { queryByText } = render((
+      <MemoryRouter>
+        <RestaurantsDetailsContainer />
+      </MemoryRouter>
+    ));
 
     expect(dispatch).toBeCalled();
 
