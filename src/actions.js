@@ -78,8 +78,7 @@ export function loadRestaurants() {
 export function loadDetailRestaurant() {
   return async (dispatch, getState) => {
     const {
-      selectedRegion: region,
-      selectedCategory: category,
+      selectedRestaurant: restaurant,
     } = getState();
 
     if (!restaurant) {
