@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
-import RestaurantsDetailContainer from './RestaurantsDetailContainer';
+import RestaurantsDetailContainer from '../containers/RestaurantsDetailContainer';
 
-import { loadRestaurantsDetail, resetRestaurantsDetail } from './actions';
+import { loadRestaurantsDetail, resetRestaurantsDetail } from '../actions';
 
 export default function RestaurantsDetailPage({ match }) {
   const dispatch = useDispatch();

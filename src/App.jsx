@@ -6,11 +6,11 @@ import {
   Link,
 } from 'react-router-dom';
 
-import HomePage from './HomePage';
-import AboutPage from './AboutPage';
-import RestaurantsPage from './RestaurantsPage';
-import RestaurantsDetailPage from './RestaurantsDetailPage';
-import InvalidPage from './InvalidPage';
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import RestaurantsPage from './pages/RestaurantsPage';
+import RestaurantsDetailPage from './pages/RestaurantsDetailPage';
+import InvalidPage from './pages/InvalidPage';
 
 export default function App() {
   return (

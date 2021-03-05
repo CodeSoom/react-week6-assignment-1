@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
-import RestaurantsDetailContainer from './RestaurantsDetailContainer';
+import RestaurantsDetailContainer from '../RestaurantsDetailContainer';
 
 jest.mock('react-redux');
 

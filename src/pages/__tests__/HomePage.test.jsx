@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 
 import { MemoryRouter } from 'react-router-dom';
 
-import HomePage from './HomePage';
+import HomePage from '../HomePage';
 
 describe('HomePage', () => {
   it('Home이라는 제목과 목록을 보여준다.', () => {

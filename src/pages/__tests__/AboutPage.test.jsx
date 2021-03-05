@@ -2,7 +2,7 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import AboutPage from './AboutPage';
+import AboutPage from '../AboutPage';
 
 describe('AboutPage', () => {
   it('제목과 내용을 보여준다.', () => {

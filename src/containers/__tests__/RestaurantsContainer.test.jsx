@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 import { MemoryRouter } from 'react-router-dom';
 
-import RestaurantsContainer from './RestaurantsContainer';
+import RestaurantsContainer from '../RestaurantsContainer';
 
 describe('RestaurantsContainer', () => {
   useSelector.mockImplementation((selector) => selector({

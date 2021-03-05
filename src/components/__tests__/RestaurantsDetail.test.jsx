@@ -2,7 +2,7 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import RestaurantsDetail from './RestaurantsDetail';
+import RestaurantsDetail from '../RestaurantsDetail';
 
 describe('RestaurantsDetail', () => {
   const restaurantsDetail = {
