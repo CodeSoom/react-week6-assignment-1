@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 
 import { MemoryRouter } from 'react-router-dom';
 
@@ -9,13 +9,20 @@ import Restaurant from '../Restaurant';
 import { restaurant } from '../../../../fixtures';
 
 describe('Restaurant', () => {
+  const handleClick = jest.fn();
+
   const renderRestaurant = (newRestaurant) => render((
     <MemoryRouter initialEntries={['/restaurants/:id']}>
       <Restaurant
         restaurant={newRestaurant}
+        handleClick={handleClick}
       />
     </MemoryRouter>
   ));
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 
   it('renders restaurant', () => {
     const { queryByText } = renderRestaurant(restaurant);
@@ -37,5 +44,13 @@ describe('Restaurant', () => {
 
       expect(queryByText('메뉴가 없어요')).not.toBeNull();
     });
+  });
+
+  it('calls handleClick upon clicking 레스토랑스 페이지로 가기', () => {
+    const { queryByText } = renderRestaurant(restaurant);
+
+    fireEvent.click(queryByText('레스토랑스 페이지로 가기'));
+
+    expect(handleClick).toBeCalled();
   });
 });

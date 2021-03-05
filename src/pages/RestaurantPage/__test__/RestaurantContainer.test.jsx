@@ -1,24 +1,40 @@
 import React from 'react';
 
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter, Route } from 'react-router-dom';
+
+import { createMemoryHistory } from 'history';
 
 import given from 'given2';
 
-import { restaurant } from '../../../../fixtures';
+import {
+  restaurant,
+  restaurants,
+  REGIONS,
+  CATEGORIES,
+} from '../../../../fixtures';
 
 import RestaurantContainer from '../RestaurantContainer';
 
+import RestaurantsPage from '../../RestaurantsPage/RestaurantsPage';
+
 describe('RestaurantContainer', () => {
+  const dispatch = jest.fn();
+
+  const history = createMemoryHistory();
+
   given('restaurant', () => restaurant);
 
-  const renderRestaurantContainer = (newRestaurant) => render((
+  const renderRestaurantContainer = () => render((
     <MemoryRouter initialEntries={['/restaurants/:id']}>
-      <RestaurantContainer
-        restaurant={newRestaurant}
+      <Route
+        exact
+        history={history}
+        path="/restaurants/:id"
+        component={RestaurantContainer}
       />
     </MemoryRouter>
   ));
@@ -27,8 +43,13 @@ describe('RestaurantContainer', () => {
     jest.clearAllMocks();
 
     useSelector.mockImplementation((selector) => selector({
+      regions: REGIONS,
+      categories: CATEGORIES,
+      restaurants,
       restaurant: given.restaurant,
     }));
+
+    useDispatch.mockImplementation(() => dispatch);
   });
 
   it('renders restaurant', () => {
@@ -38,6 +59,25 @@ describe('RestaurantContainer', () => {
     expect(queryByText('주소: 서울 강남구 강남대로94길 9')).not.toBeNull();
     expect(queryByText('맛나는 거')).not.toBeNull();
     expect(queryByText('짠 거')).not.toBeNull();
+  });
+
+  it('renders RestaurantsPage upon clicking 레스토랑스 페이지로 가기', () => {
+    const { queryByText } = renderRestaurantContainer();
+
+    const route = '/restaurants';
+
+    fireEvent.click(queryByText('레스토랑스 페이지로 가기'));
+
+    history.push(route);
+
+    render((
+      <MemoryRouter initialEntries={['/restaurants/']}>
+        <RestaurantsPage />
+      </MemoryRouter>
+    ));
+
+    expect(queryByText('서울')).not.toBeNull();
+    expect(queryByText('한식')).not.toBeNull();
   });
 
   context("without restaurant's name", () => {
