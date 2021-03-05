@@ -8,11 +8,19 @@ export const selectRegion = (id) => (
     }
   );
 
-export const setRegions = (regions) => (
-  {
-    type: 'setRegions',
-    payload: {
-      regions
-    },
-  }
-);
+export const setRegions = (regions) => {
+  console.log(3);
+  console.log(regions);
+  return (
+    {
+      type: 'setRegions',
+      payload: {
+        regions
+      },
+    }
+  );
+}
+
+export const loadRegions = () => {
+  
+};

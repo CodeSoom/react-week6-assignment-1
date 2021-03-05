@@ -1,7 +1,13 @@
-import { selectRegion, setRegions } from './actions';
+import { selectRegion, setRegions, loadRegions } from './actions';
 import REGIONS from '../fixtures/regions';
 
+import configureStore from 'redux-mock-store';
+import { configure } from '@testing-library/react';
+
+const mockStore = configureStore([]);
+
 describe('Actions', () => {
+  let store;
   describe('selectRegion', () => {
     it('create selectRegion Action', () => {
       expect(selectRegion(1)).toEqual({
@@ -22,4 +28,15 @@ describe('Actions', () => {
       });
     });
   });
+  // describe('loadRegions', () => {
+  //   beforeEach(() => {
+  //     store = mockStore({});
+  //   });
+  //   it('create loadRegions action', async () => {
+  //     await store.dispatch(loadRegions);
+
+  //     const actions = store.getActions();
+  //     expect(actions[0]).toEqual(setRegions([]));
+  //   });
+  // });
 });
