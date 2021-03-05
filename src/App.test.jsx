@@ -63,6 +63,16 @@ describe('App', () => {
       });
     });
 
+    context('/restaurants:id', () => {
+      it('RestaurantDetail을 그려준다.', () => {
+        const { container } = renderApp({ path: '/restaurant/1' });
+
+        expect(container).toHaveTextContent('헤더');
+
+        expect(container).toHaveTextContent('서울 강남구 123456');
+      });
+    });
+
     context('존재하지 않는 페이지인 경우', () => {
       it('NotFoundPage 그려준다.', () => {
         const { container } = renderApp({ path: '/wrong-path' });
