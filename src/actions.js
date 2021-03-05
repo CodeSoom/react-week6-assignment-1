@@ -1,3 +1,4 @@
+import { fetchRegions } from './services/api';
 
 export const selectRegion = (id) => (
     {
@@ -21,6 +22,9 @@ export const setRegions = (regions) => {
   );
 }
 
-export const loadRegions = () => {
-  
-};
+export function loadRegions() {
+  return async (dispatch) => {
+    const regions = await fetchRegions();
+    dispatch(setRegions(regions));
+  };
+} 
