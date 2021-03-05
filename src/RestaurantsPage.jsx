@@ -1,8 +1,10 @@
 import React from 'react';
 import RegionsContainer from './RegionsContainer';
+import CategoriesContainer from './CategoriesContainer';
+import RestaurantsContainer from './RestaurantsContainer';
+
 import { loadRegions, loadCategories } from './actions';
 import { useDispatch } from 'react-redux';
-import CategoriesContainer from './CategoriesContainer';
 
 
 export default function RestaurantsPage() {
@@ -13,6 +15,7 @@ export default function RestaurantsPage() {
     <div>
       <RegionsContainer />
       <CategoriesContainer />
+      <RestaurantsContainer />
     </div>
   );
 }
