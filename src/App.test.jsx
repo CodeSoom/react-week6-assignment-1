@@ -63,4 +63,15 @@ describe('App', () => {
       expect(queryByText(/마법사주방/)).not.toBeNull();
     });
   });
+
+  context('path가 /restaurants/1 인 경우, ', () => {
+    it('RestaurantsDetailsContainer를 표시합니다.', () => {
+      const { queryByText } = renderApp({ pathname: '/restaurants/1' });
+
+      expect(queryByText(/양천주가/)).not.toBeNull();
+      expect(queryByText(/서울 강남구/)).not.toBeNull();
+      expect(queryByText(/탕수육/)).not.toBeNull();
+      expect(queryByText(/짜장면/)).not.toBeNull();
+    });
+  });
 });
