@@ -10,7 +10,9 @@ export default function RestaurantDetailPage({ restaurantDetail }) {
       <h3>메뉴</h3>
       { menuItems ?
         (<ul>
-          {menuItems.map(({ id, name }) => (<li key={id}>{name}</li>))}
+          {menuItems.map(({ id, name }) => (
+            <li key={id}>{name}</li>
+          ))}
         </ul>)
       : null}
     </div>
