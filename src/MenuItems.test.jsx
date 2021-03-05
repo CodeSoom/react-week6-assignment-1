@@ -5,8 +5,8 @@ import { render } from '@testing-library/react';
 import MenuItems from './MenuItems';
 
 describe('MenuItems', () => {
-  context('with MenuItems', () => {
-    it('renders MenuItems', () => {
+  context('with Menu items', () => {
+    it('renders Menu items', () => {
       const menuItems = [{
         id: 1,
         restaurantId: 1,
@@ -19,8 +19,8 @@ describe('MenuItems', () => {
     });
   });
 
-  context('without MenuItems', () => {
-    it('renders no MenuItems message', () => {
+  context('without Menu items', () => {
+    it('renders no Menu items message', () => {
       const { queryByText } = render(<MenuItems />);
 
       expect(queryByText(/메뉴가 없어요/)).not.toBeNull();

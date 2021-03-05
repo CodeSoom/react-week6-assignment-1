@@ -13,7 +13,7 @@ describe('Header', () => {
     </MemoryRouter>
   ));
 
-  it('renders header', () => {
+  it('renders header text', () => {
     const { container } = renderHeader();
 
     expect(container).toHaveTextContent('헤더');

@@ -37,6 +37,12 @@ describe('RestaurantsPage', () => {
     ));
   }
 
+  it('loads restaurant initial data', () => {
+    renderRestaurantsPage();
+
+    expect(dispatch).toBeCalled();
+  });
+
   it('renders region buttons', () => {
     const { queryByText } = renderRestaurantsPage();
 
