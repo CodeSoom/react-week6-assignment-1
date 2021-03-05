@@ -83,4 +83,10 @@ describe('App', () => {
       expect(container).toHaveTextContent('Restaurant Information');
     });
   });
+
+  context('with unexisted path', () => {
+    const { container } = renderApp({ path: '/xxx' });
+
+    expect(container).toHaveTextContent('Not Found');
+  });
 });
