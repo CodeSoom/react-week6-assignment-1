@@ -11,29 +11,27 @@ describe('reducer', () => {
       const previousState = {};
       const state = reducer(previousState, {
         type: '??',
-        payment: {
-          
-        }
+        payment: {}
       });
       expect(state).toEqual(previousState);
     });
   });
   context('when action type is selectRegion', () => {
-    it('set selectedRegionId', () => {
-      const previousState = {};
+    it('set selectedRegion', () => {
+      const previousState = {
+        regions
+      };
       const state = reducer(previousState, selectRegion(REGION.id));
-      expect(state).toEqual({
-        selectedRegionId: REGION.id,
-      });
+      expect(state.selectedRegion).toEqual(REGION);
     });
   });
   context('when action type is selectCategory', () => {
-    it('set selectedCategoryId', () => {
-      const previousState = {};
+    it('set selectedCategory', () => {
+      const previousState = {
+        categories
+      };
       const state = reducer(previousState, selectCategory(CATEGORY.id));
-      expect(state).toEqual({
-        selectedCategoryId: CATEGORY.id,
-      });
+      expect(state.selectedCategory).toEqual(CATEGORY);
     });
   });
 });

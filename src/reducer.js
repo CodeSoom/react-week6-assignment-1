@@ -1,17 +1,21 @@
+import regions from "../fixtures/regions";
+
 const defaultState = {
   regions: [],
   categories: [],
-  selectedRegionId: null,
+  selectedRegion: null,
+  selectedCategoryId: null,
 };
 
 
 
 const reducers = {
   selectRegion(state, payload) {
+    const { regions } = state;
     const { id } = payload;
     return {
       ...state,
-      selectedRegionId: id,
+      selectedRegion: regions.find((region) => region.id === id),
     };
   },
   setRegions(state, payload) {
@@ -22,10 +26,11 @@ const reducers = {
     };
   },
   selectCategory(state, payload) {
+    const { categories } = state;
     const { id } = payload;
     return {
       ...state,
-      selectedCategoryId: id,
+      selectedCategory: categories.find((category) => category.id === id),
     };
   },
   setCategories(state, payload) {
