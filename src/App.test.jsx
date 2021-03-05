@@ -73,10 +73,20 @@ describe('App', () => {
     it('RestaurantsDetailsContainer를 표시합니다.', () => {
       const { queryByText } = renderApp({ pathname: '/restaurants/1' });
 
+      expect(queryByText(/헤더/)).not.toBeNull();
       expect(queryByText(/양천주가/)).not.toBeNull();
       expect(queryByText(/서울 강남구/)).not.toBeNull();
       expect(queryByText(/탕수육/)).not.toBeNull();
       expect(queryByText(/짜장면/)).not.toBeNull();
+    });
+  });
+
+  context('path가 Not Found 인 경우, ', () => {
+    it('NotFound를 표시합니다.', () => {
+      const { queryByText } = renderApp({ pathname: '/notfound' });
+
+      expect(queryByText(/헤더/)).not.toBeNull();
+      expect(queryByText(/Not Found/)).not.toBeNull();
     });
   });
 });
