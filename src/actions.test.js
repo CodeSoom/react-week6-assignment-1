@@ -1,5 +1,6 @@
-import { selectRegion, setRegions, loadRegions } from './actions';
+import { selectRegion, setRegions, selectCategory, setCategories, } from './actions';
 import REGIONS from '../fixtures/regions';
+import CATEGORIES from '../fixtures/categories';
 
 import configureStore from 'redux-mock-store';
 import { configure } from '@testing-library/react';
@@ -24,6 +25,26 @@ describe('Actions', () => {
         type: 'setRegions',
         payload: {
           regions: REGIONS,
+        }
+      });
+    });
+  });
+  describe('selectCategory', () => {
+    it('create selectCategory Action', () => {
+      expect(selectCategory(1)).toEqual({
+        type: 'selectCategory',
+        payload: {
+          id:1,
+        },
+      });
+    });
+  });
+  describe('setCategories', () => {
+    it('create setCategories action', () => {
+      expect(setCategories(CATEGORIES)).toEqual({
+        type: 'setCategories',
+        payload: {
+          categories: CATEGORIES,
         }
       });
     });

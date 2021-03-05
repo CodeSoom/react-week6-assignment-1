@@ -19,18 +19,18 @@ const reducer = (state = defaultState, action) => {
       regions,
     };
   }
-  if(action.type === 'selectCategories') {
+  if(action.type === 'selectCategory') {
     const { id } = action.payload;
     return {
       ...state,
-      selectCategories: id,
+      selectedCategoryId: id,
     }
   }
   if(action.type === 'setCategories'){
-    const { setCategories } = action.payload;
+    const { categories } = action.payload;
     return {
       ...state,
-      setCategories,
+      categories,
     };
   }
   return state;

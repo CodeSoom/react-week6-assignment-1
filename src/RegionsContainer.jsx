@@ -18,8 +18,10 @@ export default function RegionsContainer() {
   return (
     <ul>
       {regions.map(({ id, name }) => (
-        <button type="button" key={id} onClick={() => handleClick(id)}>
-        {`${name}${selectedRegionId === id ? '(v)':''}`}</button>
+        <li key={id}>
+          <button type="button" onClick={() => handleClick(id)}>
+          {`${name}${selectedRegionId === id ? '(v)':''}`}</button>
+        </li>
       ))}
     </ul>
   );

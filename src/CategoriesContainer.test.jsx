@@ -32,7 +32,7 @@ describe('CategoriesContainer', () => {
     });
     it('renders categories with selected category', () => {
       const { getByText } = render((
-        <RegionsContainer />
+        <CategoriesContainer />
       ));
       expect(getByText(`${CATEGORY.name}(v)`)).not.toBeNull();
     })
