@@ -18,6 +18,12 @@ import {
   loadInitialData,
 } from './actions';
 
+function NotFoundPage() {
+  return (
+    <h2>404 Not Found</h2>
+  );
+}
+
 export default function App() {
   const dispatch = useDispatch();
 
@@ -33,6 +39,7 @@ export default function App() {
         <Route path="/about" component={AboutPage} />
         <Route exact path="/restaurants" component={RestaurantsPage} />
         <Route path="/restaurants/:restaurantId" component={RestaurantInfoPage} />
+        <Route component={NotFoundPage} />
       </Switch>
     </div>
   );
