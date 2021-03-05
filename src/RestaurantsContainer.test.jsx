@@ -3,7 +3,9 @@ import React from 'react';
 import { render } from '@testing-library/react';
 
 import RestaurantsContainer from './RestaurantsContainer';
-\
+
+import regions from '../fixtures/regions';
+import categories from '../fixtures/categories';
 import restaurants from '../fixtures/restaurants';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,7 +13,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 jest.mock('react-redux');
 
-describe('RestaurantsContainer', () => {
+test('RestaurantsContainer', () => {
+  const REGION = regions[0];
+  const CATEGORY = categories[0];
   const RESTAURANT = restaurants[0];
   const dispatch = jest.fn();
 
@@ -29,5 +33,5 @@ describe('RestaurantsContainer', () => {
     <RestaurantsContainer />
   ));
   
-  expect(getByText(`${RESTAURANT.name}(v)`)).not.toBeNull();
+  expect(getByText(RESTAURANT.name)).not.toBeNull();
 });

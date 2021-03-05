@@ -13,7 +13,7 @@ import RestaurantsPage from './RestaurantsPage';
 jest.mock('react-redux');
 jest.mock('./services/api');
 
-describe('RestaurantsPage', () => {
+test('RestaurantsPage', () => {
   const REGION = regions[0];
   const CATEGORY = categories[0];
   const RESTAURANT = restaurants[0];
@@ -22,6 +22,7 @@ describe('RestaurantsPage', () => {
   useSelector.mockImplementation((selector) => selector({
     regions,
     categories,
+    restaurants,
     selectedRegionId: REGION.id,
   }));
 
