@@ -48,6 +48,7 @@ describe('RestaurantsDetailPage', () => {
       </MemoryRouter>,
     );
   }
+
   context('pathName이 존재하는 경로일 때', () => {
     it(' 레스토랑 정보를 초기화한 후 불러온다.', () => {
       renderDetailPage({ path: './restaurants/1' });
