@@ -10,8 +10,6 @@ export const selectRegion = (id) => (
   );
 
 export const setRegions = (regions) => {
-  console.log(3);
-  console.log(regions);
   return (
     {
       type: 'setRegions',
@@ -27,4 +25,4 @@ export function loadRegions() {
     const regions = await fetchRegions();
     dispatch(setRegions(regions));
   };
-} 
+}
