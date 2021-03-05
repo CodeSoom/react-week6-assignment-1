@@ -4,7 +4,7 @@ import { MemoryRouter } from 'react-router-dom';
 
 import { render } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantsPage from './RestaurantsPage';
 
@@ -13,7 +13,11 @@ import categories from '../fixtures/categories';
 import restaurants from '../fixtures/restaurants';
 
 describe('RestaurantsPage', () => {
+  const dispatch = jest.fn();
+
   beforeEach(() => {
+    useDispatch.mockImplementation(() => dispatch);
+
     useSelector.mockImplementation((selector) => selector({
       regions,
       categories,

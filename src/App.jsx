@@ -1,6 +1,4 @@
-import React, { useEffect } from 'react';
-
-import { useDispatch } from 'react-redux';
+import React from 'react';
 
 import {
   Switch,
@@ -13,24 +11,9 @@ import HomePage from './HomePage';
 import AboutPage from './AboutPage';
 import RestaurantsPage from './RestaurantsPage';
 import RestaurantInfoPage from './RestaurantInfoPage';
-
-import {
-  loadInitialData,
-} from './actions';
-
-function NotFoundPage() {
-  return (
-    <h2>404 Not Found</h2>
-  );
-}
+import NotFoundPage from './NotFoundPage';
 
 export default function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(loadInitialData());
-  });
-
   return (
     <div>
       <Header />
