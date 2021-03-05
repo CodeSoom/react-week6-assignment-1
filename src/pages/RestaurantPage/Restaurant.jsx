@@ -1,13 +1,14 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom';
-
-export default function Restaurant({ restaurant: { name, address, menuItems } }) {
+export default function Restaurant({ restaurant: { name, address, menuItems }, handleClick }) {
   return (
     <div>
-      <Link to="/restaurants">
-        <p>뒤로 가기</p>
-      </Link>
+      <button
+        type="button"
+        onClick={handleClick}
+      >
+        <p>레스토랑스 페이지로 가기</p>
+      </button>
       <h1>{name}</h1>
       <address>
         주소:
