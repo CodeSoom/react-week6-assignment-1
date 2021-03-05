@@ -1,6 +1,8 @@
 import React from 'react';
 
-export default function RestaurantsDetails({ restaurantsDetails: { name, address, menus } }) {
+export default function RestaurantsDetails({ restaurantsDetails }) {
+  const { name, address, menus } = restaurantsDetails;
+
   if (name === '') {
     return (
       <p>Now is loading</p>
