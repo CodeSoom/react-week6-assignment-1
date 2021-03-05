@@ -83,10 +83,10 @@ describe('App', () => {
 
   context('path가 Not Found 인 경우, ', () => {
     it('NotFound를 표시합니다.', () => {
-      const { queryByText } = renderApp({ pathname: '/notfound' });
+      const { queryByText } = renderApp({ pathname: '/any_not_exist_url' });
 
       expect(queryByText(/헤더/)).not.toBeNull();
-      expect(queryByText(/Not Found/)).not.toBeNull();
+      expect(queryByText(/404 Not Found/)).not.toBeNull();
     });
   });
 });

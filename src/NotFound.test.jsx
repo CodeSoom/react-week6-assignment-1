@@ -8,6 +8,6 @@ describe('NotFound', () => {
   it('Not Found를 표시합니다.', () => {
     const { queryByText } = render(<NotFound />);
 
-    expect(queryByText(/Not Found/)).not.toBeNull();
+    expect(queryByText(/404 Not Found/)).not.toBeNull();
   });
 });
