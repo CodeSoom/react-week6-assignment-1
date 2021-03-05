@@ -9,5 +9,5 @@ import { get } from '../utils';
 export default function RestaurantsDetailContainer() {
   const restaurantsDetail = useSelector(get('restaurantsDetail'));
 
-  return <RestaurantsDetail restaurantsDetail={restaurantsDetail} />;
+  return (<RestaurantsDetail restaurantsDetail={restaurantsDetail} />);
 }

@@ -16,5 +16,5 @@ export default function RestaurantsDetailPage({ match }) {
     dispatch(loadRestaurantsDetail({ restaurantsId: id }));
   }, []);
 
-  return <RestaurantsDetailContainer />;
+  return (<RestaurantsDetailContainer />);
 }
