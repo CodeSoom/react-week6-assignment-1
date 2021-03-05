@@ -9,14 +9,7 @@ import restaurantsDetails from '../fixtures/restaurantsDetails';
 describe('RestaurantsDetails', () => {
   context('식당이 없는 경우,', () => {
     it('정보가 없음을 확인합니다.', () => {
-      const emptyDetails = {
-        id: 0,
-        name: '',
-        address: '',
-        menus: [],
-      };
-
-      const { queryByText } = render(<RestaurantsDetails restaurantsDetails={emptyDetails} />);
+      const { queryByText } = render(<RestaurantsDetails restaurantsDetails={undefined} />);
 
       expect(queryByText(/Now is loading/)).not.toBeNull();
     });
