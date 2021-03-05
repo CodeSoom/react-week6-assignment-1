@@ -18,15 +18,14 @@ export default function RestaurantsContainer() {
   const restaurants = useSelector(get('restaurants'));
 
   function handleClick(restaurantId) {
-    dispatch(selectRestaurant(restaurantId));
-    dispatch(loadDetailRestaurant());
+    dispatch(loadDetailRestaurant(restaurantId));
   }
 
   return (
     <ul>
       {restaurants.map((restaurant) => (
         <li key={restaurant.id}>
-          <Link to="/detail">{restaurant.name}</Link>
+          <Link to="/detail" onClick={() => handleClick(restaurant.id)}>{restaurant.name}</Link>
         </li>
       ))}
     </ul>

@@ -39,9 +39,9 @@ export function selectCategory(categoryId) {
   };
 }
 
-export function selectRestaurant(restaurantId) {
+export function setmenus(restaurantId) {
   return {
-    type: 'selectRestaurant',
+    type: 'setmenus',
     payload: { restaurantId },
   };
 }
@@ -75,7 +75,7 @@ export function loadRestaurants() {
   };
 }
 
-export function loadDetailRestaurant() {
+export function loadDetailRestaurant(restaurantId) {
   return async (dispatch, getState) => {
     const {
       selectedRestaurant: restaurant,
@@ -85,9 +85,9 @@ export function loadDetailRestaurant() {
       return;
     }
 
-    const restaurants = await fetchDetailRestaurant({
-      restaurantId: restaurant.id,
+    const restaurantMenus = await fetchDetailRestaurant({
+      restaurantId: restaurantId,
     });
-    dispatch(setRestaurants(restaurants));
+    dispatch(setmenus(restaurantMenus));
   };
 }
