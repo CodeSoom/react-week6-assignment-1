@@ -2,14 +2,16 @@ import React, { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
+import { useParams } from 'react-router-dom';
+
 import RestaurantsDetailContainer from '../containers/RestaurantsDetailContainer';
 
 import { loadRestaurantsDetail, resetRestaurantsDetail } from '../actions';
 
-export default function RestaurantsDetailPage({ match }) {
+export default function RestaurantsDetailPage() {
   const dispatch = useDispatch();
 
-  const { id } = match.params;
+  const { id } = useParams();
 
   useEffect(() => {
     dispatch(resetRestaurantsDetail());
