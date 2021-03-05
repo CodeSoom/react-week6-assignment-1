@@ -11,14 +11,17 @@ export default function RegionsContainer() {
     dispatch(selectRegion(id));
   }
 
-  const { regions } = useSelector((state) => ({
-    regions: state.regions
+  const { regions, selectedRegionId } = useSelector((state) => ({
+    regions: state.regions,
+    selectedRegionId: state.selectedRegionId,
   }));
 
   return (
-    <Regions
-      regions={regions}
-      onClick={handleClick}
-    />
+    <ul>
+      {regions.map(({ id, name }) => (
+        <button type="button" key={id} onClick={() => handleClick(id)}>
+        {`${name}${selectedRegionId === id ? '(v)':''}`}</button>
+      ))}
+    </ul>
   );
 }

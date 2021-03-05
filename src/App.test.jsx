@@ -11,13 +11,14 @@ import App from './App';
 jest.mock('react-redux');
 
 test('App', () => {
+  const REGION = regions[0];
   useSelector.mockImplementation((selector) => selector({
     regions,
+    selectedRegionId: REGION.id,
   }));
 
-  const { getByText } = render((
+  const { container } = render((
     <App />
   ));
-  expect(getByText('서울')).not.toBeNull();
-  expect(getByText('대전')).not.toBeNull();
+  expect(container).toHaveTextContent(REGION.name);
 });

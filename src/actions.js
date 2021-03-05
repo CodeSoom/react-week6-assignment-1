@@ -3,7 +3,7 @@ export function selectRegion(id) {
     {
       type: 'selectRegion',
       payload: {
-        id:1,
+        id,
       },
     }
   );
