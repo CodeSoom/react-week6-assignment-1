@@ -15,6 +15,7 @@ test('App', () => {
   useSelector.mockImplementation((selector) => selector({
     regions: [],
     categories: [],
+    restaurants: [],
   }));
 
   render((
