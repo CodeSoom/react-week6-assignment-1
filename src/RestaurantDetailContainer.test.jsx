@@ -46,12 +46,16 @@ describe('RestaurantDetailContainer', () => {
     it('renders restaurents detail', () => {
       const { queryByText } = renderRestaurantDetail();
 
-      expect(dispatch).toBeCalled();
-
       expect(queryByText('양천주가')).not.toBeNull();
       expect(queryByText('서울 강남구 123456')).not.toBeNull();
       expect(queryByText('메뉴')).not.toBeNull();
       expect(queryByText('비빔밥')).not.toBeNull();
+    });
+
+    it('loads restaurents detail', () => {
+      renderRestaurantDetail();
+
+      expect(dispatch).toBeCalled();
     });
   });
 });
