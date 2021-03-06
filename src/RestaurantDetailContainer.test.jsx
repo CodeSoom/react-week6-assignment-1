@@ -28,7 +28,7 @@ describe('RestaurantDetailContainer', () => {
     return render(
       <MemoryRouter initialEntries={[path]}>
         <Route
-          path="./restaurants/:id"
+          path="/restaurants/:id"
           component={RestaurantDetailContainer}
         />
       </MemoryRouter>,
@@ -36,7 +36,7 @@ describe('RestaurantDetailContainer', () => {
   }
 
   it('renders restaurant detail', () => {
-    const { container } = renderDetailPage({ path: './restaurants/1' })
+    const { container } = renderDetailPage({ path: '/restaurants/1' })
   
     expect(container).toHaveTextContent('양천주가');
     expect(container).toHaveTextContent('주소: 서울 강남구');
