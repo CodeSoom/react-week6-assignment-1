@@ -12,9 +12,9 @@ export default function RestaurantDetail({ restaurant }) {
             <ul>
               {
                 restaurant.menuItems.map((menu) => (
-                  <dd key={menu.id}>
+                  <li key={menu.id}>
                     {menu.name}
-                  </dd>
+                  </li>
                 ))
               }
             </ul>
