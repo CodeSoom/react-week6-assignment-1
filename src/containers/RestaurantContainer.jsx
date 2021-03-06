@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useSelector } from 'react-redux';
 
-import RestaurantDetail from '../RestaurantDetail';
+import RestaurantDetail from '../pages/restaurant/RestaurantDetail';
 
 import { get } from '../utils';
 

@@ -9,7 +9,7 @@ import Header from './Header';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import RestaurantsPage from './pages/RestaurantsPage';
-import RestaurantPage from './pages/RestaurantPage';
+import RestaurantPage from './pages/restaurant/RestaurantPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 export default function App() {

@@ -37,7 +37,7 @@ describe('RestaurantsPage', () => {
     ));
   }
 
-  it('loads restaurant initial data', () => {
+  it('loads initial restaurant', () => {
     renderRestaurantsPage();
 
     expect(dispatch).toBeCalled();
