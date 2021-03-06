@@ -81,7 +81,7 @@ describe('App', () => {
     });
   });
 
-  context('path가 Not Found 인 경우, ', () => {
+  context('path가 잘못 입력된 경우, ', () => {
     it('NotFound를 표시합니다.', () => {
       const { queryByText } = renderApp({ pathname: '/any_not_exist_url' });
 
