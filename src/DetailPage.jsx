@@ -12,7 +12,7 @@ export default function DetailPage({ match }) {
 
   useEffect(() => {
     dispatch(loadRestaurant(id));
-  }, [id]);
+  }, []);
 
   return (
     <DetailContainer />
