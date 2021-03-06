@@ -22,9 +22,9 @@ export default function RestaurantsPage() {
     <div>
       <RegionsContainer />
       <CategoriesContainer />
-      <BrowserRouter>
-        <RestaurantsContainer />
-      </BrowserRouter>
+
+      <RestaurantsContainer />
+
     </div>
   );
 }

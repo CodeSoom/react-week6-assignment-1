@@ -3,6 +3,9 @@ import React from 'react';
 import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
+
+import { BrowserRouter } from 'react-router-dom';
+
 import RestaurantsPage from './RestaurantsPage';
 
 describe('RestaurantsPage', () => {
@@ -23,7 +26,10 @@ describe('RestaurantsPage', () => {
   }));
 
   it('지역과 분류를 출력합니다.', () => {
-    const { queryByText } = render(<RestaurantsPage />);
+    const { queryByText } = render((
+      <BrowserRouter>
+        <RestaurantsPage />
+      </BrowserRouter>));
 
     expect(dispatch).toBeCalled();
 
