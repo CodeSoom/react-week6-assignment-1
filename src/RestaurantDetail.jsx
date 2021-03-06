@@ -7,16 +7,18 @@ export default function RestaurantDetail({ restaurant }) {
         <div>
           <h2>{restaurant.name}</h2>
           <p>{restaurant.address}</p>
-          <dl>
-            <dt>메뉴</dt>
-            {
-              restaurant.menuItems.map((menu) => (
-                <dd key={menu.id}>
-                  {menu.name}
-                </dd>
-              ))
-            }
-          </dl>
+          <div>
+            <h3>메뉴</h3>
+            <ul>
+              {
+                restaurant.menuItems.map((menu) => (
+                  <dd key={menu.id}>
+                    {menu.name}
+                  </dd>
+                ))
+              }
+            </ul>
+          </div>
         </div>
       ) : (
         <div>로딩중..</div>
