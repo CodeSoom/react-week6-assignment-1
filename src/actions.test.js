@@ -89,18 +89,11 @@ describe('actions', () => {
   describe('loadRestaurantInfo', () => {
     context('with restaurantId', () => {
       beforeEach(() => {
-        store = mockStore({
-          selectedRestaurant: {
-            id: 1,
-            name: '양천주가',
-            address: '서울 강남구 123456',
-            information: '양천주가 in 서울 강남구 123456',
-          },
-        });
+        store = mockStore({});
       });
 
       it('runs setRestaurantInfo', async () => {
-        await store.dispatch(loadRestaurantInfo());
+        await store.dispatch(loadRestaurantInfo(1));
 
         const actions = store.getActions();
 

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { MemoryRouter } from 'react-router-dom';
 
-import { render, fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -31,17 +31,5 @@ describe('RestaurantsContainer', () => {
     ));
 
     expect(container).toHaveTextContent('마법사주방');
-  });
-
-  it('loads clicked restaurant information', () => {
-    const { getByText } = render((
-      <MemoryRouter>
-        <RestaurantsContainer />
-      </MemoryRouter>
-    ));
-
-    fireEvent.click(getByText('마법사주방'));
-
-    expect(dispatch).toBeCalledTimes(2);
   });
 });

@@ -83,17 +83,13 @@ export function loadRestaurants() {
   };
 }
 
-export function loadRestaurantInfo() {
-  return async (dispatch, getState) => {
-    const { selectedRestaurant } = getState();
-
-    if (!selectedRestaurant) {
+export function loadRestaurantInfo(restaurantId) {
+  return async (dispatch) => {
+    if (restaurantId === undefined || restaurantId === null || restaurantId === '') {
       return;
     }
 
-    const restaurantInfo = await fetchRestaurantInfo({
-      restaurantId: selectedRestaurant.id,
-    });
+    const restaurantInfo = await fetchRestaurantInfo({ restaurantId });
     dispatch(setRestaurantInfo(restaurantInfo));
   };
 }

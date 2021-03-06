@@ -8,18 +8,16 @@ import RestaurantInfoContainer from './RestaurantInfoContainer';
 
 import {
   loadRestaurantInfo,
-  selectRestaurant,
 } from './actions';
 
 export default function RestaurantInfoPage() {
   const dispatch = useDispatch();
 
-  const restaurantId = useParams();
+  const { restaurantId } = useParams();
 
   useEffect(() => {
-    dispatch(selectRestaurant(restaurantId));
-    dispatch(loadRestaurantInfo());
-  });
+    dispatch(loadRestaurantInfo(restaurantId));
+  }, []);
 
   return (
     <RestaurantInfoContainer />
