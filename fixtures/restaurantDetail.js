@@ -1,6 +1,6 @@
-const restaurantDetail = { 
+const restaurantDetail = {
   id: 1,
-  name: '양천주가', 
+  name: '양천주가',
   address: '서울 강남구',
   menuItems: [
     {

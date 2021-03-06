@@ -6,15 +6,16 @@ export default function RestaurantDetailPage({ restaurantDetail }) {
   return (
     <div>
       <h2>{name}</h2>
-      <p>주소: {address}</p>
+      <p>
+        주소: {address}
+      </p>
       <h3>메뉴</h3>
-      { menuItems ?
-        (<ul>
-          {menuItems.map(({ id, name }) => (
-            <li key={id}>{name}</li>
+      { menuItems
+        ? <ul>
+          {menuItems.map(({ id, name: menuName }) => (
+            <li key={id}>{menuName}</li>
           ))}
-        </ul>)
-      : null}
+        </ul> : null}
     </div>
-  )
-};
+  );
+}

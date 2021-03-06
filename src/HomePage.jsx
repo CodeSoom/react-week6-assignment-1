@@ -12,5 +12,5 @@ export default function HomePage() {
         <li><Link to="/xxx">얘는뭐야</Link></li>
       </ul>
     </div>
-  )
+  );
 }

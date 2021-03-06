@@ -17,12 +17,12 @@ describe('RestaurantDetailContainer', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
-  })
+  });
 
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
     restaurantDetail,
-  }))
+  }));
 
   function renderDetailPage({ path }) {
     return render(
@@ -36,11 +36,10 @@ describe('RestaurantDetailContainer', () => {
   }
 
   it('renders restaurant detail', () => {
-    const { container } = renderDetailPage({ path: '/restaurants/1' })
-  
+    const { container } = renderDetailPage({ path: '/restaurants/1' });
     expect(container).toHaveTextContent('양천주가');
     expect(container).toHaveTextContent('주소: 서울 강남구');
     expect(container).toHaveTextContent('비빔밥');
     expect(container).toHaveTextContent('육개장');
-  })
-})
+  });
+});
