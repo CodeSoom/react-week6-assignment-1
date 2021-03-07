@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
+import { useDispatch } from 'react-redux';
 
 import { useParams } from 'react-router';
 
 export default function RestaurantDetail({ params }) {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({});
+  }, []);
+
   const { id } = params || useParams();
   return (
     <div>
