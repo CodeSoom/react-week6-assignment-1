@@ -2,16 +2,21 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantDetail from './RestaurantDetail';
+
+import restaurant from '../fixtures/restaurant';
 
 describe('RestaurantDetail', () => {
   const dispatch = jest.fn();
 
   beforeEach(() => {
     jest.clearAllMocks();
+
     useDispatch.mockImplementation(() => dispatch);
+
+    useSelector.mockImplementation((state) => state({ restaurant }));
   });
 
   const params = { id: '1' };
@@ -29,6 +34,6 @@ describe('RestaurantDetail', () => {
 
     expect(dispatch).toBeCalled();
 
-    expect(queryByText('레스토랑 1')).not.toBeNull();
+    expect(queryByText('양천주가')).not.toBeNull();
   });
 });
