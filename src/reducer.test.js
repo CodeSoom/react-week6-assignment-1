@@ -110,7 +110,7 @@ describe('reducer', () => {
       });
     });
   });
-  
+
   describe('setRestaurant', () => {
     it('changes restaurant', () => {
       const initialState = {
