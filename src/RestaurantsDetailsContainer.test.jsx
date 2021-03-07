@@ -10,6 +10,17 @@ import restaurantsDetails from '../fixtures/restaurantsDetails';
 
 import RestaurantsDetailsContainer from './RestaurantsDetailsContainer';
 
+function renderRestaurantsDetailsContainer(pathname) {
+  return render((
+    <MemoryRouter initialEntries={[pathname]}>
+      <Route
+        path="/restaurants/:id"
+        component={RestaurantsDetailsContainer}
+      />
+    </MemoryRouter>
+  ));
+}
+
 describe('RestaurantsDetails', () => {
   const dispatch = jest.fn();
 
@@ -19,14 +30,7 @@ describe('RestaurantsDetails', () => {
 
   context('경로가 존재하지 않을때,', () => {
     it('경로가 존재하지 않다는 페이지 Not Found를 표시합니다.', () => {
-      const { queryByText } = render((
-        <MemoryRouter initialEntries={['/restaurants/any_not_exist_url']}>
-          <Route
-            path="/restaurants/:id"
-            component={RestaurantsDetailsContainer}
-          />
-        </MemoryRouter>
-      ));
+      const { queryByText } = renderRestaurantsDetailsContainer('/restaurants/any_not_exist_url');
 
       expect(queryByText(/404 Not Found/)).not.toBeNull();
     });
@@ -34,14 +38,7 @@ describe('RestaurantsDetails', () => {
 
   context('경로가 존재할때,', () => {
     it('식당의 상세 정보를 표시합니다.', () => {
-      const { queryByText } = render((
-        <MemoryRouter initialEntries={['/restaurants/1']}>
-          <Route
-            path="/restaurants/:id"
-            component={RestaurantsDetailsContainer}
-          />
-        </MemoryRouter>
-      ));
+      const { queryByText } = renderRestaurantsDetailsContainer('/restaurants/1');
 
       expect(dispatch).toBeCalled();
 
