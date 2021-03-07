@@ -8,6 +8,8 @@ import {
   setCategories,
   loadRestaurants,
   setRestaurants,
+  loadRestaurantsDetail,
+  setRestaurantsDetail,
 } from './actions';
 
 const middlewares = [thunk];
@@ -16,12 +18,8 @@ const mockStore = configureStore(middlewares);
 jest.mock('./services/api');
 
 describe('actions', () => {
-  let store;
-
   describe('loadInitialData', () => {
-    beforeEach(() => {
-      store = mockStore({});
-    });
+    const store = mockStore({});
 
     it('runs setRegions and setCategories', async () => {
       await store.dispatch(loadInitialData());
@@ -35,11 +33,9 @@ describe('actions', () => {
 
   describe('loadRestaurants', () => {
     context('with selectedRegion and selectedCategory', () => {
-      beforeEach(() => {
-        store = mockStore({
-          selectedRegion: { id: 1, name: '서울' },
-          selectedCategory: { id: 1, name: '한식' },
-        });
+      const store = mockStore({
+        selectedRegion: { id: 1, name: '서울' },
+        selectedCategory: { id: 1, name: '한식' },
       });
 
       it('runs setRestaurants', async () => {
@@ -52,10 +48,8 @@ describe('actions', () => {
     });
 
     context('without selectedRegion', () => {
-      beforeEach(() => {
-        store = mockStore({
-          selectedCategory: { id: 1, name: '한식' },
-        });
+      const store = mockStore({
+        selectedCategory: { id: 1, name: '한식' },
       });
 
       it('does\'nt run any actions', async () => {
@@ -68,10 +62,8 @@ describe('actions', () => {
     });
 
     context('without selectedCategory', () => {
-      beforeEach(() => {
-        store = mockStore({
-          selectedRegion: { id: 1, name: '서울' },
-        });
+      const store = mockStore({
+        selectedRegion: { id: 1, name: '서울' },
       });
 
       it('does\'nt run any actions', async () => {
@@ -81,6 +73,18 @@ describe('actions', () => {
 
         expect(actions).toHaveLength(0);
       });
+    });
+  });
+
+  describe('loadRestaurantsDetail', () => {
+    const store = mockStore({});
+
+    it('loadRestaurantsDetail 액션을 실행한다.', async () => {
+      await store.dispatch(loadRestaurantsDetail({ restaurantsId: 2 }));
+
+      const actions = store.getActions();
+
+      expect(actions[0]).toEqual(setRestaurantsDetail({}));
     });
   });
 });
