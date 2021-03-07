@@ -65,7 +65,7 @@ describe('App', () => {
 
     context('/restaurants:id', () => {
       it('RestaurantDetail을 그려준다.', () => {
-        const { container } = renderApp({ path: '/restaurant/1' });
+        const { container } = renderApp({ path: '/restaurants/1' });
 
         expect(container).toHaveTextContent('헤더');
 
