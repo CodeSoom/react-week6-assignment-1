@@ -7,9 +7,9 @@ import { useDispatch } from 'react-redux';
 import RestaurantDetail from './RestaurantDetail';
 
 describe('RestaurantDetail', () => {
+  const dispatch = jest.fn();
   beforeEach(() => {
-    const dispatch = jest.fn();
-
+    jest.clearAllMocks();
     useDispatch.mockImplementation(() => dispatch);
   });
 
@@ -19,6 +19,8 @@ describe('RestaurantDetail', () => {
     const { queryByText } = render((
       <RestaurantDetail params={params} />
     ));
+
+    expect(dispatch).toBeCalled();
 
     expect(queryByText('레스토랑 1')).not.toBeNull();
   });
