@@ -31,5 +31,4 @@ describe('RestaurantDetail', () => {
 
     expect(queryByText('레스토랑 1')).not.toBeNull();
   });
-
 });
