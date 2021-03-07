@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 
 import RestaurantsDetails from './RestaurantsDetails';
 
-import restaurantsDetails from '../fixtures/restaurantsDetails';
+import restaurantsDetails from '../../fixtures/restaurantsDetails';
 
 function renderRestaurantsDetails(details) {
   return (

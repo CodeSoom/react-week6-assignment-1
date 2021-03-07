@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { MemoryRouter, Route } from 'react-router-dom';
 
-import restaurantsDetails from '../fixtures/restaurantsDetails';
+import restaurantsDetails from '../../fixtures/restaurantsDetails';
 
 import RestaurantsDetailsContainer from './RestaurantsDetailsContainer';
 

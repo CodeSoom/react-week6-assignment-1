@@ -4,13 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { useParams } from 'react-router-dom';
 
-import { get } from './utils';
+import { get } from '../utils';
 
-import { loadRestaurantsDetails } from './actions';
+import { loadRestaurantsDetails } from '../actions';
 
-import RestaurantsDetails from './RestaurantsDetails';
+import RestaurantsDetails from '../components/RestaurantsDetails';
 
-import NotFound from './NotFound';
+import NotFound from '../components/NotFound';
 
 export default function RestaurantsDetailsContainer() {
   const dispatch = useDispatch();
