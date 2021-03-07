@@ -68,8 +68,6 @@ describe('App', () => {
         const { container } = renderApp({ path: '/restaurants/1' });
 
         expect(container).toHaveTextContent('헤더');
-
-        expect(container).toHaveTextContent('레스토랑 1');
       });
     });
 
