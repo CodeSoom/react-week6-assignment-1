@@ -69,7 +69,7 @@ describe('App', () => {
 
         expect(container).toHaveTextContent('헤더');
 
-        expect(container).toHaveTextContent('서울 강남구 123456');
+        expect(container).toHaveTextContent('레스토랑 1');
       });
     });
 

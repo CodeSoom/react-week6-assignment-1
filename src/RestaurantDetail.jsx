@@ -1,11 +1,16 @@
 import React from 'react';
 
-export default function RestaurantDetail() {
+import { useParams } from 'react-router';
+
+export default function RestaurantDetail({ params }) {
+  const { id } = params || useParams();
   return (
     <div>
       <div>
         <p>
-          서울 강남구 123456
+          레스토랑
+          {' '}
+          {id}
         </p>
       </div>
     </div>
