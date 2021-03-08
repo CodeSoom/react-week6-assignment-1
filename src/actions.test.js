@@ -4,6 +4,7 @@ import CATEGORIES from '../fixtures/categories';
 
 import configureStore from 'redux-mock-store';
 import { configure } from '@testing-library/react';
+import RESTAURANTS from '../fixtures/restaurants';
 
 const mockStore = configureStore([]);
 
@@ -49,15 +50,26 @@ describe('Actions', () => {
       });
     });
   });
-  // describe('loadRegions', () => {
-  //   beforeEach(() => {
-  //     store = mockStore({});
-  //   });
-  //   it('create loadRegions action', async () => {
-  //     await store.dispatch(loadRegions);
+  describe('loadRestaurants', () => {
+    beforeEach(() => {
+      store = mockStore({});
+    });
+    it('create loadRestaurants action', async () => {
+      await store.dispatch(loadRestaurants);
 
-  //     const actions = store.getActions();
-  //     expect(actions[0]).toEqual(setRegions([]));
-  //   });
-  // });
+      const actions = store.getActions();
+      expect(actions[0]).toEqual(loadRestaurants([]));
+    });
+  });
+
+  describe('setRestaurants', () => {
+    it('create setRestaurants action', () => {
+      expect(setRestaurants(RESTAURANTS)).toEqual({
+        type: 'setRestaurants',
+        payload: {
+          restaurants: RESTAURANTS,
+        }
+      });
+    });
+  });
 });
