@@ -26,7 +26,7 @@ describe('CategoriesContainer', () => {
       useSelector.mockImplementation((selector) => selector(
         {
           categories,
-          selectedCategoryId: CATEGORY.id,
+          selectedCategory: CATEGORY,
         }
       ));
     });

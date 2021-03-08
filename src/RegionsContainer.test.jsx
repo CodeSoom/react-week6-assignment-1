@@ -25,7 +25,7 @@ describe('RegionsContainer', () => {
       useSelector.mockImplementation((selector) => selector(
         {
           regions,
-          selectedRegionId: REGION.id,
+          selectedRegion: REGION,
         }
       ));
     });
