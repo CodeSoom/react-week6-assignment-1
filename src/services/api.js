@@ -9,3 +9,9 @@ export async function fetchCategories() {
   const data = await response.json();
   return data;
 }
+export async function fetchRestaurants({ regionName, categoryId }) {
+  const response = await fetch('https://eatgo-customer-api.ahastudio.com/restaurants' + 
+    `?region=${regionName}&category=${categoryId}`);
+  const data = await response.json();
+  return data;
+}
