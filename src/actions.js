@@ -1,6 +1,8 @@
 import { fetchRegions,
   fetchCategories,
-  fetchRestaurants } from './services/api';
+  fetchRestaurants,
+  fetchRestaurant
+} from './services/api';
 
 export const selectRegion = (id) => (
     {
@@ -80,4 +82,9 @@ export function loadRestaurants() {
     const restaurants = await fetchRestaurants({ regionName: region.name, categoryId: category.id });
     dispatch(setRestaurants(restaurants));
   };
+}
+
+export async function loadRestaurant({restaurantId}) {
+  const restaurant = await fetchRestaurant({restaurantId});
+  return restaurant;
 }

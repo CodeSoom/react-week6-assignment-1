@@ -19,8 +19,10 @@ test('RestaurantPage', () => {
     restaurant: RESTAURANT,
   }));
 
+  const params = { id: '1' };
+
   const { container } = render((
-    <RestaurantPage />
+    <RestaurantPage params={params} />
   ));
   expect(container).toHaveTextContent(RESTAURANT.name);
   expect(container).toHaveTextContent(RESTAURANT.address);

@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import { useParams } from 'react-router-dom';
+import { loadRestaurant } from './actions';
 
-export default function RestaurantPage() {
+
+
+export default function RestaurantPage({ params }) {
   const dispatch = useDispatch();
   const { restaurant } = useSelector((state) => ({
     restaurant: state.restaurant,
   }));
   const { name, address, menuItems } = restaurant;
+  const { id } = params || useParams();
+
+  useEffect(() => {
+    dispatch(loadRestaurant({ restaurantId: id }));
+  });
   return (
     <div>
       <div>{name}</div>

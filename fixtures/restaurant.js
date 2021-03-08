@@ -11,4 +11,4 @@ const restaurant = {
   ],
 };
 
-export default restaurants;
+export default restaurant;
