@@ -46,7 +46,7 @@ describe('CategoriesContainer', () => {
         }
       ));
     });
-    it('renders categories with selected Category', () => {
+    it('renders categories without checked sign', () => {
       const { getByText } = render((
         <CategoriesContainer />
       ));

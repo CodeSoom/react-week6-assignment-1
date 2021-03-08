@@ -16,10 +16,9 @@ describe('RegionsContainer', () => {
   const dispatch = jest.fn();
 
   beforeEach(() => {
-    dispatch.mockClear(); //??
+    dispatch.mockClear();
     useDispatch.mockImplementation(() => dispatch);
   });
-  
 
   context('with selectedRegion', () => {
     beforeEach(() => {
@@ -30,7 +29,7 @@ describe('RegionsContainer', () => {
         }
       ));
     });
-    it('renders regions with selected region', () => {
+    it('renders regions with selected region that has checked sign ', () => {
       const { getByText } = render((
         <RegionsContainer />
       ));
@@ -46,13 +45,13 @@ describe('RegionsContainer', () => {
         }
       ));
     });
-    it('renders regions with selected region', () => {
+    it('renders regions without checked sign', () => {
       const { getByText } = render((
         <RegionsContainer />
       ));
       expect(getByText(REGION.name)).not.toBeNull();
       fireEvent.click(getByText(REGION.name));
       expect(dispatch).toBeCalled();
-    })
+    });
   });
 });
