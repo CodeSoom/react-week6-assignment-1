@@ -14,4 +14,8 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+  devServer: {
+    publicPath: '/',
+    historyApiFallback: true,
+  },
 };

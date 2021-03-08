@@ -7,13 +7,15 @@ import {
   setRegions,
   setCategories,
   loadRestaurants,
+  loadRestaurant,
   setRestaurants,
-} from './actions';
+  setRestaurant,
+} from '../actions';
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 
-jest.mock('./services/api');
+jest.mock('../../services/api');
 
 describe('actions', () => {
   let store;
@@ -80,6 +82,41 @@ describe('actions', () => {
         const actions = store.getActions();
 
         expect(actions).toHaveLength(0);
+      });
+    });
+  });
+
+  describe('loadRestaurant', () => {
+    context('with restaurantId', () => {
+      beforeEach(() => {
+        store = mockStore({
+          restaurant: {
+            id: 3,
+            categoryId: 4,
+            name: '마법사주방',
+            address: '서울 강남구 강남대로94길 9',
+            menuItems: [
+              {
+                id: 14,
+                restaurantId: 3,
+                name: '맛나는 거',
+              },
+              {
+                id: 15,
+                restaurantId: 3,
+                name: '짠 거',
+              },
+            ],
+          },
+        });
+      });
+
+      it('runs setRestaurant', async () => {
+        await store.dispatch(loadRestaurant());
+
+        const actions = store.getActions();
+
+        expect(actions[0]).toEqual(setRestaurant([]));
       });
     });
   });
