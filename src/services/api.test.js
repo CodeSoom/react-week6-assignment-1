@@ -40,7 +40,6 @@ describe('api', () => {
     });
     it('returns restaurants', async() => {
       const restaurants = await fetchRestaurants({ regionName, categoryId });
-
       expect(restaurants).toEqual(RESTAURANTS);
     });
   });

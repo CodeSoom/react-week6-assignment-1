@@ -18,6 +18,8 @@ import RESTAURANTS from '../fixtures/restaurants';
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 
+jest.mock('./services/api');
+
 describe('Actions', () => {
   let store;
 
@@ -89,7 +91,7 @@ describe('Actions', () => {
         await store.dispatch(loadRestaurants());
   
         const actions = store.getActions();
-        expect(actions[0]).toEqual(setRestaurants([]));
+        expect(actions).toHaveLength(1);
       });
     });
     context('without restaurant', () => {
@@ -97,7 +99,7 @@ describe('Actions', () => {
         store = mockStore({
           REGIONS,
           CATEGORIES,
-          selectedCategory: CATEGORIES[0] ,
+          selectedCategory: CATEGORIES[0],
         });
       });
       it('not call loadRestaurants action', async () => {
@@ -112,7 +114,7 @@ describe('Actions', () => {
         store = mockStore({
           REGIONS,
           CATEGORIES,
-          selectedRegion: REGIONS[0] ,
+          selectedRegion: REGIONS[0],
         });
       });
       it('not call loadRestaurants action', async () => {
