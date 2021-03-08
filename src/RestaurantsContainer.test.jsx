@@ -1,21 +1,35 @@
 import React from 'react';
 
+import { MemoryRouter } from 'react-router-dom';
+
 import { render } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantsContainer from './RestaurantsContainer';
 
-test('RestaurantsContainer', () => {
-  useSelector.mockImplementation((selector) => selector({
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
-  }));
+describe('RestaurantsContainer', () => {
+  const dispatch = jest.fn();
 
-  const { container } = render((
-    <RestaurantsContainer />
-  ));
+  beforeEach(() => {
+    jest.clearAllMocks();
 
-  expect(container).toHaveTextContent('마법사주방');
+    useDispatch.mockImplementation(() => dispatch);
+
+    useSelector.mockImplementation((selector) => selector({
+      restaurants: [
+        { id: 1, name: '마법사주방' },
+      ],
+    }));
+  });
+
+  it('renders restaurants', () => {
+    const { container } = render((
+      <MemoryRouter>
+        <RestaurantsContainer />
+      </MemoryRouter>
+    ));
+
+    expect(container).toHaveTextContent('마법사주방');
+  });
 });
