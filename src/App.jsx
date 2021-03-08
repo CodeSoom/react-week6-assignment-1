@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch } from 'react-router-dom';
 import RestaurantsPage from './RestaurantsPage';
 import AboutPage from './AboutPage';
 import NotFoundPage from './NotFoundPage';
@@ -7,11 +7,18 @@ import HomePage from './HomePage';
 
 export default function App() {
   return (
+    <div>
+      <h1>
+        <Link to='/'>헤더</Link>
+      </h1>
       <Switch>
         <Route exact path='/' component={HomePage} />
         <Route path='/about' component={AboutPage} />
-        <Route path='/restaurants' component={RestaurantsPage} />
+        <Route exact path='/restaurants' component={RestaurantsPage} />
+        <Route path='/restaurants/:id' component={AboutPage} />
         <Route component={NotFoundPage} />
       </Switch>
+    </div>
+      
   );
 }
