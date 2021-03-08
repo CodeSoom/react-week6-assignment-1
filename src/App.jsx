@@ -1,13 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import RestaurantsPage from './RestaurantsPage';
+import AboutPage from './AboutPage';
 
 function HomePage() {
   return <div>Home</div>
-}
-
-function AboutPage() {
-  return <div>About</div>
 }
 
 function NotFoundPage() {
