@@ -1,15 +1,30 @@
-import { selectRegion, setRegions, selectCategory, setCategories, } from './actions';
+import { selectRegion,
+  setRegions,
+  selectCategory,
+  setCategories,
+  setRestaurants,
+  loadRestaurants
+} from './actions';
+
+import thunk from 'redux-thunk';
+
 import REGIONS from '../fixtures/regions';
 import CATEGORIES from '../fixtures/categories';
 
 import configureStore from 'redux-mock-store';
-import { configure } from '@testing-library/react';
 import RESTAURANTS from '../fixtures/restaurants';
 
-const mockStore = configureStore([]);
+
+const middlewares = [thunk];
+const mockStore = configureStore(middlewares);
 
 describe('Actions', () => {
   let store;
+
+  beforeEach(() => {
+    store = mockStore({});
+  });
+
   describe('selectRegion', () => {
     it('create selectRegion Action', () => {
       expect(selectRegion(1)).toEqual({
@@ -50,18 +65,6 @@ describe('Actions', () => {
       });
     });
   });
-  describe('loadRestaurants', () => {
-    beforeEach(() => {
-      store = mockStore({});
-    });
-    it('create loadRestaurants action', async () => {
-      await store.dispatch(loadRestaurants);
-
-      const actions = store.getActions();
-      expect(actions[0]).toEqual(loadRestaurants([]));
-    });
-  });
-
   describe('setRestaurants', () => {
     it('create setRestaurants action', () => {
       expect(setRestaurants(RESTAURANTS)).toEqual({
@@ -72,4 +75,48 @@ describe('Actions', () => {
       });
     });
   });
+  describe('loadRestaurants', () => {
+    context('with restaurant and category', () => {
+      beforeEach(() => {
+        store = mockStore({
+          selectedRegion: REGIONS[0] ,
+          selectedCategory: CATEGORIES[0] ,
+        });
+      });
+      it('call loadRestaurants action', async () => {
+        await store.dispatch(loadRestaurants());
+  
+        const actions = store.getActions();
+        expect(actions[0]).toEqual(setRestaurants([]));
+      });
+    });
+    context('without restaurant', () => {
+      beforeEach(() => {
+        store = mockStore({
+          selectedCategory: CATEGORIES[0] ,
+        });
+      });
+      it('not call loadRestaurants action', async () => {
+        await store.dispatch(loadRestaurants());
+  
+        const actions = store.getActions();
+        expect(actions).toHaveLength(0);
+      });
+    });
+    context('without category', () => {
+      beforeEach(() => {
+        store = mockStore({
+          selectedRegion: REGIONS[0] ,
+        });
+      });
+      it('not call loadRestaurants action', async () => {
+        await store.dispatch(loadRestaurants());
+  
+        const actions = store.getActions();
+        expect(actions).toHaveLength(0);
+      });
+    });
+  });
+
+
 });
