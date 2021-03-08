@@ -7,13 +7,14 @@ export default function RegionsContainer() {
   const dispatch = useDispatch();
 
   function handleClick(id) {
+    console.log(selectRegion(id));
     dispatch(selectRegion(id));
     dispatch(loadRestaurants());
   }
 
-  const { regions, selectedRegionId } = useSelector((state) => ({
+  const { regions, selectedRegion } = useSelector((state) => ({
     regions: state.regions,
-    selectedRegionId: state.selectedRegionId,
+    selectedRegion: state.selectedRegion,
   }));
 
   return (
@@ -21,7 +22,7 @@ export default function RegionsContainer() {
       {regions.map(({ id, name }) => (
         <li key={id}>
           <button type="button" onClick={() => handleClick(id)}>
-          {`${name}${selectedRegionId === id ? '(v)':''}`}</button>
+          {`${name}${(selectedRegion ? selectedRegion.id : -1) === id ? '(v)':''}`}</button>
         </li>
       ))}
     </ul>

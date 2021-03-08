@@ -74,10 +74,12 @@ export function loadRestaurants() {
       selectedCategory: category,
     } = getState();
 
+    console.log(region, category);
     if(!region || !category) {
       return ;
     }
     const restaurants = await fetchRestaurants({ regionName: region.name, categoryId: category.id });
+    console.log(setRestaurants(restaurants));
     dispatch(setRestaurants(restaurants));
   };
 }

@@ -3,6 +3,7 @@ import regions from "../fixtures/regions";
 const defaultState = {
   regions: [],
   categories: [],
+  restaurants: [],
   selectedRegion: null,
   selectedCategoryId: null,
 };
