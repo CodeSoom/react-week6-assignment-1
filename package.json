@@ -6,6 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server",
     "test:unit": "jest",
+    "test-w": "jest --watchAll",
     "coverage": "npm run test:unit -- --coverage",
     "test:e2e": "codeceptjs run --steps",
     "test": "npm run coverage && start-server-and-test start http://localhost:8080 test:e2e",
@@ -30,6 +31,8 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.1",
+    "given2": "^2.1.7",
+    "history": "^5.0.0",
     "jest": "^26.0.1",
     "jest-plugin-context": "^2.9.0",
     "puppeteer": "^5.0.0",
@@ -44,6 +47,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
+    "react-router-dom": "^5.2.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0"
   }

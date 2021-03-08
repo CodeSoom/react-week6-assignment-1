@@ -1,32 +1,27 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
-import { useDispatch } from 'react-redux';
+import { Link, Route, Switch } from 'react-router-dom';
 
-import RegionsContainer from './RegionsContainer';
-import CategoriesContainer from './CategoriesContainer';
-import RestaurantsContainer from './RestaurantsContainer';
-
-import {
-  loadInitialData,
-} from './actions';
-
-// 0. 지역, 분류 목록을 얻기
-// 1. 지역 선택 - Regions <- API (0)
-// 2. 분류 선택 - Categories - 한식, 중식, 일식, ... <- API (0)
-// 3. 식당 목록 - Restaurants <- API (with region, category) -> 1, 2 모두 완료된 경우
+import HomePage from './pages/HomePage';
+import About from './pages/About';
+import RestaurantsPage from './pages/RestaurantsPage';
+import RestaurantDetailPage from './pages/RestaurantDetailPage';
+import NotFound from './pages/NotFound';
 
 export default function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(loadInitialData());
-  });
-
   return (
     <div>
-      <RegionsContainer />
-      <CategoriesContainer />
-      <RestaurantsContainer />
+      <Link to="/">
+        <h1>헤더</h1>
+      </Link>
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/restaurants" component={RestaurantsPage} />
+        <Route exact path="/restaurants/:id" component={RestaurantDetailPage} />
+        <Route path="*" component={NotFound} />
+      </Switch>
     </div>
+
   );
 }
