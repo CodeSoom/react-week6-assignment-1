@@ -13,6 +13,7 @@ export default function RestaurantsPage() {
   dispatch(loadCategories());
   return (
     <div>
+      <h2>Restaurants</h2>
       <RegionsContainer />
       <CategoriesContainer />
       <RestaurantsContainer />

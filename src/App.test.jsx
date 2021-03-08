@@ -19,35 +19,44 @@ describe('App', () => {
       restaurants: [],
     }));
   context('with path /', () => {
-    const { container } = render((
-      <MemoryRouter initialEntries={["/"]}>
-        <App />
-      </MemoryRouter>
-    ));
-    expect(container).toHaveTextContent('Home');
+    it('renders Home Page', () => {
+      const { container } = render((
+        <MemoryRouter initialEntries={["/"]}>
+          <App />
+        </MemoryRouter>
+      ));
+      expect(container).toHaveTextContent('Home');
+    });
   });
   context('with path /about', () => {
-    const { container } = render((
-      <MemoryRouter initialEntries={["/about"]}>
-        <App />
-      </MemoryRouter>
-    ));
-    expect(container).toHaveTextContent('About');
+    it('renders About Page', () => {
+      const { container } = render((
+        <MemoryRouter initialEntries={["/about"]}>
+          <App />
+        </MemoryRouter>
+      ));
+      expect(container).toHaveTextContent('About');
+    });
+    
   });
   context('with path /restaurants', () => {
-    const { container } = render((
-      <MemoryRouter initialEntries={["/restaurants"]}>
-        <App />
-      </MemoryRouter>
-    ));
-    expect(container).toHaveTextContent('Restaurants');
+    it('renders Restaurants Page', () => {
+      const { container } = render((
+        <MemoryRouter initialEntries={["/restaurants"]}>
+          <App />
+        </MemoryRouter>
+      ));
+      expect(container).toHaveTextContent('Restaurants');
+    });
   });
   context('with path /xxx', () => {
-    const { container } = render((
-      <MemoryRouter initialEntries={["/xxx"]}>
-        <App />
-      </MemoryRouter>
-    ));
-    expect(container).toHaveTextContent('404 NotFound');
+    it('renders Restaurants Page', () => {
+      const { container } = render((
+        <MemoryRouter initialEntries={["/xxx"]}>
+          <App />
+        </MemoryRouter>
+      ));
+      expect(container).toHaveTextContent('404 NotFound');
+    });
   });
 });
