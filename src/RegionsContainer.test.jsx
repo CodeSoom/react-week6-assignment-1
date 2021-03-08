@@ -27,9 +27,7 @@ describe('RegionsContainer', () => {
     });
 
     it('renders regions with selected region', () => {
-      const { container } = render((
-        <RegionsContainer />
-      ));
+      const { container } = render((<RegionsContainer />));
 
       expect(container).toHaveTextContent(`${SEOUL.name}(V)`);
     });
@@ -43,9 +41,7 @@ describe('RegionsContainer', () => {
     });
 
     it('renders regions', () => {
-      const { container, getByText } = render((
-        <RegionsContainer />
-      ));
+      const { container, getByText } = render((<RegionsContainer />));
 
       expect(container).toHaveTextContent(SEOUL.name);
 

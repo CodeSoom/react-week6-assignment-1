@@ -27,9 +27,7 @@ describe('CategoriesContainer', () => {
     });
 
     it('renders categories with selected category', () => {
-      const { container } = render((
-        <CategoriesContainer />
-      ));
+      const { container } = render((<CategoriesContainer />));
 
       expect(container).toHaveTextContent(`${KOREAN_FOOD.name}(V)`);
     });
@@ -43,9 +41,7 @@ describe('CategoriesContainer', () => {
     });
 
     it('renders categories with selected category', () => {
-      const { container, getByText } = render((
-        <CategoriesContainer />
-      ));
+      const { container, getByText } = render((<CategoriesContainer />));
 
       expect(container).toHaveTextContent(KOREAN_FOOD.name);
 
