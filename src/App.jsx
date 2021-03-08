@@ -2,14 +2,9 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import RestaurantsPage from './RestaurantsPage';
 import AboutPage from './AboutPage';
+import NotFoundPage from './NotFoundPage';
+import HomePage from './HomePage';
 
-function HomePage() {
-  return <div>Home</div>
-}
-
-function NotFoundPage() {
-  return <div>404 NotFound</div>
-}
 export default function App() {
   return (
       <Switch>
