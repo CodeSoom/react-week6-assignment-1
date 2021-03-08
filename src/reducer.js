@@ -40,6 +40,13 @@ const reducers = {
       categories,
     };
   },
+  setRestaurants(state, payload) {
+    const { restaurants } = payload;
+    return {
+      ...state,
+      restaurants,
+    };
+  },
 };
 
 function defaultReducer(state, payload) {

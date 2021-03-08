@@ -1,7 +1,8 @@
-import { selectRegion, selectCategory, setCategories, setRegions } from './actions';
+import { selectRegion, selectCategory, setCategories, setRegions, setRestaurants } from './actions';
 import reducer from './reducer';
 import regions from '../fixtures/regions';
 import categories from '../fixtures/categories';
+import restaurants from '../fixtures/restaurants';
 
 describe('reducer', () => {
   const REGION = regions[0];
@@ -20,6 +21,14 @@ describe('reducer', () => {
       const previousState = {};
       const state = reducer(previousState, setRegions(regions));
       expect(state.regions).toEqual(regions);
+    });
+  });
+
+  context('when action type is setRestaurants', () => {
+    it('set setRestaurants', () => {
+      const previousState = {};
+      const state = reducer(previousState, setRestaurants(restaurants));
+      expect(state.restaurants).toEqual(restaurants);
     });
   });
 
@@ -51,5 +60,6 @@ describe('reducer', () => {
       expect(state.selectedCategory).toEqual(CATEGORY);
     });
   });
+  
   
 });
