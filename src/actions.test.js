@@ -79,6 +79,8 @@ describe('Actions', () => {
     context('with restaurant and category', () => {
       beforeEach(() => {
         store = mockStore({
+          REGIONS,
+          CATEGORIES,
           selectedRegion: REGIONS[0] ,
           selectedCategory: CATEGORIES[0] ,
         });
@@ -93,6 +95,8 @@ describe('Actions', () => {
     context('without restaurant', () => {
       beforeEach(() => {
         store = mockStore({
+          REGIONS,
+          CATEGORIES,
           selectedCategory: CATEGORIES[0] ,
         });
       });
@@ -106,6 +110,8 @@ describe('Actions', () => {
     context('without category', () => {
       beforeEach(() => {
         store = mockStore({
+          REGIONS,
+          CATEGORIES,
           selectedRegion: REGIONS[0] ,
         });
       });
@@ -117,6 +123,4 @@ describe('Actions', () => {
       });
     });
   });
-
-
 });
