@@ -4,7 +4,9 @@ const defaultState = {
   regions: [],
   categories: [],
   restaurants: [],
-  restaurant: {},
+  restaurant: {
+    menuItems:[],
+  },
   selectedRegion: null,
   selectedCategoryId: null,
 };
@@ -47,6 +49,13 @@ const reducers = {
     return {
       ...state,
       restaurants,
+    };
+  },
+  setRestaurant(state, payload) {
+    const { restaurant } = payload;
+    return {
+      ...state,
+      restaurant,
     };
   },
 };

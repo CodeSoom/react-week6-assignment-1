@@ -3,7 +3,8 @@ import { selectRegion,
   selectCategory,
   setCategories,
   setRestaurants,
-  loadRestaurants
+  loadRestaurants,
+  setRestaurant,
 } from './actions';
 
 import thunk from 'redux-thunk';
@@ -43,6 +44,16 @@ describe('Actions', () => {
         type: 'setRegions',
         payload: {
           regions: REGIONS,
+        }
+      });
+    });
+  });
+  describe('setRestaurant', () => {
+    it('create setRestaurant action', () => {
+      expect(setRestaurant(RESTAURANTS[0])).toEqual({
+        type: 'setRestaurant',
+        payload: {
+          restaurant: RESTAURANTS[0],
         }
       });
     });

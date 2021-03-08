@@ -55,6 +55,17 @@ export const setRestaurants = (restaurants) => {
   );
 }
 
+export const setRestaurant = (restaurant) => {
+  return (
+    {
+      type: 'setRestaurant',
+      payload: {
+        restaurant
+      },
+    }
+  );
+}
+
 export function loadRegions() {
   return async (dispatch) => {
     const regions = await fetchRegions();
@@ -84,7 +95,9 @@ export function loadRestaurants() {
   };
 }
 
-export async function loadRestaurant({restaurantId}) {
-  const restaurant = await fetchRestaurant({restaurantId});
-  return restaurant;
+export function loadRestaurant({restaurantId}) {
+  return async (dispatch) => {
+    const restaurant = await fetchRestaurant({restaurantId});
+    dispatch(setRestaurant(restaurant));
+  }
 }

@@ -60,6 +60,4 @@ describe('reducer', () => {
       expect(state.selectedCategory).toEqual(CATEGORY);
     });
   });
-  
-  
 });
