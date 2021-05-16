@@ -1,34 +1,62 @@
 import React from 'react';
 
+import {
+  MemoryRouter,
+} from 'react-router-dom';
+
 import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
-test('App', () => {
-  const dispatch = jest.fn();
+describe('App', () => {
+  beforeEach(() => {
+    const dispath = jest.fn();
 
-  useDispatch.mockImplementation(() => dispatch);
+    useDispatch.mockImplementation(() => dispath);
+    useSelector.mockImplementation((selector) => selector({
+      regions: [
+        { id: 1, name: '서울' },
+      ],
+      categories: [],
+      restaurants: [],
+    }));
+  });
 
-  useSelector.mockImplementation((selector) => selector({
-    regions: [
-      { id: 1, name: '서울' },
-    ],
-    categories: [
-      { id: 1, name: '한식' },
-    ],
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
-  }));
+  function renderApp({ path }) {
+    return render((
+      <MemoryRouter initialEntries={[path]}>
+        <App />
+      </MemoryRouter>
+    ));
+  }
 
-  const { queryByText } = render((
-    <App />
-  ));
+  context('with path /', () => {
+    it('renders HomePage', () => {
+      const { container } = renderApp({ path: '/' });
+      expect(container).toHaveTextContent('Home');
+    });
+  });
 
-  expect(dispatch).toBeCalled();
+  context('with path /about', () => {
+    it('renders the about page', () => {
+      const { container } = renderApp({ path: '/about' });
+      expect(container).toHaveTextContent('화이팅!');
+    });
+  });
 
-  expect(queryByText('서울')).not.toBeNull();
-  expect(queryByText('한식')).not.toBeNull();
+  context('with path /restaurants', () => {
+    it('renders the restaurants page', () => {
+      const { container } = renderApp({ path: '/restaurants' });
+      expect(container).toHaveTextContent('서울');
+    });
+  });
+
+  context('with invalid path', () => {
+    it('renders the not found page', () => {
+      const { container } = renderApp({ path: '/xxx' });
+      expect(container).toHaveTextContent('404');
+    });
+  });
 });
