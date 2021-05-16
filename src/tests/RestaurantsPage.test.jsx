@@ -4,9 +4,13 @@ import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import App from './App';
+import {
+  MemoryRouter,
+} from 'react-router-dom';
 
-test('App', () => {
+import RestaurantsPage from '../pages/RestaurantsPage';
+
+test('RestaurantsPage', () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
@@ -24,7 +28,9 @@ test('App', () => {
   }));
 
   const { queryByText } = render((
-    <App />
+    <MemoryRouter>
+      <RestaurantsPage />
+    </MemoryRouter>
   ));
 
   expect(dispatch).toBeCalled();
