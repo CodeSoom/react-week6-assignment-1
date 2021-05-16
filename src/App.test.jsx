@@ -4,31 +4,79 @@ import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import { MemoryRouter } from 'react-router-dom';
+
 import App from './App';
 
-test('App', () => {
+function renderApp({ path }) {
+  return render((
+    <MemoryRouter initialEntries={[path]}>
+      <App />
+    </MemoryRouter>
+  ));
+}
+
+describe('App', () => {
   const dispatch = jest.fn();
 
-  useDispatch.mockImplementation(() => dispatch);
+  beforeEach(() => {
+    jest.clearAllMocks();
 
-  useSelector.mockImplementation((selector) => selector({
-    regions: [
-      { id: 1, name: '서울' },
-    ],
-    categories: [
-      { id: 1, name: '한식' },
-    ],
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
-  }));
+    useDispatch.mockImplementation(() => dispatch);
 
-  const { queryByText } = render((
-    <App />
-  ));
+    useSelector.mockImplementation((selector) => selector({
+      regions: [{ id: 1, name: '서울' }],
+      categories: [],
+      restaurants: [],
+    }));
+  });
 
-  expect(dispatch).toBeCalled();
+  describe('경로가', () => {
+    context('/', () => {
+      it('HomePage를 그려준다.', () => {
+        const { container } = renderApp({ path: '/' });
 
-  expect(queryByText('서울')).not.toBeNull();
-  expect(queryByText('한식')).not.toBeNull();
+        expect(container).toHaveTextContent('헤더');
+
+        expect(container).toHaveTextContent('About');
+        expect(container).toHaveTextContent('Restaurants');
+      });
+    });
+
+    context('/about', () => {
+      it('About을 그려준다.', () => {
+        const { container } = renderApp({ path: '/about' });
+
+        expect(container).toHaveTextContent('헤더');
+
+        expect(container).toHaveTextContent('About this..');
+      });
+    });
+
+    context('/restaurants', () => {
+      it('Restaurants 그려준다.', () => {
+        const { container } = renderApp({ path: '/restaurants' });
+
+        expect(container).toHaveTextContent('헤더');
+
+        expect(container).toHaveTextContent('서울');
+      });
+    });
+
+    context('/restaurants:id', () => {
+      it('RestaurantDetail을 그려준다.', () => {
+        const { container } = renderApp({ path: '/restaurants/1' });
+
+        expect(container).toHaveTextContent('헤더');
+      });
+    });
+
+    context('존재하지 않는 페이지인 경우', () => {
+      it('NotFoundPage 그려준다.', () => {
+        const { container } = renderApp({ path: '/wrong-path' });
+
+        expect(container).toHaveTextContent('해당 페이지가 존재하지 않습니다.');
+      });
+    });
+  });
 });
