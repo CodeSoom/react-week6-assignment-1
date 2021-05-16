@@ -1,34 +1,31 @@
 import React from 'react';
-
 import { render } from '@testing-library/react';
-
-import { useDispatch, useSelector } from 'react-redux';
+import { MemoryRouter } from 'react-router-dom';
 
 import App from './App';
 
-test('App', () => {
-  const dispatch = jest.fn();
+describe('App', () => {
+  context('requests path /', () => {
+    it('renders HomePage', () => {
+      const { container } = render((
+        <MemoryRouter initialEntries={['/']}>
+          <App />
+        </MemoryRouter>
+      ));
 
-  useDispatch.mockImplementation(() => dispatch);
+      expect(container.innerHTML).toMatch('Home');
+    });
+  });
 
-  useSelector.mockImplementation((selector) => selector({
-    regions: [
-      { id: 1, name: '서울' },
-    ],
-    categories: [
-      { id: 1, name: '한식' },
-    ],
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
-  }));
+  context('requests path /about', () => {
+    it('renders AboutPage', () => {
+      const { container } = render((
+        <MemoryRouter initialEntries={['/about']}>
+          <App />
+        </MemoryRouter>
+      ));
 
-  const { queryByText } = render((
-    <App />
-  ));
-
-  expect(dispatch).toBeCalled();
-
-  expect(queryByText('서울')).not.toBeNull();
-  expect(queryByText('한식')).not.toBeNull();
+      expect(container).toHaveTextContent('어바웃');
+    });
+  });
 });
