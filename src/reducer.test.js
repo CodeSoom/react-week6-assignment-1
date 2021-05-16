@@ -1,111 +1,63 @@
+import { selectRegion, selectCategory, setCategories, setRegions, setRestaurants } from './actions';
 import reducer from './reducer';
-
-import {
-  setRegions,
-  setCategories,
-  setRestaurants,
-  selectRegion,
-  selectCategory,
-} from './actions';
+import regions from '../fixtures/regions';
+import categories from '../fixtures/categories';
+import restaurants from '../fixtures/restaurants';
 
 describe('reducer', () => {
-  context('when previous state is undefined', () => {
-    const initialState = {
-      regions: [],
-      categories: [],
-      restaurants: [],
-      selectedRegion: null,
-      selectedCategory: null,
-    };
+  const REGION = regions[0];
+  const CATEGORY = categories[0];
 
-    it('returns initialState', () => {
-      const state = reducer(undefined, { type: 'action' });
-
-      expect(state).toEqual(initialState);
+  context('when action type is setCategories', () => {
+    it('set setCategories', () => {
+      const previousState = {};
+      const state = reducer(previousState, setCategories(categories));
+      expect(state.categories).toEqual(categories);
     });
   });
 
-  describe('setRegions', () => {
-    it('changes regions', () => {
-      const initialState = {
-        regions: [],
-      };
-
-      const regions = [
-        { id: 1, name: '서울' },
-      ];
-
-      const state = reducer(initialState, setRegions(regions));
-
-      expect(state.regions).toHaveLength(1);
+  context('when action type is setRegions', () => {
+    it('set setRegions', () => {
+      const previousState = {};
+      const state = reducer(previousState, setRegions(regions));
+      expect(state.regions).toEqual(regions);
     });
   });
 
-  describe('setCategories', () => {
-    it('changes categories', () => {
-      const initialState = {
-        categories: [],
-      };
-
-      const categories = [
-        { id: 1, name: '한식' },
-      ];
-
-      const state = reducer(initialState, setCategories(categories));
-
-      expect(state.categories).toHaveLength(1);
+  context('when action type is setRestaurants', () => {
+    it('set setRestaurants', () => {
+      const previousState = {};
+      const state = reducer(previousState, setRestaurants(restaurants));
+      expect(state.restaurants).toEqual(restaurants);
     });
   });
 
-  describe('setRestaurants', () => {
-    it('changes restaurants', () => {
-      const initialState = {
-        restaurants: [],
-      };
-
-      const restaurants = [
-        { id: 1, name: '마법사주방' },
-      ];
-
-      const state = reducer(initialState, setRestaurants(restaurants));
-
-      expect(state.restaurants).toHaveLength(1);
-    });
-  });
-
-  describe('selectRegion', () => {
-    it('changes selected region', () => {
-      const initialState = {
-        regions: [
-          { id: 1, name: '서울' },
-        ],
-        selectedRegion: null,
-      };
-
-      const state = reducer(initialState, selectRegion(1));
-
-      expect(state.selectedRegion).toEqual({
-        id: 1,
-        name: '서울',
+  context(`when action type doesn't existed `, () => {
+    it('return previousState state', () => {
+      const previousState = {};
+      const state = reducer(previousState, {
+        type: '??',
+        payment: {}
       });
+      expect(state).toEqual(previousState);
     });
   });
-
-  describe('selectCategory', () => {
-    it('changes selected category', () => {
-      const initialState = {
-        categories: [
-          { id: 1, name: '한식' },
-        ],
-        selectedCategory: null,
+  context('when action type is selectRegion', () => {
+    it('set selectedRegion', () => {
+      const previousState = {
+        regions
       };
-
-      const state = reducer(initialState, selectCategory(1));
-
-      expect(state.selectedCategory).toEqual({
-        id: 1,
-        name: '한식',
-      });
+      const state = reducer(previousState, selectRegion(REGION.id));
+      expect(state.selectedRegion).toEqual(REGION);
+    });
+  });
+  context('when action type is selectCategory', () => {
+    it('set selectedCategory', () => {
+      const previousState = {
+        categories
+      };
+      const state = reducer(previousState, selectCategory(CATEGORY.id));
+      expect(state.selectedCategory).toEqual(CATEGORY);
     });
   });
 });

@@ -2,20 +2,36 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
-
 import RestaurantsContainer from './RestaurantsContainer';
 
-test('RestaurantsContainer', () => {
-  useSelector.mockImplementation((selector) => selector({
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
-  }));
+import regions from '../fixtures/regions';
+import categories from '../fixtures/categories';
+import restaurants from '../fixtures/restaurants';
 
-  const { container } = render((
-    <RestaurantsContainer />
+import { useDispatch, useSelector } from 'react-redux';
+
+
+jest.mock('react-redux');
+
+test('RestaurantsContainer', () => {
+  const REGION = regions[0];
+  const CATEGORY = categories[0];
+  const RESTAURANT = restaurants[0];
+  const dispatch = jest.fn();
+
+  useDispatch.mockImplementation(() => dispatch);
+
+  useSelector.mockImplementation((selector) => selector(
+    {
+      restaurants,
+      selectedRegionId: REGION.id,
+      selectedCategoryId: CATEGORY.id,
+    }
   ));
 
-  expect(container).toHaveTextContent('마법사주방');
+  const { getByText } = render((
+    <RestaurantsContainer />
+  ));
+  
+  expect(getByText(RESTAURANT.name)).not.toBeNull();
 });

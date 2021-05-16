@@ -1,57 +1,58 @@
 import React from 'react';
 
-import { render, fireEvent } from '@testing-library/react';
-
-import { useDispatch, useSelector } from 'react-redux';
+import { fireEvent, render } from '@testing-library/react';
 
 import CategoriesContainer from './CategoriesContainer';
 
-import CATEGORIES from '../fixtures/categories';
+import categories from '../fixtures/categories';
+
+import { useDispatch, useSelector } from 'react-redux';
+
+
+jest.mock('react-redux');
 
 describe('CategoriesContainer', () => {
+  const CATEGORY = categories[0];
   const dispatch = jest.fn();
 
-  const KOREAN_FOOD = CATEGORIES[0];
-
   beforeEach(() => {
-    dispatch.mockClear();
+    dispatch.mockClear(); //??
     useDispatch.mockImplementation(() => dispatch);
   });
+  
 
   context('with selectedCategory', () => {
     beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({
-        categories: CATEGORIES,
-        selectedCategory: KOREAN_FOOD,
-      }));
+      useSelector.mockImplementation((selector) => selector(
+        {
+          categories,
+          selectedCategory: CATEGORY,
+        }
+      ));
     });
-
     it('renders categories with selected category', () => {
-      const { container } = render((
+      const { getByText } = render((
         <CategoriesContainer />
       ));
-
-      expect(container).toHaveTextContent(`${KOREAN_FOOD.name}(V)`);
-    });
+      expect(getByText(`${CATEGORY.name}(v)`)).not.toBeNull();
+    })
   });
 
   context('without selectedCategory', () => {
     beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({
-        categories: CATEGORIES,
-      }));
+      useSelector.mockImplementation((selector) => selector(
+        {
+          categories,
+        }
+      ));
     });
-
-    it('renders categories with selected category', () => {
-      const { container, getByText } = render((
+    it('renders categories without checked sign', () => {
+      const { getByText } = render((
         <CategoriesContainer />
       ));
-
-      expect(container).toHaveTextContent(KOREAN_FOOD.name);
-
-      fireEvent.click(getByText(KOREAN_FOOD.name));
-
+      expect(getByText(CATEGORY.name)).not.toBeNull();
+      fireEvent.click(getByText(CATEGORY.name));
       expect(dispatch).toBeCalled();
-    });
+    })
   });
 });

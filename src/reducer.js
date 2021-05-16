@@ -1,56 +1,72 @@
-import { equal } from './utils';
+import regions from "../fixtures/regions";
 
-const initialState = {
+const defaultState = {
   regions: [],
   categories: [],
   restaurants: [],
+  restaurant: {
+    menuItems:[],
+  },
   selectedRegion: null,
-  selectedCategory: null,
+  selectedCategoryId: null,
 };
 
+
+
 const reducers = {
-  setRegions(state, { payload: { regions } }) {
+  selectRegion(state, payload) {
+    const { regions } = state;
+    const { id } = payload;
+    return {
+      ...state,
+      selectedRegion: regions.find((region) => region.id === id),
+    };
+  },
+  setRegions(state, payload) {
+    const { regions } = payload;
     return {
       ...state,
       regions,
     };
   },
-
-  setCategories(state, { payload: { categories } }) {
+  selectCategory(state, payload) {
+    const { categories } = state;
+    const { id } = payload;
+    return {
+      ...state,
+      selectedCategory: categories.find((category) => category.id === id),
+    };
+  },
+  setCategories(state, payload) {
+    const { categories } = payload;
     return {
       ...state,
       categories,
     };
   },
-
-  setRestaurants(state, { payload: { restaurants } }) {
+  setRestaurants(state, payload) {
+    const { restaurants } = payload;
     return {
       ...state,
       restaurants,
     };
   },
-
-  selectRegion(state, { payload: { regionId } }) {
-    const { regions } = state;
+  setRestaurant(state, payload) {
+    const { restaurant } = payload;
     return {
       ...state,
-      selectedRegion: regions.find(equal('id', regionId)),
-    };
-  },
-
-  selectCategory(state, { payload: { categoryId } }) {
-    const { categories } = state;
-    return {
-      ...state,
-      selectedCategory: categories.find(equal('id', categoryId)),
+      restaurant,
     };
   },
 };
 
-function defaultReducer(state) {
+function defaultReducer(state, payload) {
   return state;
 }
 
-export default function reducer(state = initialState, action) {
-  return (reducers[action.type] || defaultReducer)(state, action);
-}
+const reducer = (state = defaultState, action) => {
+  const { type, payload } = action;
+  return (reducers[type] || defaultReducer)(state, payload);
+};
+
+export default reducer;

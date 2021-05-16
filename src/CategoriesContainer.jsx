@@ -1,40 +1,27 @@
 import React from 'react';
-
 import { useDispatch, useSelector } from 'react-redux';
 
-import {
-  selectCategory,
-  loadRestaurants,
-} from './actions';
-
-import { get } from './utils';
+import { selectCategory, loadRestaurants } from './actions';
 
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
 
-  const categories = useSelector(get('categories'));
-  const selectedCategory = useSelector(get('selectedCategory'));
-
-  function handleClick(categoryId) {
-    dispatch(selectCategory(categoryId));
+  function handleClick(id) {
+    dispatch(selectCategory(id));
     dispatch(loadRestaurants());
   }
 
+  const { categories, selectedCategory } = useSelector((state) => ({
+    categories: state.categories,
+    selectedCategory: state.selectedCategory,
+  }));
+
   return (
     <ul>
-      {categories.map((category) => (
-        <li key={category.id}>
-          <button
-            type="button"
-            onClick={() => handleClick(category.id)}
-          >
-            {category.name}
-            {selectedCategory ? (
-              <>
-                {category.id === selectedCategory.id ? '(V)' : null}
-              </>
-            ) : null}
-          </button>
+      {categories.map(({ id, name }) => (
+        <li key={id}>
+          <button type="button"  onClick={() => handleClick(id)}>
+        {`${name}${(selectedCategory ? selectedCategory.id : -1) === id ? '(v)':''}`}</button>
         </li>
       ))}
     </ul>

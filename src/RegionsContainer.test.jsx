@@ -1,17 +1,19 @@
 import React from 'react';
 
-import { render, fireEvent } from '@testing-library/react';
-
-import { useDispatch, useSelector } from 'react-redux';
+import { fireEvent, render } from '@testing-library/react';
 
 import RegionsContainer from './RegionsContainer';
 
-import REGIONS from '../fixtures/regions';
+import regions from '../fixtures/regions';
+
+import { useDispatch, useSelector } from 'react-redux';
+
+
+jest.mock('react-redux');
 
 describe('RegionsContainer', () => {
+  const REGION = regions[0];
   const dispatch = jest.fn();
-
-  const SEOUL = REGIONS[0];
 
   beforeEach(() => {
     dispatch.mockClear();
@@ -20,37 +22,35 @@ describe('RegionsContainer', () => {
 
   context('with selectedRegion', () => {
     beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({
-        regions: REGIONS,
-        selectedRegion: SEOUL,
-      }));
+      useSelector.mockImplementation((selector) => selector(
+        {
+          regions,
+          selectedRegion: REGION,
+        }
+      ));
     });
-
-    it('renders regions with selected region', () => {
-      const { container } = render((
+    it('renders regions with selected region that has checked sign ', () => {
+      const { getByText } = render((
         <RegionsContainer />
       ));
-
-      expect(container).toHaveTextContent(`${SEOUL.name}(V)`);
-    });
+      expect(getByText(`${REGION.name}(v)`)).not.toBeNull();
+    })
   });
 
   context('without selectedRegion', () => {
     beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({
-        regions: REGIONS,
-      }));
+      useSelector.mockImplementation((selector) => selector(
+        {
+          regions,
+        }
+      ));
     });
-
-    it('renders regions', () => {
-      const { container, getByText } = render((
+    it('renders regions without checked sign', () => {
+      const { getByText } = render((
         <RegionsContainer />
       ));
-
-      expect(container).toHaveTextContent(SEOUL.name);
-
-      fireEvent.click(getByText(SEOUL.name));
-
+      expect(getByText(REGION.name)).not.toBeNull();
+      fireEvent.click(getByText(REGION.name));
       expect(dispatch).toBeCalled();
     });
   });
