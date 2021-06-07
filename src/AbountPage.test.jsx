@@ -10,4 +10,5 @@ test('AboutPage', () => {
   ));
 
   expect(getByText('헤더')).not.toBeNull();
+  expect(getByText('About 페이지 입니다.')).not.toBeNull();
 });
