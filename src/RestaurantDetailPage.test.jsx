@@ -6,9 +6,21 @@ import {
   MemoryRouter,
 } from 'react-router-dom';
 
+import RESTAURANTINFORMATION from '../fixtures/restaurantInformation';
+
 import RestaurantDetailPage from './RestaurantDetailPage';
 
 test('RestaurantDetailPage', () => {
+  const mockFetch = (data) => {
+    global.fetch = jest.fn().mockResolvedValue({
+      async json() { return data; },
+    });
+  };
+
+  beforeEach(() => {
+    mockFetch(RESTAURANTINFORMATION);
+  });
+
   const { queryByText } = render((
     <MemoryRouter>
       <RestaurantDetailPage />

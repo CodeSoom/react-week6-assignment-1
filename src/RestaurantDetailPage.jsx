@@ -1,21 +1,36 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
-export default function RestaurantDetailPage() {
-  useEffect(() => {
-    // APi 호출 ...
+import {
+  fetchRestaurantInformation,
+} from './services/api';
+
+export default function RestaurantDetailPage(props) {
+  const [state, setState] = useState({
+    id: -1,
+    categoryId: -1,
+    name: '',
+    address: '',
+    menuItems: [],
+    reviews: [],
+    information: '',
+  });
+
+  useEffect(async () => {
+    const resultInformation = await fetchRestaurantInformation(props.match.params.id);
+    setState(resultInformation);
   }, []);
 
   return (
     <div>
-      <h1>{name}</h1>
+      <h1>{state.name}</h1>
       <p>
         주소:
         {' '}
-        {address}
+        {state.address}
       </p>
       <h2>메뉴</h2>
       <ul>
-        {menuItems.map((menuItem) => (
+        {state.menuItems.map((menuItem) => (
           <li key={menuItem.id}>
             {menuItem.name}
           </li>
