@@ -5,15 +5,11 @@ import App from './App';
 
 describe('App', () => {
   const dispatch = jest.fn();
+  const assignMock = jest.fn();
 
   function mockLocation({ pathname }) {
-    // NOTE: 왜 한번만 바뀌고 더 이상 안바뀌지 ?
-    global.window = Object.create(window);
-    Object.defineProperty(window, 'location', {
-      value: {
-        pathname,
-      },
-    });
+    delete window.location;
+    window.location = { assign: assignMock, pathname };
   }
 
   beforeEach(() => {
@@ -60,10 +56,10 @@ describe('App', () => {
       });
 
       it('renders the about page', () => {
-        const { getByRole } = render(<App />);
+        const { getByRole, getByText } = render(<App />);
 
-        expect(getByRole('link', { name: 'About' })).toBeInTheDocument();
-        expect(getByRole('link', { name: 'Restaurants' })).toBeInTheDocument();
+        expect(getByRole('heading', { name: 'About' })).toBeInTheDocument();
+        expect(getByText('About 페이지입니다.')).toBeInTheDocument();
       });
     });
 
