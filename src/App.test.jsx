@@ -1,9 +1,6 @@
 import React from 'react';
-
 import { render } from '@testing-library/react';
-
 import { MemoryRouter } from 'react-router-dom';
-
 import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
@@ -55,7 +52,6 @@ describe('App', () => {
     const { container } = renderApp({ path: '/about' });
 
     expect(container).toHaveTextContent('About');
-
   });
 
   it('renders Restaurants', () => {
