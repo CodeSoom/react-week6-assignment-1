@@ -2,13 +2,8 @@ import React from 'react';
 
 import RestaurantsPage from './RestaurantsPage';
 import HomePage from './HomePage';
+import AboutPage from './AboutPage';
 
-function AboutPage() {
-  return (
-    // Todo: ...
-    <></>
-  );
-}
 function NotFoundPage() {
   return (
   // Todo: ...
