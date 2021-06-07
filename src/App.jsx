@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
-import RegionsContainer from './RegionsContainer';
-import CategoriesContainer from './CategoriesContainer';
-import RestaurantsContainer from './RestaurantsContainer';
+import RegionsContainer from './container/RegionsContainer';
+import CategoriesContainer from './container/CategoriesContainer';
+import RestaurantsContainer from './container/RestaurantsContainer';
 
 import {
   loadInitialData,

@@ -2,9 +2,9 @@ import { render, fireEvent } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import RegionsContainer from './RegionsContainer';
+import RegionsContainer from '.';
 
-import REGIONS from '../fixtures/regions';
+import REGIONS from '../../../fixtures/regions';
 
 describe('RegionsContainer', () => {
   const dispatch = jest.fn();

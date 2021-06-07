@@ -1,4 +1,4 @@
-import reducer from './reducer';
+import reducer from '.';
 
 import {
   setRegions,
@@ -6,7 +6,7 @@ import {
   setRestaurants,
   selectRegion,
   selectCategory,
-} from './actions';
+} from '../actions';
 
 describe('reducer', () => {
   context('when previous state is undefined', () => {
