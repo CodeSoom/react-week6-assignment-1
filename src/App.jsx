@@ -7,7 +7,7 @@ import {
 
 // import RestaurantsPage from './RestaurantsPage';
 import HomePage from './HomePage';
-// import AboutPage from './AboutPage';
+import AboutPage from './AboutPage';
 // import NotFoundPage from './NotFoundPage';
 
 export default function App() {
@@ -21,7 +21,8 @@ export default function App() {
 
   return (
     <Switch>
-      <Route path="/" component={HomePage} />
+      <Route exact path="/" component={HomePage} />
+      <Route path="/about" component={AboutPage} />
       {/* <MyComponent /> */}
     </Switch>
   );
