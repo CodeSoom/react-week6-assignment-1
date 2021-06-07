@@ -5,9 +5,9 @@ import {
   Route,
 } from 'react-router-dom';
 
-// import RestaurantsPage from './RestaurantsPage';
 import HomePage from './HomePage';
 import AboutPage from './AboutPage';
+import RestaurantsPage from './RestaurantsPage';
 // import NotFoundPage from './NotFoundPage';
 
 export default function App() {
@@ -23,6 +23,7 @@ export default function App() {
     <Switch>
       <Route exact path="/" component={HomePage} />
       <Route path="/about" component={AboutPage} />
+      <Route path="/restaurants" component={RestaurantsPage} />
       {/* <MyComponent /> */}
     </Switch>
   );
