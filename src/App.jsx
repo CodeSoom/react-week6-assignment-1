@@ -2,6 +2,7 @@ import HomePage from './pages/Homepage';
 import AboutPage from './pages/AboutPage';
 import RestaurantsPage from './pages/RestaurantsPage';
 import NotFoundPage from './pages/NotFoundPage';
+import Header from './layout/Header';
 
 // 1. Header, HomePage, AboutPage, RestaurantsPage 생성 X
 // 2. Header, HomePage, AboutPage, RestaurantsPage 라우팅 적용 X
@@ -18,6 +19,9 @@ export default function App() {
   }[pathname] || NotFoundPage;
 
   return (
-    <MyComponent />
+    <div>
+      <Header />
+      <MyComponent />
+    </div>
   );
 }
