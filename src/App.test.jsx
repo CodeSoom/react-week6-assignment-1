@@ -66,4 +66,16 @@ describe('App', () => {
       expect(container).toHaveTextContent('양천주가');
     });
   });
+
+  context('without path', () => {
+    it('renders NotFoundPage', () => {
+      const { container } = render((
+        <MemoryRouter initialEntries={['']}>
+          <App />
+        </MemoryRouter>
+      ));
+
+      expect(container).toHaveTextContent('Not Found');
+    });
+  });
 });
