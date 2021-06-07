@@ -11,15 +11,21 @@ import {
 import App from './App';
 
 describe('App', () => {
-  beforeEach(() => {
-    const dispatch = jest.fn();
+  const dispatch = jest.fn();
 
+  beforeEach(() => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
-      regions: [],
-      categories: [],
-      restaurants: [],
+      regions: [
+        { id: 1, name: '서울' },
+      ],
+      categories: [
+        { id: 1, name: '한식' },
+      ],
+      restaurants: [
+        { id: 1, categoryId: 1, name: '양천주가' },
+      ],
     }));
   });
 
@@ -44,6 +50,20 @@ describe('App', () => {
       ));
 
       expect(container).toHaveTextContent('About');
+    });
+  });
+
+  context('with path /restaurants', () => {
+    it('renders RestaurantsPage', () => {
+      const { container } = render((
+        <MemoryRouter initialEntries={['/restaurants']}>
+          <App />
+        </MemoryRouter>
+      ));
+
+      expect(container).toHaveTextContent('서울');
+      expect(container).toHaveTextContent('한식');
+      expect(container).toHaveTextContent('양천주가');
     });
   });
 });
