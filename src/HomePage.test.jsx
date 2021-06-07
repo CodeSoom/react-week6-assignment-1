@@ -2,11 +2,15 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
+import { MemoryRouter } from 'react-router';
+
 import HomePage from './HomePage';
 
 test('HomePage', () => {
   const { getByText }= render((
-    <HomePage />
+    <MemoryRouter>
+      <HomePage />
+    </MemoryRouter>
   ));
 
   expect(getByText('Home')).not.toBeNull();
