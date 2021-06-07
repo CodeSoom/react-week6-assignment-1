@@ -23,43 +23,35 @@ describe('App', () => {
     }));
   });
 
-  it('renders Home', () => {
-    const { container } = render((
-      <MemoryRouter initialEntries={['/']}>
+  function renderApp({ path }) {
+    return render((
+      <MemoryRouter initialEntries={[path]}>
         <App />
       </MemoryRouter>
     ));
+  }
+
+  it('renders Home', () => {
+    const { container } = renderApp({ path: '/' });
 
     expect(container).toHaveTextContent('Home');
   });
 
   it('renders About', () => {
-    const { container } = render((
-      <MemoryRouter initialEntries={['/about']}>
-        <App />
-      </MemoryRouter>
-    ));
+    const { container } = renderApp({ path: '/about' });
 
     expect(container).toHaveTextContent('About');
 
   });
 
   it('renders Restaurants', () => {
-    const { container } = render((
-      <MemoryRouter initialEntries={['/restaurants']}>
-        <App />
-      </MemoryRouter>
-    ));
+    const { container } = renderApp({ path: '/restaurants' });
 
     expect(container).toHaveTextContent('서울');
   });
 
   it('renders Not Found', () => {
-    const { container } = render((
-      <MemoryRouter initialEntries={['/xxx']}>
-        <App />
-      </MemoryRouter>
-    ));
+    const { container } = renderApp({ path: '/xxx' });
 
     expect(container).toHaveTextContent('404 Not Found');
   });
