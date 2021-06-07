@@ -6,6 +6,6 @@ describe('Header', () => {
   it('renders "헤더" content', () => {
     const { getByRole } = render(<Header />);
 
-    getByRole('heading', { name: '헤더' });
+    expect(getByRole('heading', { name: '헤더' })).toBeInTheDocument();
   });
 });
