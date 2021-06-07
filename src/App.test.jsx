@@ -26,12 +26,24 @@ describe('App', () => {
   context('with path /', () => {
     it('renders HomePage', () => {
       const { container } = render((
-        <MemoryRouter>
+        <MemoryRouter initialEntries={['/']}>
           <App />
         </MemoryRouter>
       ));
 
       expect(container).toHaveTextContent('Home');
+    });
+  });
+
+  context('with path /about', () => {
+    it('renders AboutPage', () => {
+      const { container } = render((
+        <MemoryRouter initialEntries={['/about']}>
+          <App />
+        </MemoryRouter>
+      ));
+
+      expect(container).toHaveTextContent('About');
     });
   });
 });
