@@ -31,7 +31,6 @@ describe('App', () => {
   it('fetches categories and regions', () => {
     render(<App />);
 
-    expect(dispatch).toBeCalled();
-    expect(dispatch).toBeCalled();
+    expect(dispatch).toBeCalledTimes(2);
   });
 });
