@@ -10,7 +10,7 @@ export default function App() {
   useEffect(() => {
     dispatch(loadCategories());
     dispatch(loadRegions());
-  });
+  }, []);
 
   return (
     <RestaurantsPage />
