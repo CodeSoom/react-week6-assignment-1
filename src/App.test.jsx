@@ -70,7 +70,7 @@ describe('App', () => {
   context('without path', () => {
     it('renders NotFoundPage', () => {
       const { container } = render((
-        <MemoryRouter initialEntries={['']}>
+        <MemoryRouter initialEntries={['/xxx']}>
           <App />
         </MemoryRouter>
       ));

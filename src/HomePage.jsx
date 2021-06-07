@@ -11,6 +11,7 @@ export default function HomePage() {
       <ul>
         <li><Link to="/about">About</Link></li>
         <li><Link to="/restaurants">Restaurants</Link></li>
+        <li><Link to="/xxx">무엇이든 물어보살</Link></li>
       </ul>
     </div>
   );
