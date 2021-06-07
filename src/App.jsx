@@ -17,7 +17,7 @@ export default function App() {
     '/about': AboutPage,
     '/restaurants': RestaurantsPage,
   }[pathname] || NotFoundPage;
-  
+
   return (
     <Switch>
       <MyComponent />
