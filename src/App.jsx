@@ -3,13 +3,8 @@ import React from 'react';
 import RestaurantsPage from './RestaurantsPage';
 import HomePage from './HomePage';
 import AboutPage from './AboutPage';
+import NotFoundPage from './NotFoundPage';
 
-function NotFoundPage() {
-  return (
-  // Todo: ...
-    <></>
-  );
-}
 export default function App() {
   const { location: { pathname } } = window;
 
@@ -22,14 +17,4 @@ export default function App() {
   return (
     <MyComponent />
   );
-
-  // if (pathname === '/') {
-  // return (
-  // <p>Home</p>
-  // );
-  // }
-
-  // return (
-  // <RestaurantsPage />
-  // );
 }

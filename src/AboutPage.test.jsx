@@ -7,5 +7,5 @@ import AboutPage from './AboutPage';
 test('AboutPage', () => {
   const { queryByText } = render(<AboutPage />);
 
-  expect(queryByText(/About/)).not.toBeNull();
+  expect(queryByText('About')).not.toBeNull();
 });
