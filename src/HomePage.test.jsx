@@ -13,10 +13,10 @@ test('HomePage', () => {
   expect(getByText('Home')).toContainHTML('h2');
 
   expect(getByText('About')).not.toBeNull();
-  expect(getByText('About')).toContainHTML('a');
-  expect(getByText('About')).toHaveAttribute('href', '/about');
+  expect(getByText('About').closest('a')).toContainHTML('a');
+  expect(getByText('About').closest('a')).toHaveAttribute('href', '/about');
 
   expect(getByText('Restaurants')).not.toBeNull();
-  expect(getByText('Restaurants')).toContainHTML('a');
-  expect(getByText('Restaurants')).toHaveAttribute('href', '/restaurants');
+  expect(getByText('Restaurants').closest('a')).toContainHTML('a');
+  expect(getByText('Restaurants').closest('a')).toHaveAttribute('href', '/restaurants');
 });
