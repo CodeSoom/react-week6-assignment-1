@@ -67,7 +67,7 @@ describe('App', () => {
     });
   });
 
-  context('without path', () => {
+  context('with invalid path', () => {
     it('renders NotFoundPage', () => {
       const { container } = render((
         <MemoryRouter initialEntries={['/xxx']}>
