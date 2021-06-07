@@ -1,8 +1,11 @@
 import React from 'react';
 
+import HeaderPage from './HeaderPage';
+
 export default function HomePage() {
   return (
     <>
+      <HeaderPage />
       <p>Home</p>
       <ul>
         <li>

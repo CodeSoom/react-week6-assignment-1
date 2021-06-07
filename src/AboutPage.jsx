@@ -1,7 +1,12 @@
 import React from 'react';
 
+import HeaderPage from './HeaderPage';
+
 export default function AboutPage() {
   return (
-    <p>About...</p>
+    <>
+      <HeaderPage />
+      <p>About...</p>
+    </>
   );
 }

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
+import HeaderPage from './HeaderPage';
 import RegionsContainer from './RegionsContainer';
 import CategoriesContainer from './CategoriesContainer';
 import RestaurantsContainer from './RestaurantsContainer';
@@ -19,6 +20,7 @@ export default function RestaurantsPage() {
 
   return (
     <div>
+      <HeaderPage />
       <RegionsContainer />
       <CategoriesContainer />
       <RestaurantsContainer />

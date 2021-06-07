@@ -1,7 +1,12 @@
 import React from 'react';
 
+import HeaderPage from './HeaderPage';
+
 export default function NotFoundPage() {
   return (
-    <p>404 Not Found</p>
+    <>
+      <HeaderPage />
+      <p>404 Not Found</p>
+    </>
   );
 }
