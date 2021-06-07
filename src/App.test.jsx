@@ -39,6 +39,8 @@ describe('App', () => {
     ));
 
     expect(getByText('헤더')).not.toBeNull();
+    expect(getByText('헤더')).toContainHTML('a');
+    expect(getByText('헤더')).toHaveAttribute('href', '/');
   });
 
   it('renders Home', () => {
