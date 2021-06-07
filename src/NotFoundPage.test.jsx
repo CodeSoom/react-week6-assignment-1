@@ -15,5 +15,5 @@ test('NotFoundPage', () => {
     </MemoryRouter>
   ));
 
-  expect(queryByText('Not')).not.toBeNull();
+  expect(queryByText(/Not/)).not.toBeNull();
 });
