@@ -1,8 +1,8 @@
 import React from 'react';
 
 import {
-  BrowserRouter,
   Switch,
+  Route,
 } from 'react-router-dom';
 
 import RestaurantsPage from './RestaurantsPage';
@@ -11,19 +11,18 @@ import AboutPage from './AboutPage';
 import NotFoundPage from './NotFoundPage';
 
 export default function App() {
-  const { location: { pathname } } = window;
+  // const { location: { pathname } } = window;
 
-  const MyComponent = {
-    '/': HomePage,
-    '/about': AboutPage,
-    '/restaurants': RestaurantsPage,
-  }[pathname] || NotFoundPage;
+  // const MyComponent = {
+  // '/': HomePage,
+  // '/about': AboutPage,
+  // '/restaurants': RestaurantsPage,
+  // }[pathname] || NotFoundPage;
 
   return (
-    <BrowserRouter>
-      <Switch>
-        <MyComponent />
-      </Switch>
-    </BrowserRouter>
+    <Switch>
+      <Route path="/" component={HomePage} />
+      {/* <MyComponent /> */}
+    </Switch>
   );
 }
