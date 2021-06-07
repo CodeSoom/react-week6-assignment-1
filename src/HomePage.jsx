@@ -6,7 +6,7 @@ export default function HomePage() {
   return (
     <>
       <HeaderPage />
-      <p>Home</p>
+      <h2>Home</h2>
       <ul>
         <li>
           <a href='/about'>About</a>
