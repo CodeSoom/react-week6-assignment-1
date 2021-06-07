@@ -67,8 +67,8 @@ describe('App', () => {
     });
   });
 
-  context('with path /restaurants/restaurants.id', () => {
-    it('renders RestaurantsDetailPage', () => {
+  context('with path /restaurants/:id', () => {
+    it('renders RestaurantDetailPage', () => {
       const { container } = render((
         <MemoryRouter initialEntries={['/restaurants/1']}>
           <App />
