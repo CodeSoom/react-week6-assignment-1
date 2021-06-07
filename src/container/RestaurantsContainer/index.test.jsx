@@ -11,9 +11,9 @@ test('RestaurantsContainer', () => {
     ],
   }));
 
-  const { container } = render((
+  const { getByRole } = render((
     <RestaurantsContainer />
   ));
 
-  expect(container).toHaveTextContent('마법사주방');
+  expect(getByRole('link', { name: '마법사주방' })).toBeInTheDocument();
 });

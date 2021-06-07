@@ -9,7 +9,11 @@ export default function RestaurantsContainer() {
     <ul>
       {restaurants.map((restaurant) => (
         <li key={restaurant.id}>
-          {restaurant.name}
+          <a
+            href={`${window.location.href}/${restaurant.id}`}
+          >
+            {restaurant.name}
+          </a>
         </li>
       ))}
     </ul>
