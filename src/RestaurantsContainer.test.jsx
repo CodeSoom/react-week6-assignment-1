@@ -27,13 +27,17 @@ describe('RestaurantsContainer', () => {
     expect(container).toHaveTextContent('마법사주방');
   });
 
-  context('with path /restaurantDetail', () => {
-    const { container } = render((
-      <MemoryRouter initialEntries={['/restaurantDetail']}>
-        <RestaurantsContainer />
-      </MemoryRouter>
-    ));
+  context('with path /restaurants/Id', () => {
+    it('renders restaurantDetilPage', () => {
+      const { container } = render((
+        <MemoryRouter initialEntries={['/restaurants/1']}>
+          <RestaurantsContainer />
+        </MemoryRouter>
+      ));
 
-    expect(container).toHaveTextContent('메뉴');
+      expect(container).toHaveTextContent('Not Found');
+      // expect(container).toHaveTextContent('마법사주방');
+      // expect(container).toHaveTextContent('메뉴');
+    });
   });
 });
