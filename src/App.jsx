@@ -10,17 +10,12 @@ import NotFoundPage from './NotFoundPage';
 import AboutPage from './AboutPage';
 
 export default function App() {
-  const { location: { pathname } } = window;
-
-  const MyComponent = {
-    '/': HomePage,
-    '/about': AboutPage,
-    '/restaurants': RestaurantsPage,
-  }[pathname] || NotFoundPage;
-
   return (
     <Switch>
-      <MyComponent />
+      <Route exact path='/' component={HomePage} />
+      <Route path='/about' component={AboutPage} />
+      <Route path='/restaurants' component={RestaurantsPage} />
+      <Route component={NotFoundPage} />
     </Switch>
   );
 }
