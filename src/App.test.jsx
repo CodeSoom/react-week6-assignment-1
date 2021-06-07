@@ -8,8 +8,8 @@ describe('App', () => {
   const assignMock = jest.fn();
 
   function mockLocation({ pathname }) {
-    delete window.location;
-    window.location = { assign: assignMock, pathname };
+    delete global.location;
+    global.location = { assign: assignMock, pathname };
   }
 
   beforeEach(() => {
