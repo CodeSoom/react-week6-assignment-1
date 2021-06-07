@@ -5,7 +5,10 @@ import { render } from '@testing-library/react';
 import HomePage from './HomePage';
 
 test('HomePage', () => {
-  render((
+  const { getByText }= render((
     <HomePage />
   ));
+
+  expect(getByText('About')).toBeNull();
+  expect(getByText('Restaurants')).toBeNull();
 });
