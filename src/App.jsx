@@ -1,4 +1,8 @@
 import React from 'react';
+import {
+  Switch,
+  Route,
+} from 'react-router';
 
 import RestaurantsPage from './RestaurantsPage';
 import HomePage from './HomePage';
@@ -13,8 +17,10 @@ export default function App() {
     '/about': AboutPage,
     '/restaurants': RestaurantsPage,
   }[pathname] || NotFoundPage;
-
+  
   return (
-    <MyComponent />
+    <Switch>
+      <MyComponent />
+    </Switch>
   );
 }
