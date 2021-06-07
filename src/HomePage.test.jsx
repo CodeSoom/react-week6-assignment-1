@@ -9,6 +9,6 @@ test('HomePage', () => {
     <HomePage />
   ));
 
-  expect(getByText('About')).toBeNull();
-  expect(getByText('Restaurants')).toBeNull();
+  expect(getByText('About')).not.toBeNull();
+  expect(getByText('Restaurants')).not.toBeNull();
 });
