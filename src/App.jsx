@@ -1,13 +1,8 @@
 import React from 'react';
 
 import RestaurantsPage from './RestaurantsPage';
+import HomePage from './HomePage';
 
-function HomePage() {
-  return (
-  // Todo: ...
-    <></>
-  );
-}
 function AboutPage() {
   return (
     // Todo: ...
