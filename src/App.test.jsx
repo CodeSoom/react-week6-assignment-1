@@ -31,6 +31,16 @@ describe('App', () => {
     ));
   }
 
+  it('renders header', () => {
+    const { getByText } = render((
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
+    ));
+
+    expect(getByText('헤더')).not.toBeNull();
+  });
+
   it('renders Home', () => {
     const { container } = renderApp({ path: '/' });
 
