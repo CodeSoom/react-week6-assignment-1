@@ -5,10 +5,10 @@ import {
   Route,
 } from 'react-router-dom';
 
-import RestaurantsPage from './RestaurantsPage';
+// import RestaurantsPage from './RestaurantsPage';
 import HomePage from './HomePage';
-import AboutPage from './AboutPage';
-import NotFoundPage from './NotFoundPage';
+// import AboutPage from './AboutPage';
+// import NotFoundPage from './NotFoundPage';
 
 export default function App() {
   // const { location: { pathname } } = window;
