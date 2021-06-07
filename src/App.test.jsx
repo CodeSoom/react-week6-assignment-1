@@ -67,6 +67,20 @@ describe('App', () => {
     });
   });
 
+  context('with path /restaurants/restaurants.id', () => {
+    it('renders RestaurantsDetailPage', () => {
+      const { container } = render((
+        <MemoryRouter initialEntries={['/restaurants/1']}>
+          <App />
+        </MemoryRouter>
+      ));
+
+      expect(container).toHaveTextContent('양천주가');
+      expect(container).toHaveTextContent('주소');
+      expect(container).toHaveTextContent('메뉴');
+    });
+  });
+
   context('with invalid path', () => {
     it('renders NotFoundPage', () => {
       const { container } = render((
