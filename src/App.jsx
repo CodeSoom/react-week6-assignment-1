@@ -1,14 +1,7 @@
-import { useEffect } from 'react';
-
-import { useDispatch } from 'react-redux';
-
-import RegionsContainer from './container/RegionsContainer';
-import CategoriesContainer from './container/CategoriesContainer';
-import RestaurantsContainer from './container/RestaurantsContainer';
-
-import {
-  loadInitialData,
-} from './actions';
+import HomePage from './pages/Homepage';
+import AboutPage from './pages/AboutPage';
+import RestaurantsPage from './pages/RestaurantsPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 // 1. Header, HomePage, AboutPage, RestaurantsPage 생성
 // 2. Header, HomePage, AboutPage, RestaurantsPage 라우팅 적용
@@ -16,17 +9,15 @@ import {
 // 4. RestaurantDetailPage 라우팅 적용
 
 export default function App() {
-  const dispatch = useDispatch();
+  const { location: { pathname } } = window;
 
-  useEffect(() => {
-    dispatch(loadInitialData());
-  });
+  const MyComponent = {
+    '/': HomePage,
+    '/about': AboutPage,
+    '/restaurants': RestaurantsPage,
+  }[pathname] || NotFoundPage;
 
   return (
-    <div>
-      <RegionsContainer />
-      <CategoriesContainer />
-      <RestaurantsContainer />
-    </div>
+    <MyComponent />
   );
 }
