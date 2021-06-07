@@ -6,7 +6,7 @@ export default function AboutPage() {
   return (
     <>
       <HeaderPage />
-      <p>About...</p>
+      <p>About 페이지 입니다.</p>
     </>
   );
 }
