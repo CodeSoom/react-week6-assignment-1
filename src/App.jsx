@@ -1,5 +1,10 @@
 import React from 'react';
 
+import {
+  BrowserRouter,
+  Switch,
+} from 'react-router-dom';
+
 import RestaurantsPage from './RestaurantsPage';
 import HomePage from './HomePage';
 import AboutPage from './AboutPage';
@@ -9,12 +14,16 @@ export default function App() {
   const { location: { pathname } } = window;
 
   const MyComponent = {
-    '/restaurants': RestaurantsPage,
     '/': HomePage,
     '/about': AboutPage,
+    '/restaurants': RestaurantsPage,
   }[pathname] || NotFoundPage;
 
   return (
-    <MyComponent />
+    <BrowserRouter>
+      <Switch>
+        <MyComponent />
+      </Switch>
+    </BrowserRouter>
   );
 }
