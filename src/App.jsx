@@ -11,11 +11,14 @@ import AboutPage from './AboutPage';
 
 export default function App() {
   return (
-    <Switch>
-      <Route exact path='/' component={HomePage} />
-      <Route path='/about' component={AboutPage} />
-      <Route path='/restaurants' component={RestaurantsPage} />
-      <Route component={NotFoundPage} />
-    </Switch>
+    <>
+      <h1>헤더</h1>
+      <Switch>
+        <Route exact path='/' component={HomePage} />
+        <Route path='/about' component={AboutPage} />
+        <Route path='/restaurants' component={RestaurantsPage} />
+        <Route component={NotFoundPage} />
+      </Switch>
+    </>
   );
 }

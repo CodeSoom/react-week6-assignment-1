@@ -9,8 +9,6 @@ test('HomePage', () => {
     <HomePage />
   ));
 
-  expect(getByText('헤더')).not.toBeNull();
-
   expect(getByText('Home')).not.toBeNull();
   expect(getByText('Home')).toContainHTML('h2');
 
