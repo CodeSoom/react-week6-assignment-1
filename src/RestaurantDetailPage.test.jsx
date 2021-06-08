@@ -24,8 +24,14 @@ describe('RestaurantDetailPage', () => {
       },
     }));
 
+    const match = {
+      params: {
+        restaurantId: 1,
+      },
+    };
+
     const { getByText } = render((
-      <RestaurantDetailPage />
+      <RestaurantDetailPage match={match} />
     ));
 
     expect(getByText(/서울 강남구/)).not.toBeNull();

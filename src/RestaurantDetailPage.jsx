@@ -1,11 +1,20 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
-export default function RestaurantDetailPage() {
+import { loadRestaurant } from './actions';
+
+export default function RestaurantDetailPage({ match }) {
   const { name, address, menuItems } = useSelector((state) => ({
     name: state.restaurant.name,
     address: state.restaurant.address,
     menuItems: state.restaurant.menuItems,
   }));
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadRestaurant(match.params.restaurantId));
+  }, []);
 
   return (
     <>
