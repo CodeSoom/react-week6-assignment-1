@@ -1,4 +1,5 @@
 import reducer from '.';
+import restaurant from '../../fixtures/restaurant';
 
 import {
   setRegions,
@@ -6,6 +7,7 @@ import {
   setRestaurants,
   selectRegion,
   selectCategory,
+  setRestaurant,
 } from '../actions';
 
 describe('reducer', () => {
@@ -14,6 +16,7 @@ describe('reducer', () => {
       regions: [],
       categories: [],
       restaurants: [],
+      restaurant: {},
       selectedRegion: null,
       selectedCategory: null,
     };
@@ -70,6 +73,18 @@ describe('reducer', () => {
       const state = reducer(initialState, setRestaurants(restaurants));
 
       expect(state.restaurants).toHaveLength(1);
+    });
+  });
+
+  describe('setRestaurant', () => {
+    it('changes selected category', () => {
+      const initialState = {
+        restaurant: {},
+      };
+
+      const state = reducer(initialState, setRestaurant(restaurant));
+
+      expect(state.restaurant).toEqual(restaurant);
     });
   });
 
