@@ -1,50 +1,46 @@
 import { render } from '@testing-library/react';
+import given from 'given2';
 
 import ButtonList from './ButtonList';
 
 describe('buttonList', () => {
+  const items = [
+    { id: 1, name: '서울' },
+    { id: 2, name: '부산' },
+  ];
+
+  function renderButtonList() {
+    const { selected } = given;
+
+    const handleClick = jest.fn();
+
+    return render((
+      <ButtonList
+        items={items}
+        onClick={handleClick}
+        selected={selected}
+      />
+    ));
+  }
+
   context('when nothing is selected', () => {
+    given('selected', () => null);
+
     it('renders buttons with name', () => {
-      const names = [
-        { id: 1, name: '서울' },
-        { id: 2, name: '부산' },
-      ];
-      const selected = null;
+      const { getAllByRole, queryByText } = renderButtonList();
 
-      const handleClick = jest.fn();
-
-      const { getAllByRole, queryByText } = render(
-        <ButtonList
-          names={names}
-          onClick={handleClick}
-          selected={selected}
-        />,
-      );
-
-      expect(getAllByRole('button')).toHaveLength(names.length);
+      expect(getAllByRole('button')).toHaveLength(items.length);
       expect(queryByText(/(V)/)).not.toBeInTheDocument();
     });
   });
 
   context('when something is selected', () => {
+    given('selected', () => '서울');
+
     it('renders buttons and adds (V) to selected one', () => {
-      const names = [
-        { id: 1, name: '서울' },
-        { id: 2, name: '부산' },
-      ];
-      const selected = '서울';
+      const { getAllByRole, getByText } = renderButtonList();
 
-      const handleClick = jest.fn();
-
-      const { getAllByRole, getByText } = render(
-        <ButtonList
-          names={names}
-          onClick={handleClick}
-          selected={selected}
-        />,
-      );
-
-      expect(getAllByRole('button')).toHaveLength(names.length);
+      expect(getAllByRole('button')).toHaveLength(items.length);
       expect(getByText('서울(V)')).toBeInTheDocument();
     });
   });
