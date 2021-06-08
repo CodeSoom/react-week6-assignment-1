@@ -2,7 +2,9 @@ export default function Header() {
   return (
     <header>
       <h1>
-        헤더
+        <a href="/">
+          헤더
+        </a>
       </h1>
     </header>
   );
