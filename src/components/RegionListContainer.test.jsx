@@ -11,6 +11,9 @@ describe('RegionListContainer', () => {
 
   beforeEach(() => {
     dispatch.mockClear();
+  });
+
+  beforeAll(() => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
