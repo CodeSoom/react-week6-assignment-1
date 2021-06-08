@@ -19,4 +19,12 @@ describe('RestaurantsDetailPage', () => {
 
     expect(getByRole('heading', { name: '메뉴' })).toBeInTheDocument();
   });
+
+  it('renders menus', () => {
+    const { getByText } = render(<RestaurantDetailPage />);
+
+    restaurant.menuItems.forEach(({ name }) => {
+      expect(getByText(name)).toBeInTheDocument();
+    });
+  });
 });
