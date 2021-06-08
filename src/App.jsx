@@ -5,6 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 import RestaurantsPage from './pages/RestaurantsPage';
 import NotFoundPage from './pages/NotFoundPage';
 import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
 import { loadCategories, loadRegions } from './redux_module/asyncActions';
 
 export default function App() {
@@ -15,13 +16,6 @@ export default function App() {
     dispatch(loadRegions());
   }, []);
 
-  function AboutPage() {
-    return (
-      <p>
-        About
-      </p>
-    );
-  }
   return (
     <Switch>
       <Route exact path="/" component={HomePage} />
