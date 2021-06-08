@@ -11,5 +11,4 @@ describe('NotFoundPage', () => {
     expect(getByText('404 Not Found')).not.toBeNull();
     expect(getByText('404 Not Found')).toContainHTML('p');
   });
-
 });

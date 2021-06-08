@@ -19,12 +19,15 @@ export default function RestaurantDetailPage({ match }) {
   return (
     <>
       <h2>{name}</h2>
-      <p>주소: {address}</p>
+      <p>
+        주소:
+        {address}
+      </p>
       <h3>메뉴</h3>
       <ul>
-        {menuItems.map(({ id, name }) => (
+        {menuItems.map(({ id, menuName }) => (
           <li key={id}>
-            {name}
+            {menuName}
           </li>
         ))}
       </ul>
