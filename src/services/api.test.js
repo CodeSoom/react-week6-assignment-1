@@ -38,7 +38,7 @@ describe('fetchRestuarants', () => {
           return [];
         }
 
-        return ['양천주가', '한국식 초밥', '김초밥'];
+        return [{ id: 1, name: '양천주가' }];
       },
     );
   });
@@ -47,7 +47,7 @@ describe('fetchRestuarants', () => {
     it('returns fetched restuarants', async () => {
       const data = await fetchRestaurants('서울', 1);
 
-      expect(Array.isArray(data)).toBe(true);
+      expect(data).toBeArrayOfObjectWith('id', 'name');
     });
   });
 

@@ -22,7 +22,7 @@ describe('RestaurantsPage', () => {
           { id: 5, name: '분식' },
         ],
         regions: ['서울', '대전', '대구', '부산', '광주', '강원도', '인천'],
-        selectedRestaurants: ['원초밥'],
+        selectedRestaurants: [{ id: 1, name: '양천주가' }],
 
         selected: {
           category: { id: null },
@@ -54,6 +54,6 @@ describe('RestaurantsPage', () => {
 
   it('renders selectedRestaurants', () => {
     const { container } = render(<RestaurantsPage />);
-    expect(container).toHaveTextContent('원초밥');
+    expect(container).toHaveTextContent('양천주가');
   });
 });
