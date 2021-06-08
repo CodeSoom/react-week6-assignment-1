@@ -14,9 +14,18 @@ export default function App() {
     dispatch(loadRegions());
   }, []);
 
+  function HomePage() {
+    return (
+      <p>
+        Home
+      </p>
+    );
+  }
+
   return (
     <Switch>
-      <Route exact path="/" component={RestaurantsPage} />
+      <Route exact path="/" component={HomePage} />
+      <Route path="/restaurants" component={RestaurantsPage} />
       <Route component={NotFound} />
     </Switch>
   );
