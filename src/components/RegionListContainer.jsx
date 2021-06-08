@@ -16,14 +16,14 @@ export default function RegionListContainer() {
     },
   } = useSelector((state) => state.restaurant);
 
-  const handleClick = (newRegion) => {
-    dispatch(selectRegion(newRegion));
-    dispatch(loadRestaurants(newRegion.name, category.id));
+  const handleClick = (selectedRegion) => {
+    dispatch(selectRegion(selectedRegion));
+    dispatch(loadRestaurants(selectedRegion.name, category.id));
   };
 
   return (
     <ButtonList
-      names={regions}
+      items={regions}
       onClick={handleClick}
       selected={region}
     />

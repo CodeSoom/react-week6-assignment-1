@@ -16,14 +16,14 @@ export default function CategoryListContainer() {
     },
   } = useSelector((state) => state.restaurant);
 
-  const handleClick = (newCategory) => {
-    dispatch(selectCategory(newCategory));
-    dispatch(loadRestaurants(region, newCategory.id));
+  const handleClick = (selectedCategory) => {
+    dispatch(selectCategory(selectedCategory));
+    dispatch(loadRestaurants(region, selectedCategory.id));
   };
 
   return (
     <ButtonList
-      names={categories}
+      items={categories}
       onClick={handleClick}
       selected={category.name}
     />

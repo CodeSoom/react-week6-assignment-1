@@ -1,7 +1,7 @@
-export default function ButtonList({ names, onClick, selected }) {
+export default function ButtonList({ items, onClick, selected }) {
   return (
     <ul>
-      {names.map(({ id, name }) => (
+      {items.map(({ id, name }) => (
         <li key={id}>
           <button
             type="button"
