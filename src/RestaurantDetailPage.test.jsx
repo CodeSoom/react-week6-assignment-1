@@ -10,6 +10,8 @@ import RESTAURANTINFORMATION from '../fixtures/restaurantInformation';
 
 import RestaurantDetailPage from './RestaurantDetailPage';
 
+jest.mock('react-redux');
+
 test('RestaurantDetailPage', () => {
   const mockFetch = (data) => {
     global.fetch = jest.fn().mockResolvedValue({
@@ -27,6 +29,6 @@ test('RestaurantDetailPage', () => {
     </MemoryRouter>
   ));
 
-  expect(queryByText('주소')).not.toBeNull();
+  expect(queryByText(/주소/)).not.toBeNull();
   expect(queryByText('메뉴')).not.toBeNull();
 });
