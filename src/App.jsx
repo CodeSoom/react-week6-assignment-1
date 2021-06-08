@@ -3,6 +3,7 @@ import AboutPage from './pages/AboutPage';
 import RestaurantsPage from './pages/RestaurantsPage';
 import NotFoundPage from './pages/NotFoundPage';
 import Header from './layout/Header';
+import RestaurantDetailPage from './pages/RestaurantPage';
 
 // 1. Header, HomePage, AboutPage, RestaurantsPage 생성 X
 // 2. Header, HomePage, AboutPage, RestaurantsPage 라우팅 적용 X
@@ -10,13 +11,14 @@ import Header from './layout/Header';
 // 4. RestaurantDetailPage 라우팅 적용
 
 export default function App() {
-  const { location: { pathname } } = window;
+  const path = window.location.pathname.split('/').length > 2 ? 'restaurant' : window.location.pathname;
 
   const MyComponent = {
     '/': HomePage,
     '/about': AboutPage,
     '/restaurants': RestaurantsPage,
-  }[pathname] || NotFoundPage;
+    restaurant: RestaurantDetailPage,
+  }[path] || NotFoundPage;
 
   return (
     <div>
