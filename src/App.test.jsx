@@ -1,16 +1,11 @@
 import { render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
+import { MemoryRouter } from 'react-router';
 
 import App from './App';
 
 describe('App', () => {
   const dispatch = jest.fn();
-  const assignMock = jest.fn();
-
-  function mockLocation({ pathname }) {
-    delete global.location;
-    global.location = { assign: assignMock, pathname };
-  }
 
   beforeEach(() => {
     useDispatch.mockImplementation(() => dispatch);
@@ -21,16 +16,21 @@ describe('App', () => {
       ],
       categories: [],
       restaurants: [],
+      restaurant: {},
     }));
   });
 
-  context('with invalid path', () => {
-    beforeEach(() => {
-      mockLocation({ pathname: '/123123123' });
-    });
+  function renderApp(pathname) {
+    return render((
+      <MemoryRouter initialEntries={[pathname]}>
+        <App />
+      </MemoryRouter>
+    ));
+  }
 
+  context('with invalid path', () => {
     it('renders the not found page', () => {
-      const { getByRole } = render(<App />);
+      const { getByRole } = renderApp('/xxx');
 
       expect(getByRole('heading', { name: '404 Not Found' })).toBeInTheDocument();
     });
@@ -38,12 +38,8 @@ describe('App', () => {
 
   context('with valid path', () => {
     context('with path /', () => {
-      beforeEach(() => {
-        mockLocation({ pathname: '/' });
-      });
-
       it('renders the home page', () => {
-        const { getByRole } = render(<App />);
+        const { getByRole } = renderApp('/');
 
         expect(getByRole('link', { name: 'About' })).toBeInTheDocument();
         expect(getByRole('link', { name: 'Restaurants' })).toBeInTheDocument();
@@ -51,12 +47,8 @@ describe('App', () => {
     });
 
     context('with path /about', () => {
-      beforeEach(() => {
-        mockLocation({ pathname: '/about' });
-      });
-
       it('renders the about page', () => {
-        const { getByRole, getByText } = render(<App />);
+        const { getByRole, getByText } = renderApp('/about');
 
         expect(getByRole('heading', { name: 'About' })).toBeInTheDocument();
         expect(getByText('About 페이지입니다.')).toBeInTheDocument();
@@ -64,16 +56,20 @@ describe('App', () => {
     });
 
     context('with path /restaurants', () => {
-      beforeEach(() => {
-        mockLocation({ pathname: '/restaurants' });
-      });
-
       it('renders the restaurants page', () => {
-        const { queryByRole } = render(<App />);
+        const { getByRole } = renderApp('/restaurants');
 
         expect(dispatch).toBeCalled();
 
-        expect(queryByRole('button', { name: '서울' })).toBeInTheDocument();
+        expect(getByRole('button', { name: '서울' })).toBeInTheDocument();
+      });
+    });
+
+    context('with path /restaurants/:id', () => {
+      it('renders the restaurants page', () => {
+        const { getByRole } = renderApp('/restaurants/1');
+
+        expect(getByRole('heading', { name: '메뉴' })).toBeInTheDocument();
       });
     });
   });
