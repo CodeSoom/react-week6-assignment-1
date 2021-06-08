@@ -36,12 +36,18 @@ describe('RestaurantSlice', () => {
       };
 
       const newState = {
-        regions: ['서울', '부산'],
+        regions: [
+          { id: 1, name: '서울' },
+          { id: 2, name: '부산' },
+        ],
       };
 
       expect(reducer(
         oldState,
-        setRegions(['서울', '부산']),
+        setRegions([
+          { id: 1, name: '서울' },
+          { id: 2, name: '부산' },
+        ]),
       )).toEqual(newState);
     });
 
@@ -84,13 +90,13 @@ describe('RestaurantSlice', () => {
       };
       const newState = {
         selected: {
-          region: '서울',
+          region: { id: 1, name: '서울' },
         },
       };
 
       expect(reducer(
         oldState,
-        selectRegion('서울'),
+        selectRegion({ id: 1, name: '서울' }),
       )).toEqual(newState);
     });
   });

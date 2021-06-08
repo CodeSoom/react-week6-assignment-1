@@ -30,3 +30,21 @@ export const fetchRestaurants = async (regionName, categoryId) => {
 
   return data.map(({ id, name }) => ({ id, name }));
 };
+
+export const fetchRestaurantInfo = async (reataurantId) => {
+  const url = `https://eatgo-customer-api.ahastudio.com/restaurants/${reataurantId}`;
+
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    return [];
+  }
+
+  const { name, address, menuItems } = await response.json();
+
+  return {
+    name,
+    address,
+    menuItems: menuItems.map((item) => item.name),
+  };
+};

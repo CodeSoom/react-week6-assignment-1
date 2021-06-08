@@ -37,7 +37,10 @@ describe('asyncActions', () => {
   describe('loadRegions', () => {
     beforeEach(() => {
       fetchRegions.mockImplementation(
-        async () => ['서울', '대전'],
+        async () => [
+          { id: 1, name: '서울' },
+          { id: 2, name: '대전' },
+        ],
       );
     });
 
@@ -47,7 +50,8 @@ describe('asyncActions', () => {
       const actions = store.getActions();
 
       expect(actions[0]).toEqual(setRegions([
-        '서울', '대전',
+        { id: 1, name: '서울' },
+        { id: 2, name: '대전' },
       ]));
     });
   });

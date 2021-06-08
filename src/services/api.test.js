@@ -1,4 +1,9 @@
-import { fetchRegions, fetchCategories, fetchRestaurants } from './api';
+import {
+  fetchRegions,
+  fetchCategories,
+  fetchRestaurants,
+  fetchRestaurantInfo,
+} from './api';
 
 jest.mock('./api');
 
@@ -8,9 +13,6 @@ describe('fetchCategories', () => {
       async () => [
         { id: 1, name: '한식' },
         { id: 2, name: '중식' },
-        { id: 3, name: '일식' },
-        { id: 4, name: '양식' },
-        { id: 5, name: '분식' },
       ],
     );
     const data = await fetchCategories();
@@ -22,11 +24,15 @@ describe('fetchCategories', () => {
 describe('fetchRegions', () => {
   it('returns fetched regions', async () => {
     fetchRegions.mockImplementation(
-      async () => ['서울', '대전', '대구', '부산', '광주', '강원도'],
+      async () => [
+        { id: 1, name: '서울' },
+        { id: 2, name: '대전' },
+      ],
     );
+
     const data = await fetchRegions();
 
-    expect(Array.isArray(data)).toBe(true);
+    expect(data).toBeArrayOfObjectWith('id', 'name');
   });
 });
 
@@ -56,6 +62,63 @@ describe('fetchRestuarants', () => {
       const data = await fetchRestaurants(null, 1);
 
       expect(data).toEqual([]);
+    });
+  });
+});
+
+describe('fetch restaurantInfo', () => {
+  beforeAll(() => {
+    fetchRestaurantInfo.mockImplementation(async (id) => {
+      if (id < 0) {
+        return [];
+      }
+
+      const info = {
+        id: 1,
+        categoryId: 1,
+        name: '양천주가',
+        address: '서울 강남구 123456',
+        menuItems: [
+          {
+            id: 1,
+            restaurantId: 1,
+            name: '비빔밥',
+          },
+          {
+            id: 2,
+            restaurantId: 1,
+            name: '짬뽕',
+          },
+        ],
+      };
+
+      const { name, address, menuItems } = info;
+
+      return {
+        name,
+        address,
+        menuItems: menuItems.map((item) => item.name),
+      };
+    });
+  });
+
+  context('with invalid restaurant id', () => {
+    it('returns info object of single restaurant by id', async () => {
+      const data = await fetchRestaurantInfo(-999);
+
+      expect(data).toEqual([]);
+    });
+  });
+
+  context('with vaild restaurant id', () => {
+    it('returns info object of single restaurant by id', async () => {
+      const data = await fetchRestaurantInfo(1);
+
+      expect(data).toEqual({
+        name: '양천주가',
+        address: '서울 강남구 123456',
+        menuItems: ['비빔밥', '짬뽕'],
+      });
     });
   });
 });

@@ -15,7 +15,10 @@ describe('RegionListContainer', () => {
 
     useSelector.mockImplementation((selector) => selector({
       restaurant: {
-        regions: ['서울', '부산'],
+        regions: [
+          { id: 1, name: '서울' },
+          { id: 2, name: '부산' },
+        ],
 
         selected: {
           category: { id: null },
