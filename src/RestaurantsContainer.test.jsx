@@ -11,9 +11,13 @@ test('RestaurantsContainer', () => {
     ],
   }));
 
-  const { container } = render((
+  const { container, getByText } = render((
     <RestaurantsContainer />
   ));
 
   expect(container).toHaveTextContent('마법사주방');
+  expect(getByText('마법사주방')).toContainHTML('a');
+  expect(getByText('마법사주방')).toHaveAttribute('href', `/restaurants${1}`);
+
+  fireEvent.click(getByText('마법사주방'));
 });
