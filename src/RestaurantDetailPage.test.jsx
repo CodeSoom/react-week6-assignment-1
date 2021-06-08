@@ -7,25 +7,23 @@ test('RestaurantDetailPage', () => {
   useSelector.mockImplementation((selector) => selector({
     regions: [],
     categories: [],
-    restaurants: [
-      { id: 1, name: '양천주가', address: '서울시 강남구', menuItem: [
-          { id: 1, restaurantId: 1, name: '비빔밥' },
-        ]
-      },
-    ],
+    restaurants: [],
+    restaurant: {
+      id: 1,
+      categoryId: 1,
+      name: '양천주가',
+      address: '서울 강남구',
+      menuItems: [
+        { id: 1, restaurantId: 1, name: '비빔밥' },
+      ],
+    },
   }));
 
-  const match = {
-    params: {
-      restaurantId: 1,
-    },
-  };
-
-  const { queryByText } = render((
-    <RestaurantDetailPage match={match} />
+  const { getByText } = render((
+    <RestaurantDetailPage />
   ));
 
-  expect(queryByText('서울시 강남구')).not.toBeNull();
-  expect(queryByText('양천주가')).not.toBeNull();
-  expect(queryByText('비빔밥')).not.toBeNull();
+  expect(getByText(/서울 강남구/)).not.toBeNull();
+  expect(getByText('양천주가')).not.toBeNull();
+  expect(getByText('비빔밥')).not.toBeNull();
 });

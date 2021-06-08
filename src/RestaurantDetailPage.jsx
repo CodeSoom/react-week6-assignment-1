@@ -1,10 +1,24 @@
-export default function RestaurantDetailPage({ match }) {
+import { useSelector } from "react-redux";
+
+export default function RestaurantDetailPage() {
+  const { name, address, menuItems } = useSelector((state) => ({
+    name: state.restaurant.name,
+    address: state.restaurant.address,
+    menuItems: state.restaurant.menuItems,
+  }));
+
   return (
     <>
-      <h1>{match.params.restaurantId}</h1>
-      <p>서울시 강남구</p>
-      <p>양천주가</p>
-      <p>비빔밥</p>
+      <h2>{name}</h2>
+      <p>주소: {address}</p>
+      <h3>메뉴</h3>
+      <ul>
+        {menuItems.map(({ id, name }) => (
+          <li key={id}>
+            {name}
+          </li>
+        ))}
+      </ul>
     </>
   );
 }
