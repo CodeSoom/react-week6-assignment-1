@@ -33,4 +33,16 @@ describe('App', () => {
       expect(container).toHaveTextContent('404 Not Found');
     });
   });
+
+  context('when path is /', () => {
+    it('renders Home page', () => {
+      const { container } = render(
+        <MemoryRouter initialEntries={['/']}>
+          <App />
+        </MemoryRouter>,
+      );
+
+      expect(container).toHaveTextContent('Home');
+    });
+  });
 });
