@@ -75,7 +75,6 @@ describe('App', () => {
         </MemoryRouter>
       ));
 
-      expect(container).toHaveTextContent('양천주가');
       expect(container).toHaveTextContent('주소');
       expect(container).toHaveTextContent('메뉴');
     });
