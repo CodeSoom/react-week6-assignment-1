@@ -28,5 +28,5 @@ export const fetchRestaurants = async (regionName, categoryId) => {
 
   const data = await response.json();
 
-  return data.map((row) => row.name);
+  return data.map(({ id, name }) => ({ id, name }));
 };

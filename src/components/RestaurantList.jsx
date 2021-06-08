@@ -6,9 +6,9 @@ export default function RestaurantList() {
   return (
     <ul>
       {infos.map(
-        (info) => (
-          <li key={info}>
-            {info}
+        ({ id, name }) => (
+          <li key={id}>
+            {name}
           </li>
         ),
       )}
