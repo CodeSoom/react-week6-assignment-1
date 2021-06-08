@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Route, Switch } from 'react-router';
+import { Route, Switch } from 'react-router-dom';
 
 import RestaurantsPage from './pages/RestaurantsPage';
 import { loadCategories, loadRegions } from './redux_module/asyncActions';
