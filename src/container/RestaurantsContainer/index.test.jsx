@@ -1,19 +1,49 @@
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantsContainer from '.';
 
-test('RestaurantsContainer', () => {
-  useSelector.mockImplementation((selector) => selector({
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
-  }));
+describe('RestaurantsContainer', () => {
+  const dispatch = jest.fn();
+  const assignMock = jest.fn();
 
-  const { getByRole } = render((
-    <RestaurantsContainer />
-  ));
+  beforeEach(() => {
+    delete global.location;
+    global.location = { assign: assignMock };
 
-  expect(getByRole('link', { name: '마법사주방' })).toBeInTheDocument();
+    useDispatch.mockImplementation(() => dispatch);
+
+    useSelector.mockImplementation((selector) => selector({
+      restaurants: [
+        { id: 1, name: '마법사주방' },
+      ],
+    }));
+  });
+
+  it('renders buttons', () => {
+    const { getByRole } = render((
+      <RestaurantsContainer />
+    ));
+
+    expect(getByRole('button', { name: '마법사주방' })).toBeInTheDocument();
+  });
+
+  it('listens click event', () => {
+    const { getByRole } = render((
+      <RestaurantsContainer />
+    ));
+
+    fireEvent.click(getByRole('button', { name: '마법사주방' }));
+
+    expect(dispatch).toBeCalled();
+  });
+
+  it('renders the restaurant detail page when click restaurant button', () => {
+    const { getByRole } = render(<RestaurantsContainer />);
+
+    fireEvent.click(getByRole('button', { name: '마법사주방' }));
+
+    expect(getByRole('heading', { name: '메뉴' }));
+  });
 });
