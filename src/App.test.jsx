@@ -54,7 +54,20 @@ describe('App', () => {
         </MemoryRouter>,
       );
 
+      expect(container).toHaveTextContent('Restaurants');
       expect(container).toHaveTextContent('한식');
+    });
+  });
+
+  context('when path is /about', () => {
+    it('renders about page', () => {
+      const { container } = render(
+        <MemoryRouter initialEntries={['/about']}>
+          <App />
+        </MemoryRouter>,
+      );
+
+      expect(container).toHaveTextContent('About');
     });
   });
 });
