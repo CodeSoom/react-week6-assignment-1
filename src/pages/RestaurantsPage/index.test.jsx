@@ -1,6 +1,5 @@
 import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
-
 import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantsPage from '.';
