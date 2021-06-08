@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from 'react-redux';
-import * as R from 'ramda';
 
 import ButtonList from './ButtonList';
 import { loadRestaurants } from '../redux_module/asyncActions';
@@ -17,18 +16,14 @@ export default function CategoryListContainer() {
     },
   } = useSelector((state) => state.restaurant);
 
-  const names = R.map(R.prop('name'), categories);
-
-  const handleClick = (newCategoryName) => {
-    const newCategory = R.find(R.propEq('name', newCategoryName), categories);
-
+  const handleClick = (newCategory) => {
     dispatch(selectCategory(newCategory));
     dispatch(loadRestaurants(region, newCategory.id));
   };
 
   return (
     <ButtonList
-      names={names}
+      names={categories}
       onClick={handleClick}
       selected={category.name}
     />

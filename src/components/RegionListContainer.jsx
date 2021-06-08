@@ -18,7 +18,7 @@ export default function RegionListContainer() {
 
   const handleClick = (newRegion) => {
     dispatch(selectRegion(newRegion));
-    dispatch(loadRestaurants(newRegion, category.id));
+    dispatch(loadRestaurants(newRegion.name, category.id));
   };
 
   return (

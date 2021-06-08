@@ -17,11 +17,11 @@ describe('RestaurantsPage', () => {
         categories: [
           { id: 1, name: '한식' },
           { id: 2, name: '중식' },
-          { id: 3, name: '일식' },
-          { id: 4, name: '양식' },
-          { id: 5, name: '분식' },
         ],
-        regions: ['서울', '대전', '대구', '부산', '광주', '강원도', '인천'],
+        regions: [
+          { id: 1, name: '서울' },
+          { id: 2, name: '부산' },
+        ],
         selectedRestaurants: [{ id: 1, name: '양천주가' }],
 
         selected: {
@@ -39,7 +39,7 @@ describe('RestaurantsPage', () => {
   it('renders categories', () => {
     const { getByRole } = render(<RestaurantsPage />);
 
-    ['한식', '중식', '일식', '양식', '분식'].forEach((category) => {
+    ['한식', '중식'].forEach((category) => {
       expect(getByRole('button', { name: category })).toBeInTheDocument();
     });
   });
@@ -47,7 +47,7 @@ describe('RestaurantsPage', () => {
   it('renders regions', () => {
     const { getByRole } = render(<RestaurantsPage />);
 
-    ['서울', '대전', '대구', '부산', '광주', '강원도', '인천'].forEach((region) => {
+    ['서울', '부산'].forEach((region) => {
       expect(getByRole('button', { name: region })).toBeInTheDocument();
     });
   });

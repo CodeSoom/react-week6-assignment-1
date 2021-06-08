@@ -5,7 +5,10 @@ import ButtonList from './ButtonList';
 describe('buttonList', () => {
   context('when nothing is selected', () => {
     it('renders buttons with name', () => {
-      const names = ['서울', '경기', '부산', '제주'];
+      const names = [
+        { id: 1, name: '서울' },
+        { id: 2, name: '부산' },
+      ];
       const selected = null;
 
       const handleClick = jest.fn();
@@ -25,7 +28,10 @@ describe('buttonList', () => {
 
   context('when something is selected', () => {
     it('renders buttons and adds (V) to selected one', () => {
-      const names = ['서울', '경기', '부산', '제주'];
+      const names = [
+        { id: 1, name: '서울' },
+        { id: 2, name: '부산' },
+      ];
       const selected = '서울';
 
       const handleClick = jest.fn();

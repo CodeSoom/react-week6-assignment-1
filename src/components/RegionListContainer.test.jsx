@@ -41,10 +41,10 @@ describe('RegionListContainer', () => {
     const { getByRole } = render(<RegionListContainer />);
 
     fireEvent.click(getByRole('button', { name: '서울(V)' }));
-    expect(dispatch).toBeCalledWith(selectRegion('서울'));
+    expect(dispatch).toBeCalledWith(selectRegion({ id: 1, name: '서울' }));
 
     fireEvent.click(getByRole('button', { name: '부산' }));
-    expect(dispatch).toBeCalledWith(selectRegion('부산'));
+    expect(dispatch).toBeCalledWith(selectRegion({ id: 2, name: '부산' }));
   });
 
   it('fetches regions with button', () => {
