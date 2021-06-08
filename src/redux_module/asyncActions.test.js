@@ -16,7 +16,7 @@ describe('asyncActions', () => {
   });
 
   describe('loadCategories', () => {
-    beforeEach(() => {
+    beforeAll(() => {
       fetchCategories.mockImplementation(async () => [
         { id: 1, name: '한식' },
         { id: 2, name: '중식' },
@@ -35,7 +35,7 @@ describe('asyncActions', () => {
   });
 
   describe('loadRegions', () => {
-    beforeEach(() => {
+    beforeAll(() => {
       fetchRegions.mockImplementation(
         async () => [
           { id: 1, name: '서울' },
@@ -57,7 +57,7 @@ describe('asyncActions', () => {
   });
 
   describe('loadRestaurants', () => {
-    beforeEach(() => {
+    beforeAll(() => {
       fetchRestaurants.mockImplementation(async () => ['양천주가', '한국식 초밥']);
     });
 

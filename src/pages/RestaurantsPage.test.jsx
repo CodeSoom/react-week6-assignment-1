@@ -10,7 +10,9 @@ describe('RestaurantsPage', () => {
 
   beforeEach(() => {
     dispatch.mockClear();
+  });
 
+  beforeAll(() => {
     useDispatch.mockImplementation(() => dispatch);
     useSelector.mockImplementation((selector) => selector({
       restaurant: {
@@ -33,6 +35,7 @@ describe('RestaurantsPage', () => {
 
   it('renders title', () => {
     const { container } = render(<RestaurantsPage />);
+
     expect(container).toHaveTextContent('Restaurants');
   });
 
@@ -54,6 +57,7 @@ describe('RestaurantsPage', () => {
 
   it('renders selectedRestaurants', () => {
     const { container } = render(<RestaurantsPage />);
+
     expect(container).toHaveTextContent('양천주가');
   });
 });
