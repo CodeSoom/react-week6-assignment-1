@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 
 import RestaurantsPage from './pages/RestaurantsPage';
+import NotFound from './components/NotFound';
 import { loadCategories, loadRegions } from './redux_module/asyncActions';
 
 export default function App() {
@@ -13,13 +14,6 @@ export default function App() {
     dispatch(loadRegions());
   }, []);
 
-  function NotFound() {
-    return (
-      <p>
-        404 Not Found
-      </p>
-    );
-  }
   return (
     <Switch>
       <Route exact path="/" component={RestaurantsPage} />
