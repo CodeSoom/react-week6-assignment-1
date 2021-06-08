@@ -4,30 +4,28 @@ import { MemoryRouter } from 'react-router-dom';
 import HomePage from './HomePage';
 
 describe('HomePage', () => {
-  it('renders Home', () => {
-    const { container } = render(
+  function renderHomePage() {
+    return render(
       <MemoryRouter>
         <HomePage />
       </MemoryRouter>,
     );
+  }
+
+  it('renders Home', () => {
+    const { container } = renderHomePage();
 
     expect(container).toHaveTextContent('Home');
   });
+
   it('renders About Link', () => {
-    const { container } = render(
-      <MemoryRouter>
-        <HomePage />
-      </MemoryRouter>,
-    );
+    const { container } = renderHomePage();
 
     expect(container).toHaveTextContent('About');
   });
+
   it('renders Restaurants Link', () => {
-    const { container } = render(
-      <MemoryRouter>
-        <HomePage />
-      </MemoryRouter>,
-    );
+    const { container } = renderHomePage();
 
     expect(container).toHaveTextContent('Restaurants');
   });
