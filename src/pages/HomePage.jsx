@@ -9,6 +9,7 @@ export default function HomePage() {
 
       <ul>
         <Link to="/about">About</Link>
+        <br />
         <Link to="/restaurants">Restaurants</Link>
       </ul>
     </>
