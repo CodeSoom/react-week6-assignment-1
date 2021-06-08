@@ -13,7 +13,7 @@ describe('RestaurantsContainer', () => {
     }));
   });
 
-  it('renders link list', () => {
+  it('renders restaurants', () => {
     const { getByRole } = render((
       <MemoryRouter>
         <RestaurantsContainer />

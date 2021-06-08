@@ -13,6 +13,7 @@ describe('RegionsContainer', () => {
 
   beforeEach(() => {
     dispatch.mockClear();
+
     useDispatch.mockImplementation(() => dispatch);
   });
 

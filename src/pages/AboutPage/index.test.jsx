@@ -2,8 +2,8 @@ import { render } from '@testing-library/react';
 
 import AboutPage from '.';
 
-describe('Home', () => {
-  it('renders link list', () => {
+describe('AboutPage', () => {
+  it('renders title and content', () => {
     const { getByRole, getByText } = render(<AboutPage />);
 
     expect(getByRole('heading', { name: 'About' })).toBeInTheDocument();

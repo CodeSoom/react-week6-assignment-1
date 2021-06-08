@@ -3,8 +3,8 @@ import { MemoryRouter } from 'react-router';
 
 import HomePage from '.';
 
-describe('Home', () => {
-  it('renders link list', () => {
+describe('HomePage', () => {
+  it('renders links', () => {
     const { getByRole } = render((
       <MemoryRouter>
         <HomePage />

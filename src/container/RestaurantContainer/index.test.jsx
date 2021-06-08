@@ -34,6 +34,7 @@ describe('RestaurantContainer', () => {
 
     expect(getByText('주소: 양천주가 in 서울 강남구 123456')).toBeInTheDocument();
   });
+
   it('renders menus', () => {
     const { getByText } = renderRestaurantContainer();
 
