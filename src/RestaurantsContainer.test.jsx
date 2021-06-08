@@ -1,7 +1,5 @@
 import { render, fireEvent } from '@testing-library/react';
-
 import { MemoryRouter } from 'react-router';
-
 import { useSelector } from 'react-redux';
 
 import RestaurantsContainer from './RestaurantsContainer';
