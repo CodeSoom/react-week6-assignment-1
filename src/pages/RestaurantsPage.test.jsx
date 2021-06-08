@@ -31,6 +31,11 @@ describe('RestaurantsPage', () => {
     }));
   });
 
+  it('renders title', () => {
+    const { container } = render(<RestaurantsPage />);
+    expect(container).toHaveTextContent('Restaurants');
+  });
+
   it('renders categories', () => {
     const { getByRole } = render(<RestaurantsPage />);
 
