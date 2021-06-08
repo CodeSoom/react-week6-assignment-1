@@ -1,4 +1,6 @@
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
+
+import { MemoryRouter } from 'react-router';
 
 import { useSelector } from 'react-redux';
 
@@ -12,12 +14,14 @@ test('RestaurantsContainer', () => {
   }));
 
   const { container, getByText } = render((
-    <RestaurantsContainer />
+    <MemoryRouter>
+      <RestaurantsContainer />
+    </MemoryRouter>
   ));
 
   expect(container).toHaveTextContent('마법사주방');
   expect(getByText('마법사주방')).toContainHTML('a');
-  expect(getByText('마법사주방')).toHaveAttribute('href', `/restaurants${1}`);
+  expect(getByText('마법사주방')).toHaveAttribute('href', `/restaurants/${1}`);
 
   fireEvent.click(getByText('마법사주방'));
 });
