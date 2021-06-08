@@ -12,7 +12,7 @@ describe('App', () => {
 
   useSelector.mockImplementation((selector) => selector({
     restaurant: {
-      categories: [],
+      categories: [{ id: 1, name: '한식' }],
       regions: [],
       selectedRestaurants: [],
 
@@ -43,6 +43,18 @@ describe('App', () => {
       );
 
       expect(container).toHaveTextContent('Home');
+    });
+  });
+
+  context('when path is /restaurants', () => {
+    it('renders Restaurants page', () => {
+      const { container } = render(
+        <MemoryRouter initialEntries={['/restaurants']}>
+          <App />
+        </MemoryRouter>,
+      );
+
+      expect(container).toHaveTextContent('한식');
     });
   });
 });
