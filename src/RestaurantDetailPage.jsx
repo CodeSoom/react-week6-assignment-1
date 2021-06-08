@@ -25,7 +25,7 @@ export default function RestaurantDetailPage({ match }) {
       </p>
       <h3>메뉴</h3>
       <ul>
-        {menuItems.map(({ id, menuName }) => (
+        {menuItems.map(({ id, name: menuName }) => (
           <li key={id}>
             {menuName}
           </li>
