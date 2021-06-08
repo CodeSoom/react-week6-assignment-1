@@ -3,7 +3,8 @@ import { useDispatch } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 
 import RestaurantsPage from './pages/RestaurantsPage';
-import NotFound from './pages/NotFoundPage';
+import NotFoundPage from './pages/NotFoundPage';
+import HomePage from './pages/HomePage';
 import { loadCategories, loadRegions } from './redux_module/asyncActions';
 
 export default function App() {
@@ -14,19 +15,11 @@ export default function App() {
     dispatch(loadRegions());
   }, []);
 
-  function HomePage() {
-    return (
-      <p>
-        Home
-      </p>
-    );
-  }
-
   return (
     <Switch>
       <Route exact path="/" component={HomePage} />
       <Route path="/restaurants" component={RestaurantsPage} />
-      <Route component={NotFound} />
+      <Route component={NotFoundPage} />
     </Switch>
   );
 }
