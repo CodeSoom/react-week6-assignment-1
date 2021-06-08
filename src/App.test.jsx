@@ -5,63 +5,69 @@ import { useDispatch, useSelector } from 'react-redux';
 import App from './App';
 
 describe('App', () => {
-  const dispatch = jest.fn();
+  describe('render', () => {
+    const dispatch = jest.fn();
 
-  useDispatch.mockImplementation(() => dispatch);
+    useDispatch.mockImplementation(() => dispatch);
 
-  beforeEach(() => {
-    useSelector.mockImplementation((selector) => selector({
-      regions: [
-        { id: 1, name: '서울' },
-      ],
-      categories: [],
-      restaurants: [],
-    }));
-  });
+    beforeEach(() => {
+      useSelector.mockImplementation((selector) => selector({
+        regions: [
+          { id: 1, name: '서울' },
+        ],
+        categories: [],
+        restaurants: [],
+      }));
+    });
 
-  function renderApp({ path }) {
-    return render((
-      <MemoryRouter initialEntries={[path]}>
-        <App />
-      </MemoryRouter>
-    ));
-  }
+    function renderApp({ path }) {
+      return render((
+        <MemoryRouter initialEntries={[path]}>
+          <App />
+        </MemoryRouter>
+      ));
+    }
 
-  it('renders header', () => {
-    const { getByText } = render((
-      <MemoryRouter>
-        <App />
-      </MemoryRouter>
-    ));
+    context('with Home page', () => {
+      it('verifies header', () => {
+        const { getByText } = render((
+          <MemoryRouter>
+            <App />
+          </MemoryRouter>
+        ));
 
-    expect(getByText('헤더')).not.toBeNull();
+        expect(getByText('헤더')).not.toBeNull();
 
-    // Link Test
-    expect(getByText('헤더').closest('a')).toContainHTML('a');
-    expect(getByText('헤더').closest('a')).toHaveAttribute('href', '/');
-  });
+        // Link Test
+        expect(getByText('헤더').closest('a')).toContainHTML('a');
+        expect(getByText('헤더').closest('a')).toHaveAttribute('href', '/');
+      });
 
-  it('renders Home', () => {
-    const { container } = renderApp({ path: '/' });
+      it('verifies contents', () => {
+        const { container } = renderApp({ path: '/' });
+        expect(container).toHaveTextContent('Home');
+      });
+    });
 
-    expect(container).toHaveTextContent('Home');
-  });
+    context('with About page', () => {
+      it('verifies contents', () => {
+        const { container } = renderApp({ path: '/about' });
+        expect(container).toHaveTextContent('About');
+      });
+    });
 
-  it('renders About', () => {
-    const { container } = renderApp({ path: '/about' });
+    context('with Restaurants page', () => {
+      it('verifies contents', () => {
+        const { container } = renderApp({ path: '/restaurants' });
+        expect(container).toHaveTextContent('서울');
+      });
+    });
 
-    expect(container).toHaveTextContent('About');
-  });
-
-  it('renders Restaurants', () => {
-    const { container } = renderApp({ path: '/restaurants' });
-
-    expect(container).toHaveTextContent('서울');
-  });
-
-  it('renders Not Found', () => {
-    const { container } = renderApp({ path: '/xxx' });
-
-    expect(container).toHaveTextContent('404 Not Found');
+    context('with NotFound page', () => {
+      it('verifies contents', () => {
+        const { container } = renderApp({ path: '/xxx' });
+        expect(container).toHaveTextContent('404 Not Found');
+      });
+    });
   });
 });
