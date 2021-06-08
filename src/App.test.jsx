@@ -1,5 +1,6 @@
 import { render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
+import { MemoryRouter } from 'react-router';
 
 import App from './App';
 
@@ -21,9 +22,15 @@ describe('App', () => {
     },
   }));
 
-  it('fetches categories and regions', () => {
-    render(<App />);
+  context('when path is invaild', () => {
+    it('renders Not Found page', () => {
+      const { container } = render(
+        <MemoryRouter initialEntries={['/any_not_exist_url']}>
+          <App />
+        </MemoryRouter>,
+      );
 
-    expect(dispatch).toBeCalledTimes(2);
+      expect(container).toHaveTextContent('404 Not Found');
+    });
   });
 });
