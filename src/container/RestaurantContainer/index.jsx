@@ -10,7 +10,7 @@ export default function RestaurantContainer() {
       <h2>메뉴</h2>
       <ul>
         {
-          restaurant?.menuItems.map(({ name, id }) => (
+          restaurant.menuItems?.map(({ name, id }) => (
             <li key={id}>
               {name}
             </li>
@@ -20,7 +20,7 @@ export default function RestaurantContainer() {
       <p>
         주소:
         {' '}
-        {restaurant?.information}
+        {restaurant.information}
       </p>
     </div>
   );
