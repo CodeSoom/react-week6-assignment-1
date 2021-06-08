@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch } from 'react-router-dom';
 
 import RestaurantsPage from './pages/RestaurantsPage';
 import NotFoundPage from './pages/NotFoundPage';
@@ -17,11 +17,15 @@ export default function App() {
   }, []);
 
   return (
-    <Switch>
-      <Route exact path="/" component={HomePage} />
-      <Route path="/about" component={AboutPage} />
-      <Route path="/restaurants" component={RestaurantsPage} />
-      <Route component={NotFoundPage} />
-    </Switch>
+    <>
+      <Link to="/">헤더</Link>
+
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/about" component={AboutPage} />
+        <Route path="/restaurants" component={RestaurantsPage} />
+        <Route component={NotFoundPage} />
+      </Switch>
+    </>
   );
 }

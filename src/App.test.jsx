@@ -22,6 +22,16 @@ describe('App', () => {
     },
   }));
 
+  it('renders 헤더', () => {
+    const { container } = render(
+      <MemoryRouter initialEntries={['/']}>
+        <App />
+      </MemoryRouter>,
+    );
+
+    expect(container).toHaveTextContent('헤더');
+  });
+
   context('when path is invaild', () => {
     it('renders Not Found page', () => {
       const { container } = render(
