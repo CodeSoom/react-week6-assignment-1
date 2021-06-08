@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import ButtonList from './ButtonList';
+import Buttons from './Buttons';
 import { loadRestaurants } from '../redux_module/asyncActions';
 import { selectCategory } from '../redux_module/RestaurantSlice';
 
@@ -22,7 +22,7 @@ export default function CategoryListContainer() {
   };
 
   return (
-    <ButtonList
+    <Buttons
       items={categories}
       onClick={handleClick}
       selected={category.name}

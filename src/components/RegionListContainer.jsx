@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { loadRestaurants } from '../redux_module/asyncActions';
 import { selectRegion } from '../redux_module/RestaurantSlice';
-import ButtonList from './ButtonList';
+import Buttons from './Buttons';
 
 export default function RegionListContainer() {
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ export default function RegionListContainer() {
   };
 
   return (
-    <ButtonList
+    <Buttons
       items={regions}
       onClick={handleClick}
       selected={region}

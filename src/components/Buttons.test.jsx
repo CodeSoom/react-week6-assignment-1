@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 
-import ButtonList from './ButtonList';
+import ButtonList from './Buttons';
 
 describe('buttonList', () => {
   const items = [
