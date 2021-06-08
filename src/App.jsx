@@ -1,9 +1,11 @@
+import { Route, Switch } from 'react-router';
+
 import HomePage from './pages/Homepage';
 import AboutPage from './pages/AboutPage';
 import RestaurantsPage from './pages/RestaurantsPage';
 import NotFoundPage from './pages/NotFoundPage';
+import RestaurantPage from './pages/RestaurantPage';
 import Header from './layout/Header';
-import RestaurantDetailPage from './pages/RestaurantPage';
 
 // 1. Header, HomePage, AboutPage, RestaurantsPage 생성 X
 // 2. Header, HomePage, AboutPage, RestaurantsPage 라우팅 적용 X
@@ -11,19 +13,16 @@ import RestaurantDetailPage from './pages/RestaurantPage';
 // 4. RestaurantDetailPage 라우팅 적용
 
 export default function App() {
-  const path = window.location.pathname.split('/').length > 2 ? 'restaurant' : window.location.pathname;
-
-  const MyComponent = {
-    '/': HomePage,
-    '/about': AboutPage,
-    '/restaurants': RestaurantsPage,
-    restaurant: RestaurantDetailPage,
-  }[path] || NotFoundPage;
-
   return (
-    <div>
+    <>
       <Header />
-      <MyComponent />
-    </div>
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/about" component={AboutPage} />
+        <Route path="/restaurants" component={RestaurantsPage} />
+        <Route path="/restaurants/:id" component={RestaurantPage} />
+        <Route component={NotFoundPage} />
+      </Switch>
+    </>
   );
 }
