@@ -25,7 +25,7 @@ export default function RegionListContainer() {
     <Buttons
       items={regions}
       onClick={handleClick}
-      selected={region}
+      selected={region.name}
     />
   );
 }

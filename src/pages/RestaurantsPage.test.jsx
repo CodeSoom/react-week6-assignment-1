@@ -28,6 +28,7 @@ describe('RestaurantsPage', () => {
 
         selected: {
           category: { id: null },
+          region: { id: null },
         },
       },
     }));

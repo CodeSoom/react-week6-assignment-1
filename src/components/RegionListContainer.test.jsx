@@ -25,7 +25,7 @@ describe('RegionListContainer', () => {
 
         selected: {
           category: { id: null },
-          region: '서울',
+          region: { name: '서울' },
         },
       },
     }));

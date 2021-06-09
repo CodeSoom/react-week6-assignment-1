@@ -15,7 +15,10 @@ const { actions, reducer } = createSlice({
         id: null,
         name: null,
       },
-      region: null,
+      region: {
+        id: null,
+        name: null,
+      },
     },
   },
 

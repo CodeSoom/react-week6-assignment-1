@@ -19,6 +19,7 @@ describe('App', () => {
 
         selected: {
           category: { id: null },
+          region: { id: null },
         },
       },
     }));
