@@ -4,6 +4,8 @@ import { MemoryRouter } from 'react-router';
 
 import App from './App';
 
+import restaurant from '../fixtures/restaurant';
+
 describe('App', () => {
   const dispatch = jest.fn();
 
@@ -57,10 +59,34 @@ describe('App', () => {
   });
 
   context('with path /restaurants/:id', () => {
-    it('renders the restaurants page', () => {
-      const { getByRole } = renderApp('/restaurants/1');
+    context('with restaurant', () => {
+      beforeEach(() => {
+        useSelector.mockImplementation((selector) => selector({
+          restaurant: {},
+        }));
+      });
 
-      expect(getByRole('heading', { name: '메뉴' })).toBeInTheDocument();
+      it('renders the restaurants page', () => {
+        const { getByText } = renderApp('/restaurants/1');
+
+        expect(getByText('Loading...')).toBeInTheDocument();
+      });
+    });
+
+    context('without restaurant', () => {
+      beforeEach(() => {
+        useDispatch.mockImplementation(() => dispatch);
+
+        useSelector.mockImplementation((selector) => selector({
+          restaurant,
+        }));
+      });
+
+      it('renders the restaurants page', () => {
+        const { getByRole } = renderApp('/restaurants/1');
+
+        expect(getByRole('heading', { name: '메뉴' })).toBeInTheDocument();
+      });
     });
   });
 
