@@ -30,13 +30,13 @@ describe('RestaurantDetailPage', () => {
       },
     };
 
-    const { getByText } = render((
+    const { queryByText } = render((
       <RestaurantDetailPage match={match} />
     ));
 
-    expect(getByText(/서울 강남구/)).not.toBeNull();
-    expect(getByText('양천주가')).not.toBeNull();
-    expect(getByText('비빔밥')).not.toBeNull();
+    expect(queryByText(/서울 강남구/)).not.toBeNull();
+    expect(queryByText('양천주가')).not.toBeNull();
+    expect(queryByText('비빔밥')).not.toBeNull();
 
     expect(dispatch).toBeCalled();
   });

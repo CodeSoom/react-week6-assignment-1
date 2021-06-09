@@ -39,13 +39,13 @@ describe('App', () => {
 
     context('with Home page', () => {
       it('verifies header', () => {
-        const { getByText } = render((
+        const { getByText, queryByText } = render((
           <MemoryRouter>
             <App />
           </MemoryRouter>
         ));
 
-        expect(getByText('헤더')).not.toBeNull();
+        expect(queryByText('헤더')).not.toBeNull();
 
         // Link Test
         expect(getByText('헤더').closest('a')).toContainHTML('a');
