@@ -15,15 +15,15 @@ expect.extend({
       return accumulator;
     }, null);
 
-    return (failingElement === null)
-      ? {
-        pass: true,
-        message: () => (`expected ${this.utils.printReceived(failingElement)} to not has ${this.utils.printExpected(keys.join(', '))} as property`),
-      }
+    const { printReceived, printExpected } = this.utils;
 
-      : {
-        pass: false,
-        message: () => (`expected ${this.utils.printReceived(failingElement)} to has ${this.utils.printExpected(keys.join(', '))} as property`),
-      };
+    return {
+      pass: failingElement === null,
+      message: () => (
+        `expected ${printReceived(failingElement)} to 
+        ${failingElement === null ? 'not' : ''} has 
+        ${printExpected(keys.join(', '))} as property`
+      ),
+    };
   },
 });
