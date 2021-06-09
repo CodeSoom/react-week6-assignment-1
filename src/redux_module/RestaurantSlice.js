@@ -19,6 +19,11 @@ const { actions, reducer } = createSlice({
         id: null,
         name: null,
       },
+      restaurant: {
+        name: null,
+        address: null,
+        menuItems: [],
+      },
     },
   },
 
@@ -42,6 +47,10 @@ const { actions, reducer } = createSlice({
     selectRegion: (state, action) => {
       state.selected.region = action.payload;
     },
+
+    setSelectedRestaurant: (state, action) => {
+      state.selected.restaurant = action.payload;
+    },
   },
 });
 
@@ -52,6 +61,7 @@ export const {
 
   selectCategory,
   selectRegion,
+  setSelectedRestaurant,
 } = actions;
 
 export default reducer;
