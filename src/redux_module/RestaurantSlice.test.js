@@ -5,6 +5,7 @@ import reducer, {
 
   selectCategory,
   selectRegion,
+  setSelectedRestaurant,
 } from './RestaurantSlice';
 
 describe('RestaurantSlice', () => {
@@ -60,6 +61,30 @@ describe('RestaurantSlice', () => {
       expect(reducer(
         oldState,
         setSelectedRestaurants(restaurants),
+      )).toEqual(newState);
+    });
+
+    it('sets informations of selected restaurant', () => {
+      const restaurant = {
+        name: '양천주가',
+        address: '서울 강남구',
+        menuItems: ['비빔밥'],
+      };
+
+      const oldState = {
+        selected: {
+          restaurant,
+        },
+      };
+      const newState = {
+        selected: {
+          restaurant,
+        },
+      };
+
+      expect(reducer(
+        oldState,
+        setSelectedRestaurant(restaurant),
       )).toEqual(newState);
     });
 

@@ -1,9 +1,24 @@
 import configureStore from 'redux-mock-store';
 import { getDefaultMiddleware } from '@reduxjs/toolkit';
 
-import { loadCategories, loadRegions, loadRestaurants } from './asyncActions';
-import { setCategories, setRegions, setSelectedRestaurants } from './RestaurantSlice';
-import { fetchCategories, fetchRegions, fetchRestaurants } from '../services/api';
+import {
+  loadCategories,
+  loadRegions,
+  loadRestaurants,
+  loadRestaurantInfo,
+} from './asyncActions';
+import {
+  setCategories,
+  setRegions,
+  setSelectedRestaurants,
+  setSelectedRestaurant,
+} from './RestaurantSlice';
+import {
+  fetchCategories,
+  fetchRegions,
+  fetchRestaurants,
+  fetchRestaurantInfo,
+} from '../services/api';
 
 jest.mock('../services/api');
 
@@ -70,6 +85,28 @@ describe('asyncActions', () => {
         '양천주가',
         '한국식 초밥',
       ]));
+    });
+  });
+
+  describe('loadRestaurantInfo', () => {
+    beforeAll(() => {
+      fetchRestaurantInfo.mockImplementation(async () => ({
+        name: '양천주가',
+        address: '서울 강남구',
+        menuItems: ['비빔밥'],
+      }));
+    });
+
+    it('fetches restuarantInfo when being dispatched', async () => {
+      await store.dispatch(loadRestaurantInfo(1));
+
+      const actions = store.getActions();
+
+      expect(actions[0]).toEqual(setSelectedRestaurant({
+        name: '양천주가',
+        address: '서울 강남구',
+        menuItems: ['비빔밥'],
+      }));
     });
   });
 });
