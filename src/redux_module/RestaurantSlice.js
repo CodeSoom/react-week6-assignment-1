@@ -20,6 +20,7 @@ const { actions, reducer } = createSlice({
         name: null,
       },
       restaurant: {
+        // TODO: state.restaurant.selected.restaurant. restaurant 중복?
         name: null,
         address: null,
         menuItems: [],
