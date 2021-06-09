@@ -30,9 +30,9 @@ export default function RestaurantDetailPage(props) {
       </p>
       <h2>메뉴</h2>
       <ul>
-        {state.menuItems.map((menuItem) => (
-          <li key={menuItem.id}>
-            {menuItem.name}
+        {state.menuItems.map(({ id, name }) => (
+          <li key={id}>
+            {name}
           </li>
         ))}
       </ul>
