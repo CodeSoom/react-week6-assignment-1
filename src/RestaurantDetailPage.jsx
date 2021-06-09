@@ -15,7 +15,7 @@ export default function RestaurantDetailPage({ match }) {
   useEffect(() => {
     dispatch(loadRestaurant(match.params.restaurantId));
   }, []);
-
+  
   return (
     <>
       <h2>{name}</h2>
@@ -24,13 +24,17 @@ export default function RestaurantDetailPage({ match }) {
         {address}
       </p>
       <h3>메뉴</h3>
-      <ul>
-        {menuItems.map(({ id, name: menuName }) => (
-          <li key={id}>
-            {menuName}
-          </li>
-        ))}
-      </ul>
+      {menuItems.length > 0 && (
+        <ul>
+          {menuItems.map(({id, name: menuName}) => (
+            <li key={id}>
+              {menuName}
+            </li>
+          ))}
+        </ul>
+      ) || (
+        <p>메뉴가 존재하지 않습니다.</p>
+      )}
     </>
   );
 }
