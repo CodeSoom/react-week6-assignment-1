@@ -1,15 +1,10 @@
 import HomePage from './HomePage';
+import AboutPage from './AboutPage';
 import RestaurantsPage from './RestaurantsPage';
 
 function NotFoundPage() {
   return (
     <p>Not Found Page</p>
-  );
-}
-
-function AboutPage() {
-  return (
-    <p>About...</p>
   );
 }
 
