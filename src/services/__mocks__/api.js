@@ -1,15 +1,15 @@
 export async function fetchRegions() {
-  return [];
+  return jest.fn(() => []).mock.results;
 }
 
 export async function fetchCategories() {
-  return [];
+  return jest.fn(() => []).mock.results;
 }
 
 export async function fetchRestaurants() {
-  return [];
+  return jest.fn(() => []).mock.results;
 }
 
 export async function fetchRestaurant() {
-  return [];
+  return jest.fn(() => []).mock.results;
 }
