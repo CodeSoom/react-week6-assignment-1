@@ -7,11 +7,19 @@ import CategoriesContainer from './CategoriesContainer';
 import RestaurantsContainer from './RestaurantsContainer';
 
 import {
+  aboutRestaurant,
   loadInitialData,
 } from './actions';
 
 export default function RestaurantsPage() {
   const dispatch = useDispatch();
+
+  const selectedRestaurant = useSelector(get('selectedRestaurant'));
+
+  function handleClick(restaurantId) {
+    dispatch(aboutRestaurant(restaurantId));
+    dispatch(loadInitialData());
+  }
 
   useEffect(() => {
     dispatch(loadInitialData());
