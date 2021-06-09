@@ -10,25 +10,6 @@ describe('App', () => {
 
     useDispatch.mockImplementation(() => dispatch);
 
-    beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({
-        regions: [
-          { id: 1, name: '서울' },
-        ],
-        categories: [],
-        restaurants: [],
-        restaurant: {
-          id: 1,
-          categoryId: 1,
-          name: '양천주가',
-          address: '서울 강남구',
-          menuItems: [
-            { id: 1, restaurantId: 1, name: '비빔밥' },
-          ],
-        },
-      }));
-    });
-
     function renderApp({ path }) {
       return render((
         <MemoryRouter initialEntries={[path]}>
@@ -37,37 +18,50 @@ describe('App', () => {
       ));
     }
 
-    context('with Home page', () => {
-      it('verifies header', () => {
-        const { getByText, queryByText } = render((
-          <MemoryRouter>
-            <App />
-          </MemoryRouter>
-        ));
+    describe('HomePage', () => {
+      it('renders header', () => {
+        const { getByText, queryByText } = renderApp({ path: '/' });
 
         expect(queryByText('헤더')).not.toBeNull();
-
-        // Link Test
         expect(getByText('헤더').closest('a')).toContainHTML('a');
         expect(getByText('헤더').closest('a')).toHaveAttribute('href', '/');
       });
 
-      it('verifies contents', () => {
+      it('renders contents', () => {
         const { container } = renderApp({ path: '/' });
         expect(container).toHaveTextContent('Home');
       });
     });
 
-    context('with About page', () => {
-      it('verifies contents', () => {
+    describe('AboutPage', () => {
+      it('renders contents', () => {
         const { container } = renderApp({ path: '/about' });
         expect(container).toHaveTextContent('About');
       });
     });
 
-    context('with Restaurants page', () => {
+    describe('RestaurantsPage', () => {
+      beforeEach(() => {
+        useSelector.mockImplementation((selector) => selector({
+          regions: [
+            { id: 1, name: '서울' },
+          ],
+          categories: [],
+          restaurants: [],
+          restaurant: {
+            id: 1,
+            categoryId: 1,
+            name: '양천주가',
+            address: '서울 강남구',
+            menuItems: [
+              { id: 1, restaurantId: 1, name: '비빔밥' },
+            ],
+          },
+        }));
+      });
+
       context('with url parameters', () => {
-        it('verifies contents', () => {
+        it('renders contents', () => {
           const { container } = renderApp({ path: '/restaurants/1' });
           expect(container).toHaveTextContent('양천주가');
           expect(container).toHaveTextContent('서울 강남구');
@@ -75,15 +69,15 @@ describe('App', () => {
         });
       });
       context('without url parameters', () => {
-        it('verifies contents', () => {
+        it('renders contents', () => {
           const { container } = renderApp({ path: '/restaurants' });
           expect(container).toHaveTextContent('서울');
         });
       });
     });
 
-    context('with NotFound page', () => {
-      it('verifies contents', () => {
+    describe('NotFoundPage', () => {
+      it('renders contents', () => {
         const { container } = renderApp({ path: '/xxx' });
         expect(container).toHaveTextContent('404 Not Found');
       });
