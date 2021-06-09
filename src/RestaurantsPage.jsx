@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { get } from './utils';
 
 import RegionsContainer from './RegionsContainer';
 import CategoriesContainer from './CategoriesContainer';
@@ -15,11 +17,6 @@ export default function RestaurantsPage() {
   const dispatch = useDispatch();
 
   const selectedRestaurant = useSelector(get('selectedRestaurant'));
-
-  function handleClick(restaurantId) {
-    dispatch(aboutRestaurant(restaurantId));
-    dispatch(loadInitialData());
-  }
 
   useEffect(() => {
     dispatch(loadInitialData());
