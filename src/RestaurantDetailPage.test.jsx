@@ -2,6 +2,8 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
+import { useDispatch, useSelector } from 'react-redux';
+
 import {
   MemoryRouter,
 } from 'react-router-dom';
@@ -12,23 +14,44 @@ import RestaurantDetailPage from './RestaurantDetailPage';
 
 jest.mock('react-redux');
 
-test('RestaurantDetailPage', () => {
+describe('RestaurantDetailPage', () => {
+  const dispatch = jest.fn();
+
   const mockFetch = (data) => {
     global.fetch = jest.fn().mockResolvedValue({
       async json() { return data; },
     });
   };
 
-  beforeEach(() => {
-    mockFetch(RESTAURANDETAIL);
+  context('without restaurantDetail', () => {
+    beforeEach(() => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurantDetail: null,
+      }));
+    });
+
+    it('renders RestaurantsPage and Not Found', () => {
+      const { queryByText } = render((
+        <MemoryRouter>
+          <RestaurantDetailPage />
+        </MemoryRouter>
+      ));
+
+      expect(queryByText('404 Not Found')).not.toBeNull();
+    });
   });
 
-  const { queryByText } = render((
-    <MemoryRouter>
-      <RestaurantDetailPage />
-    </MemoryRouter>
-  ));
+  context('with restaurantDetail', () => {
+    beforeEach(() => {
+      useDispatch.mockImplementation(() => dispatch);
 
-  expect(queryByText(/주소/)).not.toBeNull();
-  expect(queryByText('메뉴')).not.toBeNull();
+      mockFetch(RESTAURANDETAIL);
+      useSelector.mockImplementation((selector) => selector({
+        restaurantDetail: RESTAURANDETAIL,
+      }));
+    });
+    it('renders restaurantDetail', () => {
+      // Todo: ...
+    });
+  });
 });
