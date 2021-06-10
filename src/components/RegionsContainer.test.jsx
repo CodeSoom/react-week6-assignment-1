@@ -2,11 +2,11 @@ import { fireEvent, render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { selectRegion } from '../redux_module/RestaurantSlice';
-import RegionListContainer from './RegionListContainer';
+import RegionsContainer from './RegionsContainer';
 
 jest.mock('react-redux');
 
-describe('RegionListContainer', () => {
+describe('RegionsContainer', () => {
   const dispatch = jest.fn();
 
   beforeEach(() => {
@@ -32,7 +32,7 @@ describe('RegionListContainer', () => {
   });
 
   it('renders buttons with (V) when selected', () => {
-    const { getByRole, queryByRole } = render(<RegionListContainer />);
+    const { getByRole, queryByRole } = render(<RegionsContainer />);
 
     expect(getByRole('button', { name: '서울(V)' })).toBeInTheDocument();
     expect(queryByRole('button', { name: '서울' })).not.toBeInTheDocument();
@@ -41,7 +41,7 @@ describe('RegionListContainer', () => {
   });
 
   it('selects region with button', () => {
-    const { getByRole } = render(<RegionListContainer />);
+    const { getByRole } = render(<RegionsContainer />);
 
     fireEvent.click(getByRole('button', { name: '서울(V)' }));
     expect(dispatch).toBeCalledWith(selectRegion({ id: 1, name: '서울' }));
@@ -51,7 +51,7 @@ describe('RegionListContainer', () => {
   });
 
   it('fetches regions with button', () => {
-    const { getByRole } = render(<RegionListContainer />);
+    const { getByRole } = render(<RegionsContainer />);
 
     fireEvent.click(getByRole('button', { name: '부산' }));
     expect(typeof dispatch.mock.calls[1][0]).toBe('function');

@@ -2,11 +2,11 @@ import { fireEvent, render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { selectCategory } from '../redux_module/RestaurantSlice';
-import CategoryListContainer from './CategoryListContainer';
+import CategoriesContainer from './CategoriesContainer';
 
 jest.mock('react-redux');
 
-describe('CategoryListContainer', () => {
+describe('CategoriesContainer', () => {
   const dispatch = jest.fn();
 
   beforeEach(() => {
@@ -31,7 +31,7 @@ describe('CategoryListContainer', () => {
   });
 
   it('renders buttons with (V) when selected', () => {
-    const { getByRole, queryByRole } = render(<CategoryListContainer />);
+    const { getByRole, queryByRole } = render(<CategoriesContainer />);
 
     expect(getByRole('button', { name: '한식(V)' })).toBeInTheDocument();
     expect(queryByRole('button', { name: '한식' })).not.toBeInTheDocument();
@@ -40,7 +40,7 @@ describe('CategoryListContainer', () => {
   });
 
   it('selects category with button', () => {
-    const { getByRole } = render(<CategoryListContainer />);
+    const { getByRole } = render(<CategoriesContainer />);
 
     fireEvent.click(getByRole('button', { name: '한식(V)' }));
     expect(dispatch).toBeCalledWith(selectCategory({ id: 1, name: '한식' }));
@@ -50,7 +50,7 @@ describe('CategoryListContainer', () => {
   });
 
   it('fetches restaurants with button', () => {
-    const { getByRole } = render(<CategoryListContainer />);
+    const { getByRole } = render(<CategoriesContainer />);
 
     fireEvent.click(getByRole('button', { name: '중식' }));
     expect(typeof dispatch.mock.calls[1][0]).toBe('function');

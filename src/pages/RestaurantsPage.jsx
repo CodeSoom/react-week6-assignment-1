@@ -1,5 +1,5 @@
-import CategoryListContainer from '../components/CategoryListContainer';
-import RegionListContainer from '../components/RegionListContainer';
+import CategoryListContainer from '../components/CategoriesContainer';
+import RegionListContainer from '../components/RegionsContainer';
 import RestaurantList from '../components/RestaurantList';
 
 export default function RestaurantsPage() {
