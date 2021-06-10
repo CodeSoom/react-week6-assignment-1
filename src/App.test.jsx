@@ -17,13 +17,17 @@ describe('App', () => {
     }));
   });
 
+  function renderApp({ path }) {
+    return render((
+      <MemoryRouter initialEntries={[path]}>
+        <App />
+      </MemoryRouter>
+    ));
+  }
+
   context('with path /', () => {
     it('renders HomePage', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const { container } = renderApp({ path: '/' });
 
       expect(container).toHaveTextContent('Home');
     });
@@ -31,11 +35,7 @@ describe('App', () => {
 
   context('with path /about', () => {
     it('renders th about page', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/about']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const { container } = renderApp({ path: '/about' });
 
       expect(container).toHaveTextContent('About...');
     });
