@@ -8,6 +8,8 @@ import {
   MemoryRouter,
 } from 'react-router-dom';
 
+import RESTAURANDETAIL from '../fixtures/restaurantDetail';
+
 import App from './App';
 
 describe('App', () => {
@@ -26,6 +28,7 @@ describe('App', () => {
       restaurants: [
         { id: 1, categoryId: 1, name: '양천주가' },
       ],
+      restaurantDetail: RESTAURANDETAIL,
     }));
   });
 
