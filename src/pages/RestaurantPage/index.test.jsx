@@ -12,11 +12,11 @@ describe('RestaurantsPage', () => {
   const dispatch = jest.fn();
 
   beforeEach(() => {
-    useDispatch.mockImplementation(() => dispatch);
-
     useSelector.mockImplementation((selector) => selector({
       restaurant,
     }));
+
+    useDispatch.mockImplementation(() => dispatch);
   });
 
   function renderRestaurantPage() {
@@ -27,23 +27,45 @@ describe('RestaurantsPage', () => {
     ));
   }
 
-  it('renders "메뉴" title', () => {
-    const { getByRole } = renderRestaurantPage();
-
-    expect(getByRole('heading', { name: '메뉴' })).toBeInTheDocument();
-  });
-
-  it('renders menus', () => {
-    const { getByText } = renderRestaurantPage();
-
-    restaurant.menuItems.forEach(({ name }) => {
-      expect(getByText(name)).toBeInTheDocument();
-    });
-  });
-
   it('loads restaurant', () => {
     renderRestaurantPage();
 
     expect(dispatch).toBeCalled();
+  });
+
+  context('with restaurant', () => {
+    beforeEach(() => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurant,
+      }));
+    });
+
+    it('renders "메뉴" title', () => {
+      const { getByRole } = renderRestaurantPage();
+
+      expect(getByRole('heading', { name: '메뉴' })).toBeInTheDocument();
+    });
+
+    it('renders menus', () => {
+      const { getByText } = renderRestaurantPage();
+
+      restaurant.menuItems.forEach(({ name }) => {
+        expect(getByText(name)).toBeInTheDocument();
+      });
+    });
+  });
+
+  context('without restaurant', () => {
+    beforeEach(() => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurant: {},
+      }));
+    });
+
+    it('renders loading', () => {
+      const { getByText } = renderRestaurantPage();
+
+      expect(getByText('Loading...')).toBeInTheDocument();
+    });
   });
 });
