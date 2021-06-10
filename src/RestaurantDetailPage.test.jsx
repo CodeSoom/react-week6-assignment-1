@@ -17,11 +17,10 @@ jest.mock('react-redux');
 describe('RestaurantDetailPage', () => {
   const dispatch = jest.fn();
 
-  const mockFetch = (data) => {
-    global.fetch = jest.fn().mockResolvedValue({
-      async json() { return data; },
-    });
-  };
+  beforeEach(() => {
+    dispatch.mockClear();
+    useDispatch.mockImplementation(() => dispatch);
+  });
 
   context('without restaurantDetail', () => {
     beforeEach(() => {
@@ -32,7 +31,7 @@ describe('RestaurantDetailPage', () => {
 
     it('renders RestaurantsPage and Not Found', () => {
       const { queryByText } = render((
-        <MemoryRouter>
+        <MemoryRouter initialEntries={['/restaurants/1']}>
           <RestaurantDetailPage />
         </MemoryRouter>
       ));
@@ -43,15 +42,19 @@ describe('RestaurantDetailPage', () => {
 
   context('with restaurantDetail', () => {
     beforeEach(() => {
-      useDispatch.mockImplementation(() => dispatch);
-
-      mockFetch(RESTAURANDETAIL);
       useSelector.mockImplementation((selector) => selector({
         restaurantDetail: RESTAURANDETAIL,
       }));
     });
+
     it('renders restaurantDetail', () => {
-      // Todo: ...
+      const { queryByText } = render((
+        <MemoryRouter initialEntries={['/restaurants/1']}>
+          <RestaurantDetailPage />
+        </MemoryRouter>
+      ));
+
+      expect(queryByText('양천주가')).not.toBeNull();
     });
   });
 });
