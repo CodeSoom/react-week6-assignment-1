@@ -11,9 +11,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import App from './App';
 
 describe('App', () => {
-  beforeEach(() => {
-    const dispatch = jest.fn();
+  const dispatch = jest.fn();
 
+  beforeEach(() => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
