@@ -25,6 +25,7 @@ describe('CategoriesContainer', () => {
 
         selected: {
           category: { id: 1, name: '한식' },
+          region: { name: '서울' },
         },
       },
     }));
