@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react';
 
-import ButtonList from './Buttons';
+import Buttons from './Buttons';
 
-describe('buttonList', () => {
+describe('Buttons', () => {
   const items = [
     { id: 1, name: '서울' },
     { id: 2, name: '부산' },
@@ -10,7 +10,7 @@ describe('buttonList', () => {
 
   function renderButtonList({ selected }) {
     return render((
-      <ButtonList
+      <Buttons
         items={items}
         onClick={jest.fn()}
         selected={selected}
