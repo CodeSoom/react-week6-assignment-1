@@ -8,9 +8,12 @@ export default function HomePage() {
       </h2>
 
       <ul>
-        <Link to="/about">About</Link>
-        <br />
-        <Link to="/restaurants">Restaurants</Link>
+        <li>
+          <Link to="/about">About</Link>
+        </li>
+        <li>
+          <Link to="/restaurants">Restaurants</Link>
+        </li>
       </ul>
     </>
   );
