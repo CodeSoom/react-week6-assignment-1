@@ -80,6 +80,7 @@ describe('App', () => {
 
       expect(container).toHaveTextContent('주소');
       expect(container).toHaveTextContent('메뉴');
+      expect(container).toHaveTextContent('양천주가');
     });
   });
 
