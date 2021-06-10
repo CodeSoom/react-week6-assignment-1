@@ -1,41 +1,64 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+
+import { useDispatch, useSelector } from 'react-redux';
+
+// import {
+// fetchRestaurantInformation,
+// } from './services/api';
 
 import {
-  fetchRestaurantInformation,
-} from './services/api';
+  useParams,
+} from 'react-router-dom';
 
-export default function RestaurantDetailPage(props) {
-  const [state, setState] = useState({
-    id: -1,
-    categoryId: -1,
-    name: '',
-    address: '',
-    menuItems: [],
-    reviews: [],
-    information: '',
-  });
+import {
+  loadRestaurantInformation,
+} from './actions';
 
-  useEffect(async () => {
-    const resultInformation = await fetchRestaurantInformation(props.match.params.id);
-    setState(resultInformation);
+import { get } from './utils';
+
+export default function RestaurantDetailPage() {
+  const dispatch = useDispatch();
+
+  const { id } = useParams();
+  useEffect(() => {
+    dispatch(loadRestaurantInformation(id));
   }, []);
 
-  return (
-    <div>
-      <h1>{state.name}</h1>
-      <p>
-        주소:
-        {' '}
-        {state.address}
-      </p>
-      <h2>메뉴</h2>
-      <ul>
-        {state.menuItems.map(({ id, name }) => (
-          <li key={id}>
-            {name}
-          </li>
-        ))}
-      </ul>
-    </div>
+  const restaurantDetail = useSelector(get('restaurantDetail'));
+  // const [state, setState] = useState({
+  // id: -1,
+  // categoryId: -1,
+  // name: '',
+  // address: '',
+  // menuItems: [],
+  // reviews: [],
+  // information: '',
+  // });
+
+  // useEffect(async () => {
+  // const resultInformation = await fetchRestaurantInformation(props.match.params.id);
+  // setState(resultInformation);
+  // }, []);
+
+  return (restaurantDetail === null
+    ? <div>404 Not Found</div>
+    : (
+      <div>
+        <h1>{restaurantDetail.name}</h1>
+        <p>
+          주소:
+          {' '}
+          {restaurantDetail.address}
+        </p>
+        <h2>메뉴</h2>
+        <ul>
+          {restaurantDetail.menuItems.map((menuItem) => (
+            <li key={menuItem.id}>
+              {menuItem.name}
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
   );
 }
