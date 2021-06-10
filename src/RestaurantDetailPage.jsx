@@ -11,7 +11,7 @@ import {
 } from 'react-router-dom';
 
 import {
-  loadRestaurantInformation,
+  loadRestaurantDetail,
 } from './actions';
 
 import { get } from './utils';
@@ -21,7 +21,7 @@ export default function RestaurantDetailPage() {
 
   const { id } = useParams();
   useEffect(() => {
-    dispatch(loadRestaurantInformation(id));
+    dispatch(loadRestaurantDetail(id));
   }, []);
 
   const restaurantDetail = useSelector(get('restaurantDetail'));

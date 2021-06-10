@@ -83,4 +83,6 @@ describe('actions', () => {
       });
     });
   });
+
+  describe('lloadRestaurantDetail', () => {});
 });

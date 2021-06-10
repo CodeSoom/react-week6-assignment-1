@@ -6,7 +6,7 @@ import {
   MemoryRouter,
 } from 'react-router-dom';
 
-import RESTAURANTINFORMATION from '../fixtures/restaurantInformation';
+import RESTAURANDETAIL from '../fixtures/restaurantDetail';
 
 import RestaurantDetailPage from './RestaurantDetailPage';
 
@@ -20,7 +20,7 @@ test('RestaurantDetailPage', () => {
   };
 
   beforeEach(() => {
-    mockFetch(RESTAURANTINFORMATION);
+    mockFetch(RESTAURANDETAIL);
   });
 
   const { queryByText } = render((
