@@ -2,10 +2,6 @@ import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-// import {
-// fetchRestaurantInformation,
-// } from './services/api';
-
 import {
   useParams,
 } from 'react-router-dom';
@@ -25,20 +21,6 @@ export default function RestaurantDetailPage() {
   }, []);
 
   const restaurantDetail = useSelector(get('restaurantDetail'));
-  // const [state, setState] = useState({
-  // id: -1,
-  // categoryId: -1,
-  // name: '',
-  // address: '',
-  // menuItems: [],
-  // reviews: [],
-  // information: '',
-  // });
-
-  // useEffect(async () => {
-  // const resultInformation = await fetchRestaurantInformation(props.match.params.id);
-  // setState(resultInformation);
-  // }, []);
 
   return (restaurantDetail === null
     ? <div>404 Not Found</div>
