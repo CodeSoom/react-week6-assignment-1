@@ -1,5 +1,6 @@
 import { render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
+import { MemoryRouter } from 'react-router-dom';
 
 import RestaurantsPage from './RestaurantsPage';
 
@@ -35,13 +36,21 @@ describe('RestaurantsPage', () => {
   });
 
   it('renders title', () => {
-    const { container } = render(<RestaurantsPage />);
+    const { container } = render(
+      <MemoryRouter>
+        <RestaurantsPage />
+      </MemoryRouter>,
+    );
 
     expect(container).toHaveTextContent('Restaurants');
   });
 
   it('renders categories', () => {
-    const { getByRole } = render(<RestaurantsPage />);
+    const { getByRole } = render(
+      <MemoryRouter>
+        <RestaurantsPage />
+      </MemoryRouter>,
+    );
 
     ['한식', '중식'].forEach((category) => {
       expect(getByRole('button', { name: category })).toBeInTheDocument();
@@ -49,7 +58,11 @@ describe('RestaurantsPage', () => {
   });
 
   it('renders regions', () => {
-    const { getByRole } = render(<RestaurantsPage />);
+    const { getByRole } = render(
+      <MemoryRouter>
+        <RestaurantsPage />
+      </MemoryRouter>,
+    );
 
     ['서울', '부산'].forEach((region) => {
       expect(getByRole('button', { name: region })).toBeInTheDocument();
@@ -57,7 +70,11 @@ describe('RestaurantsPage', () => {
   });
 
   it('renders selectedRestaurants', () => {
-    const { container } = render(<RestaurantsPage />);
+    const { container } = render(
+      <MemoryRouter>
+        <RestaurantsPage />
+      </MemoryRouter>,
+    );
 
     expect(container).toHaveTextContent('양천주가');
   });

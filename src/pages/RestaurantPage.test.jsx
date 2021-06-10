@@ -1,9 +1,11 @@
 import { render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 import RestaurantPage from './RestaurantPage';
 
 jest.mock('react-redux');
+jest.mock('react-router');
 
 describe('RestaurantPage', () => {
   const dispatch = jest.fn();
@@ -13,6 +15,7 @@ describe('RestaurantPage', () => {
   });
 
   beforeAll(() => {
+    useParams.mockImplementation(() => ({ id: 1 }));
     useDispatch.mockImplementation(() => dispatch);
     useSelector.mockImplementation((selector) => selector(
       {
@@ -30,13 +33,13 @@ describe('RestaurantPage', () => {
   });
 
   it('loads informations of selected restaurant', () => {
-    render(<RestaurantPage restaurantID={1} />);
+    render(<RestaurantPage />);
 
     expect(dispatch).toBeCalled();
   });
 
   it('renders restaurant name, address, menus', () => {
-    const { container } = render(<RestaurantPage restaurantID={1} />);
+    const { container } = render(<RestaurantPage />);
 
     expect(container).toHaveTextContent('양천주가');
     expect(container).toHaveTextContent('서울 강남구');

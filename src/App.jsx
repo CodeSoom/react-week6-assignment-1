@@ -2,11 +2,12 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, Route, Switch } from 'react-router-dom';
 
+import { loadCategories, loadRegions } from './redux_module/asyncActions';
 import RestaurantsPage from './pages/RestaurantsPage';
+import RestaurantPage from './pages/RestaurantPage';
 import NotFoundPage from './pages/NotFoundPage';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
-import { loadCategories, loadRegions } from './redux_module/asyncActions';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/about" component={AboutPage} />
+        <Route path="/restaurants/:id" component={RestaurantPage} />
         <Route path="/restaurants" component={RestaurantsPage} />
         <Route component={NotFoundPage} />
       </Switch>

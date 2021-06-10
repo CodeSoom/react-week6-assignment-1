@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 export default function RestaurantList() {
   const restaurants = useSelector(
@@ -10,7 +11,7 @@ export default function RestaurantList() {
       {restaurants.map(
         ({ id, name }) => (
           <li key={id}>
-            {name}
+            <Link to={`/restaurants/${id}`}>{name}</Link>
           </li>
         ),
       )}
