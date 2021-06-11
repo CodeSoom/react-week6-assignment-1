@@ -4,11 +4,31 @@ import { useDispatch, useSelector } from 'react-redux';
 import RestaurantDetailPage from './RestaurantDetailPage';
 
 describe('RestaurantDetailPage', () => {
+  given('restaurant', () => ({
+    restaurant: {
+      id: 1,
+      categoryId: 1,
+      name: '양천주가',
+      address: '서울 강남구',
+      menuItems: given.menuItems,
+    }
+  }));
+
+  beforeEach(() => {
+    useSelector.mockImplementation((selector) => selector({
+      ...given.restaurant,
+    }));
+  });
+
   const match = {
     params: {
       restaurantId: 1,
     },
   };
+
+  const dispatch = jest.fn();
+
+  useDispatch.mockImplementation(() => dispatch);
 
   function renderRestaurant() {
     return render((
@@ -16,45 +36,17 @@ describe('RestaurantDetailPage', () => {
     ));
   }
 
-  describe('dispatch', () => {
-    const dispatch = jest.fn();
-    useDispatch.mockImplementation(() => dispatch);
+  it('calls dispatch()', () => {
+    given('menuItems', () => [{ id: 1, restaurantId: 1, name: '비빔밥' }]);
 
-    beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({
-        restaurant: {
-          id: 0,
-          categoryId: 0,
-          name: '',
-          address: '',
-          menuItems: [],
-        },
-      }));
-    });
+    renderRestaurant();
 
-    it('changes restaurant', () => {
-      renderRestaurant();
-      expect(dispatch).toBeCalled();
-    });
+    expect(dispatch).toBeCalled();
   });
-
-  function mockRestaurant(menuItems) {
-    useSelector.mockImplementation((selector) => selector({
-      restaurant: {
-        id: 1,
-        categoryId: 1,
-        name: '양천주가',
-        address: '서울 강남구',
-        menuItems,
-      },
-    }));
-  }
 
   context('with menu', () => {
     beforeEach(() => {
-      mockRestaurant([
-        { id: 1, restaurantId: 1, name: '비빔밥' },
-      ])
+      given('menuItems', () => [{ id: 1, restaurantId: 1, name: '비빔밥' }]);
     });
 
     it('renders restaurant', () => {
@@ -68,7 +60,7 @@ describe('RestaurantDetailPage', () => {
 
   context('without menu', () => {
     beforeEach(() => {
-      mockRestaurant([])
+      given('menuItems', () => [])
     });
 
     it('renders restaurant', () => {
