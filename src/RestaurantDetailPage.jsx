@@ -16,22 +16,6 @@ export default function RestaurantDetailPage({ match }) {
     dispatch(loadRestaurant(match.params.restaurantId));
   }, []);
 
-  function getMenuItems() {
-    if (menuItems.length === 0) {
-      return <p>메뉴가 존재하지 않습니다.</p>
-    }
-
-    return (
-      <ul>
-        {menuItems.map(({id, name: menuName}) => (
-          <li key={id}>
-            {menuName}
-          </li>
-        ))}
-      </ul>
-    )
-  }
-
   return (
     <>
       <h2>{name}</h2>
@@ -40,7 +24,18 @@ export default function RestaurantDetailPage({ match }) {
         {address}
       </p>
       <h3>메뉴</h3>
-      {getMenuItems()}
+      {menuItems.length === 0
+        ? <p>메뉴가 존재하지 않습니다.</p>
+        : (
+          <ul>
+            {menuItems.map(({id, name: menuName}) => (
+              <li key={id}>
+                {menuName}
+              </li>
+            ))}
+          </ul>
+        )
+      }
     </>
   );
 }
