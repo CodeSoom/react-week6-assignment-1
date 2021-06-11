@@ -8,7 +8,7 @@ import {
   MemoryRouter,
 } from 'react-router-dom';
 
-import RESTAURANDETAIL from '../fixtures/restaurantDetail';
+import RESTAURANT_DETAIL from '../fixtures/restaurantDetail';
 
 import RestaurantDetailPage from './RestaurantDetailPage';
 
@@ -43,7 +43,7 @@ describe('RestaurantDetailPage', () => {
   context('with restaurantDetail', () => {
     beforeEach(() => {
       useSelector.mockImplementation((selector) => selector({
-        restaurantDetail: RESTAURANDETAIL,
+        restaurantDetail: RESTAURANT_DETAIL,
       }));
     });
 
