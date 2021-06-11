@@ -29,14 +29,14 @@ describe('RestaurantDetailPage', () => {
       }));
     });
 
-    it('renders RestaurantsPage and Not Found', () => {
+    it('renders loading state', () => {
       const { queryByText } = render((
         <MemoryRouter initialEntries={['/restaurants/1']}>
           <RestaurantDetailPage />
         </MemoryRouter>
       ));
 
-      expect(queryByText('404 Not Found')).not.toBeNull();
+      expect(queryByText('로딩중...')).not.toBeNull();
     });
   });
 
