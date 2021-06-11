@@ -38,19 +38,23 @@ describe('RestaurantDetailPage', () => {
     });
   });
 
+  function mockRestaurant(menuItems) {
+    useSelector.mockImplementation((selector) => selector({
+      restaurant: {
+        id: 1,
+        categoryId: 1,
+        name: '양천주가',
+        address: '서울 강남구',
+        menuItems,
+      },
+    }));
+  }
+
   context('with menu', () => {
     beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({
-        restaurant: {
-          id: 1,
-          categoryId: 1,
-          name: '양천주가',
-          address: '서울 강남구',
-          menuItems: [
-            { id: 1, restaurantId: 1, name: '비빔밥' },
-          ],
-        },
-      }));
+      mockRestaurant([
+        { id: 1, restaurantId: 1, name: '비빔밥' },
+      ])
     });
 
     it('renders restaurant', () => {
@@ -64,16 +68,9 @@ describe('RestaurantDetailPage', () => {
 
   context('without menu', () => {
     beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({
-        restaurant: {
-          id: 1,
-          categoryId: 1,
-          name: '양천주가',
-          address: '서울 강남구',
-          menuItems: [],
-        },
-      }));
+      mockRestaurant([])
     });
+
     it('renders restaurant', () => {
       const { queryByText } = renderRestaurant();
 
