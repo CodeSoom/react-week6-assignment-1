@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react';
 import { useSelector } from 'react-redux';
 import { MemoryRouter } from 'react-router';
+import given from 'given2';
 
 import RestaurantContainer from '.';
 
@@ -9,10 +10,12 @@ import restaurant from '../../../fixtures/restaurant';
 jest.mock('react-redux');
 
 describe('RestaurantContainer', () => {
+  given('!state', () => useSelector.mockImplementation((selector) => selector({
+    restaurant: given.restaurant,
+  })));
+
   beforeEach(() => {
-    useSelector.mockImplementation((selector) => selector({
-      restaurant,
-    }));
+    given('restaurant', () => restaurant);
   });
 
   function renderRestaurantContainer() {
@@ -31,9 +34,7 @@ describe('RestaurantContainer', () => {
 
   context('with menuItems', () => {
     beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({
-        restaurant,
-      }));
+      given('restaurant', () => restaurant);
     });
 
     it('renders menus', () => {
@@ -47,11 +48,9 @@ describe('RestaurantContainer', () => {
 
   context('without menuItems', () => {
     beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({
-        restaurant: {
-          menuItems: [],
-          information: '',
-        },
+      given('restaurant', () => ({
+        menuItems: [],
+        information: '',
       }));
     });
 
@@ -64,9 +63,7 @@ describe('RestaurantContainer', () => {
 
   context('with information', () => {
     beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({
-        restaurant,
-      }));
+      given('restaurant', () => restaurant);
     });
 
     it('renders address', () => {
@@ -78,11 +75,9 @@ describe('RestaurantContainer', () => {
 
   context('without information', () => {
     beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({
-        restaurant: {
-          menuItems: [],
-          information: '',
-        },
+      given('restaurant', () => ({
+        menuItems: [],
+        information: '',
       }));
     });
 
