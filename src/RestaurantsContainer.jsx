@@ -7,7 +7,7 @@ export default function RestaurantsContainer() {
 
   return (
     <ul>
-      {restaurants.map((restaurant) => (
+      {restaurants?.map((restaurant) => (
         <li key={restaurant.id}>
           {restaurant.name}
         </li>

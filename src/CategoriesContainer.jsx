@@ -20,7 +20,7 @@ export default function CategoriesContainer() {
 
   return (
     <ul>
-      {categories.map((category) => (
+      {categories?.map((category) => (
         <li key={category.id}>
           <button
             type="button"
