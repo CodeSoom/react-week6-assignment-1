@@ -27,7 +27,7 @@ describe('RestaurantsContainer', () => {
     expect(container).toHaveTextContent('마법사주방');
   });
 
-  context('with path /restaurants/:id', () => {
+  describe('with path /restaurants/:id', () => {
     it('renders restaurantDetilPage', () => {
       render((
         <MemoryRouter initialEntries={['/restaurants/1']}>
