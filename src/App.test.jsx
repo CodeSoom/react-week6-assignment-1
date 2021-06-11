@@ -18,7 +18,7 @@ describe('App', () => {
       ));
     }
 
-    describe('HomePage', () => {
+    context('when path is /', () => {
       it('renders header', () => {
         const { getByText, queryByText } = renderApp({ path: '/' });
 
@@ -33,14 +33,14 @@ describe('App', () => {
       });
     });
 
-    describe('AboutPage', () => {
+    context('when path is /about', () => {
       it('renders contents', () => {
         const { container } = renderApp({ path: '/about' });
         expect(container).toHaveTextContent('About');
       });
     });
 
-    describe('RestaurantsPage', () => {
+    context('when path is /restaurants', () => {
       beforeEach(() => {
         useSelector.mockImplementation((selector) => selector({
           regions: [
@@ -76,7 +76,7 @@ describe('App', () => {
       });
     });
 
-    describe('NotFoundPage', () => {
+    context('when path is /xxx', () => {
       it('renders contents', () => {
         const { container } = renderApp({ path: '/xxx' });
         expect(container).toHaveTextContent('404 Not Found');
