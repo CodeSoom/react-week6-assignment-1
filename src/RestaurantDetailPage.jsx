@@ -12,6 +12,8 @@ import {
 
 import { get } from './utils';
 
+import NotFoundPage from './NotFoundPage';
+
 export default function RestaurantDetailPage() {
   const dispatch = useDispatch();
 
@@ -22,25 +24,26 @@ export default function RestaurantDetailPage() {
 
   const restaurantDetail = useSelector(get('restaurantDetail'));
 
-  return (restaurantDetail === null
-    ? <div>404 Not Found</div>
-    : (
-      <div>
-        <h1>{restaurantDetail.name}</h1>
-        <p>
-          주소:
-          {' '}
-          {restaurantDetail.address}
-        </p>
-        <h2>메뉴</h2>
-        <ul>
-          {restaurantDetail.menuItems.map((menuItem) => (
-            <li key={menuItem.id}>
-              {menuItem.name}
-            </li>
-          ))}
-        </ul>
-      </div>
-    )
+  if (restaurantDetail === null) {
+    return <NotFoundPage />;
+  }
+
+  return (
+    <div>
+      <h1>{restaurantDetail.name}</h1>
+      <p>
+        주소:
+        {' '}
+        {restaurantDetail.address}
+      </p>
+      <h2>메뉴</h2>
+      <ul>
+        {restaurantDetail.menuItems.map((menuItem) => (
+          <li key={menuItem.id}>
+            {menuItem.name}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
