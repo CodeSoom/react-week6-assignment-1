@@ -10,6 +10,12 @@ const { actions, reducer } = createSlice({
     regions: [],
     selectedRestaurants: [],
 
+    information: {
+      name: null,
+      address: null,
+      menuItems: [],
+    },
+
     selected: {
       category: {
         id: null,
@@ -18,12 +24,6 @@ const { actions, reducer } = createSlice({
       region: {
         id: null,
         name: null,
-      },
-      restaurant: {
-        // TODO: state.restaurant.selected.restaurant. restaurant 중복?
-        name: null,
-        address: null,
-        menuItems: [],
       },
     },
   },
@@ -50,7 +50,7 @@ const { actions, reducer } = createSlice({
     },
 
     setSelectedRestaurant: (state, action) => {
-      state.selected.restaurant = action.payload;
+      state.information = action.payload;
     },
   },
 });

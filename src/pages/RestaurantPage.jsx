@@ -13,7 +13,7 @@ export default function RestaurantPage() {
   }, []);
 
   const { name, address, menuItems } = useSelector(
-    (state) => state.restaurant.selected.restaurant,
+    (state) => state.restaurant.information,
   );
 
   // Todo container/presentational 도입(?)

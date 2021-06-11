@@ -65,26 +65,24 @@ describe('RestaurantSlice', () => {
     });
 
     it('sets informations of selected restaurant', () => {
-      const restaurant = {
-        name: '양천주가',
-        address: '서울 강남구',
-        menuItems: ['비빔밥'],
-      };
-
       const oldState = {
-        selected: {
-          restaurant,
-        },
+        information: {},
       };
       const newState = {
-        selected: {
-          restaurant,
+        information: {
+          name: '양천주가',
+          address: '서울 강남구',
+          menuItems: ['비빔밥'],
         },
       };
 
       expect(reducer(
         oldState,
-        setSelectedRestaurant(restaurant),
+        setSelectedRestaurant({
+          name: '양천주가',
+          address: '서울 강남구',
+          menuItems: ['비빔밥'],
+        }),
       )).toEqual(newState);
     });
 

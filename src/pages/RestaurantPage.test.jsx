@@ -17,19 +17,15 @@ describe('RestaurantPage', () => {
   beforeAll(() => {
     useParams.mockImplementation(() => ({ id: 1 }));
     useDispatch.mockImplementation(() => dispatch);
-    useSelector.mockImplementation((selector) => selector(
-      {
-        restaurant: {
-          selected: {
-            restaurant: {
-              name: '양천주가',
-              address: '서울 강남구',
-              menuItems: ['비빔밥'],
-            },
-          },
+    useSelector.mockImplementation((selector) => selector({
+      restaurant: {
+        information: {
+          name: '양천주가',
+          address: '서울 강남구',
+          menuItems: ['비빔밥'],
         },
       },
-    ));
+    }));
   });
 
   it('loads informations of selected restaurant', () => {
