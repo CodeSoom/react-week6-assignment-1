@@ -8,17 +8,12 @@ export default function CategoryListContainer() {
   const dispatch = useDispatch();
 
   const {
-    categories,
-
-    selected: {
-      region,
-      category,
-    },
+    categories, selected: { category },
   } = useSelector((state) => state.restaurant);
 
   const handleClick = (selectedCategory) => {
     dispatch(selectCategory(selectedCategory));
-    dispatch(loadRestaurants(region.name, selectedCategory.id));
+    dispatch(loadRestaurants());
   };
 
   return (

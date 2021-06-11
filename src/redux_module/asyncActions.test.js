@@ -24,11 +24,6 @@ jest.mock('../services/api');
 
 describe('asyncActions', () => {
   const mockStore = configureStore(getDefaultMiddleware());
-  const store = mockStore({});
-
-  beforeEach(() => {
-    store.clearActions();
-  });
 
   describe('loadCategories', () => {
     beforeAll(() => {
@@ -39,6 +34,7 @@ describe('asyncActions', () => {
     });
 
     it('fetches categories when being dispatched', async () => {
+      const store = mockStore({});
       await store.dispatch(loadCategories());
 
       const actions = store.getActions();
@@ -60,6 +56,7 @@ describe('asyncActions', () => {
     });
 
     it('fetches regions when being dispatched', async () => {
+      const store = mockStore({});
       await store.dispatch(loadRegions());
 
       const actions = store.getActions();
@@ -73,17 +70,33 @@ describe('asyncActions', () => {
 
   describe('loadRestaurants', () => {
     beforeAll(() => {
-      fetchRestaurants.mockImplementation(async () => ['양천주가', '한국식 초밥']);
+      fetchRestaurants.mockImplementation(async (regionName, categoryId) => {
+        if (regionName === '서울' && categoryId === 1) {
+          return [
+            { id: 1, title: '양천주가' },
+          ];
+        }
+
+        return null;
+      });
     });
 
     it('fetches restuarants when being dispatched', async () => {
-      await store.dispatch(loadRestaurants('서울', 1));
+      const store = mockStore({
+        restaurant: {
+          selected: {
+            category: { id: 1, name: '한식' },
+            region: { id: 1, name: '서울' },
+          },
+        },
+      });
+
+      await store.dispatch(loadRestaurants());
 
       const actions = store.getActions();
 
       expect(actions[0]).toEqual(setSelectedRestaurants([
-        '양천주가',
-        '한국식 초밥',
+        { id: 1, title: '양천주가' },
       ]));
     });
   });
@@ -98,6 +111,7 @@ describe('asyncActions', () => {
     });
 
     it('fetches restuarantInfo when being dispatched', async () => {
+      const store = mockStore({});
       await store.dispatch(loadRestaurantInfo(1));
 
       const actions = store.getActions();

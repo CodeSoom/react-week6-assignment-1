@@ -53,7 +53,7 @@ describe('RestaurantSlice', () => {
     });
 
     it('sets restaurants', () => {
-      const restaurants = ['원초밥'];
+      const restaurants = [{ id: 1, name: '원초밥' }];
 
       const oldState = { selectedRestaurants: [] };
       const newState = { selectedRestaurants: restaurants };

@@ -8,17 +8,12 @@ export default function RegionListContainer() {
   const dispatch = useDispatch();
 
   const {
-    regions,
-
-    selected: {
-      category,
-      region,
-    },
+    regions, selected: { region },
   } = useSelector((state) => state.restaurant);
 
   const handleClick = (selectedRegion) => {
     dispatch(selectRegion(selectedRegion));
-    dispatch(loadRestaurants(selectedRegion.name, category.id));
+    dispatch(loadRestaurants());
   };
 
   return (

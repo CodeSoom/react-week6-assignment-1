@@ -21,8 +21,10 @@ export const loadRegions = () => async (dispatch) => {
   dispatch(setRegions(regions));
 };
 
-export const loadRestaurants = (regionName, categoryId) => async (dispatch) => {
-  const restaurants = await fetchRestaurants(regionName, categoryId);
+export const loadRestaurants = () => async (dispatch, getState) => {
+  const { restaurant: { selected: { region, category } } } = getState();
+
+  const restaurants = await fetchRestaurants(region.name, category.id);
   dispatch(setSelectedRestaurants(restaurants));
 };
 
