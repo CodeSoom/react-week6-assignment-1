@@ -4,7 +4,7 @@ import { MemoryRouter } from 'react-router';
 
 import RestaurantsPage from './RestaurantsPage';
 
-test('RestaurantsPage', () => {
+describe('RestaurantsPage', () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
@@ -21,14 +21,16 @@ test('RestaurantsPage', () => {
     ],
   }));
 
-  const { queryByText } = render((
-    <MemoryRouter>
-      <RestaurantsPage />
-    </MemoryRouter>
-  ));
+  it('renders', () => {
+    const { queryByText } = render((
+      <MemoryRouter>
+        <RestaurantsPage />
+      </MemoryRouter>
+    ));
 
-  expect(dispatch).toBeCalled();
+    expect(dispatch).toBeCalled();
 
-  expect(queryByText('서울')).not.toBeNull();
-  expect(queryByText('한식')).not.toBeNull();
+    expect(queryByText('서울')).not.toBeNull();
+    expect(queryByText('한식')).not.toBeNull();
+  });
 });
