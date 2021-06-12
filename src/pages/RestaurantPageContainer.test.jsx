@@ -2,6 +2,7 @@ import { render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
+import { setSelectedRestaurant } from '../redux_module/RestaurantSlice';
 import RestaurantPageContainer from './RestaurantPageContainer';
 
 jest.mock('react-redux');
@@ -28,15 +29,18 @@ describe('RestaurantPageContainer', () => {
     }));
   });
 
-  it('loads informations of selected restaurant', () => {
+  it('initializes informations of selected restaurant', () => {
     render(<RestaurantPageContainer />);
 
-    expect(dispatch).toBeCalled();
+    expect(dispatch).nthCalledWith(
+      1,
+      setSelectedRestaurant({ name: null, address: null, menuItems: [] }),
+    );
   });
 
-  it('loads informations of selected restaurant', () => {
+  it('loads informations of selected restaurant after initialization', () => {
     render(<RestaurantPageContainer />);
 
-    expect(useParams).toBeCalled();
+    expect(dispatch).toBeCalledTimes(2);
   });
 });
