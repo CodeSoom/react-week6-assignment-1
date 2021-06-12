@@ -1,7 +1,9 @@
 import React from 'react';
 
 const AboutPage = () => (
-  <div>About...</div>
+  <>
+    <h2>About 페이지 입니다.</h2>
+  </>
 );
 
 export default AboutPage;

@@ -15,11 +15,14 @@ const RestaurantsPage = () => {
   });
 
   return (
-    <div>
-      <RegionsContainer />
-      <CategoriesContainer />
-      <RestaurantsContainer />
-    </div>
+    <>
+      <h2>레스토랑 목록입니다.</h2>
+      <div>
+        <RegionsContainer />
+        <CategoriesContainer />
+        <RestaurantsContainer />
+      </div>
+    </>
   );
 };
 
