@@ -1,14 +1,16 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom';
+
 const HomePage = () => (
-  <div>
-    <h1>Home</h1>
+  <>
+    <h2>메인 페이지입니다.</h2>
     <ul>
-      <li><a href="/">HOME</a></li>
-      <li><a href="/about">ABOUT</a></li>
-      <li><a href="/restaurants">RESTAURANTS</a></li>
+      <li><Link to="/">HOME</Link></li>
+      <li><Link to="/about">ABOUT</Link></li>
+      <li><Link to="/restaurants">RESTAURANTS</Link></li>
     </ul>
-  </div>
+  </>
 );
 
 export default HomePage;
