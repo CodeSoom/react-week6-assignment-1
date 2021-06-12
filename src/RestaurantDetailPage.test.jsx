@@ -22,6 +22,13 @@ describe('RestaurantDetailPage', () => {
     useDispatch.mockImplementation(() => dispatch);
   });
 
+  function renderRestaurantDetailPage() {
+    return render((
+      <MemoryRouter initialEntries={['/restaurants/1']}>
+        <RestaurantDetailPage />
+      </MemoryRouter>
+    ));
+  }
   context('without restaurantDetail', () => {
     beforeEach(() => {
       useSelector.mockImplementation((selector) => selector({
@@ -30,11 +37,7 @@ describe('RestaurantDetailPage', () => {
     });
 
     it('renders loading state', () => {
-      const { queryByText } = render((
-        <MemoryRouter initialEntries={['/restaurants/1']}>
-          <RestaurantDetailPage />
-        </MemoryRouter>
-      ));
+      const { queryByText } = renderRestaurantDetailPage();
 
       expect(queryByText('로딩중...')).not.toBeNull();
     });
@@ -48,11 +51,7 @@ describe('RestaurantDetailPage', () => {
     });
 
     it('renders restaurantDetail', () => {
-      const { queryByText } = render((
-        <MemoryRouter initialEntries={['/restaurants/1']}>
-          <RestaurantDetailPage />
-        </MemoryRouter>
-      ));
+      const { queryByText } = renderRestaurantDetailPage();
 
       expect(queryByText('양천주가')).not.toBeNull();
     });
