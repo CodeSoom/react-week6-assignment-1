@@ -25,7 +25,7 @@ describe('RestaurantPageContainer', () => {
     beforeAll(() => {
       useSelector.mockImplementation((selector) => selector({
         restaurant: {
-          information: {
+          restaurantInformation: {
             name: null,
             address: null,
             menuItems: [],
@@ -54,7 +54,7 @@ describe('RestaurantPageContainer', () => {
     beforeAll(() => {
       useSelector.mockImplementation((selector) => selector({
         restaurant: {
-          information: given.information,
+          restaurantInformation: given.information,
         },
       }));
     });

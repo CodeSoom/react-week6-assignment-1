@@ -66,10 +66,10 @@ describe('RestaurantSlice', () => {
 
     it('sets informations of selected restaurant', () => {
       const oldState = {
-        information: {},
+        restaurantInformation: {},
       };
       const newState = {
-        information: {
+        restaurantInformation: {
           name: '양천주가',
           address: '서울 강남구',
           menuItems: ['비빔밥'],

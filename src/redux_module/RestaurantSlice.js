@@ -10,7 +10,7 @@ const { actions, reducer } = createSlice({
     regions: [],
     selectedRestaurants: [],
 
-    information: {
+    restaurantInformation: {
       name: null,
       address: null,
       menuItems: [],
@@ -50,7 +50,7 @@ const { actions, reducer } = createSlice({
     },
 
     setSelectedRestaurant: (state, action) => {
-      state.information = action.payload;
+      state.restaurantInformation = action.payload;
     },
   },
 });

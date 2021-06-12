@@ -16,7 +16,7 @@ export default function RestaurantPageContainer() {
   }, []);
 
   const { name, address, menuItems } = useSelector(
-    (state) => state.restaurant.information,
+    (state) => state.restaurant.restaurantInformation,
   );
 
   return (
