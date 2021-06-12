@@ -15,9 +15,14 @@ describe('fetchCategories', () => {
         { id: 2, name: '중식' },
       ],
     );
-    const data = await fetchCategories();
+    const categories = await fetchCategories();
 
-    expect(data).toBeArrayOfObjectWith('id', 'name');
+    categories.forEach((category) => {
+      expect(category).toMatchObject({
+        id: expect.anything(),
+        name: expect.anything(),
+      });
+    });
   });
 });
 
@@ -30,9 +35,14 @@ describe('fetchRegions', () => {
       ],
     );
 
-    const data = await fetchRegions();
+    const regions = await fetchRegions();
 
-    expect(data).toBeArrayOfObjectWith('id', 'name');
+    regions.forEach((region) => {
+      expect(region).toMatchObject({
+        id: expect.anything(),
+        name: expect.anything(),
+      });
+    });
   });
 });
 
@@ -51,9 +61,14 @@ describe('fetchRestuarants', () => {
 
   context('when both category and region is selected', () => {
     it('returns fetched restuarants', async () => {
-      const data = await fetchRestaurants('서울', 1);
+      const restuarants = await fetchRestaurants('서울', 1);
 
-      expect(data).toBeArrayOfObjectWith('id', 'name');
+      restuarants.forEach((restaurant) => {
+        expect(restaurant).toMatchObject({
+          id: expect.anything(),
+          name: expect.anything(),
+        });
+      });
     });
   });
 
