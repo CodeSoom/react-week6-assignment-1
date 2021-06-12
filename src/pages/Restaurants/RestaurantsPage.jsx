@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import CategoriesContainer from '../../CategoriesContainer';
-import RegionsContainer from '../../RegionsContainer';
-import RestaurantsContainer from '../../RestaurantsContainer';
+import CategoriesContainer from '../../components/CategoriesContainer';
+import RegionsContainer from '../../components/RegionsContainer';
+import RestaurantsContainer from '../../components/RestaurantsContainer';
 
-import { loadInitialData } from '../../actions';
+import { loadInitialData } from '../../redux/actions';
 
 const RestaurantsPage = () => {
   const dispatch = useDispatch();
