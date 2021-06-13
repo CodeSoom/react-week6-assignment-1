@@ -13,7 +13,7 @@ export default function RestaurantContainer({ restaurantId }) {
 
   useEffect(() => {
     dispatch(loadRestaurant({ restaurantId }));
-  });
+  }, []);
 
   if (!restaurant) {
     return (
