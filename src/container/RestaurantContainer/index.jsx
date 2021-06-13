@@ -1,41 +1,27 @@
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadRestaurant } from '../../actions';
 
 import { get } from '../../utils';
 
-export default function RestaurantContainer() {
-  const { menuItems, information } = useSelector(get('restaurant'));
+import RestaurantDetail from '../../presentational/RestaurantDetail';
 
-  return (
-    <div>
-      <h2>메뉴</h2>
-      {menuItems?.length > 0 ? (
-        <ul>
-          {
-            menuItems.map(({ name, id }) => (
-              <li key={id}>
-                {name}
-              </li>
-            ))
-          }
-        </ul>
-      ) : (
-        <p>
-          메뉴를 준비중입니다.
-        </p>
-      )}
-      {
-        information ? (
-          <p>
-            주소:
-            {' '}
-            {information}
-          </p>
-        ) : (
-          <p>
-            주소를 준비중입니다.
-          </p>
-        )
-      }
-    </div>
-  );
+export default function RestaurantContainer({ restaurantId }) {
+  const dispatch = useDispatch();
+
+  const restaurant = useSelector(get('restaurant'));
+
+  useEffect(() => {
+    dispatch(loadRestaurant({ restaurantId }));
+  });
+
+  if (!restaurant) {
+    return (
+      <p>
+        Loading...
+      </p>
+    );
+  }
+
+  return <RestaurantDetail restaurant={restaurant} />;
 }
