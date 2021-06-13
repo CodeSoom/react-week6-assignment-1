@@ -4,6 +4,7 @@ import {
   setRegions,
   setCategories,
   setRestaurants,
+  setRestaurantDetail,
   selectRegion,
   selectCategory,
 } from './actions';
@@ -14,6 +15,7 @@ describe('reducer', () => {
       regions: [],
       categories: [],
       restaurants: [],
+      restaurantDetail: null,
       selectedRegion: null,
       selectedCategory: null,
     };
@@ -106,6 +108,38 @@ describe('reducer', () => {
         id: 1,
         name: '한식',
       });
+    });
+  });
+
+  describe('setRestaurantDetail', () => {
+    it('changes restaurantDetail', () => {
+      const initialState = {
+        restaurantDetail: null,
+      };
+
+      const restaurantDetail = {
+        id: 1,
+        categoryId: 1,
+        name: '양천주가',
+        address: '서울시 강남구',
+        menuItems: [{
+          id: 1,
+          restaurantId: 1,
+          name: '비빔밥',
+        }],
+        reviews: [{
+          id: 1,
+          restaurantId: 1,
+          name: '테스터',
+          score: 5,
+          description: '훌륭하다',
+        }],
+        information: '양천주가 in 서울 강남구',
+      };
+
+      const state = reducer(initialState, setRestaurantDetail(restaurantDetail));
+
+      expect(state.restaurantDetail).not.toBeNull();
     });
   });
 });
