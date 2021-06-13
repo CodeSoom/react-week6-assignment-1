@@ -9,8 +9,15 @@ import Header from './layout/Header';
 
 // 1. Header, HomePage, AboutPage, RestaurantsPage 생성 X
 // 2. Header, HomePage, AboutPage, RestaurantsPage 라우팅 적용 X
-// 3. RestaurantDetailPage 생성
-// 4. RestaurantDetailPage 라우팅 적용
+// 3. RestaurantDetailPage 생성 X
+// 4. RestaurantDetailPage 라우팅 적용 X
+
+/**
+ * 리팩토링
+ * 1. 컴포넌트 로직 분리
+ * 2. 로딩 표시
+ * 3. useParams test
+ */
 
 export default function App() {
   return (
