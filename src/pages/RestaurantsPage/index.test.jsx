@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import given from 'given2';
@@ -67,6 +67,14 @@ describe('RestaurantsPage', () => {
       expect(getByRole('link', { name: '마법사주방' })).toBeInTheDocument();
       expect(getByRole('button', { name: '서울' })).toBeInTheDocument();
       expect(getByRole('button', { name: '한식' })).toBeInTheDocument();
+    });
+
+    it('listens click event', () => {
+      const { getByRole } = renderRestaurantsPage();
+
+      fireEvent.click(getByRole('link', { name: '마법사주방' }));
+
+      // useHistory를 어떻게 테스트해야되지?
     });
   });
 
