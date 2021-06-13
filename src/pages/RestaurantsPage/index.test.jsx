@@ -1,14 +1,22 @@
 import { fireEvent, render } from '@testing-library/react';
-import { MemoryRouter } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
 import given from 'given2';
 
 import RestaurantsPage from '.';
 
+jest.mock('react-router');
+
 describe('RestaurantsPage', () => {
+  const history = {
+    push: jest.fn(),
+  };
+
   const dispatch = jest.fn();
 
   beforeEach(() => {
+    useHistory.mockImplementation(() => history);
+
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
@@ -33,9 +41,7 @@ describe('RestaurantsPage', () => {
 
   function renderRestaurantsPage() {
     return render((
-      <MemoryRouter>
-        <RestaurantsPage />
-      </MemoryRouter>
+      <RestaurantsPage />
     ));
   }
 
@@ -75,6 +81,7 @@ describe('RestaurantsPage', () => {
       fireEvent.click(getByRole('link', { name: '마법사주방' }));
 
       // useHistory를 어떻게 테스트해야되지?
+      expect(history.push).toBeCalledWith('/restaurants/1');
     });
   });
 

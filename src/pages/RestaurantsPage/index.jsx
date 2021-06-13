@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router';
 
 import RegionsContainer from '../../container/RegionsContainer';
 import CategoriesContainer from '../../container/CategoriesContainer';
