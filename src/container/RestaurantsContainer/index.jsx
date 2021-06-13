@@ -1,20 +1,16 @@
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+
+import Restaurants from '../../presentational/Restaurants';
 
 import { get } from '../../utils';
 
-export default function RestaurantsContainer() {
+export default function RestaurantsContainer({ onClickChangeRoute }) {
   const restaurants = useSelector(get('restaurants'));
 
   return (
-    <ul>
-      {restaurants.map((restaurant) => (
-        <li key={restaurant.id}>
-          <Link to={`restaurants/${restaurant.id}`}>
-            {restaurant.name}
-          </Link>
-        </li>
-      ))}
-    </ul>
+    <Restaurants
+      restaurants={restaurants}
+      onClickChangeRoute={onClickChangeRoute}
+    />
   );
 }

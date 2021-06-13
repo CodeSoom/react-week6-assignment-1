@@ -1,6 +1,5 @@
 import { render } from '@testing-library/react';
 import { useSelector } from 'react-redux';
-import { MemoryRouter } from 'react-router';
 
 import RestaurantsContainer from '.';
 
@@ -13,12 +12,14 @@ describe('RestaurantsContainer', () => {
     }));
   });
 
-  it('renders restaurants', () => {
-    const { getByRole } = render((
-      <MemoryRouter>
-        <RestaurantsContainer />
-      </MemoryRouter>
+  function renderRestaurantsContainer() {
+    return render((
+      <RestaurantsContainer />
     ));
+  }
+
+  it('renders restaurants', () => {
+    const { getByRole } = renderRestaurantsContainer();
 
     expect(getByRole('link', { name: '마법사주방' })).toBeInTheDocument();
   });
