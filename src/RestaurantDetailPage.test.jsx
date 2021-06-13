@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { useParams } from 'react-router-dom';
 
@@ -13,7 +13,7 @@ jest.mock('react-router-dom', () => ({
 }));
 
 describe('RestaurantDetailPage', () => {
-  it('render name', () => {
+  it('render loading...', () => {
     const dispatch = jest.fn();
 
     useDispatch.mockImplementation(() => dispatch);
@@ -24,6 +24,37 @@ describe('RestaurantDetailPage', () => {
       <RestaurantDetailPage />
     ));
 
-    expect(container).toHaveTextContent('restaurant 1');
+    expect(container).toHaveTextContent('loading...');
+  });
+
+  it('load dispatch', () => {
+    const dispatch = jest.fn();
+
+    useDispatch.mockImplementation(() => dispatch);
+
+    useParams.mockReturnValue({ id: '1' });
+
+    render((
+      <RestaurantDetailPage />
+    ));
+
+    expect(dispatch).toBeCalled();
+  });
+
+  it('render restaurant name', () => {
+    const dispatch = jest.fn();
+
+    useDispatch.mockImplementation(() => dispatch);
+
+    useSelector.mockImplementation((selector) => selector({
+      restaurant: { id: 1, name: '양천주가' },
+    }));
+    useParams.mockReturnValue({ id: '1' });
+
+    const { container } = render((
+      <RestaurantDetailPage />
+    ));
+
+    expect(container).toHaveTextContent('양천주가');
   });
 });
