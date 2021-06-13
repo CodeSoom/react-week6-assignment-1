@@ -3,6 +3,7 @@ import reducer from './reducer';
 import {
   setRegions,
   setCategories,
+  setRestaurant,
   setRestaurants,
   selectRegion,
   selectCategory,
@@ -13,6 +14,7 @@ describe('reducer', () => {
     const initialState = {
       regions: [],
       categories: [],
+      restaurant: {},
       restaurants: [],
       selectedRegion: null,
       selectedCategory: null,
@@ -70,6 +72,19 @@ describe('reducer', () => {
       const state = reducer(initialState, setRestaurants(restaurants));
 
       expect(state.restaurants).toHaveLength(1);
+    });
+  });
+
+  describe('setRestaurant', () => {
+    it('changes restaurant', () => {
+      const initialState = {
+        restaurant: {},
+      };
+
+      const restaurant = { id: 1, name: '마법사주방' };
+      const state = reducer(initialState, setRestaurant(restaurant));
+
+      expect(state.restaurant).toEqual(restaurant);
     });
   });
 
