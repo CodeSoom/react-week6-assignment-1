@@ -95,9 +95,8 @@ describe('actions', () => {
       it('runs setRestaurant', async () => {
         await store.dispatch(loadRestaurant({ restaurantId: 1 }));
 
-        const action = store.getActions()[0];
-
-        expect(action).toEqual(setRestaurant({}));
+        expect(store.getActions()[0]).toEqual(setRestaurant(null));
+        expect(store.getActions()[1]).toEqual(setRestaurant({}));
       });
     });
 
