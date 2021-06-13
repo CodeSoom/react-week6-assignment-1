@@ -2,7 +2,7 @@ import Restaurant from '../components/Restaurant';
 
 export default function Restaurants({
   restaurants,
-  onClickChangeRoute,
+  onClick,
 }) {
   return (
     <ul>
@@ -10,7 +10,7 @@ export default function Restaurants({
         <Restaurant
           key={restaurant.id}
           restaurant={restaurant}
-          onClickChangeRoute={onClickChangeRoute}
+          onClick={onClick}
         />
       ))}
     </ul>

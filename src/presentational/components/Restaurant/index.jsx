@@ -1,22 +1,14 @@
 export default function Restaurant({
   restaurant,
-  onClickChangeRoute,
+  onClick,
 }) {
   const { id, name } = restaurant;
-
-  function handleClick(restaurantId) {
-    return (event) => {
-      event.preventDefault();
-
-      onClickChangeRoute(restaurantId);
-    };
-  }
 
   return (
     <li>
       <a
         href={`restaurants/${id}`}
-        onClick={handleClick(id)}
+        onClick={(event) => onClick({ event, restaurantId: id })}
       >
         {name}
       </a>

@@ -1,9 +1,11 @@
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { useSelector } from 'react-redux';
 
 import RestaurantsContainer from '.';
 
 describe('RestaurantsContainer', () => {
+  const handleClick = jest.fn();
+
   beforeEach(() => {
     useSelector.mockImplementation((selector) => selector({
       restaurants: [
@@ -12,15 +14,21 @@ describe('RestaurantsContainer', () => {
     }));
   });
 
-  function renderRestaurantsContainer() {
-    return render((
-      <RestaurantsContainer />
-    ));
-  }
-
   it('renders restaurants', () => {
-    const { getByRole } = renderRestaurantsContainer();
+    const { getByRole } = render((
+      <RestaurantsContainer onClickChangeRoute={handleClick} />
+    ));
 
     expect(getByRole('link', { name: '마법사주방' })).toBeInTheDocument();
+  });
+
+  it('listens click event', () => {
+    const { getByRole } = render((
+      <RestaurantsContainer onClickChangeRoute={handleClick} />
+    ));
+
+    fireEvent.click(getByRole('link', { name: '마법사주방' }));
+
+    expect(handleClick).toBeCalled();
   });
 });
