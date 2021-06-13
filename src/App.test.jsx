@@ -62,7 +62,7 @@ describe('App', () => {
     context('with restaurant', () => {
       beforeEach(() => {
         useSelector.mockImplementation((selector) => selector({
-          restaurant: {},
+          restaurant: null,
         }));
       });
 
