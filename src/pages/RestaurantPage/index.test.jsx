@@ -1,6 +1,5 @@
 import { render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
-import { MemoryRouter } from 'react-router';
 
 import RestaurantPage from '.';
 
@@ -8,8 +7,10 @@ import restaurant from '../../../fixtures/restaurant';
 
 jest.mock('react-redux');
 
-describe('RestaurantsPage', () => {
+describe('RestaurantPage', () => {
   const dispatch = jest.fn();
+
+  const params = { id: 1 };
 
   beforeEach(() => {
     useSelector.mockImplementation((selector) => selector({
@@ -21,17 +22,9 @@ describe('RestaurantsPage', () => {
 
   function renderRestaurantPage() {
     return render((
-      <MemoryRouter>
-        <RestaurantPage />
-      </MemoryRouter>
+      <RestaurantPage params={params} />
     ));
   }
-
-  it('loads restaurant', () => {
-    renderRestaurantPage();
-
-    expect(dispatch).toBeCalled();
-  });
 
   context('with restaurant', () => {
     beforeEach(() => {
@@ -40,7 +33,7 @@ describe('RestaurantsPage', () => {
       }));
     });
 
-    it('renders "메뉴" title', () => {
+    it('renders title', () => {
       const { getByRole } = renderRestaurantPage();
 
       expect(getByRole('heading', { name: '메뉴' })).toBeInTheDocument();
@@ -58,7 +51,7 @@ describe('RestaurantsPage', () => {
   context('without restaurant', () => {
     beforeEach(() => {
       useSelector.mockImplementation((selector) => selector({
-        restaurant: {},
+        restaurant: null,
       }));
     });
 
