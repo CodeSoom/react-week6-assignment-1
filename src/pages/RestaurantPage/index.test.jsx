@@ -38,14 +38,6 @@ describe('RestaurantPage', () => {
 
       expect(getByRole('heading', { name: '메뉴' })).toBeInTheDocument();
     });
-
-    it('renders menus', () => {
-      const { getByText } = renderRestaurantPage();
-
-      restaurant.menuItems.forEach(({ name }) => {
-        expect(getByText(name)).toBeInTheDocument();
-      });
-    });
   });
 
   context('without restaurant', () => {
