@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch, Link } from 'react-router-dom';
 
 import RestaurantsPage from './pages/RestaurantsPage';
+import RestaurantPage from './pages/RestaurantPage';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import NotFoundPage from './pages/NotFoundPage';
@@ -17,7 +18,8 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/about" component={AboutPage} />
-        <Route path="/restaurants" component={RestaurantsPage} />
+        <Route path="/restaurants/:id" component={RestaurantPage} />
+        <Route path="/restaurants/" component={RestaurantsPage} />
         <Route component={NotFoundPage} />
         {/* switch의 경우 항상 마지막줄 컴포넌트가 기본값으로 보여진다. */}
       </Switch>
