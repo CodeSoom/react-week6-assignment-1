@@ -13,6 +13,7 @@ export default function HomePage() {
         <li><Link to="/about">소개</Link></li>
         <li><Link to="/restaurants">Restaurants</Link></li>
         <li><Link to="/xxx">NotFound Sample</Link></li>
+        <li><Link to="/login">Login</Link></li>
 
       </ul>
     </div>
