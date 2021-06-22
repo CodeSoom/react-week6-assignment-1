@@ -1,4 +1,5 @@
-import reducer from './reducer';
+import reducer from '.';
+import restaurant from '../../fixtures/restaurant';
 
 import {
   setRegions,
@@ -6,7 +7,8 @@ import {
   setRestaurants,
   selectRegion,
   selectCategory,
-} from './actions';
+  setRestaurant,
+} from '../actions';
 
 describe('reducer', () => {
   context('when previous state is undefined', () => {
@@ -14,6 +16,7 @@ describe('reducer', () => {
       regions: [],
       categories: [],
       restaurants: [],
+      restaurant: null,
       selectedRegion: null,
       selectedCategory: null,
     };
@@ -70,6 +73,18 @@ describe('reducer', () => {
       const state = reducer(initialState, setRestaurants(restaurants));
 
       expect(state.restaurants).toHaveLength(1);
+    });
+  });
+
+  describe('setRestaurant', () => {
+    it('changes selected category', () => {
+      const initialState = {
+        restaurant: null,
+      };
+
+      const state = reducer(initialState, setRestaurant(restaurant));
+
+      expect(state.restaurant).toEqual(restaurant);
     });
   });
 

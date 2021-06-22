@@ -1,32 +1,35 @@
-import { useEffect } from 'react';
+import { Route, Switch } from 'react-router';
 
-import { useDispatch } from 'react-redux';
+import HomePage from './pages/Homepage';
+import AboutPage from './pages/AboutPage';
+import RestaurantsPage from './pages/RestaurantsPage';
+import NotFoundPage from './pages/NotFoundPage';
+import RestaurantPage from './pages/RestaurantPage';
+import Header from './layout/Header';
 
-import RegionsContainer from './RegionsContainer';
-import CategoriesContainer from './CategoriesContainer';
-import RestaurantsContainer from './RestaurantsContainer';
+// 1. Header, HomePage, AboutPage, RestaurantsPage 생성 X
+// 2. Header, HomePage, AboutPage, RestaurantsPage 라우팅 적용 X
+// 3. RestaurantDetailPage 생성 X
+// 4. RestaurantDetailPage 라우팅 적용 X
 
-import {
-  loadInitialData,
-} from './actions';
-
-// 0. 지역, 분류 목록을 얻기
-// 1. 지역 선택 - Regions <- API (0)
-// 2. 분류 선택 - Categories - 한식, 중식, 일식, ... <- API (0)
-// 3. 식당 목록 - Restaurants <- API (with region, category) -> 1, 2 모두 완료된 경우
+/**
+ * 리팩토링
+ * 1. 컴포넌트 로직 분리
+ * 2. 로딩 표시
+ * 3. useParams test
+ */
 
 export default function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(loadInitialData());
-  });
-
   return (
-    <div>
-      <RegionsContainer />
-      <CategoriesContainer />
-      <RestaurantsContainer />
-    </div>
+    <>
+      <Header />
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/about" component={AboutPage} />
+        <Route exact path="/restaurants" component={RestaurantsPage} />
+        <Route path="/restaurants/:id" component={RestaurantPage} />
+        <Route component={NotFoundPage} />
+      </Switch>
+    </>
   );
 }

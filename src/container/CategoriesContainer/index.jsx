@@ -3,9 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   selectCategory,
   loadRestaurants,
-} from './actions';
-
-import { get } from './utils';
+} from '../../actions';
+import { get } from '../../utils';
 
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
