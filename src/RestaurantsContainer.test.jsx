@@ -1,3 +1,5 @@
+import { MemoryRouter } from 'react-router-dom';
+
 import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
@@ -11,9 +13,13 @@ test('RestaurantsContainer', () => {
     ],
   }));
 
-  const { container } = render((
-    <RestaurantsContainer />
+  const { getByText } = render((
+    <MemoryRouter>
+      <RestaurantsContainer />
+    </MemoryRouter>
   ));
 
-  expect(container).toHaveTextContent('마법사주방');
+  const link = getByText('마법사주방');
+  expect(link).not.toBeNull();
+  expect(link).toHaveAttribute('href', '/restaurants/1');
 });
