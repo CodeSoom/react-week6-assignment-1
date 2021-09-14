@@ -27,13 +27,17 @@ describe('App', () => {
     }));
   });
 
+  function renderApp({ path }) {
+    return render((
+      <MemoryRouter initialEntries={[path]}>
+        <App />
+      </MemoryRouter>
+    ));
+  }
+
   context('"/" path 에서는', () => {
     it('HOME이 보여야 한다.', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const { container } = renderApp({ path: '/' });
 
       expect(container).toHaveTextContent('HOME');
     });
@@ -41,11 +45,7 @@ describe('App', () => {
 
   context('"/about" path 에서는', () => {
     it('Abount이 보여야 한다.', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/about']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const { container } = renderApp({ path: '/about' });
 
       expect(container).toHaveTextContent('About');
     });
@@ -53,21 +53,13 @@ describe('App', () => {
 
   context('"/restaurants" path 에서는', () => {
     it('Restaurants가 보여야 한다.', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/restaurants']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const { container } = renderApp({ path: '/restaurants' });
 
       expect(container).toHaveTextContent('Restaurants');
     });
 
     it('지역들이 보여야 한다.', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/restaurants']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const { container } = renderApp({ path: '/restaurants' });
 
       expect(container).toHaveTextContent('서울');
     });
@@ -75,11 +67,7 @@ describe('App', () => {
 
   context('잘못된 path 에서는', () => {
     it('Not found가 보여야 한다.', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/xxx']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const { container } = renderApp({ path: '/xxx' });
 
       expect(container).toHaveTextContent('Not found');
     });
