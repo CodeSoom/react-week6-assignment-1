@@ -74,14 +74,14 @@ describe('App', () => {
   });
 
   context('잘못된 path 에서는', () => {
-    it('Not Found가 보여야 한다.', () => {
+    it('Not found가 보여야 한다.', () => {
       const { container } = render((
         <MemoryRouter initialEntries={['/xxx']}>
           <App />
         </MemoryRouter>
       ));
 
-      expect(container).toHaveTextContent('Not Found');
+      expect(container).toHaveTextContent('Not found');
     });
   });
 });
