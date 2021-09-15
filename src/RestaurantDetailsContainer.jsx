@@ -1,21 +1,15 @@
+import { useSelector } from 'react-redux';
+
+import { get } from './utils';
+
 export default function RestaurantDetailsContainer() {
-  const restaurant = {
-    id: 1,
-    name: '양천주가',
-    address: '서울 강남구 123456',
-    menuItems: [
-      {
-        id: 1,
-        restaurantId: 1,
-        name: '비빔밥',
-      },
-      {
-        id: 2,
-        restaurantId: 1,
-        name: '짬뽕',
-      },
-    ],
-  };
+  const restaurant = useSelector(get('restaurantDetails'));
+
+  if (!restaurant) {
+    return (
+      <h2>Loading...</h2>
+    );
+  }
 
   const { name, address, menuItems } = restaurant;
 
