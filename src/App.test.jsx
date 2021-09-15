@@ -90,14 +90,15 @@ describe('App', () => {
     });
   });
 
-  test('"/details"', () => {
-    const { container } = renderApp({ path: '/details' });
+  test('"/restaurant"', () => {
+    const path = '/restaurant';
+
+    const { container } = renderApp({ path });
 
     expect(container).toHaveTextContent('양천주가');
-    expect(container).toHaveTextContent('서울 강남구');
+    expect(container).toHaveTextContent('서울 강남구 123456');
     expect(container).toHaveTextContent('메뉴');
-    expect(container).toHaveTextContent('탕수육');
-    expect(container).toHaveTextContent('팔보채');
+    expect(container).toHaveTextContent('비빔밥');
   });
 
   context('잘못된 path 에서는', () => {

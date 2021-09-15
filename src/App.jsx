@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useDispatch } from 'react-redux';
 
@@ -62,15 +62,48 @@ function RestaurantsPage() {
   );
 }
 
-function DetailsPage() {
+function RestaurantPage() {
+  const [state, setState] = useState({
+    restaurant: null,
+  });
+
+  useEffect(() => {
+    setState({
+      restaurant: {
+        id: 1,
+        categoryId: 1,
+        name: '양천주가',
+        address: '서울 강남구 123456',
+        menuItems: [
+          { id: 1, restaurantId: 1, name: '비빔밥' },
+        ],
+      },
+    });
+  }, []);
+
+  if (state.restaurant === null) {
+    return (
+      <div>
+        Loading...
+      </div>
+    );
+  }
+
+  const { name, address, menuItems } = state.restaurant;
+
   return (
     <div>
-      <h1>양천주가</h1>
-      <address>서울 강남구</address>
+      <h1>{name}</h1>
+      <address>{address}</address>
       <h2>메뉴</h2>
       <ul>
-        <li>탕수육</li>
-        <li>팔보채</li>
+        {
+          menuItems.map((menu) => (
+            <li key={menu.id}>
+              {menu.name}
+            </li>
+          ))
+        }
       </ul>
     </div>
   );
@@ -94,7 +127,7 @@ export default function App() {
         <Route exact path="/" component={HomePage} />
         <Route path="/about" component={AboutPage} />
         <Route path="/restaurants" component={RestaurantsPage} />
-        <Route path="/details" component={DetailsPage} />
+        <Route path="/restaurant" component={RestaurantPage} />
         <Route component={NotFoundPage} />
       </Switch>
     </>
