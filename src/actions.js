@@ -39,6 +39,13 @@ export function selectCategory(categoryId) {
   };
 }
 
+export function selectRestaurantDetail(restaurantDetail) {
+  return {
+    type: 'selectRestaurantDetail',
+    payload: { restaurantDetail },
+  };
+}
+
 export function loadInitialData() {
   return async (dispatch) => {
     const regions = await fetchRegions();
@@ -66,4 +73,8 @@ export function loadRestaurants() {
     });
     dispatch(setRestaurants(restaurants));
   };
+}
+
+export function loadRestaurantDetail() {
+
 }
