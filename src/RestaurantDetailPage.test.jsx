@@ -4,6 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantDetailPage from './RestaurantDetailPage';
 
+jest.mock('react-router-dom', () => ({
+  useParams: () => ({ restaurantId: 1 }),
+}));
+
 describe('RestaurantDetailPage', () => {
   const dispatch = jest.fn();
 
