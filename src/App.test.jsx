@@ -20,6 +20,12 @@ describe('App', () => {
       regions: [{ id: 1, name: '서울' }],
       categories: [],
       restaurants: [],
+      restaurantDetail: {
+        name: '',
+        address: '',
+        menuItems: [],
+        reviews: [],
+      },
     }));
   });
 
@@ -59,13 +65,8 @@ describe('App', () => {
     it('renders the restaurants detail page', () => {
       const { container } = renderApp({ path: '/restaurants/1' });
 
-      expect(container).toHaveTextContent('양천주가');
       expect(container).toHaveTextContent('메뉴');
-      expect(container).toHaveTextContent('비빔밥');
-      expect(container).toHaveTextContent('짬뽕');
       expect(container).toHaveTextContent('리뷰');
-      expect(container).toHaveTextContent('훌륭하다 훌륭하다 지구인놈들');
-      expect(container).toHaveTextContent('비룡 어디에 갔냐? 비룡 내놔라.');
     });
   });
 
