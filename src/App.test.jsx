@@ -25,9 +25,9 @@ describe('App', () => {
 
   function renderApp({ path }) {
     return render((
-        <MemoryRouter initialEntries={[path]}>
-          <App />
-        </MemoryRouter>
+      <MemoryRouter initialEntries={[path]}>
+        <App />
+      </MemoryRouter>
     ));
   }
 
