@@ -10,6 +10,8 @@ import RegionsContainer from './RegionsContainer';
 import CategoriesContainer from './CategoriesContainer';
 import RestaurantsContainer from './RestaurantsContainer';
 
+import { fetchRestaurant } from './services/api';
+
 import {
   loadInitialData,
 } from './actions';
@@ -64,6 +66,14 @@ function RestaurantsPage() {
   );
 }
 
+async function loadRestaurant({ setState, restaurantId }) {
+  const restaurant = await fetchRestaurant(restaurantId);
+
+  setState({
+    restaurant,
+  });
+}
+
 function RestaurantPage() {
   const [state, setState] = useState({
     restaurant: null,
@@ -72,17 +82,7 @@ function RestaurantPage() {
   const { restaurantId } = useParams();
 
   useEffect(() => {
-    setState({
-      restaurant: {
-        id: 1,
-        categoryId: 1,
-        name: '양천주가',
-        address: '서울 강남구 123456',
-        menuItems: [
-          { id: 1, restaurantId: 1, name: '비빔밥' },
-        ],
-      },
-    });
+    loadRestaurant({ setState });
   }, []);
 
   if (state.restaurant === null) {
