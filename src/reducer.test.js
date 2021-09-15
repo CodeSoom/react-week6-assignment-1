@@ -6,7 +6,7 @@ import {
   setRestaurants,
   selectRegion,
   selectCategory,
-  selectRestaurantDetail,
+  setRestaurantDetail,
 } from './actions';
 
 describe('reducer', () => {
@@ -127,7 +127,7 @@ describe('reducer', () => {
         },
       };
 
-      const state = reducer(initialState, selectRestaurantDetail({
+      const state = reducer(initialState, setRestaurantDetail({
         name: '식당1',
         address: '서울시',
         menuItems: [{ id: 1, name: '비빔밥' }],

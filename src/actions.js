@@ -39,9 +39,9 @@ export function selectCategory(categoryId) {
   };
 }
 
-export function selectRestaurantDetail(restaurantDetail) {
+export function setRestaurantDetail(restaurantDetail) {
   return {
-    type: 'selectRestaurantDetail',
+    type: 'setRestaurantDetail',
     payload: { restaurantDetail },
   };
 }
