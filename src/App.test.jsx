@@ -91,11 +91,11 @@ describe('App', () => {
   });
 
   test('"/restaurant"', () => {
-    const path = '/restaurant/9';
+    const path = '/restaurant/1';
 
     const { container } = renderApp({ path });
 
-    expect(container).toHaveTextContent('restaurantId:9');
+    expect(container).toHaveTextContent('restaurantId:1');
     expect(container).toHaveTextContent('양천주가');
     expect(container).toHaveTextContent('서울 강남구 123456');
     expect(container).toHaveTextContent('메뉴');

@@ -6,11 +6,11 @@ import {
   Switch, Route, Link, useParams,
 } from 'react-router-dom';
 
+import { fetchRestaurant } from './services/api';
+
 import RegionsContainer from './RegionsContainer';
 import CategoriesContainer from './CategoriesContainer';
 import RestaurantsContainer from './RestaurantsContainer';
-
-import { fetchRestaurant } from './services/api';
 
 import {
   loadInitialData,
