@@ -8,6 +8,10 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { dispatch } from '../__mocks__/react-redux';
 
+import regions from '../fixtures/regions';
+import categories from '../fixtures/categories';
+import restaurants from '../fixtures/restaurants';
+
 import App from './App';
 
 describe('App', () => {
@@ -15,15 +19,9 @@ describe('App', () => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
-      regions: [
-        { id: 1, name: '서울' },
-      ],
-      categories: [
-        { id: 1, name: '한식' },
-      ],
-      restaurants: [
-        { id: 1, name: '마법사주방' },
-      ],
+      regions,
+      categories,
+      restaurants,
     }));
   });
 
@@ -40,6 +38,8 @@ describe('App', () => {
       const { container } = renderApp({ path: '/' });
 
       expect(container).toHaveTextContent('HOME');
+      expect(container).toHaveTextContent('About');
+      expect(container).toHaveTextContent('Restaurants');
     });
   });
 
@@ -48,6 +48,7 @@ describe('App', () => {
       const { container } = renderApp({ path: '/about' });
 
       expect(container).toHaveTextContent('About');
+      expect(container).toHaveTextContent('About 페이지 입니다.');
     });
   });
 
