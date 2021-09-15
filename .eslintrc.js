@@ -46,11 +46,12 @@ module.exports = {
     'array-bracket-spacing': ['error', 'never'],
     'object-curly-spacing': ['error', 'always'],
     'key-spacing': ['error', { mode: 'strict' }],
-    'arrow-spacing': ['error', { before: true, after: true }],
     'jsx-a11y/label-has-associated-control': ['error', { assert: 'either' }],
     'linebreak-style': 'off',
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true, optionalDependencies: false, peerDependencies: false }],
 
     'react/prop-types': 'off',
     'react/react-in-jsx-scope': 'off',
+
   },
 };
