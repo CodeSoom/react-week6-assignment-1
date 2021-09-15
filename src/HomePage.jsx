@@ -7,9 +7,8 @@ export default function HomePage() {
     <div>
       <h2>Home</h2>
       <ul>
-        <li><Link to="/about">소개</Link></li>
+        <li><Link to="/about">about</Link></li>
         <li><Link to="/restaurants">Restaurants</Link></li>
-        <li><Link to="/xxx">멸망의 길</Link></li>
       </ul>
     </div>
   );
