@@ -90,6 +90,16 @@ describe('App', () => {
     });
   });
 
+  test('"/details"', () => {
+    const { container } = renderApp({ path: '/details' });
+
+    expect(container).toHaveTextContent('양천주가');
+    expect(container).toHaveTextContent('서울 강남구');
+    expect(container).toHaveTextContent('메뉴');
+    expect(container).toHaveTextContent('탕수육');
+    expect(container).toHaveTextContent('팔보채');
+  });
+
   context('잘못된 path 에서는', () => {
     const path = '/xxx';
 

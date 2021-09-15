@@ -62,6 +62,20 @@ function RestaurantsPage() {
   );
 }
 
+function DetailsPage() {
+  return (
+    <div>
+      <h1>양천주가</h1>
+      <address>서울 강남구</address>
+      <h2>메뉴</h2>
+      <ul>
+        <li>탕수육</li>
+        <li>팔보채</li>
+      </ul>
+    </div>
+  );
+}
+
 function NotFoundPage() {
   return (
     <div>
@@ -80,6 +94,7 @@ export default function App() {
         <Route exact path="/" component={HomePage} />
         <Route path="/about" component={AboutPage} />
         <Route path="/restaurants" component={RestaurantsPage} />
+        <Route path="/details" component={DetailsPage} />
         <Route component={NotFoundPage} />
       </Switch>
     </>
