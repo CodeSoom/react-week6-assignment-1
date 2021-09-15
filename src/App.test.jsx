@@ -55,6 +55,15 @@ describe('App', () => {
     });
   });
 
+  context('with path /restaurants/restaurantId', () => {
+    it('renders the restaurants detail page', () => {
+      const { container } = renderApp({ path: '/restaurants/1' });
+
+      expect(container).toHaveTextContent('비빔밥');
+      expect(container).toHaveTextContent('짬뽕');
+    });
+  });
+
   context('with invalid path', () => {
     it('renders the not found page', () => {
       const { container } = renderApp({ path: '/xxx' });
