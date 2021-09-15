@@ -8,9 +8,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { dispatch } from '../__mocks__/react-redux';
 
-import regions from '../fixtures/regions';
-import categories from '../fixtures/categories';
-import restaurants from '../fixtures/restaurants';
+import REGIONS from '../fixtures/regions';
+import CATEGOREIS from '../fixtures/categories';
+import RESTAURANTS from '../fixtures/restaurants';
 
 import App from './App';
 
@@ -19,9 +19,9 @@ describe('App', () => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
-      regions,
-      categories,
-      restaurants,
+      regions: REGIONS,
+      categories: CATEGOREIS,
+      restaurants: RESTAURANTS,
     }));
   });
 

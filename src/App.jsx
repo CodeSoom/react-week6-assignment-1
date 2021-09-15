@@ -67,7 +67,7 @@ function RestaurantsPage() {
 }
 
 async function loadRestaurant({ setState, restaurantId }) {
-  const restaurant = await fetchRestaurant(restaurantId);
+  const restaurant = await fetchRestaurant({ restaurantId });
 
   setState({
     restaurant,
@@ -82,8 +82,10 @@ function RestaurantPage() {
   const { restaurantId } = useParams();
 
   useEffect(() => {
-    loadRestaurant({ setState });
-  }, []);
+    if (restaurantId) {
+      loadRestaurant({ setState, restaurantId });
+    }
+  }, [restaurantId]);
 
   if (state.restaurant === null) {
     return (
