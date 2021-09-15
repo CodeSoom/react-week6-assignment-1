@@ -1,24 +1,45 @@
+import { useEffect } from 'react';
+
+import { useDispatch, useSelector } from 'react-redux';
+
+import { setRestaurantDetail } from './actions';
+
 export default function RestaurantDetailPage() {
+  const dispatch = useDispatch();
+
+  const {
+    name, address, menuItems, reviews,
+  } = useSelector((state) => state.restaurantDetail);
+
+  useEffect(() => {
+    dispatch(setRestaurantDetail({
+      name: '',
+      address: '',
+      menuItems: [],
+      reviews: [],
+    }));
+  }, []);
+
   return (
     <>
-      <h1>양천주가</h1>
+      <h1>{name}</h1>
+      <h2>주소</h2>
+      <p>{address}</p>
       <h2>메뉴</h2>
       <ul>
-        <li>
-          비빔밥
-        </li>
-        <li>
-          짬뽕
-        </li>
+        {menuItems.map((menuItem) => (
+          <li key={menuItem.id}>
+            {menuItem.name}
+          </li>
+        ))}
       </ul>
       <h2>리뷰</h2>
       <ul>
-        <li>
-          훌륭하다 훌륭하다 지구인놈들
-        </li>
-        <li>
-          비룡 어디에 갔냐? 비룡 내놔라.
-        </li>
+        {reviews.map((review) => (
+          <li key={review.id}>
+            {review.description}
+          </li>
+        ))}
       </ul>
     </>
   );
