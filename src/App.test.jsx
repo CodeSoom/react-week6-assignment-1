@@ -8,20 +8,56 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
-test('App', () => {
-  const dispatch = jest.fn();
+describe('App', () => {
+  function renderApp({ path }) {
+    return render((
+      <MemoryRouter initialEntries={[path]}>
+        <App />
+      </MemoryRouter>
+    ));
+  }
 
-  useDispatch.mockImplementation(() => dispatch);
+  beforeEach(() => {
+    const dispatch = jest.fn();
 
-  useSelector.mockImplementation((selector) => selector({
-    regions: [],
-    categories: [],
-    restaurants: [],
-  }));
+    useDispatch.mockImplementation(() => dispatch);
 
-  render((
-    <MemoryRouter>
-      <App />
-    </MemoryRouter>
-  ));
+    useSelector.mockImplementation((selector) => selector({
+      regions: [{ id: 1, name: '서울' }],
+      categories: [],
+      restaurants: [],
+    }));
+  });
+
+  context('with path /', () => {
+    it('render the home page', () => {
+      const { container } = renderApp({ path: '/' });
+
+      expect(container).toHaveTextContent('Home');
+    });
+  });
+
+  context('with path /about', () => {
+    it('render the about page', () => {
+      const { container } = renderApp({ path: '/about' });
+
+      expect(container).toHaveTextContent('About 페이지');
+    });
+  });
+
+  context('with path /restaurants', () => {
+    it('render the restaurants page', () => {
+      const { container } = renderApp({ path: '/restaurants' });
+
+      expect(container).toHaveTextContent('서울');
+    });
+  });
+
+  context('with invalid path', () => {
+    it('render the not found page', () => {
+      const { container } = renderApp({ path: '/xxx' });
+
+      expect(container).toHaveTextContent('404 Not Found');
+    });
+  });
 });
