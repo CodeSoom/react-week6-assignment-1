@@ -13,16 +13,22 @@ import {
 } from './actions';
 
 function HomePage() {
+  const routers = [
+    { path: '/about', name: 'About' },
+    { path: '/restaurants', name: 'Restaurants' },
+  ];
+
   return (
     <div>
       <h1>HOME</h1>
       <ul>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-        <li>
-          <Link to="/restaurants">Restaurants</Link>
-        </li>
+        {
+          routers.map(({ path, name }) => (
+            <li key={path}>
+              <Link to={path}>{name}</Link>
+            </li>
+          ))
+        }
       </ul>
     </div>
   );
