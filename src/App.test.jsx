@@ -6,12 +6,12 @@ import { MemoryRouter } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import { dispatch } from '../__mocks__/react-redux';
+
 import App from './App';
 
 describe('App', () => {
   beforeEach(() => {
-    const dispatch = jest.fn();
-
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
