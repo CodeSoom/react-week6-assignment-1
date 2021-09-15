@@ -31,6 +31,13 @@ const reducers = {
     };
   },
 
+  setRestaurantDetails(state, { payload: { restaurantDetails } }) {
+    return {
+      ...state,
+      restaurantDetails,
+    };
+  },
+
   selectRegion(state, { payload: { regionId } }) {
     const { regions } = state;
     return {
