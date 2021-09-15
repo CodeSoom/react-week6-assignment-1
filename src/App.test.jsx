@@ -41,6 +41,12 @@ describe('App', () => {
       expect(container).toHaveTextContent('About');
       expect(container).toHaveTextContent('Restaurants');
     });
+
+    it('헤더가 보여야 한다.', () => {
+      const { container } = renderApp({ path: '/' });
+
+      expect(container).toHaveTextContent('헤더');
+    });
   });
 
   context('"/about" path 에서는', () => {
@@ -49,6 +55,12 @@ describe('App', () => {
 
       expect(container).toHaveTextContent('About');
       expect(container).toHaveTextContent('About 페이지 입니다.');
+    });
+
+    it('헤더가 보여야 한다.', () => {
+      const { container } = renderApp({ path: '/about' });
+
+      expect(container).toHaveTextContent('헤더');
     });
   });
 
@@ -64,6 +76,12 @@ describe('App', () => {
 
       expect(container).toHaveTextContent('서울');
     });
+
+    it('헤더가 보여야 한다.', () => {
+      const { container } = renderApp({ path: '/restaurants' });
+
+      expect(container).toHaveTextContent('헤더');
+    });
   });
 
   context('잘못된 path 에서는', () => {
@@ -71,6 +89,12 @@ describe('App', () => {
       const { container } = renderApp({ path: '/xxx' });
 
       expect(container).toHaveTextContent('Not found');
+    });
+
+    it('헤더가 보여야 한다.', () => {
+      const { container } = renderApp({ path: '/xxx' });
+
+      expect(container).toHaveTextContent('헤더');
     });
   });
 });
