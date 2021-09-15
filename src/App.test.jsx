@@ -6,15 +6,16 @@ import { MemoryRouter } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { dispatch } from '../__mocks__/react-redux';
-
 import REGIONS from '../fixtures/regions';
 import CATEGOREIS from '../fixtures/categories';
 import RESTAURANTS from '../fixtures/restaurants';
+import RESTAURANT from '../fixtures/restaurant';
 
 import App from './App';
 
 describe('App', () => {
+  const dispatch = jest.fn();
+
   beforeEach(() => {
     useDispatch.mockImplementation(() => dispatch);
 
@@ -93,13 +94,13 @@ describe('App', () => {
   test('"/restaurant"', () => {
     const path = '/restaurant/1';
 
+    global.fetch = jest.fn().mockResolvedValue({
+      async json() { return RESTAURANT; },
+    });
+
     const { container } = renderApp({ path });
 
-    expect(container).toHaveTextContent('restaurantId:1');
-    expect(container).toHaveTextContent('양천주가');
-    expect(container).toHaveTextContent('서울 강남구 123456');
-    expect(container).toHaveTextContent('메뉴');
-    expect(container).toHaveTextContent('비빔밥');
+    expect(container).toHaveTextContent('Loading');
   });
 
   context('잘못된 path 에서는', () => {
