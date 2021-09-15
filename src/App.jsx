@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 
 import { useDispatch } from 'react-redux';
 
-import { Switch, Route, Link } from 'react-router-dom';
+import {
+  Switch, Route, Link, useParams,
+} from 'react-router-dom';
 
 import RegionsContainer from './RegionsContainer';
 import CategoriesContainer from './CategoriesContainer';
@@ -67,6 +69,8 @@ function RestaurantPage() {
     restaurant: null,
   });
 
+  const { restaurantId } = useParams();
+
   useEffect(() => {
     setState({
       restaurant: {
@@ -93,6 +97,8 @@ function RestaurantPage() {
 
   return (
     <div>
+      restaurantId:
+      {restaurantId}
       <h1>{name}</h1>
       <address>{address}</address>
       <h2>메뉴</h2>
@@ -127,7 +133,7 @@ export default function App() {
         <Route exact path="/" component={HomePage} />
         <Route path="/about" component={AboutPage} />
         <Route path="/restaurants" component={RestaurantsPage} />
-        <Route path="/restaurant" component={RestaurantPage} />
+        <Route path="/restaurant/:restaurantId" component={RestaurantPage} />
         <Route component={NotFoundPage} />
       </Switch>
     </>
