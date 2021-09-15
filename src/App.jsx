@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
 
 import RegionsContainer from './RegionsContainer';
 import CategoriesContainer from './CategoriesContainer';
@@ -16,6 +16,14 @@ function HomePage() {
   return (
     <div>
       <h1>HOME</h1>
+      <ul>
+        <li>
+          <Link to="/about">About</Link>
+        </li>
+        <li>
+          <Link to="/restaurants">Restaurants</Link>
+        </li>
+      </ul>
     </div>
   );
 }
@@ -24,6 +32,9 @@ function AboutPage() {
   return (
     <div>
       <h1>About</h1>
+      <div>
+        About 페이지 입니다.
+      </div>
     </div>
   );
 }
