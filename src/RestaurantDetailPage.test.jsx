@@ -12,36 +12,38 @@ describe('RestaurantDetailPage', () => {
 
     useDispatch.mockImplementation(() => dispatch);
     useSelector.mockImplementation((selector) => selector({
-      name: '식당1',
-      address: '서울시 주소 12',
-      menuItems: [
-        {
-          id: 1,
-          restaurantId: 1,
-          name: '메뉴1',
-        },
-        {
-          id: 2,
-          restaurantId: 1,
-          name: '메뉴2',
-        },
-      ],
-      reviews: [
-        {
-          id: 1,
-          restaurantId: 1,
-          name: '테스터',
-          score: 5,
-          description: '댓글1',
-        },
-        {
-          id: 2,
-          restaurantId: 1,
-          name: '테스터',
-          score: 1,
-          description: '댓글2',
-        },
-      ],
+      restaurantDetail: {
+        name: '식당1',
+        address: '서울시 주소 12',
+        menuItems: [
+          {
+            id: 1,
+            restaurantId: 1,
+            name: '메뉴1',
+          },
+          {
+            id: 2,
+            restaurantId: 1,
+            name: '메뉴2',
+          },
+        ],
+        reviews: [
+          {
+            id: 1,
+            restaurantId: 1,
+            name: '테스터',
+            score: 5,
+            description: '댓글1',
+          },
+          {
+            id: 2,
+            restaurantId: 1,
+            name: '테스터',
+            score: 1,
+            description: '댓글2',
+          },
+        ],
+      },
     }));
   });
 
