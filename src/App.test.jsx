@@ -15,6 +15,8 @@ import restaurants from '../fixtures/restaurants';
 import App from './App';
 
 describe('App', () => {
+  const useParams = jest.fn();
+
   beforeEach(() => {
     useDispatch.mockImplementation(() => dispatch);
 
@@ -23,6 +25,10 @@ describe('App', () => {
       categories,
       restaurants,
     }));
+
+    useParams.mockReturnValue({
+      restaurantId: 1,
+    });
   });
 
   function renderApp({ path }) {
@@ -91,7 +97,7 @@ describe('App', () => {
   });
 
   test('"/restaurant"', () => {
-    const path = '/restaurant';
+    const path = '/restaurant/1';
 
     const { container } = renderApp({ path });
 
