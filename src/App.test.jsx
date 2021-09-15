@@ -9,8 +9,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import App from './App';
 
 describe('App', () => {
+  const dispatch = jest.fn();
+
   beforeEach(() => {
-    const dispatch = jest.fn();
+    dispatch.mockClear();
 
     useDispatch.mockImplementation(() => dispatch);
 
