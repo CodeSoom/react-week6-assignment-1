@@ -34,8 +34,10 @@ describe('App', () => {
   }
 
   context('"/" path 에서는', () => {
+    const path = '/';
+
     it('HOME이 보여야 한다.', () => {
-      const { container } = renderApp({ path: '/' });
+      const { container } = renderApp({ path });
 
       expect(container).toHaveTextContent('HOME');
       expect(container).toHaveTextContent('About');
@@ -43,56 +45,62 @@ describe('App', () => {
     });
 
     it('헤더가 보여야 한다.', () => {
-      const { container } = renderApp({ path: '/' });
+      const { container } = renderApp({ path });
 
       expect(container).toHaveTextContent('헤더');
     });
   });
 
   context('"/about" path 에서는', () => {
+    const path = '/about';
+
     it('Abount이 보여야 한다.', () => {
-      const { container } = renderApp({ path: '/about' });
+      const { container } = renderApp({ path });
 
       expect(container).toHaveTextContent('About');
       expect(container).toHaveTextContent('About 페이지 입니다.');
     });
 
     it('헤더가 보여야 한다.', () => {
-      const { container } = renderApp({ path: '/about' });
+      const { container } = renderApp({ path });
 
       expect(container).toHaveTextContent('헤더');
     });
   });
 
   context('"/restaurants" path 에서는', () => {
+    const path = '/restaurants';
+
     it('Restaurants가 보여야 한다.', () => {
-      const { container } = renderApp({ path: '/restaurants' });
+      const { container } = renderApp({ path });
 
       expect(container).toHaveTextContent('Restaurants');
     });
 
     it('지역들이 보여야 한다.', () => {
-      const { container } = renderApp({ path: '/restaurants' });
+      const { container } = renderApp({ path });
 
       expect(container).toHaveTextContent('서울');
     });
 
     it('헤더가 보여야 한다.', () => {
-      const { container } = renderApp({ path: '/restaurants' });
+      const { container } = renderApp({ path });
 
       expect(container).toHaveTextContent('헤더');
     });
   });
 
   context('잘못된 path 에서는', () => {
+    const path = '/xxx';
+
     it('Not found가 보여야 한다.', () => {
-      const { container } = renderApp({ path: '/xxx' });
+      const { container } = renderApp({ path });
 
       expect(container).toHaveTextContent('Not found');
     });
 
     it('헤더가 보여야 한다.', () => {
-      const { container } = renderApp({ path: '/xxx' });
+      const { container } = renderApp({ path });
 
       expect(container).toHaveTextContent('헤더');
     });

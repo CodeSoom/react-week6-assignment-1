@@ -73,7 +73,9 @@ function NotFoundPage() {
 export default function App() {
   return (
     <>
-      <Link to="/">헤더</Link>
+      <Link to="/">
+        <h1>헤더</h1>
+      </Link>
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/about" component={AboutPage} />
