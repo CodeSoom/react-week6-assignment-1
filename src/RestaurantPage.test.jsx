@@ -1,27 +1,31 @@
 import { render } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { MemoryRouter } from 'react-router-dom';
 import RestaurantPage from './RestaurantPage';
 
 import RESTAURANT from '../fixtures/restaurant';
 
 describe('RestaurantPage', () => {
+  const dispatch = jest.fn();
+
   beforeEach(() => {
-    useSelector.mockImplementation((selector) => selector({
-      restaurant: RESTAURANT,
-    }));
+    dispatch.mockClear();
+    useDispatch.mockImplementation(() => dispatch);
   });
 
+  useSelector.mockImplementation((selector) => selector({
+    restaurant: RESTAURANT,
+  }));
+
   it('shows name, address, menus of Restaurant', () => {
-    const { getByText } = render((
-      <RestaurantPage />
+    const { container } = render((
+      <MemoryRouter initialEntries={['/']}>
+        <RestaurantPage />
+      </MemoryRouter>
     ));
 
-    expect(getByText('양천주가')).not.toBeNull();
-    expect(getByText('서울 강남구 123456')).not.toBeNull();
-    expect(getByText('비빔밥')).not.toBeNull();
-    expect(getByText('짬뽕')).not.toBeNull();
-    expect(getByText('탕수육')).not.toBeNull();
+    expect(container).toHaveTextContent('양천주가');
   });
 });
