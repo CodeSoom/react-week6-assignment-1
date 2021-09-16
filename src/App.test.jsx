@@ -16,12 +16,10 @@ describe('App', () => {
       </MemoryRouter>
     ));
   }
+  const dispatch = jest.fn();
+  useDispatch.mockImplementation(() => dispatch);
 
   beforeEach(() => {
-    const dispatch = jest.fn();
-
-    useDispatch.mockImplementation(() => dispatch);
-
     useSelector.mockImplementation((selector) => selector({
       regions: [{ id: 1, name: '서울' }],
       categories: [],
