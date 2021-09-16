@@ -21,7 +21,7 @@ describe('RestaurantPage', () => {
 
   it('shows name, address, menus of Restaurant', () => {
     const { container } = render((
-      <MemoryRouter initialEntries={['/']}>
+      <MemoryRouter initialEntries={['/restaurants/1']}>
         <RestaurantPage />
       </MemoryRouter>
     ));
