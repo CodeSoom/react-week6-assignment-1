@@ -3,7 +3,15 @@ import { useSelector } from 'react-redux';
 import { get } from './utils';
 
 export default function RestaurantContainer() {
-  const { name, address, menuItems } = useSelector(get('restaurant'));
+  const restaurant = useSelector(get('restaurant'));
+
+  if (!restaurant) {
+    return (
+      <p>is Loading</p>
+    );
+  }
+
+  const { name, address, menuItems } = restaurant;
 
   return (
     <>
