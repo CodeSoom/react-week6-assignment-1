@@ -1,3 +1,5 @@
+import given from 'given2';
+
 import reducer from './reducer';
 
 import {
@@ -9,16 +11,24 @@ import {
   setRestaurantDetails,
 } from './actions';
 
-import INITIAL_STATE from '../fixtures/initialState';
-
 describe('reducer', () => {
-  const initialState = INITIAL_STATE;
+  given('previousState', () => ({
+    regions: given.regions,
+    categories: given.categories,
+    restaurants: [],
+    selectedRegion: null,
+    selectedCategory: null,
+    restaurantDetails: null,
+  }));
+
+  given('regions', () => []);
+  given('categories', () => []);
 
   context('when previous state is undefined', () => {
     it('returns initialState', () => {
       const state = reducer(undefined, { type: 'action' });
 
-      expect(state).toEqual(initialState);
+      expect(state).toEqual(given.previousState);
     });
   });
 
@@ -28,7 +38,7 @@ describe('reducer', () => {
         { id: 1, name: '서울' },
       ];
 
-      const state = reducer(initialState, setRegions(regions));
+      const state = reducer(given.previousState, setRegions(regions));
 
       expect(state.regions).toHaveLength(1);
     });
@@ -40,7 +50,7 @@ describe('reducer', () => {
         { id: 1, name: '한식' },
       ];
 
-      const state = reducer(initialState, setCategories(categories));
+      const state = reducer(given.previousState, setCategories(categories));
 
       expect(state.categories).toHaveLength(1);
     });
@@ -52,7 +62,7 @@ describe('reducer', () => {
         { id: 1, name: '마법사주방' },
       ];
 
-      const state = reducer(initialState, setRestaurants(restaurants));
+      const state = reducer(given.previousState, setRestaurants(restaurants));
 
       expect(state.restaurants).toHaveLength(1);
     });
@@ -69,7 +79,7 @@ describe('reducer', () => {
         ],
       };
 
-      const state = reducer(initialState, setRestaurantDetails(restaurantDetails));
+      const state = reducer(given.previousState, setRestaurantDetails(restaurantDetails));
 
       expect(state.restaurantDetails).toEqual(restaurantDetails);
     });
@@ -77,34 +87,27 @@ describe('reducer', () => {
 
   describe('selectRegion', () => {
     it('changes selected region', () => {
-      initialState.regions = [{ id: 1, name: '서울' }];
-      // 중복 코드를 제거하기 위해 이렇게 할당해주었는데 잘못된 방식일까요?
-      // 상단에서 initialState를 정의하고 given.regions를 할당하는 방식으로 해보려고 했는데
-      // 실패했습니다 ㅠㅠ
+      given('regions', () => [{ id: 1, name: '서울' }]);
 
-      const state = reducer(initialState, selectRegion(1));
+      const state = reducer(given.previousState, selectRegion(1));
 
       expect(state.selectedRegion).toEqual({
         id: 1,
         name: '서울',
       });
-
-      initialState.regions = [];
     });
   });
 
   describe('selectCategory', () => {
     it('changes selected category', () => {
-      initialState.categories = [{ id: 1, name: '한식' }];
+      given('categories', () => [{ id: 1, name: '한식' }]);
 
-      const state = reducer(initialState, selectCategory(1));
+      const state = reducer(given.previousState, selectCategory(1));
 
       expect(state.selectedCategory).toEqual({
         id: 1,
         name: '한식',
       });
-
-      initialState.categories = [];
     });
   });
 });
