@@ -22,7 +22,7 @@ describe('RestaurantDetailsContainer', () => {
         <RestaurantDetailsContainer />
       ));
 
-      expect(container).toHaveTextContent('Loading');
+      expect(container).toHaveTextContent('Loading..');
     });
   });
 
@@ -35,6 +35,7 @@ describe('RestaurantDetailsContainer', () => {
       ));
 
       expect(container).toHaveTextContent('양천주가');
+      expect(container).toHaveTextContent('메뉴');
       expect(container).toHaveTextContent('비빔밥');
     });
   });

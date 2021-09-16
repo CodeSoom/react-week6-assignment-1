@@ -50,6 +50,14 @@ describe('App', () => {
     });
   });
 
+  context('with path /restaurants/:id', () => {
+    it('render the restaurant details page', () => {
+      const { container } = renderApp({ path: '/restaurants/1' });
+
+      expect(container).toHaveTextContent('Loading');
+    });
+  });
+
   context('with invalid path', () => {
     it('render the not found page', () => {
       const { container } = renderApp({ path: '/xxx' });

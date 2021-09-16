@@ -2,13 +2,16 @@ import { render } from '@testing-library/react';
 
 import { MemoryRouter } from 'react-router';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import RestaurantsContainer from './RestaurantsContainer';
 
 import RESTAURANTS from '../fixtures/restaurants';
 
 describe('RestaurantsContainer', () => {
+  const dispatch = jest.fn();
+  useDispatch.mockImplementation(() => dispatch);
+
   beforeEach(() => {
     useSelector.mockImplementation((selector) => selector({
       restaurants: RESTAURANTS,

@@ -1,11 +1,11 @@
 import { Switch, Route } from 'react-router';
 
 import Header from './Header';
+import HomePage from './HomePage';
 import AboutPage from './AboutPage';
 import RestaurantsPage from './RestaurantsPage';
-import HomePage from './HomePage';
-import NotFoundPage from './NotFoundPage';
 import RestaurantDetailsPage from './RestaurantDetailsPage';
+import NotFoundPage from './NotFoundPage';
 
 export default function App() {
   return (
