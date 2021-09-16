@@ -20,6 +20,14 @@ describe('App', () => {
       ],
       categories: [],
       restaurants: [],
+      restaurant: {
+        id: 1,
+        name: '양천주가',
+        menuItems: [
+          { id: 1, name: '탕수육' },
+          { id: 2, name: '팔보채' },
+        ],
+      },
     }));
   });
 
@@ -28,6 +36,7 @@ describe('App', () => {
     ${'home'} |${'/'} | ${'Home'}
     ${'about'} | ${'/about'} |  ${'About...'}
     ${'restaurants list'} |${'/restaurants'} |  ${'서울'}
+    ${'restaurant infomation'} |${'/restaurants/1'} |  ${'양천주가'}
     ${'invalid'} | ${'/invalid'} | ${'Not Found'}
   `('with path $path', ({ path, pagename, expected }) => {
     it(`renders the ${pagename} page`, () => {
