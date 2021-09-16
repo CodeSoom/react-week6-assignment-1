@@ -1,37 +1,38 @@
-import React from 'react';
-
 import { render } from '@testing-library/react';
+
+import { MemoryRouter } from 'react-router';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { MemoryRouter } from 'react-router';
 import RestaurantsPage from './RestaurantsPage';
 
-test('RestaurantsPage', () => {
-  const dispatch = jest.fn();
+import REGIONS from '../fixtures/regions';
+import CATEGORIES from '../fixtures/categories';
+import RESTAURANTS from '../fixtures/restaurants';
 
+describe('RestaurantsPage', () => {
+  const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
 
-  useSelector.mockImplementation((selector) => selector({
-    regions: [
-      { id: 1, name: '서울' },
-    ],
-    categories: [
-      { id: 1, name: '한식' },
-    ],
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
-  }));
+  beforeEach(() => {
+    useSelector.mockImplementation((selector) => selector({
+      regions: REGIONS,
+      categories: CATEGORIES,
+      restaurants: RESTAURANTS,
+    }));
+  });
 
-  const { queryByText } = render((
-    <MemoryRouter>
-      <RestaurantsPage />
-    </MemoryRouter>
-  ));
+  it('식당 리스트를 보여준다', () => {
+    const { queryByText } = render((
+      <MemoryRouter>
+        <RestaurantsPage />
+      </MemoryRouter>
+    ));
 
-  expect(dispatch).toBeCalled();
+    expect(dispatch).toBeCalled();
 
-  expect(queryByText('서울')).not.toBeNull();
-  expect(queryByText('한식')).not.toBeNull();
+    expect(queryByText('서울')).not.toBeNull();
+    expect(queryByText('한식')).not.toBeNull();
+    expect(queryByText('김밥제국')).not.toBeNull();
+  });
 });

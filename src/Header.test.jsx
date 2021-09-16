@@ -1,17 +1,17 @@
-import React from 'react';
-
 import { render } from '@testing-library/react';
 
 import { MemoryRouter } from 'react-router';
 
 import Header from './Header';
 
-test('Header', () => {
-  const { container } = render((
-    <MemoryRouter>
-      <Header />
-    </MemoryRouter>
-  ));
+describe('Header', () => {
+  it('renders header', () => {
+    const { container } = render((
+      <MemoryRouter>
+        <Header />
+      </MemoryRouter>
+    ));
 
-  expect(container).toHaveTextContent('헤더');
+    expect(container).toHaveTextContent('헤더');
+  });
 });

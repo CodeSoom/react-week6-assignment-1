@@ -9,17 +9,12 @@ import {
   setRestaurantDetails,
 } from './actions';
 
-describe('reducer', () => {
-  context('when previous state is undefined', () => {
-    const initialState = {
-      regions: [],
-      categories: [],
-      restaurants: [],
-      selectedRegion: null,
-      selectedCategory: null,
-      restaurantDetails: null,
-    };
+import INITIAL_STATE from '../fixtures/initialState';
 
+describe('reducer', () => {
+  const initialState = INITIAL_STATE;
+
+  context('when previous state is undefined', () => {
     it('returns initialState', () => {
       const state = reducer(undefined, { type: 'action' });
 
@@ -29,10 +24,6 @@ describe('reducer', () => {
 
   describe('setRegions', () => {
     it('changes regions', () => {
-      const initialState = {
-        regions: [],
-      };
-
       const regions = [
         { id: 1, name: '서울' },
       ];
@@ -45,10 +36,6 @@ describe('reducer', () => {
 
   describe('setCategories', () => {
     it('changes categories', () => {
-      const initialState = {
-        categories: [],
-      };
-
       const categories = [
         { id: 1, name: '한식' },
       ];
@@ -61,10 +48,6 @@ describe('reducer', () => {
 
   describe('setRestaurants', () => {
     it('changes restaurants', () => {
-      const initialState = {
-        restaurants: [],
-      };
-
       const restaurants = [
         { id: 1, name: '마법사주방' },
       ];
@@ -77,10 +60,6 @@ describe('reducer', () => {
 
   describe('setRestaurantDetails', () => {
     it('changes restaurant details', () => {
-      const initialState = {
-        restaurantDetails: null,
-      };
-
       const restaurantDetails = {
         id: 1,
         name: '양천주가',
@@ -98,12 +77,10 @@ describe('reducer', () => {
 
   describe('selectRegion', () => {
     it('changes selected region', () => {
-      const initialState = {
-        regions: [
-          { id: 1, name: '서울' },
-        ],
-        selectedRegion: null,
-      };
+      initialState.regions = [{ id: 1, name: '서울' }];
+      // 중복 코드를 제거하기 위해 이렇게 할당해주었는데 잘못된 방식일까요?
+      // 상단에서 initialState를 정의하고 given.regions를 할당하는 방식으로 해보려고 했는데
+      // 실패했습니다 ㅠㅠ
 
       const state = reducer(initialState, selectRegion(1));
 
@@ -111,17 +88,14 @@ describe('reducer', () => {
         id: 1,
         name: '서울',
       });
+
+      initialState.regions = [];
     });
   });
 
   describe('selectCategory', () => {
     it('changes selected category', () => {
-      const initialState = {
-        categories: [
-          { id: 1, name: '한식' },
-        ],
-        selectedCategory: null,
-      };
+      initialState.categories = [{ id: 1, name: '한식' }];
 
       const state = reducer(initialState, selectCategory(1));
 
@@ -129,6 +103,8 @@ describe('reducer', () => {
         id: 1,
         name: '한식',
       });
+
+      initialState.categories = [];
     });
   });
 });

@@ -1,13 +1,8 @@
 import { equal } from './utils';
 
-const initialState = {
-  regions: [],
-  categories: [],
-  restaurants: [],
-  selectedRegion: null,
-  selectedCategory: null,
-  restaurantDetails: null,
-};
+import INITIAL_STATE from '../fixtures/initialState';
+
+const initialState = INITIAL_STATE;
 
 const reducers = {
   setRegions(state, { payload: { regions } }) {

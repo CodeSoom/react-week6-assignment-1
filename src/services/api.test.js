@@ -58,7 +58,7 @@ describe('api', () => {
       mockFetch(DETAILS);
     });
 
-    it('returns restaurants', async () => {
+    it('returns restaurant details', async () => {
       const restaurantDetails = await fetchRestaurantDetails({
         id: 1,
       });
