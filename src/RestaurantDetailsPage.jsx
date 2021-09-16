@@ -8,10 +8,10 @@ import RestaurantDetailsContainer from './RestaurantDetailsContainer';
 
 export default function RestaurantDetailsPage({ match }) {
   const dispatch = useDispatch();
-  const { params: { id } } = match;
+  const { params: { id: restaurantId } } = match;
 
   useEffect(() => {
-    dispatch(loadRestaurantDetails({ id }));
+    dispatch(loadRestaurantDetails({ restaurantId }));
   });
 
   return (
