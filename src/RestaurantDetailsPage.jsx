@@ -11,7 +11,7 @@ export default function RestaurantDetailsPage({ match }) {
   const { params: { id } } = match;
 
   useEffect(() => {
-    dispatch(loadRestaurantDetails(id));
+    dispatch(loadRestaurantDetails({ id }));
   });
 
   return (
