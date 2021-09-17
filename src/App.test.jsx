@@ -1,6 +1,4 @@
-import React from 'react';
-
-import { render } from '@testing-library/react';
+import { act, cleanup, render } from '@testing-library/react';
 
 import { MemoryRouter } from 'react-router-dom';
 
@@ -26,6 +24,8 @@ describe('App', () => {
     }));
   });
 
+  afterEach(cleanup);
+
   function renderApp({ path }) {
     return render((
       <MemoryRouter initialEntries={[path]}>
@@ -40,7 +40,7 @@ describe('App', () => {
     it('HOME이 보여야 한다.', () => {
       const { container } = renderApp({ path });
 
-      expect(container).toHaveTextContent('HOME');
+      expect(container).toHaveTextContent('Home');
       expect(container).toHaveTextContent('About');
       expect(container).toHaveTextContent('Restaurants');
     });
@@ -91,25 +91,23 @@ describe('App', () => {
     });
   });
 
-  test('"/restaurant"', () => {
-    const path = '/restaurant/1';
+  test('"/restaurants"', async () => {
+    const path = '/restaurants/1';
 
     global.fetch = jest.fn().mockResolvedValue({
       async json() { return RESTAURANT; },
     });
 
-    const { container } = renderApp({ path });
-
-    expect(container).toHaveTextContent('Loading');
+    await act(async () => renderApp({ path }));
   });
 
   context('잘못된 path 에서는', () => {
     const path = '/xxx';
 
-    it('Not found가 보여야 한다.', () => {
+    it('404 Not Found가 보여야 한다.', () => {
       const { container } = renderApp({ path });
 
-      expect(container).toHaveTextContent('Not found');
+      expect(container).toHaveTextContent('404 Not Found');
     });
 
     it('헤더가 보여야 한다.', () => {
