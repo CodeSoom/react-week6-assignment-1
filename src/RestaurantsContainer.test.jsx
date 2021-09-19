@@ -1,23 +1,25 @@
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
-import { MemoryRouter } from 'react-router-dom';
+import RESTAURANTS from '../fixtures/restaurants';
 
 import RestaurantsContainer from './RestaurantsContainer';
 
 test('RestaurantsContainer', () => {
   useSelector.mockImplementation((selector) => selector({
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
+    restaurants: RESTAURANTS,
   }));
 
-  const { container } = render((
-    <MemoryRouter>
-      <RestaurantsContainer />
-    </MemoryRouter>
+  const restaurant = RESTAURANTS[0];
+
+  const handleClick = jest.fn();
+
+  const { getByText } = render((
+    <RestaurantsContainer onClickRestaurant={handleClick} />
   ));
 
-  expect(container).toHaveTextContent('마법사주방');
+  fireEvent.click(getByText(restaurant.name));
+
+  expect(handleClick).toHaveBeenCalledWith(restaurant);
 });

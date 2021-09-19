@@ -21,6 +21,7 @@ describe('App', () => {
       regions: REGIONS,
       categories: CATEGOREIS,
       restaurants: RESTAURANTS,
+      restaurant: RESTAURANT,
     }));
   });
 

@@ -1,3 +1,5 @@
+import RESTUARNT from '../../../fixtures/restaurant';
+
 export async function fetchRegions() {
   return [];
 }
@@ -11,5 +13,5 @@ export async function fetchRestaurants() {
 }
 
 export async function fetchRestaurant() {
-  return {};
+  return RESTUARNT;
 }

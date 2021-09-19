@@ -17,6 +17,9 @@ module.exports = {
   devServer: {
     historyApiFallback: {
       index: 'index.html',
+      rewrites: [
+        { from: /^\/$/, to: 'landing.html' },
+      ],
     },
   },
 };

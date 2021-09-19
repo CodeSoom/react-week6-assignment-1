@@ -1,17 +1,32 @@
-import { render, waitFor } from '@testing-library/react';
-
-import { MemoryRouter } from 'react-router-dom';
+import {
+  render,
+} from '@testing-library/react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantPage from './RestaurantPage';
 
-test('RestaurantPage', async () => {
-  const { container } = render((
-    <MemoryRouter initialEntries={['/restaurants/1']}>
-      <RestaurantPage />
-    </MemoryRouter>
-  ));
+describe('RestaurantPage', () => {
+  const dispatch = jest.fn();
 
-  expect(container).toHaveTextContent('Loading');
+  beforeEach(() => {
+    dispatch.mockClear();
 
-  await waitFor(() => expect(container).toHaveTextContent('양천주가'), { timeout: 100 });
+    useDispatch.mockImplementation(() => dispatch);
+
+    useSelector.mockImplementation((state) => state({
+      restaurant: {
+        id: 1,
+        name: '마법사주방',
+      },
+    }));
+  });
+
+  it('renders name', () => {
+    const params = { id: '1' };
+    const { container } = render((
+      <RestaurantPage params={params} />
+    ));
+
+    expect(container).toHaveTextContent('마법사주방');
+  });
 });

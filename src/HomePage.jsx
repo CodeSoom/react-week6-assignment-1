@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 
-export default function HomePage() {
-  const routers = [
-    { path: '/about', name: 'About' },
-    { path: '/restaurants', name: 'Restaurants' },
-  ];
+const routers = [
+  { path: '/about', name: 'About' },
+  { path: '/restaurants', name: 'Restaurants' },
+];
 
+export default function HomePage() {
   return (
     <div>
       <h1>Home</h1>
