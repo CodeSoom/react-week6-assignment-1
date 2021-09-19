@@ -2,12 +2,33 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import { useDispath, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { MemoryRouter } from 'react-router-dom';
 
 import RestaurantPage from './RestaurantPage';
 
-jest.mock('react-redux');
+describe('RestaurantPage', () => {
+  it('rendering', () => {
+    const dispatch = jest.fn();
 
-test('RestaurantPage', () => {
-    
-})
+    useDispatch.mockImplementation(() => dispatch);
+
+    useSelector.mockImplementation((selector) => selector({
+      restaurant: {
+        id: null,
+        name: null,
+        address: null,
+        menuItems: [],
+      },
+    }));
+
+    render((
+      <MemoryRouter>
+        <RestaurantPage />
+      </MemoryRouter>
+    ));
+
+    expect(dispatch).toBeCalled();
+  });
+});

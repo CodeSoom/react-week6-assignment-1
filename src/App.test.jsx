@@ -20,11 +20,6 @@ describe('App', () => {
       ],
       categories: [],
       restaurants: [],
-      restaurant: {
-        id: 1,
-        name: '마녀주방',
-        address: '서울시 강남구 역삼동',
-      },
     }));
   });
 
@@ -57,16 +52,6 @@ describe('App', () => {
       const { container } = renderApp({ path: '/restaurants' });
 
       expect(container).toHaveTextContent('서울');
-    });
-  });
-
-  context('with path /restaurants/restaurantId', () => {
-    it('renders the each restaurant page', () => {
-      const path = '/restaurants/1';
-
-      const { container } = renderApp(path);
-
-      expect(container).toHaveTextContent('마녀주방');
     });
   });
 

@@ -16,8 +16,6 @@ module.exports = {
   },
 
   devServer: {
-    historyApiFallback: {
-      index: 'index.html',
-    },
+    historyApiFallback: true,
   },
 };

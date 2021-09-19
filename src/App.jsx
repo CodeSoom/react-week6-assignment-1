@@ -8,7 +8,7 @@ import {
 
 import HomePage from './HomePage';
 import RestaurantsPage from './RestaurantsPage';
-import RestaurantsPage from './RestaurantsPage';
+import RestaurantPage from './RestaurantPage';
 import AboutPage from './AboutPage';
 import NotFoundPage from './NotFoundPage';
 
@@ -18,15 +18,15 @@ export default function App() {
       <header>
         <h1>
           <Link to="/">
-            Main Page
+            헤더
           </Link>
         </h1>
       </header>
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/about" component={AboutPage} />
-        <Route path="/restaurants" component={RestaurantsPage} />
-        <Route path="/restaurants/:restaurantId" component={RestaurantsPage} />
+        <Route exact path="/restaurants" component={RestaurantsPage} />
+        <Route path="/restaurants/:id" component={RestaurantPage} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>
