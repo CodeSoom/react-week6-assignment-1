@@ -1,4 +1,4 @@
-import { act, cleanup, render } from '@testing-library/react';
+import { cleanup, render } from '@testing-library/react';
 
 import { MemoryRouter } from 'react-router-dom';
 
@@ -92,14 +92,15 @@ describe('App', () => {
     });
   });
 
-  test('"/restaurants"', async () => {
+  context('"/restaurant" path 에서는', () => {
     const path = '/restaurants/1';
 
-    global.fetch = jest.fn().mockResolvedValue({
-      async json() { return RESTAURANT; },
-    });
+    it('레스토랑 이름과 주소가 보여야한다.', () => {
+      const { container } = renderApp({ path });
 
-    await act(async () => renderApp({ path }));
+      expect(container).toHaveTextContent(RESTAURANT.name);
+      expect(container).toHaveTextContent(RESTAURANT.address);
+    });
   });
 
   context('잘못된 path 에서는', () => {
