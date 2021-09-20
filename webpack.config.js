@@ -14,4 +14,12 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+  devServer: {
+    historyApiFallback: {
+      index: 'index.html',
+      rewrites: [
+        { from: /^\/$/, to: 'landing.html' },
+      ],
+    },
+  },
 };
