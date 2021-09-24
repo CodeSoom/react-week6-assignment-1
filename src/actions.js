@@ -1,53 +1,65 @@
 import {
-  fetchRegions,
   fetchCategories,
+  fetchRegions,
   fetchRestaurants,
-  fetchDetailRestaurants,
+  fetchRestaurant,
 } from './services/api';
 
 export function setRegions(regions) {
   return {
     type: 'setRegions',
-    payload: { regions },
+    payload: {
+      regions,
+    },
   };
 }
 
 export function setCategories(categories) {
   return {
     type: 'setCategories',
-    payload: { categories },
+    payload: {
+      categories,
+    },
   };
 }
 
 export function setRestaurants(restaurants) {
   return {
     type: 'setRestaurants',
-    payload: { restaurants },
+    payload: {
+      restaurants,
+    },
   };
 }
 
-export function setRestaurantDetail(restaurantdetail) {
+export function setRestaurant(restaurant) {
   return {
-    type: 'setRestaurantDetail',
-    payload: { restaurantdetail },
+    type: 'setRestaurant',
+    payload: {
+      restaurant,
+    },
   };
 }
 
 export function selectRegion(regionId) {
   return {
     type: 'selectRegion',
-    payload: { regionId },
+    payload: {
+      regionId,
+    },
   };
 }
 
 export function selectCategory(categoryId) {
   return {
     type: 'selectCategory',
-    payload: { categoryId },
+    payload: {
+      categoryId,
+    },
   };
 }
 
-export function loadInitialData() {
+export function loadInitialDate() {
   return async (dispatch) => {
     const regions = await fetchRegions();
     dispatch(setRegions(regions));
@@ -67,7 +79,6 @@ export function loadRestaurants() {
     if (!region || !category) {
       return;
     }
-
     const restaurants = await fetchRestaurants({
       regionName: region.name,
       categoryId: category.id,
@@ -76,19 +87,12 @@ export function loadRestaurants() {
   };
 }
 
-export function loadRestaurantDetail() {
-  return async (dispatch, getState) => {
-    const {
-      selectedRestaurant: restaurant,
-    } = getState();
+export function loadRestaurant({ restaurantId }) {
+  return async (dispatch) => {
+    dispatch(setRestaurant(null));
 
-    if (!restaurant) {
-      return;
-    }
+    const restaurant = await fetchRestaurant({ restaurantId });
 
-    const restaurantdetail = await fetchDetailRestaurants({
-      restaurantId: restaurant.id,
-    });
-    dispatch(setRestaurants(restaurantdetail));
+    dispatch(setRestaurant(restaurant));
   };
 }

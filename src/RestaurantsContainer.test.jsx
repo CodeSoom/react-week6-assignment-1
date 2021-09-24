@@ -1,8 +1,8 @@
-import { render } from '@testing-library/react';
+import React from 'react';
 
 import { useSelector } from 'react-redux';
 
-import { MemoryRouter } from 'react-router-dom';
+import { render } from '@testing-library/react';
 
 import RestaurantsContainer from './RestaurantsContainer';
 
@@ -13,11 +13,10 @@ test('RestaurantsContainer', () => {
     ],
   }));
 
-  const { container } = render((
-    <MemoryRouter>
-      <RestaurantsContainer />
-    </MemoryRouter>
+  const handleClick = jest.fn();
 
+  const { container } = render((
+    <RestaurantsContainer onClickRestaurant={handleClick} />
   ));
 
   expect(container).toHaveTextContent('마법사주방');

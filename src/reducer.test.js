@@ -4,36 +4,20 @@ import {
   setRegions,
   setCategories,
   setRestaurants,
+  setRestaurant,
   selectRegion,
   selectCategory,
 } from './actions';
 
+import categories from '../fixtures/categories';
+import regions from '../fixtures/regions';
+
 describe('reducer', () => {
-  context('when previous state is undefined', () => {
-    const initialState = {
-      regions: [],
-      categories: [],
-      restaurants: [],
-      selectedRegion: null,
-      selectedCategory: null,
-    };
-
-    it('returns initialState', () => {
-      const state = reducer(undefined, { type: 'action' });
-
-      expect(state).toEqual(initialState);
-    });
-  });
-
   describe('setRegions', () => {
-    it('changes regions', () => {
+    it('changes Regions', () => {
       const initialState = {
         regions: [],
       };
-
-      const regions = [
-        { id: 1, name: '서울' },
-      ];
 
       const state = reducer(initialState, setRegions(regions));
 
@@ -47,10 +31,6 @@ describe('reducer', () => {
         categories: [],
       };
 
-      const categories = [
-        { id: 1, name: '한식' },
-      ];
-
       const state = reducer(initialState, setCategories(categories));
 
       expect(state.categories).toHaveLength(1);
@@ -62,7 +42,6 @@ describe('reducer', () => {
       const initialState = {
         restaurants: [],
       };
-
       const restaurants = [
         { id: 1, name: '마법사주방' },
       ];
@@ -73,12 +52,24 @@ describe('reducer', () => {
     });
   });
 
+  describe('setRestaurant', () => {
+    it('changes restaurant', () => {
+      const initialState = {
+        restaurant: null,
+      };
+      const restaurant = { id: 1, name: '마법사주방' };
+
+      const state = reducer(initialState, setRestaurant(restaurant));
+
+      expect(state.restaurant.id).toBe(1);
+      expect(state.restaurant.name).toBe('마법사주방');
+    });
+  });
+
   describe('selectRegion', () => {
     it('changes selected region', () => {
       const initialState = {
-        regions: [
-          { id: 1, name: '서울' },
-        ],
+        regions,
         selectedRegion: null,
       };
 
@@ -94,9 +85,7 @@ describe('reducer', () => {
   describe('selectCategory', () => {
     it('changes selected category', () => {
       const initialState = {
-        categories: [
-          { id: 1, name: '한식' },
-        ],
+        categories,
         selectedCategory: null,
       };
 

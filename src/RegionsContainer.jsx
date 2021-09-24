@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
@@ -17,7 +19,6 @@ export default function RegionsContainer() {
     dispatch(selectRegion(regionId));
     dispatch(loadRestaurants());
   }
-
   return (
     <ul>
       {regions.map((region) => (

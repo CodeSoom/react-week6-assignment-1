@@ -1,55 +1,29 @@
-import { render, fireEvent } from '@testing-library/react';
+import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import { render, fireEvent } from '@testing-library/react';
+
 import CategoriesContainer from './CategoriesContainer';
 
-import CATEGORIES from '../fixtures/categories';
+import categories from '../fixtures/categories';
 
-describe('CategoriesContainer', () => {
+jest.mock('react-redux');
+
+test('CategoriesContainer', () => {
   const dispatch = jest.fn();
 
-  const KOREAN_FOOD = CATEGORIES[0];
+  useDispatch.mockImplementation(() => dispatch);
 
-  beforeEach(() => {
-    dispatch.mockClear();
-    useDispatch.mockImplementation(() => dispatch);
-  });
+  useSelector.mockImplementation((selector) => selector({
+    categories,
+  }));
+  const { container, getByText } = render((
+    <CategoriesContainer />
+  ));
+  expect(container).toHaveTextContent('한식');
 
-  context('with selectedCategory', () => {
-    beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({
-        categories: CATEGORIES,
-        selectedCategory: KOREAN_FOOD,
-      }));
-    });
+  fireEvent.click(getByText('한식'));
 
-    it('renders categories with selected category', () => {
-      const { container } = render((
-        <CategoriesContainer />
-      ));
-
-      expect(container).toHaveTextContent(`${KOREAN_FOOD.name}(V)`);
-    });
-  });
-
-  context('without selectedCategory', () => {
-    beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({
-        categories: CATEGORIES,
-      }));
-    });
-
-    it('renders categories with selected category', () => {
-      const { container, getByText } = render((
-        <CategoriesContainer />
-      ));
-
-      expect(container).toHaveTextContent(KOREAN_FOOD.name);
-
-      fireEvent.click(getByText(KOREAN_FOOD.name));
-
-      expect(dispatch).toBeCalled();
-    });
-  });
+  expect(getByText('한식')).not.toBeNull();
 });
