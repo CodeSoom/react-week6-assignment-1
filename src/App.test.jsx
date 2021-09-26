@@ -32,12 +32,12 @@ describe('App', () => {
   });
 
   context.each`
-    pagename | path |  expected
-    ${'home'} |${'/'} | ${'Home'}
-    ${'about'} | ${'/about'} |  ${'About...'}
-    ${'restaurants list'} |${'/restaurants'} |  ${'서울'}
-    ${'restaurant infomation'} |${'/restaurants/1'} |  ${'양천주가'}
-    ${'invalid'} | ${'/invalid'} | ${'Not Found'}
+    path                | pagename                   | expected
+    ${'/'}              | ${'home'}                  | ${'Home'}
+    ${'/about'}         | ${'about'}                 | ${'About...'}
+    ${'/restaurants'}   | ${'restaurants list'}      | ${'서울'}
+    ${'/restaurants/1'} | ${'restaurant infomation'} | ${'양천주가'}
+    ${'/invalid'}       | ${'not found'}             |  ${'Not Found'}
   `('with path $path', ({ path, pagename, expected }) => {
     it(`renders the ${pagename} page`, () => {
       const { container } = render((
