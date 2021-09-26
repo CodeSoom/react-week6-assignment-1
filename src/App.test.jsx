@@ -37,7 +37,7 @@ describe('App', () => {
     ${'/about'}         | ${'about'}                 | ${'About...'}
     ${'/restaurants'}   | ${'restaurants list'}      | ${'서울'}
     ${'/restaurants/1'} | ${'restaurant infomation'} | ${'양천주가'}
-    ${'/invalid'}       | ${'not found'}             |  ${'Not Found'}
+    ${'/invalid'}       | ${'not found'}             | ${'Not Found'}
   `('with path $path', ({ path, pagename, expected }) => {
     it(`renders the ${pagename} page`, () => {
       const { container } = render((

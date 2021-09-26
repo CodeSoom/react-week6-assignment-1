@@ -1,5 +1,7 @@
 import { render } from '@testing-library/react';
 
+import given from 'given2';
+
 import { useSelector } from 'react-redux';
 
 import RestaurantContainer from './RestaurantContainer';
@@ -7,12 +9,16 @@ import RestaurantContainer from './RestaurantContainer';
 import RESTAURANT from '../fixtures/restaurant';
 
 describe('RestaurantPage', () => {
-  context('when restaurant infomation is loaded', () => {
-    beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({ restaurant: RESTAURANT }));
-    });
+  beforeEach(() => {
+    useSelector.mockImplementation(
+      (selector) => selector({ restaurant: given.restaurant }),
+    );
+  });
 
+  context('with restaurant information', () => {
     it('shows name, address, menus of Restaurant', () => {
+      given('restaurant', () => RESTAURANT);
+
       const { container } = render((
         <RestaurantContainer />
       ));
@@ -25,12 +31,10 @@ describe('RestaurantPage', () => {
     });
   });
 
-  context('when restaurant infomation is loading', () => {
-    beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({}));
-    });
+  context('without restaurant information', () => {
+    it('shows loading message', () => {
+      given('restaurant', () => undefined);
 
-    it('shows name, address, menus of Restaurant', () => {
       const { container } = render((
         <RestaurantContainer />
       ));
