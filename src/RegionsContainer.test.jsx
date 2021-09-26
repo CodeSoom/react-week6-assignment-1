@@ -1,55 +1,32 @@
-import { render, fireEvent } from '@testing-library/react';
+import React from 'react';
+
+import { MemoryRouter } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import { render, fireEvent } from '@testing-library/react';
+
 import RegionsContainer from './RegionsContainer';
 
-import REGIONS from '../fixtures/regions';
-
-describe('RegionsContainer', () => {
+test('RegionsContainer', () => {
   const dispatch = jest.fn();
 
-  const SEOUL = REGIONS[0];
+  useDispatch.mockImplementation(() => dispatch);
 
-  beforeEach(() => {
-    dispatch.mockClear();
-    useDispatch.mockImplementation(() => dispatch);
-  });
+  useSelector.mockImplementation((selector) => selector({
+    regions: [
+      { id: 1, name: '서울' },
+    ],
+  }));
+  const { getByText } = render((
+    <MemoryRouter>
+      <RegionsContainer />
+    </MemoryRouter>
+  ));
 
-  context('with selectedRegion', () => {
-    beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({
-        regions: REGIONS,
-        selectedRegion: SEOUL,
-      }));
-    });
+  expect(getByText('서울')).not.toBeNull();
 
-    it('renders regions with selected region', () => {
-      const { container } = render((
-        <RegionsContainer />
-      ));
+  fireEvent.click(getByText('서울'));
 
-      expect(container).toHaveTextContent(`${SEOUL.name}(V)`);
-    });
-  });
-
-  context('without selectedRegion', () => {
-    beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({
-        regions: REGIONS,
-      }));
-    });
-
-    it('renders regions', () => {
-      const { container, getByText } = render((
-        <RegionsContainer />
-      ));
-
-      expect(container).toHaveTextContent(SEOUL.name);
-
-      fireEvent.click(getByText(SEOUL.name));
-
-      expect(dispatch).toBeCalled();
-    });
-  });
+  expect(dispatch).toBeCalled();
 });

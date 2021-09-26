@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
@@ -17,7 +19,6 @@ export default function CategoriesContainer() {
     dispatch(selectCategory(categoryId));
     dispatch(loadRestaurants());
   }
-
   return (
     <ul>
       {categories.map((category) => (
