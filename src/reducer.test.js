@@ -6,6 +6,7 @@ import {
   setRestaurants,
   selectRegion,
   selectCategory,
+  setRestaurantDetail,
 } from './actions';
 
 describe('reducer', () => {
@@ -16,6 +17,12 @@ describe('reducer', () => {
       restaurants: [],
       selectedRegion: null,
       selectedCategory: null,
+      restaurantDetail: {
+        name: '',
+        address: '',
+        menuItems: [],
+        reviews: [],
+      },
     };
 
     it('returns initialState', () => {
@@ -105,6 +112,33 @@ describe('reducer', () => {
       expect(state.selectedCategory).toEqual({
         id: 1,
         name: '한식',
+      });
+    });
+  });
+
+  describe('setDetailRestaurant', () => {
+    it('changes detail restaurant', () => {
+      const initialState = {
+        restaurantDetail: {
+          name: '',
+          address: '',
+          menuItems: [],
+          reviews: [],
+        },
+      };
+
+      const state = reducer(initialState, setRestaurantDetail({
+        name: '식당1',
+        address: '서울시',
+        menuItems: [{ id: 1, name: '비빔밥' }],
+        reviews: [{ id: 1, description: '맛있어요' }],
+      }));
+
+      expect(state.restaurantDetail).toEqual({
+        name: '식당1',
+        address: '서울시',
+        menuItems: [{ id: 1, name: '비빔밥' }],
+        reviews: [{ id: 1, description: '맛있어요' }],
       });
     });
   });
