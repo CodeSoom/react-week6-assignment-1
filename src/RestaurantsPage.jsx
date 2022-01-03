@@ -2,7 +2,9 @@ import { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
-import RestaurantsPage from './RestaurantsPage';
+import RegionsContainer from './RegionsContainer';
+import CategoriesContainer from './CategoriesContainer';
+import RestaurantsContainer from './RestaurantsContainer';
 
 import {
   loadInitialData,
@@ -13,7 +15,7 @@ import {
 // 2. 분류 선택 - Categories - 한식, 중식, 일식, ... <- API (0)
 // 3. 식당 목록 - Restaurants <- API (with region, category) -> 1, 2 모두 완료된 경우
 
-export default function App() {
+export default function RestaurantsPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -22,7 +24,9 @@ export default function App() {
 
   return (
     <div>
-      <RestaurantsPage />
+      <RegionsContainer />
+      <CategoriesContainer />
+      <RestaurantsContainer />
     </div>
   );
 }
