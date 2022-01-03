@@ -1,13 +1,13 @@
 import {
   BrowserRouter,
-  Switch,
+  Routes,
   Route,
 } from 'react-router-dom';
 
 import RestaurantsPage from './RestaurantsPage';
 import HomePage from './HomePage';
 import AboutPage from './AboutPage';
-// import NotFoundPage from './NotFoundPage';
+import NotFoundPage from './NotFoundPage';
 
 // 0. 지역, 분류 목록을 얻기
 // 1. 지역 선택 - Regions <- API (0)
@@ -23,11 +23,12 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <Switch>
-        <Route path="/" component={HomePage} />
-        <Route path="/about" component={AboutPage} />
-        <Route path="/restaurants" component={RestaurantsPage} />
-      </Switch>
+      <Routes>
+        <Route exact path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/restaurants" element={<RestaurantsPage />} />
+        <Route path="/*" element={<NotFoundPage />} />
+      </Routes>
     </BrowserRouter>
   );
 }
