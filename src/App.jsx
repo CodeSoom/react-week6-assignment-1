@@ -6,6 +6,16 @@ import RestaurantsPage from './RestaurantsPage';
 // 3. 식당 목록 - Restaurants <- API (with region, category) -> 1, 2 모두 완료된 경우
 
 export default function App() {
+  const { location: { pathname } } = window;
+
+  if (pathname === '/') {
+    return (
+      <p>
+        Home
+      </p>
+    );
+  }
+
   return (
     <RestaurantsPage />
   );
