@@ -4,20 +4,62 @@ import { MemoryRouter } from 'react-router-dom';
 
 import { render } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
-test('App', () => {
-  useSelector.mockImplementation((selector) => selector({
-    regions: [],
-    categories: [],
-    restaurants: [],
-  }));
+describe('App', () => {
+  // 무엇을 위한 코드인가?
+  beforeEach(() => {
+    const dispatch = jest.fn();
+    useDispatch.mockImplementation(() => dispatch);
+    useSelector.mockImplementation((selector) => selector({
+      regions: [{
+        id: 1,
+        name: '서울',
+      }],
+      categories: [],
+      restaurants: [],
+    }));
+  });
 
-  render((
-    <MemoryRouter>
-      <App />
-    </MemoryRouter>
-  ));
+  function renderApp({ path }) {
+    return render((
+      <MemoryRouter initialEntries={[path]}>
+        <App />
+      </MemoryRouter>
+    ));
+  }
+
+  context('path가 / 일 때', () => {
+    it('HomePage를 렌더링한다.', () => {
+      const { container } = renderApp({ path: '/' });
+
+      expect(container).toHaveTextContent('Home');
+    });
+  });
+
+  context('path가 /about 일 때', () => {
+    it('AboutPage를 렌더링한다.', () => {
+      const { container } = renderApp({ path: '/about' });
+
+      expect(container).toHaveTextContent('20명에게');
+    });
+  });
+
+  context('path가 /restaurants 일 때', () => {
+    it('RestaurantsPage를 렌더링한다.', () => {
+      const { container } = renderApp({ path: '/restaurants' });
+
+      expect(container).toHaveTextContent('서울');
+    });
+  });
+
+  context('path가 올바르지 않을 때 ', () => {
+    it('NotFoundPage를 렌더링한다.', () => {
+      const { container } = renderApp({ path: '/*' });
+
+      expect(container).toHaveTextContent(':P');
+    });
+  });
 });
