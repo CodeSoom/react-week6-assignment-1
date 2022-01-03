@@ -22,10 +22,11 @@ describe('App', () => {
   function renderApp({ path }) {
     return render((
       <MemoryRouter initialEntries={[path]}>
-      <App />
-    </MemoryRouter>
+        <App />
+      </MemoryRouter>
     ));
   }
+
   context('with path /', () => {
     it('renders the home page', () => {
       const { container } = renderApp({ path: '/' });
