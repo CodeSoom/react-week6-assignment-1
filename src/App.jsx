@@ -1,5 +1,4 @@
 import {
-  BrowserRouter,
   Routes,
   Route,
 } from 'react-router-dom';
@@ -15,20 +14,12 @@ import NotFoundPage from './NotFoundPage';
 // 3. 식당 목록 - Restaurants <- API (with region, category) -> 1, 2 모두 완료된 경우
 
 export default function App() {
-  // const MyComponent = {
-  //   '/': HomePage,
-  //   '/about': AboutPage,
-  //   '/restaurants': RestaurantsPage,
-  // }[pathname] || NotFoundPage;
-
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/restaurants" element={<RestaurantsPage />} />
-        <Route path="/*" element={<NotFoundPage />} />
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/about" element={<AboutPage />} />
+      <Route path="/restaurants" element={<RestaurantsPage />} />
+      <Route path="/*" element={<NotFoundPage />} />
+    </Routes>
   );
 }
