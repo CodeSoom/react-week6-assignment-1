@@ -11,7 +11,6 @@ export default function App() {
     '/restaurants': RestaurantsPage,
   }[pathname];
 
-  console.log(Mycomponent);
   return (
     <div>
       <Mycomponent />
