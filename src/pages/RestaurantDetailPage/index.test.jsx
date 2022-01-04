@@ -10,20 +10,17 @@ describe('RestaurantDetailPage', () => {
     restaurant: {
       id: '1',
       name: '김밥천국',
-      address: '서울특별시 강남구 역삼동',
-      menu: [{ id: 1, name: '치즈돈까스' }],
+      menu: [],
     },
   }));
 
   useDispatch.mockImplementation(() => dispatch);
 
-  it('loads restaurant\'s name, address and menu', () => {
+  it('loads restaurant', () => {
     const { getByText } = render(<RestaurantDetailPage />);
 
     expect(dispatch).toBeCalled();
 
     expect(getByText('김밥천국')).toBeInTheDocument();
-    expect(getByText('서울특별시 강남구 역삼동')).toBeInTheDocument();
-    expect(getByText('치즈돈까스')).toBeInTheDocument();
   });
 });
