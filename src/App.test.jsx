@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { render } from '@testing-library/react';
 
 import { MemoryRouter } from 'react-router-dom';
@@ -24,6 +22,7 @@ describe('App', () => {
           <App />
         </MemoryRouter>
       ));
+
       expect(container).toHaveTextContent('Home');
     });
   });

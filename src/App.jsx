@@ -1,23 +1,18 @@
-import { useEffect } from 'react';
-
-import { useDispatch } from 'react-redux';
-
-import RestaurantsPage from './RestaurantsPage';
-
 import {
-  loadInitialData,
-} from './actions';
+  Routes,
+  Route,
+} from 'react-router-dom';
+
+import HomePage from './HomePage';
 
 export default function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(loadInitialData());
-  });
-
   return (
-    <div>
-      <RestaurantsPage />
-    </div>
+    <>
+      <h1>헤더</h1>
+      <Routes>
+        <Route exact path="/" element={<HomePage />} />
+        <Route path="/home" element={<HomePage />} />
+      </Routes>
+    </>
   );
 }
