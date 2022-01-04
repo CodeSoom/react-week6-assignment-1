@@ -16,4 +16,5 @@ test('RestaurantsContainer', () => {
   ));
 
   expect(container).toHaveTextContent('마법사주방');
+  expect(container).toHaveAttribute('to', '/restaurants/1');
 });

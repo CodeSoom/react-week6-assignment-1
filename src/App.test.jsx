@@ -43,7 +43,7 @@ describe('App', () => {
     it('AboutPage를 렌더링한다.', () => {
       const { container } = renderApp({ path: '/about' });
 
-      expect(container).toHaveTextContent('20명에게');
+      expect(container).toHaveTextContent('About');
     });
   });
 
@@ -59,7 +59,7 @@ describe('App', () => {
     it('NotFoundPage를 렌더링한다.', () => {
       const { container } = renderApp({ path: '/*' });
 
-      expect(container).toHaveTextContent(':P');
+      expect(container).toHaveTextContent('돌아가');
     });
   });
 });
