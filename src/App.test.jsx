@@ -39,7 +39,8 @@ describe('App', () => {
     it('renders the about page', () => {
       const { container } = renderApp({ path: '/about' });
 
-      expect(container).toHaveTextContent('영국에서');
+      expect(container).toHaveTextContent('About');
+      expect(container).toHaveTextContent('상세페이지 입니다.');
     });
   });
 

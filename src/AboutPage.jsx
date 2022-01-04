@@ -1,5 +1,8 @@
 export default function AboutPage() {
   return (
-    <p>이 글은 영국에서 전해져 내려왔습니다.</p>
+    <div>
+      <h2>About</h2>
+      <p>상세페이지 입니다.</p>
+    </div>
   );
 }
