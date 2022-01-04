@@ -37,16 +37,15 @@ export default function App() {
           element={<Home />}
         />
         <Route
-          exact
-          path="about"
+          path="/about"
           element={<About />}
         />
         <Route
-          path="restaurants"
+          path="/restaurants"
           element={<RestaurantsPage />}
         />
         <Route
-          path="restaurants/:restaurantId"
+          path="/restaurants/:restaurantId"
           element={<RestaurantInfo />}
         />
         <Route
