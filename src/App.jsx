@@ -4,6 +4,7 @@ import RestaurantsPage from './RestaurantsPage';
 import HomePage from './HomePage';
 import AboutPage from './AboutPage';
 import NotFoundPage from './NotFoundPage';
+import RestaurantPage from './RestaurantPage';
 
 export default function App() {
   // const { location: {pathname } } = window;
@@ -27,6 +28,7 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/restaurants" element={<RestaurantsPage />} />
+        <Route path="/restaurants/*" element={<RestaurantPage />} />
         <Route path="/*" element={<NotFoundPage />} />
       </Routes>
     </div>
