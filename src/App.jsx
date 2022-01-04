@@ -1,6 +1,7 @@
 import {
   Routes,
   Route,
+  Link,
 } from 'react-router-dom';
 
 import HomePage from './HomePage';
@@ -11,7 +12,9 @@ import AboutPage from './AboutPage';
 export default function App() {
   return (
     <div>
-      <h1>헤더</h1>
+      <h1>
+        <Link to="/">헤더</Link>
+      </h1>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
