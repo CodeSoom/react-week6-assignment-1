@@ -11,6 +11,7 @@ export default function Restaurant({ restaurant }) {
       <p>
         {`주소: ${address}`}
       </p>
+      <h3>메뉴</h3>
       <ul>
         {menuItems.map(({ id, name: menuName }) => (
           <li key={id}>
