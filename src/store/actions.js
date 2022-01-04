@@ -76,8 +76,9 @@ export function setRestaurant(restaurant) {
   return { type: ACTION_TYPES.SET_RESTAURANT, payload: { restaurant } };
 }
 
-export function loadRestaurant(id) {
+export function loadRestaurant({ id }) {
   return async (dispatch) => {
-    dispatch({ id });
+    const restaurant = await fetchRestaurant(id);
+    dispatch(setRestaurant(restaurant));
   };
 }
