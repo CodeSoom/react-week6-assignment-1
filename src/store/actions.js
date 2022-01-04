@@ -2,6 +2,7 @@ import {
   fetchRegions,
   fetchCategories,
   fetchRestaurants,
+  fetchRestaurant,
 } from '../services/api';
 
 export function setRegions(regions) {
@@ -66,4 +67,7 @@ export function loadRestaurants() {
     });
     dispatch(setRestaurants(restaurants));
   };
+}
+export function setRestaurant() {
+  return {};
 }
