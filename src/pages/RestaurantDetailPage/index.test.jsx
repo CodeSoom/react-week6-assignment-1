@@ -9,8 +9,8 @@ describe('RestaurantDetailPage', () => {
   useSelector.mockImplementation((selector) => selector({
     restaurant: {
       id: '1',
-      name: 'Restaurant 1',
-      address: 'Address 1',
+      name: '김밥천국',
+      address: '서울특별시 강남구 역삼동',
       menu: [{ id: 1, name: '치즈돈까스' }],
     },
   }));
