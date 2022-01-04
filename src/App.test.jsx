@@ -9,7 +9,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import App from './App';
 
 describe('App', () => {
-  // 무엇을 위한 코드인가?
   beforeEach(() => {
     const dispatch = jest.fn();
     useDispatch.mockImplementation(() => dispatch);
