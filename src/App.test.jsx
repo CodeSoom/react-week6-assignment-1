@@ -55,6 +55,14 @@ describe('App', () => {
     });
   });
 
+  context('path가 /restaurants/:id 일 때', () => {
+    it('RestaurantsInfoPage를 렌더링한다.', () => {
+      const { container } = renderApp({ path: '/restaurants/:id' });
+
+      expect(container).toHaveTextContent('주소');
+    });
+  });
+
   context('path가 올바르지 않을 때 ', () => {
     it('NotFoundPage를 렌더링한다.', () => {
       const { container } = renderApp({ path: '/*' });
