@@ -2,7 +2,6 @@ import { render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantDetailPage from '.';
-import { ACTION_TYPES } from '../../store/actions';
 
 describe('RestaurantDetailPage', () => {
   const dispatch = jest.fn();

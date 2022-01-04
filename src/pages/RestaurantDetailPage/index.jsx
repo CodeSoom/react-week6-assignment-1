@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { loadRestaurant } from '../../store/actions';
 
-const id = 1;
+const restaurantId = 1;
 
 export default function RestaurantDetailPage() {
   const { restaurant } = useSelector(() => ({
@@ -18,8 +18,8 @@ export default function RestaurantDetailPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadRestaurant(id));
-  }, [id]);
+    dispatch(loadRestaurant(restaurantId));
+  }, [restaurantId]);
 
   return (
     <section>
