@@ -1,4 +1,9 @@
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { loadRestaurant } from '../../store/actions';
+
+const id = 1;
 
 export default function RestaurantDetailPage() {
   const { restaurant } = useSelector(() => ({
@@ -9,6 +14,13 @@ export default function RestaurantDetailPage() {
       menu: [{ id: 1, name: '치즈돈까스' }],
     },
   }));
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadRestaurant(id));
+  }, [id]);
+
   return (
     <section>
       <h1>{restaurant.name}</h1>
