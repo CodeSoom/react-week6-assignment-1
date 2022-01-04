@@ -4,9 +4,12 @@ import {
   setRegions,
   setCategories,
   setRestaurants,
+  setRestaurant,
   selectRegion,
   selectCategory,
 } from './actions';
+
+import RESTAURANT from '../fixtures/restaurant';
 
 describe('reducer', () => {
   context('when previous state is undefined', () => {
@@ -14,6 +17,7 @@ describe('reducer', () => {
       regions: [],
       categories: [],
       restaurants: [],
+      restaurant: {},
       selectedRegion: null,
       selectedCategory: null,
     };
@@ -70,6 +74,18 @@ describe('reducer', () => {
       const state = reducer(initialState, setRestaurants(restaurants));
 
       expect(state.restaurants).toHaveLength(1);
+    });
+  });
+
+  describe('setRestaurant', () => {
+    it('changes restaurant', () => {
+      const initialState = {
+        restaurant: {},
+      };
+
+      const state = reducer(initialState, setRestaurant(RESTAURANT));
+
+      expect(state.restaurant).toEqual(RESTAURANT);
     });
   });
 
