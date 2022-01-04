@@ -1,4 +1,5 @@
 import { equal } from '../utils';
+import { ACTION_TYPES } from './actions';
 
 const initialState = {
   regions: [],
@@ -43,6 +44,13 @@ const reducers = {
     return {
       ...state,
       selectedCategory: categories.find(equal('id', categoryId)),
+    };
+  },
+
+  [ACTION_TYPES.SET_RESTAURANT](state, { payload: { restaurant } }) {
+    return {
+      ...state,
+      restaurant,
     };
   },
 };

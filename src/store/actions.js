@@ -2,8 +2,11 @@ import {
   fetchRegions,
   fetchCategories,
   fetchRestaurants,
-  fetchRestaurant,
 } from '../services/api';
+
+export const ACTION_TYPES = {
+  SET_RESTAURANT: 'setRestaurant',
+};
 
 export function setRegions(regions) {
   return {
@@ -68,6 +71,6 @@ export function loadRestaurants() {
     dispatch(setRestaurants(restaurants));
   };
 }
-export function setRestaurant() {
-  return {};
+export function setRestaurant(restaurant) {
+  return { type: ACTION_TYPES.SET_RESTAURANT, payload: { restaurant } };
 }
