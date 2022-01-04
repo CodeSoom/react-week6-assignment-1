@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 import {
   loadRestaurant,
@@ -12,9 +13,10 @@ export default function RestaurantPage() {
   const dispatch = useDispatch();
   const { restaurant } = useSelector((state) => state);
 
+  const { id } = useParams();
+
   useEffect(() => {
-    // TODO: restaurant 요청 id 값 => 동적으로 처리
-    dispatch(loadRestaurant(1));
+    dispatch(loadRestaurant({ restaurantId: id }));
   }, []);
 
   return (
