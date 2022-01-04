@@ -7,10 +7,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 import App from './App';
 
-import REGIONS from '../../fixtures/regions';
-import CATEGORIES from '../../fixtures/categories';
-import RESTAURANTS from '../../fixtures/restaurants';
-
 jest.mock('react-redux');
 describe('App', () => {
   const dispatch = jest.fn();
@@ -18,7 +14,7 @@ describe('App', () => {
 
   it('renders Home', () => {
     const { queryByText } = render((
-      <MemoryRouter initailEntires={['/']}>
+      <MemoryRouter initialEntries={['/']}>
         <App />
       </MemoryRouter>
     ));
@@ -32,7 +28,7 @@ describe('App', () => {
 
   it('renders  About', () => {
     const { queryByText } = render((
-      <MemoryRouter initailEntires={['/about']}>
+      <MemoryRouter initialEntries={['/about']}>
         <App />
       </MemoryRouter>
     ));
@@ -44,24 +40,37 @@ describe('App', () => {
 
   it('renders Restaurant', () => {
     useSelector.mockImplementation((selector) => selector({
-      regions: REGIONS,
-      categories: CATEGORIES,
-      restaurants: RESTAURANTS,
+      regions: [
+        { id: 1, name: '서울' },
+      ],
+      categories: [
+        { id: 1, name: '한식' },
+      ],
+      restaurants: [
+        { id: 1, name: '마법사주방' },
+      ],
     }));
 
-    const { container, queryByText } = render((
-      <MemoryRouter initailEntires={['/restaurants']}>
+    const { container } = render((
+      <MemoryRouter initialEntries={['/restaurants']}>
         <App />
       </MemoryRouter>
     ));
 
     expect(container).toHaveTextContent('서울');
-    // console.log(container)
-
-    REGIONS.forEach((REGION) => expect(queryByText(REGION.name)));
-    CATEGORIES.forEach((CATEGORY) => expect(queryByText(CATEGORY.name)));
-    RESTAURANTS.forEach((RESTAURANT) => expect(queryByText(RESTAURANT.name)));
-
+    expect(container).toHaveTextContent('한식');
+    expect(container).toHaveTextContent('마법사주방');
     expect(dispatch).toBeCalledTimes(3);
+  });
+
+  it('renders Home', () => {
+    const { queryByText } = render((
+      <MemoryRouter initialEntries={['/wrong']}>
+        <App />
+      </MemoryRouter>
+    ));
+
+    expect(queryByText('404 Not Found'));
+    expect(dispatch).toBeCalledTimes(4);
   });
 });
