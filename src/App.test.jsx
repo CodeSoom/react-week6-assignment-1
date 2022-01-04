@@ -51,6 +51,14 @@ describe('App', () => {
     });
   });
 
+  context('with path /restaurants/:restaurantId', () => {
+    it('renders the restaurant page', () => {
+      const { container } = renderApp({ path: '/restaurants/*' });
+
+      expect(container).toHaveTextContent('주소');
+    });
+  });
+
   context('with invalid path', () => {
     it('renders the not found page', () => {
       const { container } = renderApp({ path: '/xxx' });
