@@ -7,6 +7,7 @@ import {
   setRestaurant,
   selectRegion,
   selectCategory,
+  resetRestaurant,
 } from './actions';
 
 import RESTAURANT from '../fixtures/restaurant';
@@ -122,6 +123,18 @@ describe('reducer', () => {
         id: 1,
         name: '한식',
       });
+    });
+  });
+
+  describe('resetRestaurant', () => {
+    it('reset restaurant', () => {
+      const initialState = {
+        restaurant: RESTAURANT,
+      };
+
+      const state = reducer(initialState, resetRestaurant({ restaurantId: 1 }));
+
+      expect(state.restaurant).toBeNull();
     });
   });
 });

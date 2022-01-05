@@ -83,3 +83,9 @@ export function loadRestaurant({ restaurantId }) {
     dispatch(setRestaurant(restaurant));
   };
 }
+
+export function resetRestaurant() {
+  return {
+    type: 'resetRestaurant',
+  };
+}
