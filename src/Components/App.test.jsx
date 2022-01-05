@@ -41,4 +41,13 @@ describe('App', () => {
       expect(container).toHaveTextContent('한식');
     });
   });
+
+  context('with path /about', () => {
+    it('renders the about page', () => {
+      const { container } = renderApp('/about');
+
+      expect(container).toHaveTextContent('About');
+      expect(container).toHaveTextContent('About 페이지 입니다.');
+    });
+  });
 });
