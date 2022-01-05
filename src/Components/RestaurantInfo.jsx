@@ -12,12 +12,11 @@ export default function RestaurantInfo() {
   }, [restaurantId]);
 
   const {
-    restaurantName, address, menuItems, reviews,
+    restaurantName, address, menuItems,
   } = useSelector((state) => ({
     restaurantName: state.restaurantInfo.name,
     address: state.restaurantInfo.address,
     menuItems: state.restaurantInfo.menuItems,
-    reviews: state.restaurantInfo.reviews,
   }));
 
   return (
@@ -36,24 +35,6 @@ export default function RestaurantInfo() {
             key={id}
           >
             {name}
-          </li>
-        ))}
-      </ul>
-
-      <h2>
-        리뷰
-      </h2>
-      <ul>
-        {reviews && reviews.map(({
-          id, name, score, description,
-        }) => (
-          <li key={id}>
-            <h3>{name}</h3>
-            <h4>
-              score :
-              {score}
-            </h4>
-            <p>{description}</p>
           </li>
         ))}
       </ul>
