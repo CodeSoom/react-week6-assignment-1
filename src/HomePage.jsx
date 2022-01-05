@@ -1,6 +1,3 @@
-import { AboutPage } from './App';
-import RestaurantsPage from './RestaurantsPage';
-
 export default function HomePage() {
   return (
     <div>
@@ -11,6 +8,9 @@ export default function HomePage() {
         </li>
         <li>
           <a href="/restaurants">Restaurants</a>
+        </li>
+        <li>
+          <a href="/test">라우팅 안해준 페이지</a>
         </li>
       </ul>
     </div>
