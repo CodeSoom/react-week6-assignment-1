@@ -1,13 +1,10 @@
 import { render } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
 
 import AboutPage from './AboutPage';
 
 describe('AboutPage', () => {
   const renderAboutPage = () => render(
-    <MemoryRouter initialEntries={['/about']}>
-      <AboutPage />
-    </MemoryRouter>,
+    <AboutPage />,
   );
 
   it('"About" 헤더 텍스트가 화면에 나타난다.', () => {
