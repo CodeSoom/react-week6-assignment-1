@@ -7,8 +7,8 @@ export default function App() {
   return (
     <div>
       <Routes>
-        <Route path="/restaurant" element={Restaurants} />
-        <Route element={NotFound} />
+        <Route path="/restaurant" element={<Restaurants />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );
