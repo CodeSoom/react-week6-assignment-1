@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 
 import {
   loadRestaurant,
+  resetRestaurant,
 } from './actions';
 
 import Restaurant from './Restaurant';
@@ -17,9 +18,15 @@ export default function RestaurantPage() {
 
   useEffect(() => {
     dispatch(loadRestaurant({ restaurantId: id }));
+
+    return () => {
+      dispatch(resetRestaurant());
+    };
   }, []);
 
   return (
-    <Restaurant restaurant={restaurant} />
+    <Restaurant
+      restaurant={restaurant}
+    />
   );
 }
