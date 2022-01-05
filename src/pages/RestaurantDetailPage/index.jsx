@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 import { loadRestaurant } from '../../store/actions';
 import RestaurantDetail from './RestaurantDetail';
 
-const restaurantId = 1;
-
 export default function RestaurantDetailPage() {
+  const { id } = useParams();
   const { restaurant } = useSelector((state) => ({
     restaurant: state.restaurant,
   }));
@@ -14,8 +14,8 @@ export default function RestaurantDetailPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadRestaurant(restaurantId));
-  }, [restaurantId]);
+    dispatch(loadRestaurant(id));
+  }, [id]);
 
   return (
     <RestaurantDetail restaurant={restaurant} />
