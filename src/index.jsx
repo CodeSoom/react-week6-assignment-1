@@ -1,15 +1,25 @@
 import ReactDOM from 'react-dom';
 
 import { Provider } from 'react-redux';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import App from './App';
+import HomePage from './HomePage';
 
 import store from './store';
+
+function AboutPage() {
+  return <div>AboutPage</div>;
+}
 
 ReactDOM.render(
   (
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="about" element={<AboutPage />} />
+        </Routes>
+      </BrowserRouter>
     </Provider>
   ),
   document.getElementById('app'),
