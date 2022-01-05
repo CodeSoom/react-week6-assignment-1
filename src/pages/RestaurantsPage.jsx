@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import RegionsContainer from '../containers/RegionsContainer';
 import CategoriesContainer from '../containers/CategoriesContainer';
-import RestaurantsContainer from '../RestaurantsContainer';
+import RestaurantsContainer from '../containers/RestaurantsContainer';
 
 import {
   loadInitialData,
