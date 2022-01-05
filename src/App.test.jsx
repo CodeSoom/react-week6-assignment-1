@@ -19,6 +19,14 @@ describe('App', () => {
     restaurants: [
       { id: 1, name: '마법사주방' },
     ],
+    restaurant: {
+      id: 1,
+      name: '마법사주방',
+      address: '서울시 강남구 삼성동',
+      menu: [
+        { id: 1, name: '돈까스', price: 10000 },
+      ],
+    },
   }));
 
   const renderComponent = ({ path }) => render(
@@ -35,6 +43,20 @@ describe('App', () => {
     it('renders the home page', () => {
       const { getByText } = renderComponent({ path: '/' });
       expect(getByText('홈페이지')).toBeInTheDocument();
+    });
+  });
+
+  context('with path /about', () => {
+    it('renders the about page', () => {
+      const { getByText } = renderComponent({ path: '/about' });
+      expect(getByText('About')).toBeInTheDocument();
+    });
+  });
+
+  context('with path /restaurants/1', () => {
+    it('renders the restaurant page', () => {
+      const { getByText } = renderComponent({ path: '/restaurants/1' });
+      expect(getByText('상세정보')).toBeInTheDocument();
     });
   });
 });
