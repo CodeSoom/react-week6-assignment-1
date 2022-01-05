@@ -50,4 +50,13 @@ describe('App', () => {
       expect(container).toHaveTextContent('About 페이지 입니다.');
     });
   });
+
+  context('with not found path ', () => {
+    it('renders the notfound page', () => {
+      const { container } = renderApp('/xxx');
+
+      expect(container).toHaveTextContent('Not');
+      expect(container).toHaveTextContent('Found');
+    });
+  });
 });
