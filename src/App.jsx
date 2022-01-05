@@ -11,8 +11,7 @@ export default function App() {
     <>
       <h1>헤더</h1>
       <Routes>
-        <Route exact path="/" element={<HomePage />} />
-        <Route path="/home" element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/restaurants" element={<RestaurantsPage />} />
       </Routes>
     </>

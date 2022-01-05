@@ -7,9 +7,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import App from './App';
 
 describe('App', () => {
+  const dispatch = jest.fn();
+  useDispatch.mockImplementation(() => dispatch);
+
   beforeEach(() => {
-    const dispatch = jest.fn();
-    useDispatch.mockImplementation(() => dispatch);
+    jest.clearAllMocks();
     useSelector.mockImplementation((selector) => selector({
       regions: [{ id: 1, name: '서울' }],
       categories: [{ id: 1, name: '한식' }],
@@ -17,13 +19,15 @@ describe('App', () => {
     }));
   });
 
+  const renderApp = (path) => render((
+    <MemoryRouter initialEntries={[path]}>
+      <App />
+    </MemoryRouter>
+  ));
+
   context('with path /', () => {
     it('renders the home page', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const { container } = renderApp('/');
 
       expect(container).toHaveTextContent('Home');
     });
@@ -31,11 +35,7 @@ describe('App', () => {
 
   context('with path /restaurants', () => {
     it('renders the restaurants page', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/restaurants']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const { container } = renderApp('/restaurants');
 
       expect(container).toHaveTextContent('서울');
       expect(container).toHaveTextContent('한식');
