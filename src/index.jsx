@@ -6,12 +6,9 @@ import {
 } from 'react-router-dom';
 
 import HomePage from './HomePage';
+import AboutPage from './AboutPage';
 
 import store from './store';
-
-function AboutPage() {
-  return <div>AboutPage</div>;
-}
 
 ReactDOM.render(
   (
