@@ -53,6 +53,13 @@ const reducers = {
       selectedCategory: categories.find(equal('id', categoryId)),
     };
   },
+
+  resetRestaurant(state) {
+    return {
+      ...state,
+      restaurant: null,
+    };
+  },
 };
 
 function defaultReducer(state) {
