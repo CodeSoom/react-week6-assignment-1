@@ -1,8 +1,7 @@
-import RestaurantsPage from './RestaurantsPage';
-
 import HomePage from './HomePage';
 import AboutPage from './AboutPage';
 import NotFoundPage from './NotFoundPage';
+import RestaurantsPage from './RestaurantsPage';
 
 export default function App() {
   const { location: { pathname } } = window;
