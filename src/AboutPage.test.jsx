@@ -5,11 +5,11 @@ import { render } from '@testing-library/react';
 import AboutPage from './AboutPage';
 
 describe('AboutPage', () => {
-  const renderComponent = (path) => render(
+  const renderComponent = (path) => render((
     <MemoryRouter initialEntries={[path]}>
       <AboutPage />
-    </MemoryRouter>,
-  );
+    </MemoryRouter>
+  ));
 
   it('renders home page', () => {
     const { container } = renderComponent('/about');

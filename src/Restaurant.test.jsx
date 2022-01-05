@@ -34,7 +34,7 @@ describe('Restaurant', () => {
     it('noting render', () => {
       const { container } = renderComponent();
 
-      expect(container).toBeEmptyDOMElement();
+      expect(container).toHaveTextContent('레스토랑이 없습니다.');
     });
   });
 });

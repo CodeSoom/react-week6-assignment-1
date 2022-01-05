@@ -5,11 +5,11 @@ import Header from './Header';
 
 describe('Header', () => {
   it('renders "헤더', () => {
-    const { container } = render(
+    const { container } = render((
       <MemoryRouter>
         <Header />
-      </MemoryRouter>,
-    );
+      </MemoryRouter>
+    ));
 
     expect(container).toHaveTextContent('헤더');
   });

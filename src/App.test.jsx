@@ -15,6 +15,8 @@ import RESTAURANT from '../fixtures/restaurant';
 import App from './App';
 
 describe('App', () => {
+  const dispatch = jest.fn();
+
   const renderComponent = () => render((
     <MemoryRouter initialEntries={[given.path]}>
       <App />
@@ -22,7 +24,7 @@ describe('App', () => {
   ));
 
   beforeEach(() => {
-    const dispatch = jest.fn();
+    jest.clearAllMocks();
     useDispatch.mockImplementation(() => dispatch);
     useSelector.mockImplementation((selector) => selector({
       regions: REGIONS,

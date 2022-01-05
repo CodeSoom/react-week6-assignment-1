@@ -5,11 +5,11 @@ import { render } from '@testing-library/react';
 import HomePage from './HomePage';
 
 describe('HomePage', () => {
-  const renderComponent = (path) => render(
+  const renderComponent = (path) => render((
     <MemoryRouter initialEntries={[path]}>
       <HomePage />
-    </MemoryRouter>,
-  );
+    </MemoryRouter>
+  ));
 
   it('renders home page', () => {
     const { container } = renderComponent('/');
