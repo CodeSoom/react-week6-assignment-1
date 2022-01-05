@@ -24,6 +24,7 @@ export default function App() {
 
   return (
     <div>
+      <h1>홈페이지</h1>
       <RegionsContainer />
       <CategoriesContainer />
       <RestaurantsContainer />
