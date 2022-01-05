@@ -92,7 +92,7 @@ describe('actions', () => {
     });
 
     // todo: loadRestaurant 올바른 테스트 코드 작성
-    it('runs setRestaurant', async () => {
+    it('dispatches setRestaurant', async () => {
       await store.dispatch(loadRestaurant({ id: 1 }));
 
       const actions = store.getActions();
