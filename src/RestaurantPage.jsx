@@ -10,9 +10,11 @@ import {
 
 import Restaurant from './Restaurant';
 
+import { get } from './utils';
+
 export default function RestaurantPage() {
   const dispatch = useDispatch();
-  const { restaurant } = useSelector((state) => state);
+  const restaurant = useSelector(get('restaurant'));
 
   const { id } = useParams();
 
