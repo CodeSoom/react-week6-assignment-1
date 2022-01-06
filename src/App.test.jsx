@@ -39,8 +39,15 @@ describe('App', () => {
     renderApp({ path: '/' });
   });
 
-  context('with path /restaurants', () => {
+  context('with path /', () => {
     it('renders the home page', () => {
+      const { getByText } = renderApp({ path: '/' });
+      expect(getByText('홈페이지')).toBeInTheDocument();
+    });
+  });
+
+  context('with path /restaurants', () => {
+    it('renders the restaurants page', () => {
       const { getByText } = renderApp({ path: '/restaurants' });
       expect(getByText('레스토랑 리스트')).toBeInTheDocument();
     });
