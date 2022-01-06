@@ -1,7 +1,7 @@
 export default function About() {
   return (
     <>
-      <h1>About</h1>
+      <h2>About</h2>
       <p>About 페이지 입니다. </p>
     </>
   );
