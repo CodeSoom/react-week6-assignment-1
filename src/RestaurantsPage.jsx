@@ -18,10 +18,10 @@ export default function RestaurantsPage() {
   });
 
   return (
-    <div>
+    <>
       <RegionsContainer />
       <CategoriesContainer />
       <RestaurantsContainer />
-    </div>
+    </>
   );
 }
