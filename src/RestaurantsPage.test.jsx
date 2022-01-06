@@ -3,9 +3,9 @@ import React from 'react';
 import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
+import { MemoryRouter } from 'react-router-dom';
 
 import RestaurantsPage from './RestaurantsPage';
-import { MemoryRouter } from 'react-router-dom';
 
 test('RestaurantsPage', () => {
   const dispatch = jest.fn();

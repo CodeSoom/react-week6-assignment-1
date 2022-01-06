@@ -12,7 +12,7 @@ describe('RestaurantPage', () => {
     dispatch.mockClear();
     useDispatch.mockImplementation(() => dispatch);
     useSelector.mockImplementation((selector) => selector({
-      restaurant: { id: 1, name: '양천주가', menuItems: [ { id: 11, name: '메뉴 1번', }, ], },
+      restaurant: { id: 1, name: '양천주가', menuItems: [{ id: 11, name: '메뉴 1번' }] },
     }));
   });
 

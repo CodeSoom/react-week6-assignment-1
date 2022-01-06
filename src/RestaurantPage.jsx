@@ -7,17 +7,17 @@ import {
   loadRestaurant,
 } from './actions';
 
-import RestaurantContainer from './RestaurantContainer'
+import RestaurantContainer from './RestaurantContainer';
 
 import { get } from './utils';
 
 export default function RestaurantPage() {
   const dispatch = useDispatch();
   const restaurant = useSelector(get('restaurant'));
-  
+
   const { restaurantId } = useParams();
 
-  useEffect(() => {  
+  useEffect(() => {
     dispatch(loadRestaurant(restaurantId));
   }, []);
 
