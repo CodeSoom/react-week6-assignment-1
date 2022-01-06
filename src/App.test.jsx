@@ -18,7 +18,9 @@ describe('App', () => {
       { id: 1, name: '서울' },
     ],
     categories: [],
-    restaurants: [],
+    restaurants: [
+      { id: 1, name: '마녀식당' },
+    ],
   }));
 
   const renderApp = ({ path }) => render((
@@ -60,6 +62,14 @@ describe('App', () => {
       const { container } = renderApp({ path: '/xxx' });
 
       expect(container).toHaveTextContent('Not Found');
+    });
+  });
+
+  context('with path "/detail"', () => {
+    it('renders the detail page', () => {
+      const { container } = renderApp({ path: '/detail' });
+
+      expect(container).toHaveTextContent('마녀식당');
     });
   });
 });
