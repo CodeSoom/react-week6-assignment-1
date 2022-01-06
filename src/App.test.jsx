@@ -6,16 +6,20 @@ import { useSelector } from 'react-redux';
 
 import App from './App';
 
-test('App', () => {
+describe('App', () => {
   useSelector.mockImplementation((selector) => selector({
     regions: [],
     categories: [],
     restaurants: [],
   }));
 
-  render(
-    <MemoryRouter>
-      <App />
-    </MemoryRouter>,
-  );
+  it('renders header', () => {
+    const { container } = render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>,
+    );
+
+    expect(container).toHaveTextContent('헤더');
+  });
 });
