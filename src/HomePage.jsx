@@ -11,9 +11,6 @@ export default function HomePage() {
         <li>
           <Link to="/restaurants">Restaurants</Link>
         </li>
-        <li>
-          <Link to="/tesdadsfadt">라우팅 안해준 페이지</Link>
-        </li>
       </ul>
     </div>
   );

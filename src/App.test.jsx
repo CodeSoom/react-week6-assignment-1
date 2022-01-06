@@ -20,13 +20,14 @@ describe('App', () => {
     );
   });
 
-  function renderApp({ path }) {
+  const renderApp = ({ path }) => {
     return render(
       <MemoryRouter initialEntries={[path]}>
         <App />
       </MemoryRouter>
     );
-  }
+  };
+
   context('with path /', () => {
     it('renders the Home page', () => {
       const { container } = renderApp({ path: '/' });

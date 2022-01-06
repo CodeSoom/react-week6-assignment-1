@@ -4,6 +4,7 @@ import AboutPage from './AboutPage';
 import HomePage from './HomePage';
 import RestaurantsPage from './RestaurantsPage';
 import NotfoundPage from './NotfoundPage';
+import RestaurantPage from './RestaurantPage';
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/restaurants" element={<RestaurantsPage />} />
+        <Route path="/restaurant/*" element={<RestaurantPage />} />
         <Route path="*" element={<NotfoundPage />} />
       </Routes>
     </div>
