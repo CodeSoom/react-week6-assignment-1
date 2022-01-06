@@ -8,6 +8,8 @@ import {
   setCategories,
   loadRestaurants,
   setRestaurants,
+  loadRestaurant,
+  setRestaurant,
 } from './actions';
 
 const middlewares = [thunk];
@@ -81,6 +83,21 @@ describe('actions', () => {
 
         expect(actions).toHaveLength(0);
       });
+    });
+  });
+
+  describe('loadRestaurant', () => {
+    beforeEach(() => {
+      store = mockStore({});
+    });
+
+    it('레스토랑 id 정보를 통해 상세정보를 가져온다.', async () => {
+      const restaurantId = 1;
+      await store.dispatch(loadRestaurant(restaurantId));
+
+      const actions = store.getActions();
+
+      expect(actions[0]).toEqual(setRestaurant([]));
     });
   });
 });
