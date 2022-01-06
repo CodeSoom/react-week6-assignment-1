@@ -18,10 +18,10 @@ export default function App() {
         </h1>
       </header>
       <Routes>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/about" component={AboutPage} />
-        <Route path="/restaurants" component={RestaurantsPage} />
-        <Route component={NotFoundPage} />
+        <Route exact path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/restaurants" element={<RestaurantsPage />} />
+        <Route element={<NotFoundPage />} />
       </Routes>
     </div>
   );
