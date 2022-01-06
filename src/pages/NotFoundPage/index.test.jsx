@@ -3,9 +3,9 @@ import { render } from '@testing-library/react';
 import NotFoundPage from '.';
 
 describe('NotFoundPage', () => {
-  it('renders not found text', () => {
+  it('renders 404 Not Found text', () => {
     const { getByText } = render(<NotFoundPage />);
 
-    expect(getByText('Not Found')).toBeInTheDocument();
+    expect(getByText('404 Not Found')).toBeInTheDocument();
   });
 });

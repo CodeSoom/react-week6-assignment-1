@@ -10,8 +10,8 @@ describe('HomePage', () => {
         <HomePage />
       </MemoryRouter>
     ));
-    expect(getByText('홈페이지')).toBeInTheDocument();
+    expect(getByText('Home')).toBeInTheDocument();
     expect(getByText('About')).toBeInTheDocument();
-    expect(getByText('레스토랑 리스트')).toBeInTheDocument();
+    expect(getByText('Restaurants')).toBeInTheDocument();
   });
 });

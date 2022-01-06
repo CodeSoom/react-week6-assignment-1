@@ -45,7 +45,7 @@ describe('App', () => {
     it('renders the home page', () => {
       const { getByText } = renderApp({ path: '/' });
 
-      expect(getByText('홈페이지')).toBeInTheDocument();
+      expect(getByText('Home')).toBeInTheDocument();
     });
   });
 
