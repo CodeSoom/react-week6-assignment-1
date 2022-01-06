@@ -4,7 +4,7 @@ import RestaurantInfo from './RestaurantInfo';
 
 test('RestaurantInfo', () => {
   const { getByText } = render(<RestaurantInfo
-    name="양천주가"
+    restaurantName="양천주가"
     address="서울 강남구 123456"
     menuItems={[{
       id: 1,

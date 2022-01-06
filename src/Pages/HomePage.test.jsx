@@ -1,11 +1,11 @@
 import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import Home from './Home';
+import HomePage from './HomePage';
 
 test('renders Home', () => {
   const { queryByText } = render(
     <MemoryRouter>
-      <Home />
+      <HomePage />
     </MemoryRouter>,
   );
   expect(queryByText('Home')).not.toBeNull();
