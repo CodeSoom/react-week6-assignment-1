@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 
 import AboutPage from './AboutPage';
 import HomePage from './HomePage';
@@ -7,13 +7,18 @@ import NotfoundPage from './NotfoundPage';
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <div>
+      <header>
+        <h1>
+          <Link to="/">I'm Header!</Link>
+        </h1>
+      </header>
       <Routes>
-        <Route exact path="/" element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/restaurants" element={<RestaurantsPage />} />
-        <Route element={<NotfoundPage />} />
+        <Route path="*" element={<NotfoundPage />} />
       </Routes>
-    </BrowserRouter>
+    </div>
   );
 }

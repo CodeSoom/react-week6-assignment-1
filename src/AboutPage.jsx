@@ -1,3 +1,3 @@
 export default function AboutPage() {
-  return <div>About...</div>;
+  return <div>소개페이지</div>;
 }

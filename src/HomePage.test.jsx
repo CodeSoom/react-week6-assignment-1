@@ -1,9 +1,13 @@
 import { render } from '@testing-library/react';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { MemoryRouter } from 'react-router-dom';
 
 import HomePage from './HomePage';
 
 test('HomePage', () => {
-  render(<HomePage />);
+  render(
+    <MemoryRouter>
+      <HomePage />
+    </MemoryRouter>
+  );
 });
