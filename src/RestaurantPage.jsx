@@ -11,11 +11,13 @@ import { get } from './utils';
 
 export default function RestaurantPage() {
   const dispatch = useDispatch();
-  useEffect(() => {
-    const restaurant = useSelector(get('restaurant'));
-    const { restaurantId } = useParams();
+  const restaurant = useSelector(get('restaurant'));
+  
+  const { restaurantId } = useParams();
+  
+  useEffect(() => {  
     dispatch(loadRestaurant(restaurantId));
-  });
+  }, []);
   console.log(restaurant)
   // api에서 레스토랑 정보를 받아와야 한다.
   // 그러기 위해 레스토랑 아이디가 필요하다.
