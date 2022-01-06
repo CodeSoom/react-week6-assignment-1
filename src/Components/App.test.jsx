@@ -7,70 +7,63 @@ import { useDispatch, useSelector } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 import App from './App';
 
+import REGIONS from '../../fixtures/regions';
+import CATEGORIES from '../../fixtures/categories';
+import RESTAURANTS from '../../fixtures/restaurants';
+
 jest.mock('react-redux');
 describe('App', () => {
+  const renderApp = (path) => (render((
+    <MemoryRouter initialEntries={[path]}>
+      <App />
+    </MemoryRouter>)));
+
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
 
+  beforeEach(() => {
+    dispatch.mockClear();
+  });
+
   it('renders Home', () => {
-    const { queryByText } = render((
-      <MemoryRouter initialEntries={['/']}>
-        <App />
-      </MemoryRouter>
-    ));
+    const { queryByText } = renderApp('/');
 
     expect(queryByText('헤더'));
     expect(queryByText('About'));
     expect(queryByText('Restaurant'));
 
-    expect(dispatch).toBeCalledTimes(1);
+    expect(dispatch).toBeCalled();
   });
 
   it('renders  About', () => {
-    const { queryByText } = render((
-      <MemoryRouter initialEntries={['/about']}>
-        <App />
-      </MemoryRouter>
-    ));
+    const { queryByText } = renderApp('/about');
 
     expect(queryByText('About'));
     expect(queryByText('About 페이지 입니다.'));
-    expect(dispatch).toBeCalledTimes(2);
+
+    expect(dispatch).toBeCalled();
   });
 
   it('renders Restaurant', () => {
     useSelector.mockImplementation((selector) => selector({
-      regions: [
-        { id: 1, name: '서울' },
-      ],
-      categories: [
-        { id: 1, name: '한식' },
-      ],
-      restaurants: [
-        { id: 1, name: '마법사주방' },
-      ],
+      regions: REGIONS,
+      categories: CATEGORIES,
+      restaurants: RESTAURANTS,
     }));
 
-    const { container } = render((
-      <MemoryRouter initialEntries={['/restaurants']}>
-        <App />
-      </MemoryRouter>
-    ));
+    const { container } = renderApp('/restaurants');
 
     expect(container).toHaveTextContent('서울');
     expect(container).toHaveTextContent('한식');
-    expect(container).toHaveTextContent('마법사주방');
-    expect(dispatch).toBeCalledTimes(3);
+    expect(container).toHaveTextContent('김밥제국');
+
+    expect(dispatch).toBeCalled();
   });
 
   it('renders Home', () => {
-    const { queryByText } = render((
-      <MemoryRouter initialEntries={['/wrong']}>
-        <App />
-      </MemoryRouter>
-    ));
+    const { queryByText } = renderApp('/wrong');
 
     expect(queryByText('404 Not Found'));
-    expect(dispatch).toBeCalledTimes(4);
+    expect(dispatch).toBeCalled();
   });
 });
