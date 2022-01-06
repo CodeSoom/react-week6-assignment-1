@@ -8,6 +8,7 @@ import {
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import RestaurantsPage from './pages/RestaurantsPage';
+import RestaurantDetailPage from './pages/RestaurantDetailPage';
 
 import store from './store';
 
@@ -22,6 +23,7 @@ ReactDOM.render(
           <Route path="/" element={<HomePage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="restaurants" element={<RestaurantsPage />} />
+          <Route path="restaurants/:id" element={<RestaurantDetailPage />} />
         </Routes>
       </BrowserRouter>
     </Provider>
