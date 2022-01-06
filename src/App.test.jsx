@@ -35,13 +35,16 @@ describe('App', () => {
     </MemoryRouter>,
   );
 
-  it('renders App', () => {
-    renderApp({ path: '/' });
+  it('renders header', () => {
+    const { getByText } = renderApp({ path: '/' });
+
+    expect(getByText('헤더')).toBeInTheDocument();
   });
 
   context('with path /', () => {
     it('renders the home page', () => {
       const { getByText } = renderApp({ path: '/' });
+
       expect(getByText('홈페이지')).toBeInTheDocument();
     });
   });
@@ -49,6 +52,7 @@ describe('App', () => {
   context('with path /restaurants', () => {
     it('renders the restaurants page', () => {
       const { getByText } = renderApp({ path: '/restaurants' });
+
       expect(getByText('레스토랑 리스트')).toBeInTheDocument();
     });
   });
@@ -56,6 +60,7 @@ describe('App', () => {
   context('with path /about', () => {
     it('renders the about page', () => {
       const { getByText } = renderApp({ path: '/about' });
+
       expect(getByText('About')).toBeInTheDocument();
     });
   });
@@ -63,6 +68,7 @@ describe('App', () => {
   context('with path /restaurants/1', () => {
     it('renders the restaurant page', () => {
       const { getByText } = renderApp({ path: '/restaurants/1' });
+
       expect(getByText('상세정보')).toBeInTheDocument();
     });
   });

@@ -11,6 +11,6 @@ describe('Header', () => {
       </MemoryRouter>,
     );
 
-    expect(getByText('Home')).toBeInTheDocument();
+    expect(getByText('홈')).toBeInTheDocument();
   });
 });
