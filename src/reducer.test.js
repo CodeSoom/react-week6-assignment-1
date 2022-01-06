@@ -17,7 +17,7 @@ describe('reducer', () => {
       restaurants: [],
       selectedRegion: null,
       selectedCategory: null,
-      restaurant: null,
+      restaurant: {},
     };
 
     it('returns initialState', () => {
@@ -78,7 +78,7 @@ describe('reducer', () => {
   describe('setRestaurant', () => {
     it('changes restaurant', () => {
       const initialState = {
-        restaurant: null,
+        restaurant: {},
       };
 
       const restaurant = { id: 1, name: '마법사주방' };

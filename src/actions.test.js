@@ -91,9 +91,8 @@ describe('actions', () => {
       store = mockStore({});
     });
 
-    // todo: loadRestaurant 올바른 테스트 코드 작성
     it('dispatches setRestaurant', async () => {
-      await store.dispatch(loadRestaurant({ id: 1 }));
+      await store.dispatch(loadRestaurant(1));
 
       const actions = store.getActions();
 
