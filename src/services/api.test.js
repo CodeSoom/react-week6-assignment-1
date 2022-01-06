@@ -3,11 +3,14 @@ import { fetchRegions, fetchCategories, fetchRestaurants } from './api';
 import REGIONS from '../../fixtures/regions';
 import CATEGORIES from '../../fixtures/categories';
 import RESTAURANTS from '../../fixtures/restaurants';
+import RESTAURANT from '../../fixtures/restaurant';
 
 describe('api', () => {
   const mockFetch = (data) => {
     global.fetch = jest.fn().mockResolvedValue({
-      async json() { return data; },
+      async json() {
+        return data;
+      },
     });
   };
 
@@ -47,6 +50,21 @@ describe('api', () => {
       });
 
       expect(restaurants).toEqual(RESTAURANTS);
+    });
+  });
+
+  // TODO: fetch restaurant 작성
+  describe('fetchRestaurant', () => {
+    beforeEach(() => {
+      mockFetch(RESTAURANTS);
+    });
+
+    it('returns restaurant', async () => {
+      const restaurant = await fetchRestaurant({
+        restaurantId: 1,
+      });
+
+      expect(restaurant).toEqual(RESTAURANTS);
     });
   });
 });
