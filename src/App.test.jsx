@@ -6,6 +6,14 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
+function renderApp({ path }) {
+  return render((
+    <MemoryRouter initialEntries={[path]}>
+      <App />
+    </MemoryRouter>
+  ));
+}
+
 describe('App', () => {
   beforeEach(() => {
     const dispatch = jest.fn();
@@ -13,40 +21,30 @@ describe('App', () => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
-      regions: [],
+      regions: [
+        { id: 1, name: '서울' },
+      ],
       categories: [],
       restaurants: [],
     }));
   });
 
   it('renders header', () => {
-    const { container } = render(
-      <MemoryRouter>
-        <App />
-      </MemoryRouter>,
-    );
+    const { container } = renderApp({ path: '' });
 
     expect(container).toHaveTextContent('헤더');
   });
 
   context('with path /', () => {
     it('renders HomePage', () => {
-      const { container } = render(
-        <MemoryRouter initialEntries={['/']}>
-          <App />
-        </MemoryRouter>,
-      );
+      const { container } = renderApp('/');
 
       expect(container).toHaveTextContent('Home');
     });
 
     context('with path /about', () => {
       it('renders AboutPage', () => {
-        const { container } = render(
-          <MemoryRouter initialEntries={['/about']}>
-            <App />
-          </MemoryRouter>,
-        );
+        const { container } = renderApp({ path: '/about' });
 
         expect(container).toHaveTextContent('About 페이지 입니다.');
       });
@@ -54,11 +52,7 @@ describe('App', () => {
 
     context('with path /restaurants', () => {
       it('renders RestaurantsPage', () => {
-        const { container } = render(
-          <MemoryRouter initialEntries={['/restaurants']}>
-            <App />
-          </MemoryRouter>,
-        );
+        const { container } = renderApp({ path: '/restaurants' });
 
         expect(container).toHaveTextContent('서울');
       });
@@ -66,11 +60,7 @@ describe('App', () => {
 
     context('with path /xxx', () => {
       it('renders NotFoundPage', () => {
-        const { container } = render(
-          <MemoryRouter initialEntries={['/xxx']}>
-            <App />
-          </MemoryRouter>,
-        );
+        const { container } = renderApp({ path: '/xxx' });
 
         expect(container).toHaveTextContent('Not Found 404');
       });
