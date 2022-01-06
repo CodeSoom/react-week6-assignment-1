@@ -85,10 +85,7 @@ describe('reducer', () => {
 
       const state = reducer(initialState, setRestaurant(restaurant));
 
-      expect(state.restaurant).toEqual({
-        id: 1,
-        name: '마법사주방',
-      });
+      expect(state.restaurant).toEqual(restaurant);
     });
   });
 
