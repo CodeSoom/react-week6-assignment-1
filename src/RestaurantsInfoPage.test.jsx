@@ -4,10 +4,14 @@ import { MemoryRouter } from 'react-router-dom';
 
 import RestaurantsInfoPage from './RestaurantsInfoPage';
 
-test('RestaurantsInfoPage', () => {
-  render((
-    <MemoryRouter>
-      <RestaurantsInfoPage />
-    </MemoryRouter>
-  ));
+describe('RestaurantsInfoPage', () => {
+  it('RestaurantsInfoPage가 렌더링된다.', () => {
+    const { container } = render((
+      <MemoryRouter>
+        <RestaurantsInfoPage />
+      </MemoryRouter>
+    ));
+
+    expect(container).toHaveTextContent('식당이름');
+  });
 });
