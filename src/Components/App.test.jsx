@@ -4,6 +4,8 @@ import { MemoryRouter } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import DETAIL from '../../fixtures/restaurantDetail';
+
 import App from './App';
 
 describe('App', () => {
@@ -16,6 +18,7 @@ describe('App', () => {
       regions: [{ id: 1, name: '서울' }],
       categories: [{ id: 1, name: '한식' }],
       restaurants: [],
+      restaurantDetail: DETAIL,
     }));
   });
 

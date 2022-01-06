@@ -9,12 +9,6 @@ import RestaurantDetailPage from './RestaurantDetailPage';
 import DETAIL from '../../../fixtures/restaurantDetail';
 
 describe('DetailPage', () => {
-  beforeEach(() => {
-    useSelector.mockImplementation((selector) => selector({
-      detail: DETAIL,
-    }));
-  });
-
   const detailRender = () => render((
     <MemoryRouter>
       <RestaurantDetailPage />
@@ -23,6 +17,10 @@ describe('DetailPage', () => {
 
   context('with restaurant detail', () => {
     it('render detail page', () => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurantDetail: DETAIL,
+      }));
+
       const { container } = detailRender();
 
       expect(container).toHaveTextContent(DETAIL.name);
@@ -32,6 +30,9 @@ describe('DetailPage', () => {
 
   context('without restaurant detail', () => {
     it('render loading', () => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurantDetail: null,
+      }));
       const { container } = detailRender();
 
       expect(container).toHaveTextContent('Loading...');
