@@ -2,9 +2,14 @@ import { fireEvent, render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import { MemoryRouter } from 'react-router-dom';
+
 import RestaurantsContainer from './RestaurantsContainer';
 
 describe('RestaurantsContainer', () => {
+  const dispatch = jest.fn();
+  useDispatch.mockImplementation(() => dispatch);
+
   beforeEach(() => {
     useSelector.mockImplementation((selector) => selector({
       restaurants: [
@@ -15,7 +20,9 @@ describe('RestaurantsContainer', () => {
   });
 
   const renderRestaurant = () => render((
-    <RestaurantsContainer />
+    <MemoryRouter>
+      <RestaurantsContainer />
+    </MemoryRouter>
   ));
 
   it('render restaurnats', () => {
@@ -25,12 +32,9 @@ describe('RestaurantsContainer', () => {
   });
 
   it('changes selectedRestaurantId to click restaurant', () => {
-    const dispatch = jest.fn();
-    useDispatch.mockImplementation(() => dispatch);
+    const { getByText } = renderRestaurant();
 
-    const { getByAltText } = renderRestaurant();
-
-    fireEvent.click(getByAltText('마법사주방'));
+    fireEvent.click(getByText('마법사주방'));
 
     expect(dispatch).toBeCalled();
   });
