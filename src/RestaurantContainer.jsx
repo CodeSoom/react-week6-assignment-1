@@ -1,6 +1,12 @@
 export default function RestaurantContainer({ data }) {
   const { name, address, menuItems } = data;
 
+  if (!menuItems || menuItems.length === 0) {
+    return (
+      <p>레스토랑 데이터를 불러올 수 없습니다.</p>
+    );
+  }
+
   return (
     <div>
       <h2>{name}</h2>

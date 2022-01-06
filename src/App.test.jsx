@@ -16,7 +16,7 @@ describe('App', () => {
       ],
       categories: [],
       restaurants: [],
-      restaurant: { id: 1, name: '양천주가', menuItems: [], },
+      restaurant: { id: 1, name: '양천주가', menuItems: [ { id: 11, name: '1번 메뉴', } ], },
     }));
   });
 
