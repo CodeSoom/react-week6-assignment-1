@@ -3,9 +3,9 @@ import { render } from '@testing-library/react';
 import RestaurantDetail from './RestaurantDetail';
 
 describe('RestaurantDetail', () => {
-  const renderComponent = ({ restaurant }) => render(
-    <RestaurantDetail restaurant={restaurant} />,
-  );
+  const renderRestaurantDetail = ({ restaurant }) => render((
+    <RestaurantDetail restaurant={restaurant} />
+  ));
 
   it('renders restaurant\'s name, address and menu', () => {
     const restaurantStub = {
@@ -15,7 +15,7 @@ describe('RestaurantDetail', () => {
       menu: [{ id: 1, name: '치즈돈까스' }],
     };
 
-    const { getByText } = renderComponent({ restaurant: restaurantStub });
+    const { getByText } = renderRestaurantDetail({ restaurant: restaurantStub });
 
     expect(getByText('김밥천국')).toBeInTheDocument();
     expect(getByText('서울특별시 강남구 역삼동')).toBeInTheDocument();

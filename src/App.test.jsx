@@ -29,33 +29,33 @@ describe('App', () => {
     },
   }));
 
-  const renderComponent = ({ path }) => render(
+  const renderApp = ({ path }) => render(
     <MemoryRouter initialEntries={[path]}>
       <App />
     </MemoryRouter>,
   );
 
   it('renders App', () => {
-    renderComponent({ path: '/' });
+    renderApp({ path: '/' });
   });
 
   context('with path /', () => {
     it('renders the home page', () => {
-      const { getByText } = renderComponent({ path: '/' });
+      const { getByText } = renderApp({ path: '/' });
       expect(getByText('홈페이지')).toBeInTheDocument();
     });
   });
 
   context('with path /about', () => {
     it('renders the about page', () => {
-      const { getByText } = renderComponent({ path: '/about' });
+      const { getByText } = renderApp({ path: '/about' });
       expect(getByText('About')).toBeInTheDocument();
     });
   });
 
   context('with path /restaurants/1', () => {
     it('renders the restaurant page', () => {
-      const { getByText } = renderComponent({ path: '/restaurants/1' });
+      const { getByText } = renderApp({ path: '/restaurants/1' });
       expect(getByText('상세정보')).toBeInTheDocument();
     });
   });
