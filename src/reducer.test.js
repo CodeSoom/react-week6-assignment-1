@@ -76,7 +76,7 @@ describe('reducer', () => {
   });
 
   describe('setRestaurantInfo', () => {
-    it('get one restaurantInfo', () => {
+    it('set a restaurantInfo', () => {
       const restaurantInfo = {
         name: '마법사주방',
       };
