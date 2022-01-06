@@ -59,4 +59,12 @@ describe('App', () => {
       expect(container).toHaveTextContent('Found');
     });
   });
+
+  context('with path /detail', () => {
+    it('renders the detail page', () => {
+      const { container } = renderApp('/detail');
+
+      expect(container).toHaveTextContent('양천주가');
+    });
+  });
 });
