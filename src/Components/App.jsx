@@ -6,16 +6,12 @@ import { Link, Route, Routes } from 'react-router-dom';
 import {
   loadInitialData,
 } from '../actions';
-import Home from './Home';
-import About from './About';
-import NotFoundPage from './NotFoundPage';
-import RestaurantsPage from './RestaurantsPage';
-import RestaurantInfo from './RestaurantInfo';
 
-// 0. 지역, 분류 목록을 얻기
-// 1. 지역 선택 - Regions <- API (0)
-// 2. 분류 선택 - Categories - 한식, 중식, 일식, ... <- API (0)
-// 3. 식당 목록 - Restaurants <- API (with region, category) -> 1, 2 모두 완료된 경우
+import HomePage from '../Pages/HomePage';
+import AboutPage from '../Pages/AboutPage';
+import NotFoundPage from '../Pages/NotFoundPage';
+import RestaurantsPage from '../Pages/RestaurantsPage';
+import RestaurantInfoPage from '../Pages/RestaurantInfoPage';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -34,11 +30,11 @@ export default function App() {
       <Routes>
         <Route
           path="/"
-          element={<Home />}
+          element={<HomePage />}
         />
         <Route
           path="/about"
-          element={<About />}
+          element={<AboutPage />}
         />
         <Route
           path="/restaurants"
@@ -46,7 +42,7 @@ export default function App() {
         />
         <Route
           path="/restaurants/:restaurantId"
-          element={<RestaurantInfo />}
+          element={<RestaurantInfoPage />}
         />
         <Route
           path="*"
