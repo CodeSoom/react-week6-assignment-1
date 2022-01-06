@@ -1,3 +1,7 @@
 export default function NotFoundPage() {
-  return null;
+  return (
+    <section>
+      <h1>Not Found</h1>
+    </section>
+  );
 }
