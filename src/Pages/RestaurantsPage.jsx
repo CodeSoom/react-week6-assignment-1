@@ -2,13 +2,13 @@ import { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
-import RegionsContainer from '../RegionsContainer';
-import CategoriesContainer from '../CategoriesContainer';
-import RestaurantsContainer from '../RestaurantsContainer';
+import RegionsContainer from '../Components/RegionsContainer';
+import CategoriesContainer from '../Components/CategoriesContainer';
+import RestaurantsContainer from '../Components/RestaurantsContainer';
 
 import {
   loadInitialData,
-} from '../../redux/actions';
+} from '../redux/actions';
 
 export default function RestaurantsPage() {
   const dispatch = useDispatch();

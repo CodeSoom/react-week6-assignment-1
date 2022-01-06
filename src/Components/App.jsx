@@ -4,11 +4,11 @@ import {
   Link,
 } from 'react-router-dom';
 
-import HomePage from './Pages/HomePage';
-import AboutPage from './Pages/AboutPage';
-import RestaurantsPage from './Pages/RestaurantsPage';
-import NotFoundPage from './Pages/NotFoundPage';
-import RestaurantDetailpage from './Pages/RestaurantDetailPage';
+import HomePage from '../Pages/HomePage';
+import AboutPage from '../Pages/AboutPage';
+import RestaurantsPage from '../Pages/RestaurantsPage';
+import NotFoundPage from '../Pages/NotFoundPage';
+import RestaurantDetailpage from '../Pages/RestaurantDetailPage';
 
 export default function App() {
   return (

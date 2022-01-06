@@ -5,9 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   setRestaurantDetail,
   loadRestaurantDetail,
-} from '../../redux/actions';
+} from '../redux/actions';
 
-import { get } from '../../Utils/utils';
+import { get } from '../Utils/utils';
 
 export default function RestaurantDetailpage() {
   const dispatch = useDispatch();
