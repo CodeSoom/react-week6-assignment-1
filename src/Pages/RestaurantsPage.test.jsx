@@ -35,7 +35,7 @@ describe('RestaurantsPage', () => {
       }));
     });
 
-    it('renders RestaurantsPage', () => {
+    it('renders RestaurantsPage with (V)', () => {
       const { getByText } = renderRestaurantPage();
 
       expect(getByText(`${SEOUL.name}(V)`)).not.toBeNull();
@@ -61,7 +61,7 @@ describe('RestaurantsPage', () => {
       }));
     });
 
-    it('renders RestaurantsPage', () => {
+    it('renders RestaurantsPage without (V)', () => {
       const { getByText } = renderRestaurantPage();
 
       REGIONS.forEach((REGION) => {
