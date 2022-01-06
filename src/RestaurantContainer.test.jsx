@@ -21,7 +21,7 @@ describe('RestaurantContainer', () => {
         id: 1,
         name: '코드숨',
         address: '코드숨 아파트',
-        menuItems: [],
+        menuItems: null,
       }
 
       const { container, getByRole } = render(<RestaurantContainer
