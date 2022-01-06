@@ -1,19 +1,37 @@
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantsContainer from './RestaurantsContainer';
 
-test('RestaurantsContainer', () => {
-  useSelector.mockImplementation((selector) => selector({
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
-  }));
+describe('RestaurantsContainer', () => {
+  beforeEach(() => {
+    useSelector.mockImplementation((selector) => selector({
+      restaurants: [
+        { id: 1, name: '마법사주방' },
+      ],
+    }));
+    jest.clearAllMocks();
+  });
 
-  const { container } = render((
+  const renderRestaurant = () => render((
     <RestaurantsContainer />
   ));
 
-  expect(container).toHaveTextContent('마법사주방');
+  it('render restaurnats', () => {
+    const { container } = renderRestaurant();
+
+    expect(container).toHaveTextContent('마법사주방');
+  });
+
+  it('changes selectedRestaurantId to click restaurant', () => {
+    const dispatch = jest.fn();
+    useDispatch.mockImplementation(() => dispatch);
+
+    const { getByAltText } = renderRestaurant();
+
+    fireEvent.click(getByAltText('마법사주방'));
+
+    expect(dispatch).toBeCalled();
+  });
 });
