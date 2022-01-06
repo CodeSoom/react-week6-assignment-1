@@ -1,0 +1,5 @@
+describe('RestaurantDetailPage', () => {
+  it('', () => {
+
+  });
+});
