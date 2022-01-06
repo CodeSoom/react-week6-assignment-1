@@ -2,6 +2,7 @@ import {
   Routes,
   Route,
   Link,
+  useParams,
 } from 'react-router-dom';
 
 import HomePage from './HomePage';
@@ -20,7 +21,7 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/restaurants" element={<RestaurantsPage />} />
-        <Route path="/detail" element={<DetailPage />} />
+        <Route path="/detail/:id" element={<DetailPage />} />
         <Route path="/*" element={<NotFoundPage />} />
       </Routes>
     </div>

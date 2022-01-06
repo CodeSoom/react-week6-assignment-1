@@ -64,12 +64,4 @@ describe('App', () => {
       expect(container).toHaveTextContent('Not Found');
     });
   });
-
-  context('with path "/detail"', () => {
-    it('renders the detail page', () => {
-      const { container } = renderApp({ path: '/detail' });
-
-      expect(container).toHaveTextContent('마녀식당');
-    });
-  });
 });
