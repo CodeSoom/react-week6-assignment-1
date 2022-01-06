@@ -25,10 +25,10 @@ export function setRestaurants(restaurants) {
   };
 }
 
-export function setDetail(detail) {
+export function setRestaurantDetail(restaurantDetail) {
   return {
-    type: 'setDetail',
-    payload: { detail },
+    type: 'setRestaurantDetail',
+    payload: { restaurantDetail },
   };
 }
 
@@ -43,6 +43,13 @@ export function selectCategory(categoryId) {
   return {
     type: 'selectCategory',
     payload: { categoryId },
+  };
+}
+
+export function selectRestaurantId(restaurantId) {
+  return {
+    type: 'selectRestaurantId',
+    payload: { restaurantId },
   };
 }
 

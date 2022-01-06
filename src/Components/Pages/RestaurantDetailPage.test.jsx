@@ -4,9 +4,9 @@ import { MemoryRouter } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
 
-import DetailPage from './DetailPage';
+import RestaurantDetailPage from './RestaurantDetailPage';
 
-import DETAIL from '../../../fixtures/detail';
+import DETAIL from '../../../fixtures/restaurantDetail';
 
 test('DetailPage', () => {
   useSelector.mockImplementation((selector) => selector({
@@ -14,7 +14,7 @@ test('DetailPage', () => {
   }));
   const { container } = render((
     <MemoryRouter>
-      <DetailPage />
+      <RestaurantDetailPage />
     </MemoryRouter>
   ));
 

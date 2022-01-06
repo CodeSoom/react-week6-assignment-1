@@ -1,4 +1,4 @@
-export default function Detailpage() {
+export default function RestaurantDetailpage() {
   return (
     <div>
       <h2>양천주가</h2>

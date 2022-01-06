@@ -4,9 +4,10 @@ import {
   setRegions,
   setCategories,
   setRestaurants,
+  setRestaurantDetail,
   selectRegion,
   selectCategory,
-  setDetail,
+  selectRestaurantId,
 } from './actions';
 
 describe('reducer', () => {
@@ -15,7 +16,7 @@ describe('reducer', () => {
       regions: [],
       categories: [],
       restaurants: [],
-      detail: [],
+      restaurantDetail: [],
       selectedRegion: null,
       selectedCategory: null,
     };
@@ -111,10 +112,25 @@ describe('reducer', () => {
     });
   });
 
-  describe('setDetail', () => {
+  describe('selectRestaurantId', () => {
+    it('changes selected restaurantId', () => {
+      const initialState = {
+        restaurants: [
+          { id: 1, name: '양천주가' },
+        ],
+        selectedRestaurantId: null,
+      };
+
+      const state = reducer(initialState, selectRestaurantId(1));
+
+      expect(state.selectedRestaurantId).toBe(1);
+    });
+  });
+
+  describe('setRestaurantDetail', () => {
     it('changes restaurant detail', () => {
       const initialState = {
-        detail: [],
+        restaurantDetail: [],
       };
 
       const detail = {
@@ -145,10 +161,10 @@ describe('reducer', () => {
         ],
       };
 
-      const state = reducer(initialState, setDetail(detail));
+      const state = reducer(initialState, setRestaurantDetail(detail));
 
-      expect(state.detail.name).toBe('양천주가');
-      expect(state.detail.address).toBe('서울 강남구 123456');
+      expect(state.restaurantDetail.name).toBe('양천주가');
+      expect(state.restaurantDetail.address).toBe('서울 강남구 123456');
     });
   });
 });
