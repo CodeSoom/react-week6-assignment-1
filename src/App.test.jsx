@@ -62,7 +62,7 @@ describe('App', () => {
     });
   });
 
-  context('path가 올바르지 않을 때 ', () => {
+  context('path에 접근 가능하지 않을 때', () => {
     it('NotFoundPage를 렌더링한다.', () => {
       const { container } = renderApp({ path: '/*' });
 
