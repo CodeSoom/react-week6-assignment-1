@@ -15,7 +15,7 @@ describe('RestaurantDetailPage', () => {
     restaurant: {
       id: '1',
       name: '김밥천국',
-      menu: [],
+      menuItems: [],
     },
   }));
 

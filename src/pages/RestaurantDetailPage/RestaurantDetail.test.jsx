@@ -12,7 +12,7 @@ describe('RestaurantDetail', () => {
       id: 1,
       name: '김밥천국',
       address: '서울특별시 강남구 역삼동',
-      menu: [{ id: 1, name: '치즈돈까스' }],
+      menuItems: [{ id: 1, name: '치즈돈까스' }],
     };
 
     const { getByText } = renderRestaurantDetail({ restaurant: restaurantStub });
@@ -20,5 +20,11 @@ describe('RestaurantDetail', () => {
     expect(getByText('김밥천국')).toBeInTheDocument();
     expect(getByText('서울특별시 강남구 역삼동')).toBeInTheDocument();
     expect(getByText('치즈돈까스')).toBeInTheDocument();
+  });
+
+  context('there is no restaurant', () => {
+    const { getByText } = renderRestaurantDetail({ restaurant: null });
+
+    expect(getByText('로딩중...')).toBeInTheDocument();
   });
 });

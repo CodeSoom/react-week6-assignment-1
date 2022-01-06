@@ -23,7 +23,7 @@ describe('App', () => {
       id: 1,
       name: '마법사주방',
       address: '서울시 강남구 삼성동',
-      menu: [
+      menuItems: [
         { id: 1, name: '돈까스', price: 10000 },
       ],
     },
@@ -39,10 +39,10 @@ describe('App', () => {
     renderApp({ path: '/' });
   });
 
-  context('with path /', () => {
+  context('with path /restaurants', () => {
     it('renders the home page', () => {
-      const { getByText } = renderApp({ path: '/' });
-      expect(getByText('홈페이지')).toBeInTheDocument();
+      const { getByText } = renderApp({ path: '/restaurants' });
+      expect(getByText('레스토랑 리스트')).toBeInTheDocument();
     });
   });
 

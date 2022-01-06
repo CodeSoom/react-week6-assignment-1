@@ -1,4 +1,12 @@
 export default function RestaurantDetail({ restaurant }) {
+  if (!restaurant) {
+    return ((
+      <section>
+        <span>로딩중...</span>
+      </section>
+    ));
+  }
+
   return (
     <section>
       <h1>{restaurant.name}</h1>
@@ -10,7 +18,7 @@ export default function RestaurantDetail({ restaurant }) {
       <div>
         <h2>메뉴</h2>
         <ul>
-          {restaurant.menu.map(({ id, name }) => (
+          {restaurant.menuItems.map(({ id, name }) => (
             <li key={id}>
               <article>
                 <h3>{name}</h3>

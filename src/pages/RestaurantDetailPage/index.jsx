@@ -7,6 +7,7 @@ import RestaurantDetail from './RestaurantDetail';
 
 export default function RestaurantDetailPage() {
   const { id } = useParams();
+
   const { restaurant } = useSelector((state) => ({
     restaurant: state.restaurant,
   }));
@@ -14,7 +15,7 @@ export default function RestaurantDetailPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadRestaurant(id));
+    dispatch(loadRestaurant({ id }));
   }, [id]);
 
   return (

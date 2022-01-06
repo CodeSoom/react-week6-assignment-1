@@ -4,11 +4,11 @@ import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import { MemoryRouter } from 'react-router-dom';
 import HomePage from '.';
 
 test('HomePage', () => {
   const dispatch = jest.fn();
-
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
@@ -24,7 +24,9 @@ test('HomePage', () => {
   }));
 
   const { queryByText } = render((
-    <HomePage />
+    <MemoryRouter>
+      <HomePage />
+    </MemoryRouter>
   ));
 
   expect(dispatch).toBeCalled();
