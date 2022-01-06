@@ -5,29 +5,7 @@ import {
 import REGIONS from '../../fixtures/regions';
 import CATEGORIES from '../../fixtures/categories';
 import RESTAURANTS from '../../fixtures/restaurants';
-
-const RESTAURANTINFO = {
-  id: 1,
-  categoryId: 1,
-  name: '양천주가',
-  address: '서울 강남구 123456',
-  menuItems: [
-    {
-      id: 1,
-      restaurantId: 1,
-      name: '비빔밥',
-    },
-  ],
-  reviews: [
-    {
-      id: 1,
-      restaurantId: 1,
-      name: '테스터',
-      score: 5,
-      description: '훌륭하다 훌륭하다 지구인놈들',
-    },
-  ],
-};
+import RESTAURANTINFO from '../../fixtures/restaurantInfo';
 
 describe('api', () => {
   const mockFetch = (data) => {
