@@ -18,7 +18,7 @@ export default function RestaurantsContainer() {
     <ul>
       {restaurants.map((restaurant) => (
         <li key={restaurant.id}>
-          <Link to="/detail" onClick={handleClick(restaurant.id)}>
+          <Link to="/detail" onClick={() => handleClick(restaurant.id)}>
             {restaurant.name}
           </Link>
         </li>

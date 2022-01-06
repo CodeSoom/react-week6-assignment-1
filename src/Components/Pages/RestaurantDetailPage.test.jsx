@@ -2,13 +2,16 @@ import { render } from '@testing-library/react';
 
 import { MemoryRouter } from 'react-router-dom';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantDetailPage from './RestaurantDetailPage';
 
 import DETAIL from '../../../fixtures/restaurantDetail';
 
 describe('DetailPage', () => {
+  const dispatch = jest.fn();
+  useDispatch.mockImplementation(() => dispatch);
+
   const detailRender = () => render((
     <MemoryRouter>
       <RestaurantDetailPage />

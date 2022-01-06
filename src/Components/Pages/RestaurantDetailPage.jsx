@@ -1,14 +1,21 @@
 import { useEffect } from 'react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
+import {
+  setRestaurantDetail,
+  loadRestaurantDetail,
+} from '../../redux/actions';
 
 import { get } from '../../Utils/utils';
 
 export default function RestaurantDetailpage() {
+  const dispatch = useDispatch();
   const restaurantDetail = useSelector(get('restaurantDetail'));
 
   useEffect(() => {
-
+    dispatch(setRestaurantDetail(null));
+    dispatch(loadRestaurantDetail());
   }, []);
 
   if (!restaurantDetail) {
