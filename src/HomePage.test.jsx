@@ -1,5 +1,7 @@
 import { render } from '@testing-library/react';
 
+import { MemoryRouter } from 'react-router-dom';
+
 import HomePage from './HomePage';
 
 jest.mock('./AboutPage');
@@ -7,18 +9,20 @@ jest.mock('./RestaurantsPage');
 
 function renderHomePage() {
   return render(
-    <HomePage />,
+    <MemoryRouter>
+      <HomePage />
+    </MemoryRouter>,
   );
 }
 
 describe('HomePage', () => {
-  it('contains text "Home"', () => {
+  it('shows text "Home"', () => {
     const { container } = renderHomePage();
 
     expect(container).toHaveTextContent('Home');
   });
 
-  it('contains clickable links', () => {
+  it('shows clickable links', () => {
     const { container } = renderHomePage();
 
     expect(container).toHaveTextContent('About');
