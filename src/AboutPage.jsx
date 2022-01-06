@@ -1,4 +1,4 @@
-export default function HomePage() {
+export default function AboutPage() {
   return (
     <h2>About</h2>
   );

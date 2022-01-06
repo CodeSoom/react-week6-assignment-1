@@ -1,20 +1,23 @@
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+} from 'react-router-dom';
+
 import HomePage from './HomePage';
 import AboutPage from './AboutPage';
 import NotFoundPage from './NotFoundPage';
 import RestaurantsPage from './RestaurantsPage';
 
 export default function App() {
-  const { location: { pathname } } = window;
-
-  const PageComponent = {
-    '/': HomePage,
-    '/restaurants': RestaurantsPage,
-    '/about': AboutPage,
-  }[pathname] || NotFoundPage;
-
   return (
-    <div>
-      <PageComponent />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/about" component={AboutPage} />
+        <Route path="/restaurants" component={RestaurantsPage} />
+        <Route component={NotFoundPage} />
+      </Routes>
+    </BrowserRouter>
   );
 }

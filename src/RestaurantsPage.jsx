@@ -10,7 +10,7 @@ import {
   loadInitialData,
 } from './actions';
 
-export default function App() {
+export default function RestaurantsPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
