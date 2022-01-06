@@ -16,12 +16,18 @@ module.exports = {
   },
 
   devServer: {
-    static: {
-      directory: path.join(__dirname, 'public'),
+    // static: {
+    //   directory: path.join(__dirname, 'public'),
+    // },
+    historyApiFallback: {
+      index: '/',
+      // disableDotRule: true
     },
-    historyApiFallback: { index: '/', disableDotRule: true },
-    hot: true,
-    compress: true,
+    // historyApiFallback: {
+    //   index: 'index.html',
+    // },
+    // hot: true,
+    // compress: true,
     port: 8080,
   },
   resolve: {
