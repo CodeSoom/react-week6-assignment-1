@@ -1,8 +1,8 @@
 export default function Detailpage() {
   return (
     <div>
-      <h2>About</h2>
-      <p>About 페이지 입니다.</p>
+      <h2>양천주가</h2>
+      <p>주소: 서울 강남구 123456</p>
     </div>
   );
 }
