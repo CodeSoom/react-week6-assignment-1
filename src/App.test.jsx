@@ -19,13 +19,11 @@ describe('App', () => {
     }));
   });
 
-  function renderApp({ path }) {
-    return render((
-      <MemoryRouter initialEntries={[path]}>
-        <App />
-      </MemoryRouter>
-    ));
-  }
+  const renderApp = ({ path }) => render((
+    <MemoryRouter initialEntries={[path]}>
+      <App />
+    </MemoryRouter>
+  ));
 
   context('with path /', () => {
     it('renders the home page', () => {
@@ -59,7 +57,7 @@ describe('App', () => {
     });
   });
 
-  context('with invalid path', () => {
+  context('with undefined path', () => {
     it('renders the not found page', () => {
       const { container } = renderApp({ path: '/xxx' });
 
