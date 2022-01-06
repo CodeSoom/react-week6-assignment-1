@@ -90,7 +90,7 @@ describe('actions', () => {
     context('with selectedRestaurantId', () => {
       beforeEach(() => {
         store = mockStore({
-          selectedrestaurantId: { id: 1, name: '서울' },
+          selectedRestaurantId: 1,
         });
       });
 
