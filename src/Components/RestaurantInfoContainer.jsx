@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+
 import { loadRestaurantInfo } from '../actions';
+
 import RestaurantInfo from './RestaurantInfo';
 
 export default function RestaurantInfoContainer() {
