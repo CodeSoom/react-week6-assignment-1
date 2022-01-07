@@ -1,4 +1,4 @@
-import { fireEvent, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -29,13 +29,5 @@ describe('RestaurantsContainer', () => {
     const { container } = renderRestaurant();
 
     expect(container).toHaveTextContent('마법사주방');
-  });
-
-  it('changes selectedRestaurantId to click restaurant', () => {
-    const { getByText } = renderRestaurant();
-
-    fireEvent.click(getByText('마법사주방'));
-
-    expect(dispatch).toBeCalled();
   });
 });
