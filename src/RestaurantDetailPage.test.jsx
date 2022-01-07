@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
-import Restaurant from './Restaurant';
+import RestaurantDetailPage from './RestaurantDetailPage';
 
 test('Restaurant', () => {
   useSelector.mockImplementation((selector) => selector({
@@ -16,7 +16,7 @@ test('Restaurant', () => {
     },
   }));
 
-  const { getByText } = render(<Restaurant />);
+  const { getByText } = render(<RestaurantDetailPage />);
 
   expect(getByText(/냠냠떡볶이/)).not.toBeNull();
   expect(getByText(/순대/)).not.toBeNull();

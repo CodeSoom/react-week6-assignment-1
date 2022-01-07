@@ -62,7 +62,15 @@ describe('App', () => {
       it('renders NotFoundPage', () => {
         const { container } = renderApp({ path: '/xxx' });
 
-        expect(container).toHaveTextContent('Not Found 404');
+        expect(container).toHaveTextContent('404 Not Found');
+      });
+    });
+
+    context('with path /restaurant/1', () => {
+      it('renders NotFoundPage', () => {
+        const { container } = renderApp({ path: '/restaurant/1' });
+
+        expect(container).toHaveTextContent('양천주가');
       });
     });
   });
