@@ -1,12 +1,14 @@
 import { render } from '@testing-library/react';
+
 import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantInfoPage from './RestaurantInfoPage';
 
 jest.mock('react-redux');
 
-test('RestaurantInfoPage', () => {
+test('renders RestaurantInfoPage', () => {
   const dispatch = jest.fn();
+
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
     restaurantInfo: {
@@ -22,7 +24,7 @@ test('RestaurantInfoPage', () => {
     },
   }));
 
-  const { getByText } = render(<RestaurantInfoPage />);
+  const { getByText } = render((<RestaurantInfoPage />));
 
   expect(getByText('양천주가')).not.toBeNull();
   expect(getByText(/서울 강남구 123456/)).not.toBeNull();

@@ -1,11 +1,10 @@
 import { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
+
 import { Link, Route, Routes } from 'react-router-dom';
 
-import {
-  loadInitialData,
-} from '../actions';
+import { loadInitialData } from '../actions';
 
 import HomePage from '../Pages/HomePage';
 import AboutPage from '../Pages/AboutPage';
