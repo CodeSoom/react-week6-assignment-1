@@ -1,10 +1,24 @@
 import { render } from '@testing-library/react';
 
+import { useDispatch, useSelector } from 'react-redux';
+
 import { MemoryRouter } from 'react-router-dom';
 
 import RestaurantsInfoPage from './RestaurantsInfoPage';
 
 describe('RestaurantsInfoPage', () => {
+  beforeEach(() => {
+    const dispatch = jest.fn();
+
+    useDispatch.mockImplementation(() => dispatch);
+    useSelector.mockImplementation((state) => state({
+      restaurant: {
+        id: 1,
+        name: '양천주가',
+      },
+    }));
+  });
+
   it('RestaurantsInfoPage가 렌더링된다.', () => {
     render((
       <MemoryRouter>
