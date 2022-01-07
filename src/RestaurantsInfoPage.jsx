@@ -1,7 +1,21 @@
+import { useEffect } from 'react';
+
+import { useDispatch } from 'react-redux';
+
 import { useParams } from 'react-router-dom';
 
+import {
+  loadRestaurant,
+} from './actions';
+
 export default function RestaurantsInfoPage() {
+  const dispatch = useDispatch();
+
   const { id } = useParams();
+
+  useEffect(() => {
+    dispatch(loadRestaurant({ restaurantId: id }));
+  });
 
   return (
     <>
@@ -15,3 +29,4 @@ export default function RestaurantsInfoPage() {
     </>
   );
 }
+
