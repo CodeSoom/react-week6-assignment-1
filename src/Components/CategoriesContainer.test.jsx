@@ -16,6 +16,10 @@ describe('CategoriesContainer', () => {
     useDispatch.mockImplementation(() => dispatch);
   });
 
+  const renderCategoriesContainer = () => (render((
+    <CategoriesContainer />
+  )));
+
   context('with selectedCategory', () => {
     beforeEach(() => {
       useSelector.mockImplementation((selector) => selector({
@@ -25,9 +29,7 @@ describe('CategoriesContainer', () => {
     });
 
     it('renders categories with selected category', () => {
-      const { container } = render((
-        <CategoriesContainer />
-      ));
+      const { container } = renderCategoriesContainer();
 
       expect(container).toHaveTextContent(`${KOREAN_FOOD.name}(V)`);
     });
@@ -41,9 +43,7 @@ describe('CategoriesContainer', () => {
     });
 
     it('renders categories with selected category', () => {
-      const { container, getByText } = render((
-        <CategoriesContainer />
-      ));
+      const { container, getByText } = renderCategoriesContainer();
 
       expect(container).toHaveTextContent(KOREAN_FOOD.name);
 

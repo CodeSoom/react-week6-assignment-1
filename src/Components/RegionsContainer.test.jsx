@@ -11,6 +11,10 @@ describe('RegionsContainer', () => {
 
   const SEOUL = REGIONS[0];
 
+  const renderRegionsContainer = () => (render((
+    <RegionsContainer />
+  )));
+
   beforeEach(() => {
     dispatch.mockClear();
     useDispatch.mockImplementation(() => dispatch);
@@ -25,9 +29,7 @@ describe('RegionsContainer', () => {
     });
 
     it('renders regions with selected region', () => {
-      const { container } = render((
-        <RegionsContainer />
-      ));
+      const { container } = renderRegionsContainer();
 
       expect(container).toHaveTextContent(`${SEOUL.name}(V)`);
     });
@@ -41,9 +43,7 @@ describe('RegionsContainer', () => {
     });
 
     it('renders regions', () => {
-      const { container, getByText } = render((
-        <RegionsContainer />
-      ));
+      const { container, getByText } = renderRegionsContainer();
 
       expect(container).toHaveTextContent(SEOUL.name);
 
