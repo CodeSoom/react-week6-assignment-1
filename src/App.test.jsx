@@ -22,13 +22,11 @@ describe('App', () => {
     }));
   });
 
-  function renderApp({ path }) {
-    return render((
-      <MemoryRouter initialEntries={[path]}>
-        <App />
-      </MemoryRouter>
-    ));
-  }
+  const renderApp = ({ path }) => render((
+    <MemoryRouter initialEntries={[path]}>
+      <App />
+    </MemoryRouter>
+  ));
 
   context('path가 / 일 때', () => {
     it('HomePage를 렌더링한다.', () => {
@@ -62,7 +60,7 @@ describe('App', () => {
     });
   });
 
-  context('path에 접근 가능하지 않을 때', () => {
+  context('path가 등록되지 않았을 때', () => {
     it('NotFoundPage를 렌더링한다.', () => {
       const { container } = renderApp({ path: '/*' });
 
