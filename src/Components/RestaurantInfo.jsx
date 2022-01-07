@@ -3,8 +3,8 @@ export default function RestaurantInfo({ restaurantName, address, menuItems }) {
     <>
       <h2>{restaurantName}</h2>
       <div>
-        주소:
-        {address}
+        <span>주소:</span>
+        <span>{address}</span>
       </div>
       <h2>
         메뉴
