@@ -9,6 +9,7 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import RestaurantsPage from './pages/RestaurantsPage';
 import RestaurantPage from './pages/RestaurantPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 import store from './store';
 
@@ -24,6 +25,7 @@ ReactDOM.render(
           <Route path="about" element={<AboutPage />} />
           <Route path="restaurants" element={<RestaurantsPage />} />
           <Route path="restaurants/:id" element={<RestaurantPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
     </Provider>
