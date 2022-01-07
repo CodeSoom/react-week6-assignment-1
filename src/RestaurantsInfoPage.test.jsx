@@ -6,6 +6,14 @@ import RestaurantsInfoPage from './RestaurantsInfoPage';
 
 describe('RestaurantsInfoPage', () => {
   it('RestaurantsInfoPage가 렌더링된다.', () => {
+    render((
+      <MemoryRouter>
+        <RestaurantsInfoPage />
+      </MemoryRouter>
+    ));
+  });
+
+  it('식당 이름이 렌더링 된다.', () => {
     const { container } = render((
       <MemoryRouter>
         <RestaurantsInfoPage />
