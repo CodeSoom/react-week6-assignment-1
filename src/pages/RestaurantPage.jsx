@@ -12,7 +12,13 @@ export default function RestaurantPage() {
   const { restaurant } = useSelector((state) => state);
 
   useEffect(() => {
-    dispatch(loadRestaurant(params.id));
+    const { id } = params;
+
+    if (typeof Number(id) !== 'number') {
+      return;
+    }
+
+    dispatch(loadRestaurant(id));
   }, []);
 
   if (isEmptyObj(restaurant)) {
