@@ -12,6 +12,6 @@ describe('RestaurantsInfoPage', () => {
       </MemoryRouter>
     ));
 
-    expect(container).toHaveTextContent('식당이름');
+    expect(container).toHaveTextContent('양천주가');
   });
 });

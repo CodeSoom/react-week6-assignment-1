@@ -5,7 +5,7 @@ export default function RestaurantsInfoPage() {
 
   return (
     <>
-      <h2>식당이름</h2>
+      <h2>양천주가</h2>
       <h2>{id}</h2>
       <p>주소: </p>
       <h3>메뉴</h3>
