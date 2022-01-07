@@ -10,6 +10,7 @@ import RestaurantsPage from './RestaurantsPage';
 
 import REGIONS from '../../fixtures/regions';
 import CATEGORIES from '../../fixtures/categories';
+import RESTAURANTS from '../../fixtures/restaurants';
 
 jest.mock('react-redux');
 describe('RestaurantsPage', () => {
@@ -29,9 +30,7 @@ describe('RestaurantsPage', () => {
         selectedRegion: SEOUL,
         categories: CATEGORIES,
         selectedCategory: KOREAN_FOOD,
-        restaurants: [
-          { id: 1, name: '마법사주방' },
-        ],
+        restaurants: RESTAURANTS,
       }));
     });
 
@@ -40,13 +39,16 @@ describe('RestaurantsPage', () => {
 
       expect(getByText(`${SEOUL.name}(V)`)).not.toBeNull();
       expect(getByText(`${KOREAN_FOOD.name}(V)`)).not.toBeNull();
+
       REGIONS.slice(1).forEach((REGION) => {
         expect(getByText(REGION.name)).not.toBeNull();
       });
       CATEGORIES.slice(1).forEach((CATEGORY) => {
         expect(getByText(CATEGORY.name)).not.toBeNull();
       });
-      expect(getByText('마법사주방')).not.toBeNull();
+      RESTAURANTS.forEach((RESTAURANT) => {
+        expect(getByText(RESTAURANT.name));
+      });
     });
   });
 
@@ -55,9 +57,7 @@ describe('RestaurantsPage', () => {
       useSelector.mockImplementation((selector) => selector({
         regions: REGIONS,
         categories: CATEGORIES,
-        restaurants: [
-          { id: 1, name: '마법사주방' },
-        ],
+        restaurants: [],
       }));
     });
 
@@ -70,7 +70,6 @@ describe('RestaurantsPage', () => {
       CATEGORIES.forEach((CATEGORY) => {
         expect(getByText(CATEGORY.name)).not.toBeNull();
       });
-      expect(getByText('마법사주방')).not.toBeNull();
     });
   });
 });
