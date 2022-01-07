@@ -30,12 +30,16 @@ describe('RestaurantsPage', () => {
     }));
   });
 
-  it('지역 버튼과 카테고리 버튼을 렌더링한다.', () => {
-    const { queryByText } = render((
+  function renderRestaurantsPage() {
+    render((
       <MemoryRouter>
         <RestaurantsPage />
       </MemoryRouter>
     ));
+  }
+
+  it('지역 버튼과 카테고리 버튼을 렌더링한다.', () => {
+    const { queryByText } = renderRestaurantsPage();
 
     expect(dispatch).toBeCalled();
 
@@ -44,11 +48,7 @@ describe('RestaurantsPage', () => {
   });
 
   it('레스토랑 목록의 링크를 렌더링한다.', () => {
-    const { container } = render((
-      <MemoryRouter>
-        <RestaurantsPage />
-      </MemoryRouter>
-    ));
+    const { container } = renderRestaurantsPage();
 
     expect(container.innerHTML).toContain('<a href="');
   });

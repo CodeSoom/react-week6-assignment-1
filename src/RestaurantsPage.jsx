@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 
+import { Link } from 'react-router-dom';
+
 import { useDispatch } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
@@ -21,7 +23,7 @@ export default function RestaurantsPage() {
     <>
       <RegionsContainer />
       <CategoriesContainer />
-      <RestaurantsContainer />
+      <RestaurantsContainer Link={Link} />
     </>
   );
 }
