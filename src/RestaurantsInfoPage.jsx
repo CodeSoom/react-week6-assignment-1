@@ -15,7 +15,7 @@ export default function RestaurantsInfoPage({ params }) {
 
   useEffect(() => {
     dispatch(loadRestaurant({ restaurantId: id }));
-  });
+  }, []);
 
   return (
     <>
