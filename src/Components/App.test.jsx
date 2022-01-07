@@ -63,9 +63,9 @@ describe('App', () => {
     });
   });
 
-  context('with path /detail', () => {
-    it('renders the detail page', () => {
-      const { container } = renderApp('/detail');
+  context('with path /restaurants/:id', () => {
+    it('renders the restaurants detail page', () => {
+      const { container } = renderApp('/restaurants/1');
 
       expect(container).toHaveTextContent('양천주가');
     });
