@@ -81,7 +81,7 @@ describe('reducer', () => {
       };
 
       const restaurant = [
-        { id: 1, name: '마법사주방' },
+        { id: 1, name: '양천주가' },
       ];
 
       const state = reducer(initialState, setRestaurant(restaurant));

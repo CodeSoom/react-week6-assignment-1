@@ -25,7 +25,7 @@ describe('RestaurantsPage', () => {
         { id: 1, name: '한식' },
       ],
       restaurants: [
-        { id: 1, name: '마법사주방' },
+        { id: 1, name: '양천주가' },
       ],
     }));
   });
@@ -45,11 +45,5 @@ describe('RestaurantsPage', () => {
 
     expect(queryByText('서울')).not.toBeNull();
     expect(queryByText('한식')).not.toBeNull();
-  });
-
-  it('레스토랑 목록의 링크를 렌더링한다.', () => {
-    const { container } = renderRestaurantsPage();
-
-    expect(container.innerHTML).toContain('<a href="');
   });
 });

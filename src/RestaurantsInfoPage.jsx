@@ -8,10 +8,10 @@ import {
   loadRestaurant,
 } from './actions';
 
-export default function RestaurantsInfoPage() {
+export default function RestaurantsInfoPage({ params }) {
   const dispatch = useDispatch();
 
-  const { id } = useParams();
+  const { id } = params || useParams();
 
   useEffect(() => {
     dispatch(loadRestaurant({ restaurantId: id }));
