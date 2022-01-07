@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import { useParams } from 'react-router-dom';
+
 import {
   setRestaurantDetail,
   loadRestaurantDetail,
@@ -13,9 +15,11 @@ export default function RestaurantDetailpage() {
   const dispatch = useDispatch();
   const restaurantDetail = useSelector(get('restaurantDetail'));
 
+  const { id } = useParams();
+
   useEffect(() => {
     dispatch(setRestaurantDetail(null));
-    dispatch(loadRestaurantDetail());
+    dispatch(loadRestaurantDetail(id));
   }, []);
 
   if (!restaurantDetail) {
