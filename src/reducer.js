@@ -37,7 +37,7 @@ const reducers = {
       restaurant,
     };
   },
-  
+
   selectRegion(state, { payload: { regionId } }) {
     const { regions } = state;
     return {
