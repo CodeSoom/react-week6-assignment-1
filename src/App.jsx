@@ -8,7 +8,7 @@ import HomePage from './HomePage';
 import AboutPage from './AboutPage';
 import NotFoundPage from './NotFoundPage';
 import RestaurantsPage from './RestaurantsPage';
-import RestaurantDetailPage from './RestaurantDetailPage';
+import Restaurant from './Restaurant';
 
 export default function App() {
   return (
@@ -22,7 +22,7 @@ export default function App() {
         <Route exact path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/restaurants" element={<RestaurantsPage />} />
-        <Route path="/restaurant/:id" element={<RestaurantDetailPage />} />
+        <Route path="/restaurant/:id" element={<Restaurant />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>

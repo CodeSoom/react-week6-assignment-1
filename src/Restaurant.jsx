@@ -1,4 +1,4 @@
-export default function RestaurantDetailPage() {
+export default function Restaurant() {
   return (
     <div>
       <h2>냠냠떡볶이</h2>
