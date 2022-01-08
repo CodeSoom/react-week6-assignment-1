@@ -1,10 +1,18 @@
 const restaurant = [
   {
-    // TODO: 수정하기
     id: 1,
     name: '김밥제국',
-    category: '분식',
     address: '서울시 강남구 역삼동',
+    menuItems: [
+      {
+        id: 1,
+        name: '탕수육',
+      },
+      {
+        id: 2,
+        name: '떡볶이',
+      },
+    ],
   },
 ];
 
