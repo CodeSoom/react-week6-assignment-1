@@ -1,4 +1,9 @@
-import { fetchRegions, fetchCategories, fetchRestaurants } from './api';
+import {
+  fetchRegions,
+  fetchCategories,
+  fetchRestaurants,
+  fetchRestaurant,
+} from './api';
 
 import REGIONS from '../../fixtures/regions';
 import CATEGORIES from '../../fixtures/categories';
@@ -53,10 +58,9 @@ describe('api', () => {
     });
   });
 
-  // TODO: fetch restaurant 작성
   describe('fetchRestaurant', () => {
     beforeEach(() => {
-      mockFetch(RESTAURANTS);
+      mockFetch(RESTAURANT);
     });
 
     it('returns restaurant', async () => {
@@ -64,7 +68,7 @@ describe('api', () => {
         restaurantId: 1,
       });
 
-      expect(restaurant).toEqual(RESTAURANTS);
+      expect(restaurant).toEqual(RESTAURANT);
     });
   });
 });

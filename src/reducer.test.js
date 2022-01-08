@@ -4,6 +4,7 @@ import {
   setRegions,
   setCategories,
   setRestaurants,
+  setRestaurant,
   selectRegion,
   selectCategory,
 } from './actions';
@@ -14,6 +15,7 @@ describe('reducer', () => {
       regions: [],
       categories: [],
       restaurants: [],
+      restaurant: {},
       selectedRegion: null,
       selectedCategory: null,
     };
@@ -31,9 +33,7 @@ describe('reducer', () => {
         regions: [],
       };
 
-      const regions = [
-        { id: 1, name: '서울' },
-      ];
+      const regions = [{ id: 1, name: '서울' }];
 
       const state = reducer(initialState, setRegions(regions));
 
@@ -47,9 +47,7 @@ describe('reducer', () => {
         categories: [],
       };
 
-      const categories = [
-        { id: 1, name: '한식' },
-      ];
+      const categories = [{ id: 1, name: '한식' }];
 
       const state = reducer(initialState, setCategories(categories));
 
@@ -63,9 +61,7 @@ describe('reducer', () => {
         restaurants: [],
       };
 
-      const restaurants = [
-        { id: 1, name: '마법사주방' },
-      ];
+      const restaurants = [{ id: 1, name: '마법사주방' }];
 
       const state = reducer(initialState, setRestaurants(restaurants));
 
@@ -73,12 +69,28 @@ describe('reducer', () => {
     });
   });
 
+  describe('setRestaurant', () => {
+    it('changes restaurant', () => {
+      const initialState = {
+        restaurant: {},
+      };
+
+      const restaurant = {
+        id: 1,
+        name: '김밥제국',
+        address: '서울시 강남구 역삼동',
+        menus: ['탕수육', '팔보채'],
+      };
+      const state = reducer(initialState, setRestaurant(restaurant));
+
+      expect(state.restaurant).toEqual(restaurant);
+    });
+  });
+
   describe('selectRegion', () => {
     it('changes selected region', () => {
       const initialState = {
-        regions: [
-          { id: 1, name: '서울' },
-        ],
+        regions: [{ id: 1, name: '서울' }],
         selectedRegion: null,
       };
 
@@ -94,9 +106,7 @@ describe('reducer', () => {
   describe('selectCategory', () => {
     it('changes selected category', () => {
       const initialState = {
-        categories: [
-          { id: 1, name: '한식' },
-        ],
+        categories: [{ id: 1, name: '한식' }],
         selectedCategory: null,
       };
 

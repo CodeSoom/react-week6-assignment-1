@@ -8,6 +8,7 @@ import {
   setCategories,
   loadRestaurants,
   setRestaurants,
+  setRestaurant,
 } from './actions';
 
 const middlewares = [thunk];
@@ -58,7 +59,7 @@ describe('actions', () => {
         });
       });
 
-      it('does\'nt run any actions', async () => {
+      it("doesn't run any actions", async () => {
         await store.dispatch(loadRestaurants());
 
         const actions = store.getActions();
@@ -74,7 +75,7 @@ describe('actions', () => {
         });
       });
 
-      it('does\'nt run any actions', async () => {
+      it("doesn't run any actions", async () => {
         await store.dispatch(loadRestaurants());
 
         const actions = store.getActions();
