@@ -4,7 +4,7 @@ import { useMatch } from 'react-router-dom';
 
 import { get } from './utils';
 
-import RestaurantDetail from './page/RestaurantDetail';
+import RestaurantDetail from './RestaurantDetail';
 import { loadRestaurant } from './actions';
 
 export default function RestaurantDetailContainer() {
