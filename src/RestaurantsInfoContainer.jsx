@@ -24,6 +24,7 @@ export default function RestaurantsInfoContainer({ restaurantId }) {
       <p>Loading...</p>
     );
   }
+  console.log(restaurant);
 
   return (
     <RestaurantDetail restaurant={restaurant} />

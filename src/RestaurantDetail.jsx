@@ -8,7 +8,11 @@ export default function RestaurantDetail({ restaurant }) {
       </span>
       <h3>메뉴</h3>
       <ul>
-        <li>메뉴 리스트가 들어올 자리</li>
+        {restaurant.menuItems.map((menuItem) => (
+          <li key={menuItem.id}>
+            {menuItem.name}
+          </li>
+        ))}
       </ul>
     </>
   );
