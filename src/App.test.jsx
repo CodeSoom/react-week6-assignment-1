@@ -1,6 +1,8 @@
+// ts-check
 import React from 'react';
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
+import { createMemoryHistory } from 'history';
 import { useSelector, useDispatch } from 'react-redux';
 
 import App from './App';
@@ -44,6 +46,21 @@ describe('App', () => {
         </MemoryRouter>
       ));
       expect(getByText(/Restaurants/)).not.toBeNull();
+    });
+  });
+
+  context('헤더 버튼을 누르면', () => {
+    it('/"로 이동한다.', () => {
+      const history = createMemoryHistory();
+      const { getByRole } = render((
+        <MemoryRouter history={history} initialEntries={['/restaurants']}>
+          <App />
+        </MemoryRouter>
+      ));
+
+      fireEvent.click(getByRole('link', { name: /헤더/ }));
+
+      expect(history.location.pathname).toBe('/');
     });
   });
 });
