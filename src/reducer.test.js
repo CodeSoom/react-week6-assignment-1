@@ -79,8 +79,9 @@ describe('reducer', () => {
         id: 1,
         name: '김밥제국',
         address: '서울시 강남구 역삼동',
-        menus: ['탕수육', '팔보채'],
+        menuItems: ['탕수육', '팔보채'],
       };
+      
       const state = reducer(initialState, setRestaurant(restaurant));
 
       expect(state.restaurant).toEqual(restaurant);

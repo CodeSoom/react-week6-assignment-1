@@ -14,7 +14,7 @@ describe('RestaurantPage', () => {
     const dispatch = jest.fn();
     useDispatch.mockImplementation(() => dispatch);
 
-    useSelector.mockImplementation((selector) => selector({ restaurant: Restaurant[0] }));
+    useSelector.mockImplementation((selector) => selector({ restaurant: Restaurant }));
 
     const { container } = render(
       <MemoryRouter>
@@ -22,6 +22,6 @@ describe('RestaurantPage', () => {
       </MemoryRouter>,
     );
 
-    expect(container).toHaveTextContent('김밥제국');
+    expect(container).toHaveTextContent('양천주가');
   });
 });

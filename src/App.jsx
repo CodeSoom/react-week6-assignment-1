@@ -10,7 +10,7 @@ export default function App() {
   return (
     <div>
       <header>
-        <Link to="/"><h1>This is a Header!</h1></Link>
+        <Link to="/"><h1>헤더</h1></Link>
       </header>
       <Routes>
         <Route path="/" element={<HomePage />} />

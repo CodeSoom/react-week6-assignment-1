@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 export default function HomePage() {
   return (
     <div>
-      <h2>Welcome Home!</h2>
+      <h2>Home</h2>
       <ul>
         <li>
-          <Link to="/about">소개</Link>
+          <Link to="/about">About</Link>
         </li>
         <li>
           <Link to="/restaurants">Restaurants</Link>

@@ -32,14 +32,14 @@ describe('App', () => {
   context('with path /', () => {
     it('renders the Home page', () => {
       const { container } = renderApp({ path: '/' });
-      expect(container).toHaveTextContent('Welcome Home!');
+      expect(container).toHaveTextContent('Home');
     });
   });
 
   context('with path /about', () => {
     it('renders the about page', () => {
       const { container } = renderApp({ path: '/about' });
-      expect(container).toHaveTextContent('소개');
+      expect(container).toHaveTextContent('소개페이지');
     });
   });
 
@@ -54,7 +54,7 @@ describe('App', () => {
 
   context('with path /restaurant/1', () => {
     it('renders the restaurant page', () => {
-      const { container } = renderApp({ path: '/restaurant/1' });
+      const { container } = renderApp({ path: '/restaurant/*' });
 
       expect(container).toHaveTextContent('김밥제국');
     });
