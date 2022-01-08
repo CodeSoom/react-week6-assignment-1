@@ -6,6 +6,7 @@ import { createMemoryHistory } from 'history';
 import { useSelector, useDispatch } from 'react-redux';
 
 import App from './App';
+import restaurant from '../fixtures/restaurant';
 
 describe('App', () => {
   const dispatch = jest.fn();
@@ -46,6 +47,20 @@ describe('App', () => {
         </MemoryRouter>
       ));
       expect(getByText(/Restaurants/)).not.toBeNull();
+    });
+  });
+
+  context('/restaurants/1로 접근시', () => {
+    useSelector.mockImplementation((selector) => selector({
+      restaurant,
+    }));
+    it('Restaurant페이지를 노출한다', () => {
+      const { getByText } = render((
+        <MemoryRouter initialEntries={['/restaurants/1']}>
+          <App />
+        </MemoryRouter>
+      ));
+      expect(getByText(/메뉴/)).not.toBeNull();
     });
   });
 
