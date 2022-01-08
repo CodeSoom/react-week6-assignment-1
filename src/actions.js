@@ -59,6 +59,7 @@ export function loadInitialData() {
 
 export function loadRestaurants() {
   return async (dispatch, getState) => {
+    dispatch(setRestaurant(null));
     const {
       selectedRegion: region,
       selectedCategory: category,
