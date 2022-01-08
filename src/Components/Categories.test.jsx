@@ -6,6 +6,7 @@ import CATEGORIES from '../../fixtures/categories';
 
 describe('Categories', () => {
   const KOREAN_FOOD = CATEGORIES[0];
+
   const handleClick = jest.fn();
 
   context('with selectedCategory', () => {
