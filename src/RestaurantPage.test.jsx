@@ -7,14 +7,24 @@ import { useDispatch, useSelector } from 'react-redux';
 import RestaurantPage from './RestaurantPage';
 import { MemoryRouter } from 'react-router-dom';
 
-test('RestaurantPage', () => {
-  const { container } = render(
-    <MemoryRouter initialEntries={['/restaurant/1']}>
-      <RestaurantPage />
-    </MemoryRouter>
-  );
+import Restaurant from '../fixtures/restaurant';
 
-  expect(container).toHaveTextContent('양천주가');
-  expect(container).toHaveTextContent('주소: 서울시 강남구');
-  expect(container).toHaveTextContent('팔보채');
+describe('RestaurantPage', () => {
+  it('render restaurant', () => {
+    const dispatch = jest.fn();
+    useDispatch.mockImplementation(() => dispatch);
+
+    useSelector.mockImplementation((selector) =>
+      selector({ restaurant: Restaurant[0] })
+    );
+
+    console.log(Restaurant);
+    const { container } = render(
+      <MemoryRouter>
+        <RestaurantPage />
+      </MemoryRouter>
+    );
+
+    expect(container).toHaveTextContent('김밥제국');
+  });
 });
