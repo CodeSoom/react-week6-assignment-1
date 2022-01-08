@@ -3,9 +3,9 @@ import React from 'react';
 import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
+import { MemoryRouter } from 'react-router-dom';
 
 import RestaurantPage from './RestaurantPage';
-import { MemoryRouter } from 'react-router-dom';
 
 import Restaurant from '../fixtures/restaurant';
 
@@ -14,15 +14,12 @@ describe('RestaurantPage', () => {
     const dispatch = jest.fn();
     useDispatch.mockImplementation(() => dispatch);
 
-    useSelector.mockImplementation((selector) =>
-      selector({ restaurant: Restaurant[0] })
-    );
+    useSelector.mockImplementation((selector) => selector({ restaurant: Restaurant[0] }));
 
-    console.log(Restaurant);
     const { container } = render(
       <MemoryRouter>
         <RestaurantPage />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     expect(container).toHaveTextContent('김밥제국');

@@ -7,6 +7,7 @@ import {
   setRegions,
   setCategories,
   loadRestaurants,
+  loadRestaurant,
   setRestaurants,
   setRestaurant,
 } from './actions';
@@ -59,7 +60,7 @@ describe('actions', () => {
         });
       });
 
-      it("doesn't run any actions", async () => {
+      it("does'nt run any actions", async () => {
         await store.dispatch(loadRestaurants());
 
         const actions = store.getActions();
@@ -75,13 +76,23 @@ describe('actions', () => {
         });
       });
 
-      it("doesn't run any actions", async () => {
+      it("does'nt run any actions", async () => {
         await store.dispatch(loadRestaurants());
 
         const actions = store.getActions();
 
         expect(actions).toHaveLength(0);
       });
+    });
+  });
+
+  describe('loadRestaurant', () => {
+    it('runs setRestaurant', async () => {
+      await store.dispatch(loadRestaurant(1));
+
+      const actions = store.getActions();
+
+      expect(actions[0]).toEqual(setRestaurant([]));
     });
   });
 });

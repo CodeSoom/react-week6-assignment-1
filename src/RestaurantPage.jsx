@@ -22,11 +22,16 @@ export default function RestaurantPage() {
   return (
     <div>
       <h1>{name}</h1>
-      <p>주소: {address}</p>
+      <p>
+        주소:
+        {address}
+      </p>
       <h2>메뉴</h2>
       <ul>
-        {menuItems &&
-          menuItems.map((menu) => <li key={menu.id}>{menu.name}</li>)}
+        {menuItems
+          && menuItems.map((menu) => (
+            <li key={`restaurantId ${menu.id}`}>{menu.name}</li>
+          ))}
       </ul>
     </div>
   );

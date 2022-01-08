@@ -1,9 +1,9 @@
 import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
+import { MemoryRouter } from 'react-router-dom';
 
 import App from './App';
-import { MemoryRouter } from 'react-router-dom';
 
 describe('App', () => {
   beforeEach(() => {
@@ -11,27 +11,23 @@ describe('App', () => {
 
     useDispatch.mockImplementation(() => dispatch);
 
-    useSelector.mockImplementation((selector) =>
-      selector({
-        regions: [{ id: 1, name: '서울' }],
-        categories: [{ id: 1, name: '한식' }],
-        restaurants: [{ id: 1, name: '마법사주방' }],
-        restaurant: {
-          id: 1,
-          name: '김밥제국',
-          menuItems: ['탕수육', '팔보채'],
-        },
-      })
-    );
+    useSelector.mockImplementation((selector) => selector({
+      regions: [{ id: 1, name: '서울' }],
+      categories: [{ id: 1, name: '한식' }],
+      restaurants: [{ id: 1, name: '마법사주방' }],
+      restaurant: {
+        id: 1,
+        name: '김밥제국',
+        menuItems: ['탕수육', '팔보채'],
+      },
+    }));
   });
 
-  const renderApp = ({ path }) => {
-    return render(
-      <MemoryRouter initialEntries={[path]}>
-        <App />
-      </MemoryRouter>
-    );
-  };
+  const renderApp = ({ path }) => render(
+    <MemoryRouter initialEntries={[path]}>
+      <App />
+    </MemoryRouter>,
+  );
 
   context('with path /', () => {
     it('renders the Home page', () => {

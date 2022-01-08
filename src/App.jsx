@@ -10,9 +10,7 @@ export default function App() {
   return (
     <div>
       <header>
-        <h1>
-          <Link to="/">I'm Header!</Link>
-        </h1>
+        <Link to="/"><h1>This is a Header!</h1></Link>
       </header>
       <Routes>
         <Route path="/" element={<HomePage />} />
