@@ -9,3 +9,7 @@ export function equal(key, value) {
 export function isEmptyObj(obj) {
   return Object.values(obj).length === 0;
 }
+
+export function isEmptyArray(arr) {
+  return arr.length === 0;
+}
