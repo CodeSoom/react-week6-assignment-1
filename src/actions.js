@@ -56,6 +56,10 @@ export function loadInitialData() {
   };
 }
 
+export function loadRestauarantDetail() {
+  // TODO
+}
+
 export function loadRestaurants() {
   return async (dispatch, getState) => {
     const {
