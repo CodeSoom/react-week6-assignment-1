@@ -6,6 +6,8 @@ import { useSelector } from 'react-redux';
 
 import { MemoryRouter } from 'react-router-dom';
 
+import given from 'given2';
+
 import RestaurantsPage from './RestaurantsPage';
 
 import REGIONS from '../../fixtures/regions';
@@ -23,16 +25,19 @@ describe('RestaurantsPage', () => {
     </MemoryRouter>
   ));
 
+  beforeEach(() => {
+    useSelector.mockImplementation((selector) => selector({
+      regions: REGIONS,
+      selectedRegion: given.selectedRegion,
+      categories: CATEGORIES,
+      selectedCategory: given.selectedCategory,
+      restaurants: RESTAURANTS,
+    }));
+  });
+
   context('selected a Region and a Category', () => {
-    beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({
-        regions: REGIONS,
-        selectedRegion: SEOUL,
-        categories: CATEGORIES,
-        selectedCategory: KOREAN_FOOD,
-        restaurants: RESTAURANTS,
-      }));
-    });
+    given('selectedRegion', () => SEOUL);
+    given('selectedCategory', () => KOREAN_FOOD);
 
     it('renders RestaurantsPage with (V)', () => {
       const { getByText } = renderRestaurantPage();
@@ -53,13 +58,8 @@ describe('RestaurantsPage', () => {
   });
 
   context('selected nothing', () => {
-    beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({
-        regions: REGIONS,
-        categories: CATEGORIES,
-        restaurants: [],
-      }));
-    });
+    given('selectedRegion', () => null);
+    given('selectedCategory', () => null);
 
     it('renders RestaurantsPage without (V)', () => {
       const { getByText } = renderRestaurantPage();
