@@ -4,6 +4,8 @@ import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import given from 'given2';
+
 import { MemoryRouter } from 'react-router-dom';
 
 import App from './App';
@@ -26,46 +28,60 @@ describe('App', () => {
   beforeEach(() => {
     dispatch.mockClear();
   });
+  context('with path / ', () => {
+    given('path', () => '/');
 
-  it('renders Home', () => {
-    const { queryByText } = renderApp('/');
+    it('renders Home', () => {
+      const { queryByText } = renderApp(given.path);
 
-    expect(queryByText('헤더'));
-    expect(queryByText('About'));
-    expect(queryByText('Restaurant'));
+      expect(queryByText('헤더'));
+      expect(queryByText('About'));
+      expect(queryByText('Restaurant'));
 
-    expect(dispatch).toBeCalled();
+      expect(dispatch).toBeCalled();
+    });
+  });
+  context('with path /about ', () => {
+    given('path', () => '/about');
+
+    it('renders  About', () => {
+      const { queryByText } = renderApp(given.path);
+
+      expect(queryByText('About'));
+      expect(queryByText('About 페이지 입니다.'));
+
+      expect(dispatch).toBeCalled();
+    });
   });
 
-  it('renders  About', () => {
-    const { queryByText } = renderApp('/about');
+  context('with path /restaurants ', () => {
+    given('path', () => '/restaurants');
 
-    expect(queryByText('About'));
-    expect(queryByText('About 페이지 입니다.'));
+    it('renders Restaurant', () => {
+      useSelector.mockImplementation((selector) => selector({
+        regions: REGIONS,
+        categories: CATEGORIES,
+        restaurants: RESTAURANTS,
+      }));
 
-    expect(dispatch).toBeCalled();
+      const { container } = renderApp(given.path);
+
+      expect(container).toHaveTextContent('서울');
+      expect(container).toHaveTextContent('한식');
+      expect(container).toHaveTextContent('김밥제국');
+
+      expect(dispatch).toBeCalled();
+    });
   });
 
-  it('renders Restaurant', () => {
-    useSelector.mockImplementation((selector) => selector({
-      regions: REGIONS,
-      categories: CATEGORIES,
-      restaurants: RESTAURANTS,
-    }));
+  context('with worng path ', () => {
+    given('path', () => '/wrong');
 
-    const { container } = renderApp('/restaurants');
+    it('renders Home', () => {
+      const { queryByText } = renderApp(given.path);
 
-    expect(container).toHaveTextContent('서울');
-    expect(container).toHaveTextContent('한식');
-    expect(container).toHaveTextContent('김밥제국');
-
-    expect(dispatch).toBeCalled();
-  });
-
-  it('renders Home', () => {
-    const { queryByText } = renderApp('/wrong');
-
-    expect(queryByText('404 Not Found'));
-    expect(dispatch).toBeCalled();
+      expect(queryByText('404 Not Found'));
+      expect(dispatch).toBeCalled();
+    });
   });
 });
