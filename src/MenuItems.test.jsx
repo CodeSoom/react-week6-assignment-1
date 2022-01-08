@@ -19,13 +19,13 @@ describe('MenuItems', () => {
 
   context('메뉴 아이템이 없을 때', () => {
     it('"메뉴가 없어요!"를 렌더링 한다.', () => {
-      const menuItems = [];
+      [[], null, undefined].forEach((menuItems) => {
+        const { container } = render((
+          <MenuItems menuItems={menuItems} />
+        ));
 
-      const { container } = render((
-        <MenuItems menuItems={menuItems} />
-      ));
-
-      expect(container).toHaveTextContainer('메뉴가 없어요!');
+        expect(container).toHaveTextContainer('메뉴가 없어요!');
+      });
     });
   });
 });
