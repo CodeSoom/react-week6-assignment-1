@@ -16,6 +16,11 @@ describe('App', () => {
         regions: [{ id: 1, name: '서울' }],
         categories: [{ id: 1, name: '한식' }],
         restaurants: [{ id: 1, name: '마법사주방' }],
+        restaurant: {
+          id: 1,
+          name: '김밥제국',
+          menuItems: ['탕수육', '팔보채'],
+        },
       })
     );
   });
@@ -48,6 +53,14 @@ describe('App', () => {
       expect(container).toHaveTextContent('서울');
       expect(container).toHaveTextContent('한식');
       expect(container).toHaveTextContent('마법사주방');
+    });
+  });
+
+  context('with path /restaurant/1', () => {
+    it('renders the restaurant page', () => {
+      const { container } = renderApp({ path: '/restaurant/1' });
+
+      expect(container).toHaveTextContent('김밥제국');
     });
   });
 
