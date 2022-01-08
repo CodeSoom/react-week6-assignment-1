@@ -38,7 +38,7 @@ describe('reducer', () => {
       const state = reducer(initialState, setRestaurantDetail(restaurant));
 
       expect(state.restaurant.name).toBe('양천주가');
-      expect(state.restaurant.menuItems).toHaveLength(2);
+      expect(state.restaurant.menuItems).toHaveLength(6);
     });
   });
 

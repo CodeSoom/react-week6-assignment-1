@@ -2,12 +2,13 @@ import {
   fetchRegions,
   fetchCategories,
   fetchRestaurants,
+  fetchRestaurantDetail,
 } from './services/api';
 
-export function setRestaurantDetail(detail) {
+export function setRestaurantDetail(restaurant) {
   return {
     type: 'setRestaurantDetail',
-    payload: { detail },
+    payload: { restaurant },
   };
 }
 
@@ -56,8 +57,11 @@ export function loadInitialData() {
   };
 }
 
-export function loadRestauarantDetail() {
-  // TODO
+export function loadRestauarantDetail({ restaurantId }) {
+  return async (dispatch) => {
+    const restaurant = await fetchRestaurantDetail({ restaurantId });
+    dispatch(setRestaurantDetail(restaurant));
+  };
 }
 
 export function loadRestaurants() {
