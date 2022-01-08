@@ -7,15 +7,11 @@ describe('AboutPage', () => {
     <AboutPage />,
   );
 
-  it('"About" 헤더 텍스트가 화면에 나타난다.', () => {
+  it('화면에 특정한 텍스트를 보여준다.', () => {
     const { container } = renderAboutPage();
 
-    expect(container).toHaveTextContent('About');
-  });
-
-  it('"About 페이지 입니다." 화면에 나타난다.', () => {
-    const { container } = renderAboutPage();
-
-    expect(container).toHaveTextContent('About 페이지 입니다.');
+    ['About', 'About 페이지 입니다.'].forEach((text) => {
+      expect(container).toHaveTextContent(text);
+    });
   });
 });
