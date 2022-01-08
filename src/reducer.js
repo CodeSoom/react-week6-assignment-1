@@ -3,6 +3,13 @@ import { equal } from './utils';
 const initialState = {
   regions: [],
   categories: [],
+  restaurant: {
+    id: null,
+    categoryId: null,
+    name: '',
+    address: '',
+    menuItems: [],
+  },
   restaurants: [],
   selectedRegion: null,
   selectedCategory: null,
