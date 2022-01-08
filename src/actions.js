@@ -4,6 +4,13 @@ import {
   fetchRestaurants,
 } from './services/api';
 
+export function setRestaurantDetail(detail) {
+  return {
+    type: 'setRestaurantDetail',
+    payload: { detail },
+  };
+}
+
 export function setRegions(regions) {
   return {
     type: 'setRegions',

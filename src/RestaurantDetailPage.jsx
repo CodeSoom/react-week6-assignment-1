@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 
-export default function Restaurant() {
+export default function RestaurantDetailPage() {
   const restaurant = useSelector((state) => state.restaurant);
 
   const { name, address, menuItems } = restaurant;

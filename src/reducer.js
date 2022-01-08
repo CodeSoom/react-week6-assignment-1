@@ -9,6 +9,13 @@ const initialState = {
 };
 
 const reducers = {
+  setRestaurantDetail(state, { payload: { restaurant } }) {
+    return {
+      ...state,
+      restaurant,
+    };
+  },
+
   setRegions(state, { payload: { regions } }) {
     return {
       ...state,

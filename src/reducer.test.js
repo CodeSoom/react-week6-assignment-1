@@ -6,7 +6,10 @@ import {
   setRestaurants,
   selectRegion,
   selectCategory,
+  setRestaurantDetail,
 } from './actions';
+
+import restaurant from '../fixtures/restaurant';
 
 describe('reducer', () => {
   context('when previous state is undefined', () => {
@@ -22,6 +25,19 @@ describe('reducer', () => {
       const state = reducer(undefined, { type: 'action' });
 
       expect(state).toEqual(initialState);
+    });
+  });
+
+  describe('setRestaurantDetail', () => {
+    it('changes restaurant details', () => {
+      const initialState = {
+        restaurant,
+      };
+
+      const state = reducer(initialState, setRestaurantDetail(restaurant));
+
+      expect(state.restaurant.name).toBe('냠냠떡볶이');
+      expect(state.restaurant.menuItems).toHaveLength(2);
     });
   });
 
