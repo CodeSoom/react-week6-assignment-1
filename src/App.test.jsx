@@ -8,6 +8,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import App from './App';
 import restaurant from '../fixtures/restaurant';
 
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'), // use actual for all non-hook parts
+  useMatch: () => ({
+    params: {
+      id: 1,
+    },
+  }),
+}));
+
 describe('App', () => {
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
@@ -35,12 +44,12 @@ describe('App', () => {
   });
 
   context('/restaurants로 접근시', () => {
-    useSelector.mockImplementation((selector) => selector({
-      regions: [],
-      categories: [],
-      restaurants: [],
-    }));
     it('Restaurants페이지를 노출한다', () => {
+      useSelector.mockImplementation((selector) => selector({
+        regions: [],
+        categories: [],
+        restaurants: [],
+      }));
       const { getByText } = render((
         <MemoryRouter initialEntries={['/restaurants']}>
           <App />
@@ -51,10 +60,10 @@ describe('App', () => {
   });
 
   context('/restaurants/1로 접근시', () => {
-    useSelector.mockImplementation((selector) => selector({
-      restaurant,
-    }));
     it('Restaurant페이지를 노출한다', () => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurant,
+      }));
       const { getByText } = render((
         <MemoryRouter initialEntries={['/restaurants/1']}>
           <App />
@@ -68,7 +77,7 @@ describe('App', () => {
     it('/"로 이동한다.', () => {
       const history = createMemoryHistory();
       const { getByText, getByRole } = render((
-        <MemoryRouter history={history} initialEntries={['/restaurants']}>
+        <MemoryRouter history={history} initialEntries={['/about']}>
           <App />
         </MemoryRouter>
       ));
