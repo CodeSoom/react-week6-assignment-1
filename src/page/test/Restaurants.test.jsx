@@ -4,6 +4,7 @@ import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import { MemoryRouter } from 'react-router-dom';
 import Restaurants from '../Restaurants';
 
 describe('Restaurants', () => {
@@ -24,7 +25,9 @@ describe('Restaurants', () => {
 
   it('에러없이 store의 내용을 출력한다.', () => {
     const { queryByText } = render((
-      <Restaurants />
+      <MemoryRouter>
+        <Restaurants />
+      </MemoryRouter>
     ));
 
     expect(dispatch).toBeCalled();
