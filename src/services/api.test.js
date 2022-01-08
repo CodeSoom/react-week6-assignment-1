@@ -1,6 +1,6 @@
-import { 
-  fetchRegions, 
-  fetchCategories, 
+import {
+  fetchRegions,
+  fetchCategories,
   fetchRestaurants,
   fetchRestaurantDetail,
 } from './api';
@@ -18,12 +18,18 @@ describe('api', () => {
   };
 
   describe('fetchRestaurantDetail', () => {
-    it('returns restaurant detail', () => {
-      const restaurant = await fetchRestaurantDetail();
+    beforeEach(() => {
+      mockFetch(RESTAURANT);
+    });
+
+    it('returns restaurant detail', async () => {
+      const restaurant = await fetchRestaurantDetail({
+        restaurantId: 1,
+      });
 
       expect(restaurant).toEqual(RESTAURANT);
-    })
-  })
+    });
+  });
 
   describe('fetchRegions', () => {
     beforeEach(() => {

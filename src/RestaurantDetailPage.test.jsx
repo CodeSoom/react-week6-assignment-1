@@ -11,6 +11,6 @@ test('RestaurantDetailPage', () => {
 
   const { getByText } = render(<RestaurantDetailPage />);
 
-  expect(getByText(/냠냠떡볶이/)).not.toBeNull();
-  expect(getByText(/순대/)).not.toBeNull();
+  expect(getByText(/양천주가/)).not.toBeNull();
+  expect(getByText(/비빔밥/)).not.toBeNull();
 });
