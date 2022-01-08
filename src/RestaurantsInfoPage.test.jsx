@@ -15,6 +15,7 @@ describe('RestaurantsInfoPage', () => {
       restaurant: {
         id: 1,
         name: '양천주가',
+        address: '서울시 강남구',
       },
     }));
   });
@@ -37,6 +38,6 @@ describe('RestaurantsInfoPage', () => {
     ));
 
     expect(container).toHaveTextContent('양천주가');
-    expect(container).toHaveTextContent('1');
+    expect(container).toHaveTextContent('서울시');
   });
 });
