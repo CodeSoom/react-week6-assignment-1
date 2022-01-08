@@ -26,8 +26,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route exact path="/restaurants/:id" element={<RestaurantsInfoPage />} />
         <Route path="/restaurants" element={<RestaurantsPage />} />
-        <Route path="/restaurants/:id" element={<RestaurantsInfoPage />} />
         <Route path="/*" element={<NotFoundPage />} />
       </Routes>
     </>

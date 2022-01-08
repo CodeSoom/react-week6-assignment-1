@@ -64,7 +64,7 @@ describe('App', () => {
     it('NotFoundPage를 렌더링한다.', () => {
       const { container } = renderApp({ path: '/*' });
 
-      expect(container).toHaveTextContent('돌아가');
+      expect(container).toHaveTextContent('404');
     });
   });
 });
