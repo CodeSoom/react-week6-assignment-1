@@ -17,7 +17,7 @@ export default function App() {
         <Route path="/restaurants/:id" element={<RestaurantDetail />} />
         <Route path="/about" element={<About />} />
         <Route path="/" element={<Home />} />
-        <Route path="/*" element={<NotFound />} from="*" to="/" />
+        <Route path="/*" element={<NotFound />} />
       </Routes>
     </div>
   );

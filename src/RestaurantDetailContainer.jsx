@@ -10,10 +10,10 @@ import { loadRestaurant } from './actions';
 export default function RestaurantDetailContainer() {
   const dispatch = useDispatch();
   const restaurant = useSelector(get('restaurant'));
-  const match = useMatch();
+  const match = useMatch('restaurants/:id');
 
   useEffect(() => {
-    dispatch(loadRestaurant(match.params.id));
+    dispatch(loadRestaurant(match.id));
   });
 
   return (
