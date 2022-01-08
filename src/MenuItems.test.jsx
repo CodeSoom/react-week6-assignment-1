@@ -13,7 +13,7 @@ describe('MenuItems', () => {
         <MenuItems menuItems={menuItems} />
       ));
 
-      expect(container).toHaveTextContainer('공기밥');
+      expect(container).toHaveTextContent('공기밥');
     });
   });
 
@@ -24,7 +24,7 @@ describe('MenuItems', () => {
           <MenuItems menuItems={menuItems} />
         ));
 
-        expect(container).toHaveTextContainer('메뉴가 없어요!');
+        expect(container).toHaveTextContent('메뉴가 없어요!');
       });
     });
   });

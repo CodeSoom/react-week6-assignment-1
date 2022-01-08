@@ -56,7 +56,7 @@ describe('App', () => {
     it('RestaurantsInfoPage를 렌더링한다.', () => {
       const { container } = renderApp({ path: '/restaurants/:id' });
 
-      expect(container).toHaveTextContent('주소');
+      expect(container).toHaveTextContent('Loading');
     });
   });
 

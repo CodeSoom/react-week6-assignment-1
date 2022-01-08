@@ -15,6 +15,7 @@ describe('reducer', () => {
       regions: [],
       categories: [],
       restaurants: [],
+      restaurant: {},
       selectedRegion: null,
       selectedCategory: null,
     };
@@ -77,17 +78,14 @@ describe('reducer', () => {
   describe('setRestaurant', () => {
     it('changes restaurant', () => {
       const initialState = {
-        restaurant: null,
+        restaurant: {},
       };
 
-      const restaurant = [
-        { id: 1, name: '양천주가' },
-      ];
+      const restaurant = { id: 1, name: '양천주가' };
 
       const state = reducer(initialState, setRestaurant(restaurant));
 
-      expect(state.restaurant.id).toBe(1);
-      expect(state.restaurant.name).toBe('양천주가');
+      expect(state.restaurant).toEqual(restaurant);
     });
   });
 

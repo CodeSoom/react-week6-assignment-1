@@ -30,20 +30,26 @@ describe('RestaurantsPage', () => {
     }));
   });
 
-  function renderRestaurantsPage() {
-    render((
+  it('지역 버튼과 카테고리 버튼을 렌더링한다.', () => {
+    const { container } = render((
       <MemoryRouter>
         <RestaurantsPage />
       </MemoryRouter>
     ));
-  }
-
-  it('지역 버튼과 카테고리 버튼을 렌더링한다.', () => {
-    const { queryByText } = renderRestaurantsPage();
 
     expect(dispatch).toBeCalled();
 
-    expect(queryByText('서울')).not.toBeNull();
-    expect(queryByText('한식')).not.toBeNull();
+    expect(container).toHaveTextContent('서울');
+    expect(container).toHaveTextContent('한식');
+  });
+
+  it('식당 이름을 렌더링한다.', () => {
+    const { container } = render((
+      <MemoryRouter>
+        <RestaurantsPage />
+      </MemoryRouter>
+    ));
+
+    expect(container).toHaveTextContent('양천주가');
   });
 });

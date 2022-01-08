@@ -13,11 +13,9 @@ test('RestaurantsContainer', () => {
 
   const Link = ({ children }) => (<>{children}</>);
 
-  const { container, queryByText } = render((
+  const { container } = render((
     <RestaurantsContainer Link={Link} />
   ));
 
   expect(container).toHaveTextContent('양천주가');
-  const url = queryByText('양천주가');
-  expect(url).toHaveAttribute('href', '/restaurants/1');
 });
