@@ -1,6 +1,6 @@
 import { equal } from './utils';
 
-const initialState = {
+export const initialState = {
   regions: [],
   categories: [],
   restaurant: {
@@ -27,6 +27,13 @@ const reducers = {
     return {
       ...state,
       categories,
+    };
+  },
+
+  setRestaurant(state, { payload: { restaurant } }) {
+    return {
+      ...state,
+      restaurant,
     };
   },
 

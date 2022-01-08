@@ -13,8 +13,8 @@ export default function RestaurantDetailContainer() {
   const match = useMatch('restaurants/:id');
 
   useEffect(() => {
-    dispatch(loadRestaurant(match.id));
-  });
+    dispatch(loadRestaurant(match.params.id));
+  }, []);
 
   return (
     <RestaurantDetail restaurant={restaurant} />

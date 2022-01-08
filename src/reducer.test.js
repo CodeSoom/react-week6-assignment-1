@@ -1,4 +1,4 @@
-import reducer from './reducer';
+import reducer, { initialState } from './reducer';
 
 import {
   setRegions,
@@ -10,14 +10,6 @@ import {
 
 describe('reducer', () => {
   context('when previous state is undefined', () => {
-    const initialState = {
-      regions: [],
-      categories: [],
-      restaurants: [],
-      selectedRegion: null,
-      selectedCategory: null,
-    };
-
     it('returns initialState', () => {
       const state = reducer(undefined, { type: 'action' });
 
