@@ -52,7 +52,7 @@ describe('App', () => {
   context('헤더 버튼을 누르면', () => {
     it('/"로 이동한다.', () => {
       const history = createMemoryHistory();
-      const { getByRole } = render((
+      const { getByText, getByRole } = render((
         <MemoryRouter history={history} initialEntries={['/restaurants']}>
           <App />
         </MemoryRouter>
@@ -61,6 +61,7 @@ describe('App', () => {
       fireEvent.click(getByRole('link', { name: /헤더/ }));
 
       expect(history.location.pathname).toBe('/');
+      expect(getByText(/Home/)).toBeInTheDocument();
     });
   });
 });
