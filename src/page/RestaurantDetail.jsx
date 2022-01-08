@@ -1,4 +1,4 @@
-export default function RestaurantsDetail({
+export default function RestaurantDetail({
   restaurant: {
     name,
     address,

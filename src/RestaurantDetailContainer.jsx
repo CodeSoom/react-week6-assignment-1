@@ -7,9 +7,9 @@ import { get } from './utils';
 import RestaurantDetail from './page/RestaurantDetail';
 import { loadRestaurant } from './actions';
 
-export default function RestaurantsDetailContainer() {
+export default function RestaurantDetailContainer() {
   const dispatch = useDispatch();
-  const restaurants = useSelector(get('restaurants'));
+  const restaurant = useSelector(get('restaurant'));
   const match = useMatch();
 
   useEffect(() => {
@@ -17,6 +17,6 @@ export default function RestaurantsDetailContainer() {
   });
 
   return (
-    <RestaurantDetail restaurants={restaurants} />
+    <RestaurantDetail restaurant={restaurant} />
   );
 }
