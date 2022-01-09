@@ -2,14 +2,13 @@ import {
   Routes,
   Route,
   Link,
-  useParams,
 } from 'react-router-dom';
 
 import HomePage from './HomePage';
 import RestaurantsPage from './RestaurantsPage';
 import NotFoundPage from './NotFoundPage';
 import AboutPage from './AboutPage';
-import DetailPage from './DetailPage';
+import RestaurantPage from './RestaurantPage';
 
 export default function App() {
   return (
@@ -21,7 +20,7 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/restaurants" element={<RestaurantsPage />} />
-        <Route path="/detail/:id" element={<DetailPage />} />
+        <Route path="/restaurants/:id" element={<RestaurantPage />} />
         <Route path="/*" element={<NotFoundPage />} />
       </Routes>
     </div>

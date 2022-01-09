@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 
-export default function DetailPage({ params }) {
+export default function RestaurantPage({ params }) {
   const { id } = params || useParams();
 
   return (

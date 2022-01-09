@@ -6,31 +6,49 @@ import { MemoryRouter } from 'react-router-dom';
 
 import RestaurantsPage from './RestaurantsPage';
 
-test('RestaurantsPage', () => {
+describe('RestaurantsPage', () => {
   const dispatch = jest.fn();
 
-  useDispatch.mockImplementation(() => dispatch);
+  // 초기데이터를 적재하는 코드만 추출
+  beforeEach(() => {
+    dispatch.mockClear();
 
-  useSelector.mockImplementation((selector) => selector({
-    regions: [
-      { id: 1, name: '서울' },
-    ],
-    categories: [
-      { id: 1, name: '한식' },
-    ],
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
-  }));
+    useDispatch.mockImplementation(() => dispatch);
 
-  const { queryByText } = render((
-    <MemoryRouter>
-      <RestaurantsPage />
-    </MemoryRouter>
-  ));
+    useSelector.mockImplementation((selector) => selector({
+      regions: [
+        { id: 1, name: '서울' },
+      ],
+      categories: [
+        { id: 1, name: '한식' },
+      ],
+      restaurants: [
+        { id: 1, name: '마법사주방' },
+      ],
+    }));
+  });
 
-  expect(dispatch).toBeCalled();
+  it('renders text in store"', () => {
+    const { queryByText } = render((
+      <MemoryRouter>
+        <RestaurantsPage />
+      </MemoryRouter>
+    ));
 
-  expect(queryByText('서울')).not.toBeNull();
-  expect(queryByText('한식')).not.toBeNull();
+    expect(dispatch).toBeCalled();
+
+    expect(queryByText('서울')).not.toBeNull();
+    expect(queryByText('한식')).not.toBeNull();
+    expect(queryByText('마법사주방')).not.toBeNull();
+  });
+
+  it('renders link to "RestaurantPage"', () => {
+    const { container } = render((
+      <MemoryRouter>
+        <RestaurantsPage />
+      </MemoryRouter>
+    ));
+
+    expect(container.innerHTML).toContain('<a href=');
+  });
 });

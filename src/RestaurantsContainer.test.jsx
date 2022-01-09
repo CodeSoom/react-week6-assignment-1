@@ -22,7 +22,7 @@ describe('RestaurantsContainer', () => {
   context('with id of restaurant', () => {
     it('renders name of restaurant', () => {
       const { container } = renderRestaurantsContainer(
-        { path: '/detail/1' },
+        { path: '/restaurants/1' },
       );
 
       expect(container).toHaveTextContent('마법사주방');
