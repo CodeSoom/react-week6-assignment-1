@@ -6,7 +6,7 @@ export function equal(key, value) {
   return (obj) => obj[key] === value;
 }
 
-export function isEmptyObj(obj) {
+export function isEmptyObject(obj) {
   return Object.values(obj).length === 0;
 }
 

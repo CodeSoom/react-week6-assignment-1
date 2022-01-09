@@ -1,7 +1,7 @@
-import { isEmptyObj, isEmptyArray } from '../utils';
+import { isEmptyObject, isEmptyArray } from '../utils';
 
 export default function RestaurantDetail({ restaurant }) {
-  if (isEmptyObj(restaurant)) {
+  if (isEmptyObject(restaurant)) {
     return (
       <div>
         Loading...
@@ -9,7 +9,7 @@ export default function RestaurantDetail({ restaurant }) {
     );
   }
 
-  const { name, address, menuItems } = restaurant;
+  const { name: restaurantName, address, menuItems } = restaurant;
 
   if (isEmptyArray(menuItems)) {
     return (
@@ -23,7 +23,7 @@ export default function RestaurantDetail({ restaurant }) {
 
   return (
     <div>
-      <h2>{name}</h2>
+      <h2>{restaurantName}</h2>
       <p>
         주소:
         {' '}
@@ -32,8 +32,8 @@ export default function RestaurantDetail({ restaurant }) {
       <div>
         <h3>메뉴</h3>
         <ul>
-          {menuItems.map((menu) => (
-            <li key={menu.id}>{menu.name}</li>
+          {menuItems.map(({ id, name }) => (
+            <li key={id}>{name}</li>
           ))}
         </ul>
       </div>
