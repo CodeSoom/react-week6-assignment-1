@@ -1,20 +1,13 @@
 import { useParams } from 'react-router-dom';
 
-import { useSelector } from 'react-redux';
-
-import { get } from './utils';
-
-export default function DetailPage() {
-  const { id } = useParams();
-
-  const restaurants = useSelector(get('restaurants'));
-
-  const restaurant = restaurants.find((item) => item.id === id);
+export default function DetailPage({ params }) {
+  const { id } = params || useParams();
 
   return (
-    <ul>
+    <div>
       마녀식당
-      {restaurant}
-    </ul>
+      {' '}
+      {id}
+    </div>
   );
 }
