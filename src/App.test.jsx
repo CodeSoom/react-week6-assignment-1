@@ -2,7 +2,12 @@ import React from 'react';
 
 import { MemoryRouter } from 'react-router-dom';
 
-import { render } from '@testing-library/react';
+import {
+  render,
+  fireEvent,
+} from '@testing-library/react';
+
+import { createMemoryHistory } from 'history';
 
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -30,6 +35,38 @@ describe('App', () => {
       </MemoryRouter>
     ));
   }
+
+  context('with header', () => {
+    it('renders Header', () => {
+      const { container } = renderApp({ path: '/' });
+
+      expect(container).toHaveTextContent('HEADER');
+    });
+
+    it('renders Header in valid path', () => {
+      const { container } = renderApp({ path: '/restaurants' });
+
+      expect(container).toHaveTextContent('HEADER');
+    });
+
+    it('move to / when click the header', () => {
+      const history = createMemoryHistory();
+      history.push = jest.fn();
+
+      const { getByText } = render((
+        <MemoryRouter
+          history={history}
+          initialEntries={['/']}
+        >
+          <App />
+        </MemoryRouter>
+      ));
+
+      fireEvent.click(getByText('HEADER'));
+
+      expect(history.push).toHaveBeenCalledWith('/');
+    });
+  });
 
   context('with path /', () => {
     it('renders HomePage', () => {
