@@ -58,7 +58,7 @@ describe('App', () => {
       });
     });
 
-    context('with path /xxx', () => {
+    context('with undefined path', () => {
       it('renders NotFoundPage', () => {
         const { container } = renderApp({ path: '/xxx' });
 
