@@ -6,17 +6,15 @@ import { get } from './utils';
 
 export default function DetailPage() {
   const { id } = useParams();
-  console.log(id);
 
   const restaurants = useSelector(get('restaurants'));
 
+  const restaurant = restaurants.find((item) => item.id === id);
+
   return (
     <ul>
-      {restaurants.map((restaurant) => (
-        <li key={restaurant.id}>
-          {restaurant.name}
-        </li>
-      ))}
+      마녀식당
+      {restaurant}
     </ul>
   );
 }

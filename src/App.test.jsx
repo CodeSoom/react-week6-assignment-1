@@ -57,7 +57,7 @@ describe('App', () => {
     });
   });
 
-  context('with inaccessible path', () => {
+  context('with undefined path', () => {
     it('renders the not found page', () => {
       const { container } = renderApp({ path: '/xxx' });
 
