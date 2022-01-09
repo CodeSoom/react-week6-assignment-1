@@ -13,11 +13,7 @@ export default function RestaurantPage() {
     dispatch(loadRestaurant(restaurantId));
   }, [restaurantId]);
 
-  const { name, address, menuItems } = useSelector((state) => ({
-    name: state.restaurant.name,
-    address: state.restaurant.address,
-    menuItems: state.restaurant.menuItems,
-  }));
+  const { name, address, menuItems } = useSelector((state) => state.restaurant);
 
   return (
     <div>
@@ -28,10 +24,9 @@ export default function RestaurantPage() {
       </p>
       <h2>메뉴</h2>
       <ul>
-        {menuItems
-          && menuItems.map((menu) => (
-            <li key={`restaurantId ${menu.id}`}>{menu.name}</li>
-          ))}
+        {menuItems.map((menu) => (
+          <li key={`restaurantId ${menu.id}`}>{menu.name}</li>
+        ))}
       </ul>
     </div>
   );

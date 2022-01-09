@@ -60,7 +60,7 @@ describe('App', () => {
     });
   });
 
-  context('with invalid path', () => {
+  context('with no correct path', () => {
     it('renders the not found page', () => {
       const { container } = renderApp({ path: '/없는경로' });
       expect(container).toHaveTextContent('404');

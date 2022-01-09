@@ -24,5 +24,6 @@ export async function fetchRestaurant(restaurantId) {
   const url = `https://eatgo-customer-api.ahastudio.com/restaurants/${restaurantId}`;
   const response = await fetch(url);
   const data = await response.json();
+  console.log(data);
   return data;
 }
