@@ -1,12 +1,10 @@
-import React from 'react';
-
+import { MemoryRouter } from 'react-router-dom';
 import { render } from '@testing-library/react';
-
 import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
-test('App', () => {
+describe('App', () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
@@ -21,14 +19,57 @@ test('App', () => {
     restaurants: [
       { id: 1, name: '마법사주방' },
     ],
+    restaurant: {
+      id: 1,
+      name: '마법사주방',
+      address: '서울시 강남구 삼성동',
+      menuItems: [
+        { id: 1, name: '돈까스', price: 10000 },
+      ],
+    },
   }));
 
-  const { queryByText } = render((
-    <App />
-  ));
+  const renderApp = ({ path }) => render(
+    <MemoryRouter initialEntries={[path]}>
+      <App />
+    </MemoryRouter>,
+  );
 
-  expect(dispatch).toBeCalled();
+  it('renders header', () => {
+    const { getByText } = renderApp({ path: '/' });
 
-  expect(queryByText('서울')).not.toBeNull();
-  expect(queryByText('한식')).not.toBeNull();
+    expect(getByText('헤더')).toBeInTheDocument();
+  });
+
+  context('with path /', () => {
+    it('renders the home page', () => {
+      const { getByText } = renderApp({ path: '/' });
+
+      expect(getByText('Home')).toBeInTheDocument();
+    });
+  });
+
+  context('with path /restaurants', () => {
+    it('renders the restaurants page', () => {
+      const { getByText } = renderApp({ path: '/restaurants' });
+
+      expect(getByText('레스토랑 리스트')).toBeInTheDocument();
+    });
+  });
+
+  context('with path /about', () => {
+    it('renders the about page', () => {
+      const { getByText } = renderApp({ path: '/about' });
+
+      expect(getByText('About')).toBeInTheDocument();
+    });
+  });
+
+  context('with path /restaurants/1', () => {
+    it('renders the restaurant page', () => {
+      const { getByText } = renderApp({ path: '/restaurants/1' });
+
+      expect(getByText('상세정보')).toBeInTheDocument();
+    });
+  });
 });
