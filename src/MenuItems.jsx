@@ -1,15 +1,14 @@
 export default function MenuItems({ menuItems }) {
-  const isEmpty = (arr = []) => arr.length === 0;
-  if (!menuItems || isEmpty(menuItems)) {
+  if (!menuItems || menuItems.length === 0) {
     return (
       <p>메뉴가 없어요!</p>
     );
   }
   return (
     <ul>
-      {menuItems.map(({ id, name }) => (
-        <li key={id}>
-          {name}
+      {menuItems.map((menuItem) => (
+        <li key={menuItem.id}>
+          {menuItem.name}
         </li>
       ))}
     </ul>
