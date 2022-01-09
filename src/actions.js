@@ -11,24 +11,17 @@ export function setRegions(regions) {
   };
 }
 
-export function setCategories(categories) {
-  return {
-    type: 'setCategories',
-    payload: { categories },
-  };
-}
-
-export function setRestaurants(restaurants) {
-  return {
-    type: 'setRestaurants',
-    payload: { restaurants },
-  };
-}
-
 export function selectRegion(regionId) {
   return {
     type: 'selectRegion',
     payload: { regionId },
+  };
+}
+
+export function setCategories(categories) {
+  return {
+    type: 'setCategories',
+    payload: { categories },
   };
 }
 
@@ -39,12 +32,21 @@ export function selectCategory(categoryId) {
   };
 }
 
+export function setRestaurants(restaurants) {
+  return {
+    type: 'setRestaurants',
+    payload: { restaurants },
+  };
+}
+
 export function loadInitialData() {
   return async (dispatch) => {
+    // call api for getting regions
     const regions = await fetchRegions();
-    dispatch(setRegions(regions));
-
+    // call api for getting categories
     const categories = await fetchCategories();
+
+    dispatch(setRegions(regions));
     dispatch(setCategories(categories));
   };
 }

@@ -9,40 +9,34 @@ const initialState = {
 };
 
 const reducers = {
-  setRegions(state, { payload: { regions } }) {
+  setRegions(state, { payload }) {
     return {
       ...state,
-      regions,
+      regions: payload.regions,
     };
   },
-
-  setCategories(state, { payload: { categories } }) {
+  setCategories(state, { payload }) {
     return {
       ...state,
-      categories,
+      categories: payload.categories,
     };
   },
-
-  setRestaurants(state, { payload: { restaurants } }) {
+  setRestaurants(state, { payload }) {
     return {
       ...state,
-      restaurants,
+      restaurants: payload.restaurants,
     };
   },
-
-  selectRegion(state, { payload: { regionId } }) {
-    const { regions } = state;
+  selectRegion(state, { payload }) {
     return {
       ...state,
-      selectedRegion: regions.find(equal('id', regionId)),
+      selectedRegion: state.regions.find(equal('id', payload.regionId)),
     };
   },
-
-  selectCategory(state, { payload: { categoryId } }) {
-    const { categories } = state;
+  selectCategory(state, { payload }) {
     return {
       ...state,
-      selectedCategory: categories.find(equal('id', categoryId)),
+      selectedCategory: state.categories.find(equal('id', payload.categoryId)),
     };
   },
 };
