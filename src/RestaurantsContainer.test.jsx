@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
 
@@ -12,8 +13,12 @@ test('RestaurantsContainer', () => {
   }));
 
   const { container } = render((
-    <RestaurantsContainer />
+    <MemoryRouter>
+      <RestaurantsContainer />
+    </MemoryRouter>
   ));
 
   expect(container).toHaveTextContent('마법사주방');
 });
+
+// TODO: 레스로탕 name 클릭시 화면 전환 테스트
