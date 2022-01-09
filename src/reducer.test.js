@@ -81,7 +81,7 @@ describe('reducer', () => {
         address: '서울시 강남구 역삼동',
         menuItems: ['탕수육', '팔보채'],
       };
-      
+     
       const state = reducer(initialState, setRestaurant(restaurant));
 
       expect(state.restaurant).toEqual(restaurant);
