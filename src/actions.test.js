@@ -8,7 +8,10 @@ import {
   setCategories,
   loadRestaurants,
   setRestaurants,
+  loadRestaurant,
+  setRestaurant,
 } from './actions';
+import restaurant from '../fixtures/restaurant';
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
@@ -80,6 +83,18 @@ describe('actions', () => {
         const actions = store.getActions();
 
         expect(actions).toHaveLength(0);
+      });
+    });
+  });
+  describe('loadRestaurant', () => {
+    context('restaurantId가 주어지면', () => {
+      it('action을 실행한다.', async () => {
+        const restaurantId = 1;
+        await store.dispatch(loadRestaurant(restaurantId));
+
+        const actions = store.getActions();
+
+        expect(actions[0]).toEqual(setRestaurant(restaurant));
       });
     });
   });
