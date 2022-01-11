@@ -16,7 +16,6 @@ export default function RestaurantsContainer() {
           </Link>
         </li>
       ))}
-      ;
     </ul>
   );
 }
