@@ -14,12 +14,12 @@ export default function RestaurantDetailContainer({ restaurantId }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadRestauarantDetail({ restaurantId }));
-  });
+    dispatch(loadRestauarantDetail(restaurantId));
+  }, []);
 
   const restaurant = useSelector(get('restaurant'));
 
-  if (!restaurant) {
+  if (restaurant === null || !restaurant) {
     return (
       <p>Loading...</p>
     );

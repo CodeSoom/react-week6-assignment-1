@@ -57,10 +57,9 @@ export function loadInitialData() {
   };
 }
 
-export function loadRestauarantDetail({ restaurantId }) {
+export function loadRestauarantDetail(restaurantId) {
   return async (dispatch) => {
-    dispatch(setRestaurantDetail(null));
-    const restaurant = await fetchRestaurantDetail({ restaurantId });
+    const restaurant = await fetchRestaurantDetail(restaurantId);
     dispatch(setRestaurantDetail(restaurant));
   };
 }

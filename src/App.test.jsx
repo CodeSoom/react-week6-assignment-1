@@ -67,7 +67,7 @@ describe('App', () => {
     });
 
     context('with path /restaurant/1', () => {
-      it('renders NotFoundPage', () => {
+      it('renders RestaurantDetailPage', () => {
         const { container } = renderApp({ path: '/restaurant/1' });
 
         expect(container).toHaveTextContent('양천주가');
