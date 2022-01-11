@@ -73,9 +73,9 @@ describe('App', () => {
       });
     });
 
-    context('with path /restaurant/1', () => {
+    context('with path /restaurants/1', () => {
       it('renders RestaurantDetailPage', () => {
-        const { container } = renderApp({ path: '/restaurant/1' });
+        const { container } = renderApp({ path: '/restaurants/1' });
 
         expect(container).toHaveTextContent('양천주가');
       });

@@ -14,7 +14,7 @@ test('RestaurantsContainer', () => {
   }));
 
   const { container } = render((
-    <MemoryRouter initialEntries={['/restaurant/1']}>
+    <MemoryRouter initialEntries={['/restaurants/1']}>
       <RestaurantsContainer />
     </MemoryRouter>
   ));
