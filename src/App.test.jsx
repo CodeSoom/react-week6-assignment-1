@@ -25,6 +25,13 @@ describe('App', () => {
         { id: 1, name: '서울' },
       ],
       categories: [],
+      restaurant: {
+        id: 1,
+        name: '양천주가',
+        menuItems: [
+          { id: 1, name: '탕수육' },
+        ],
+      },
       restaurants: [],
     }));
   });
