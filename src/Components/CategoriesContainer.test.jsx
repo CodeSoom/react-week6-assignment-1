@@ -2,9 +2,11 @@ import { render, fireEvent } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import given from 'given2';
+
 import CategoriesContainer from './CategoriesContainer';
 
-import CATEGORIES from '../fixtures/categories';
+import CATEGORIES from '../../fixtures/categories';
 
 describe('CategoriesContainer', () => {
   const dispatch = jest.fn();
@@ -14,36 +16,32 @@ describe('CategoriesContainer', () => {
   beforeEach(() => {
     dispatch.mockClear();
     useDispatch.mockImplementation(() => dispatch);
+
+    useSelector.mockImplementation((selector) => selector({
+      categories: CATEGORIES,
+      selectedCategory: given.selectedCategory,
+    }));
   });
 
+  const renderCategoriesContainer = () => (render((
+    <CategoriesContainer />
+  )));
+
   context('with selectedCategory', () => {
-    beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({
-        categories: CATEGORIES,
-        selectedCategory: KOREAN_FOOD,
-      }));
-    });
+    given('selectedCategory', () => KOREAN_FOOD);
 
     it('renders categories with selected category', () => {
-      const { container } = render((
-        <CategoriesContainer />
-      ));
+      const { container } = renderCategoriesContainer();
 
       expect(container).toHaveTextContent(`${KOREAN_FOOD.name}(V)`);
     });
   });
 
   context('without selectedCategory', () => {
-    beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({
-        categories: CATEGORIES,
-      }));
-    });
+    given('selectedCategory', () => null);
 
     it('renders categories with selected category', () => {
-      const { container, getByText } = render((
-        <CategoriesContainer />
-      ));
+      const { container, getByText } = renderCategoriesContainer();
 
       expect(container).toHaveTextContent(KOREAN_FOOD.name);
 
