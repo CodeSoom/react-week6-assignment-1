@@ -9,7 +9,7 @@ import {
   loadRestaurants,
   setRestaurants,
   setRestaurantDetail,
-  loadRestauarantDetail,
+  loadRestaurantDetail,
 } from './actions';
 
 const middlewares = [thunk];
@@ -35,14 +35,14 @@ describe('actions', () => {
     });
   });
 
-  describe('loadRestauarantDetail', () => {
+  describe('loadRestaurantDetail', () => {
     beforeEach(() => {
       store = mockStore({
         selectedRestaurant: { id: 1, name: '양천주가' },
       });
 
       it('runs setRestaurantDetail', async () => {
-        await store.dispatch(loadRestauarantDetail());
+        await store.dispatch(loadRestaurantDetail());
 
         const actions = store.getActions();
 

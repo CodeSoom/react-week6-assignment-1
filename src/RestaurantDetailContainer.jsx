@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
-  loadRestauarantDetail,
+  loadRestaurantDetail,
 } from './actions';
 
 import Restaurant from './Restaurant';
@@ -14,7 +14,7 @@ export default function RestaurantDetailContainer({ restaurantId }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadRestauarantDetail(restaurantId));
+    dispatch(loadRestaurantDetail(restaurantId));
   }, []);
 
   const restaurant = useSelector(get('restaurant'));
