@@ -40,14 +40,14 @@ describe('actions', () => {
       store = mockStore({
         selectedRestaurant: { id: 1, name: '양천주가' },
       });
+    });
 
-      it('runs setRestaurantDetail', async () => {
-        await store.dispatch(loadRestaurantDetail());
+    it('runs setRestaurantDetail', async () => {
+      await store.dispatch(loadRestaurantDetail());
 
-        const actions = store.getActions();
+      const actions = store.getActions();
 
-        expect(actions[0]).toEqual(setRestaurantDetail([]));
-      });
+      expect(actions[0]).toEqual(setRestaurantDetail([]));
     });
   });
 
