@@ -1,4 +1,7 @@
 import { useEffect } from 'react';
+
+import { useNavigate } from 'react-router-dom';
+
 import { useDispatch } from 'react-redux';
 
 import {
@@ -10,17 +13,25 @@ import CategoriesContainer from '../Container/CategoriesContainer';
 import RestaurantsContainer from '../Container/RestaurantsContainer';
 
 export default function RestaurantsPage() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(loadInitialData());
-  });
+  }, []);
+
+  function handleClickRestaurant(restaurant) {
+    // TODO: 이동
+    const url = `/restaurants/${restaurant.id}`;
+
+    navigate(url);
+  }
 
   return (
     <div>
       <RegionsContainer />
       <CategoriesContainer />
-      <RestaurantsContainer />
+      <RestaurantsContainer onClickRestaurant={handleClickRestaurant} />
     </div>
   );
 }
