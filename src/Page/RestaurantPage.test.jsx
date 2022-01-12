@@ -26,6 +26,6 @@ describe('RestaurantPage', () => {
       <RestaurantPage params={params} />
     ));
 
-    expect(container).toHaveTextContent('레스토랑 1');
+    expect(container).toHaveTextContent('레스토랑');
   });
 });

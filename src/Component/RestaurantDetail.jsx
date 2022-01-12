@@ -1,11 +1,9 @@
 export default function RestaurantDetail({ restaurant }) {
   return (
     <div>
-      레스토랑
-      {' '}
-      {restaurant.id}
-      {' '}
-      {restaurant.name}
+      <h4>레스토랑</h4>
+      <p>{restaurant.name}</p>
+      <p>{restaurant.address}</p>
     </div>
   );
 }
