@@ -1,32 +1,36 @@
-import { useEffect } from 'react';
+import { Link, Route, Routes } from 'react-router-dom';
 
-import { useDispatch } from 'react-redux';
-
-import RegionsContainer from './RegionsContainer';
-import CategoriesContainer from './CategoriesContainer';
-import RestaurantsContainer from './RestaurantsContainer';
-
-import {
-  loadInitialData,
-} from './actions';
-
-// 0. 지역, 분류 목록을 얻기
-// 1. 지역 선택 - Regions <- API (0)
-// 2. 분류 선택 - Categories - 한식, 중식, 일식, ... <- API (0)
-// 3. 식당 목록 - Restaurants <- API (with region, category) -> 1, 2 모두 완료된 경우
+import RestaurantsPage from './RestaurantsPage';
+import HomePage from './HomePage';
+import AboutPage from './AboutPage';
+import NotFoundPage from './NotFoundPage';
+import RestaurantPage from './RestaurantPage';
 
 export default function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(loadInitialData());
-  });
+  // const { location: {pathname } } = window;
+  // const MyComponent = {
+  //   '/': HomePage,
+  //   '/about': AboutPage,
+  //   '/restaurants': RestaurantsPage,
+  // }[pathname] || NotFoundPage;
+  // react-router-dom 버전업되면서 바뀐점.
+  // 1. Swtich => Routes
+  // 2. exact 는 더이상 사용하지 않는다. (반대로 중첩라우팅 매칭 방식 *를 사용)
+  // 3. component => element
+  // 4. element 작성방식은 jsx
 
   return (
     <div>
-      <RegionsContainer />
-      <CategoriesContainer />
-      <RestaurantsContainer />
+      <header>
+        <h1><Link to="/">헤더 영역</Link></h1>
+      </header>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/restaurants" element={<RestaurantsPage />} />
+        <Route path="/restaurants/:restaurantId" element={<RestaurantPage />} />
+        <Route path="/*" element={<NotFoundPage />} />
+      </Routes>
     </div>
   );
 }
