@@ -1,30 +1,15 @@
 import reducer from './reducer';
 
 import {
-  setRegions,
   setCategories,
-  setRestaurants,
+  setRegions,
   selectRegion,
   selectCategory,
+  setRestaurants,
+  setRestaurant,
 } from './actions';
 
 describe('reducer', () => {
-  context('when previous state is undefined', () => {
-    const initialState = {
-      regions: [],
-      categories: [],
-      restaurants: [],
-      selectedRegion: null,
-      selectedCategory: null,
-    };
-
-    it('returns initialState', () => {
-      const state = reducer(undefined, { type: 'action' });
-
-      expect(state).toEqual(initialState);
-    });
-  });
-
   describe('setRegions', () => {
     it('changes regions', () => {
       const initialState = {
@@ -57,6 +42,24 @@ describe('reducer', () => {
     });
   });
 
+  describe('selectRegion', () => {
+    it('changes selected Regions', () => {
+      const initialState = {
+        regions: [
+          { id: 1, name: '서울' },
+        ],
+        selectedRegion: null,
+      };
+
+      const state = reducer(initialState, selectRegion(1));
+
+      expect(state.selectedRegion).toEqual({
+        id: 1,
+        name: '서울',
+      });
+    });
+  });
+
   describe('setRestaurants', () => {
     it('changes restaurants', () => {
       const initialState = {
@@ -73,21 +76,18 @@ describe('reducer', () => {
     });
   });
 
-  describe('selectRegion', () => {
-    it('changes selected region', () => {
+  describe('setRestaurant', () => {
+    it('changes restaurant', () => {
       const initialState = {
-        regions: [
-          { id: 1, name: '서울' },
-        ],
-        selectedRegion: null,
+        restaurant: null,
       };
 
-      const state = reducer(initialState, selectRegion(1));
+      const restaurant = { id: 1, name: '마법사주방' };
 
-      expect(state.selectedRegion).toEqual({
-        id: 1,
-        name: '서울',
-      });
+      const state = reducer(initialState, setRestaurant(restaurant));
+
+      expect(state.restaurant.id).toBe(1);
+      expect(state.restaurant.name).toBe('마법사주방');
     });
   });
 

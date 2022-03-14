@@ -1,11 +1,11 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import {
   selectCategory,
   loadRestaurants,
-} from './actions';
+} from '../actions';
 
-import { get } from './utils';
+import { get } from '../utils';
 
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ export default function CategoriesContainer() {
   const categories = useSelector(get('categories'));
   const selectedCategory = useSelector(get('selectedCategory'));
 
-  function handleClick(categoryId) {
+  function handleClickButton(categoryId) {
     dispatch(selectCategory(categoryId));
     dispatch(loadRestaurants());
   }
@@ -24,14 +24,14 @@ export default function CategoriesContainer() {
         <li key={category.id}>
           <button
             type="button"
-            onClick={() => handleClick(category.id)}
+            onClick={() => handleClickButton(category.id)}
           >
             {category.name}
-            {selectedCategory ? (
-              <>
-                {category.id === selectedCategory.id ? '(V)' : null}
-              </>
-            ) : null}
+            <>
+              {selectedCategory && (
+                category.id === selectedCategory.id ? '(V)' : null
+              )}
+            </>
           </button>
         </li>
       ))}

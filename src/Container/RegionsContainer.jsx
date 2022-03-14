@@ -1,11 +1,11 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import {
   selectRegion,
   loadRestaurants,
-} from './actions';
+} from '../actions';
 
-import { get } from './utils';
+import { get } from '../utils';
 
 export default function RegionsContainer() {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ export default function RegionsContainer() {
   const regions = useSelector(get('regions'));
   const selectedRegion = useSelector(get('selectedRegion'));
 
-  function handleClick(regionId) {
+  function handleClickButton(regionId) {
     dispatch(selectRegion(regionId));
     dispatch(loadRestaurants());
   }
@@ -24,14 +24,14 @@ export default function RegionsContainer() {
         <li key={region.id}>
           <button
             type="button"
-            onClick={() => handleClick(region.id)}
+            onClick={() => handleClickButton(region.id)}
           >
             {region.name}
-            {selectedRegion ? (
-              <>
-                {region.id === selectedRegion.id ? '(V)' : null}
-              </>
-            ) : null}
+            <>
+              {selectedRegion && (
+                region.id === selectedRegion.id ? '(V)' : null
+              )}
+            </>
           </button>
         </li>
       ))}

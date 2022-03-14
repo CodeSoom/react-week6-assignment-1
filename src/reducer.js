@@ -4,45 +4,46 @@ const initialState = {
   regions: [],
   categories: [],
   restaurants: [],
+  restaurant: null,
   selectedRegion: null,
   selectedCategory: null,
 };
 
 const reducers = {
-  setRegions(state, { payload: { regions } }) {
+  setRegions(state, { payload }) {
     return {
       ...state,
-      regions,
+      regions: payload.regions,
     };
   },
-
-  setCategories(state, { payload: { categories } }) {
+  setCategories(state, { payload }) {
     return {
       ...state,
-      categories,
+      categories: payload.categories,
     };
   },
-
-  setRestaurants(state, { payload: { restaurants } }) {
+  setRestaurants(state, { payload }) {
     return {
       ...state,
-      restaurants,
+      restaurants: payload.restaurants,
     };
   },
-
-  selectRegion(state, { payload: { regionId } }) {
-    const { regions } = state;
+  setRestaurant(state, { payload }) {
     return {
       ...state,
-      selectedRegion: regions.find(equal('id', regionId)),
+      restaurant: payload.restaurant,
     };
   },
-
-  selectCategory(state, { payload: { categoryId } }) {
-    const { categories } = state;
+  selectRegion(state, { payload }) {
     return {
       ...state,
-      selectedCategory: categories.find(equal('id', categoryId)),
+      selectedRegion: state.regions.find(equal('id', payload.regionId)),
+    };
+  },
+  selectCategory(state, { payload }) {
+    return {
+      ...state,
+      selectedCategory: state.categories.find(equal('id', payload.categoryId)),
     };
   },
 };
