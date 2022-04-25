@@ -18,4 +18,12 @@ describe('RetaurantPage', () => {
 
     expect(container).toHaveTextContent('성전떡볶이');
   });
+
+  it('renders restaurant address', () => {
+    const { container } = render((
+      <RestaurantPage />
+    ));
+
+    expect(container).toHaveTextContent('주소: 서울 강남구 강남대로94길 21');
+  });
 });
