@@ -2,10 +2,25 @@ import { render } from '@testing-library/react';
 
 import { MemoryRouter } from 'react-router-dom';
 
+import { useDispatch, useSelector } from 'react-redux';
+
 import App from './App';
 
 describe('App', () => {
   context('with path /', () => {
+    beforeEach(() => {
+      const dispatch = jest.fn();
+
+      useDispatch.mockImplementation(() => dispatch);
+      useSelector.mockImplementation((selector) => selector({
+        regions: [
+          { id: 1, name: '서울' },
+        ],
+        categories: [],
+        restaurants: [],
+      }));
+    });
+
     it('renders the home page', () => {
       const { container } = render((
         <MemoryRouter initialEntries={['/']}>
