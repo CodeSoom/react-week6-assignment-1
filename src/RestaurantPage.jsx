@@ -13,6 +13,14 @@ export default function RestaurantPage() {
         {' '}
         {restaurant.address}
       </p>
+      <h3>메뉴</h3>
+      <ul>
+        {restaurant.menuItems.map((menu) => (
+          <li key={menu.id}>
+            {menu.name}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
