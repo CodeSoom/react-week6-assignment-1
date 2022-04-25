@@ -28,4 +28,16 @@ describe('App', () => {
       expect(container).toHaveTextContent('About');
     });
   });
+
+  context('with path /restaurants', () => {
+    it('renders the restaurants page', () => {
+      const { container } = render((
+        <MemoryRouter initialEntries={['/restaurants']}>
+          <App />
+        </MemoryRouter>
+      ));
+
+      expect(container).toHaveTextContent('서울');
+    });
+  });
 });
