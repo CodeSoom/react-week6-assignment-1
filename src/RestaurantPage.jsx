@@ -5,17 +5,19 @@ export default function RestaurantPage() {
     restaurant: selector.restaurant,
   }));
 
+  const { name, address, menuItems } = restaurant;
+
   return (
     <div>
-      <h2>{restaurant.name}</h2>
+      <h2>{name}</h2>
       <p>
         주소:
         {' '}
-        {restaurant.address}
+        {address}
       </p>
       <h3>메뉴</h3>
       <ul>
-        {restaurant.menuItems.map((menu) => (
+        {menuItems.map((menu) => (
           <li key={menu.id}>
             {menu.name}
           </li>
