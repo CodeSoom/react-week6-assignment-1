@@ -17,9 +17,9 @@ function NotFoundPage() {
 export default function App() {
   return (
     <Routes>
-      <Route exact path="/" element={<HomePage />} />
+      <Route path="/" element={<HomePage />} />
       <Route path="/restaurants" element={<RestaurantsPage />} />
-      <Route element={<NotFoundPage />} />
+      <Route path="/*" element={<NotFoundPage />} />
     </Routes>
   );
 }
