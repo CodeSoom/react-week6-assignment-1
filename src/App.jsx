@@ -1,5 +1,6 @@
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
+import Header from './Header';
 import RestaurantsPage from './RestaurantsPage';
 
 function HomePage() {
@@ -17,11 +18,7 @@ function NotFoundPage() {
 export default function App() {
   return (
     <>
-      <header>
-        <h1>
-          <Link to="/">헤더</Link>
-        </h1>
-      </header>
+      <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/restaurants" element={<RestaurantsPage />} />
