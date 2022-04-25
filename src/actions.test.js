@@ -24,9 +24,7 @@ describe('actions', () => {
   });
 
   describe('loadInitialData', () => {
-    beforeEach(() => {
-      given('store', () => mockStore({}));
-    });
+    given('store', () => mockStore({}));
 
     it('runs setRegions and setCategories', async () => {
       await given.store.dispatch(loadInitialData());
@@ -40,12 +38,10 @@ describe('actions', () => {
 
   describe('loadRestaurants', () => {
     context('with selectedRegion and selectedCategory', () => {
-      beforeEach(() => {
-        given('store', () => mockStore({
-          selectedRegion: { id: 1, name: '서울' },
-          selectedCategory: { id: 1, name: '한식' },
-        }));
-      });
+      given('store', () => mockStore({
+        selectedRegion: { id: 1, name: '서울' },
+        selectedCategory: { id: 1, name: '한식' },
+      }));
 
       it('runs setRestaurants', async () => {
         await given.store.dispatch(loadRestaurants());
@@ -57,11 +53,9 @@ describe('actions', () => {
     });
 
     context('without selectedRegion', () => {
-      beforeEach(() => {
-        given('store', () => mockStore({
-          selectedCategory: { id: 1, name: '한식' },
-        }));
-      });
+      given('store', () => mockStore({
+        selectedCategory: { id: 1, name: '한식' },
+      }));
 
       it('does\'nt run any actions', async () => {
         await given.store.dispatch(loadRestaurants());
@@ -73,11 +67,9 @@ describe('actions', () => {
     });
 
     context('without selectedCategory', () => {
-      beforeEach(() => {
-        given('store', () => mockStore({
-          selectedRegion: { id: 1, name: '서울' },
-        }));
-      });
+      given('store', () => mockStore({
+        selectedRegion: { id: 1, name: '서울' },
+      }));
 
       it('does\'nt run any actions', async () => {
         await given.store.dispatch(loadRestaurants());
@@ -91,13 +83,11 @@ describe('actions', () => {
 
   describe('loadRestaurant', () => {
     context('with selecte restaurant', () => {
-      beforeEach(() => {
-        given('store', () => mockStore({
-          selectedRestaurant: {
-            id: 1, name: '김밥제국', category: '분식', address: '서울시 강남구 역삼동',
-          },
-        }));
-      });
+      given('store', () => mockStore({
+        selectedRestaurant: {
+          id: 1, name: '김밥제국', category: '분식', address: '서울시 강남구 역삼동',
+        },
+      }));
 
       it('runs fetch restaurant and setRestaurant', async () => {
         await given.store.dispatch(loadRestaurant());
@@ -109,9 +99,7 @@ describe('actions', () => {
     });
 
     context('without selecte restaurant', () => {
-      beforeEach(() => {
-        given('store', () => mockStore({}));
-      });
+      given('store', () => mockStore({}));
 
       it('runs fetch restaurant and setRestaurant', async () => {
         await given.store.dispatch(loadRestaurant());
