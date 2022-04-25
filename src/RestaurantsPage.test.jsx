@@ -4,10 +4,9 @@ import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { MemoryRouter } from 'react-router-dom';
-import App from './App';
+import RestaurantsPage from './RestaurantsPage';
 
-test('App', () => {
+test('RestaurantsPage', () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
@@ -24,9 +23,12 @@ test('App', () => {
     ],
   }));
 
-  render((
-    <MemoryRouter>
-      <App />
-    </MemoryRouter>
+  const { queryByText } = render((
+    <RestaurantsPage />
   ));
+
+  expect(dispatch).toBeCalled();
+
+  expect(queryByText('서울')).not.toBeNull();
+  expect(queryByText('한식')).not.toBeNull();
 });
