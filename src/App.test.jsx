@@ -20,6 +20,15 @@ describe('App', () => {
     restaurants: [
       { id: 1, name: '마법사주방' },
     ],
+    restaurant: {
+      id: 1,
+      categoryId: 5,
+      name: '마법사주방',
+      address: '서울 강남구 강남대로94길 21',
+      menuItems: [],
+      reviews: [],
+      information: '성전떡볶이 in 서울 강남구 강남대로94길 21',
+    },
   }));
 
   const renderApp = () => render((
@@ -68,5 +77,15 @@ describe('App', () => {
     expect(container).toHaveTextContent('서울');
     expect(container).toHaveTextContent('한식');
     expect(container).toHaveTextContent('마법사주방');
+  });
+
+  it('listens for click event on route /restaurants/[id]', () => {
+    const { container, getByText } = renderApp();
+
+    fireEvent.click(getByText('Restaurants'));
+    fireEvent.click(getByText('마법사주방'));
+
+    expect(container).toHaveTextContent('마법사주방');
+    expect(container).toHaveTextContent('서울 강남구 강남대로94길 21');
   });
 });
