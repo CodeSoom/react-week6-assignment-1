@@ -16,4 +16,16 @@ describe('App', () => {
       expect(container).toHaveTextContent('Home');
     });
   });
+
+  context('with path /about', () => {
+    it('renders the about page', () => {
+      const { container } = render((
+        <MemoryRouter initialEntries={['/about']}>
+          <App />
+        </MemoryRouter>
+      ));
+
+      expect(container).toHaveTextContent('About');
+    });
+  });
 });
