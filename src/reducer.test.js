@@ -153,7 +153,7 @@ describe('reducer', () => {
     it('changes select restaurant', () => {
       const state = reducer(initialState, selectRestaurant(1));
 
-      expect(state.selectRestaurant).toEqual({
+      expect(state.selectedRestaurant).toEqual({
         id: 1, name: '김밥제국', category: '분식', address: '서울시 강남구 역삼동',
       });
     });

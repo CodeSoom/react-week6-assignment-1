@@ -60,7 +60,7 @@ const reducers = {
 
     return {
       ...state,
-      selectRestaurant: restaurants.find(equal('id', restaurantId)),
+      selectedRestaurant: restaurants.find(equal('id', restaurantId)),
     };
   },
 };
