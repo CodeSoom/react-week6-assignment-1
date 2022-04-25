@@ -1,27 +1,22 @@
-import { useEffect } from 'react';
-
-import { useDispatch } from 'react-redux';
-
-import RegionsContainer from './RegionsContainer';
-import CategoriesContainer from './CategoriesContainer';
-import RestaurantsContainer from './RestaurantsContainer';
-
 import {
-  loadInitialData,
-} from './actions';
+  Routes,
+  Route,
+  Link,
+} from 'react-router-dom';
+
+import HomePage from './HomePage';
 
 export default function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(loadInitialData());
-  });
-
   return (
     <div>
-      <RegionsContainer />
-      <CategoriesContainer />
-      <RestaurantsContainer />
+      <header>
+        <h1>
+          <Link to="/">헤더 영역</Link>
+        </h1>
+      </header>
+      <Routes>
+        <Route exact path="/" element={<HomePage />} />
+      </Routes>
     </div>
   );
 }
