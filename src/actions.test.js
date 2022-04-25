@@ -99,7 +99,7 @@ describe('actions', () => {
         }));
       });
 
-      it('run fetch restaurant and setRestaurant', async () => {
+      it('runs fetch restaurant and setRestaurant', async () => {
         await given.store.dispatch(loadRestaurant());
 
         const actions = given.store.getActions();
@@ -113,7 +113,7 @@ describe('actions', () => {
         given('store', () => mockStore({}));
       });
 
-      it('run fetch restaurant and setRestaurant', async () => {
+      it('runs fetch restaurant and setRestaurant', async () => {
         await given.store.dispatch(loadRestaurant());
 
         const actions = given.store.getActions();
