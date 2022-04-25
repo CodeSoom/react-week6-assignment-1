@@ -1,28 +1,35 @@
-// import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-// import { useSelector } from 'react-redux';
-
-// import { get } from './utils';
+import { get } from './utils';
 
 export default function RestaurantDetailPage() {
-  // TODO: make it work.
-  //  const restaurantdetail = useSelector(get('restaurantdetail'));
+  const restaurantDetail = useSelector(get('restaurantDetail'));
+
+  if (!restaurantDetail) {
+    return (
+      <p>Loading...</p>
+    );
+  }
 
   return (
     <>
       <h2>
-        양천주가
+        {restaurantDetail.name}
       </h2>
       <p>
-        주소: 서울 강남구
+        주소:
+        {' '}
+        {restaurantDetail.address}
       </p>
       <h3>
         메뉴
       </h3>
       <ul>
-        <li>
-          탕수육
-        </li>
+        {restaurantDetail.menuItems.map((menuItem) => (
+          <li>
+            {menuItem.name}
+          </li>
+        ))}
       </ul>
     </>
   );
