@@ -10,16 +10,18 @@ describe('App', () => {
     </MemoryRouter>
   ));
 
-  it('renders title', () => {
+  it('renders header', () => {
+    const { container } = renderApp();
+
+    expect(container).toHaveTextContent('헤더');
+  });
+
+  it('renders HomePage', () => {
     const { container } = renderApp();
 
     expect(container).toHaveTextContent('Home');
-  });
-
-  it('renders about link', () => {
-    const { container } = renderApp();
-
     expect(container).toHaveTextContent('About');
+    expect(container).toHaveTextContent('Restaurants');
   });
 
   it('listens for click event on route /about', () => {
