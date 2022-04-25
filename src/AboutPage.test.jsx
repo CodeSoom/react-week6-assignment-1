@@ -17,7 +17,6 @@ describe('AboutPage', () => {
     const { container } = renderAboutPage();
 
     expect(container).toHaveTextContent('About');
-
     expect(container).toHaveTextContent('About 페이지 입니다.');
   });
 });
