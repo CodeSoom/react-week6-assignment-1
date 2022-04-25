@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import RestaurantsPage from './RestaurantsPage';
 
@@ -16,12 +16,10 @@ function NotFoundPage() {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/restaurants" element={<RestaurantsPage />} />
-        <Route exact path="/" element={<HomePage />} />
-        <Route element={<NotFoundPage />} />
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route exact path="/" element={<HomePage />} />
+      <Route path="/restaurants" element={<RestaurantsPage />} />
+      <Route element={<NotFoundPage />} />
+    </Routes>
   );
 }
