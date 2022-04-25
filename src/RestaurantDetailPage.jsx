@@ -24,23 +24,25 @@ export default function RestaurantDetailPage() {
     );
   }
 
+  const { name, address, menuItems } = restaurantDetail;
+
   return (
     <>
       <h2>
-        {restaurantDetail.name}
+        {name}
       </h2>
       <p>
         주소:
         {' '}
-        {restaurantDetail.address}
+        {address}
       </p>
       <h3>
         메뉴
       </h3>
       <ul>
-        {restaurantDetail.menuItems?.map((menuItem) => (
-          <li key={menuItem.id}>
-            {menuItem.name}
+        {menuItems?.map(({ id, name: menuName }) => (
+          <li key={id}>
+            {menuName}
           </li>
         ))}
       </ul>
