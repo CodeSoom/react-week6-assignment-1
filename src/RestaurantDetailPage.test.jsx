@@ -16,21 +16,19 @@ describe('RestaurantDetailPage', () => {
   }
 
   useSelector.mockImplementation((selector) => selector({
-    restaurants: [
-      {
-        id: 1,
-        categoryId: 1,
-        name: '양천주가',
-        address: '서울 강남구',
-        menuItems: [
-          {
-            id: 1,
-            retaurantId: 1,
-            name: '탕수육',
-          },
-        ],
-      },
-    ],
+    restaurantDetail: {
+      id: 1,
+      categoryId: 1,
+      name: '양천주가',
+      address: '서울 강남구',
+      menuItems: [
+        {
+          id: 1,
+          retaurantId: 1,
+          name: '탕수육',
+        },
+      ],
+    },
   }));
 
   it('renders restaurant name, address, and menus', () => {
