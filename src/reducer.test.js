@@ -130,7 +130,7 @@ describe('reducer', () => {
     it('changes restaurant', () => {
       const state = reducer(initialState, setRestaurant(restaurant));
 
-      expect(state).toEqual({
+      expect(state.restaurant).toEqual({
         id: 2,
         categoryId: 5,
         name: '성전떡볶이',
