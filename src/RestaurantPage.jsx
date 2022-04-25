@@ -8,6 +8,11 @@ export default function RestaurantPage() {
   return (
     <div>
       <h2>{restaurant.name}</h2>
+      <p>
+        주소:
+        {' '}
+        {restaurant.address}
+      </p>
     </div>
   );
 }
