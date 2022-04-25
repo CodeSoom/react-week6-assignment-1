@@ -2,7 +2,7 @@ import { MemoryRouter } from 'react-router-dom';
 
 import { render } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantDetailPage from './RestaurantDetailPage';
 
@@ -14,6 +14,10 @@ describe('RestaurantDetailPage', () => {
       </MemoryRouter>
     ));
   }
+
+  const dispatch = jest.fn();
+
+  useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
     restaurantDetail: {
@@ -32,7 +36,7 @@ describe('RestaurantDetailPage', () => {
   }));
 
   it('renders restaurant name, address, and menus', () => {
-    const { container } = renderRestaurantDetailPage();
+    const { container } = renderRestaurantDetailPage({ restaurantId: 1 });
 
     expect(container).toHaveTextContent('양천주가');
     expect(container).toHaveTextContent('주소: 서울 강남구');
