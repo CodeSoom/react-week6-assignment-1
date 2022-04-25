@@ -87,7 +87,6 @@ export function loadRestaurant() {
   return async (dispatch, getState) => {
     const { selectedRestaurant } = getState();
 
-    console.log(selectedRestaurant);
     if (!selectedRestaurant) {
       return;
     }
