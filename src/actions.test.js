@@ -87,15 +87,10 @@ describe('actions', () => {
   });
 
   describe('loadRestaurantDetail', () => {
-    context('with selectedRestaurantId', () => {
+    context('with selectedRestaurant', () => {
       beforeEach(() => {
         store = mockStore({
-          selectedRestaurant: {
-            id: 1,
-            categoryId: 1,
-            name: '양천주가',
-            address: '서울 강남구',
-          },
+          selectedRestaurant: { id: 1, name: '양천주가' },
         });
       });
 
@@ -108,7 +103,7 @@ describe('actions', () => {
       });
     });
 
-    context('without selectedRestaurantId', () => {
+    context('without selectedRestaurant', () => {
       beforeEach(() => {
         store = mockStore({});
       });

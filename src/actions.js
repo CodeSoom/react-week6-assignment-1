@@ -75,3 +75,20 @@ export function loadRestaurants() {
     dispatch(setRestaurants(restaurants));
   };
 }
+
+export function loadRestaurantDetail() {
+  return async (dispatch, getState) => {
+    const {
+      selectedRestaurant: restaurant,
+    } = getState();
+
+    if (!restaurant) {
+      return;
+    }
+
+    const restaurantDetail = await fetchRestaurantDetail({
+      restaurantId: restaurant.id,
+    });
+    dispatch(setRestaurants(restaurantDetail));
+  };
+}
