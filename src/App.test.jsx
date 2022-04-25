@@ -85,6 +85,6 @@ describe('App', () => {
     fireEvent.click(getByText('Restaurants'));
     fireEvent.click(getByText('마법사주방'));
 
-    expect(container).toHaveTextContent('RestaurantPage');
+    expect(container).toHaveTextContent('RestaurantPage : 1');
   });
 });
