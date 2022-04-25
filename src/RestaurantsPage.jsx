@@ -8,6 +8,7 @@ import RestaurantsContainer from './RestaurantsContainer';
 
 import {
   loadInitialData,
+  loadRestaurantDetail,
 } from './actions';
 
 export default function RestaurantsPage() {
@@ -15,6 +16,7 @@ export default function RestaurantsPage() {
 
   useEffect(() => {
     dispatch(loadInitialData());
+    dispatch(loadRestaurantDetail());
   });
 
   return (

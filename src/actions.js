@@ -33,17 +33,24 @@ export function setRestaurantDetail(restaurantDetail) {
   };
 }
 
-export function selectRegion(regionId) {
+export function selectRegion({ id: regionId }) {
   return {
     type: 'selectRegion',
     payload: { regionId },
   };
 }
 
-export function selectCategory(categoryId) {
+export function selectCategory({ id: categoryId }) {
   return {
     type: 'selectCategory',
     payload: { categoryId },
+  };
+}
+
+export function selectRestaurant({ id: restaurantId }) {
+  return {
+    type: 'selectRestaurant',
+    payload: { restaurantId },
   };
 }
 
@@ -86,9 +93,13 @@ export function loadRestaurantDetail() {
       return;
     }
 
+    if (!restaurant.id) {
+      return;
+    }
+
     const restaurantDetail = await fetchRestaurantDetail({
       restaurantId: restaurant.id,
     });
-    dispatch(setRestaurants(restaurantDetail));
+    dispatch(setRestaurantDetail(restaurantDetail));
   };
 }

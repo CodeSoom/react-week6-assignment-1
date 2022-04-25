@@ -14,7 +14,7 @@ export default function RegionsContainer() {
   const selectedRegion = useSelector(get('selectedRegion'));
 
   function handleClick(regionId) {
-    dispatch(selectRegion(regionId));
+    dispatch(selectRegion({ id: regionId }));
     dispatch(loadRestaurants());
   }
 

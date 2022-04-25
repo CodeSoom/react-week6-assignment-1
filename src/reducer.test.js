@@ -119,7 +119,7 @@ describe('reducer', () => {
       given('categories', () => []);
       given('restaurants', () => []);
 
-      const state = reducer(given.initialState, selectRegion(1));
+      const state = reducer(given.initialState, selectRegion({ id: 1 }));
 
       expect(state.selectedRegion).toEqual({
         id: 1,
@@ -136,7 +136,7 @@ describe('reducer', () => {
       ]);
       given('restaurants', () => []);
 
-      const state = reducer(given.initialState, selectCategory(1));
+      const state = reducer(given.initialState, selectCategory({ id: 1 }));
 
       expect(state.selectedCategory).toEqual({
         id: 1,
@@ -154,7 +154,7 @@ describe('reducer', () => {
         name: '양천주가',
       }]);
 
-      const state = reducer(given.initialState, selectRestaurant(1));
+      const state = reducer(given.initialState, selectRestaurant({ id: 1 }));
 
       expect(state.selectedRestaurant).toEqual({
         id: 1,

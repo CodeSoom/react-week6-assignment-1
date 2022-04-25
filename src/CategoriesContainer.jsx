@@ -14,7 +14,7 @@ export default function CategoriesContainer() {
   const selectedCategory = useSelector(get('selectedCategory'));
 
   function handleClick(categoryId) {
-    dispatch(selectCategory(categoryId));
+    dispatch(selectCategory({ id: categoryId }));
     dispatch(loadRestaurants());
   }
 
