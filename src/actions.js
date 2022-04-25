@@ -93,10 +93,6 @@ export function loadRestaurantDetail() {
       return;
     }
 
-    if (!restaurant.id) {
-      return;
-    }
-
     const restaurantDetail = await fetchRestaurantDetail({
       restaurantId: restaurant.id,
     });
