@@ -9,22 +9,25 @@ import {
   setRestaurantDetail,
   selectRegion,
   selectCategory,
+  selectRestaurant,
 } from './actions';
 
 describe('reducer', () => {
   given('initialState', () => ({
     regions: given.regions,
     categories: given.categories,
-    restaurants: [],
+    restaurants: given.restaurants,
     restaurantDetail: {},
     selectedRegion: null,
     selectedCategory: null,
+    selectedRestaurant: null,
   }));
 
   context('when previous state is undefined', () => {
     it('returns initialState', () => {
       given('regions', () => []);
       given('categories', () => []);
+      given('restaurants', () => []);
 
       const state = reducer(undefined, { type: 'action' });
 
@@ -36,6 +39,7 @@ describe('reducer', () => {
     it('changes regions', () => {
       given('regions', () => []);
       given('categories', () => []);
+      given('restaurants', () => []);
 
       const regions = [
         { id: 1, name: '서울' },
@@ -52,6 +56,7 @@ describe('reducer', () => {
     it('changes categories', () => {
       given('regions', () => []);
       given('categories', () => []);
+      given('restaurants', () => []);
 
       const categories = [
         { id: 1, name: '한식' },
@@ -68,6 +73,7 @@ describe('reducer', () => {
     it('changes restaurants', () => {
       given('regions', () => []);
       given('categories', () => []);
+      given('restaurants', () => []);
 
       const restaurants = [
         { id: 1, name: '마법사주방' },
@@ -83,6 +89,7 @@ describe('reducer', () => {
     it('changes restaurantDetail', () => {
       given('regions', () => []);
       given('categories', () => []);
+      given('restaurants', () => []);
 
       const restaurantDetail = {
         id: 1,
@@ -110,6 +117,7 @@ describe('reducer', () => {
         { id: 1, name: '서울' },
       ]);
       given('categories', () => []);
+      given('restaurants', () => []);
 
       const state = reducer(given.initialState, selectRegion(1));
 
@@ -126,11 +134,31 @@ describe('reducer', () => {
       given('categories', () => [
         { id: 1, name: '한식' },
       ]);
+      given('restaurants', () => []);
+
       const state = reducer(given.initialState, selectCategory(1));
 
       expect(state.selectedCategory).toEqual({
         id: 1,
         name: '한식',
+      });
+    });
+  });
+
+  describe('selectRestaurant', () => {
+    it('changes selected restaurant', () => {
+      given('regions', () => []);
+      given('categories', () => []);
+      given('restaurants', () => [{
+        id: 1,
+        name: '양천주가',
+      }]);
+
+      const state = reducer(given.initialState, selectRestaurant(1));
+
+      expect(state.selectedRestaurant).toEqual({
+        id: 1,
+        name: '양천주가',
       });
     });
   });
