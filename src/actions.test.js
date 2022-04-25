@@ -90,7 +90,12 @@ describe('actions', () => {
     context('with selectedRestaurantId', () => {
       beforeEach(() => {
         store = mockStore({
-          selectedRestaurantId: 1,
+          selectedRestaurant: {
+            id: 1,
+            categoryId: 1,
+            name: '양천주가',
+            address: '서울 강남구',
+          },
         });
       });
 
