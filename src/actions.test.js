@@ -93,18 +93,32 @@ describe('actions', () => {
     context('with selecte restaurant', () => {
       beforeEach(() => {
         given('store', () => mockStore({
-          selectedCategory: {
+          selectedRestaurant: {
             id: 1, name: '김밥제국', category: '분식', address: '서울시 강남구 역삼동',
           },
         }));
+      });
 
-        it('run fetch restaurant and setRestaurant', async () => {
-          await given.store.dispatch(loadRestaurant());
+      it('run fetch restaurant and setRestaurant', async () => {
+        await given.store.dispatch(loadRestaurant());
 
-          const actions = given.store.getActions();
+        const actions = given.store.getActions();
 
-          expect(actions).toEqual([setRestaurant({})]);
-        });
+        expect(actions).toEqual([setRestaurant({})]);
+      });
+    });
+
+    context('without selecte restaurant', () => {
+      beforeEach(() => {
+        given('store', () => mockStore({}));
+      });
+
+      it('run fetch restaurant and setRestaurant', async () => {
+        await given.store.dispatch(loadRestaurant());
+
+        const actions = given.store.getActions();
+
+        expect(actions).toHaveLength(0);
       });
     });
   });
