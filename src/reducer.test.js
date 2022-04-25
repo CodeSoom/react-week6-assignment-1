@@ -144,22 +144,4 @@ describe('reducer', () => {
       });
     });
   });
-
-  describe('selectRestaurant', () => {
-    it('changes selected restaurant', () => {
-      given('regions', () => []);
-      given('categories', () => []);
-      given('restaurants', () => [{
-        id: 1,
-        name: '양천주가',
-      }]);
-
-      const state = reducer(given.initialState, selectRestaurant({ id: 1 }));
-
-      expect(state.selectedRestaurant).toEqual({
-        id: 1,
-        name: '양천주가',
-      });
-    });
-  });
 });
