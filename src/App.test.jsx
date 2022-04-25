@@ -32,4 +32,13 @@ describe('App', () => {
     expect(container).toHaveTextContent('About');
     expect(container).toHaveTextContent('About 페이지 입니다.');
   });
+
+  it('listens for click event on route /', () => {
+    const { container, getByText } = renderApp();
+
+    fireEvent.click(getByText('About'));
+    fireEvent.click(getByText('헤더'));
+
+    expect(container).toHaveTextContent('Home');
+  });
 });
