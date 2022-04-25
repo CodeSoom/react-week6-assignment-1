@@ -1,13 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
 
 import Header from './Header';
+import HomePage from './HomePage';
 import RestaurantsPage from './RestaurantsPage';
-
-function HomePage() {
-  return (
-    <p>Home</p>
-  );
-}
 
 function NotFoundPage() {
   return (
