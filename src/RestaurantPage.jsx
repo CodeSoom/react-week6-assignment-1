@@ -1,13 +1,13 @@
-import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 export default function RestaurantPage() {
-  const { restaurantId } = useParams();
+  const { restaurant } = useSelector((selector) => ({
+    restaurant: selector.restaurant,
+  }));
 
   return (
-    <p>
-      RestaurantPage :
-      {' '}
-      {restaurantId}
-    </p>
+    <div>
+      <h2>{restaurant.name}</h2>
+    </div>
   );
 }
