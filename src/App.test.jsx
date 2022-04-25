@@ -85,7 +85,6 @@ describe('App', () => {
     fireEvent.click(getByText('Restaurants'));
     fireEvent.click(getByText('마법사주방'));
 
-    expect(container).toHaveTextContent('마법사주방');
-    expect(container).toHaveTextContent('서울 강남구 강남대로94길 21');
+    expect(container).toHaveTextContent('RestaurantPage');
   });
 });
