@@ -27,7 +27,7 @@ describe('RestaurantsContainer', () => {
     expect(container).toHaveTextContent('마법사주방');
   });
 
-  it('has links to restaurant detail page', () => {
+  it('renders links to restaurant detail page', () => {
     const { getByText } = renderRestaurantsContainer();
 
     expect(getByText('마법사주방')).toHaveAttribute('href', '/1');
