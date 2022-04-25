@@ -1,3 +1,5 @@
+import { MemoryRouter } from 'react-router-dom';
+
 import React from 'react';
 
 import { render } from '@testing-library/react';
@@ -24,7 +26,9 @@ test('RestaurantsPage', () => {
   }));
 
   const { queryByText } = render((
-    <RestaurantsPage />
+    <MemoryRouter>
+      <RestaurantsPage />
+    </MemoryRouter>
   ));
 
   expect(dispatch).toBeCalled();
