@@ -9,6 +9,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import RestaurantsPage from './RestaurantsPage';
 
 test('RestaurantsPage', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);

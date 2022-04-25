@@ -47,13 +47,6 @@ export function selectCategory({ id: categoryId }) {
   };
 }
 
-export function selectRestaurant({ id: restaurantId }) {
-  return {
-    type: 'selectRestaurant',
-    payload: { restaurantId },
-  };
-}
-
 export function loadInitialData() {
   return async (dispatch) => {
     const regions = await fetchRegions();

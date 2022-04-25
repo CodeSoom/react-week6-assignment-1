@@ -20,6 +20,10 @@ jest.mock('./services/api');
 describe('actions', () => {
   let store;
 
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   describe('loadInitialData', () => {
     beforeEach(() => {
       store = mockStore({});

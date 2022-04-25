@@ -20,7 +20,7 @@ export default function RestaurantDetailPage() {
 
   if (!restaurantDetail) {
     return (
-      <p>Loading...</p>
+      <p>레스토랑 정보가 없어요!</p>
     );
   }
 

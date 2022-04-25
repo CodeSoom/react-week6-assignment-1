@@ -14,6 +14,10 @@ describe('api', () => {
     });
   };
 
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   describe('fetchRegions', () => {
     beforeEach(() => {
       mockFetch(REGIONS);
