@@ -5,12 +5,7 @@ import HomePage from './HomePage';
 import AboutPage from './AboutPage';
 import RestaurantsPage from './RestaurantsPage';
 import RestaurantDetailPage from './RestaurantDetailPage';
-
-function NotFoundPage() {
-  return (
-    <p>404 Not Found</p>
-  );
-}
+import NotFoundPage from './NotFoundPage';
 
 export default function App() {
   return (
