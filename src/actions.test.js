@@ -2,6 +2,7 @@ import thunk from 'redux-thunk';
 
 import configureStore from 'redux-mock-store';
 
+import given from 'given2';
 import {
   loadInitialData,
   setRegions,
@@ -16,17 +17,19 @@ const mockStore = configureStore(middlewares);
 jest.mock('./services/api');
 
 describe('actions', () => {
-  let store;
+  beforeEach(() => {
+    given('store', () => mockStore({}));
+  });
 
   describe('loadInitialData', () => {
     beforeEach(() => {
-      store = mockStore({});
+      given('store', () => mockStore({}));
     });
 
     it('runs setRegions and setCategories', async () => {
-      await store.dispatch(loadInitialData());
+      await given.store.dispatch(loadInitialData());
 
-      const actions = store.getActions();
+      const actions = given.store.getActions();
 
       expect(actions[0]).toEqual(setRegions([]));
       expect(actions[1]).toEqual(setCategories([]));
@@ -36,16 +39,16 @@ describe('actions', () => {
   describe('loadRestaurants', () => {
     context('with selectedRegion and selectedCategory', () => {
       beforeEach(() => {
-        store = mockStore({
+        given('store', () => mockStore({
           selectedRegion: { id: 1, name: '서울' },
           selectedCategory: { id: 1, name: '한식' },
-        });
+        }));
       });
 
       it('runs setRestaurants', async () => {
-        await store.dispatch(loadRestaurants());
+        await given.store.dispatch(loadRestaurants());
 
-        const actions = store.getActions();
+        const actions = given.store.getActions();
 
         expect(actions[0]).toEqual(setRestaurants([]));
       });
@@ -53,15 +56,15 @@ describe('actions', () => {
 
     context('without selectedRegion', () => {
       beforeEach(() => {
-        store = mockStore({
+        given('store', () => mockStore({
           selectedCategory: { id: 1, name: '한식' },
-        });
+        }));
       });
 
       it('does\'nt run any actions', async () => {
-        await store.dispatch(loadRestaurants());
+        await given.store.dispatch(loadRestaurants());
 
-        const actions = store.getActions();
+        const actions = given.store.getActions();
 
         expect(actions).toHaveLength(0);
       });
@@ -69,18 +72,24 @@ describe('actions', () => {
 
     context('without selectedCategory', () => {
       beforeEach(() => {
-        store = mockStore({
+        given('store', () => mockStore({
           selectedRegion: { id: 1, name: '서울' },
-        });
+        }));
       });
 
       it('does\'nt run any actions', async () => {
-        await store.dispatch(loadRestaurants());
+        await given.store.dispatch(loadRestaurants());
 
-        const actions = store.getActions();
+        const actions = given.store.getActions();
 
         expect(actions).toHaveLength(0);
       });
+    });
+  });
+
+  describe('loadRestaurant', () => {
+    context('with selecte restaurant', () => {
+
     });
   });
 });
