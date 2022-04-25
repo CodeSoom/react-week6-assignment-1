@@ -11,6 +11,8 @@ export default function HomePage() {
           <Link to="/about">
             About
           </Link>
+        </li>
+        <li>
           <Link to="/restaurants">
             Restaurants
           </Link>
