@@ -7,7 +7,7 @@ import AboutPage from './AboutPage';
 describe('AboutPage', () => {
   function renderAboutPage() {
     return render((
-      <MemoryRouter>
+      <MemoryRouter initialEntries={['/about']}>
         <AboutPage />
       </MemoryRouter>
     ));

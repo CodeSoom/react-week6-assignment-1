@@ -7,7 +7,7 @@ import HomePage from './HomePage';
 describe('HomePage', () => {
   function renderHomePage() {
     return render((
-      <MemoryRouter>
+      <MemoryRouter initialEntries={['/']}>
         <HomePage />
       </MemoryRouter>
     ));

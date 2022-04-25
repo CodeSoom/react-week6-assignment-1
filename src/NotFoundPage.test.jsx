@@ -7,7 +7,7 @@ import NotFoundPage from './NotFoundPage';
 describe('NotFoundPage', () => {
   function renderNotFoundPage() {
     return render((
-      <MemoryRouter>
+      <MemoryRouter initialEntries={['/*']}>
         <NotFoundPage />
       </MemoryRouter>
     ));

@@ -26,7 +26,7 @@ test('RestaurantsPage', () => {
   }));
 
   const { queryByText } = render((
-    <MemoryRouter>
+    <MemoryRouter initialEntries={['/restaurants']}>
       <RestaurantsPage />
     </MemoryRouter>
   ));

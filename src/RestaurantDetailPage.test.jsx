@@ -9,7 +9,7 @@ import RestaurantDetailPage from './RestaurantDetailPage';
 describe('RestaurantDetailPage', () => {
   function renderRestaurantDetailPage() {
     return render((
-      <MemoryRouter>
+      <MemoryRouter initialEntries={['/restaurants/1']}>
         <RestaurantDetailPage />
       </MemoryRouter>
     ));
