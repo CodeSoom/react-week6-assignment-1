@@ -4,6 +4,7 @@ import Header from './Header';
 import HomePage from './HomePage';
 import AboutPage from './AboutPage';
 import RestaurantsPage from './RestaurantsPage';
+import RestaurantDetailPage from './RestaurantDetailPage';
 
 function NotFoundPage() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/restaurants" element={<RestaurantsPage />} />
+        <Route path="/restaurants/*" element={<RestaurantDetailPage />} />
         <Route path="/*" element={<NotFoundPage />} />
       </Routes>
     </>
