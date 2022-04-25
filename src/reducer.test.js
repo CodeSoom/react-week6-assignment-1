@@ -4,6 +4,7 @@ import {
   setRegions,
   setCategories,
   setRestaurants,
+  setRestaurant,
   selectRegion,
   selectCategory,
 } from './actions';
@@ -107,6 +108,36 @@ describe('reducer', () => {
       expect(state.selectedCategory).toEqual({
         id: 1,
         name: '한식',
+      });
+    });
+  });
+
+  describe('setRestaurant', () => {
+    const initialState = {
+      restaurant: {},
+    };
+
+    const restaurant = {
+      id: 2,
+      categoryId: 5,
+      name: '성전떡볶이',
+      address: '서울 강남구 강남대로94길 21',
+      menuItems: [],
+      reviews: [],
+      information: '성전떡볶이 in 서울 강남구 강남대로94길 21',
+    };
+
+    it('changes restaurant', () => {
+      const state = reducer(initialState, setRestaurant(restaurant));
+
+      expect(state).toEqual({
+        id: 2,
+        categoryId: 5,
+        name: '성전떡볶이',
+        address: '서울 강남구 강남대로94길 21',
+        menuItems: [],
+        reviews: [],
+        information: '성전떡볶이 in 서울 강남구 강남대로94길 21',
       });
     });
   });
