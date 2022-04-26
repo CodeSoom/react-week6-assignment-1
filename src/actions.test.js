@@ -83,11 +83,7 @@ describe('actions', () => {
 
   describe('loadRestaurant', () => {
     context('with selecte restaurant', () => {
-      given('store', () => mockStore({
-        selectedRestaurant: {
-          id: 1, name: '김밥제국', category: '분식', address: '서울시 강남구 역삼동',
-        },
-      }));
+      given('store', () => mockStore({}));
 
       it('runs fetch restaurant and setRestaurant', async () => {
         await given.store.dispatch(loadRestaurant());
