@@ -1,11 +1,30 @@
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { loadRestaurant } from './actions';
 
 export default function RestaurantPage() {
+  const dispatch = useDispatch();
+
   const { restaurant } = useSelector((selector) => ({
     restaurant: selector.restaurant,
   }));
 
+  const { restaurantId } = useParams();
+
   const { name, address, menuItems } = restaurant;
+
+  useEffect(() => {
+    if (!restaurantId) {
+      return;
+    }
+
+    dispatch(loadRestaurant(restaurantId));
+  }, []);
+
+  if (!restaurant.id) {
+    return <p>loading...</p>;
+  }
 
   return (
     <div>

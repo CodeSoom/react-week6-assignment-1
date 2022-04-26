@@ -14,11 +14,10 @@ export default function App() {
         </Link>
       </h1>
       <Routes>
-        <Route path="/restaurants/4" element={<RestaurantPage />} />
-        <Route path="/restaurants/:restaurantId" element={<RestaurantPage />} />
+        <Route exact path="/restaurants/:restaurantId" element={<RestaurantPage />} />
         <Route path="/restaurants" element={<RestaurantsPage />} />
         <Route path="/about" element={<AboutPage />} />
-        <Route path="/" element={<HomePage />} />
+        <Route exact path="/" element={<HomePage />} />
       </Routes>
     </div>
   );
