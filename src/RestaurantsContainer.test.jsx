@@ -12,9 +12,7 @@ beforeEach(() => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
-    regions: [
-      { id: 1, name: '서울' },
-    ],
+    regions: [],
     categories: [],
     restaurants: [],
     restaurant: {
@@ -29,7 +27,7 @@ beforeEach(() => {
   }));
 });
 
-function renderApp({ path }) {
+function renderRestaurantsContainer({ path }) {
   return render((
     <MemoryRouter initialEntries={[path]}>
       <RestaurantsContainer />
@@ -40,7 +38,7 @@ function renderApp({ path }) {
 describe('restaurantsContainer', () => {
   context('with path/restaurants/id', () => {
     it('renders the restaurant page', () => {
-      const { container } = renderApp({ path: '/restaurants/200' });
+      const { container } = renderRestaurantsContainer({ path: '/restaurants/200' });
 
       expect(container).toHaveTextContent('서울 강남구');
       expect(container).toHaveTextContent('탕수육');
