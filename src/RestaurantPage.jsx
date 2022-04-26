@@ -1,5 +1,5 @@
 export default function RestaurantPage() {
   return (
-    <p>Restaurant Page</p>
+    <h2>Restaurant Page</h2>
   );
 }
