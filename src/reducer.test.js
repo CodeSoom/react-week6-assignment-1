@@ -7,7 +7,6 @@ import {
   setRestaurant,
   selectRegion,
   selectCategory,
-  selectRestaurant,
 } from './actions';
 
 describe('reducer', () => {
@@ -19,7 +18,6 @@ describe('reducer', () => {
       restaurant: {},
       selectedRegion: null,
       selectedCategory: null,
-      selectedRestaurant: null,
     };
 
     it('returns initialState', () => {
@@ -139,22 +137,6 @@ describe('reducer', () => {
         menuItems: [],
         reviews: [],
         information: '성전떡볶이 in 서울 강남구 강남대로94길 21',
-      });
-    });
-  });
-
-  describe('selectRestaurant', () => {
-    const initialState = {
-      restaurants: [{
-        id: 1, name: '김밥제국', category: '분식', address: '서울시 강남구 역삼동',
-      }],
-    };
-
-    it('changes select restaurant', () => {
-      const state = reducer(initialState, selectRestaurant(1));
-
-      expect(state.selectedRestaurant).toEqual({
-        id: 1, name: '김밥제국', category: '분식', address: '서울시 강남구 역삼동',
       });
     });
   });
