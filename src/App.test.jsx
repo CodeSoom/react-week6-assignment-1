@@ -29,14 +29,18 @@ beforeEach(() => {
   }));
 });
 
+function renderApp({ path }) {
+  return render((
+    <MemoryRouter initialEntries={[path]}>
+      <App />
+    </MemoryRouter>
+  ));
+}
+
 describe('App', () => {
   context('with path /', () => {
     it('renders the home page', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const { container } = renderApp({ path: '/' });
 
       expect(container).toHaveTextContent('Home');
     });
@@ -44,11 +48,7 @@ describe('App', () => {
 
   context('with path /about', () => {
     it('renders the about page', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/about']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const { container } = renderApp({ path: '/about' });
 
       expect(container).toHaveTextContent('About');
     });
@@ -56,11 +56,7 @@ describe('App', () => {
 
   context('with path /restaurants', () => {
     it('renders the restaurants page', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/restaurants']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const { container } = renderApp({ path: '/restaurants' });
 
       expect(container).toHaveTextContent('서울');
     });
@@ -68,11 +64,7 @@ describe('App', () => {
 
   context('with path /restaurants/id', () => {
     it('renders the restaurant page', () => {
-      const { container } = render((
-        <MemoryRouter initialEntries={['/restaurants/200']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const { container } = renderApp({ path: '/restaurants/200' });
 
       expect(container).toHaveTextContent('서울 강남구');
       expect(container).toHaveTextContent('탕수육');
