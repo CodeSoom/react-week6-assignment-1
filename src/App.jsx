@@ -21,7 +21,6 @@ export default function App() {
         <Route exact path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/restaurants" element={<RestaurantsPage />} />
-        <Route path="/restaurants" element={<RestaurantsPage />} />
         <Route path="/restaurants/:restaurantId" element={<RestaurantPage />} />
       </Routes>
     </div>
