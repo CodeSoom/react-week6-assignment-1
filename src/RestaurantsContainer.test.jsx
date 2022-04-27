@@ -28,6 +28,14 @@ function renderRestaurantsContainer() {
 }
 
 describe('restaurantsContainer', () => {
+  context('with path/restaurants', () => {
+    it('renders restaurants', () => {
+      const { container } = renderRestaurantsContainer();
+
+      expect(container).toHaveTextContent('마법사주방');
+    });
+  });
+
   context('with path/restaurants/id', () => {
     it('renders the restaurant page', () => {
       const { getByText } = renderRestaurantsContainer();
