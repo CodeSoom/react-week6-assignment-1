@@ -108,4 +108,34 @@ describe('reducer', () => {
       });
     });
   });
+
+  describe('setRestaurant', () => {
+    it('changes restaurant', () => {
+      const initialState = {
+        restaurant: {},
+      };
+
+      const restaurant = {
+        id: 200,
+        name: '마법사주방',
+        address: '서울 강남구',
+        menu: [
+          { id: 300, name: '탕수육' },
+          { id: 301, name: '팔보채' },
+        ],
+      };
+
+      const state = reducer(initialState, setRestaurant(restaurant));
+
+      expect(state.restaurant).toEqual({
+        id: 200,
+        name: '마법사주방',
+        address: '서울 강남구',
+        menu: [
+          { id: 300, name: '탕수육' },
+          { id: 301, name: '팔보채' },
+        ],
+      });
+    });
+  });
 });
