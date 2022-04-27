@@ -1,14 +1,14 @@
 import { render } from '@testing-library/react';
 
-import { BrowserRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 
 import HomePage from './HomePage';
 
 test('HomePage', () => {
   const { queryByText } = render((
-    <BrowserRouter>
+    <MemoryRouter>
       <HomePage />
-    </BrowserRouter>
+    </MemoryRouter>
   ));
 
   expect(queryByText(/About/)).not.toBeNull();
