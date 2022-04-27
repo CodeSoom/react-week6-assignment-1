@@ -51,7 +51,7 @@ describe('RetaurantPage', () => {
   context('when loading restaurant', () => {
     given('restaurant', () => ({}));
 
-    it('render loading paragraph', () => {
+    it('render loading', () => {
       const { container } = renderRestaurantPage();
 
       expect(container).toHaveTextContent('loading');
