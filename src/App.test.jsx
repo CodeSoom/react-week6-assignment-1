@@ -26,4 +26,16 @@ describe('App', () => {
       expect(queryByText(/Restaurants/)).not.toBeNull();
     });
   });
+
+  context('with path /about', () => {
+    it('renders the about page', () => {
+      const { queryByText } = render((
+        <MemoryRouter initialEntries={['/about']}>
+          <App />
+        </MemoryRouter>
+      ));
+
+      expect(queryByText(/About.../)).not.toBeNull();
+    });
+  });
 });
