@@ -1,10 +1,17 @@
 import { useEffect } from 'react';
 
+import {
+  Routes,
+  Route,
+} from 'react-router-dom';
+
 import { useDispatch } from 'react-redux';
 
-import RegionsContainer from './RegionsContainer';
-import CategoriesContainer from './CategoriesContainer';
-import RestaurantsContainer from './RestaurantsContainer';
+import AppHeader from './AppHeader';
+import HomePage from './HomePage';
+import AboutPage from './AboutPage';
+import RestaurantsPage from './RestaurantsPage';
+import NotFoundPage from './NotFoundPage';
 
 import {
   loadInitialData,
@@ -23,10 +30,14 @@ export default function App() {
   });
 
   return (
-    <div>
-      <RegionsContainer />
-      <CategoriesContainer />
-      <RestaurantsContainer />
-    </div>
+    <>
+      <AppHeader />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/restaurants" element={<RestaurantsPage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </>
   );
 }
