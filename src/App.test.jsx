@@ -14,13 +14,17 @@ describe('App', () => {
     }));
   });
 
+  function renderApp({ path }) {
+    return render((
+      <MemoryRouter initialEntries={[path]}>
+        <App />
+      </MemoryRouter>
+    ));
+  }
+
   context('with path /', () => {
     it('renders the home page', () => {
-      const { queryByText } = render((
-        <MemoryRouter>
-          <App />
-        </MemoryRouter>
-      ));
+      const { queryByText } = renderApp({ path: '/' });
 
       expect(queryByText(/About/)).not.toBeNull();
       expect(queryByText(/Restaurants/)).not.toBeNull();
@@ -29,11 +33,7 @@ describe('App', () => {
 
   context('with path /about', () => {
     it('renders the about page', () => {
-      const { queryByText } = render((
-        <MemoryRouter initialEntries={['/about']}>
-          <App />
-        </MemoryRouter>
-      ));
+      const { queryByText } = renderApp({ path: '/about' });
 
       expect(queryByText(/About.../)).not.toBeNull();
     });
