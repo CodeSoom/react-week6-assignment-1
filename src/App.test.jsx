@@ -6,38 +6,38 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
-beforeEach(() => {
-  const dispatch = jest.fn();
-
-  useDispatch.mockImplementation(() => dispatch);
-
-  useSelector.mockImplementation((selector) => selector({
-    regions: [
-      { id: 1, name: '서울' },
-    ],
-    categories: [],
-    restaurants: [],
-    restaurant: {
-      id: 200,
-      name: '마법사주방',
-      address: '서울 강남구',
-      menu: [
-        { id: 300, name: '탕수육' },
-        { id: 301, name: '팔보채' },
-      ],
-    },
-  }));
-});
-
-function renderApp({ path }) {
-  return render((
-    <MemoryRouter initialEntries={[path]}>
-      <App />
-    </MemoryRouter>
-  ));
-}
-
 describe('App', () => {
+  beforeEach(() => {
+    const dispatch = jest.fn();
+
+    useDispatch.mockImplementation(() => dispatch);
+
+    useSelector.mockImplementation((selector) => selector({
+      regions: [
+        { id: 1, name: '서울' },
+      ],
+      categories: [],
+      restaurants: [],
+      restaurant: {
+        id: 200,
+        name: '마법사주방',
+        address: '서울 강남구',
+        menu: [
+          { id: 300, name: '탕수육' },
+          { id: 301, name: '팔보채' },
+        ],
+      },
+    }));
+  });
+
+  function renderApp({ path }) {
+    return render((
+      <MemoryRouter initialEntries={[path]}>
+        <App />
+      </MemoryRouter>
+    ));
+  }
+
   context('with path /', () => {
     it('renders the home page', () => {
       const { container } = renderApp({ path: '/' });
