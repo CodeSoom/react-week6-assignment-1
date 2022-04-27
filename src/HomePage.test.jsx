@@ -13,7 +13,7 @@ describe('HomePage', () => {
     ));
   }
 
-  it('renders title and links to About and Restaurants', () => {
+  it('renders titles', () => {
     const { container } = renderHomePage();
 
     expect(container).toHaveTextContent('Home');
@@ -22,13 +22,13 @@ describe('HomePage', () => {
     expect(container).toHaveTextContent('Restaurants');
   });
 
-  it('renders a link to /about', () => {
+  it('renders a link to about page', () => {
     const { getByText } = renderHomePage();
 
     expect(getByText('About')).toHaveAttribute('href', '/about');
   });
 
-  it('renders a link to /restaurants', () => {
+  it('renders a link to restaurants page', () => {
     const { getByText } = renderHomePage();
 
     expect(getByText('Restaurants')).toHaveAttribute('href', '/restaurants');

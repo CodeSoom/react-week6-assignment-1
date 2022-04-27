@@ -19,7 +19,7 @@ describe('Header', () => {
     expect(container).toHaveTextContent('헤더');
   });
 
-  it('renders a link to /', () => {
+  it('renders a link to the homepage', () => {
     const { getByText } = renderHeader();
 
     expect(getByText('헤더')).toHaveAttribute('href', '/');

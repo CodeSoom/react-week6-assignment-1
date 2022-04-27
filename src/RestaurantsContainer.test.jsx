@@ -9,7 +9,7 @@ import RestaurantsContainer from './RestaurantsContainer';
 describe('RestaurantsContainer', () => {
   function renderRestaurantsContainer() {
     return render((
-      <MemoryRouter>
+      <MemoryRouter initialEntries={['/restaurants']}>
         <RestaurantsContainer />
       </MemoryRouter>
     ));

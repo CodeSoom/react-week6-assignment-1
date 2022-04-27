@@ -1,3 +1,5 @@
+import given from 'given2';
+
 import { MemoryRouter } from 'react-router-dom';
 
 import { render } from '@testing-library/react';
@@ -19,30 +21,37 @@ describe('RestaurantDetailPage', () => {
 
   useDispatch.mockImplementation(() => dispatch);
 
+  given('state', () => ({
+    regions: [],
+    categories: [],
+    restaurants: [],
+    restaurantDetail: given.restaurantDetail,
+    selectedRegion: null,
+    selectedCategory: null,
+    selectedRestaurant: null,
+  }));
+
   beforeEach(() => {
+    useSelector.mockImplementation((selector) => selector(given.state));
     jest.clearAllMocks();
   });
 
   context('with restaurantDetail', () => {
-    beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({
-        restaurantDetail: {
-          id: 1,
-          categoryId: 1,
-          name: '양천주가',
-          address: '서울 강남구',
-          menuItems: [
-            {
-              id: 1,
-              retaurantId: 1,
-              name: '탕수육',
-            },
-          ],
-        },
-      }));
-    });
-
     it('renders restaurant name, address, and menus', () => {
+      given('restaurantDetail', () => ({
+        id: 1,
+        categoryId: 1,
+        name: '양천주가',
+        address: '서울 강남구',
+        menuItems: [
+          {
+            id: 1,
+            retaurantId: 1,
+            name: '탕수육',
+          },
+        ],
+      }));
+
       const { container } = renderRestaurantDetailPage();
 
       expect(container).toHaveTextContent('양천주가');
@@ -53,11 +62,9 @@ describe('RestaurantDetailPage', () => {
   });
 
   context('without restaurantDetail', () => {
-    beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({}));
-    });
-
     it('renders message', () => {
+      given('restaurantDetail', () => null);
+
       const { container } = renderRestaurantDetailPage();
 
       expect(container).toHaveTextContent('레스토랑 정보가 없어요!');
