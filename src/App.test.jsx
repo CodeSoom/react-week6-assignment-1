@@ -52,4 +52,12 @@ describe('App', () => {
       expect(queryByText(/서울/)).not.toBeNull();
     });
   });
+
+  context('with other path', () => {
+    it('renders the not found page', () => {
+      const { queryByText } = renderApp({ path: '/xxx' });
+
+      expect(queryByText(/404/)).not.toBeNull();
+    });
+  });
 });
