@@ -22,10 +22,12 @@ export default function RestaurantPage() {
     dispatch(loadRestaurant(restaurantId));
   }, []);
 
+  // TODO: add loading state
   if (!restaurant.id) {
     return <p>loading...</p>;
   }
 
+  // TODO: 분리하기
   return (
     <div>
       <h2>{name}</h2>
