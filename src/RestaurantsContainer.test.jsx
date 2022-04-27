@@ -1,3 +1,4 @@
+// 내꺼
 import { render } from '@testing-library/react';
 
 import { MemoryRouter } from 'react-router-dom';
@@ -12,24 +13,15 @@ beforeEach(() => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
-    regions: [],
-    categories: [],
-    restaurants: [],
-    restaurant: {
-      id: 200,
-      name: '마법사주방',
-      address: '서울 강남구',
-      menu: [
-        { id: 300, name: '탕수육' },
-        { id: 301, name: '팔보채' },
-      ],
-    },
+    restaurants: [
+      { id: 1, name: '마법사주방' },
+    ],
   }));
 });
 
-function renderRestaurantsContainer({ path }) {
+function renderRestaurantsContainer() {
   return render((
-    <MemoryRouter initialEntries={[path]}>
+    <MemoryRouter>
       <RestaurantsContainer />
     </MemoryRouter>
   ));
@@ -38,11 +30,9 @@ function renderRestaurantsContainer({ path }) {
 describe('restaurantsContainer', () => {
   context('with path/restaurants/id', () => {
     it('renders the restaurant page', () => {
-      const { container } = renderRestaurantsContainer({ path: '/restaurants/200' });
+      const { getByText } = renderRestaurantsContainer();
 
-      expect(container).toHaveTextContent('서울 강남구');
-      expect(container).toHaveTextContent('탕수육');
-      expect(container).toHaveTextContent('팔보채');
+      expect(getByText('마법사주방')).toHaveAttribute('href', '/1');
     });
   });
 });
