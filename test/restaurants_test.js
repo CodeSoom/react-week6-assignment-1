@@ -23,7 +23,7 @@ Scenario('레스토랑 상세 페이지로 이동합니다.', async ({ I }) => {
 
   await I.see('양천주가');
 
-  I.click('양천주가');
+  await I.click('양천주가');
 
   const url = await I.grabCurrentUrl();
 
