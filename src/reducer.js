@@ -38,7 +38,11 @@ const reducers = {
   setRestaurant(state, { payload: { restaurant } }) {
     return {
       ...state,
-      restaurant,
+      restaurant: {
+        data: restaurant,
+        error: null,
+        loading: false,
+      },
     };
   },
 
