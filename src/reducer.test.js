@@ -117,7 +117,11 @@ describe('reducer', () => {
 
   describe('setRestaurant', () => {
     const initialState = {
-      restaurant: {},
+      restaurant: {
+        data: undefined,
+        loading: false,
+        error: null,
+      },
     };
 
     const restaurant = {
@@ -134,13 +138,17 @@ describe('reducer', () => {
       const state = reducer(initialState, setRestaurant(restaurant));
 
       expect(state.restaurant).toEqual({
-        id: 2,
-        categoryId: 5,
-        name: '성전떡볶이',
-        address: '서울 강남구 강남대로94길 21',
-        menuItems: [],
-        reviews: [],
-        information: '성전떡볶이 in 서울 강남구 강남대로94길 21',
+        data: {
+          id: 2,
+          categoryId: 5,
+          name: '성전떡볶이',
+          address: '서울 강남구 강남대로94길 21',
+          menuItems: [],
+          reviews: [],
+          information: '성전떡볶이 in 서울 강남구 강남대로94길 21',
+        },
+        error: null,
+        loading: false,
       });
     });
   });
