@@ -4,6 +4,7 @@ const initialState = {
   regions: [],
   categories: [],
   restaurants: [],
+  restaurantInformation: {},
   selectedRegion: null,
   selectedCategory: null,
 };
