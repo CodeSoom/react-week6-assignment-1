@@ -73,7 +73,7 @@ describe('App', () => {
     });
   });
 
-  context('with path /otherPage', () => {
+  context('with other paths', () => {
     it('renders error message', () => {
       const { container } = renderApp({ path: '/otherPage' });
 

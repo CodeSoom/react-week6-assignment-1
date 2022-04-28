@@ -17,12 +17,7 @@ describe('RegionsContainer', () => {
 
   given('state', () => ({
     regions: REGIONS,
-    categories: [],
-    restaurants: [],
-    restaurantDetail: null,
     selectedRegion: given.selectedRegion,
-    selectedCategory: null,
-    selectedRestaurant: null,
   }));
 
   beforeEach(() => {
