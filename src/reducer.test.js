@@ -92,7 +92,7 @@ describe('reducer', () => {
 
   describe('selectRegion', () => {
     it('changes selected region', () => {
-      given('state', () => ({
+      given('initialState', () => ({
         regions: [
           { id: 1, name: '서울' },
         ],
@@ -104,7 +104,7 @@ describe('reducer', () => {
         selectedRestaurant: null,
       }));
 
-      const state = reducer(given.state, selectRegion({ id: 1 }));
+      const state = reducer(given.initialState, selectRegion({ id: 1 }));
 
       expect(state.selectedRegion).toEqual({
         id: 1,
@@ -115,7 +115,7 @@ describe('reducer', () => {
 
   describe('selectCategory', () => {
     it('changes selected category', () => {
-      given('state', () => ({
+      given('initialState', () => ({
         regions: [],
         categories: [
           { id: 1, name: '한식' },
@@ -127,7 +127,7 @@ describe('reducer', () => {
         selectedRestaurant: null,
       }));
 
-      const state = reducer(given.state, selectCategory({ id: 1 }));
+      const state = reducer(given.initialState, selectCategory({ id: 1 }));
 
       expect(state.selectedCategory).toEqual({
         id: 1,
