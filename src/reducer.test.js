@@ -96,12 +96,7 @@ describe('reducer', () => {
         regions: [
           { id: 1, name: '서울' },
         ],
-        categories: [],
-        restaurants: [],
-        restaurantDetail: {},
         selectedRegion: null,
-        selectedCategory: null,
-        selectedRestaurant: null,
       }));
 
       const state = reducer(given.initialState, selectRegion({ id: 1 }));
@@ -116,15 +111,10 @@ describe('reducer', () => {
   describe('selectCategory', () => {
     it('changes selected category', () => {
       given('initialState', () => ({
-        regions: [],
         categories: [
           { id: 1, name: '한식' },
         ],
-        restaurants: [],
-        restaurantDetail: {},
-        selectedRegion: null,
         selectedCategory: null,
-        selectedRestaurant: null,
       }));
 
       const state = reducer(given.initialState, selectCategory({ id: 1 }));
