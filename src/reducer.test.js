@@ -1,3 +1,5 @@
+import given from 'given2';
+
 import reducer from './reducer';
 
 import {
@@ -90,7 +92,7 @@ describe('reducer', () => {
 
   describe('selectRegion', () => {
     it('changes selected region', () => {
-      const currentState = {
+      given('state', () => ({
         regions: [
           { id: 1, name: '서울' },
         ],
@@ -100,9 +102,9 @@ describe('reducer', () => {
         selectedRegion: null,
         selectedCategory: null,
         selectedRestaurant: null,
-      };
+      }));
 
-      const state = reducer(currentState, selectRegion({ id: 1 }));
+      const state = reducer(given.state, selectRegion({ id: 1 }));
 
       expect(state.selectedRegion).toEqual({
         id: 1,
@@ -113,7 +115,7 @@ describe('reducer', () => {
 
   describe('selectCategory', () => {
     it('changes selected category', () => {
-      const currentState = {
+      given('state', () => ({
         regions: [],
         categories: [
           { id: 1, name: '한식' },
@@ -123,8 +125,9 @@ describe('reducer', () => {
         selectedRegion: null,
         selectedCategory: null,
         selectedRestaurant: null,
-      };
-      const state = reducer(currentState, selectCategory({ id: 1 }));
+      }));
+
+      const state = reducer(given.state, selectCategory({ id: 1 }));
 
       expect(state.selectedCategory).toEqual({
         id: 1,
