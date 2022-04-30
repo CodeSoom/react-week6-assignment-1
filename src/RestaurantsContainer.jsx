@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux';
 
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 import { get } from './utils';
 
-export default function RestaurantsContainer() {
+export default function RestaurantsContainer({ Link }) {
   const restaurants = useSelector(get('restaurants'));
 
   return (
