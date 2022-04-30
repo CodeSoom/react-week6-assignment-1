@@ -12,7 +12,7 @@ export async function fetchRestaurants() {
 
 export async function fetchRestaurant({ restaurantId }) {
   return {
-    id: restaurantId,
+    restaurantId,
     // TODO : insert restaurant information
   };
 }
