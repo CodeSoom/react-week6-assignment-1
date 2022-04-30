@@ -30,6 +30,14 @@ describe('RestaurantsPage', () => {
     }));
   });
 
+  function renderRestaurantsPage() {
+    return render((
+      <MemoryRouter>
+        <RestaurantsPage />
+      </MemoryRouter>
+    ));
+  }
+
   it('renders region and category buttons ', () => {
     const { queryByText } = render((
       <MemoryRouter>
@@ -44,11 +52,7 @@ describe('RestaurantsPage', () => {
   });
 
   it('renders links of restaurants ', () => {
-    const { container } = render((
-      <MemoryRouter>
-        <RestaurantsPage />
-      </MemoryRouter>
-    ));
+    const { container } = renderRestaurantsPage();
 
     expect(container.innerHTML).toContain('<a href="');
   });
