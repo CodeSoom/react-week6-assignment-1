@@ -38,4 +38,12 @@ describe('RestaurantsPage', () => {
     expect(queryByText('서울')).not.toBeNull();
     expect(queryByText('한식')).not.toBeNull();
   });
+
+  it('renders links of restaurants ', () => {
+    const { container } = render((
+      <RestaurantsPage />
+    ));
+
+    expect(container.innerHTML).toHaveTextContent('<a href=""');
+  });
 });
