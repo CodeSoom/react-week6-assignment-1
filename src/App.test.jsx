@@ -13,7 +13,10 @@ describe('App', () => {
 
     useSelector.mockImplementation((selector) => selector({
       regions: [
-        { id: 1, name: '서울' },
+        {
+          id: 1,
+          name: '서울',
+        },
       ],
       categories: [],
       restaurants: [],
