@@ -14,7 +14,7 @@ export default function App() {
     <Routes>
       <Route exact path="/" element={<HomePage />} />
       <Route path="/about" element={<AboutPage />} />
-      <Route path="/restaurants" element={<RestaurantsPage />} />
+      <Route exact path="/restaurants" element={<RestaurantsPage />} />
       <Route path="/restaurants/:restaurantId" element={<RestaurantDetailPage />} />
       <Route path="/*" element={<NotFoundPage />} />
     </Routes>
