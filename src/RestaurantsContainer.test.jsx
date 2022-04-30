@@ -13,11 +13,11 @@ test('RestaurantsContainer', () => {
     ],
   }));
 
-  const Link = ({ children }) => (<>{children}</>);
+  const handleClick = jest.fn();
 
   const { container } = render((
     <MemoryRouter>
-      <RestaurantsContainer Link={Link} />
+      <RestaurantsContainer onClickRestaurant={handleClick} />
     </MemoryRouter>
   ));
 
