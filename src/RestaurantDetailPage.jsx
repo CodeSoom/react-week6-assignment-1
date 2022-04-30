@@ -1,16 +1,15 @@
-export default function RestaurantDetailPage() {
-  // TODO: useSelector 로 store 에서 상태를 가져와야 한다.
+import { useParams } from 'react-router-dom';
+
+export default function RestaurantDetailPage({ params }) {
+  // * useParams : react-router 에서 사용하는 파라미터들을 확인할 수 있다.
+  // * 이 컴포넌트에 전달받은 params 가 있으면 그걸 사용하고, 없으면 useParams 를 사용한다.
+  const { restaurantId } = params || useParams();
 
   return (
     <div>
-      <h1>양천주가</h1>
-      <p>서울 강남구 123456</p>
-      <h2>메뉴</h2>
-      <ul>
-        <li>비빔밥</li>
-        <li>짬뽕</li>
-        <li>유산슬</li>
-      </ul>
+      레스토랑
+      {' '}
+      {restaurantId}
     </div>
   );
 }
