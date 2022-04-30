@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import RegionsContainer from './RegionsContainer';
 import CategoriesContainer from './CategoriesContainer';
@@ -15,15 +15,24 @@ import {
 export default function RestaurantsPage() {
   const dispatch = useDispatch();
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     dispatch(loadInitialData());
   });
+
+  function handleClickRestaurant(restaurant) {
+    const url = `/restaurants/${restaurant.id}`;
+
+    // - react-router-dom V6 부터 useHistory 대신 useNavigate 를 사용한다.
+    navigate(url);
+  }
 
   return (
     <div>
       <RegionsContainer />
       <CategoriesContainer />
-      <RestaurantsContainer Link={Link} />
+      <RestaurantsContainer onClickRestaurant={handleClickRestaurant} />
     </div>
   );
 }
