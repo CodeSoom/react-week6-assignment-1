@@ -44,6 +44,6 @@ describe('RestaurantsPage', () => {
       <RestaurantsPage />
     ));
 
-    expect(container.innerHTML).toHaveTextContent('<a href=""');
+    expect(container.innerHTML).toContain('<a href=""');
   });
 });
