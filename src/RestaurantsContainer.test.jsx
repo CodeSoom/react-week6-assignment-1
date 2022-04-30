@@ -13,9 +13,11 @@ test('RestaurantsContainer', () => {
     ],
   }));
 
+  const Link = ({ children }) => (<>{children}</>);
+
   const { container } = render((
     <MemoryRouter>
-      <RestaurantsContainer />
+      <RestaurantsContainer Link={Link} />
     </MemoryRouter>
   ));
 
