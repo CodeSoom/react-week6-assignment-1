@@ -13,7 +13,7 @@ function RestaurantDetail({ restaurant }) {
     <div>
       레스토랑
       {' '}
-      {restaurant.id}
+      {restaurant.restaurantId}
     </div>
   );
 }
@@ -27,8 +27,9 @@ function RestaurantContainer({ restaurantId }) {
 
   const restaurant = useSelector(get('restaurant'));
 
+  // * 레스토랑 상세 정보를 RestaurantDetail 컴포넌트에 전달한다.
   return (
-    <RestaurantDetail restaurantId={restaurantId} />
+    <RestaurantDetail restaurant={restaurant} />
   );
 }
 export default function RestaurantPage({ params }) {
