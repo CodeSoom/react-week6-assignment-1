@@ -5,9 +5,11 @@ import RestaurantDetailPage from './RestaurantDetailPage';
 
 describe('RestaurantDetailPage', () => {
   it('renders name of restaurant', () => {
+    const params = { restaurantId: '1' };
+
     const { container } = render(
       <MemoryRouter initialEntries={['/restaurants/1']}>
-        <RestaurantDetailPage />
+        <RestaurantDetailPage params={params} />
       </MemoryRouter>,
     );
 
