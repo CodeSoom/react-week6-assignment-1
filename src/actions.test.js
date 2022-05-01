@@ -7,7 +7,9 @@ import {
   setRegions,
   setCategories,
   loadRestaurants,
+  loadRestaurant,
   setRestaurants,
+  setRestaurant,
 } from './actions';
 
 const middlewares = [thunk];
@@ -80,6 +82,32 @@ describe('actions', () => {
         const actions = store.getActions();
 
         expect(actions).toHaveLength(0);
+      });
+    });
+  });
+
+  describe('loadRestaurant', () => {
+    context('when selected restaurant', () => {
+      beforeEach(() => {
+        store = mockStore({
+          restaurant: {
+            id: 200,
+            name: '마법사주방',
+            address: '서울 강남구',
+            menu: [
+              { id: 300, name: '탕수육' },
+              { id: 301, name: '팔보채' },
+            ],
+          },
+        });
+      });
+
+      it('runs setRestaurant', async () => {
+        await store.dispatch(loadRestaurant(200));
+
+        const actions = store.getActions();
+
+        expect(actions[0]).toEqual(setRestaurant({}));
       });
     });
   });
