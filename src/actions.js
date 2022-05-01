@@ -26,6 +26,11 @@ export function setRestaurants(restaurants) {
   };
 }
 
+export function getRestaurant() {
+  return {
+    type: 'getRestaurant',
+  };
+}
 export function setRestaurant(restaurant) {
   return {
     type: 'setRestaurant',
@@ -81,6 +86,8 @@ export function loadRestaurant(restaurantId) {
     if (!restaurantId) {
       return;
     }
+
+    dispatch(getRestaurant());
 
     const restaurant = await fetchRestaurant({
       restaurantId,
