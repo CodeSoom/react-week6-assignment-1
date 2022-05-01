@@ -12,8 +12,6 @@ export default function RestaurantPage() {
 
   const { restaurantId } = useParams();
 
-  const { name, address, menuItems } = restaurant.data;
-
   useEffect(() => {
     if (!restaurantId) {
       return;
@@ -22,10 +20,11 @@ export default function RestaurantPage() {
     dispatch(loadRestaurant(restaurantId));
   }, []);
 
-  // TODO: add loading state
-  if (restaurant.loading) {
+  if (restaurant.loading || !restaurant.data) {
     return <p>loading...</p>;
   }
+
+  const { name, address, menuItems } = restaurant.data;
 
   // TODO: 분리하기
   return (
