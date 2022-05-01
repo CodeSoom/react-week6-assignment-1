@@ -1,3 +1,5 @@
+import MenuItems from './MenuItems';
+
 export default function RestaurantDetail({ error, restaurant, loading }) {
   const { name, address, menuItems } = restaurant || {};
 
@@ -18,13 +20,7 @@ export default function RestaurantDetail({ error, restaurant, loading }) {
         {address}
       </p>
       <h3>메뉴</h3>
-      <ul>
-        {menuItems.map((menu) => (
-          <li key={menu.id}>
-            {menu.name}
-          </li>
-        ))}
-      </ul>
+      <MenuItems menuItems={menuItems} />
     </div>
   );
 }
