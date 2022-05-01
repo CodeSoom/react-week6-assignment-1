@@ -1,9 +1,5 @@
 import { render } from '@testing-library/react';
 
-import { useDispatch, useSelector } from 'react-redux';
-
-import { MemoryRouter } from 'react-router-dom';
-
 import given from 'given2';
 
 import RestaurantDetail from './RestaurantDetail';
