@@ -3,9 +3,14 @@ import { MemoryRouter } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import given from 'given2';
 import App from './App';
 
 describe('App', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    given('initialEntries', () => ['/']);
+  });
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
@@ -32,7 +37,7 @@ describe('App', () => {
   }));
 
   const renderApp = () => render((
-    <MemoryRouter initialEntries={['/']}>
+    <MemoryRouter initialEntries={given.initialEntries}>
       <App />
     </MemoryRouter>
   ));
@@ -93,6 +98,15 @@ describe('App', () => {
       fireEvent.click(getByText('마법사주방'));
 
       expect(container).toHaveTextContent('마법사주방');
+    });
+  });
+
+  context('without exist url', () => {
+    given('initialEntries', () => ['/any_not_exist_url']);
+    it('renders "404 Not Found"', () => {
+      const { container } = renderApp();
+
+      expect(container).toHaveTextContent('404 Not Found');
     });
   });
 });
