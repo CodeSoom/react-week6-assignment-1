@@ -140,7 +140,7 @@ describe('reducer', () => {
     const initialState = {
       restaurant: {
         data: undefined,
-        loading: false,
+        loading: true,
         error: null,
       },
     };
