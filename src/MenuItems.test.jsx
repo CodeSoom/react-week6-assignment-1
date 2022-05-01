@@ -4,8 +4,6 @@ import given from 'given2';
 
 import MenuItems from './MenuItems';
 
-import RESTAURANT from '../fixtures/restaurant';
-
 describe('MenuItems', () => {
   beforeEach(() => {
     given('menuItems', () => []);
@@ -13,7 +11,7 @@ describe('MenuItems', () => {
 
   const renderMenuItems = () => render((
     <MenuItems
-      menu={given.menuItems}
+      menuItems={given.menuItems}
     />
   ));
 
@@ -27,13 +25,20 @@ describe('MenuItems', () => {
     });
   });
 
-  it('renders menu', () => {
-    const { container } = renderMenuItems();
+  context('with menu items', () => {
+    given('menuItems', () => [
+      { id: 1, name: '떡볶이' },
+      { id: 2, name: '튀김' },
+      { id: 3, name: '오뎅' },
+      { id: 4, name: '컵밥' },
+    ]);
 
-    expect(container).toHaveTextContent('메뉴');
+    it('renders menu', () => {
+      const { container } = renderMenuItems();
 
-    ['떡볶이', '튀김', '오뎅', '컵밥'].forEach((menu) => (
-      expect(container).toHaveTextContent(menu)
-    ));
+      ['떡볶이', '튀김', '오뎅', '컵밥'].forEach((menu) => (
+        expect(container).toHaveTextContent(menu)
+      ));
+    });
   });
 });
