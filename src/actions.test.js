@@ -8,6 +8,7 @@ import {
   setRegions,
   setCategories,
   loadRestaurants,
+  getRestaurant,
   setRestaurants,
   loadRestaurant,
   setRestaurant,
@@ -90,7 +91,10 @@ describe('actions', () => {
 
         const actions = given.store.getActions();
 
-        expect(actions).toEqual([setRestaurant({})]);
+        expect(actions).toEqual([
+          getRestaurant(),
+          setRestaurant({}),
+        ]);
       });
     });
 
