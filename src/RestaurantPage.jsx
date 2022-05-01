@@ -12,7 +12,7 @@ export default function RestaurantPage() {
 
   const { restaurantId } = useParams();
 
-  const { name, address, menuItems } = restaurant;
+  const { name, address, menuItems } = restaurant.data;
 
   useEffect(() => {
     if (!restaurantId) {
@@ -23,7 +23,7 @@ export default function RestaurantPage() {
   }, []);
 
   // TODO: add loading state
-  if (!restaurant.id) {
+  if (restaurant.loading) {
     return <p>loading...</p>;
   }
 
