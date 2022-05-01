@@ -35,6 +35,18 @@ const reducers = {
     };
   },
 
+  getRestaurant(state) {
+    const { restaurant } = state;
+    return {
+      ...state,
+      restaurant: {
+        ...restaurant,
+        loading: true,
+        error: null,
+      },
+    };
+  },
+
   setRestaurant(state, { payload: { restaurant } }) {
     return {
       ...state,
