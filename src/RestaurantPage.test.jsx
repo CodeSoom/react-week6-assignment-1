@@ -1,9 +1,10 @@
 import { render } from '@testing-library/react';
 
+import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { MemoryRouter } from 'react-router-dom';
 import given from 'given2';
+
 import RestaurantPage from './RestaurantPage';
 
 import RESTAURANT from '../fixtures/restaurant';
@@ -11,13 +12,16 @@ import RESTAURANT from '../fixtures/restaurant';
 describe('RetaurantPage', () => {
   beforeEach(() => {
     jest.clearAllMocks();
+
     given('restaurant', () => RESTAURANT);
     given('loading', () => false);
   });
 
   const renderRestaurantPage = () => render((
-    <MemoryRouter>
-      <RestaurantPage />
+    <MemoryRouter initialEntries={['/restaurants/1']}>
+      <Routes>
+        <Route path="/restaurants/:restaurantId" element={<RestaurantPage />} />
+      </Routes>
     </MemoryRouter>
   ));
 
