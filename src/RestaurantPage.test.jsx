@@ -44,6 +44,17 @@ describe('RetaurantPage', () => {
     });
   });
 
+  context('without restaurant data', () => {
+    given('loading', () => false);
+    given('restaurant', () => undefined);
+
+    it('renders "loading..."', () => {
+      const { container } = renderRestaurantPage();
+
+      expect(container).toHaveTextContent('loading...');
+    });
+  });
+
   context('with restaurant', () => {
     given('loading', () => false);
     given('restaurant', () => RESTAURANT);
