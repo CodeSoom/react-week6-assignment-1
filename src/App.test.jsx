@@ -26,13 +26,17 @@ describe('App', () => {
       { id: 1, name: '마법사주방' },
     ],
     restaurant: {
-      id: 1,
-      categoryId: 5,
-      name: '마법사주방',
-      address: '서울 강남구 강남대로94길 21',
-      menuItems: [],
-      reviews: [],
-      information: '성전떡볶이 in 서울 강남구 강남대로94길 21',
+      data: {
+        id: 1,
+        categoryId: 5,
+        name: '마법사주방',
+        address: '서울 강남구 강남대로94길 21',
+        menuItems: [],
+        reviews: [],
+        information: '성전떡볶이 in 서울 강남구 강남대로94길 21',
+      },
+      loading: false,
+      error: null,
     },
   }));
 
