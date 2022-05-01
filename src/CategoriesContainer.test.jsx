@@ -1,3 +1,5 @@
+import given from 'given2';
+
 import { render, fireEvent } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,20 +11,22 @@ import CATEGORIES from '../fixtures/categories';
 describe('CategoriesContainer', () => {
   const dispatch = jest.fn();
 
+  useDispatch.mockImplementation(() => dispatch);
+
   const KOREAN_FOOD = CATEGORIES[0];
 
+  given('state', () => ({
+    categories: CATEGORIES,
+    selectedCategory: given.selectedCategory,
+  }));
+
   beforeEach(() => {
-    dispatch.mockClear();
-    useDispatch.mockImplementation(() => dispatch);
+    useSelector.mockImplementation((selector) => selector(given.state));
+    jest.clearAllMocks();
   });
 
   context('with selectedCategory', () => {
-    beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({
-        categories: CATEGORIES,
-        selectedCategory: KOREAN_FOOD,
-      }));
-    });
+    given('selectedCategory', () => KOREAN_FOOD);
 
     it('renders categories with selected category', () => {
       const { container } = render((
@@ -34,11 +38,7 @@ describe('CategoriesContainer', () => {
   });
 
   context('without selectedCategory', () => {
-    beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({
-        categories: CATEGORIES,
-      }));
-    });
+    given('selectedCategory', () => null);
 
     it('renders categories with selected category', () => {
       const { container, getByText } = render((

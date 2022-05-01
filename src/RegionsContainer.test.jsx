@@ -1,3 +1,5 @@
+import given from 'given2';
+
 import { render, fireEvent } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,20 +11,22 @@ import REGIONS from '../fixtures/regions';
 describe('RegionsContainer', () => {
   const dispatch = jest.fn();
 
+  useDispatch.mockImplementation(() => dispatch);
+
   const SEOUL = REGIONS[0];
 
+  given('state', () => ({
+    regions: REGIONS,
+    selectedRegion: given.selectedRegion,
+  }));
+
   beforeEach(() => {
-    dispatch.mockClear();
-    useDispatch.mockImplementation(() => dispatch);
+    useSelector.mockImplementation((selector) => selector(given.state));
+    jest.clearAllMocks();
   });
 
   context('with selectedRegion', () => {
-    beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({
-        regions: REGIONS,
-        selectedRegion: SEOUL,
-      }));
-    });
+    given('selectedRegion', () => SEOUL);
 
     it('renders regions with selected region', () => {
       const { container } = render((
@@ -34,11 +38,7 @@ describe('RegionsContainer', () => {
   });
 
   context('without selectedRegion', () => {
-    beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({
-        regions: REGIONS,
-      }));
-    });
+    given('selectedRegion', () => null);
 
     it('renders regions', () => {
       const { container, getByText } = render((

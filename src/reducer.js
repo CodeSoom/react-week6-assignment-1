@@ -4,8 +4,10 @@ const initialState = {
   regions: [],
   categories: [],
   restaurants: [],
+  restaurantDetail: null,
   selectedRegion: null,
   selectedCategory: null,
+  selectedRestaurant: null,
 };
 
 const reducers = {
@@ -27,6 +29,13 @@ const reducers = {
     return {
       ...state,
       restaurants,
+    };
+  },
+
+  setRestaurantDetail(state, { payload: { restaurantDetail } }) {
+    return {
+      ...state,
+      restaurantDetail,
     };
   },
 

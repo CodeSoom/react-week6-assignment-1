@@ -9,6 +9,7 @@
     "coverage": "npm run test:unit -- --coverage",
     "test:e2e": "codeceptjs run --steps",
     "test": "npm run coverage && start-server-and-test start http://localhost:8080 test:e2e",
+    "test:watch": "jest --watchAll",
     "lint": "eslint --ext js,jsx ."
   },
   "keywords": [],
@@ -40,9 +41,11 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "given2": "^2.1.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.4",
+    "react-router-dom": "^6.3.0",
     "redux": "^4.1.0",
     "redux-thunk": "^2.3.0"
   }

@@ -14,22 +14,22 @@ export default function CategoriesContainer() {
   const selectedCategory = useSelector(get('selectedCategory'));
 
   function handleClick(categoryId) {
-    dispatch(selectCategory(categoryId));
+    dispatch(selectCategory({ id: categoryId }));
     dispatch(loadRestaurants());
   }
 
   return (
     <ul>
-      {categories.map((category) => (
-        <li key={category.id}>
+      {categories.map(({ id, name }) => (
+        <li key={id}>
           <button
             type="button"
-            onClick={() => handleClick(category.id)}
+            onClick={() => handleClick(id)}
           >
-            {category.name}
+            {name}
             {selectedCategory ? (
               <>
-                {category.id === selectedCategory.id ? '(V)' : null}
+                {id === selectedCategory.id ? '(V)' : null}
               </>
             ) : null}
           </button>
