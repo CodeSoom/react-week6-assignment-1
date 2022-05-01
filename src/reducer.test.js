@@ -4,6 +4,7 @@ import {
   setRegions,
   setCategories,
   setRestaurants,
+  getRestaurant,
   setRestaurant,
   selectRegion,
   selectCategory,
@@ -111,6 +112,26 @@ describe('reducer', () => {
       expect(state.selectedCategory).toEqual({
         id: 1,
         name: '한식',
+      });
+    });
+  });
+
+  describe('getRestaruant', () => {
+    const initialState = {
+      restaurant: {
+        data: undefined,
+        loading: false,
+        error: null,
+      },
+    };
+
+    it('returns loading true', () => {
+      const { restaurant } = reducer(initialState, getRestaurant());
+
+      expect(restaurant).toEqual({
+        data: undefined,
+        loading: true,
+        error: null,
       });
     });
   });
