@@ -4,6 +4,11 @@ const initialState = {
   regions: [],
   categories: [],
   restaurants: [],
+  restaurant: {
+    data: undefined,
+    error: null,
+    loading: false,
+  },
   selectedRegion: null,
   selectedCategory: null,
 };
@@ -27,6 +32,29 @@ const reducers = {
     return {
       ...state,
       restaurants,
+    };
+  },
+
+  getRestaurant(state) {
+    const { restaurant } = state;
+    return {
+      ...state,
+      restaurant: {
+        ...restaurant,
+        loading: true,
+        error: null,
+      },
+    };
+  },
+
+  setRestaurant(state, { payload: { restaurant } }) {
+    return {
+      ...state,
+      restaurant: {
+        data: restaurant,
+        error: null,
+        loading: false,
+      },
     };
   },
 

@@ -1,5 +1,7 @@
 const path = require('path');
 
+console.log(__dirname);
+
 module.exports = {
   entry: path.resolve(__dirname, 'src/index.jsx'),
   module: {
@@ -13,5 +15,8 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx'],
+  },
+  devServer: {
+    historyApiFallback: true,
   },
 };

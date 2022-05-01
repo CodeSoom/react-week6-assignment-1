@@ -4,6 +4,8 @@ import {
   setRegions,
   setCategories,
   setRestaurants,
+  getRestaurant,
+  setRestaurant,
   selectRegion,
   selectCategory,
 } from './actions';
@@ -14,6 +16,11 @@ describe('reducer', () => {
       regions: [],
       categories: [],
       restaurants: [],
+      restaurant: {
+        data: undefined,
+        error: null,
+        loading: false,
+      },
       selectedRegion: null,
       selectedCategory: null,
     };
@@ -105,6 +112,64 @@ describe('reducer', () => {
       expect(state.selectedCategory).toEqual({
         id: 1,
         name: '한식',
+      });
+    });
+  });
+
+  describe('getRestaruant', () => {
+    const initialState = {
+      restaurant: {
+        data: undefined,
+        loading: false,
+        error: null,
+      },
+    };
+
+    it('returns loading true', () => {
+      const { restaurant } = reducer(initialState, getRestaurant());
+
+      expect(restaurant).toEqual({
+        data: undefined,
+        loading: true,
+        error: null,
+      });
+    });
+  });
+
+  describe('setRestaurant', () => {
+    const initialState = {
+      restaurant: {
+        data: undefined,
+        loading: true,
+        error: null,
+      },
+    };
+
+    const restaurant = {
+      id: 2,
+      categoryId: 5,
+      name: '성전떡볶이',
+      address: '서울 강남구 강남대로94길 21',
+      menuItems: [],
+      reviews: [],
+      information: '성전떡볶이 in 서울 강남구 강남대로94길 21',
+    };
+
+    it('changes restaurant', () => {
+      const state = reducer(initialState, setRestaurant(restaurant));
+
+      expect(state.restaurant).toEqual({
+        data: {
+          id: 2,
+          categoryId: 5,
+          name: '성전떡볶이',
+          address: '서울 강남구 강남대로94길 21',
+          menuItems: [],
+          reviews: [],
+          information: '성전떡볶이 in 서울 강남구 강남대로94길 21',
+        },
+        error: null,
+        loading: false,
       });
     });
   });
