@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import CategoriesContainer from './CategoriesContainer';
 
-import CATEGORIES from '../fixtures/categories';
+import CATEGORIES from '../../fixtures/categories';
 
 describe('CategoriesContainer', () => {
   const dispatch = jest.fn();
@@ -25,9 +25,7 @@ describe('CategoriesContainer', () => {
     });
 
     it('renders categories with selected category', () => {
-      const { container } = render((
-        <CategoriesContainer />
-      ));
+      const { container } = render(<CategoriesContainer />);
 
       expect(container).toHaveTextContent(`${KOREAN_FOOD.name}(V)`);
     });
@@ -41,9 +39,7 @@ describe('CategoriesContainer', () => {
     });
 
     it('renders categories with selected category', () => {
-      const { container, getByText } = render((
-        <CategoriesContainer />
-      ));
+      const { container, getByText } = render(<CategoriesContainer />);
 
       expect(container).toHaveTextContent(KOREAN_FOOD.name);
 
