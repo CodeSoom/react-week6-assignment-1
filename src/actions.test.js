@@ -9,6 +9,7 @@ import {
   loadRestaurants,
   setRestaurants,
   setRestaurantInfo,
+  loadRestaurantInfo,
 } from './actions';
 
 const middlewares = [thunk];
@@ -82,6 +83,20 @@ describe('actions', () => {
 
         expect(actions).toHaveLength(0);
       });
+    });
+  });
+
+  describe('selectRestaurant', () => {
+    it('changes selectedRestaurant', () => {
+      beforeEach(() => {
+        store = mockStore({
+          selectedRestaurant: null,
+        });
+      });
+
+      const actions = store.getActions();
+
+      expect(actions[0]).toEqual(selectRestaurant([]));
     });
   });
 
