@@ -8,7 +8,7 @@ import RestaurantsPage from './RestaurantsPage';
 export default function App() {
   return (
     <>
-      <h1><Link to="/">헤더 영역</Link></h1>
+      <h1><Link to="/">헤더</Link></h1>
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/about" component={AboutPage} />
