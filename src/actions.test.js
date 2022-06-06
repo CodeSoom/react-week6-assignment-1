@@ -10,7 +10,6 @@ import {
   setRestaurants,
   setRestaurantInfo,
   loadRestaurantInfo,
-  selectRestaurant,
 } from './actions';
 
 const middlewares = [thunk];

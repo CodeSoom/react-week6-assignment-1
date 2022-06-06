@@ -7,6 +7,7 @@ import {
   selectRegion,
   selectCategory,
   selectRestaurant,
+  setRestaurantInfo,
 } from './actions';
 
 describe('reducer', () => {
@@ -17,6 +18,7 @@ describe('reducer', () => {
       restaurants: [],
       selectedRegion: null,
       selectedCategory: null,
+      selectedRestaurant: null,
     };
 
     it('returns initialState', () => {
@@ -71,6 +73,27 @@ describe('reducer', () => {
       const state = reducer(initialState, setRestaurants(restaurants));
 
       expect(state.restaurants).toHaveLength(1);
+    });
+  });
+
+  describe('setRestaurantInfo', () => {
+    it('changes restaurant information', () => {
+      const initialState = {
+        restaurantInfo: [],
+      };
+
+      const restaurantInfo = {
+        id: 1,
+        name: '마법사주방',
+        address: '서울시 강남구',
+        menuItems: [
+          { id: 1, restarantId: 1, name: '비빔밥' },
+        ],
+      };
+
+      const state = reducer(initialState, setRestaurantInfo(restaurantInfo));
+
+      expect(state.restaurantInfo.name).toBe('마법사주방');
     });
   });
 
