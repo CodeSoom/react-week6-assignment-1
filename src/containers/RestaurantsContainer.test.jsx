@@ -11,9 +11,7 @@ test('RestaurantsContainer', () => {
     ],
   }));
 
-  const { container } = render((
-    <RestaurantsContainer />
-  ));
+  const { container } = render(<RestaurantsContainer />);
 
   expect(container).toHaveTextContent('마법사주방');
 });
