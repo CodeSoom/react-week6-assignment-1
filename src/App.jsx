@@ -1,8 +1,9 @@
-import { Switch, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import RestaurantsPage from './pages/RestaurantsPage';
+import RestaurantDetailPage from './pages/RestaurantDetailPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 export default function App() {
@@ -13,12 +14,16 @@ export default function App() {
           <Link to="/">헤더</Link>
         </h1>
       </header>
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/about" component={AboutPage} />
-        <Route path="/restaurants" component={RestaurantsPage} />
-        <Route component={NotFoundPage} />
-      </Switch>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/restaurants" element={<RestaurantsPage />} />
+        <Route
+          path="/restaurants/:restaurantId"
+          element={<RestaurantDetailPage />}
+        />
+        <Route path="/*" element={<NotFoundPage />} />
+      </Routes>
     </div>
   );
 }
