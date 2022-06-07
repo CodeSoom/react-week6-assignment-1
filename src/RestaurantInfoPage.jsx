@@ -1,9 +1,6 @@
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { useParams } from "react-router";
-import { loadRestaurantInfo, selectRestaurant } from "./actions";
-import { get } from "./utils";
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { loadRestaurantInfo, selectRestaurant } from './actions';
 
 export default function RestaurantInfoPage({ match }) {
   const dispatch = useDispatch();

@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import RestaurantInfoPage from './RestaurantInfoPage';
 
 import RESTAURANTINFO from '../fixtures/restaurantInfo';
-import { useParams } from 'react-router';
 
 describe('RestaurantInfoPage', () => {
   it('renders restaurant information', () => {
@@ -17,7 +16,7 @@ describe('RestaurantInfoPage', () => {
     }));
 
     const { container } = render((
-      <RestaurantInfoPage match={{ params: { id: 1 }}} />
+      <RestaurantInfoPage match={{ params: { id: 1 } }} />
     ));
 
     expect(dispatch).toBeCalled();
