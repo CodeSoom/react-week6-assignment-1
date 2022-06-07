@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react';
+
 import { useDispatch, useSelector } from 'react-redux';
 
 import { MemoryRouter } from 'react-router-dom';
@@ -12,8 +13,8 @@ describe('App', () => {
     useDispatch.mockImplementation(() => dispatch);
     useSelector.mockImplementation((selector) => selector({
       regions: [{ id: 1, name: '서울' }],
-      categories: [],
-      restaurants: [],
+      categories: [{ id: 1, name: '한식' }],
+      restaurants: [{ id: 1, name: '마법사주방' }],
     }));
   });
 
@@ -25,35 +26,42 @@ describe('App', () => {
     ));
   }
 
-  context('with path /', () => {
-    it('renders HomePage', () => {
-      const { container } = renderApp({ path: '/' });
+  context('path가 /인 경우', () => {
+    it('HomePage를 표시한다.', () => {
+      const { queryByText } = renderApp({ path: '/' });
 
-      expect(container).toHaveTextContent('Home');
+      expect(queryByText(/헤더/)).not.toBeNull();
+      expect(queryByText(/Home/)).not.toBeNull();
+
+      expect(queryByText(/헤더/).getAttribute('href')).toBe('/');
     });
   });
 
-  context('with path /about', () => {
-    it('renders HomePage', () => {
-      const { container } = renderApp({ path: '/about' });
+  context('path가 /about 인 경우', () => {
+    it('AboutPage를 표시한다.', () => {
+      const { queryByText } = renderApp({ path: '/about' });
 
-      expect(container).toHaveTextContent('20명에게 추천');
+      expect(queryByText(/헤더/)).not.toBeNull();
+      expect(queryByText(/이 서비스에 대해서/)).not.toBeNull();
     });
   });
 
-  context('with path /restaurants', () => {
-    it('renders restaurants', () => {
-      const { container } = renderApp({ path: '/restaurants' });
+  context('path가 /restaurants 인 경우', () => {
+    it('RestaurantsPage를 표시한다', () => {
+      const { queryByText } = renderApp({ path: '/restaurants' });
 
-      expect(container).toHaveTextContent('서울');
+      expect(queryByText(/헤더/)).not.toBeNull();
+      expect(queryByText(/서울/)).not.toBeNull();
+      expect(queryByText(/한식/)).not.toBeNull();
+      expect(queryByText(/마법사주방/)).not.toBeNull();
     });
   });
 
   context('with invalid path', () => {
     it('renders not found page', () => {
-      const { container } = renderApp({ path: '/xxx' });
+      const { queryByText } = renderApp({ path: '/xxx' });
 
-      expect(container).toHaveTextContent('404 Not Found');
+      expect(queryByText(/404/)).not.toBeNull();
     });
   });
 });
