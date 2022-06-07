@@ -2,16 +2,25 @@ import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
+import { BrowserRouter } from 'react-router-dom';
+
 import RestaurantsContainer from './RestaurantsContainer';
 
-test('RestaurantsContainer', () => {
+describe('RestaurantsContainer', () => {
   useSelector.mockImplementation((selector) => selector({
     restaurants: [
       { id: 1, name: '마법사주방' },
     ],
   }));
 
-  const { container } = render(<RestaurantsContainer />);
+  it('식당을 표시한다.', () => {
+    const { container, queryByText } = render(
+      <BrowserRouter initialEntries={['/restaurants/1']}>
+        <RestaurantsContainer />
+      </BrowserRouter>,
+    );
 
-  expect(container).toHaveTextContent('마법사주방');
+    expect(queryByText(/마법사주방/).getAttribute('href')).toBe('/restaurants/1');
+    expect(container).toHaveTextContent('마법사주방');
+  });
 });
