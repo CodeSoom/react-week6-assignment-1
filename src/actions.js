@@ -90,7 +90,7 @@ export function loadRestaurantInfo() {
     } = getState();
 
     const restaurantInfo = await fetchRestaurantInfo({
-      restaurantId: restaurant.id,
+      id: restaurant.id,
     });
     dispatch(setRestaurantInfo(restaurantInfo));
   };
