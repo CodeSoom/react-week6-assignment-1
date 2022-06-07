@@ -56,12 +56,4 @@ describe('App', () => {
       expect(queryByText(/마법사주방/)).not.toBeNull();
     });
   });
-
-  context('with invalid path', () => {
-    it('renders not found page', () => {
-      const { queryByText } = renderApp({ path: '/xxx' });
-
-      expect(queryByText(/404/)).not.toBeNull();
-    });
-  });
 });
