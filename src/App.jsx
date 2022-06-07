@@ -6,10 +6,6 @@ import NotFoundPage from './pages/NotFoundPage';
 import RestaurantsPage from './components/RestaurantsPage';
 
 /**
- *
- * 1-1 Home -- 메뉴들을 볼수있다? ("/" => {Home, About})
- * 1-2 Home -- onCLick ("/" => About)
- *
  * 2-1 RestaurantDetail -- 레스토랑 정보와 메뉴 목록 볼수있다. ("/restaurants/1" See 양천주가)
  * 2-2 상세 페이지 이동? (click) => 서울,한식 = 양천주가 | (click) => current url
  */

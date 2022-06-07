@@ -4,8 +4,9 @@ export default function HomePage() {
   return (
     <div>
       <ul>
+        <h1>Home</h1>
         <li>
-          <Link to="./about">Home</Link>
+          <Link to="./about">About</Link>
         </li>
         <li>
           <Link to="./restaurants">Restaurants</Link>
