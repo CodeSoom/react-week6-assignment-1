@@ -19,6 +19,7 @@ describe('reducer', () => {
       selectedRegion: null,
       selectedCategory: null,
       selectedRestaurant: null,
+      restaurantInfoLoading: false,
     };
 
     it('returns initialState', () => {
