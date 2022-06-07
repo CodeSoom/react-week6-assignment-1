@@ -1,9 +1,8 @@
-import { Route, Routes } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
 
 import AboutPage from './pages/AboutPage';
 import HomePage from './pages/HomePage';
 import NotFoundPage from './pages/NotFoundPage';
-
 import RestaurantsPage from './components/RestaurantsPage';
 
 /**
@@ -18,11 +17,14 @@ import RestaurantsPage from './components/RestaurantsPage';
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/about" element={<AboutPage />} />
-      <Route path="/restaurants" element={<RestaurantsPage />} />
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
+    <>
+      <h1><Link to="/">헤더</Link></h1>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/restaurants" element={<RestaurantsPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </>
   );
 }
