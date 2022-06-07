@@ -6,7 +6,6 @@ import NotFoundPage from './pages/NotFoundPage';
 import RestaurantsPage from './components/RestaurantsPage';
 
 /**
- * Header -- 헤더 클릭시 메인 페이지로 돌아가기 (/restaurants click)
  *
  * 1-1 Home -- 메뉴들을 볼수있다? ("/" => {Home, About})
  * 1-2 Home -- onCLick ("/" => About)
