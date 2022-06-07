@@ -18,10 +18,14 @@ export default function RestaurantDetailPage() {
 
   const restaurantDetail = useSelector(get('restaurantDetail'));
 
+  if (!restaurantDetail) {
+    return <p>레스토랑 정보가 없어요!</p>;
+  }
+
   const { name, address, menuItems } = restaurantDetail;
 
   return (
-    <div>
+    <>
       <h2>{name}</h2>
       <p>
         주소:
@@ -29,10 +33,10 @@ export default function RestaurantDetailPage() {
       </p>
       <h3>메뉴</h3>
       <ul>
-        {menuItems.map(({ id, name: menu }) => (
+        {menuItems?.map(({ id, name: menu }) => (
           <li key={id}>{menu}</li>
         ))}
       </ul>
-    </div>
+    </>
   );
 }
