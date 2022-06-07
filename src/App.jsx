@@ -6,10 +6,15 @@ import NotFoundPage from './pages/NotFoundPage';
 
 import RestaurantsPage from './components/RestaurantsPage';
 
-// 0. 지역, 분류 목록을 얻기
-// 1. 지역 선택 - Regions <- API (0)
-// 2. 분류 선택 - Categories - 한식, 중식, 일식, ... <- API (0)
-// 3. 식당 목록 - Restaurants <- API (with region, category) -> 1, 2 모두 완료된 경우
+/**
+ * Header -- 헤더 클릭시 메인 페이지로 돌아가기 (/restaurants click)
+ *
+ * 1-1 Home -- 메뉴들을 볼수있다? ("/" => {Home, About})
+ * 1-2 Home -- onCLick ("/" => About)
+ *
+ * 2-1 RestaurantDetail -- 레스토랑 정보와 메뉴 목록 볼수있다. ("/restaurants/1" See 양천주가)
+ * 2-2 상세 페이지 이동? (click) => 서울,한식 = 양천주가 | (click) => current url
+ */
 
 export default function App() {
   return (
