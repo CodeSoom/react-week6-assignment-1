@@ -8,6 +8,8 @@ import {
   setCategories,
   loadRestaurants,
   setRestaurants,
+  loadRestaurantDetail,
+  setRestaurantDetail,
 } from './actions';
 
 const middlewares = [thunk];
@@ -58,7 +60,7 @@ describe('actions', () => {
         });
       });
 
-      it('does\'nt run any actions', async () => {
+      it("does'nt run any actions", async () => {
         await store.dispatch(loadRestaurants());
 
         const actions = store.getActions();
@@ -74,8 +76,38 @@ describe('actions', () => {
         });
       });
 
-      it('does\'nt run any actions', async () => {
+      it("does'nt run any actions", async () => {
         await store.dispatch(loadRestaurants());
+
+        const actions = store.getActions();
+
+        expect(actions).toHaveLength(0);
+      });
+    });
+  });
+
+  describe('loadRestaurantDetail', () => {
+    context('with restaurantId', () => {
+      beforeEach(() => {
+        store = mockStore({});
+      });
+
+      it('runs setRestaurantDetail', async () => {
+        await store.dispatch(loadRestaurantDetail({ restaurantId: 1 }));
+
+        const actions = store.getActions();
+
+        expect(actions[0]).toEqual(setRestaurantDetail({}));
+      });
+    });
+
+    context('without restaurantId', () => {
+      beforeEach(() => {
+        store = mockStore({});
+      });
+
+      it("does'nt run any actions", async () => {
+        await store.dispatch(loadRestaurantDetail({ restaurantId: null }));
 
         const actions = store.getActions();
 
