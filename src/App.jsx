@@ -1,3 +1,5 @@
+import { Route, Routes } from 'react-router-dom';
+
 import AboutPage from './pages/AboutPage';
 import HomePage from './pages/HomePage';
 import NotFoundPage from './pages/NotFoundPage';
@@ -10,15 +12,12 @@ import RestaurantsPage from './RestaurantsPage';
 // 3. 식당 목록 - Restaurants <- API (with region, category) -> 1, 2 모두 완료된 경우
 
 export default function App() {
-  const { location: { pathname } } = window;
-
-  const MyComponent = {
-    '/': HomePage,
-    '/about': AboutPage,
-    '/restaurants': RestaurantsPage,
-  }[pathname] || NotFoundPage;
-
   return (
-    <MyComponent />
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/about" element={<AboutPage />} />
+      <Route path="/restaurants" element={<RestaurantsPage />} />
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
   );
 }
