@@ -12,19 +12,40 @@ describe('RestaurantsDetailPage', () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
-  useSelector.mockImplementation((selector) => selector({
-    restaurantDetail,
-  }));
 
-  it('renders restaurantDetail', () => {
-    const { container } = render(
-      <MemoryRouter>
-        <RestaurantDetailPage />
-      </MemoryRouter>,
-    );
+  const renderRestaurantDetailPage = () => render(
+    <MemoryRouter>
+      <RestaurantDetailPage />
+    </MemoryRouter>,
+  );
 
-    expect(container).toHaveTextContent('양천주가');
-    expect(container).toHaveTextContent('주소');
-    expect(container).toHaveTextContent('메뉴');
+  context('with restaurantDetail', () => {
+    beforeEach(() => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurantDetail,
+      }));
+      jest.clearAllMocks();
+    });
+
+    it('renders restaurantDetail', () => {
+      const { container } = renderRestaurantDetailPage();
+
+      expect(container).toHaveTextContent('양천주가');
+      expect(container).toHaveTextContent('주소');
+      expect(container).toHaveTextContent('메뉴');
+    });
+  });
+
+  context('without restaurantDetail', () => {
+    beforeEach(() => {
+      useSelector.mockImplementation((selector) => selector({ restaurantDetail: null }));
+      jest.clearAllMocks();
+    });
+
+    it('renders "레스토랑 정보가 없어요!"', () => {
+      const { container } = renderRestaurantDetailPage();
+
+      expect(container).toHaveTextContent('레스토랑 정보가 없어요!');
+    });
   });
 });
