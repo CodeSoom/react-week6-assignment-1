@@ -47,10 +47,10 @@ export function selectCategory(categoryId) {
   };
 }
 
-export function selectRestaurant(restaurantId) {
+export function selectRestaurant(id) {
   return {
     type: 'selectRestaurant',
-    payload: { restaurantId },
+    payload: { id },
   };
 }
 

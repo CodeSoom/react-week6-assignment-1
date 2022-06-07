@@ -54,11 +54,11 @@ const reducers = {
     };
   },
 
-  selectRestaurant(state, { payload: { restaurantId } }) {
+  selectRestaurant(state, { payload: { id } }) {
     const { restaurants } = state;
     return {
       ...state,
-      selectedRestaurant: restaurants.find(equal('id', restaurantId)),
+      selectedRestaurant: restaurants.find(equal('id', id)),
     };
   },
 };

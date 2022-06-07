@@ -60,7 +60,7 @@ describe('api', () => {
 
     it('returns restaurant information', async () => {
       const restaurantInfo = await fetchRestaurantInfo({
-        restaurantId: 1,
+        id: 1,
       });
 
       expect(restaurantInfo).toEqual(RESTAURANTINFO);
