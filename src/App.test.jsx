@@ -65,7 +65,7 @@ describe('App', () => {
     it('renders RestaurantsPage', () => {
       const { container } = renderApp({ path: '/restaurants' });
 
-      expect(container).toHaveTextContent('서울');
+      expect(container).toHaveTextContent('Restaurants');
     });
   });
 
