@@ -12,20 +12,36 @@ describe('App', () => {
 
     useDispatch.mockImplementation(() => dispatch);
 
-    useSelector.mockImplementation((selector) =>
-      selector({
-        regions: [{ id: 1, name: '서울' }],
-        categories: [],
-        restaurants: [],
-      })
-    );
+    useSelector.mockImplementation((selector) => selector({
+      regions: [],
+      categories: [],
+      restaurants: [],
+      restaurantDetail: {
+        id: 1,
+        categoryId: 1,
+        name: '양천주가',
+        address: '서울시 강남구 123456',
+        menuItems: [
+          {
+            id: 16,
+            restaurantId: 1,
+            name: '탕수육',
+          },
+          {
+            id: 17,
+            restaurantId: 1,
+            name: '팔보채',
+          },
+        ],
+      },
+    }));
   });
 
   function renderApp({ path }) {
     return render(
       <MemoryRouter initialEntries={[path]}>
         <App />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
   }
 
@@ -50,6 +66,15 @@ describe('App', () => {
       const { container } = renderApp({ path: '/restaurants' });
 
       expect(container).toHaveTextContent('서울');
+    });
+  });
+
+  context('with path /restaurants/1', () => {
+    it('renders RestaurantDetailPage', () => {
+      const { container } = renderApp({ path: '/restaurants/1' });
+
+      expect(container).toHaveTextContent('주소');
+      expect(container).toHaveTextContent('메뉴');
     });
   });
 
