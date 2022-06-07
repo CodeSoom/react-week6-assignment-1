@@ -5,10 +5,10 @@ export default function HomePage() {
     <div>
       <ul>
         <li>
-          <Link to="./about">about</Link>
+          <Link to="./about">Home</Link>
         </li>
         <li>
-          <Link to="./restaurants">restaurants</Link>
+          <Link to="./restaurants">Restaurants</Link>
         </li>
         <li>
           <Link to="./xxx">멸망의 길</Link>

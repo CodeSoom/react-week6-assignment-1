@@ -1,17 +1,13 @@
 import { render } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { MemoryRouter } from 'react-router-dom';
 
 import HomePage from './HomePage';
 
 test('HomePage', () => {
-  useSelector.mockImplementation((selector) => selector({
-    regions: [],
-    categories: [],
-    restaurants: [],
-  }));
-
   render(
-    <HomePage />,
+    <MemoryRouter>
+      <HomePage />
+    </MemoryRouter>,
   );
 });
