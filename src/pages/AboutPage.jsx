@@ -2,7 +2,7 @@ export default function About() {
   return (
     <div>
       <h2>About</h2>
-      404 Not Found
+      About 페이지 입니다.
     </div>
   );
 }
