@@ -15,7 +15,7 @@ describe('RestaurantDetail', () => {
     it('식당의 정보를 표시한다', () => {
       const { queryByText } = renderRestaurantsDetails(restaurantsDetails);
 
-      expect(queryByText('양천주가')).not.toBeNull();
+      expect(queryByText('양천주가')).toBeInTheDocument();
       expect(queryByText('서울 강남구')).not.toBeNull();
       expect(queryByText('짜장면')).not.toBeNull();
       expect(queryByText('짬뽕')).not.toBeNull();
