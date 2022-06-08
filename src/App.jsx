@@ -11,11 +11,11 @@ export default function App() {
     <>
       <h1><Link to="/">헤더</Link></h1>
       <Routes>
-        <Route exact path="/" element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/restaurants/:id" element={<RestaurantInfoPage />} />
         <Route path="/restaurants" element={<RestaurantsPage />} />
-        <Route element={<NotFoundPage />} />
+        <Route path="/*" element={<NotFoundPage />} />
       </Routes>
     </>
   );
