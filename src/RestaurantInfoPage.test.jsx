@@ -29,7 +29,7 @@ describe('RestaurantInfoPage', () => {
   });
 
   context('when restaurantInfoLoading is false', () => {
-    it('returns Loading...', () => {
+    it('renders loading', () => {
       const dispatch = jest.fn();
 
       useDispatch.mockImplementation(() => dispatch);
