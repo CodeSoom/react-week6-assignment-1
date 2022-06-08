@@ -8,7 +8,7 @@ import RestaurantsContainer from '../features/restaurant/RestaurantsContainer';
 
 import {
   loadInitialData,
-} from '../apps/actions';
+} from '../apps/store/actions';
 
 // 0. 지역, 분류 목록을 얻기
 // 1. 지역 선택 - Regions <- API (0)
