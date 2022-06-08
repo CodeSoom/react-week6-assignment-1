@@ -13,8 +13,8 @@ export default function RestaurantsDetails({ restaurantsDetails }) {
       <p>{`주소: ${address}`}</p>
       <h2>메뉴</h2>
       <ul>
-        {menuItems.map((item) => (
-          <li key={item.id}>{item.name}</li>
+        {menuItems.map((id, name) => (
+          <li key={id}>{name}</li>
         ))}
       </ul>
     </div>
