@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
+import restaurantDetail from '../fixtures/restaurantDetail';
+
 describe('App', () => {
   beforeEach(() => {
     const dispatch = jest.fn();
@@ -16,24 +18,7 @@ describe('App', () => {
       regions: [],
       categories: [],
       restaurants: [],
-      restaurantDetail: {
-        id: 1,
-        categoryId: 1,
-        name: '양천주가',
-        address: '서울시 강남구 123456',
-        menuItems: [
-          {
-            id: 16,
-            restaurantId: 1,
-            name: '탕수육',
-          },
-          {
-            id: 17,
-            restaurantId: 1,
-            name: '팔보채',
-          },
-        ],
-      },
+      restaurantDetail,
     }));
   });
 
@@ -82,7 +67,7 @@ describe('App', () => {
     it('renders NotFoundPage', () => {
       const { container } = renderApp({ path: '/blahblah' });
 
-      expect(container).toHaveTextContent('요청하신 페이지를 찾을 수 없습니다');
+      expect(container).toHaveTextContent('404 Not Found');
     });
   });
 });
