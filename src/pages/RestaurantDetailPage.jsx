@@ -33,7 +33,7 @@ export default function RestaurantDetailPage() {
       </p>
       <h3>메뉴</h3>
       <ul>
-        {menuItems?.map(({ id, name: menu }) => (
+        {menuItems.map(({ id, name: menu }) => (
           <li key={id}>{menu}</li>
         ))}
       </ul>
