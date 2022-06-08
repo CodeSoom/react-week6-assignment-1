@@ -16,6 +16,7 @@ describe('reducer', () => {
       regions: [],
       categories: [],
       restaurants: [],
+      restaurantInfo: {},
       selectedRegion: null,
       selectedCategory: null,
       selectedRestaurant: null,
@@ -80,7 +81,7 @@ describe('reducer', () => {
   describe('setRestaurantInfo', () => {
     it('changes restaurant information', () => {
       const initialState = {
-        restaurantInfo: [],
+        restaurantInfo: {},
       };
 
       const restaurantInfo = {
