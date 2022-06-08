@@ -147,7 +147,6 @@ describe('reducer', () => {
 
       expect(state.selectedRestaurant).toEqual({
         id: 1,
-        name: '양천주가',
       });
     });
   });
