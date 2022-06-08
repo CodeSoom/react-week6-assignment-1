@@ -87,20 +87,18 @@ describe('actions', () => {
   });
 
   describe('loadRestaurantInfo', () => {
-    context('with selectedRestaurant', () => {
-      beforeEach(() => {
-        store = mockStore({
-          selectedRestaurant: { id: 1 },
-        });
+    beforeEach(() => {
+      store = mockStore({
+        selectedRestaurant: { id: 1 },
       });
+    });
 
-      it('runs setRestaurantInfo', async () => {
-        await store.dispatch(loadRestaurantInfo());
+    it('runs setRestaurantInfo', async () => {
+      await store.dispatch(loadRestaurantInfo());
 
-        const actions = store.getActions();
+      const actions = store.getActions();
 
-        expect(actions[0]).toEqual(setRestaurantInfo([]));
-      });
+      expect(actions[0]).toEqual(setRestaurantInfo([]));
     });
   });
 });
