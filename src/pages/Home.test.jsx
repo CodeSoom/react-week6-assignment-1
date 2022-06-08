@@ -4,12 +4,12 @@ import { MemoryRouter } from 'react-router-dom';
 
 import { render } from '@testing-library/react';
 
-import HomePage from './HomePage';
+import Home from './Home';
 
-test('HomePage', () => {
+test('Home', () => {
   render((
     <MemoryRouter>
-      <HomePage />
+      <Home />
     </MemoryRouter>
   ));
 });

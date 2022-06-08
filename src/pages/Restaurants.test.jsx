@@ -4,9 +4,9 @@ import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import RestaurantsPage from './RestaurantsPage';
+import Restaurants from './Restaurants';
 
-test('RestaurantsPage', () => {
+test('Restaurants', () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
@@ -24,7 +24,7 @@ test('RestaurantsPage', () => {
   }));
 
   const { queryByText } = render((
-    <RestaurantsPage />
+    <Restaurants />
   ));
 
   expect(dispatch).toBeCalled();

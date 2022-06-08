@@ -1,9 +1,9 @@
 import { Switch, Route, Link } from 'react-router-dom';
 
-import RestaurantsPage from './RestaurantsPage';
-import HomePage from './HomePage';
-import AboutPage from './AboutPage';
-import NotFoundPage from './NotFoundPage';
+import RestaurantsPage from './pages/Restaurants';
+import HomePage from './pages/Home';
+import AboutPage from './pages/About';
+import NotFoundPage from './pages/NotFound';
 
 export default function App() {
   return (
