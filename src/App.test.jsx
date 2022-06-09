@@ -29,7 +29,7 @@ describe('App', () => {
   it('페이지 제목이 보인다.', () => {
     const { getByRole } = appRender();
 
-    expect(getByRole('heading')).toHaveTextContent('Home');
+    expect(getByRole('heading')).toHaveTextContent('헤더');
   });
 
   it('/ 경로에서는 HomePage가 보인다.', () => {
