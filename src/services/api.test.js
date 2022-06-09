@@ -1,8 +1,11 @@
-import { fetchRegions, fetchCategories, fetchRestaurants } from './api';
+import {
+  fetchRegions, fetchCategories, fetchRestaurants, fetchRestaurantsDetails,
+} from './api';
 
 import REGIONS from '../../fixtures/regions';
 import CATEGORIES from '../../fixtures/categories';
 import RESTAURANTS from '../../fixtures/restaurants';
+import RESTAURANTS_DETAILS from '../../fixtures/restaurantsDetails';
 
 describe('api', () => {
   const mockFetch = (data) => {
@@ -47,6 +50,24 @@ describe('api', () => {
       });
 
       expect(restaurants).toEqual(RESTAURANTS);
+    });
+  });
+  describe('fetchRestaurantsDetails', () => {
+    beforeEach(() => {
+      mockFetch(RESTAURANTS_DETAILS);
+    });
+    it('식당 정보를 리턴한다', async () => {
+      const datails = await fetchRestaurantsDetails({
+        id: 1,
+        name: '양천주가',
+        address: '서울 강남구',
+        menus: [
+          { id: 101, name: '짜장면' },
+          { id: 102, name: '짬뽕' },
+        ],
+      });
+
+      expect(datails).toEqual(RESTAURANTS_DETAILS);
     });
   });
 });
