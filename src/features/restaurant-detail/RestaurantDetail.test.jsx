@@ -18,4 +18,13 @@ describe('RestaurantDetail', () => {
       expect(queryByText('비빔밥')).not.toBeNull();
     });
   });
+  context('without details', () => {
+    it("doesn't render", () => {
+      const { queryByText } = render((
+        <RestaurantDetail />
+      ));
+
+      expect(queryByText('비빔밥')).toBeNull();
+    });
+  });
 });
