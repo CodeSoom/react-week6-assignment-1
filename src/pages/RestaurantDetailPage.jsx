@@ -19,7 +19,7 @@ export default function RestaurantDetailPage() {
   const restaurantDetail = useSelector(get('restaurantDetail'));
 
   if (!restaurantDetail) {
-    return <p>레스토랑 정보가 없어요!</p>;
+    return <p>로딩 중...</p>;
   }
 
   const { name, address, menuItems } = restaurantDetail;
