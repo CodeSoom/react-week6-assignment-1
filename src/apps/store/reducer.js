@@ -39,31 +39,52 @@ const reducers = {
     };
   },
 
-  setRestaurantDetail(state, { payload: { key, restaurantDetail } }) {
+  setRestaurantDetail(state, {
+    payload: {
+      key, restaurantDetail, isLoading, isError, errorMessage,
+    },
+  }) {
     return {
       ...state,
       [key]: {
         ...state[key],
+        isLoading,
+        isError,
+        errorMessage,
         data: restaurantDetail,
       },
     };
   },
 
-  setLoading(state, { payload: { isLoading, isError, errorMessage } }) {
+  setLoading(state, {
+    payload: {
+      key, isLoading, isError, errorMessage,
+    },
+  }) {
     return {
       ...state,
-      isLoading,
-      isError,
-      errorMessage,
+      [key]: {
+        ...state[key],
+        isLoading,
+        isError,
+        errorMessage,
+      },
     };
   },
 
-  setError(state, { payload: { isLoading, isError, errorMessage } }) {
+  setError(state, {
+    payload: {
+      key, isLoading, isError, errorMessage,
+    },
+  }) {
     return {
       ...state,
-      isLoading,
-      isError,
-      errorMessage,
+      [key]: {
+        ...state[key],
+        isLoading,
+        isError,
+        errorMessage,
+      },
     };
   },
 

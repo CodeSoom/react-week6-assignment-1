@@ -32,14 +32,18 @@ export function setRestaurantDetail(restaurantDetail) {
     payload: {
       key: 'restaurantDetail',
       restaurantDetail,
+      isLoading: false,
+      isError: false,
+      errorMessage: '',
     },
   };
 }
 
-export function setLoading(isLoading) {
+export function setLoading(key, isLoading) {
   return {
     type: 'setLoading',
     payload: {
+      key,
       isLoading,
       isError: false,
       errorMessage: '',
@@ -47,10 +51,11 @@ export function setLoading(isLoading) {
   };
 }
 
-export function setError({ isError, errorMessage }) {
+export function setError(key, { isError, errorMessage }) {
   return {
     type: 'setError',
     payload: {
+      key,
       isLoading: false,
       isError,
       errorMessage,
@@ -106,6 +111,8 @@ export function loadRestaurantDetail(restaurantId) {
     if (!restaurantId) {
       return;
     }
+
+    dispatch(setLoading('restaurantDetail', true));
 
     const restaurantDetail = await fetchRestaurantById(restaurantId);
     dispatch(setRestaurantDetail(restaurantDetail));
