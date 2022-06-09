@@ -6,6 +6,8 @@ import { render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantsPage from './RestaurantsPage';
+import categories from '../../fixtures/categories';
+import regions from '../../fixtures/regions';
 
 jest.mock('react-redux');
 jest.mock('../services/api');
@@ -19,14 +21,15 @@ test('RestaurantsPage', () => {
     selector({
       restaurants: [],
       restaurant: {},
-      categories: [],
-      regions: [],
+      categories,
+      regions,
     })
   );
 
-  const { queryByText } = render(<RestaurantsPage />);
+  const { getByText } = render(<RestaurantsPage />);
 
-  expect(dispatch).toBeCalledTimes(1);
+  expect(dispatch).toBeCalled();
 
-  expect(queryByText(/김밥제국/)).toBeNull();
+  expect(getByText(/한식/)).not.toBeNull();
+  expect(getByText(/서울/)).not.toBeNull();
 });
