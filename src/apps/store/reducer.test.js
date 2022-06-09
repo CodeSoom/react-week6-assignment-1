@@ -10,6 +10,20 @@ import {
 } from './actions';
 
 describe('reducer', () => {
+  context('default reducer', () => {
+    it('returns initialState', () => {
+      const initialState = {
+        regions: [],
+        categories: [],
+        restaurants: [],
+        restaurantDetail: {},
+        selectedRegion: null,
+        selectedCategory: null,
+      };
+      const state = reducer();
+      expect(state).toEqual(initialState);
+    });
+  });
   context('when previous state is undefined', () => {
     const initialState = {
       regions: [],
@@ -78,7 +92,7 @@ describe('reducer', () => {
   describe('setRestaurantDetail', () => {
     it('changes restaurantDetail', () => {
       const initialState = {
-        restaurantDetail: [],
+        restaurantDetail: {},
       };
 
       const restaurantDetail = {
@@ -97,7 +111,7 @@ describe('reducer', () => {
 
       const state = reducer(initialState, setRestaurantDetail(restaurantDetail));
 
-      expect(state.restaurantDetail?.name).toBe('양천주가');
+      expect(state.restaurantDetail.name).toBe('양천주가');
     });
   });
 
