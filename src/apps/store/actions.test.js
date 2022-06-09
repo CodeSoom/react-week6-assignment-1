@@ -10,6 +10,7 @@ import {
   setRestaurants,
   loadRestaurantDetail,
   setRestaurantDetail,
+  setError,
 } from './actions';
 
 const middlewares = [thunk];
@@ -110,6 +111,31 @@ describe('actions', () => {
         const actions = store.getActions();
 
         expect(actions).toHaveLength(0);
+      });
+    });
+
+    context('with error', () => {
+      beforeEach(() => {
+        store = mockStore({
+          restaurantDetail: {
+            isLoading: false,
+            isError: false,
+            errorMessage: '',
+            data: {},
+          },
+        });
+        window.fetch = jest.fn().mockImplementation(() => Promise.reject(new Error('error')));
+      });
+
+      it('runs setError', async () => {
+        await store.dispatch(loadRestaurantDetail(1));
+
+        const actions = store.getActions();
+
+        expect(actions).toEqual(setError('restaurantDetail', {
+          isError: true,
+          errorMessage: 'error',
+        }));
       });
     });
   });
