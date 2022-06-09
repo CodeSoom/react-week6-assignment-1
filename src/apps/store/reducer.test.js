@@ -5,9 +5,8 @@ import {
   setCategories,
   setRestaurants,
   setRestaurantDetail,
-  setIsLoading,
-  setIsError,
-  setErrorMessage,
+  setLoading,
+  setError,
   selectRegion,
   selectCategory,
 } from './actions';
@@ -124,15 +123,36 @@ describe('reducer', () => {
     });
   });
 
-  describe('setIsLoading', () => {
-    it('changes isLoading', () => {
+  describe('setLoading', () => {
+    it('isError becomes false and errorMessage becomes empty value and changes isLoading', () => {
       const initialState = {
         isLoading: false,
+        isError: false,
+        errorMessage: '',
       };
 
-      const state = reducer(initialState, setIsLoading(true));
+      const state = reducer(initialState, setLoading(true));
 
       expect(state.isLoading).toBe(true);
+    });
+  });
+
+  describe('setError', () => {
+    it('isLoading becomes false and changes isError and errorMessage', () => {
+      const initialState = {
+        isLoading: true,
+        isError: false,
+        errorMessage: '',
+      };
+
+      const state = reducer(initialState, setError({
+        isError: true,
+        errorMessage: '에러발생',
+      }));
+
+      expect(state.isLoading).toBe(false);
+      expect(state.isError).toBe(true);
+      expect(state.errorMessage).toBe('에러발생');
     });
   });
 
