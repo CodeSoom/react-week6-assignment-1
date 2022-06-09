@@ -18,7 +18,12 @@ describe('reducer', () => {
         regions: [],
         categories: [],
         restaurants: [],
-        restaurantDetail: {},
+        restaurantDetail: {
+          isLoading: false,
+          isError: false,
+          errorMessage: '',
+          data: {},
+        },
         selectedRegion: null,
         selectedCategory: null,
         isLoading: false,
@@ -34,7 +39,12 @@ describe('reducer', () => {
       regions: [],
       categories: [],
       restaurants: [],
-      restaurantDetail: {},
+      restaurantDetail: {
+        isLoading: false,
+        isError: false,
+        errorMessage: '',
+        data: {},
+      },
       selectedRegion: null,
       selectedCategory: null,
       isLoading: false,
@@ -100,7 +110,12 @@ describe('reducer', () => {
   describe('setRestaurantDetail', () => {
     it('changes restaurantDetail', () => {
       const initialState = {
-        restaurantDetail: {},
+        restaurantDetail: {
+          isLoading: false,
+          isError: false,
+          errorMessage: '',
+          data: {},
+        },
       };
 
       const restaurantDetail = {
@@ -119,7 +134,7 @@ describe('reducer', () => {
 
       const state = reducer(initialState, setRestaurantDetail(restaurantDetail));
 
-      expect(state.restaurantDetail.name).toBe('양천주가');
+      expect(state.restaurantDetail.data.name).toBe('양천주가');
     });
   });
 
