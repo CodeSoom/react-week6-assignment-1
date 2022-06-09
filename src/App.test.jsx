@@ -21,6 +21,9 @@ describe('App', () => {
         regions: [{ id: 1, name: '서울' }],
         categories: [{ id: 1, name: '한식' }],
         restaurants: [{ id: 1, name: '마법사주방' }],
+        restaurant: {
+          name: '양천주가'
+        }
       })
     );
   });
@@ -54,6 +57,14 @@ describe('App', () => {
       const { container } = renderApp({ path: '/restaurants' });
 
       expect(container).toHaveTextContent('서울');
+    });
+  });
+
+  context('with path /restaurant/:id', () => {
+    it('renders the restaurantInfo page', () => {
+      const { container } = renderApp({ path: '/restaurant/:id' });
+
+      expect(container).toHaveTextContent('양천주가');
     });
   });
 

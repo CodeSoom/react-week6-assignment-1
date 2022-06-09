@@ -8,6 +8,7 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import NotFoundPage from './pages/NotFoundPage';
 import RestaurantsPage from './pages/RestaurantsPage';
+import RestaurantInfoPage from './pages/RestaurantInfoPage';
 
 import { loadInitialData } from './redux/actions';
 
@@ -32,6 +33,7 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/restaurants" element={<RestaurantsPage />} />
+        <Route path="/restaurant/:id" element={<RestaurantInfoPage />} />
         <Route path="/*" element={<NotFoundPage />} />
       </Routes>
     </>
