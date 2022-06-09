@@ -16,9 +16,6 @@ describe('RestaurantDetail', () => {
       const { queryByText } = renderRestaurantsDetails(restaurantsDetails);
 
       expect(queryByText('양천주가')).toBeInTheDocument();
-      expect(queryByText('서울 강남구')).not.toBeNull();
-      expect(queryByText('짜장면')).not.toBeNull();
-      expect(queryByText('짬뽕')).not.toBeNull();
     });
   });
 
@@ -26,7 +23,7 @@ describe('RestaurantDetail', () => {
     it('정보가 없음을 확인한다', () => {
       const { queryByText } = renderRestaurantsDetails(undefined);
 
-      expect(queryByText('Now is loading')).not.toBeNull();
+      expect(queryByText(/Now is loading/)).toBeInTheDocument();
     });
   });
 });
