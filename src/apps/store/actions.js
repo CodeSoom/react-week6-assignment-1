@@ -108,13 +108,20 @@ export function loadRestaurants() {
 
 export function loadRestaurantDetail(restaurantId) {
   return async (dispatch) => {
-    if (!restaurantId) {
-      return;
+    try {
+      if (!restaurantId) {
+        return;
+      }
+
+      dispatch(setLoading('restaurantDetail', true));
+
+      const restaurantDetail = await fetchRestaurantById(restaurantId);
+      dispatch(setRestaurantDetail(restaurantDetail));
+    } catch (error) {
+      dispatch(setError('restaurantDetail', {
+        isError: true,
+        errorMessage: JSON.stringify(error),
+      }));
     }
-
-    dispatch(setLoading('restaurantDetail', true));
-
-    const restaurantDetail = await fetchRestaurantById(restaurantId);
-    dispatch(setRestaurantDetail(restaurantDetail));
   };
 }
