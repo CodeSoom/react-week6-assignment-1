@@ -14,11 +14,25 @@ export default function DetailContainer() {
   const { id } = useParams();
   const dispatch = useDispatch();
 
-  const restaurantDetail = useSelector(get('restaurantDetail'));
+  const {
+    isLoading, isError, errorMessage, data: restaurantDetail,
+  } = useSelector(get('restaurantDetail'));
 
   useEffect(() => {
     dispatch(loadRestaurantDetail(id));
   }, [id]);
+
+  if (isLoading) return <div>로딩중...</div>;
+
+  if (isError) {
+    return (
+      <div>
+        에러:
+        {' '}
+        {errorMessage}
+      </div>
+    );
+  }
 
   return (
     <>
