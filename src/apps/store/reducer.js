@@ -60,5 +60,5 @@ function defaultReducer(state) {
 }
 
 export default function reducer(state = initialState, action) {
-  return (reducers[action.type] || defaultReducer)(state, action);
+  return (reducers[action?.type] || defaultReducer)(state, action);
 }
