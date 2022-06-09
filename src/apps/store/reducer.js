@@ -4,7 +4,12 @@ const initialState = {
   regions: [],
   categories: [],
   restaurants: [],
-  restaurantDetail: {},
+  restaurantDetail: {
+    isLoading: false,
+    isError: false,
+    errorMessage: '',
+    data: {},
+  },
   selectedRegion: null,
   selectedCategory: null,
   isLoading: false,
@@ -34,10 +39,13 @@ const reducers = {
     };
   },
 
-  setRestaurantDetail(state, { payload: { restaurantDetail } }) {
+  setRestaurantDetail(state, { payload: { key, restaurantDetail } }) {
     return {
       ...state,
-      restaurantDetail,
+      [key]: {
+        ...state[key],
+        data: restaurantDetail,
+      },
     };
   },
 
