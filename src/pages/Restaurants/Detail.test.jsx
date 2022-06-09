@@ -12,15 +12,19 @@ test('Detail', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
-    regions: [
-      { id: 1, name: '서울' },
-    ],
-    categories: [
-      { id: 1, name: '한식' },
-    ],
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
+    restaurantDetail: {
+      id: 1,
+      categoryId: 1,
+      name: '양천주가',
+      address: '서울 강남구 123456',
+      menuItems: [
+        {
+          id: 1,
+          restaurantId: 1,
+          name: '탕수육',
+        },
+      ],
+    },
   }));
 
   const { queryByText } = render((
@@ -29,6 +33,6 @@ test('Detail', () => {
 
   expect(dispatch).toBeCalled();
 
-  expect(queryByText('서울')).not.toBeNull();
-  expect(queryByText('한식')).not.toBeNull();
+  expect(queryByText('양천주가')).not.toBeNull();
+  expect(queryByText('탕수육')).not.toBeNull();
 });
