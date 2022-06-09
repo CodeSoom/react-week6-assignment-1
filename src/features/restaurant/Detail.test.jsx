@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 
-import RestaurantDetail from './RestaurantDetail';
+import Detail from './Detail';
 
 import restaurantDetail from '../../../fixtures/restaurantDetail';
 
@@ -8,7 +8,7 @@ describe('RestaurantDetail', () => {
   context('with details', () => {
     it('renders menu list', () => {
       const { queryByText } = render((
-        <RestaurantDetail
+        <Detail
           name={restaurantDetail.name}
           address={restaurantDetail.address}
           menuItems={restaurantDetail.menuItems}
@@ -21,7 +21,7 @@ describe('RestaurantDetail', () => {
   context('without details', () => {
     it("doesn't render", () => {
       const { queryByText } = render((
-        <RestaurantDetail />
+        <Detail />
       ));
 
       expect(queryByText('비빔밥')).toBeNull();
