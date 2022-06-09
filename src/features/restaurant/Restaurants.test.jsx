@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 
 import Restaurants from './Restaurants';
 
@@ -8,7 +9,9 @@ test('Restaurants', () => {
   ];
 
   const { container } = render((
-    <Restaurants restaurants={restaurants} />
+    <MemoryRouter>
+      <Restaurants restaurants={restaurants} />
+    </MemoryRouter>
   ));
 
   expect(container).toHaveTextContent('마법사주방');
