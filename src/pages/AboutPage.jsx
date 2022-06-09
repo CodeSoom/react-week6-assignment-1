@@ -1,7 +1,7 @@
 export default function AboutPage() {
   return (
     <div>
-      <h1>About</h1>
+      <h2>About</h2>
       <p>
         이 사이트는 레스토랑 검색 서비스를 제공해요.
         <br />

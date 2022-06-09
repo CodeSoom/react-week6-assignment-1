@@ -19,7 +19,7 @@ export default function RestaurantsPage() {
 
   return (
     <div>
-      <h1>Restaurants</h1>
+      <h2>Restaurants</h2>
       <RegionsContainer />
       <CategoriesContainer />
       <RestaurantsContainer />
