@@ -2,10 +2,20 @@ import { render } from '@testing-library/react';
 
 import RestaurantDetail from './RestaurantDetail';
 
+import restaurantDetail from '../../../fixtures/restaurantDetail';
+
 describe('RestaurantDetail', () => {
   context('with details', () => {
-    const { container } = render(<RestaurantDetail />);
+    it('renders menu list', () => {
+      const { queryByText } = render((
+        <RestaurantDetail
+          name={restaurantDetail.name}
+          address={restaurantDetail.address}
+          menuItems={restaurantDetail.menuItems}
+        />
+      ));
 
-    expect(container).toHaveTextContent('탕수육');
+      expect(queryByText('비빔밥')).not.toBeNull();
+    });
   });
 });
