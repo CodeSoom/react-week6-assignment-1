@@ -1,4 +1,4 @@
-export default function RestaurantDetail({ name, address, menuItems }) {
+export default function RestaurantDetail({ name, address, menuItems = [] }) {
   return (
     <>
       <h2>{name}</h2>
