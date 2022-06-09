@@ -141,33 +141,39 @@ describe('reducer', () => {
   describe('setLoading', () => {
     it('isError becomes false and errorMessage becomes empty value and changes isLoading', () => {
       const initialState = {
-        isLoading: false,
-        isError: false,
-        errorMessage: '',
+        restaurantDetail: {
+          isLoading: false,
+          isError: false,
+          errorMessage: '',
+          data: {},
+        },
       };
 
-      const state = reducer(initialState, setLoading(true));
+      const state = reducer(initialState, setLoading('restaurantDetail', true));
 
-      expect(state.isLoading).toBe(true);
+      expect(state.restaurantDetail.isLoading).toBe(true);
     });
   });
 
   describe('setError', () => {
     it('isLoading becomes false and changes isError and errorMessage', () => {
       const initialState = {
-        isLoading: true,
-        isError: false,
-        errorMessage: '',
+        restaurantDetail: {
+          isLoading: false,
+          isError: false,
+          errorMessage: '',
+          data: {},
+        },
       };
 
-      const state = reducer(initialState, setError({
+      const state = reducer(initialState, setError('restaurantDetail', {
         isError: true,
         errorMessage: '에러발생',
       }));
 
-      expect(state.isLoading).toBe(false);
-      expect(state.isError).toBe(true);
-      expect(state.errorMessage).toBe('에러발생');
+      expect(state.restaurantDetail.isLoading).toBe(false);
+      expect(state.restaurantDetail.isError).toBe(true);
+      expect(state.restaurantDetail.errorMessage).toBe('에러발생');
     });
   });
 
