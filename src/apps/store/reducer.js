@@ -7,6 +7,9 @@ const initialState = {
   restaurantDetail: {},
   selectedRegion: null,
   selectedCategory: null,
+  isLoading: false,
+  isError: false,
+  errorMessage: '',
 };
 
 const reducers = {
@@ -35,6 +38,13 @@ const reducers = {
     return {
       ...state,
       restaurantDetail,
+    };
+  },
+
+  setIsLoading(state, { payload: { isLoading } }) {
+    return {
+      ...state,
+      isLoading,
     };
   },
 
