@@ -5,6 +5,9 @@ import {
   setCategories,
   setRestaurants,
   setRestaurantDetail,
+  setIsLoading,
+  setIsError,
+  setErrorMessage,
   selectRegion,
   selectCategory,
 } from './actions';
@@ -19,6 +22,9 @@ describe('reducer', () => {
         restaurantDetail: {},
         selectedRegion: null,
         selectedCategory: null,
+        isLoading: false,
+        isError: false,
+        errorMessage: '',
       };
       const state = reducer();
       expect(state).toEqual(initialState);
@@ -32,6 +38,9 @@ describe('reducer', () => {
       restaurantDetail: {},
       selectedRegion: null,
       selectedCategory: null,
+      isLoading: false,
+      isError: false,
+      errorMessage: '',
     };
 
     it('returns initialState', () => {
@@ -112,6 +121,18 @@ describe('reducer', () => {
       const state = reducer(initialState, setRestaurantDetail(restaurantDetail));
 
       expect(state.restaurantDetail.name).toBe('양천주가');
+    });
+  });
+
+  describe('setIsLoading', () => {
+    it('changes isLoading', () => {
+      const initialState = {
+        isLoading: false,
+      };
+
+      const state = reducer(initialState, setIsLoading(true));
+
+      expect(state.isLoading).toBe(true);
     });
   });
 
