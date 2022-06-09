@@ -33,10 +33,25 @@ export function setRestaurantDetail(restaurantDetail) {
   };
 }
 
-export function setIsLoading(isLoading) {
+export function setLoading(isLoading) {
   return {
-    type: 'setIsLoading',
-    payload: { isLoading },
+    type: 'setLoading',
+    payload: {
+      isLoading,
+      isError: false,
+      errorMessage: '',
+    },
+  };
+}
+
+export function setError({ isError, errorMessage }) {
+  return {
+    type: 'setError',
+    payload: {
+      isLoading: false,
+      isError,
+      errorMessage,
+    },
   };
 }
 

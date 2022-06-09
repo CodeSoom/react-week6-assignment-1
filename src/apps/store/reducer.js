@@ -41,10 +41,21 @@ const reducers = {
     };
   },
 
-  setIsLoading(state, { payload: { isLoading } }) {
+  setLoading(state, { payload: { isLoading, isError, errorMessage } }) {
     return {
       ...state,
       isLoading,
+      isError,
+      errorMessage,
+    };
+  },
+
+  setError(state, { payload: { isLoading, isError, errorMessage } }) {
+    return {
+      ...state,
+      isLoading,
+      isError,
+      errorMessage,
     };
   },
 
