@@ -23,7 +23,7 @@ export default function RestaurantsDetailsContainer() {
 
   useEffect(() => {
     dispatch(loadRestaurantsDetails(id));
-  }, [id]);
+  }, []);
 
   const restaurantsDetails = useSelector(get('restaurantsDetails'));
 
