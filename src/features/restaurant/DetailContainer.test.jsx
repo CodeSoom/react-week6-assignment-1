@@ -13,17 +13,22 @@ test('DetailContainer', () => {
 
   useSelector.mockImplementation((selector) => selector({
     restaurantDetail: {
-      id: 1,
-      categoryId: 1,
-      name: '양천주가',
-      address: '서울 강남구 123456',
-      menuItems: [
-        {
-          id: 1,
-          restaurantId: 1,
-          name: '탕수육',
-        },
-      ],
+      isLoading: false,
+      isError: false,
+      errorMessage: '',
+      data: {
+        id: 1,
+        categoryId: 1,
+        name: '양천주가',
+        address: '서울 강남구 123456',
+        menuItems: [
+          {
+            id: 1,
+            restaurantId: 1,
+            name: '탕수육',
+          },
+        ],
+      },
     },
   }));
 
