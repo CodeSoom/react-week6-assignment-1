@@ -1,14 +1,15 @@
+import { Routes, Route, Link } from 'react-router-dom';
+
 import { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
-import RegionsContainer from './container/RegionsContainer';
-import CategoriesContainer from './container/CategoriesContainer';
-import RestaurantsContainer from './container/RestaurantsContainer';
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import NotFoundPage from './pages/NotFoundPage';
+import RestaurantsPage from './pages/RestaurantsPage';
 
-import {
-  loadInitialData,
-} from './redux/actions';
+import { loadInitialData } from './redux/actions';
 
 // 0. 지역, 분류 목록을 얻기
 // 1. 지역 선택 - Regions <- API (0)
@@ -23,10 +24,16 @@ export default function App() {
   });
 
   return (
-    <div>
-      <RegionsContainer />
-      <CategoriesContainer />
-      <RestaurantsContainer />
-    </div>
+    <>
+      <Link to="/">
+        <h1>헤더</h1>
+      </Link>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/restaurants" element={<RestaurantsPage />} />
+        <Route path="/*" element={<NotFoundPage />} />
+      </Routes>
+    </>
   );
 }
