@@ -1,13 +1,16 @@
 import HomePage from './HomePage';
+import AboutPage from './AboutPage';
 import RestaurantsPage from './RestaurantsPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 export default function App() {
-  const { pathname } = window.location;
+  const { location: { pathname } } = window;
 
   const Component = ({
     '/': HomePage,
+    '/about': AboutPage,
     '/restaurants': RestaurantsPage,
-  }[pathname]) || HomePage;
+  }[pathname]) || NotFoundPage;
 
   return (
     <Component />
