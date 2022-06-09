@@ -42,10 +42,10 @@ describe('RestaurantsDetailPage', () => {
       jest.clearAllMocks();
     });
 
-    it('renders "레스토랑 정보가 없어요!"', () => {
+    it('renders "로딩 중..."', () => {
       const { container } = renderRestaurantDetailPage();
 
-      expect(container).toHaveTextContent('레스토랑 정보가 없어요!');
+      expect(container).toHaveTextContent('로딩 중...');
     });
   });
 });
