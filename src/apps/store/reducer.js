@@ -7,7 +7,6 @@ const initialState = {
   restaurantDetail: {},
   selectedRegion: null,
   selectedCategory: null,
-  selectedRestaurant: null,
 };
 
 const reducers = {
