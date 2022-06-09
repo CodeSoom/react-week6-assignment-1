@@ -10,7 +10,7 @@ import RestaurantsContainer from '../container/RestaurantsContainer';
 
 import { loadInitialData } from '../redux/actions';
 
-export default function App() {
+export default function RestaurantsPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
