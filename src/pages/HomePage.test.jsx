@@ -12,7 +12,7 @@ describe('HomePage', () => {
   it('제목이 보인다.', () => {
     const { getByRole } = renderPage();
 
-    expect(getByRole('heading')).toHaveTextContent('HomePage');
+    expect(getByRole('heading')).toHaveTextContent('Home');
   });
 
   it('홈페이지 메뉴들이 보인다.', () => {
