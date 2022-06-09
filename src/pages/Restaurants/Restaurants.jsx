@@ -2,13 +2,13 @@ import { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
-import RegionsContainer from '../features/region/RegionsContainer';
-import CategoriesContainer from '../features/category/CategoriesContainer';
-import RestaurantsContainer from '../features/restaurant/RestaurantsContainer';
+import RegionsContainer from '../../features/region/RegionsContainer';
+import CategoriesContainer from '../../features/category/CategoriesContainer';
+import RestaurantsContainer from '../../features/restaurant/RestaurantsContainer';
 
 import {
   loadInitialData,
-} from '../apps/store/actions';
+} from '../../apps/store/actions';
 
 // 0. 지역, 분류 목록을 얻기
 // 1. 지역 선택 - Regions <- API (0)
