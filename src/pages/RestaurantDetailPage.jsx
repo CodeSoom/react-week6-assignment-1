@@ -1,9 +1,17 @@
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+
+import { loadRestaurantDetails } from '../actions';
 
 export default function RestaurantDetailPage() {
-  const { restaurantDetails } = useSelector((state) => ({
-    restaurantDetails: state.restaurantDetails,
-  }));
+  const params = useParams();
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadRestaurantDetails(params.restaurantId));
+  }, [params]);
 
   return (
     <div>
@@ -16,3 +24,6 @@ export default function RestaurantDetailPage() {
     </div>
   );
 }
+
+// TODO: 페이지 이동시 loading 구현
+// 통신 실패처리

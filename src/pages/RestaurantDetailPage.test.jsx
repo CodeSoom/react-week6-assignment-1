@@ -19,6 +19,8 @@ describe('RestaurantDetailPage', () => {
   });
 
   it('dispatch를 호출한다.', () => {
+    render(<RestaurantDetailPage />);
+
     expect(dispatch).toBeCalled();
   });
 
