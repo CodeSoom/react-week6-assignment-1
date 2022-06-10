@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
 
 export default function RestaurantDetailPage() {
-  const { selectedRestaurant } = useSelector((state) => ({
-    selectedRestaurant: state.selectedRestaurant,
+  const { restaurantDetails } = useSelector((state) => ({
+    restaurantDetails: state.restaurantDetails,
   }));
 
   return (
