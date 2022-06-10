@@ -1,8 +1,18 @@
 import { equal } from '../utils';
 
 const initialState = {
-  regions: [],
-  categories: [],
+  regions: {
+    isLoading: false,
+    isError: false,
+    errorMessage: '',
+    data: [],
+  },
+  categories: {
+    isLoading: false,
+    isError: false,
+    errorMessage: '',
+    data: [],
+  },
   restaurants: {
     isLoading: false,
     isError: false,
@@ -23,17 +33,38 @@ const initialState = {
 };
 
 const reducers = {
-  setRegions(state, { payload: { regions } }) {
+  setRegions(state, {
+    payload: {
+      regions, key, isLoading, isError, errorMessage,
+    },
+  }) {
     return {
       ...state,
       regions,
+      [key]: {
+        ...state[key],
+        isLoading,
+        isError,
+        errorMessage,
+        data: regions,
+      },
     };
   },
 
-  setCategories(state, { payload: { categories } }) {
+  setCategories(state, {
+    payload: {
+      categories, key, isLoading, isError, errorMessage,
+    },
+  }) {
     return {
       ...state,
-      categories,
+      [key]: {
+        ...state[key],
+        isLoading,
+        isError,
+        errorMessage,
+        data: categories,
+      },
     };
   },
 

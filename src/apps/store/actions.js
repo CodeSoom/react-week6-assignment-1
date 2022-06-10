@@ -8,14 +8,26 @@ import {
 export function setRegions(regions) {
   return {
     type: 'setRegions',
-    payload: { regions },
+    payload: {
+      regions,
+      key: 'regions',
+      isLoading: false,
+      isError: false,
+      errorMessage: '',
+    },
   };
 }
 
 export function setCategories(categories) {
   return {
     type: 'setCategories',
-    payload: { categories },
+    payload: {
+      categories,
+      key: 'categories',
+      isLoading: false,
+      isError: false,
+      errorMessage: '',
+    },
   };
 }
 
