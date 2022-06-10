@@ -96,6 +96,29 @@ describe('actions', () => {
         expect(actions).toHaveLength(0);
       });
     });
+    context('with error', () => {
+      beforeEach(() => {
+        store = mockStore({
+          selectedRegion: { id: 1, name: '서울' },
+          selectedCategory: { id: 1, name: '한식' },
+          restaurants: {
+            isLoading: false,
+            isError: false,
+            errorMessage: '',
+            data: [],
+          },
+        });
+        fetchRestaurants.mockRejectedValue(new Error('error'));
+      });
+
+      it('runs setError', async () => {
+        await store.dispatch(loadRestaurants());
+
+        const actions = store.getActions();
+
+        expect(actions[1]).toEqual(setError('restaurants', 'error'));
+      });
+    });
   });
 
   describe('loadRestaurantDetail', () => {
