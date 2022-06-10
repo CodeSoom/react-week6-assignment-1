@@ -120,7 +120,7 @@ export function loadRestaurantDetail(restaurantId) {
     } catch (error) {
       dispatch(setError('restaurantDetail', {
         isError: true,
-        errorMessage: JSON.stringify(error),
+        errorMessage: error.message,
       }));
     }
   };
