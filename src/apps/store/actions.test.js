@@ -13,7 +13,9 @@ import {
   setError,
 } from './actions';
 
-import { fetchRestaurantById } from '../services/api';
+import { fetchRestaurantById, fetchRestaurants } from '../services/api';
+
+import restaurants from '../../../fixtures/restaurants';
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
@@ -44,7 +46,14 @@ describe('actions', () => {
         store = mockStore({
           selectedRegion: { id: 1, name: '서울' },
           selectedCategory: { id: 1, name: '한식' },
+          restaurants: {
+            isLoading: false,
+            isError: false,
+            errorMessage: '',
+            data: [],
+          },
         });
+        fetchRestaurants.mockResolvedValue(restaurants);
       });
 
       it('runs setRestaurants', async () => {
@@ -52,7 +61,7 @@ describe('actions', () => {
 
         const actions = store.getActions();
 
-        expect(actions[0]).toEqual(setRestaurants([]));
+        expect(actions[1]).toEqual(setRestaurants(restaurants));
       });
     });
 

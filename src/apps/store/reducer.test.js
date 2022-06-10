@@ -104,7 +104,12 @@ describe('reducer', () => {
   describe('setRestaurants', () => {
     it('changes restaurants', () => {
       const initialState = {
-        restaurants: [],
+        restaurants: {
+          isLoading: false,
+          isError: false,
+          errorMessage: '',
+          data: [],
+        },
       };
 
       const restaurants = [
@@ -113,7 +118,7 @@ describe('reducer', () => {
 
       const state = reducer(initialState, setRestaurants(restaurants));
 
-      expect(state.restaurants).toHaveLength(1);
+      expect(state.restaurants.data).toEqual(restaurants);
     });
   });
 
