@@ -8,10 +8,10 @@ export default function RestaurantsContainer() {
 
   return (
     <ul>
-      {restaurants.map((restaurant) => (
-        <li key={restaurant.id}>
-          <Link to="/restaurants/{restaurant.id}">
-            {restaurant.name}
+      {restaurants.map(({ id, name }) => (
+        <li key={id}>
+          <Link to={`/restaurants/${id}`}>
+            {name}
           </Link>
         </li>
       ))}
