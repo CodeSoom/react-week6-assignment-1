@@ -13,8 +13,18 @@ describe('App', () => {
     const dispatch = jest.fn();
 
     useSelector.mockImplementation((selector) => selector({
-      regions: [{ name: '서울', id: 1 }],
-      categories: [],
+      regions: {
+        isLoading: false,
+        isError: false,
+        errorMessage: '',
+        data: [{ name: '서울', id: 1 }],
+      },
+      categories: {
+        isLoading: false,
+        isError: false,
+        errorMessage: '',
+        data: [],
+      },
       restaurants: {
         isLoading: false,
         isError: false,

@@ -13,12 +13,22 @@ test('Restaurants', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
-    regions: [
-      { id: 1, name: '서울' },
-    ],
-    categories: [
-      { id: 1, name: '한식' },
-    ],
+    regions: {
+      isLoading: false,
+      isError: false,
+      errorMessage: '',
+      data: [
+        { id: 1, name: '서울' },
+      ],
+    },
+    categories: {
+      isLoading: false,
+      isError: false,
+      errorMessage: '',
+      data: [
+        { id: 1, name: '한식' },
+      ],
+    },
     restaurants: {
       isLoading: false,
       isError: false,
