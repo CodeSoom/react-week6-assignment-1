@@ -171,10 +171,7 @@ describe('actions', () => {
 
         const actions = store.getActions();
 
-        expect(actions[1]).toEqual(setError('restaurantDetail', {
-          isError: true,
-          errorMessage: 'error',
-        }));
+        expect(actions[1]).toEqual(setError('restaurantDetail', 'error'));
       });
     });
   });

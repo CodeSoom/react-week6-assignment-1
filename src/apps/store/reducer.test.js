@@ -166,10 +166,7 @@ describe('reducer', () => {
         },
       };
 
-      const state = reducer(initialState, setError('restaurantDetail', {
-        isError: true,
-        errorMessage: '에러발생',
-      }));
+      const state = reducer(initialState, setError('restaurantDetail', '에러발생'));
 
       expect(state.restaurantDetail.isLoading).toBe(false);
       expect(state.restaurantDetail.isError).toBe(true);

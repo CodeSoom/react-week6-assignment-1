@@ -51,13 +51,13 @@ export function setLoading(key, isLoading) {
   };
 }
 
-export function setError(key, { isError, errorMessage }) {
+export function setError(key, errorMessage) {
   return {
     type: 'setError',
     payload: {
       key,
       isLoading: false,
-      isError,
+      isError: true,
       errorMessage,
     },
   };
@@ -118,10 +118,7 @@ export function loadRestaurantDetail(restaurantId) {
       const restaurantDetail = await fetchRestaurantById(restaurantId);
       dispatch(setRestaurantDetail(restaurantDetail));
     } catch (error) {
-      dispatch(setError('restaurantDetail', {
-        isError: true,
-        errorMessage: error.message,
-      }));
+      dispatch(setError('restaurantDetail', error.message));
     }
   };
 }
