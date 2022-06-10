@@ -13,6 +13,8 @@ import {
   setError,
 } from './actions';
 
+import { fetchRestaurantById } from '../services/api';
+
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 
@@ -89,12 +91,49 @@ describe('actions', () => {
 
   describe('loadRestaurantDetail', () => {
     context('with selectedRestaurantId', () => {
+      beforeEach(() => {
+        store = mockStore({
+          restaurantDetail: {
+            isLoading: false,
+            isError: false,
+            errorMessage: '',
+            data: {},
+          },
+        });
+        fetchRestaurantById.mockResolvedValue(
+          {
+            id: 1,
+            categoryId: 1,
+            name: '양천주가',
+            address: '서울 강남구 123456',
+            menuItems: [
+              {
+                id: 1,
+                restaurantId: 1,
+                name: '비빔밥',
+              },
+            ],
+          },
+        );
+      });
       it('runs setRestaurantDetail', async () => {
         await store.dispatch(loadRestaurantDetail(1));
 
         const actions = store.getActions();
 
-        expect(actions[1]).toEqual(setRestaurantDetail({}));
+        expect(actions[1]).toEqual(setRestaurantDetail({
+          id: 1,
+          categoryId: 1,
+          name: '양천주가',
+          address: '서울 강남구 123456',
+          menuItems: [
+            {
+              id: 1,
+              restaurantId: 1,
+              name: '비빔밥',
+            },
+          ],
+        }));
       });
     });
 
@@ -124,7 +163,7 @@ describe('actions', () => {
             data: {},
           },
         });
-        window.fetch = jest.fn().mockImplementation(() => Promise.reject(new Error('error')));
+        fetchRestaurantById.mockRejectedValue(new Error('error'));
       });
 
       it('runs setError', async () => {
@@ -132,7 +171,7 @@ describe('actions', () => {
 
         const actions = store.getActions();
 
-        expect(actions).toEqual(setError('restaurantDetail', {
+        expect(actions[1]).toEqual(setError('restaurantDetail', {
           isError: true,
           errorMessage: 'error',
         }));
