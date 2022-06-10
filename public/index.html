@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <base href="/">
     <title>Demo</title>
   </head>
   <body>
@@ -9,3 +10,12 @@
     <script src="main.js"></script>
   </body>
 </html>
+
+<!-- main.js를 찾지 못하는 문제로 index.html head에 base 태그 추가 
+localhost/restaurant/${restaurantId}로 접근시 localhost/restaurants/main.js 에서 main.js를 찾는 문제 발생. 
+index.html 에서 main.js를 절대 경로로 지정해놨기 때문.
+`/main.js`로 변경해주거나 base 태그를 추가하여 문제 해결 가능.
+
+base 태그는 모든 상대 URL에 적용될 기준이되어 전역으로 지정된다. 
+하나의 base 태그만 사용해야하고 닫는 태그를 넣으면 안됨 e.g) <base /> (X) 
+-->
