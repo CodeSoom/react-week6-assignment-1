@@ -4,5 +4,5 @@ import AboutPage from './AboutPage';
 test('AboutPage', () => {
   const { getByRole } = render(<AboutPage />);
 
-  expect(getByRole('heading')).toHaveTextContent(/About/g);
+  expect(getByRole('heading')).toHaveTextContent(/about/i);
 });
