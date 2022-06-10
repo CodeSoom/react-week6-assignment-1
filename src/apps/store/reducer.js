@@ -37,10 +37,20 @@ const reducers = {
     };
   },
 
-  setRestaurants(state, { payload: { restaurants } }) {
+  setRestaurants(state, {
+    payload: {
+      restaurants, key, isLoading, isError, errorMessage,
+    },
+  }) {
     return {
       ...state,
-      restaurants,
+      [key]: {
+        ...state[key],
+        isLoading,
+        isError,
+        errorMessage,
+        data: restaurants,
+      },
     };
   },
 

@@ -22,7 +22,13 @@ export function setCategories(categories) {
 export function setRestaurants(restaurants) {
   return {
     type: 'setRestaurants',
-    payload: { restaurants },
+    payload: {
+      restaurants,
+      key: 'restaurants',
+      isLoading: false,
+      isError: false,
+      errorMessage: '',
+    },
   };
 }
 
@@ -89,20 +95,25 @@ export function loadInitialData() {
 
 export function loadRestaurants() {
   return async (dispatch, getState) => {
-    const {
-      selectedRegion: region,
-      selectedCategory: category,
-    } = getState();
+    try {
+      const {
+        selectedRegion: region,
+        selectedCategory: category,
+      } = getState();
 
-    if (!region || !category) {
-      return;
+      if (!region || !category) {
+        return;
+      }
+
+      dispatch(setLoading('restaurants', true));
+      const restaurants = await fetchRestaurants({
+        regionName: region.name,
+        categoryId: category.id,
+      });
+      dispatch(setRestaurants(restaurants));
+    } catch (error) {
+      dispatch(setError('restaurants', error.message));
     }
-
-    const restaurants = await fetchRestaurants({
-      regionName: region.name,
-      categoryId: category.id,
-    });
-    dispatch(setRestaurants(restaurants));
   };
 }
 
