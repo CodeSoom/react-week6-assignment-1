@@ -30,32 +30,64 @@ describe('actions', () => {
   let store;
 
   describe('loadInitialData', () => {
-    beforeEach(() => {
-      store = mockStore({
-        regions: {
-          isLoading: false,
-          isError: false,
-          errorMessage: '',
-          data: [],
-        },
-        categories: {
-          isLoading: false,
-          isError: false,
-          errorMessage: '',
-          data: [],
-        },
+    context('with fetching regions and categories', () => {
+      beforeEach(() => {
+        store = mockStore({
+          regions: {
+            isLoading: false,
+            isError: false,
+            errorMessage: '',
+            data: [],
+          },
+          categories: {
+            isLoading: false,
+            isError: false,
+            errorMessage: '',
+            data: [],
+          },
+        });
+        fetchCategories.mockResolvedValue(categories);
+        fetchRegions.mockResolvedValue(regions);
       });
-      fetchCategories.mockResolvedValue(categories);
-      fetchRegions.mockResolvedValue(regions);
+
+      it('runs setRegions and setCategories', async () => {
+        await store.dispatch(loadInitialData());
+
+        const actions = store.getActions();
+
+        expect(actions[2]).toEqual(setRegions(regions));
+        expect(actions[3]).toEqual(setCategories(categories));
+      });
     });
 
-    it('runs setRegions and setCategories', async () => {
-      await store.dispatch(loadInitialData());
+    context('with error', () => {
+      beforeEach(() => {
+        store = mockStore({
+          regions: {
+            isLoading: false,
+            isError: false,
+            errorMessage: '',
+            data: [],
+          },
+          categories: {
+            isLoading: false,
+            isError: false,
+            errorMessage: '',
+            data: [],
+          },
+        });
+        fetchRegions.mockRejectedValue(new Error('error'));
+        fetchCategories.mockRejectedValue(new Error('error'));
+      });
 
-      const actions = store.getActions();
+      it('runs setError', async () => {
+        await store.dispatch(loadInitialData());
 
-      expect(actions[0]).toEqual(setRegions(regions));
-      expect(actions[1]).toEqual(setCategories(categories));
+        const actions = store.getActions();
+
+        expect(actions[2]).toEqual(setError('regions', 'error'));
+        expect(actions[3]).toEqual(setError('categories', 'error'));
+      });
     });
   });
 
