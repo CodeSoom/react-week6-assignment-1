@@ -16,10 +16,41 @@ describe('RegionsContainer', () => {
     useDispatch.mockImplementation(() => dispatch);
   });
 
+  context('with loading', () => {
+    it('renders "로딩중..."', () => {
+      useSelector.mockImplementation((selector) => selector({
+        regions: {
+          isLoading: true,
+          data: [],
+        },
+      }));
+      const { queryByText } = render((
+        <RegionsContainer />
+      ));
+      expect(queryByText('로딩중...')).toBeInTheDocument();
+    });
+  });
+
+  context('with error', () => {
+    useSelector.mockImplementation((selector) => selector({
+      regions: {
+        isError: true,
+        errorMessage: '에러가 발생했습니다.',
+        data: [],
+      },
+    }));
+    const { queryByText } = render((
+      <RegionsContainer />
+    ));
+    expect(queryByText('에러: 에러가 발생했습니다.')).toBeInTheDocument();
+  });
+
   context('with selectedRegion', () => {
     beforeEach(() => {
       useSelector.mockImplementation((selector) => selector({
-        regions: REGIONS,
+        regions: {
+          data: REGIONS,
+        },
         selectedRegion: SEOUL,
       }));
     });
@@ -36,7 +67,9 @@ describe('RegionsContainer', () => {
   context('without selectedRegion', () => {
     beforeEach(() => {
       useSelector.mockImplementation((selector) => selector({
-        regions: REGIONS,
+        regions: {
+          data: REGIONS,
+        },
       }));
     });
 
