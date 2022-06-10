@@ -23,6 +23,7 @@ describe('DetailContainer', () => {
       expect(queryByText('로딩중...')).toBeInTheDocument();
     });
   });
+
   context('with error', () => {
     useSelector.mockImplementation((selector) => selector({
       restaurantDetail: {
@@ -35,6 +36,7 @@ describe('DetailContainer', () => {
     ));
     expect(queryByText('에러: 에러가 발생했습니다.')).toBeInTheDocument();
   });
+
   context('with details', () => {
     useSelector.mockImplementation((selector) => selector({
       restaurantDetail: {

@@ -7,9 +7,14 @@ import RestaurantsContainer from './RestaurantsContainer';
 
 test('RestaurantsContainer', () => {
   useSelector.mockImplementation((selector) => selector({
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
+    restaurants: {
+      isLoading: false,
+      isError: false,
+      errorMessage: '',
+      data: [
+        { id: 1, name: '마법사주방' },
+      ],
+    },
   }));
 
   const { container } = render((

@@ -19,9 +19,14 @@ test('Restaurants', () => {
     categories: [
       { id: 1, name: '한식' },
     ],
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
+    restaurants: {
+      isLoading: false,
+      isError: false,
+      errorMessage: '',
+      data: [
+        { id: 1, name: '마법사주방' },
+      ],
+    },
   }));
 
   const { queryByText } = render((
