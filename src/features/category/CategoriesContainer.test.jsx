@@ -16,10 +16,41 @@ describe('CategoriesContainer', () => {
     useDispatch.mockImplementation(() => dispatch);
   });
 
+  context('with loading', () => {
+    it('renders "로딩중..."', () => {
+      useSelector.mockImplementation((selector) => selector({
+        categories: {
+          isLoading: true,
+          data: [],
+        },
+      }));
+      const { queryByText } = render((
+        <CategoriesContainer />
+      ));
+      expect(queryByText('로딩중...')).toBeInTheDocument();
+    });
+  });
+
+  context('with error', () => {
+    useSelector.mockImplementation((selector) => selector({
+      categories: {
+        isError: true,
+        errorMessage: '에러가 발생했습니다.',
+        data: [],
+      },
+    }));
+    const { queryByText } = render((
+      <CategoriesContainer />
+    ));
+    expect(queryByText('에러: 에러가 발생했습니다.')).toBeInTheDocument();
+  });
+
   context('with selectedCategory', () => {
     beforeEach(() => {
       useSelector.mockImplementation((selector) => selector({
-        categories: CATEGORIES,
+        categories: {
+          data: CATEGORIES,
+        },
         selectedCategory: KOREAN_FOOD,
       }));
     });
@@ -36,7 +67,9 @@ describe('CategoriesContainer', () => {
   context('without selectedCategory', () => {
     beforeEach(() => {
       useSelector.mockImplementation((selector) => selector({
-        categories: CATEGORIES,
+        categories: {
+          data: CATEGORIES,
+        },
       }));
     });
 
