@@ -1,12 +1,17 @@
-import { fireEvent, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
+import { MemoryRouter } from 'react-router-dom';
 import RestaurantsContainer from './RestaurantsContainer';
 
 import RESTAURANTS from '../fixtures/restaurants';
 
-const dispatch = jest.fn();
+const RestaurantsContainerRender = () => render((
+  <MemoryRouter>
+    <RestaurantsContainer />
+  </MemoryRouter>
+));
 
 describe('RestaurantsContainer', () => {
   beforeEach(() => {
@@ -16,22 +21,14 @@ describe('RestaurantsContainer', () => {
   });
 
   it('레스토랑 목록이 보인다.', () => {
-    const { container } = render((
-      <RestaurantsContainer />
-    ));
+    const { container } = RestaurantsContainerRender();
 
     expect(container).toHaveTextContent(RESTAURANTS[0].name);
   });
 
-  it('레스토랑 목록을 클릭하면 dispatch가 호출된다.', () => {
-    useDispatch.mockImplementation(() => dispatch);
+  it('레스토랑 목록은 링크이다.', () => {
+    const { getAllByRole } = RestaurantsContainerRender();
 
-    const { getByText } = render((
-      <RestaurantsContainer />
-    ));
-
-    fireEvent.click(getByText(RESTAURANTS[0].name));
-
-    expect(dispatch).toBeCalled();
+    expect(getAllByRole('link')[0]).toHaveTextContent(RESTAURANTS[0].name);
   });
 });
