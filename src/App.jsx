@@ -30,7 +30,7 @@ export default function App() {
         <h1>헤더</h1>
       </Link>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route index path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/restaurants" element={<RestaurantsPage />} />
         <Route path="/restaurant/:id" element={<RestaurantInfoPage />} />
