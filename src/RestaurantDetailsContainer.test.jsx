@@ -28,6 +28,6 @@ describe('RestaurantDetailsContainer', () => {
   it('레스토랑 메뉴 리스트가 보인다.', async () => {
     const { findByRole } = render(<RestaurantDetailsContainer />);
 
-    expect(await findByRole('list')).toEqual(RESTAURANT_DETAILS.menuItems);
+    expect(await findByRole('list')).toHaveTextContent(RESTAURANT_DETAILS.menuItems[0].name);
   });
 });
