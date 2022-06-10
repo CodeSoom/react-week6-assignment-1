@@ -9,21 +9,14 @@ import {
   setRestaurantDetails,
 } from './actions';
 
+import INITIAL_STATE from '../fixtures/initialState';
+
 describe('reducer', () => {
   context('when previous state is undefined', () => {
-    const initialState = {
-      regions: [],
-      categories: [],
-      restaurants: [],
-      restaurantDetails: null,
-      selectedRegion: null,
-      selectedCategory: null,
-    };
-
     it('returns initialState', () => {
       const state = reducer(undefined, { type: 'action' });
 
-      expect(state).toEqual(initialState);
+      expect(state).toEqual(INITIAL_STATE);
     });
   });
 
