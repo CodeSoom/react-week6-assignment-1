@@ -19,8 +19,8 @@ import store from './store';
 
 ReactDOM.render(
   (
-    <BrowserRouter>
-      <Provider store={store}>
+    <Provider store={store}>
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<App />}>
             <Route index element={<HomePage />} />
@@ -32,8 +32,8 @@ ReactDOM.render(
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
-      </Provider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </Provider>
   ),
   document.getElementById('app'),
 );
