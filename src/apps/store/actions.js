@@ -97,11 +97,19 @@ export function selectCategory(categoryId) {
 
 export function loadInitialData() {
   return async (dispatch) => {
-    const regions = await fetchRegions();
-    dispatch(setRegions(regions));
+    try {
+      dispatch(setLoading('regions', true));
+      dispatch(setLoading('categories', true));
+      // TODO: loadInitialData처리 마무리
+      const regions = await fetchRegions();
+      dispatch(setRegions(regions));
 
-    const categories = await fetchCategories();
-    dispatch(setCategories(categories));
+      const categories = await fetchCategories();
+      dispatch(setCategories(categories));
+    } catch (error) {
+      dispatch(setError('regions', error.message));
+      dispatch(setError('categories', error.message));
+    }
   };
 }
 
@@ -118,6 +126,7 @@ export function loadRestaurants() {
       }
 
       dispatch(setLoading('restaurants', true));
+
       const restaurants = await fetchRestaurants({
         regionName: region.name,
         categoryId: category.id,
