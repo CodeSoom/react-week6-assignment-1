@@ -12,12 +12,26 @@ import Categories from './Categories';
 export default function CategoriesContainer() {
   const dispatch = useDispatch();
 
-  const categories = useSelector(get('categories'));
+  const {
+    isLoading, isError, errorMessage, data: categories,
+  } = useSelector(get('categories'));
   const selectedCategory = useSelector(get('selectedCategory'));
 
   function handleClick(categoryId) {
     dispatch(selectCategory(categoryId));
     dispatch(loadRestaurants());
+  }
+
+  if (isLoading) return <div>로딩중...</div>;
+
+  if (isError) {
+    return (
+      <div>
+        에러:
+        {' '}
+        {errorMessage}
+      </div>
+    );
   }
 
   return (
