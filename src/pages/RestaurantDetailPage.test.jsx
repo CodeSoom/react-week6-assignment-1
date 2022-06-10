@@ -23,7 +23,7 @@ describe('RestaurantDetailPage', () => {
   it('레스토랑 주소가 보인다.', async () => {
     const { findByText } = render(<RestaurantDetailPage />);
 
-    expect(await findByText('서울 강남구 123456')).toBeInTheDocument();
+    expect(await findByText(/서울 강남구 123456/)).toBeInTheDocument();
   });
 
   it('레스토랑 메뉴 리스트가 보인다.', async () => {
