@@ -13,9 +13,13 @@ import {
   setError,
 } from './actions';
 
-import { fetchRestaurantById, fetchRestaurants } from '../services/api';
+import {
+  fetchCategories, fetchRegions, fetchRestaurantById, fetchRestaurants,
+} from '../services/api';
 
 import restaurants from '../../../fixtures/restaurants';
+import categories from '../../../fixtures/categories';
+import regions from '../../../fixtures/regions';
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
@@ -27,7 +31,22 @@ describe('actions', () => {
 
   describe('loadInitialData', () => {
     beforeEach(() => {
-      store = mockStore({});
+      store = mockStore({
+        regions: {
+          isLoading: false,
+          isError: false,
+          errorMessage: '',
+          data: [],
+        },
+        categories: {
+          isLoading: false,
+          isError: false,
+          errorMessage: '',
+          data: [],
+        },
+      });
+      fetchCategories.mockResolvedValue(categories);
+      fetchRegions.mockResolvedValue(regions);
     });
 
     it('runs setRegions and setCategories', async () => {
@@ -35,8 +54,8 @@ describe('actions', () => {
 
       const actions = store.getActions();
 
-      expect(actions[0]).toEqual(setRegions([]));
-      expect(actions[1]).toEqual(setCategories([]));
+      expect(actions[0]).toEqual(setRegions(regions));
+      expect(actions[1]).toEqual(setCategories(categories));
     });
   });
 

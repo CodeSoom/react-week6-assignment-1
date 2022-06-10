@@ -15,8 +15,18 @@ describe('reducer', () => {
   context('default reducer', () => {
     it('returns initialState', () => {
       const initialState = {
-        regions: [],
-        categories: [],
+        regions: {
+          isLoading: false,
+          isError: false,
+          errorMessage: '',
+          data: [],
+        },
+        categories: {
+          isLoading: false,
+          isError: false,
+          errorMessage: '',
+          data: [],
+        },
         restaurants: {
           isLoading: false,
           isError: false,
@@ -41,8 +51,18 @@ describe('reducer', () => {
   });
   context('when previous state is undefined', () => {
     const initialState = {
-      regions: [],
-      categories: [],
+      regions: {
+        isLoading: false,
+        isError: false,
+        errorMessage: '',
+        data: [],
+      },
+      categories: {
+        isLoading: false,
+        isError: false,
+        errorMessage: '',
+        data: [],
+      },
       restaurants: {
         isLoading: false,
         isError: false,
@@ -72,7 +92,12 @@ describe('reducer', () => {
   describe('setRegions', () => {
     it('changes regions', () => {
       const initialState = {
-        regions: [],
+        regions: {
+          isLoading: false,
+          isError: false,
+          errorMessage: '',
+          data: [],
+        },
       };
 
       const regions = [
@@ -81,14 +106,19 @@ describe('reducer', () => {
 
       const state = reducer(initialState, setRegions(regions));
 
-      expect(state.regions).toHaveLength(1);
+      expect(state.regions.data).toEqual(regions);
     });
   });
 
   describe('setCategories', () => {
     it('changes categories', () => {
       const initialState = {
-        categories: [],
+        categories: {
+          isLoading: false,
+          isError: false,
+          errorMessage: '',
+          data: [],
+        },
       };
 
       const categories = [
@@ -97,7 +127,7 @@ describe('reducer', () => {
 
       const state = reducer(initialState, setCategories(categories));
 
-      expect(state.categories).toHaveLength(1);
+      expect(state.categories.data).toHaveLength(1);
     });
   });
 
