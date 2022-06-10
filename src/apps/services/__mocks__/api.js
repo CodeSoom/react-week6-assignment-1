@@ -6,8 +6,6 @@ export async function fetchCategories() {
   return [];
 }
 
-export async function fetchRestaurants() {
-  return [];
-}
+export const fetchRestaurants = jest.fn();
 
 export const fetchRestaurantById = jest.fn();
