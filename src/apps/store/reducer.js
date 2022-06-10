@@ -138,7 +138,7 @@ const reducers = {
     const { regions } = state;
     return {
       ...state,
-      selectedRegion: regions.find(equal('id', regionId)),
+      selectedRegion: regions.data.find(equal('id', regionId)),
     };
   },
 
@@ -146,7 +146,7 @@ const reducers = {
     const { categories } = state;
     return {
       ...state,
-      selectedCategory: categories.find(equal('id', categoryId)),
+      selectedCategory: categories.data.find(equal('id', categoryId)),
     };
   },
 };
