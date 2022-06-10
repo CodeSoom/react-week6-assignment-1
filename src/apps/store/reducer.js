@@ -3,7 +3,12 @@ import { equal } from '../utils';
 const initialState = {
   regions: [],
   categories: [],
-  restaurants: [],
+  restaurants: {
+    isLoading: false,
+    isError: false,
+    errorMessage: '',
+    data: [],
+  },
   restaurantDetail: {
     isLoading: false,
     isError: false,
