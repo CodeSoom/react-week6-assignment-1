@@ -15,6 +15,11 @@ describe('RestaurantDetailPage', () => {
 
     useSelector.mockImplementation((selector) => selector({
       restaurantDetails,
+      status: {
+        pending: false,
+        success: false,
+        failure: false,
+      },
     }));
   });
 

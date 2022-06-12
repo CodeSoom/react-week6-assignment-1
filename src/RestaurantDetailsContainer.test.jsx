@@ -10,6 +10,11 @@ describe('RestaurantDetailsContainer', () => {
   beforeEach(() => {
     useSelector.mockImplementation((selector) => selector({
       restaurantDetails: RESTAURANT_DETAILS,
+      status: {
+        pending: false,
+        success: false,
+        failure: false,
+      },
     }));
   });
 
