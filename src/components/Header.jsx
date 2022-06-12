@@ -1,9 +1,12 @@
-import { Link } from 'react-router-dom';
+export default function Header({ onClick }) {
+  const handleClick = (event) => {
+    event.preventDefault();
+    onClick();
+  };
 
-export default function Header() {
   return (
     <h1>
-      <Link to="/">헤더</Link>
+      <a href="/" onClick={handleClick}>헤더</a>
     </h1>
   );
 }
