@@ -14,7 +14,7 @@ export default function RestaurantDetail() {
     dispatch(loadRestaurantDetail(restaurantId));
   }, []);
 
-  if (!Object.keys(restaurantDetail)) {
+  if (!Object.keys(restaurantDetail).length) {
     return (<div>Loading...</div>);
   }
 

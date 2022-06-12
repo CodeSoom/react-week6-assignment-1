@@ -27,7 +27,7 @@ describe('RestaurantDetail', () => {
       useDispatch.mockImplementation(() => dispatch);
       useSelector.mockImplementation((selector) => selector({
         restaurantDetail: {
-          id: 1, name: '양천주가', address: '서울', menuItems: [],
+          id: 1, name: '양천주가', address: '서울', menuItems: [{ id: 1, restaurantId: 1, name: '볶음밥' }],
         },
       }));
 
@@ -36,6 +36,7 @@ describe('RestaurantDetail', () => {
       ));
 
       expect(container).toHaveTextContent('양천주가');
+      expect(container).toHaveTextContent('볶음밥');
     });
   });
 });
