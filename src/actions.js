@@ -85,6 +85,8 @@ export function loadRestaurants() {
 
 export function loadRestaurantInfo() {
   return async (dispatch, getState) => {
+    dispatch(setRestaurantInfo(null));
+
     const {
       selectedRestaurant: restaurant,
     } = getState();

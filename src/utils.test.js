@@ -1,4 +1,4 @@
-import { get, equal } from './utils';
+import { get, equal, isEmpty } from './utils';
 
 test('get', () => {
   const state = {
@@ -22,4 +22,16 @@ test('equal', () => {
 
   expect(f(state)).toBeTruthy();
   expect(g(state)).toBeFalsy();
+});
+
+test('isEmpty', () => {
+  const value = '홍길동';
+
+  const result1 = isEmpty(value);
+  const result2 = isEmpty();
+  const result3 = isEmpty(null);
+
+  expect(result1).toBeFalsy();
+  expect(result2).toBeTruthy();
+  expect(result3).toBeTruthy();
 });

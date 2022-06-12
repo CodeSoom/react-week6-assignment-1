@@ -28,19 +28,18 @@ describe('RestaurantInfoPage', () => {
     });
   });
 
-  context('when restaurantInfoLoading is false', () => {
+  context('when restuarantInfo is null', () => {
     it('renders loading', () => {
       const dispatch = jest.fn();
 
       useDispatch.mockImplementation(() => dispatch);
 
       useSelector.mockImplementation((selector) => selector({
-        restaurantInfo: RESTAURANTINFO,
-        restaurantInfoLoading: false,
+        restaurantInfo: null,
       }));
 
       const { container } = render((
-        <RestaurantInfoPage match={{ params: { id: 1 } }} />
+        <RestaurantInfoPage />
       ));
 
       expect(dispatch).toBeCalled();

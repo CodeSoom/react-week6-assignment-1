@@ -4,11 +4,10 @@ const initialState = {
   regions: [],
   categories: [],
   restaurants: [],
-  restaurantInfo: {},
+  restaurantInfo: null,
   selectedRegion: null,
   selectedCategory: null,
   selectedRestaurant: null,
-  restaurantInfoLoading: false,
 };
 
 const reducers = {
@@ -37,7 +36,6 @@ const reducers = {
     return {
       ...state,
       restaurantInfo,
-      restaurantInfoLoading: true,
     };
   },
 
@@ -61,7 +59,6 @@ const reducers = {
     return {
       ...state,
       selectedRestaurant: { id },
-      restaurantInfoLoading: false,
     };
   },
 };

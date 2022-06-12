@@ -22,11 +22,10 @@ describe('RestaurantInfoContainer', () => {
     });
   });
 
-  context('when restaurantInfoLoading is false', () => {
-    it('returns Loading...', () => {
+  context('when restaurantInfo is null', () => {
+    it('renders loading', () => {
       useSelector.mockImplementation((selector) => selector({
-        restaurantInfo: RESTAURANTINFO,
-        restaurantInfoLoading: false,
+        restaurantInfo: null,
       }));
 
       const { container } = render((

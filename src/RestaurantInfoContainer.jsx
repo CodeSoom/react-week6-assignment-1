@@ -1,11 +1,10 @@
 import { useSelector } from 'react-redux';
-import { get } from './utils';
+import { get, isEmpty } from './utils';
 
 export default function RestaurantInfoContainer() {
   const restaurantInfo = useSelector(get('restaurantInfo'));
-  const restaurantInfoLoading = useSelector(get('restaurantInfoLoading'));
 
-  if (!restaurantInfoLoading) {
+  if (isEmpty(restaurantInfo)) {
     return (
       <p>
         Loading...
@@ -22,7 +21,7 @@ export default function RestaurantInfoContainer() {
         {address}
       </p>
       <ul>
-        {menuItems.map((menu) => (<li key={menu.id}>{menu.name}</li>))}
+        {menuItems.map(({ id, name: menuName }) => (<li key={id}>{menuName}</li>))}
       </ul>
     </>
   );
