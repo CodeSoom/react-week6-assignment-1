@@ -1,34 +1,78 @@
 import React from 'react';
 
+import { MemoryRouter } from 'react-router-dom';
+
 import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
-test('App', () => {
-  const dispatch = jest.fn();
+describe('App', () => {
+  beforeEach(() => {
+    const dispatch = jest.fn();
 
-  useDispatch.mockImplementation(() => dispatch);
+    useSelector.mockImplementation((selector) => selector({
+      regions: {
+        isLoading: false,
+        isError: false,
+        errorMessage: '',
+        data: [{ name: '서울', id: 1 }],
+      },
+      categories: {
+        isLoading: false,
+        isError: false,
+        errorMessage: '',
+        data: [],
+      },
+      restaurants: {
+        isLoading: false,
+        isError: false,
+        errorMessage: '',
+        data: [],
+      },
+    }));
 
-  useSelector.mockImplementation((selector) => selector({
-    regions: [
-      { id: 1, name: '서울' },
-    ],
-    categories: [
-      { id: 1, name: '한식' },
-    ],
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
-  }));
+    useDispatch.mockImplementation(() => dispatch);
+  });
 
-  const { queryByText } = render((
-    <App />
-  ));
+  function renderApp({ path }) {
+    return render((
+      <MemoryRouter initialEntries={[path]}>
+        <App />
+      </MemoryRouter>
+    ));
+  }
 
-  expect(dispatch).toBeCalled();
+  context('with path /', () => {
+    it('renders HomePage', () => {
+      const { container } = renderApp({ path: '/' });
 
-  expect(queryByText('서울')).not.toBeNull();
-  expect(queryByText('한식')).not.toBeNull();
+      expect(container).toHaveTextContent('Home');
+    });
+  });
+
+  context('with path /about', () => {
+    it('renders AboutPage', () => {
+      const { container } = renderApp({ path: '/about' });
+
+      expect(container).toHaveTextContent('20명에게 추천');
+    });
+  });
+
+  context('with path /restaurants', () => {
+    it('renders RestaurantsPage', () => {
+      const { container } = renderApp({ path: '/restaurants' });
+
+      expect(container).toHaveTextContent('서울');
+    });
+  });
+
+  context('with invalid path', () => {
+    it('renders the not found page', () => {
+      const { container } = renderApp({ path: '/xxx' });
+
+      expect(container).toHaveTextContent('Not Found');
+    });
+  });
 });
