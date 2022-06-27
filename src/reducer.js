@@ -4,8 +4,10 @@ const initialState = {
   regions: [],
   categories: [],
   restaurants: [],
+  restaurantInfo: null,
   selectedRegion: null,
   selectedCategory: null,
+  selectedRestaurant: null,
 };
 
 const reducers = {
@@ -30,6 +32,13 @@ const reducers = {
     };
   },
 
+  setRestaurantInfo(state, { payload: { restaurantInfo } }) {
+    return {
+      ...state,
+      restaurantInfo,
+    };
+  },
+
   selectRegion(state, { payload: { regionId } }) {
     const { regions } = state;
     return {
@@ -43,6 +52,13 @@ const reducers = {
     return {
       ...state,
       selectedCategory: categories.find(equal('id', categoryId)),
+    };
+  },
+
+  selectRestaurant(state, { payload: { id } }) {
+    return {
+      ...state,
+      selectedRestaurant: { id },
     };
   },
 };
