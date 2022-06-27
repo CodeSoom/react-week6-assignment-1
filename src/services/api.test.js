@@ -1,4 +1,6 @@
-import { fetchRegions, fetchCategories, fetchRestaurants } from './api';
+import {
+  fetchRegions, fetchCategories, fetchRestaurants, fetchRestaurantDetail,
+} from './api';
 
 import REGIONS from '../../fixtures/regions';
 import CATEGORIES from '../../fixtures/categories';
@@ -47,6 +49,21 @@ describe('api', () => {
       });
 
       expect(restaurants).toEqual(RESTAURANTS);
+    });
+  });
+
+  describe('fetchRestaurantDetail', () => {
+    const mockRestaurantDetail = {
+      id: 1, name: '양천주가', address: '서울', menuItems: [],
+    };
+    beforeEach(() => {
+      mockFetch(mockRestaurantDetail);
+    });
+
+    it('returns restaurants', async () => {
+      const restaurantDetail = await fetchRestaurantDetail(1);
+
+      expect(restaurantDetail).toEqual(mockRestaurantDetail);
     });
   });
 });
