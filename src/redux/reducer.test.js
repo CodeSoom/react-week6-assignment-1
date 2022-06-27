@@ -6,7 +6,9 @@ import {
   setRestaurants,
   selectRegion,
   selectCategory,
+  setRestaurantInfo,
 } from './actions';
+import restaurantInfo from '../../fixtures/restaurantInfo';
 
 describe('reducer', () => {
   context('when previous state is undefined', () => {
@@ -16,6 +18,7 @@ describe('reducer', () => {
       restaurants: [],
       selectedRegion: null,
       selectedCategory: null,
+      restaurant: null,
     };
 
     it('returns initialState', () => {
@@ -106,6 +109,18 @@ describe('reducer', () => {
         id: 1,
         name: '한식',
       });
+    });
+  });
+
+  describe('setRestaurantInfo', () => {
+    it('changes restaurantInfo', () => {
+      const initialState = {
+        restaurant: null,
+      };
+
+      const state = reducer(initialState, setRestaurantInfo(restaurantInfo));
+
+      expect(state.restaurant.name).toBe('양천주가');
     });
   });
 });
