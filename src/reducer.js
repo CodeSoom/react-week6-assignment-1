@@ -1,12 +1,6 @@
 import { equal } from './utils';
 
-const initialState = {
-  regions: [],
-  categories: [],
-  restaurants: [],
-  selectedRegion: null,
-  selectedCategory: null,
-};
+import INITIAL_STATE from '../fixtures/initialState';
 
 const reducers = {
   setRegions(state, { payload: { regions } }) {
@@ -30,6 +24,20 @@ const reducers = {
     };
   },
 
+  setRestaurantDetails(state, { payload: { restaurantDetails } }) {
+    return {
+      ...state,
+      restaurantDetails,
+    };
+  },
+
+  setStatus(state, { payload }) {
+    return {
+      ...state,
+      status: { ...INITIAL_STATE.status, ...payload },
+    };
+  },
+
   selectRegion(state, { payload: { regionId } }) {
     const { regions } = state;
     return {
@@ -45,12 +53,20 @@ const reducers = {
       selectedCategory: categories.find(equal('id', categoryId)),
     };
   },
+
+  resetSelectedItems(state) {
+    return {
+      ...state,
+      selectedCategory: INITIAL_STATE.selectedCategory,
+      selectedRegion: INITIAL_STATE.selectedRegion,
+    };
+  },
 };
 
 function defaultReducer(state) {
   return state;
 }
 
-export default function reducer(state = initialState, action) {
+export default function reducer(state = INITIAL_STATE, action) {
   return (reducers[action.type] || defaultReducer)(state, action);
 }

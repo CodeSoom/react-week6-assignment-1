@@ -6,22 +6,17 @@ import {
   setRestaurants,
   selectRegion,
   selectCategory,
+  setRestaurantDetails,
 } from './actions';
+
+import INITIAL_STATE from '../fixtures/initialState';
 
 describe('reducer', () => {
   context('when previous state is undefined', () => {
-    const initialState = {
-      regions: [],
-      categories: [],
-      restaurants: [],
-      selectedRegion: null,
-      selectedCategory: null,
-    };
-
     it('returns initialState', () => {
       const state = reducer(undefined, { type: 'action' });
 
-      expect(state).toEqual(initialState);
+      expect(state).toEqual(INITIAL_STATE);
     });
   });
 
@@ -70,6 +65,38 @@ describe('reducer', () => {
       const state = reducer(initialState, setRestaurants(restaurants));
 
       expect(state.restaurants).toHaveLength(1);
+    });
+  });
+
+  describe('setRestaurantDetails', () => {
+    it('changes restaurantDetails', () => {
+      const initialState = {
+        restaurantDetails: null,
+      };
+
+      const restaurantDetails = {
+        id: 1,
+        categoryId: 1,
+        name: '마법사주방',
+        address: '서울 강남구 123456',
+        menuItems: [
+          { id: 1, restaurantId: 1, name: '비빔밥' },
+          { id: 2, restaurantId: 1, name: '짬뽕' },
+        ],
+      };
+
+      const state = reducer(initialState, setRestaurantDetails(restaurantDetails));
+
+      expect(state.restaurantDetails).toEqual({
+        id: 1,
+        categoryId: 1,
+        name: '마법사주방',
+        address: '서울 강남구 123456',
+        menuItems: [
+          { id: 1, restaurantId: 1, name: '비빔밥' },
+          { id: 2, restaurantId: 1, name: '짬뽕' },
+        ],
+      });
     });
   });
 

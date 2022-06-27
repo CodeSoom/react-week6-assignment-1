@@ -2,6 +2,7 @@ import {
   fetchRegions,
   fetchCategories,
   fetchRestaurants,
+  fetchRestaurantDetails,
 } from './services/api';
 
 export function setRegions(regions) {
@@ -25,6 +26,20 @@ export function setRestaurants(restaurants) {
   };
 }
 
+export function setRestaurantDetails(restaurantDetails) {
+  return {
+    type: 'setRestaurantDetails',
+    payload: { restaurantDetails },
+  };
+}
+
+export function setStatus(status) {
+  return {
+    type: 'setStatus',
+    payload: { ...status },
+  };
+}
+
 export function selectRegion(regionId) {
   return {
     type: 'selectRegion',
@@ -36,6 +51,12 @@ export function selectCategory(categoryId) {
   return {
     type: 'selectCategory',
     payload: { categoryId },
+  };
+}
+
+export function resetSelectedItems() {
+  return {
+    type: 'resetSelectedItems',
   };
 }
 
@@ -65,5 +86,22 @@ export function loadRestaurants() {
       categoryId: category.id,
     });
     dispatch(setRestaurants(restaurants));
+  };
+}
+
+export function loadRestaurantDetails(restaurantId) {
+  return async (dispatch) => {
+    if (!restaurantId) return;
+
+    dispatch(setStatus({ pending: true }));
+
+    try {
+      const restaurantDetails = await fetchRestaurantDetails({ restaurantId });
+      dispatch(setRestaurantDetails(restaurantDetails));
+      dispatch(setStatus({ success: true }));
+    } catch (error) {
+      dispatch(setStatus({ failure: true }));
+      throw new Error('레스토랑 상세 정보를 가져오지 못했어요.');
+    }
   };
 }
