@@ -2,11 +2,13 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
+import { MemoryRouter } from 'react-router-dom';
+
 import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
-test('App', () => {
+describe('App', () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
@@ -23,12 +25,17 @@ test('App', () => {
     ],
   }));
 
-  const { queryByText } = render((
-    <App />
+  const { container } = render((
+    <MemoryRouter>
+      <App />
+    </MemoryRouter>
   ));
 
   expect(dispatch).toBeCalled();
 
-  expect(queryByText('서울')).not.toBeNull();
-  expect(queryByText('한식')).not.toBeNull();
+  it('app을 렌더링한다', () => {
+    expect(container).toHaveTextContent('서울');
+    expect(container).toHaveTextContent('한식');
+    expect(container).toHaveTextContent('헤더');
+  });
 });
