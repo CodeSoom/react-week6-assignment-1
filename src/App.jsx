@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
 
+import { Route, Routes } from 'react-router-dom';
+
 import { useDispatch } from 'react-redux';
 
-import RegionsContainer from './RegionsContainer';
-import CategoriesContainer from './CategoriesContainer';
-import RestaurantsContainer from './RestaurantsContainer';
+import HomePage from './HomePage';
+import RestaurantsPage from './RestaurantsPage';
 
 import {
   loadInitialData,
@@ -23,10 +24,9 @@ export default function App() {
   });
 
   return (
-    <div>
-      <RegionsContainer />
-      <CategoriesContainer />
-      <RestaurantsContainer />
-    </div>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/restaurants" element={<RestaurantsPage />} />
+    </Routes>
   );
 }
