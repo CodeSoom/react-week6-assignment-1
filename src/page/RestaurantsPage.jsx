@@ -10,7 +10,7 @@ import RegionsContainer from '../RegionsContainer';
 import CategoriesContainer from '../CategoriesContainer';
 import RestaurantsContainer from '../RestaurantsContainer';
 
-export default function App() {
+export default function RestaurantsPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
