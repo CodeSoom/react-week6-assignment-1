@@ -12,6 +12,7 @@ describe('Homepage', () => {
       </MemoryRouter>
     ));
   }
+
   it('Homepage가 렌더링된다', () => {
     const { container } = renderHomepage();
 
