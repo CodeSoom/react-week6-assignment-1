@@ -7,10 +7,10 @@ export default function Homepage() {
       <h2>Home</h2>
       <ul>
         <li>
-          <Link href="/about">About</Link>
+          <Link to="/about">About</Link>
         </li>
         <li>
-          <Link href="/restaurants">Restaurants</Link>
+          <Link to="/restaurants">Restaurants</Link>
         </li>
       </ul>
     </div>
