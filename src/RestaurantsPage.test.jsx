@@ -1,12 +1,12 @@
+import React from 'react';
+
 import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { MemoryRouter } from 'react-router-dom';
+import RestaurantsPage from './RestaurantsPage';
 
-import App from './App';
-
-describe('App', () => {
+test('RestaurantsPage', () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
@@ -23,15 +23,12 @@ describe('App', () => {
     ],
   }));
 
-  context('with path /', () => {
-    it('renders the home page', () => {
-      const { container } = render((
-        <MemoryRouter>
-          <App />
-        </MemoryRouter>
-      ));
+  const { queryByText } = render((
+    <RestaurantsPage />
+  ));
 
-      expect(container).toHaveTextContent('Home');
-    });
-  });
+  expect(dispatch).toBeCalled();
+
+  expect(queryByText('서울')).not.toBeNull();
+  expect(queryByText('한식')).not.toBeNull();
 });
