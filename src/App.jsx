@@ -4,12 +4,13 @@ import { Link, Route, Routes } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
 
-import HomePage from './HomePage';
-import RestaurantsPage from './RestaurantsPage';
-
 import {
   loadInitialData,
 } from './actions';
+
+import HomePage from './HomePage';
+import RestaurantsPage from './RestaurantsPage';
+import AboutPage from './AboutPage';
 import NotFound from './NotFound';
 
 // 0. 지역, 분류 목록을 얻기
@@ -32,6 +33,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/restaurants" element={<RestaurantsPage />} />
+        <Route path="/about" element={<AboutPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>
