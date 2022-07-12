@@ -22,10 +22,10 @@ describe('Routes', () => {
   });
 
   context('path가 /about 일때', () => {
-    it('Homepage가 렌더링된다', () => {
-      const { container } = renderRoutes({ path: '/' });
+    it('About이 렌더링된다', () => {
+      const { container } = renderRoutes({ path: '/about' });
 
-      expect(container).toHaveTextContent('About');
+      expect(container).toHaveTextContent('About 페이지입니다.');
     });
   });
 });
