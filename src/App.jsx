@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { Route, Routes } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
 
@@ -25,10 +25,15 @@ export default function App() {
   });
 
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/restaurants" element={<RestaurantsPage />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <>
+      <h1>
+        <Link to="/">헤더</Link>
+      </h1>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/restaurants" element={<RestaurantsPage />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </>
   );
 }
