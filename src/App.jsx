@@ -12,10 +12,10 @@ export default function App() {
         <Link to="/"><h1>헤더</h1></Link>
       </header>
       <Routes>
-        <Route exact path="/" element={<HomePage />} />
+        <Route index element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
-        <Route exact path="/restaurants" element={<RestaurantsPage />} />
-        <Route element={NotFoundPage} />
+        <Route path="/restaurants" element={<RestaurantsPage />} />
+        <Route path="/*" element={<NotFoundPage />} />
       </Routes>
     </>
   );
