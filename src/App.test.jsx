@@ -28,4 +28,16 @@ describe('<App />', () => {
       expect(getByText('Restaurants')).toBeInTheDocument();
     });
   });
+
+  context('with wrong path', () => {
+    it('renders not found page', () => {
+      const { container } = render((
+        <MemoryRouter initialEntries={['/some/bad/route']}>
+          <App />
+        </MemoryRouter>
+      ));
+
+      expect(container).toHaveTextContent('Page not found');
+    });
+  });
 });
