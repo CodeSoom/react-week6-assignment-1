@@ -10,6 +10,7 @@ import RestaurantsPage from './RestaurantsPage';
 import {
   loadInitialData,
 } from './actions';
+import NotFound from './NotFound';
 
 // 0. 지역, 분류 목록을 얻기
 // 1. 지역 선택 - Regions <- API (0)
@@ -27,6 +28,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/restaurants" element={<RestaurantsPage />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
