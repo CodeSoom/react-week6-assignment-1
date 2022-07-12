@@ -54,4 +54,13 @@ describe('App', () => {
       expect(container).toHaveTextContent('About 페이지');
     });
   });
+
+  context('with path /restaurants', () => {
+    it('renders the restaurants page', () => {
+      const { container } = renderApp({ path: '/restaurants' });
+
+      expect(container).toHaveTextContent('서울');
+      expect(container).toHaveTextContent('한식');
+    });
+  });
 });
