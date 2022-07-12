@@ -17,7 +17,9 @@ describe('Routes', () => {
     it('Homepage가 렌더링된다', () => {
       const { container } = renderRoutes({ path: '/' });
 
+      expect(container).toHaveTextContent('Home');
       expect(container).toHaveTextContent('About');
+      expect(container).toHaveTextContent('Restaurants');
     });
   });
 
@@ -25,6 +27,7 @@ describe('Routes', () => {
     it('About이 렌더링된다', () => {
       const { container } = renderRoutes({ path: '/about' });
 
+      expect(container).toHaveTextContent('About');
       expect(container).toHaveTextContent('About 페이지입니다.');
     });
   });
