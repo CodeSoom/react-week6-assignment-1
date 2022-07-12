@@ -7,9 +7,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import App from './App';
 
 describe('App', () => {
-  beforeEach(() => {
-    const dispatch = jest.fn();
+  const dispatch = jest.fn();
 
+  beforeEach(() => {
     useSelector.mockImplementation((selector) => selector({
       regions: [
         { id: 1, name: '서울' },
