@@ -57,4 +57,10 @@ describe('App', () => {
 
     expect(container).toHaveTextContent('404 NotFound');
   });
+
+  context('with path /about', () => {
+    const { container } = renderApp({ path: '/about' });
+
+    expect(container).toHaveTextContent('About 페이지 입니다.');
+  });
 });
