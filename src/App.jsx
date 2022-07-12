@@ -22,9 +22,12 @@ export default function App() {
 
   return (
     <div>
-      <h1>
-        <Link to="/">헤더</Link>
-      </h1>
+      <header>
+        <h1>
+          <Link to="/">헤더</Link>
+        </h1>
+      </header>
+
       <Routes />
     </div>
   );
