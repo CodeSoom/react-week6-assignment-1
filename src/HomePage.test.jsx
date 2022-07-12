@@ -4,8 +4,8 @@ import HomePage from './HomePage';
 
 describe('HomePage', () => {
   it('renders HomePage', () => {
-    const { getByText } = render(<HomePage />);
+    const { container } = render(<HomePage />);
 
-    expect(getByText('Home')).not.toBeNull();
+    expect(container).toHaveTextContent('Home');
   });
 });
