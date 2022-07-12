@@ -38,4 +38,11 @@ describe('App', () => {
       expect(container).toHaveTextContent('Home');
     });
   });
+
+  context('with path /restaurants', () => {
+    const { container } = renderApp({ path: '/restaurants' });
+
+    expect(container).toHaveTextContent('서울');
+    expect(container).toHaveTextContent('한식');
+  });
 });
