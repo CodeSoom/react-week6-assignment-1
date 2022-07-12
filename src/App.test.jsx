@@ -23,7 +23,7 @@ describe('App', () => {
     ],
   }));
 
-  const renderApp = ({ path }) => render((
+  const renderApp = ({ path = '/' } = {}) => render((
     <MemoryRouter initialEntries={[path]}>
       <App />
     </MemoryRouter>
@@ -31,6 +31,12 @@ describe('App', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
+  });
+
+  it('renders the header', () => {
+    const { container } = renderApp();
+
+    expect(container).toHaveTextContent('헤더');
   });
 
   context('with path /', () => {
