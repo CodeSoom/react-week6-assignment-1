@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantsPage from './RestaurantsPage';
 
-test('RestaurantsPage', () => {
+describe('RestaurantsPage', () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
@@ -23,12 +23,14 @@ test('RestaurantsPage', () => {
     ],
   }));
 
-  const { queryByText } = render((
-    <RestaurantsPage />
-  ));
+  it('카테고리와 지역이 보여집니다.', () => {
+    const { container } = render((
+      <RestaurantsPage />
+    ));
 
-  expect(dispatch).toBeCalled();
+    expect(dispatch).toBeCalled();
 
-  expect(queryByText('서울')).not.toBeNull();
-  expect(queryByText('한식')).not.toBeNull();
+    expect(container).toHaveTextContent('서울');
+    expect(container).toHaveTextContent('한식');
+  });
 });
