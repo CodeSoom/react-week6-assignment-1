@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 
-import HomePage from './HomePage';
+import HomePage, { ROUTES } from './HomePage';
 
 describe('<HomePage />', () => {
   const renderHomePage = () => render(<HomePage />);
@@ -14,8 +14,8 @@ describe('<HomePage />', () => {
   it('renders links', () => {
     const { getByText } = renderHomePage();
 
-    ['About', 'Restaurants'].forEach((link) => {
-      expect(getByText(link)).toBeInTheDocument();
+    ROUTES.forEach((route) => {
+      expect(getByText(route)).toBeInTheDocument();
     });
   });
 });
