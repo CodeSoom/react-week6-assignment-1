@@ -65,7 +65,7 @@ describe('App', () => {
   });
 
   context('with invalid paths', () => {
-    it('renders the restaurants page', () => {
+    it('renders the not found page', () => {
       const { container } = renderApp({ path: '/xxx' });
 
       expect(container).toHaveTextContent('Not Found');
