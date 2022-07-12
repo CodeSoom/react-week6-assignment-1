@@ -63,4 +63,12 @@ describe('App', () => {
       expect(container).toHaveTextContent('한식');
     });
   });
+
+  context('with invalid paths', () => {
+    it('renders the restaurants page', () => {
+      const { container } = renderApp({ path: '/xxx' });
+
+      expect(container).toHaveTextContent('Not Found');
+    });
+  });
 });
