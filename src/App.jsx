@@ -1,13 +1,14 @@
-import { Link } from 'react-router-dom';
+import {
+  Routes,
+  Route,
+} from 'react-router-dom';
+
+import HomePage from './HomePage';
 
 export default function App() {
   return (
-    <>
-      <h2>Home</h2>
-      <ul>
-        <li><Link to="/about">About</Link></li>
-        <li><Link to="/restaurants">Restaurants</Link></li>
-      </ul>
-    </>
+    <Routes>
+      <Route index element={<HomePage />} />
+    </Routes>
   );
 }
