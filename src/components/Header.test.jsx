@@ -2,13 +2,13 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import App from './App';
+import Header from './Header';
 
-describe('<App />', () => {
-  const renderApp = () => render(<App />);
+describe('<Header />', () => {
+  const renderHeader = () => render(<Header />);
 
   it('renders header', () => {
-    const { getByText } = renderApp();
+    const { getByText } = renderHeader();
 
     expect(getByText('헤더')).toBeInTheDocument();
   });
