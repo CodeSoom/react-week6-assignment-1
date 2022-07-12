@@ -9,7 +9,7 @@ describe('About', () => {
     ));
   }
 
-  it('Homepage가 렌더링된다', () => {
+  it('About이 렌더링된다', () => {
     const { container } = renderAbout();
 
     expect(container).toHaveTextContent('About 페이지입니다.');
