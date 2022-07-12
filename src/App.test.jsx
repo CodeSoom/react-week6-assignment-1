@@ -31,6 +31,12 @@ describe('App', () => {
     );
   }
 
+  it('헤더가 보여집니다.', () => {
+    const { container } = renderApp({ path: '/' });
+
+    expect(container).toHaveTextContent('헤더');
+  });
+
   context('with path /', () => {
     it('renders HomePage', () => {
       const { container } = renderApp({ path: '/' });
