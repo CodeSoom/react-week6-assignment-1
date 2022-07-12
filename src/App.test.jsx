@@ -23,15 +23,29 @@ describe('App', () => {
     ],
   }));
 
+  const renderApp = ({ path }) => render((
+    <MemoryRouter initialEntries={[path]}>
+      <App />
+    </MemoryRouter>
+  ));
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   context('with path /', () => {
     it('renders the home page', () => {
-      const { container } = render((
-        <MemoryRouter>
-          <App />
-        </MemoryRouter>
-      ));
+      const { container } = renderApp({ path: '/' });
 
       expect(container).toHaveTextContent('Home');
+    });
+  });
+
+  context('with path /about', () => {
+    it('renders the about page', () => {
+      const { container } = renderApp({ path: '/about' });
+
+      expect(container).toHaveTextContent('About 페이지');
     });
   });
 });
