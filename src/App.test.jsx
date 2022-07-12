@@ -45,4 +45,10 @@ describe('App', () => {
     expect(container).toHaveTextContent('서울');
     expect(container).toHaveTextContent('한식');
   });
+
+  context('with path /not', () => {
+    const { container } = renderApp({ path: '/not' });
+
+    expect(container).toHaveTextContent('404 NotFound');
+  });
 });
