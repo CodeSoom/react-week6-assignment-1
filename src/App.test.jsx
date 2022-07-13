@@ -28,11 +28,11 @@ describe('App', () => {
   });
 
   function renderApp({ path }) {
-    return render(
+    return render((
       <MemoryRouter initialEntries={[path]}>
         <App />
-      </MemoryRouter>,
-    );
+      </MemoryRouter>
+    ));
   }
 
   it('헤더가 보여집니다.', () => {
