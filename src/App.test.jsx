@@ -2,6 +2,8 @@ import { render } from '@testing-library/react';
 
 import { MemoryRouter } from 'react-router-dom';
 
+import REGIONS from '../fixtures/regions';
+
 import App from './App';
 
 describe('<App />', () => {
@@ -33,6 +35,16 @@ describe('<App />', () => {
 
       expect(getByText('About')).toBeInTheDocument();
       expect(getByText('About 페이지 입니다')).toBeInTheDocument();
+    });
+  });
+
+  context('with path /reataurants', () => {
+    it('renders regions', () => {
+      const { container } = renderApp({ path: '/reataurants' });
+
+      REGIONS.forEach((region) => {
+        expect(container).toHaveTextContent(region.name);
+      });
     });
   });
 
