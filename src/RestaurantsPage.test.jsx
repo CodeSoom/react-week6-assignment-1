@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
+import { MemoryRouter } from 'react-router-dom';
 
 import RestaurantsPage from './RestaurantsPage';
 
@@ -23,7 +24,9 @@ describe('RestaurantsPage', () => {
 
   it('카테고리와 지역이 보여집니다.', () => {
     const { container } = render((
-      <RestaurantsPage />
+      <MemoryRouter>
+        <RestaurantsPage />
+      </MemoryRouter>
     ));
 
     expect(container).toHaveTextContent('서울');
