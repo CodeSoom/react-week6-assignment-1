@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export const ROUTES = ['About', 'Restaurants'];
 
 export default function HomePage() {
@@ -8,7 +10,11 @@ export default function HomePage() {
       <ul>
         {
           ROUTES.map((route) => (
-            <li key={route}>{route}</li>
+            <li key={route}>
+              <Link to={`/${route}`}>
+                {route}
+              </Link>
+            </li>
           ))
         }
       </ul>
