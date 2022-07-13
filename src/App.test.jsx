@@ -14,42 +14,40 @@ function renderApp({ path }) {
   );
 }
 
-context('등록된 path명일 때', () => {
-  describe('path="/"', () => {
-    it('HomePage가 보임', () => {
-      const { container } = renderApp({ path: '/' });
+describe('path="/"', () => {
+  it('HomePage가 보임', () => {
+    const { container } = renderApp({ path: '/' });
 
-      expect(container).toHaveTextContent('Home');
-    });
-  });
-
-  describe('path="/about"', () => {
-    it('AboutPage가 보임', () => {
-      const { container } = renderApp({ path: '/about' });
-
-      expect(container).toHaveTextContent('About');
-    });
-  });
-
-  describe('path="/restaurants"', () => {
-    it('RestaurantsPage 보임', () => {
-      const { container } = renderApp({ path: '/restaurants' });
-
-      expect(container).toHaveTextContent('Restaurants');
-    });
-  });
-
-  describe('path="/restaurants/1"', () => {
-    it('RestaurantDetailPage가 보임', () => {
-      const { container } = renderApp({ path: '/restaurants/1 ' });
-
-      expect(container).toHaveTextContent('주소');
-      expect(container).toHaveTextContent('메뉴');
-    });
+    expect(container).toHaveTextContent('Home');
   });
 });
 
-context('등록 안 된 path명일 때', () => {
+describe('path="/about"', () => {
+  it('AboutPage가 보임', () => {
+    const { container } = renderApp({ path: '/about' });
+
+    expect(container).toHaveTextContent('About');
+  });
+});
+
+describe('path="/restaurants"', () => {
+  it('RestaurantsPage 보임', () => {
+    const { container } = renderApp({ path: '/restaurants' });
+
+    expect(container).toHaveTextContent('Restaurants');
+  });
+});
+
+describe('path="/restaurants/1"', () => {
+  it('RestaurantDetailPage가 보임', () => {
+    const { container } = renderApp({ path: '/restaurants/1 ' });
+
+    expect(container).toHaveTextContent('주소');
+    expect(container).toHaveTextContent('메뉴');
+  });
+});
+
+describe('잘못된 path명일 때', () => {
   it('NotFoundPage가 보임', () => {
     const { container } = renderApp({ path: '/codezoom' });
 
