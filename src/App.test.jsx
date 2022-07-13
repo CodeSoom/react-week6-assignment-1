@@ -23,6 +23,10 @@ describe('App', () => {
 
   useDispatch.mockImplementation(() => dispatch);
 
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   function renderApp({ path }) {
     return render(
       <MemoryRouter initialEntries={[path]}>
