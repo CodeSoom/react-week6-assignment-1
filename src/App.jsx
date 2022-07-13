@@ -3,12 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 
 import HomePage from './pages/HomePage';
-
-function NotFoundPage() {
-  return (
-    <h2>Page not found</h2>
-  );
-}
+import NotFoundPage from './pages/NotFoundPage';
 
 export default function App() {
   return (
