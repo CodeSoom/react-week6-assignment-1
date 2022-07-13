@@ -2,9 +2,15 @@ import { render } from '@testing-library/react';
 
 import { MemoryRouter } from 'react-router-dom';
 
+import { useSelector } from 'react-redux';
+
 import REGIONS from '../fixtures/regions';
+import CATEGORIES from '../fixtures/categories';
+import RESTAURANTS from '../fixtures/restaurants';
 
 import App from './App';
+
+jest.mock('react-redux');
 
 describe('<App />', () => {
   const renderApp = ({ path }) => render((
@@ -39,12 +45,20 @@ describe('<App />', () => {
   });
 
   context('with path /restaurants', () => {
-    it('renders regions', () => {
+    beforeEach(() => {
+      useSelector.mockImplementation((selector) => selector({
+        regions: REGIONS,
+        categories: CATEGORIES,
+        restaurants: RESTAURANTS,
+      }));
+    });
+
+    it('renders restaurants page', () => {
       const { container } = renderApp({ path: '/restaurants' });
 
-      REGIONS.forEach((region) => {
-        expect(container).toHaveTextContent(region.name);
-      });
+      expect(container).toHaveTextContent(REGIONS[0].name);
+      expect(container).toHaveTextContent(CATEGORIES[0].name);
+      expect(container).toHaveTextContent(RESTAURANTS[0].name);
     });
   });
 
