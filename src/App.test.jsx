@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 
 import { MemoryRouter } from 'react-router-dom';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import REGIONS from '../fixtures/regions';
 import CATEGORIES from '../fixtures/categories';
@@ -45,7 +45,12 @@ describe('<App />', () => {
   });
 
   context('with path /restaurants', () => {
+    const dispatch = jest.fn();
+    useDispatch.mockImplementation(() => dispatch);
+
     beforeEach(() => {
+      dispatch.mockClear();
+
       useSelector.mockImplementation((selector) => selector({
         regions: REGIONS,
         categories: CATEGORIES,

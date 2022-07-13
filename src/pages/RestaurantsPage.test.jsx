@@ -1,17 +1,40 @@
 import { render } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
+import { loadInitialData } from '../actions';
+
+import RESTAURANTS from '../../fixtures/restaurants';
 import REGIONS from '../../fixtures/regions';
 import CATEGORIES from '../../fixtures/categories';
-import RESTAURANTS from '../../fixtures/restaurants';
 
 import RestaurantsPage from './RestaurantsPage';
 
 jest.mock('react-redux');
+jest.mock('../actions');
 
 describe('<RestaurantsPage />', () => {
+  const dispatch = jest.fn();
+  useDispatch.mockImplementation(() => dispatch);
+
+  beforeEach(() => {
+    dispatch.mockClear();
+  });
+
   const renderRestaurantsPage = () => render(<RestaurantsPage />);
+
+  it('dispatch loadInitialData', () => {
+    useSelector.mockImplementation((selector) => selector({
+      regions: [],
+      categories: [],
+      restaurants: [],
+    }));
+
+    renderRestaurantsPage();
+
+    expect(dispatch).toBeCalled();
+    expect(loadInitialData).toBeCalled();
+  });
 
   context('with regions', () => {
     beforeEach(() => {
