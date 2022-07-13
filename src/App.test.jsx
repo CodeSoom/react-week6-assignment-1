@@ -64,6 +64,15 @@ describe('App', () => {
     });
   });
 
+  context('with path /restaurants/:restaurantId', () => {
+    const restaurantId = 1;
+    it('renders the restaurant page', () => {
+      const { container } = renderApp({ path: `/restaurants/${restaurantId}` });
+
+      expect(container).toHaveTextContent(restaurantId);
+    });
+  });
+
   context('with invalid paths', () => {
     it('renders the not found page', () => {
       const { container } = renderApp({ path: '/xxx' });
