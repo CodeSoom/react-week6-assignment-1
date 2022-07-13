@@ -5,10 +5,12 @@ import RestaurantsPage from './RestaurantsPage';
 
 import REGIONS from '../fixtures/regions';
 import CATEGORIES from '../fixtures/categories';
+import RESTAURANTS from '../fixtures/restaurants';
 
 describe('RestaurantsPage', () => {
   const SEOUL = REGIONS[0];
   const KOREAN_FOOD = CATEGORIES[0];
+  const KIMBAPHEAVEN = RESTAURANTS;
 
   beforeEach(() => {
     useSelector.mockImplementation((selector) => selector({
@@ -18,9 +20,7 @@ describe('RestaurantsPage', () => {
       categories: CATEGORIES,
       selectedCategory: KOREAN_FOOD,
 
-      restaurants: [
-        { id: 1, name: '마법사주방' },
-      ],
+      restaurants: KIMBAPHEAVEN,
     }));
   });
 
@@ -30,9 +30,21 @@ describe('RestaurantsPage', () => {
     ));
   }
 
-  it('RegionsContainer가 렌더링된다', () => {
+  it('지역버튼이 렌더링된다', () => {
     const { container } = renderRestaurantsPage();
 
     expect(container).toHaveTextContent(SEOUL.name);
+  });
+
+  it('음식종류 버튼이 렌더링된다', () => {
+    const { container } = renderRestaurantsPage();
+
+    expect(container).toHaveTextContent(KOREAN_FOOD.name);
+  });
+
+  it('레스토랑들이 렌더링된다', () => {
+    const { container } = renderRestaurantsPage();
+
+    expect(container).toHaveTextContent(KIMBAPHEAVEN[0].name);
   });
 });
