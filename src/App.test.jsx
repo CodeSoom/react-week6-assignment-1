@@ -38,9 +38,9 @@ describe('<App />', () => {
     });
   });
 
-  context('with path /reataurants', () => {
+  context('with path /restaurants', () => {
     it('renders regions', () => {
-      const { container } = renderApp({ path: '/reataurants' });
+      const { container } = renderApp({ path: '/restaurants' });
 
       REGIONS.forEach((region) => {
         expect(container).toHaveTextContent(region.name);
