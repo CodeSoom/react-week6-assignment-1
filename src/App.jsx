@@ -5,22 +5,7 @@ import Header from './components/Header';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import NotFoundPage from './pages/NotFoundPage';
-
-import REGIONS from '../fixtures/regions';
-
-function RestaurantsPage() {
-  return (
-    <ul>
-      {
-        REGIONS.map((region) => (
-          <li key={region.id}>
-            {region.name}
-          </li>
-        ))
-      }
-    </ul>
-  );
-}
+import RestaurantsPage from './pages/RestaurantsPage';
 
 export default function App() {
   return (
