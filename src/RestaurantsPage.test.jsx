@@ -26,8 +26,6 @@ describe('RestaurantsPage', () => {
       <RestaurantsPage />
     ));
 
-    expect(dispatch).toBeCalled();
-
     expect(container).toHaveTextContent('서울');
     expect(container).toHaveTextContent('한식');
   });
