@@ -1,15 +1,13 @@
-import REGIONS from '../../fixtures/regions';
+import RegionsContainer from '../RegionsContainer';
+import CategoriesContainer from '../CategoriesContainer';
+import RestaurantsContainer from '../RestaurantsContainer';
 
 export default function RestaurantsPage() {
   return (
-    <ul>
-      {
-        REGIONS.map((region) => (
-          <li key={region.id}>
-            {region.name}
-          </li>
-        ))
-      }
-    </ul>
+    <>
+      <RegionsContainer />
+      <CategoriesContainer />
+      <RestaurantsContainer />
+    </>
   );
 }
