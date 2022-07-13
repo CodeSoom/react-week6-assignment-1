@@ -2,6 +2,8 @@ import { render } from '@testing-library/react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
+import given from 'given2';
+
 import { loadInitialData } from '../actions';
 
 import RESTAURANTS from '../../fixtures/restaurants';
@@ -14,6 +16,16 @@ jest.mock('react-redux');
 jest.mock('../actions');
 
 describe('<RestaurantsPage />', () => {
+  given('regions', () => []);
+  given('categories', () => []);
+  given('restaurants', () => []);
+
+  useSelector.mockImplementation((selector) => selector({
+    regions: given.regions,
+    categories: given.categories,
+    restaurants: given.restaurants,
+  }));
+
   const dispatch = jest.fn();
   useDispatch.mockImplementation(() => dispatch);
 
@@ -24,12 +36,6 @@ describe('<RestaurantsPage />', () => {
   const renderRestaurantsPage = () => render(<RestaurantsPage />);
 
   it('dispatch loadInitialData', () => {
-    useSelector.mockImplementation((selector) => selector({
-      regions: [],
-      categories: [],
-      restaurants: [],
-    }));
-
     renderRestaurantsPage();
 
     expect(dispatch).toBeCalled();
@@ -37,13 +43,7 @@ describe('<RestaurantsPage />', () => {
   });
 
   context('with regions', () => {
-    beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({
-        regions: REGIONS,
-        categories: [],
-        restaurants: [],
-      }));
-    });
+    given('regions', () => REGIONS);
 
     it('renders regions', () => {
       const { container } = renderRestaurantsPage();
@@ -55,13 +55,7 @@ describe('<RestaurantsPage />', () => {
   });
 
   context('with categories', () => {
-    beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({
-        regions: [],
-        categories: CATEGORIES,
-        restaurants: [],
-      }));
-    });
+    given('categories', () => CATEGORIES);
 
     it('renders categories', () => {
       const { container } = renderRestaurantsPage();
@@ -73,13 +67,7 @@ describe('<RestaurantsPage />', () => {
   });
 
   context('with restaurants', () => {
-    beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({
-        regions: [],
-        categories: [],
-        restaurants: RESTAURANTS,
-      }));
-    });
+    given('restaurants', () => RESTAURANTS);
 
     it('renders restaurants', () => {
       const { container } = renderRestaurantsPage();
