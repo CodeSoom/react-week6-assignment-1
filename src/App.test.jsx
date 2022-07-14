@@ -21,6 +21,16 @@ describe('App', () => {
     restaurants: [
       { id: 1, name: '마법사주방' },
     ],
+    restaurant: {
+      id: 1,
+      name: '김밥제국',
+      category: '분식',
+      address: '서울시 강남구 역삼동',
+      menus: [
+        { id: 1, name: '김밥' },
+        { id: 2, name: '라면' },
+      ],
+    },
   }));
 
   const renderApp = ({ path = '/' } = {}) => render((
@@ -65,11 +75,10 @@ describe('App', () => {
   });
 
   context('with path /restaurants/:restaurantId', () => {
-    const restaurantId = 1;
     it('renders the restaurant page', () => {
-      const { container } = renderApp({ path: `/restaurants/${restaurantId}` });
+      const { container } = renderApp({ path: '/restaurants/1' });
 
-      expect(container).toHaveTextContent(restaurantId);
+      expect(container).toHaveTextContent('김밥제국');
     });
   });
 

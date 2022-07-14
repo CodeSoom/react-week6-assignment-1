@@ -4,13 +4,16 @@ import { useParams } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import RESTAURANT from '../../../fixtures/restaurant';
+import RESTAURANT from '../../../../fixtures/restaurant';
 
-import RestaurantDetailPage from './RestaurantDetailPage';
+import { loadRestaurant } from '../../../store/async-actions';
+
+import RestaurantContainer from './RestaurantContainer';
 
 jest.mock('react-router-dom');
+jest.mock('../../../store/async-actions');
 
-describe('RestaurantDetailPage', () => {
+describe('RestaurantContainer', () => {
   const dispatch = jest.fn();
 
   useParams.mockReturnValue({ restaurantId: RESTAURANT.id });
@@ -21,11 +24,12 @@ describe('RestaurantDetailPage', () => {
     restaurant: RESTAURANT,
   }));
 
-  const renderRestaurantDetailPage = () => render(<RestaurantDetailPage />);
+  it('renders fetched restaurant', () => {
+    const { container } = render((
+      <RestaurantContainer />
+    ));
 
-  it('renders the restaurant', () => {
-    const { container } = renderRestaurantDetailPage();
-
+    expect(dispatch).toHaveBeenCalledWith(loadRestaurant({ restaurantId: RESTAURANT.id }));
     expect(container).toHaveTextContent(RESTAURANT.name);
     expect(container).toHaveTextContent(RESTAURANT.address);
   });

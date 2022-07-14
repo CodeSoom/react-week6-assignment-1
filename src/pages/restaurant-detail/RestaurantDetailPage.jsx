@@ -1,9 +1,5 @@
-import { useParams } from 'react-router-dom';
+import RestaurantContainer from './Restaurant/RestaurantContainer';
 
 export default function RestaurantDetailPage() {
-  const { restaurantId } = useParams();
-
-  return (
-    <p>{restaurantId}</p>
-  );
+  return <RestaurantContainer />;
 }
