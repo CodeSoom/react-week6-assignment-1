@@ -3,19 +3,22 @@ import thunk from 'redux-thunk';
 import configureStore from 'redux-mock-store';
 
 import {
-  loadInitialData,
   setRegions,
   setCategories,
-  loadRestaurants,
   setRestaurants,
 } from './actions';
+
+import {
+  loadInitialData,
+  loadRestaurants,
+} from './async-actions';
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 
 jest.mock('../services/api');
 
-describe('actions', () => {
+describe('async-actions', () => {
   let store;
 
   describe('loadInitialData', () => {

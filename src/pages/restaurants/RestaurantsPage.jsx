@@ -8,7 +8,7 @@ import RestaurantsContainer from './Restaurants/RestaurantsContainer';
 
 import {
   loadInitialData,
-} from '../../store/actions';
+} from '../../store/async-actions';
 
 // 0. 지역, 분류 목록을 얻기
 // 1. 지역 선택 - Regions <- API (0)
