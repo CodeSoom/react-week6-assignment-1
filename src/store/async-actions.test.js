@@ -6,11 +6,13 @@ import {
   setRegions,
   setCategories,
   setRestaurants,
+  setRestaurant,
 } from './actions';
 
 import {
   loadInitialData,
   loadRestaurants,
+  loadRestaurant,
 } from './async-actions';
 
 const middlewares = [thunk];
@@ -79,6 +81,32 @@ describe('async-actions', () => {
 
       it('does\'nt run any actions', async () => {
         await store.dispatch(loadRestaurants());
+
+        const actions = store.getActions();
+
+        expect(actions).toHaveLength(0);
+      });
+    });
+  });
+
+  describe('loadRestaurant', () => {
+    beforeEach(() => {
+      store = mockStore();
+    });
+
+    context('with restaurant id', () => {
+      it('runs setRestaurant', async () => {
+        await store.dispatch(loadRestaurant({ restaurantId: 1 }));
+
+        const actions = store.getActions();
+
+        expect(actions[0]).toEqual(setRestaurant(null));
+      });
+    });
+
+    context('without restaurant id', () => {
+      it('does\'nt run any actions', async () => {
+        await store.dispatch(loadRestaurant());
 
         const actions = store.getActions();
 
