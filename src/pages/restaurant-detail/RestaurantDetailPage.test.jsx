@@ -2,19 +2,19 @@ import { render } from '@testing-library/react';
 
 import { useParams } from 'react-router-dom';
 
-import RestaurantPage from './RestaurantPage';
+import RestaurantDetailPage from './RestaurantDetailPage';
 
 jest.mock('react-router-dom');
 
-describe('RestaurantPage', () => {
+describe('RestaurantDetailPage', () => {
   const restaurantId = 1;
 
   useParams.mockImplementation(() => ({ restaurantId }));
 
-  const renderRestaurantPage = () => render(<RestaurantPage />);
+  const renderRestaurantDetailPage = () => render(<RestaurantDetailPage />);
 
   it('renders the restaurant id', () => {
-    const { container } = renderRestaurantPage();
+    const { container } = renderRestaurantDetailPage();
 
     expect(container).toHaveTextContent(restaurantId);
   });

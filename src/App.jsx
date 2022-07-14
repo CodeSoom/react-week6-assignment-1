@@ -4,11 +4,13 @@ import {
   Link,
 } from 'react-router-dom';
 
-import AboutPage from './AboutPage';
-import HomePage from './HomePage';
-import NotFoundPage from './NotFoundPage';
-import RestaurantPage from './RestaurantPage';
-import RestaurantsPage from './RestaurantsPage';
+import {
+  AboutPage,
+  HomePage,
+  NotFoundPage,
+  RestaurantDetailPage,
+  RestaurantsPage,
+} from './pages';
 
 export default function App() {
   return (
@@ -21,7 +23,7 @@ export default function App() {
         <Route path="about" element={<AboutPage />} />
         <Route path="restaurants">
           <Route index element={<RestaurantsPage />} />
-          <Route path=":restaurantId" element={<RestaurantPage />} />
+          <Route path=":restaurantId" element={<RestaurantDetailPage />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 
-import { get } from './utils';
+import { get } from '../../../utils';
 
 import Restaurants from './Restaurants';
 
