@@ -5,6 +5,7 @@ import { Link, Route, Switch } from 'react-router-dom';
 import AboutPage from './AboutPage';
 import Homepage from './Homepage';
 import RestaurantsPage from './RestaurantsPage';
+import NotFoundPage from './NotFoundPage';
 
 import {
   loadInitialData,
@@ -29,6 +30,7 @@ export default function App() {
         <Route exact path="/" component={Homepage} />
         <Route path="/about" component={AboutPage} />
         <Route path="/restaurants" component={RestaurantsPage} />
+        <Route component={NotFoundPage} />
       </Switch>
     </div>
   );
