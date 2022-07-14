@@ -7,6 +7,12 @@ import App from './App';
 
 import store from './store';
 
+import worker from './mocks/browser';
+
+if (process.env.NODE_ENV === 'development') {
+  worker.start();
+}
+
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
