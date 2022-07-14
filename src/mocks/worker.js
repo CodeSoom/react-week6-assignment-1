@@ -5,6 +5,8 @@ import getRegions from './regions';
 
 import getCategories from './categories';
 
-const worker = setupWorker(...getRegions, ...getCategories);
+import getRestaurants from './restaurants';
+
+const worker = setupWorker(...getRegions, ...getCategories, ...getRestaurants);
 
 export default worker;
