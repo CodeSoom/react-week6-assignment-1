@@ -8,6 +8,8 @@ import { loadRestaurant } from '../../../store/async-actions';
 
 import { get } from '../../../utils';
 
+import Restaurant from './Restaurant';
+
 export default function RestaurantContainer() {
   const dispatch = useDispatch();
 
@@ -20,21 +22,8 @@ export default function RestaurantContainer() {
   }, [restaurantId]);
 
   return (
-    <>
-      <h2>{restaurant.name}</h2>
-      <p>
-        주소:
-        {' '}
-        {restaurant.address}
-      </p>
-      <h3>메뉴</h3>
-      <ul>
-        {restaurant.menus.map(({ id, name }) => (
-          <li key={id}>
-            {name}
-          </li>
-        ))}
-      </ul>
-    </>
+    <Restaurant
+      restaurant={restaurant}
+    />
   );
 }
