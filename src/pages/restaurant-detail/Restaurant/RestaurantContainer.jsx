@@ -21,6 +21,8 @@ export default function RestaurantContainer() {
     dispatch(loadRestaurant({ restaurantId }));
   }, [restaurantId]);
 
+  if (!restaurant) return <p>로딩 중</p>;
+
   return (
     <Restaurant
       restaurant={restaurant}
