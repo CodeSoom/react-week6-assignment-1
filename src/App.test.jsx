@@ -71,9 +71,11 @@ describe('<App />', () => {
   });
 
   context('with path /restaurants/:restaurantId', () => {
-    useSelector.mockImplementation((selector) => selector({
-      restaurant: RESTAURANT,
-    }));
+    beforeEach(() => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurant: RESTAURANT,
+      }));
+    });
 
     it('renders restaurants detail page', () => {
       const { container } = renderApp({ path: '/restaurants/1' });

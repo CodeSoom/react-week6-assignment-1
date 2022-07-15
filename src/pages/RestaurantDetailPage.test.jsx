@@ -12,9 +12,11 @@ describe('<RestaurantDetailPage />', () => {
   const renderRestaurantDetailPage = () => render(<RestaurantDetailPage />);
 
   context('with restaurant', () => {
-    useSelector.mockImplementation((selector) => selector({
-      restaurant: RESTAURANT,
-    }));
+    beforeEach(() => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurant: RESTAURANT,
+      }));
+    });
 
     it('renders restaurant detail page', () => {
       const { container, getByText } = renderRestaurantDetailPage();
