@@ -2,6 +2,8 @@ import { render } from '@testing-library/react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
+import { MemoryRouter } from 'react-router-dom';
+
 import given from 'given2';
 
 import { loadInitialData } from '../actions';
@@ -33,7 +35,11 @@ describe('<RestaurantsPage />', () => {
     dispatch.mockClear();
   });
 
-  const renderRestaurantsPage = () => render(<RestaurantsPage />);
+  const renderRestaurantsPage = () => render((
+    <MemoryRouter>
+      <RestaurantsPage />
+    </MemoryRouter>
+  ));
 
   it('dispatch loadInitialData', () => {
     renderRestaurantsPage();
