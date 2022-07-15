@@ -20,17 +20,38 @@ describe('RestaurantContainer', () => {
 
   useDispatch.mockReturnValue(dispatch);
 
-  useSelector.mockImplementation((state) => state({
-    restaurant: RESTAURANT,
-  }));
+  const mockSelector = ({ isLoading }) => {
+    useSelector.mockImplementation((state) => state({
+      restaurant: RESTAURANT,
+      isLoading,
+    }));
+  };
 
-  it('renders restaurant', () => {
-    const { container } = render((
-      <RestaurantContainer />
-    ));
+  const renderRestaurantContainer = () => render(<RestaurantContainer />);
 
-    expect(dispatch).toHaveBeenCalledWith(loadRestaurant({ restaurantId: RESTAURANT.id }));
-    expect(container).toHaveTextContent(RESTAURANT.name);
-    expect(container).toHaveTextContent(RESTAURANT.address);
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  context('with loading', () => {
+    it('renders loading view', () => {
+      mockSelector({ isLoading: true });
+
+      const { container } = renderRestaurantContainer();
+
+      expect(container).toHaveTextContent('로딩 중');
+    });
+  });
+
+  context('without loading', () => {
+    it('renders restaurant', () => {
+      mockSelector({ isLoading: false });
+
+      const { container } = renderRestaurantContainer();
+
+      expect(dispatch).toHaveBeenCalledWith(loadRestaurant({ restaurantId: RESTAURANT.id }));
+      expect(container).toHaveTextContent(RESTAURANT.name);
+      expect(container).toHaveTextContent(RESTAURANT.address);
+    });
   });
 });

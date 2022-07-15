@@ -15,13 +15,14 @@ export default function RestaurantContainer() {
 
   const { restaurantId } = useParams();
 
+  const isLoading = useSelector(get('isLoading'));
   const restaurant = useSelector(get('restaurant'));
 
   useEffect(() => {
     dispatch(loadRestaurant({ restaurantId }));
   }, [restaurantId]);
 
-  if (!restaurant) return <p>로딩 중</p>;
+  if (isLoading || !restaurant) return <p>로딩 중</p>;
 
   return (
     <Restaurant
