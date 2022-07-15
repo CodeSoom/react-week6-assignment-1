@@ -13,6 +13,13 @@ import App from './App';
 jest.mock('react-redux');
 
 describe('<App />', () => {
+  const dispatch = jest.fn();
+  useDispatch.mockImplementation(() => dispatch);
+
+  beforeEach(() => {
+    dispatch.mockClear();
+  });
+
   const renderApp = ({ path }) => render((
     <MemoryRouter initialEntries={[path]}>
       <App />
@@ -45,12 +52,7 @@ describe('<App />', () => {
   });
 
   context('with path /restaurants', () => {
-    const dispatch = jest.fn();
-    useDispatch.mockImplementation(() => dispatch);
-
     beforeEach(() => {
-      dispatch.mockClear();
-
       useSelector.mockImplementation((selector) => selector({
         regions: REGIONS,
         categories: CATEGORIES,
