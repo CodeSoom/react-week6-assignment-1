@@ -5,7 +5,7 @@ import {
   CATEGORIES,
   RESTAURANT,
   RESTAURANTS,
-} from '../../fixtures';
+} from '@fixtures';
 
 const handlers = [
   rest.get('https://eatgo-customer-api.ahastudio.com/regions', (req, res, ctx) => res(

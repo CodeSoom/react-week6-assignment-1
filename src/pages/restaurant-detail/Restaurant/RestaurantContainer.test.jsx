@@ -4,14 +4,14 @@ import { useParams } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import { RESTAURANT } from '../../../../fixtures';
+import { RESTAURANT } from '@fixtures';
 
-import { loadRestaurant } from '../../../store/async-actions';
+import { loadRestaurant } from '@/store/async-actions';
 
 import RestaurantContainer from './RestaurantContainer';
 
 jest.mock('react-router-dom');
-jest.mock('../../../store/async-actions');
+jest.mock('@/store/async-actions');
 
 describe('RestaurantContainer', () => {
   const dispatch = jest.fn();

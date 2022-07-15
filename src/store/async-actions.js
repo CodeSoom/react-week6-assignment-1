@@ -3,7 +3,7 @@ import {
   fetchCategories,
   fetchRestaurants,
   fetchRestaurant,
-} from '../services/api';
+} from '@/services/api';
 
 import {
   setCategories,

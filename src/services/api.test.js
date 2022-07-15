@@ -3,7 +3,7 @@ import {
   CATEGORIES,
   RESTAURANT,
   RESTAURANTS,
-} from '../../fixtures';
+} from '@fixtures';
 
 import {
   fetchRegions,

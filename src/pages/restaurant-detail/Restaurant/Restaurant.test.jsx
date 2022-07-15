@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 
-import { RESTAURANT } from '../../../../fixtures';
+import { RESTAURANT } from '@fixtures';
 
 import Restaurant from './Restaurant';
 

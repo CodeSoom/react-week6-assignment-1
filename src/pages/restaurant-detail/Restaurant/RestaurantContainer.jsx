@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { useParams } from 'react-router-dom';
 
-import { loadRestaurant } from '../../../store/async-actions';
+import { loadRestaurant } from '@/store/async-actions';
 
-import { get } from '../../../utils';
+import { get } from '@/utils';
 
 import Restaurant from './Restaurant';
 

@@ -9,7 +9,7 @@ import {
   REGIONS,
   RESTAURANT,
   RESTAURANTS,
-} from '../fixtures';
+} from '@fixtures';
 
 import App from './App';
 

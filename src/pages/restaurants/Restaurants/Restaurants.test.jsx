@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 
 import { MemoryRouter } from 'react-router-dom';
 
-import { RESTAURANTS } from '../../../../fixtures';
+import { RESTAURANTS } from '@fixtures';
 
 import Restaurants from './Restaurants';
 
