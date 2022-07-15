@@ -8,6 +8,17 @@ module.exports = {
     'plugin:react/recommended',
     'airbnb',
   ],
+  settings: {
+    'import/resolver': {
+      alias: {
+        extensions: ['.js', '.jsx'],
+        map: [
+          ['@', './src'],
+          ['@fixtures', './fixtures'],
+        ],
+      },
+    },
+  },
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
