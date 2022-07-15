@@ -13,17 +13,21 @@ import {
   setRestaurants,
 } from './actions';
 
+async function runAsyncProcess(dispatch, process) {
+  dispatch(setLoading(true));
+  await process();
+  dispatch(setLoading(false));
+}
+
 export function loadInitialData() {
   return async (dispatch) => {
-    dispatch(setLoading(true));
+    await runAsyncProcess(dispatch, async () => {
+      const regions = await fetchRegions();
+      dispatch(setRegions(regions));
 
-    const regions = await fetchRegions();
-    dispatch(setRegions(regions));
-
-    const categories = await fetchCategories();
-    dispatch(setCategories(categories));
-
-    dispatch(setLoading(false));
+      const categories = await fetchCategories();
+      dispatch(setCategories(categories));
+    });
   };
 }
 
@@ -38,15 +42,13 @@ export function loadRestaurants() {
       return;
     }
 
-    dispatch(setLoading(true));
-
-    const restaurants = await fetchRestaurants({
-      regionName: region.name,
-      categoryId: category.id,
+    await runAsyncProcess(dispatch, async () => {
+      const restaurants = await fetchRestaurants({
+        regionName: region.name,
+        categoryId: category.id,
+      });
+      dispatch(setRestaurants(restaurants));
     });
-    dispatch(setRestaurants(restaurants));
-
-    dispatch(setLoading(false));
   };
 }
 
@@ -56,11 +58,9 @@ export function loadRestaurant({ restaurantId } = {}) {
       return;
     }
 
-    dispatch(setLoading(true));
-
-    const restaurant = await fetchRestaurant({ restaurantId });
-    dispatch(setRestaurant(restaurant));
-
-    dispatch(setLoading(false));
+    await runAsyncProcess(dispatch, async () => {
+      const restaurant = await fetchRestaurant({ restaurantId });
+      dispatch(setRestaurant(restaurant));
+    });
   };
 }
