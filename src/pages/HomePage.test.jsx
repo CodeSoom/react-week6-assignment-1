@@ -23,7 +23,7 @@ describe('<HomePage />', () => {
     const { getByText } = renderHomePage();
 
     ROUTES.forEach((route) => {
-      expect(getByText(route)).toHaveAttribute('href');
+      expect(getByText(route)).toHaveAttribute('href', `/${route}`);
     });
   });
 });
