@@ -7,6 +7,7 @@ import {
   setCategories,
   setRestaurants,
   setRestaurant,
+  setLoading,
 } from './actions';
 
 import {
@@ -23,6 +24,11 @@ jest.mock('../services/api');
 describe('async-actions', () => {
   let store;
 
+  const expectToDispatchSetLoadings = (actions) => {
+    expect(actions[0]).toEqual(setLoading(true));
+    expect(actions[actions.length - 1]).toEqual(setLoading(false));
+  };
+
   describe('loadInitialData', () => {
     beforeEach(() => {
       store = mockStore({});
@@ -33,8 +39,16 @@ describe('async-actions', () => {
 
       const actions = store.getActions();
 
-      expect(actions[0]).toEqual(setRegions([]));
-      expect(actions[1]).toEqual(setCategories([]));
+      expect(actions[1]).toEqual(setRegions([]));
+      expect(actions[2]).toEqual(setCategories([]));
+    });
+
+    it('runs setLoading first and last', async () => {
+      await store.dispatch(loadInitialData());
+
+      const actions = store.getActions();
+
+      expectToDispatchSetLoadings(actions);
     });
   });
 
@@ -52,7 +66,15 @@ describe('async-actions', () => {
 
         const actions = store.getActions();
 
-        expect(actions[0]).toEqual(setRestaurants([]));
+        expect(actions[1]).toEqual(setRestaurants([]));
+      });
+
+      it('runs setLoading first and last', async () => {
+        await store.dispatch(loadRestaurants());
+
+        const actions = store.getActions();
+
+        expectToDispatchSetLoadings(actions);
       });
     });
 
@@ -100,7 +122,15 @@ describe('async-actions', () => {
 
         const actions = store.getActions();
 
-        expect(actions[0]).toEqual(setRestaurant(null));
+        expect(actions[1]).toEqual(setRestaurant(null));
+      });
+
+      it('runs setLoading first and last', async () => {
+        await store.dispatch(loadRestaurant({ restaurantId: 1 }));
+
+        const actions = store.getActions();
+
+        expectToDispatchSetLoadings(actions);
       });
     });
 
