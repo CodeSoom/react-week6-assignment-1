@@ -113,7 +113,7 @@ describe('reducer', () => {
   describe('setLoading', () => {
     it('changes isLoading', () => {
       const initialState = {
-        loading: false,
+        isLoading: false,
       };
 
       const state = reducer(initialState, setLoading(true));
