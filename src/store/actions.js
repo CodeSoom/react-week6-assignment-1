@@ -39,3 +39,10 @@ export function selectCategory(categoryId) {
     payload: { categoryId },
   };
 }
+
+export function setLoading(isLoading) {
+  return {
+    type: 'setLoading',
+    payload: { isLoading },
+  };
+}

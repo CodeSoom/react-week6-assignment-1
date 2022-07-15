@@ -7,6 +7,7 @@ const initialState = {
   restaurant: null,
   selectedRegion: null,
   selectedCategory: null,
+  isLoading: false,
 };
 
 const reducers = {
@@ -51,6 +52,13 @@ const reducers = {
     return {
       ...state,
       selectedCategory: categories.find(equal('id', categoryId)),
+    };
+  },
+
+  setLoading(state, { payload: { isLoading } }) {
+    return {
+      ...state,
+      isLoading,
     };
   },
 };
