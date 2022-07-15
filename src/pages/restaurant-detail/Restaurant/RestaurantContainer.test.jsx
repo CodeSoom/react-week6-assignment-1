@@ -24,7 +24,7 @@ describe('RestaurantContainer', () => {
     restaurant: RESTAURANT,
   }));
 
-  it('renders fetched restaurant', () => {
+  it('renders restaurant', () => {
     const { container } = render((
       <RestaurantContainer />
     ));
