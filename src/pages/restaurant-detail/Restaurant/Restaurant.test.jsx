@@ -11,21 +11,11 @@ describe('Restaurant', () => {
     />
   ));
 
-  it('renders the restaurant name', () => {
+  it('renders the restaurant info', () => {
     const { container } = renderRestaurant();
 
     expect(container).toHaveTextContent(RESTAURANT.name);
-  });
-
-  it('renders the restaurant address', () => {
-    const { container } = renderRestaurant();
-
     expect(container).toHaveTextContent(RESTAURANT.address);
-  });
-
-  it('renders the restaurant menus', () => {
-    const { container } = renderRestaurant();
-
     RESTAURANT.menus.forEach(
       ({ name }) => expect(container).toHaveTextContent(name),
     );
