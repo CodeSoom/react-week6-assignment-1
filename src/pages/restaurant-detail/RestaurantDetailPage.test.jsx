@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import RESTAURANT from '../../../fixtures/restaurant';
+import { RESTAURANT } from '../../../fixtures';
 
 import RestaurantDetailPage from './RestaurantDetailPage';
 

@@ -4,6 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { MemoryRouter } from 'react-router-dom';
 
+import {
+  CATEGORIES,
+  REGIONS,
+  RESTAURANT,
+  RESTAURANTS,
+} from '../fixtures';
+
 import App from './App';
 
 describe('App', () => {
@@ -12,25 +19,10 @@ describe('App', () => {
   useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
-    regions: [
-      { id: 1, name: '서울' },
-    ],
-    categories: [
-      { id: 1, name: '한식' },
-    ],
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
-    restaurant: {
-      id: 1,
-      name: '김밥제국',
-      category: '분식',
-      address: '서울시 강남구 역삼동',
-      menus: [
-        { id: 1, name: '김밥' },
-        { id: 2, name: '라면' },
-      ],
-    },
+    regions: REGIONS,
+    categories: CATEGORIES,
+    restaurants: RESTAURANTS,
+    restaurant: RESTAURANT,
   }));
 
   const renderApp = ({ path = '/' } = {}) => render((
@@ -69,8 +61,8 @@ describe('App', () => {
     it('renders the restaurants page', () => {
       const { container } = renderApp({ path: '/restaurants' });
 
-      expect(container).toHaveTextContent('서울');
-      expect(container).toHaveTextContent('한식');
+      expect(container).toHaveTextContent(REGIONS[0].name);
+      expect(container).toHaveTextContent(CATEGORIES[0].name);
     });
   });
 
@@ -78,7 +70,7 @@ describe('App', () => {
     it('renders the restaurant page', () => {
       const { container } = renderApp({ path: '/restaurants/1' });
 
-      expect(container).toHaveTextContent('김밥제국');
+      expect(container).toHaveTextContent(RESTAURANT.name);
     });
   });
 

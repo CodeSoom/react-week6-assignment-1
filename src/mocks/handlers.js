@@ -1,9 +1,11 @@
 import { rest } from 'msw';
 
-import CATEGORIES from '../../fixtures/categories';
-import REGIONS from '../../fixtures/regions';
-import RESTAURANTS from '../../fixtures/restaurants';
-import RESTAURANT from '../../fixtures/restaurant';
+import {
+  REGIONS,
+  CATEGORIES,
+  RESTAURANT,
+  RESTAURANTS,
+} from '../../fixtures';
 
 const handlers = [
   rest.get('https://eatgo-customer-api.ahastudio.com/regions', (req, res, ctx) => res(

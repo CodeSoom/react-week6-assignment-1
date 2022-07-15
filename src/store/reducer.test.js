@@ -1,4 +1,9 @@
-import RESTAURANT from '../../fixtures/restaurant';
+import {
+  CATEGORIES,
+  REGIONS,
+  RESTAURANT,
+  RESTAURANTS,
+} from '../../fixtures';
 
 import reducer from './reducer';
 
@@ -35,13 +40,9 @@ describe('reducer', () => {
         regions: [],
       };
 
-      const regions = [
-        { id: 1, name: '서울' },
-      ];
+      const state = reducer(initialState, setRegions(REGIONS));
 
-      const state = reducer(initialState, setRegions(regions));
-
-      expect(state.regions).toHaveLength(1);
+      expect(state.regions).toHaveLength(REGIONS.length);
     });
   });
 
@@ -51,13 +52,9 @@ describe('reducer', () => {
         categories: [],
       };
 
-      const categories = [
-        { id: 1, name: '한식' },
-      ];
+      const state = reducer(initialState, setCategories(CATEGORIES));
 
-      const state = reducer(initialState, setCategories(categories));
-
-      expect(state.categories).toHaveLength(1);
+      expect(state.categories).toHaveLength(CATEGORIES.length);
     });
   });
 
@@ -67,13 +64,9 @@ describe('reducer', () => {
         restaurants: [],
       };
 
-      const restaurants = [
-        { id: 1, name: '마법사주방' },
-      ];
+      const state = reducer(initialState, setRestaurants(RESTAURANTS));
 
-      const state = reducer(initialState, setRestaurants(restaurants));
-
-      expect(state.restaurants).toHaveLength(1);
+      expect(state.restaurants).toHaveLength(RESTAURANTS.length);
     });
   });
 
@@ -92,36 +85,26 @@ describe('reducer', () => {
   describe('selectRegion', () => {
     it('changes selected region', () => {
       const initialState = {
-        regions: [
-          { id: 1, name: '서울' },
-        ],
+        regions: REGIONS,
         selectedRegion: null,
       };
 
-      const state = reducer(initialState, selectRegion(1));
+      const state = reducer(initialState, selectRegion(REGIONS[0].id));
 
-      expect(state.selectedRegion).toEqual({
-        id: 1,
-        name: '서울',
-      });
+      expect(state.selectedRegion).toEqual(REGIONS[0]);
     });
   });
 
   describe('selectCategory', () => {
     it('changes selected category', () => {
       const initialState = {
-        categories: [
-          { id: 1, name: '한식' },
-        ],
+        categories: CATEGORIES,
         selectedCategory: null,
       };
 
-      const state = reducer(initialState, selectCategory(1));
+      const state = reducer(initialState, selectCategory(CATEGORIES[0].id));
 
-      expect(state.selectedCategory).toEqual({
-        id: 1,
-        name: '한식',
-      });
+      expect(state.selectedCategory).toEqual(CATEGORIES[0]);
     });
   });
 });
