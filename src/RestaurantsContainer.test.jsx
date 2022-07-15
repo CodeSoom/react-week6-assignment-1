@@ -5,18 +5,19 @@ import { useSelector } from 'react-redux';
 
 import RestaurantsContainer from './RestaurantsContainer';
 
-test('RestaurantsContainer', () => {
+describe('RestaurantsContainer', () => {
   useSelector.mockImplementation((selector) => selector({
     restaurants: [
       { id: 1, name: '마법사주방' },
     ],
   }));
+  it('restaurants가 보여집니다.', () => {
+    const { container } = render((
+      <MemoryRouter>
+        <RestaurantsContainer />
+      </MemoryRouter>
+    ));
 
-  const { container } = render((
-    <MemoryRouter>
-      <RestaurantsContainer />
-    </MemoryRouter>
-  ));
-
-  expect(container).toHaveTextContent('마법사주방');
+    expect(container).toHaveTextContent('마법사주방');
+  });
 });
