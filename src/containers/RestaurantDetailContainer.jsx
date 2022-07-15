@@ -4,6 +4,13 @@ import { get } from '../utils';
 
 export default function RestaurantDetailContainer() {
   const restaurant = useSelector(get('restaurant'));
+  const loading = useSelector(get('loading'));
+
+  if (loading) {
+    return (
+      <div>loading...</div>
+    );
+  }
 
   const {
     name,
