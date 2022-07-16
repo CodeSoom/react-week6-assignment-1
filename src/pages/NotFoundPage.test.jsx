@@ -8,6 +8,6 @@ describe('<NotFoundPage />', () => {
   it('renders page not found', () => {
     const { container } = renderNotFoundPage();
 
-    expect(container).toBeInTheDocument('Page not found');
+    expect(container).toBeInTheDocument('404 Not Found');
   });
 });
