@@ -2,14 +2,23 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
+import { MemoryRouter } from 'react-router-dom';
+
 import Header from './Header';
 
 describe('<Header />', () => {
-  const renderHeader = () => render(<Header />);
+  const renderHeader = () => render((
+    <MemoryRouter>
+      <Header />
+    </MemoryRouter>
+  ));
 
   it('renders header', () => {
     const { getByText } = renderHeader();
 
-    expect(getByText('헤더')).toBeInTheDocument();
+    const header = getByText('헤더');
+
+    expect(header).toBeInTheDocument();
+    expect(header).toHaveAttribute('href', '/');
   });
 });
