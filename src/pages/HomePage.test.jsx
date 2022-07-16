@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react';
 
 import { MemoryRouter } from 'react-router-dom';
+import { capitalizeFirstLetter } from '../utils';
 
 import HomePage, { ROUTES } from './HomePage';
 
@@ -23,7 +24,9 @@ describe('<HomePage />', () => {
     const { getByText } = renderHomePage();
 
     ROUTES.forEach((route) => {
-      expect(getByText(route)).toHaveAttribute('href', `/${route}`);
+      const capitalizedRoute = capitalizeFirstLetter(route);
+
+      expect(getByText(capitalizedRoute)).toHaveAttribute('href', `/${route}`);
     });
   });
 });

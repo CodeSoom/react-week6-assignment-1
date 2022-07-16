@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 
-export const ROUTES = ['About', 'Restaurants'];
+import { capitalizeFirstLetter } from '../utils';
+
+export const ROUTES = ['about', 'restaurants'];
 
 export default function HomePage() {
   return (
@@ -12,7 +14,7 @@ export default function HomePage() {
           ROUTES.map((route) => (
             <li key={route}>
               <Link to={`/${route}`}>
-                {route}
+                {capitalizeFirstLetter(route)}
               </Link>
             </li>
           ))
