@@ -47,6 +47,20 @@ const reducers = {
       selectedCategory: categories.find(equal('id', categoryId)),
     };
   },
+
+  setRestaurant(state, { payload: { restaurant } }) {
+    return {
+      ...state,
+      restaurant,
+    };
+  },
+
+  setIsFetchingDetail(state, { payload: { isFetchingDetail } }) {
+    return {
+      ...state,
+      isFetchingDetail,
+    };
+  },
 };
 
 function defaultReducer(state) {
