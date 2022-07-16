@@ -15,7 +15,7 @@ export default function RestaurantDetailContainer() {
   const {
     name,
     address,
-    menu,
+    menuItems,
   } = restaurant;
 
   return (
@@ -24,12 +24,12 @@ export default function RestaurantDetailContainer() {
       <p>{address}</p>
       <h3>메뉴</h3>
 
-      {menu && (
+      {menuItems && (
         <ul>
           {
-            menu.map((item) => (
-              <li key={item}>
-                {item}
+            menuItems.map((menu) => (
+              <li key={menu.id}>
+                {menu.name}
               </li>
             ))
           }
