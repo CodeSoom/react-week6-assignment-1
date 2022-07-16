@@ -12,33 +12,23 @@ jest.mock('react-redux');
 
 describe('<RestaurantDetailContainer />', () => {
   given('restaurant', () => null);
-  given('loading', () => false);
+  given('isFetchingDetail', () => false);
 
   useSelector.mockImplementation((selector) => selector({
     restaurant: given.restaurant,
-    loading: given.loading,
+    isFetchingDetail: given.isFetchingDetail,
   }));
 
   const renderRestaurantDetailContainer = () => render(<RestaurantDetailContainer />);
 
-  context('with loading', () => {
-    given('loading', () => true);
+  context('with isFetchingDetail', () => {
+    given('isFetchingDetail', () => true);
 
     it('renders loading message', () => {
       const { container, queryByText } = renderRestaurantDetailContainer();
 
       expect(container).toHaveTextContent('loading');
       expect(queryByText('메뉴')).toBeNull();
-    });
-  });
-
-  context('without restaurant', () => {
-    given('restaurant', () => null);
-
-    it('renders "레스토랑을 조회하지 못했습니다." message', () => {
-      const { container } = renderRestaurantDetailContainer();
-
-      expect(container).toHaveTextContent('레스토랑을 조회하지 못했습니다.');
     });
   });
 
@@ -61,6 +51,27 @@ describe('<RestaurantDetailContainer />', () => {
       menuItems.forEach((menu) => {
         expect(getByText(menu.name)).toBeInTheDocument();
       });
+    });
+  });
+
+  context('without restaurant', () => {
+    given('restaurant', () => null);
+
+    it('renders loading message', () => {
+      const { container } = renderRestaurantDetailContainer();
+
+      expect(container).toHaveTextContent('loading');
+    });
+  });
+
+  context('without isFetchingDetail and with empty restaurant', () => {
+    given('restaurant', () => ({}));
+    given('isFetchingDetail', () => false);
+
+    it('renders fail message', () => {
+      const { container } = renderRestaurantDetailContainer();
+
+      expect(container).toHaveTextContent('레스토랑 정보 조회에 실패했습니다.');
     });
   });
 });
