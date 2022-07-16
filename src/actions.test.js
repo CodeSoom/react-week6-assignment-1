@@ -10,7 +10,7 @@ import {
   setRestaurants,
   setRestaurant,
   loadRestaurant,
-  setIsFechingDetail,
+  setIsFetchingDetail,
 } from './actions';
 
 const middlewares = [thunk];
@@ -92,14 +92,14 @@ describe('actions', () => {
       store = mockStore({});
     });
 
-    it('runs setRestaurant and setIsFechingDetail', async () => {
+    it('runs setRestaurant and setIsFetchingDetail', async () => {
       await store.dispatch(loadRestaurant());
 
       const actions = store.getActions();
 
-      expect(actions[0]).toEqual(setIsFechingDetail(true));
+      expect(actions[0]).toEqual(setIsFetchingDetail(true));
       expect(actions[1]).toEqual(setRestaurant({}));
-      expect(actions[2]).toEqual(setIsFechingDetail(false));
+      expect(actions[2]).toEqual(setIsFetchingDetail(false));
     });
   });
 });

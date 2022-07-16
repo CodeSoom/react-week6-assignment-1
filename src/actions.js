@@ -69,9 +69,9 @@ export function loadRestaurants() {
   };
 }
 
-export function setIsFechingDetail(isFetchingDetail) {
+export function setIsFetchingDetail(isFetchingDetail) {
   return {
-    type: 'setIsFechingDetail',
+    type: 'setIsFetchingDetail',
     payload: {
       isFetchingDetail,
     },
@@ -89,7 +89,7 @@ export function setRestaurant(restaurant) {
 
 export function loadRestaurant(restaurantId) {
   return async (dispatch) => {
-    dispatch(setIsFechingDetail(true));
+    dispatch(setIsFetchingDetail(true));
 
     const restaurant = await fetchRestaurant({
       restaurantId,
@@ -97,6 +97,6 @@ export function loadRestaurant(restaurantId) {
 
     dispatch(setRestaurant(restaurant));
 
-    dispatch(setIsFechingDetail(false));
+    dispatch(setIsFetchingDetail(false));
   };
 }
