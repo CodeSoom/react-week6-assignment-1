@@ -7,7 +7,7 @@ const initialState = {
   selectedRegion: null,
   selectedCategory: null,
   restaurant: null,
-  loading: false,
+  isFetchingDetail: false,
 };
 
 const reducers = {
