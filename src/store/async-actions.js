@@ -21,13 +21,11 @@ async function runAsyncProcess(dispatch, process) {
 
 export function loadInitialData() {
   return async (dispatch) => {
-    await runAsyncProcess(dispatch, async () => {
-      const regions = await fetchRegions();
-      dispatch(setRegions(regions));
+    const regions = await fetchRegions();
+    dispatch(setRegions(regions));
 
-      const categories = await fetchCategories();
-      dispatch(setCategories(categories));
-    });
+    const categories = await fetchCategories();
+    dispatch(setCategories(categories));
   };
 }
 
@@ -42,13 +40,11 @@ export function loadRestaurants() {
       return;
     }
 
-    await runAsyncProcess(dispatch, async () => {
-      const restaurants = await fetchRestaurants({
-        regionName: region.name,
-        categoryId: category.id,
-      });
-      dispatch(setRestaurants(restaurants));
+    const restaurants = await fetchRestaurants({
+      regionName: region.name,
+      categoryId: category.id,
     });
+    dispatch(setRestaurants(restaurants));
   };
 }
 

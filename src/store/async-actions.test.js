@@ -39,16 +39,8 @@ describe('async-actions', () => {
 
       const actions = store.getActions();
 
-      expect(actions[1]).toEqual(setRegions([]));
-      expect(actions[2]).toEqual(setCategories([]));
-    });
-
-    it('runs setLoading first and last', async () => {
-      await store.dispatch(loadInitialData());
-
-      const actions = store.getActions();
-
-      expectToDispatchSetLoadings(actions);
+      expect(actions[0]).toEqual(setRegions([]));
+      expect(actions[1]).toEqual(setCategories([]));
     });
   });
 
@@ -66,15 +58,7 @@ describe('async-actions', () => {
 
         const actions = store.getActions();
 
-        expect(actions[1]).toEqual(setRestaurants([]));
-      });
-
-      it('runs setLoading first and last', async () => {
-        await store.dispatch(loadRestaurants());
-
-        const actions = store.getActions();
-
-        expectToDispatchSetLoadings(actions);
+        expect(actions[0]).toEqual(setRestaurants([]));
       });
     });
 
