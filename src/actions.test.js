@@ -8,6 +8,9 @@ import {
   setCategories,
   loadRestaurants,
   setRestaurants,
+  setRestaurant,
+  loadRestaurant,
+  setIsFechingDetail,
 } from './actions';
 
 const middlewares = [thunk];
@@ -81,6 +84,22 @@ describe('actions', () => {
 
         expect(actions).toHaveLength(0);
       });
+    });
+  });
+
+  describe('loadRestaurant', () => {
+    beforeEach(() => {
+      store = mockStore({});
+    });
+
+    it('runs setRestaurant and setIsFechingDetail', async () => {
+      await store.dispatch(loadRestaurant());
+
+      const actions = store.getActions();
+
+      expect(actions[0]).toEqual(setIsFechingDetail(true));
+      expect(actions[1]).toEqual(setRestaurant({}));
+      expect(actions[2]).toEqual(setIsFechingDetail(false));
     });
   });
 });
