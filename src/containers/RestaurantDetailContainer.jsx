@@ -24,7 +24,7 @@ export default function RestaurantDetailContainer() {
       <p>{address}</p>
       <h3>메뉴</h3>
 
-      {menu ? (
+      {menu && (
         <ul>
           {
             menu.map((item) => (
@@ -34,7 +34,7 @@ export default function RestaurantDetailContainer() {
             ))
           }
         </ul>
-      ) : null}
+      )}
     </>
   );
 }
