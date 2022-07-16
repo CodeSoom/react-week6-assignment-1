@@ -12,6 +12,7 @@ import HomePage from './HomePage';
 import RestaurantsPage from './RestaurantsPage';
 import AboutPage from './AboutPage';
 import NotFound from './NotFound';
+import RestaurantPage from './RestaurantPage';
 
 // 0. 지역, 분류 목록을 얻기
 // 1. 지역 선택 - Regions <- API (0)
@@ -33,7 +34,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/restaurants" element={<RestaurantsPage />} />
-        <Route path="/restaurant/:id" element={<AboutPage />} />
+        <Route path="/restaurant/:id" element={<RestaurantPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
