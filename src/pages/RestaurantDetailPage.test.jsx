@@ -1,15 +1,32 @@
 import { render } from '@testing-library/react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { loadRestaurant } from '../actions';
 
 import RESTAURANT from '../../fixtures/restaurant';
 
 import RestaurantDetailPage from './RestaurantDetailPage';
 
 jest.mock('react-redux');
+jest.mock('../actions');
 
 describe('<RestaurantDetailPage />', () => {
+  const dispatch = jest.fn();
+
+  useDispatch.mockImplementation(() => dispatch);
+
+  beforeEach(() => {
+    dispatch.mockClear();
+  });
+
   const renderRestaurantDetailPage = () => render(<RestaurantDetailPage />);
+
+  it('dispatch loadRestaurant', () => {
+    renderRestaurantDetailPage();
+
+    expect(loadRestaurant).toBeCalled();
+  });
 
   context('with restaurant', () => {
     beforeEach(() => {
