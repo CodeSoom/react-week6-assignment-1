@@ -9,7 +9,7 @@ export default function Restaurant({ restaurant }) {
       </p>
       <h3>메뉴</h3>
       <ul>
-        {restaurant.menus.map(({ id, name }) => (
+        {restaurant.menuItems.map(({ id, name }) => (
           <li key={id}>
             {name}
           </li>

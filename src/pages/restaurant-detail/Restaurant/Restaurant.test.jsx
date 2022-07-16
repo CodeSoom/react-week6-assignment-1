@@ -16,7 +16,7 @@ describe('Restaurant', () => {
 
     expect(container).toHaveTextContent(RESTAURANT.name);
     expect(container).toHaveTextContent(RESTAURANT.address);
-    RESTAURANT.menus.forEach(
+    RESTAURANT.menuItems.forEach(
       ({ name }) => expect(container).toHaveTextContent(name),
     );
   });
