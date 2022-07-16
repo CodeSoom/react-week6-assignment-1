@@ -26,7 +26,7 @@ describe('reducer', () => {
       restaurant: null,
       selectedRegion: null,
       selectedCategory: null,
-      isLoading: false,
+      isLoading: true,
     };
 
     it('returns initialState', () => {
@@ -113,12 +113,12 @@ describe('reducer', () => {
   describe('setLoading', () => {
     it('changes isLoading', () => {
       const initialState = {
-        isLoading: false,
+        isLoading: true,
       };
 
-      const state = reducer(initialState, setLoading(true));
+      const state = reducer(initialState, setLoading(false));
 
-      expect(state.isLoading).toBeTruthy();
+      expect(state.isLoading).toBeFalsy();
     });
   });
 });
