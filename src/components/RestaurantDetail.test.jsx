@@ -36,7 +36,7 @@ describe('<RestaurantDetail />', () => {
     });
   });
 
-  context('without isFetching and empty restaurant', () => {
+  context('without isFetching and with empty restaurant', () => {
     it('renders fail message', () => {
       const { container } = renderRestaurantDetail({
         restaurant: {},
