@@ -24,15 +24,15 @@ describe('<RestaurantDetailPage />', () => {
       const {
         name,
         address,
-        menu,
+        menuItems,
       } = RESTAURANT;
 
       expect(container).toHaveTextContent(name);
       expect(container).toHaveTextContent(address);
       expect(container).toHaveTextContent('메뉴');
 
-      menu.forEach((item) => {
-        expect(getByText(item)).toBeInTheDocument();
+      menuItems.forEach((menu) => {
+        expect(getByText(menu.name)).toBeInTheDocument();
       });
     });
   });
