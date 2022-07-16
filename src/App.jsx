@@ -17,8 +17,10 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/restaurants" element={<RestaurantsPage />} />
-          <Route path="/restaurants/:restaurantId" element={<RestaurantDetailPage />} />
+          <Route path="/restaurants">
+            <Route index element={<RestaurantsPage />} />
+            <Route path=":restaurantId" element={<RestaurantDetailPage />} />
+          </Route>
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
