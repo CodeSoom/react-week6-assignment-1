@@ -1,4 +1,4 @@
-import { get, equal } from './utils';
+import { get, equal, capitalizeFirstLetter } from './utils';
 
 test('get', () => {
   const state = {
@@ -22,4 +22,9 @@ test('equal', () => {
 
   expect(f(state)).toBeTruthy();
   expect(g(state)).toBeFalsy();
+});
+
+test('capitalizeFirstLetter', () => {
+  expect(capitalizeFirstLetter('home')).toBe('Home');
+  expect(capitalizeFirstLetter('about')).toBe('About');
 });

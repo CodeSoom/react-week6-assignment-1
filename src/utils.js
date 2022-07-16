@@ -5,3 +5,7 @@ export function get(key) {
 export function equal(key, value) {
   return (obj) => obj[key] === value;
 }
+
+export function capitalizeFirstLetter(word) {
+  return word.charAt(0).toUpperCase() + word.slice(1);
+}
