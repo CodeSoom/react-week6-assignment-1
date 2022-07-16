@@ -87,7 +87,7 @@ export function setRestaurant(restaurant) {
   };
 }
 
-export function loadRestaurant(restaurantId) {
+export function loadRestaurant({ restaurantId }) {
   return async (dispatch) => {
     dispatch(setIsFetchingDetail(true));
 
