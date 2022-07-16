@@ -12,6 +12,14 @@ export default function RestaurantDetailContainer() {
     );
   }
 
+  if (!restaurant) {
+    return (
+      <div>
+        레스토랑을 조회하지 못했습니다.
+      </div>
+    );
+  }
+
   const {
     name,
     address,

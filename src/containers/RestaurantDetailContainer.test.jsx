@@ -32,6 +32,16 @@ describe('<RestaurantDetailContainer />', () => {
     });
   });
 
+  context('without restaurant', () => {
+    given('restaurant', () => null);
+
+    it('renders "레스토랑을 조회하지 못했습니다." message', () => {
+      const { container } = renderRestaurantDetailContainer();
+
+      expect(container).toHaveTextContent('레스토랑을 조회하지 못했습니다.');
+    });
+  });
+
   context('with restaurant', () => {
     given('restaurant', () => RESTAURANT);
 
