@@ -6,9 +6,9 @@ import {
   loadInitialData,
 } from '@/store/async-actions';
 
-import RegionsContainer from './Regions/RegionsContainer';
-import CategoriesContainer from './Categories/CategoriesContainer';
-import RestaurantsContainer from './Restaurants/RestaurantsContainer';
+import Regions from './Regions';
+import Categories from './Categories';
+import Restaurants from './Restaurants';
 
 export default function RestaurantsPage() {
   const dispatch = useDispatch();
@@ -19,9 +19,9 @@ export default function RestaurantsPage() {
 
   return (
     <div>
-      <RegionsContainer />
-      <CategoriesContainer />
-      <RestaurantsContainer />
+      <Regions />
+      <Categories />
+      <Restaurants />
     </div>
   );
 }
