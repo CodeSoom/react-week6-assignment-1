@@ -22,7 +22,7 @@ export default function RestaurantContainer() {
     dispatch(loadRestaurant({ restaurantId }));
   }, [restaurantId]);
 
-  if (isLoading || !restaurant) return <p>로딩 중</p>;
+  if (isLoading) return <p>로딩 중</p>;
 
   return (
     <Restaurant
