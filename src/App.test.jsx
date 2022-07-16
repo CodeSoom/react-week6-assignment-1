@@ -90,7 +90,7 @@ describe('<App />', () => {
     it('renders not found page', () => {
       const { container } = renderApp({ path: '/some/bad/route' });
 
-      expect(container).toHaveTextContent('Page not found');
+      expect(container).toHaveTextContent('404 Not Found');
     });
   });
 });
