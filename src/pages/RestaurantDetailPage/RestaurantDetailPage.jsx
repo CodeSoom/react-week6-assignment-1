@@ -1,5 +1,5 @@
-import Restaurant from './Restaurant';
+import RestaurantContainer from './RestaurantContainer';
 
 export default function RestaurantDetailPage() {
-  return <Restaurant />;
+  return <RestaurantContainer />;
 }
