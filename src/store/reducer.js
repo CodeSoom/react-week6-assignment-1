@@ -4,10 +4,16 @@ const initialState = {
   regions: [],
   categories: [],
   restaurants: [],
-  restaurant: null,
+  restaurant: {
+    id: -1,
+    categoryId: -1,
+    name: '',
+    address: '',
+    menuItems: [],
+  },
   selectedRegion: null,
   selectedCategory: null,
-  isLoading: true,
+  isLoading: false,
 };
 
 const reducers = {
