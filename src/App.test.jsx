@@ -1,4 +1,4 @@
-import React from 'react';
+import { MemoryRouter } from 'react-router-dom';
 
 import { render } from '@testing-library/react';
 
@@ -6,10 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
-test('App', () => {
+describe('App', () => {
   const dispatch = jest.fn();
-
-  useDispatch.mockImplementation(() => dispatch);
 
   useSelector.mockImplementation((selector) => selector({
     regions: [
@@ -23,12 +21,50 @@ test('App', () => {
     ],
   }));
 
-  const { queryByText } = render((
-    <App />
-  ));
+  useDispatch.mockImplementation(() => dispatch);
 
-  expect(dispatch).toBeCalled();
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 
-  expect(queryByText('서울')).not.toBeNull();
-  expect(queryByText('한식')).not.toBeNull();
+  function renderApp({ path }) {
+    return render((
+      <MemoryRouter initialEntries={[path]}>
+        <App />
+      </MemoryRouter>
+    ));
+  }
+
+  it('헤더가 보여집니다.', () => {
+    const { container } = renderApp({ path: '/' });
+
+    expect(container).toHaveTextContent('헤더');
+  });
+
+  context('with path /', () => {
+    it('renders HomePage', () => {
+      const { container } = renderApp({ path: '/' });
+
+      expect(container).toHaveTextContent('Home');
+    });
+  });
+
+  context('with path /restaurants', () => {
+    const { container } = renderApp({ path: '/restaurants' });
+
+    expect(container).toHaveTextContent('서울');
+    expect(container).toHaveTextContent('한식');
+  });
+
+  context('with path /not', () => {
+    const { container } = renderApp({ path: '/not' });
+
+    expect(container).toHaveTextContent('404 NotFound');
+  });
+
+  context('with path /about', () => {
+    const { container } = renderApp({ path: '/about' });
+
+    expect(container).toHaveTextContent('About 페이지 입니다.');
+  });
 });
