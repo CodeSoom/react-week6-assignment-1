@@ -6,7 +6,11 @@ import {
   setRestaurants,
   selectRegion,
   selectCategory,
+  setRestaurant,
+  setIsFetchingDetail,
 } from './actions';
+
+import RESTAURANT from '../fixtures/restaurant';
 
 describe('reducer', () => {
   context('when previous state is undefined', () => {
@@ -16,6 +20,8 @@ describe('reducer', () => {
       restaurants: [],
       selectedRegion: null,
       selectedCategory: null,
+      restaurant: null,
+      isFetchingDetail: false,
     };
 
     it('returns initialState', () => {
@@ -106,6 +112,30 @@ describe('reducer', () => {
         id: 1,
         name: '한식',
       });
+    });
+  });
+
+  describe('setRestaurant', () => {
+    it('changes restaurant', () => {
+      const initialState = {
+        restaurant: null,
+      };
+
+      const state = reducer(initialState, setRestaurant(RESTAURANT));
+
+      expect(state.restaurant).toEqual(RESTAURANT);
+    });
+  });
+
+  describe('setIsFetchingDetail', () => {
+    it('changes isFetchingDetail', () => {
+      const initialState = {
+        isFetchingDetail: false,
+      };
+
+      const state = reducer(initialState, setIsFetchingDetail(true));
+
+      expect(state.isFetchingDetail).toBe(true);
     });
   });
 });

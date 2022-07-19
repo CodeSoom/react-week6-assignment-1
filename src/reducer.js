@@ -6,6 +6,8 @@ const initialState = {
   restaurants: [],
   selectedRegion: null,
   selectedCategory: null,
+  restaurant: null,
+  isFetchingDetail: false,
 };
 
 const reducers = {
@@ -43,6 +45,20 @@ const reducers = {
     return {
       ...state,
       selectedCategory: categories.find(equal('id', categoryId)),
+    };
+  },
+
+  setRestaurant(state, { payload: { restaurant } }) {
+    return {
+      ...state,
+      restaurant,
+    };
+  },
+
+  setIsFetchingDetail(state, { payload: { isFetchingDetail } }) {
+    return {
+      ...state,
+      isFetchingDetail,
     };
   },
 };
