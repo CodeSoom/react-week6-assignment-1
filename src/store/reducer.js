@@ -1,11 +1,19 @@
-import { equal } from './utils';
+import { equal } from '@/utils';
 
 const initialState = {
   regions: [],
   categories: [],
   restaurants: [],
+  restaurant: {
+    id: -1,
+    categoryId: -1,
+    name: '',
+    address: '',
+    menuItems: [],
+  },
   selectedRegion: null,
   selectedCategory: null,
+  isLoading: false,
 };
 
 const reducers = {
@@ -30,6 +38,13 @@ const reducers = {
     };
   },
 
+  setRestaurant(state, { payload: { restaurant } }) {
+    return {
+      ...state,
+      restaurant,
+    };
+  },
+
   selectRegion(state, { payload: { regionId } }) {
     const { regions } = state;
     return {
@@ -43,6 +58,13 @@ const reducers = {
     return {
       ...state,
       selectedCategory: categories.find(equal('id', categoryId)),
+    };
+  },
+
+  setLoading(state, { payload: { isLoading } }) {
+    return {
+      ...state,
+      isLoading,
     };
   },
 };

@@ -1,11 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import {
-  selectRegion,
-  loadRestaurants,
-} from './actions';
+import { selectRegion } from '@/store/actions';
+import { loadRestaurants } from '@/store/async-actions';
 
-import { get } from './utils';
+import { get } from '@/utils';
 
 export default function RegionsContainer() {
   const dispatch = useDispatch();

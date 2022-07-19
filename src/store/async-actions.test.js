@@ -3,20 +3,31 @@ import thunk from 'redux-thunk';
 import configureStore from 'redux-mock-store';
 
 import {
-  loadInitialData,
   setRegions,
   setCategories,
-  loadRestaurants,
   setRestaurants,
+  setRestaurant,
+  setLoading,
 } from './actions';
+
+import {
+  loadInitialData,
+  loadRestaurants,
+  loadRestaurant,
+} from './async-actions';
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 
-jest.mock('./services/api');
+jest.mock('@/services/api');
 
-describe('actions', () => {
+describe('async-actions', () => {
   let store;
+
+  const expectToDispatchSetLoadings = (actions) => {
+    expect(actions[0]).toEqual(setLoading(true));
+    expect(actions[actions.length - 1]).toEqual(setLoading(false));
+  };
 
   describe('loadInitialData', () => {
     beforeEach(() => {
@@ -76,6 +87,40 @@ describe('actions', () => {
 
       it('does\'nt run any actions', async () => {
         await store.dispatch(loadRestaurants());
+
+        const actions = store.getActions();
+
+        expect(actions).toHaveLength(0);
+      });
+    });
+  });
+
+  describe('loadRestaurant', () => {
+    beforeEach(() => {
+      store = mockStore();
+    });
+
+    context('with restaurant id', () => {
+      it('runs setRestaurant', async () => {
+        await store.dispatch(loadRestaurant({ restaurantId: 1 }));
+
+        const actions = store.getActions();
+
+        expect(actions[1]).toEqual(setRestaurant(null));
+      });
+
+      it('runs setLoading first and last', async () => {
+        await store.dispatch(loadRestaurant({ restaurantId: 1 }));
+
+        const actions = store.getActions();
+
+        expectToDispatchSetLoadings(actions);
+      });
+    });
+
+    context('without restaurant id', () => {
+      it('does\'nt run any actions', async () => {
+        await store.dispatch(loadRestaurant());
 
         const actions = store.getActions();
 

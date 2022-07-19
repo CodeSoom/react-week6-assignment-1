@@ -1,6 +1,6 @@
 Feature('RestaurantDetail');
 
-const menus = ['탕수육', '팔보채'];
+const menus = ['한우곰탕', '한우우거지탕'];
 
 Scenario('레스토랑 정보와 메뉴 목록을 볼 수 있다.', ({ I }) => {
   I.amOnPage('/restaurants/1');

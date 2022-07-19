@@ -8,6 +8,17 @@ module.exports = {
     'plugin:react/recommended',
     'airbnb',
   ],
+  settings: {
+    'import/resolver': {
+      alias: {
+        extensions: ['.js', '.jsx'],
+        map: [
+          ['@', './src'],
+          ['@fixtures', './fixtures'],
+        ],
+      },
+    },
+  },
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -49,6 +60,7 @@ module.exports = {
     'arrow-spacing': ['error', { before: true, after: true }],
     'jsx-a11y/label-has-associated-control': ['error', { assert: 'either' }],
     'linebreak-style': 'off',
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
 
     'react/prop-types': 'off',
     'react/react-in-jsx-scope': 'off',
