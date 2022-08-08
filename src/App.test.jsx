@@ -16,24 +16,30 @@ const customRender = (path) => render((
 ));
 
 describe('App', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+
+    const dispatch = jest.fn();
+    useDispatch.mockImplementation(() => dispatch);
+
+    useSelector.mockImplementation((selector) => selector({
+      regions: [
+        { id: 1, name: '서울' },
+      ],
+      categories: [
+        { id: 1, name: '한식' },
+      ],
+      restaurants: [
+        { id: 1, name: '한국식 초밥' },
+      ],
+    }));
+  });
+
   context('with path /', () => {
-    beforeEach(() => {
-      jest.clearAllMocks();
+    it('shows header', () => {
+      const { queryByText } = customRender('/');
 
-      const dispatch = jest.fn();
-      useDispatch.mockImplementation(() => dispatch);
-
-      useSelector.mockImplementation((selector) => selector({
-        regions: [
-          { id: 1, name: '서울' },
-        ],
-        categories: [
-          { id: 1, name: '한식' },
-        ],
-        restaurants: [
-          { id: 1, name: '한국식 초밥' },
-        ],
-      }));
+      expect(queryByText('헤더')).not.toBeNull();
     });
 
     it('shows HOME heading', () => {
@@ -42,7 +48,7 @@ describe('App', () => {
       expect(queryByText('Home')).not.toBeNull();
     });
 
-    it('does not show ABOUT heading', () => {
+    it('does not show about page description', () => {
       const { queryByText } = customRender('/');
 
       expect(queryByText('About 페이지입니다')).toBeNull();
@@ -50,10 +56,10 @@ describe('App', () => {
   });
 
   context('with path /about', () => {
-    it('shows ABOUT heading', () => {
+    it('shows about page description', () => {
       const { queryByText } = customRender('/about');
 
-      expect(queryByText('About 페이지입니다')).not.toBeNull();
+      expect(queryByText('About 페이지입니다.')).not.toBeNull();
     });
 
     it('does not show Home heading', () => {
