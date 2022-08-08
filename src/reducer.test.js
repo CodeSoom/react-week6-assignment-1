@@ -4,6 +4,7 @@ import {
   setRegions,
   setCategories,
   setRestaurants,
+  setRestaurant,
   selectRegion,
   selectCategory,
   selectRestaurant,
@@ -15,8 +16,10 @@ describe('reducer', () => {
       regions: [],
       categories: [],
       restaurants: [],
+      restaurant: null,
       selectedRegion: null,
       selectedCategory: null,
+      selectedRestaurant: null,
     };
 
     it('returns initialState', () => {
@@ -74,6 +77,44 @@ describe('reducer', () => {
     });
   });
 
+  describe('setRestaurant', () => {
+    it('changes restaurants', () => {
+      const initialState = {
+        restaurant: null,
+      };
+
+      const restaurant = {
+        id: 6,
+        categoryId: 1,
+        name: '한국식 초밥',
+        address: '서울 강남구',
+        menuItems: [
+          {
+            id: 18,
+            restaurantId: 6,
+            name: '밥',
+          },
+        ],
+      };
+
+      const state = reducer(initialState, setRestaurant(restaurant));
+
+      expect(state.restaurant).toEqual({
+        id: 6,
+        categoryId: 1,
+        name: '한국식 초밥',
+        address: '서울 강남구',
+        menuItems: [
+          {
+            id: 18,
+            restaurantId: 6,
+            name: '밥',
+          },
+        ],
+      });
+    });
+  });
+
   describe('selectRegion', () => {
     it('changes selected region', () => {
       const initialState = {
@@ -115,17 +156,7 @@ describe('reducer', () => {
       const initialState = {
         restaurants: [
           {
-            id: 6,
-            categoryId: 1,
-            name: '한국식 초밥',
-            address: '서울 강남구',
-            menuItems: [
-              {
-                id: 18,
-                restaurantId: 6,
-                name: '밥',
-              },
-            ],
+            id: 6, name: '한국식 초밥', category: '한식', address: '서울 강남구',
           },
         ],
         selectedRestaurant: null,
@@ -133,18 +164,8 @@ describe('reducer', () => {
 
       const state = reducer(initialState, selectRestaurant(6));
 
-      expect(state.selectedCategory).toEqual({
-        id: 6,
-        categoryId: 1,
-        name: '한국식 초밥',
-        address: '서울 강남구',
-        menuItems: [
-          {
-            id: 18,
-            restaurantId: 6,
-            name: '밥',
-          },
-        ],
+      expect(state.selectedRestaurant).toEqual({
+        id: 6, name: '한국식 초밥', category: '한식', address: '서울 강남구',
       });
     });
   });

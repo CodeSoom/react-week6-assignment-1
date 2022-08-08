@@ -1,11 +1,14 @@
+// import restaurants from '../fixtures/restaurants';
 import { equal } from './utils';
 
 const initialState = {
   regions: [],
   categories: [],
   restaurants: [],
+  restaurant: null,
   selectedRegion: null,
   selectedCategory: null,
+  selectedRestaurant: null,
 };
 
 const reducers = {
@@ -23,10 +26,18 @@ const reducers = {
     };
   },
 
+  // eslint-disable-next-line no-shadow
   setRestaurants(state, { payload: { restaurants } }) {
     return {
       ...state,
       restaurants,
+    };
+  },
+
+  setRestaurant(state, { payload: { restaurant } }) {
+    return {
+      ...state,
+      restaurant,
     };
   },
 
@@ -43,6 +54,14 @@ const reducers = {
     return {
       ...state,
       selectedCategory: categories.find(equal('id', categoryId)),
+    };
+  },
+
+  selectRestaurant(state, { payload: { id } }) {
+    const { restaurants } = state;
+    return {
+      ...state,
+      selectedRestaurant: restaurants.find(equal('id', id)),
     };
   },
 };
