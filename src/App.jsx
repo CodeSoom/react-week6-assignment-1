@@ -11,8 +11,8 @@ import { useDispatch } from 'react-redux';
 import HomePage from './HomePage';
 import AboutPage from './AboutPage';
 import RestaurantsPage from './RestaurantsPage';
-// import RestaurantPage from 'RestaurantPage';
-// import NotFoundPage from 'NotFoundPage';
+import RestaurantPage from './RestaurantPage';
+import NotFoundPage from './NotFoundPage';
 
 import {
   loadInitialData,
@@ -34,8 +34,8 @@ export default function App() {
         <Route exact path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/restaurants" element={<RestaurantsPage />} />
-        {/* <Route exact path="/restaurant" component={RestaurantPage} />
-        <Route component={NotFoundPage} /> */}
+        <Route path="/restaurant" element={<RestaurantPage />} />
+        <Route element={<NotFoundPage />} />
       </Routes>
     </div>
   );

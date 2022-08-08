@@ -9,8 +9,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantsPage from './RestaurantsPage';
 
-const customRender = (path) => render((
-  <MemoryRouter initialEntries={[path]}>
+const customRender = () => render((
+  <MemoryRouter>
     <RestaurantsPage />
   </MemoryRouter>
 ));
@@ -46,6 +46,12 @@ describe('RestaurantsPage', () => {
       const { queryByText } = customRender('/restaurants');
 
       expect(queryByText('한식')).not.toBeNull();
+    });
+
+    it('shows restaurants', () => {
+      const { queryByText } = customRender('/restaurants');
+
+      expect(queryByText('한국식 초밥')).not.toBeNull();
     });
   });
 });
