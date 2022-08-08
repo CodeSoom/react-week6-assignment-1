@@ -33,9 +33,11 @@ export default function App() {
       <Routes>
         <Route exact path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
-        <Route path="/restaurants" element={<RestaurantsPage />} />
-        <Route path="/restaurant" element={<RestaurantPage />} />
-        <Route element={<NotFoundPage />} />
+        <Route path="/restaurants">
+          <Route index element={<RestaurantsPage />} />
+          <Route path=":id" element={<RestaurantPage />} />
+        </Route>
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
   );

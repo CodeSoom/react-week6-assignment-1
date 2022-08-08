@@ -8,6 +8,7 @@ import {
   selectRegion,
   selectCategory,
   selectRestaurant,
+  setLoading,
 } from './actions';
 
 describe('reducer', () => {
@@ -16,10 +17,11 @@ describe('reducer', () => {
       regions: [],
       categories: [],
       restaurants: [],
-      restaurant: null,
+      restaurant: {},
       selectedRegion: null,
       selectedCategory: null,
       selectedRestaurant: null,
+      loading: false,
     };
 
     it('returns initialState', () => {
@@ -167,6 +169,18 @@ describe('reducer', () => {
       expect(state.selectedRestaurant).toEqual({
         id: 6, name: '한국식 초밥', category: '한식', address: '서울 강남구',
       });
+    });
+  });
+
+  describe('setLoading', () => {
+    it('changes loading status', () => {
+      const initialState = {
+        loading: false,
+      };
+
+      const state = reducer(initialState, setLoading(false));
+
+      expect(state.loading).toBeFalsy();
     });
   });
 });

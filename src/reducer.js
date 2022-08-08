@@ -5,10 +5,11 @@ const initialState = {
   regions: [],
   categories: [],
   restaurants: [],
-  restaurant: null,
+  restaurant: {},
   selectedRegion: null,
   selectedCategory: null,
   selectedRestaurant: null,
+  loading: false,
 };
 
 const reducers = {
@@ -62,6 +63,13 @@ const reducers = {
     return {
       ...state,
       selectedRestaurant: restaurants.find(equal('id', id)),
+    };
+  },
+
+  setLoading(state, { payload: { isLoading } }) {
+    return {
+      ...state,
+      loading: isLoading,
     };
   },
 };

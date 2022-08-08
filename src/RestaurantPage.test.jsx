@@ -44,6 +44,7 @@ describe('App', () => {
           ],
         },
       ],
+      selectedRestaurant: {},
       restaurant: {
         id: 6,
         categoryId: 1,
@@ -65,7 +66,7 @@ describe('App', () => {
       const { queryByText } = customRender('/restaurant');
 
       expect(queryByText('한국식 초밥')).not.toBeNull();
-      expect(queryByText('서울 강남구')).not.toBeNull();
+      expect(queryByText('주소:서울 강남구')).not.toBeNull();
       expect(queryByText('메뉴')).not.toBeNull();
       expect(queryByText('밥')).not.toBeNull();
     });

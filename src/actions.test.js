@@ -10,6 +10,7 @@ import {
   setRestaurants,
   loadRestaurant,
   setRestaurant,
+  setLoading,
 } from './actions';
 
 const middlewares = [thunk];
@@ -107,11 +108,13 @@ describe('actions', () => {
       });
 
       it('runs setRestaurant', async () => {
-        await store.dispatch(loadRestaurant());
+        await store.dispatch(loadRestaurant(1));
 
         const actions = store.getActions();
 
-        expect(actions[0]).toEqual(setRestaurant([]));
+        expect(actions[0]).toEqual(setLoading(true));
+        expect(actions[1]).toEqual(setRestaurant([]));
+        expect(actions[2]).toEqual(setLoading(false));
       });
     });
 

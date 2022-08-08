@@ -32,6 +32,20 @@ describe('App', () => {
       restaurants: [
         { id: 1, name: '한국식 초밥' },
       ],
+      selectedRestaurant: { id: 1, name: '한국식 초밥' },
+      restaurant: {
+        id: 6,
+        categoryId: 1,
+        name: '한국식 초밥',
+        address: '서울 강남구',
+        menuItems: [
+          {
+            id: 18,
+            restaurantId: 6,
+            name: '밥',
+          },
+        ],
+      },
     }));
   });
 
@@ -85,7 +99,7 @@ describe('App', () => {
 
   context('with path /restaurant', () => {
     it('shows a restaurant', () => {
-      const { queryByText } = customRender('/restaurant');
+      const { queryByText } = customRender('/restaurants/1');
 
       expect(queryByText('한국식 초밥')).not.toBeNull();
     });
