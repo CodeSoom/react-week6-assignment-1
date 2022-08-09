@@ -88,23 +88,9 @@ describe('actions', () => {
   });
 
   describe('loadRestaurant', () => {
-    context('with selectedRestaurant', () => {
+    context('with restaurant id', () => {
       beforeEach(() => {
-        store = mockStore({
-          selectedRestaurant: {
-            id: 6,
-            categoryId: 1,
-            name: '한국식 초밥',
-            address: '서울 강남구',
-            menuItems: [
-              {
-                id: 18,
-                restaurantId: 6,
-                name: '밥',
-              },
-            ],
-          },
-        });
+        store = mockStore({});
       });
 
       it('runs setRestaurant', async () => {
@@ -118,10 +104,9 @@ describe('actions', () => {
       });
     });
 
-    context('without selectedRestaurant', () => {
+    context('without restaurant id', () => {
       beforeEach(() => {
-        store = mockStore({
-        });
+        store = mockStore({});
       });
 
       it('does\'nt run any actions', async () => {

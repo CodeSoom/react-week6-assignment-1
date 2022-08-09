@@ -1,4 +1,3 @@
-// import restaurants from '../fixtures/restaurants';
 import { equal } from './utils';
 
 const initialState = {
@@ -8,7 +7,6 @@ const initialState = {
   restaurant: {},
   selectedRegion: null,
   selectedCategory: null,
-  selectedRestaurant: null,
   loading: false,
 };
 
@@ -55,14 +53,6 @@ const reducers = {
     return {
       ...state,
       selectedCategory: categories.find(equal('id', categoryId)),
-    };
-  },
-
-  selectRestaurant(state, { payload: { id } }) {
-    const { restaurants } = state;
-    return {
-      ...state,
-      selectedRestaurant: restaurants.find(equal('id', id)),
     };
   },
 

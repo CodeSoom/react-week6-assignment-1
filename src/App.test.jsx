@@ -9,6 +9,11 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
+import regions from '../fixtures/regions';
+import categories from '../fixtures/categories';
+import restaurants from '../fixtures/restaurants';
+import restaurant from '../fixtures/restaurant';
+
 const customRender = (path) => render((
   <MemoryRouter initialEntries={[path]}>
     <App />
@@ -18,29 +23,10 @@ const customRender = (path) => render((
 jest.mock('react-redux');
 
 useSelector.mockImplementation((selector) => selector({
-  regions: [
-    { id: 1, name: '서울' },
-  ],
-  categories: [
-    { id: 1, name: '한식' },
-  ],
-  restaurants: [
-    { id: 1, name: '한국식 초밥' },
-  ],
-  selectedRestaurant: { id: 1, name: '한국식 초밥' },
-  restaurant: {
-    id: 6,
-    categoryId: 1,
-    name: '한국식 초밥',
-    address: '서울 강남구',
-    menuItems: [
-      {
-        id: 18,
-        restaurantId: 6,
-        name: '밥',
-      },
-    ],
-  },
+  regions,
+  categories,
+  restaurants,
+  restaurant,
 }));
 
 const dispatch = jest.fn();
@@ -64,7 +50,7 @@ describe('App', () => {
       expect(queryByText('Home')).not.toBeNull();
     });
 
-    it('does not show about page description', () => {
+    it('does not show other page\'s description', () => {
       const { queryByText } = customRender('/');
 
       expect(queryByText('About 페이지입니다')).toBeNull();

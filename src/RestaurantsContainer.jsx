@@ -1,18 +1,11 @@
 import { Link } from 'react-router-dom';
 
-import { useSelector, useDispatch } from 'react-redux';
-
-import { selectRestaurant } from './actions';
+import { useSelector } from 'react-redux';
 
 import { get } from './utils';
 
 export default function RestaurantsContainer() {
   const restaurants = useSelector(get('restaurants'));
-  const dispatch = useDispatch();
-
-  function handleRestaurantClick(restaurantId) {
-    dispatch(selectRestaurant(restaurantId));
-  }
 
   return (
     <ul>
@@ -20,7 +13,7 @@ export default function RestaurantsContainer() {
         const path = `/restaurants/${restaurant.id}`;
         return (
           <li key={restaurant.id}>
-            <Link to={path} onClick={() => handleRestaurantClick(restaurant.id)}>
+            <Link to={path}>
               {restaurant.name}
             </Link>
           </li>

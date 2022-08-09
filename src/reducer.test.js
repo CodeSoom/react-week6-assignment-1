@@ -7,7 +7,6 @@ import {
   setRestaurant,
   selectRegion,
   selectCategory,
-  selectRestaurant,
   setLoading,
 } from './actions';
 
@@ -20,7 +19,6 @@ describe('reducer', () => {
       restaurant: {},
       selectedRegion: null,
       selectedCategory: null,
-      selectedRestaurant: null,
       loading: false,
     };
 
@@ -149,25 +147,6 @@ describe('reducer', () => {
       expect(state.selectedCategory).toEqual({
         id: 1,
         name: '한식',
-      });
-    });
-  });
-
-  describe('selectRestaurant', () => {
-    it('changes selected restaurant', () => {
-      const initialState = {
-        restaurants: [
-          {
-            id: 6, name: '한국식 초밥', category: '한식', address: '서울 강남구',
-          },
-        ],
-        selectedRestaurant: null,
-      };
-
-      const state = reducer(initialState, selectRestaurant(6));
-
-      expect(state.selectedRestaurant).toEqual({
-        id: 6, name: '한국식 초밥', category: '한식', address: '서울 강남구',
       });
     });
   });
