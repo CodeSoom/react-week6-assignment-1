@@ -61,7 +61,7 @@ describe('App', () => {
     }));
   });
 
-  context('with a restaurant to show', () => {
+  context('with a restaurant', () => {
     it('shows detailed info of the restaurant', () => {
       const { queryByText } = customRender('/restaurant');
 
