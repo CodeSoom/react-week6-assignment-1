@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
+import Loading from './Loading';
+
 import { loadRestaurant } from './actions';
 
 import { get } from './utils';
@@ -33,13 +35,9 @@ export default function RestaurantContainer() {
     </>
   );
 
-  const loadingRender = (
-    <p>Now Loading...</p>
-  );
-
   return (
     <div>
-      {loading ? loadingRender : loadedRender}
+      {loading ? <Loading /> : loadedRender}
     </div>
   );
 }
