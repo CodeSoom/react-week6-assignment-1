@@ -19,13 +19,13 @@ describe('App', () => {
     const dispatch = jest.fn();
     useDispatch.mockImplementation(() => dispatch);
 
-    useSelector.mockImplementation((selector) =>
-      selector({
-        regions: [],
-        categories: [],
-        restaurants: [],
-      }),
-    );
+    useSelector.mockImplementation((selector) => selector({
+      regions: [
+        { id: 1, name: '강원도' },
+      ],
+      categories: [],
+      restaurants: [],
+    }));
   });
 
   function renderApp({ path }) {
@@ -44,11 +44,19 @@ describe('App', () => {
     });
   });
 
-  context('with path /restaurants', () => {
-    it('render RestaurantsPage', () => {
-      const { container } = renderApp({ padth: '/restaurants' });
+  // context('with path /restaurants', () => {
+  //   it('render RestaurantsPage', () => {
+  //     const { container } = renderApp({ padth: '/restaurants' });
 
-      expect(container).toHaveTextContent('선택해주세요');
+  //     expect(container).toHaveTextContent('강원도');
+  //   });
+  // });
+
+  context('with path /about', () => {
+    it('render AboutPage', () => {
+      const { container } = renderApp({ padth: '/about' });
+
+      expect(container).toHaveTextContent('About');
     });
   });
 });

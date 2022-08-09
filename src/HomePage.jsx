@@ -6,7 +6,9 @@ const HomePage = () => (
     <ul>
       <li>
         <Link to="/about">About</Link>
-        <Link to="/restaurants">Restaurants</Link>
+      </li>
+      <li>
+        <Link to="/restaurants">RestaurantsPage</Link>
       </li>
     </ul>
   </>
