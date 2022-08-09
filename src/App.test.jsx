@@ -19,20 +19,26 @@ describe('App', () => {
     const dispatch = jest.fn();
     useDispatch.mockImplementation(() => dispatch);
 
-    useSelector.mockImplementation((selector) => selector({
-      regions: [],
-      categories: [],
-      restaurants: [],
-    }));
+    useSelector.mockImplementation((selector) =>
+      selector({
+        regions: [],
+        categories: [],
+        restaurants: [],
+      }),
+    );
   });
+
+  function renderApp({ path }) {
+    return render(
+      <MemoryRouter initialEntries={[path]}>
+        <App />
+      </MemoryRouter>,
+    );
+  }
 
   context('with path /', () => {
     it('render HomePage', () => {
-      const { container } = render(
-        <MemoryRouter initialEntries={['/']}>
-          <App />
-        </MemoryRouter>,
-      );
+      const { container } = renderApp({ padth: '/' });
 
       expect(container).toHaveTextContent('Home');
     });
@@ -40,11 +46,7 @@ describe('App', () => {
 
   context('with path /restaurants', () => {
     it('render RestaurantsPage', () => {
-      const { container } = render(
-        <MemoryRouter initialEntries={['/restaurants']}>
-          <App />
-        </MemoryRouter>,
-      );
+      const { container } = renderApp({ padth: '/restaurants' });
 
       expect(container).toHaveTextContent('선택해주세요');
     });
