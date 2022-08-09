@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import Loading from './Loading';
 import Restaurant from './Restaurant';
-import NotFoundPage from './NotFoundPage';
 
 import { loadRestaurant } from './actions';
 
@@ -21,12 +20,9 @@ export default function RestaurantContainer() {
     dispatch(loadRestaurant(id));
   }, []);
 
-  const restaurantResult = restaurant.id
-    ? <Restaurant restaurant={restaurant} /> : <NotFoundPage />;
-
   return (
-    <div>
-      {loading ? <Loading /> : restaurantResult}
-    </div>
+    <>
+      {loading ? <Loading /> : <Restaurant restaurant={restaurant} /> }
+    </>
   );
 }

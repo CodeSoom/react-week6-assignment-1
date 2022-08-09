@@ -1,5 +1,10 @@
+import NotFoundPage from './NotFoundPage';
+
 export default function Restaurant({ restaurant }) {
   const { name, address, menuItems } = restaurant;
+
+  if (!restaurant.id) return <NotFoundPage />;
+
   return (
     <>
       <h2>{name}</h2>
