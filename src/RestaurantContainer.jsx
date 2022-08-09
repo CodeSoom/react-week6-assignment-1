@@ -9,9 +9,7 @@ import { get } from './utils';
 export default function RestaurantContainer() {
   const { id } = useParams();
   const { name, address, menuItems } = useSelector(get('restaurant'));
-  const { loading } = useSelector((state) => ({
-    loading: state.loading,
-  }));
+  const loading = useSelector(get('loading'));
 
   const dispatch = useDispatch();
 

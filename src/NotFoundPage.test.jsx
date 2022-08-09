@@ -8,7 +8,7 @@ const customRender = () => render(<NotFoundPage />);
 
 describe('NotFoundPage', () => {
   context('without defined path', () => {
-    it('shows HOME heading', () => {
+    it('shows description', () => {
       const { queryByText } = customRender();
 
       expect(queryByText('404 Not Found')).not.toBeNull();

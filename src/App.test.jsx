@@ -15,38 +15,40 @@ const customRender = (path) => render((
   </MemoryRouter>
 ));
 
+jest.mock('react-redux');
+
+useSelector.mockImplementation((selector) => selector({
+  regions: [
+    { id: 1, name: '서울' },
+  ],
+  categories: [
+    { id: 1, name: '한식' },
+  ],
+  restaurants: [
+    { id: 1, name: '한국식 초밥' },
+  ],
+  selectedRestaurant: { id: 1, name: '한국식 초밥' },
+  restaurant: {
+    id: 6,
+    categoryId: 1,
+    name: '한국식 초밥',
+    address: '서울 강남구',
+    menuItems: [
+      {
+        id: 18,
+        restaurantId: 6,
+        name: '밥',
+      },
+    ],
+  },
+}));
+
+const dispatch = jest.fn();
+useDispatch.mockImplementation(() => dispatch);
+
 describe('App', () => {
   beforeEach(() => {
     jest.clearAllMocks();
-
-    const dispatch = jest.fn();
-    useDispatch.mockImplementation(() => dispatch);
-
-    useSelector.mockImplementation((selector) => selector({
-      regions: [
-        { id: 1, name: '서울' },
-      ],
-      categories: [
-        { id: 1, name: '한식' },
-      ],
-      restaurants: [
-        { id: 1, name: '한국식 초밥' },
-      ],
-      selectedRestaurant: { id: 1, name: '한국식 초밥' },
-      restaurant: {
-        id: 6,
-        categoryId: 1,
-        name: '한국식 초밥',
-        address: '서울 강남구',
-        menuItems: [
-          {
-            id: 18,
-            restaurantId: 6,
-            name: '밥',
-          },
-        ],
-      },
-    }));
   });
 
   context('with path /', () => {
@@ -56,7 +58,7 @@ describe('App', () => {
       expect(queryByText('헤더')).not.toBeNull();
     });
 
-    it('shows HOME heading', () => {
+    it('shows "HOME" heading', () => {
       const { queryByText } = customRender('/');
 
       expect(queryByText('Home')).not.toBeNull();
@@ -70,13 +72,13 @@ describe('App', () => {
   });
 
   context('with path /about', () => {
-    it('shows about page description', () => {
+    it('shows description', () => {
       const { queryByText } = customRender('/about');
 
       expect(queryByText('About 페이지입니다.')).not.toBeNull();
     });
 
-    it('does not show Home heading', () => {
+    it('does not show "Home" heading', () => {
       const { queryByText } = customRender('/about');
 
       expect(queryByText('Home')).toBeNull();
