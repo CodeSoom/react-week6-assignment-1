@@ -10,4 +10,4 @@ describe('Restaurant', () => {
 
     expect(container).toHaveTextContent('밥');
   });
-})
+});

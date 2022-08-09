@@ -35,6 +35,7 @@ export default function RestaurantContainer() {
     </>
   );
 
+
   return (
     <div>
       {loading ? <Loading /> : loadedRender}
