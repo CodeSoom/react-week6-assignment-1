@@ -22,6 +22,7 @@ export default function RestaurantsPage() {
 
   return (
     <div>
+      <p>원하시는 지역과 음식 종류를 선택해주세요</p>
       <RegionsContainer />
       <CategoriesContainer />
       <RestaurantsContainer />
