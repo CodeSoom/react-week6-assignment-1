@@ -11,6 +11,7 @@ describe('AboutPage', () => {
           <AboutPage />
         </MemoryRouter>,
       );
+
       expect(container).toHaveTextContent('About');
     });
   });

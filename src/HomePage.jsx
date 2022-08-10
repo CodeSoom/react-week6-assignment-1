@@ -8,7 +8,7 @@ const HomePage = () => (
         <Link to="/about">About</Link>
       </li>
       <li>
-        <Link to="/restaurants">RestaurantsPage</Link>
+        <Link to="/restaurants">Restaurants</Link>
       </li>
     </ul>
   </>
