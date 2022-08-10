@@ -9,13 +9,15 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantPage from './RestaurantPage';
 
+import RESTAURANT from '../fixtures/restaurant';
+
 const customRender = () => render((
   <MemoryRouter>
     <RestaurantPage />
   </MemoryRouter>
 ));
 
-describe('App', () => {
+describe('RestaurantPage', () => {
   beforeEach(() => {
     jest.clearAllMocks();
 
@@ -23,41 +25,7 @@ describe('App', () => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
-      regions: [
-        { id: 1, name: '서울' },
-      ],
-      categories: [
-        { id: 1, name: '한식' },
-      ],
-      restaurants: [
-        {
-          id: 6,
-          categoryId: 1,
-          name: '한국식 초밥',
-          address: '서울 강남구',
-          menuItems: [
-            {
-              id: 18,
-              restaurantId: 6,
-              name: '밥',
-            },
-          ],
-        },
-      ],
-      selectedRestaurant: {},
-      restaurant: {
-        id: 6,
-        categoryId: 1,
-        name: '한국식 초밥',
-        address: '서울 강남구',
-        menuItems: [
-          {
-            id: 18,
-            restaurantId: 6,
-            name: '밥',
-          },
-        ],
-      },
+      restaurant: RESTAURANT,
     }));
   });
 

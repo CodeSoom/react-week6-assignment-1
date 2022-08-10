@@ -10,6 +10,11 @@ import {
   setLoading,
 } from './actions';
 
+import REGIONS from '../fixtures/regions';
+import CATEGORIES from '../fixtures/categories';
+import RESTAURANTS from '../fixtures/restaurants';
+import RESTAURANT from '../fixtures/restaurant';
+
 describe('reducer', () => {
   context('when previous state is undefined', () => {
     const initialState = {
@@ -35,13 +40,9 @@ describe('reducer', () => {
         regions: [],
       };
 
-      const regions = [
-        { id: 1, name: '서울' },
-      ];
+      const state = reducer(initialState, setRegions(REGIONS));
 
-      const state = reducer(initialState, setRegions(regions));
-
-      expect(state.regions).toHaveLength(1);
+      expect(state.regions).toHaveLength(2);
     });
   });
 
@@ -51,13 +52,9 @@ describe('reducer', () => {
         categories: [],
       };
 
-      const categories = [
-        { id: 1, name: '한식' },
-      ];
+      const state = reducer(initialState, setCategories(CATEGORIES));
 
-      const state = reducer(initialState, setCategories(categories));
-
-      expect(state.categories).toHaveLength(1);
+      expect(state.categories).toHaveLength(2);
     });
   });
 
@@ -67,13 +64,9 @@ describe('reducer', () => {
         restaurants: [],
       };
 
-      const restaurants = [
-        { id: 1, name: '마법사주방' },
-      ];
+      const state = reducer(initialState, setRestaurants(RESTAURANTS));
 
-      const state = reducer(initialState, setRestaurants(restaurants));
-
-      expect(state.restaurants).toHaveLength(1);
+      expect(state.restaurants).toHaveLength(3);
     });
   });
 
@@ -83,35 +76,9 @@ describe('reducer', () => {
         restaurant: null,
       };
 
-      const restaurant = {
-        id: 6,
-        categoryId: 1,
-        name: '한국식 초밥',
-        address: '서울 강남구',
-        menuItems: [
-          {
-            id: 18,
-            restaurantId: 6,
-            name: '밥',
-          },
-        ],
-      };
+      const state = reducer(initialState, setRestaurant(RESTAURANT));
 
-      const state = reducer(initialState, setRestaurant(restaurant));
-
-      expect(state.restaurant).toEqual({
-        id: 6,
-        categoryId: 1,
-        name: '한국식 초밥',
-        address: '서울 강남구',
-        menuItems: [
-          {
-            id: 18,
-            restaurantId: 6,
-            name: '밥',
-          },
-        ],
-      });
+      expect(state.restaurant).toEqual(RESTAURANT);
     });
   });
 

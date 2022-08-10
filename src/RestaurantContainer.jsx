@@ -20,9 +20,13 @@ export default function RestaurantContainer() {
     dispatch(loadRestaurant(id));
   }, []);
 
+  if (loading) {
+    return (
+      <Loading />
+    );
+  }
+
   return (
-    <>
-      {loading ? <Loading /> : <Restaurant restaurant={restaurant} /> }
-    </>
+    <Restaurant restaurant={restaurant} />
   );
 }

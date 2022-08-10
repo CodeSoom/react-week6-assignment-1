@@ -9,10 +9,10 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
-import regions from '../fixtures/regions';
-import categories from '../fixtures/categories';
-import restaurants from '../fixtures/restaurants';
-import restaurant from '../fixtures/restaurant';
+import REGIONS from '../fixtures/regions';
+import CATEGORIES from '../fixtures/categories';
+import RESTAURANTS from '../fixtures/restaurants';
+import RESTAURANT from '../fixtures/restaurant';
 
 const customRender = (path) => render((
   <MemoryRouter initialEntries={[path]}>
@@ -23,10 +23,10 @@ const customRender = (path) => render((
 jest.mock('react-redux');
 
 useSelector.mockImplementation((selector) => selector({
-  regions,
-  categories,
-  restaurants,
-  restaurant,
+  regions: REGIONS,
+  categories: CATEGORIES,
+  restaurants: RESTAURANTS,
+  restaurant: RESTAURANT,
 }));
 
 const dispatch = jest.fn();
@@ -50,7 +50,7 @@ describe('App', () => {
       expect(queryByText('Home')).not.toBeNull();
     });
 
-    it('does not show other page\'s description', () => {
+    it("does not show other page's description", () => {
       const { queryByText } = customRender('/');
 
       expect(queryByText('About 페이지입니다')).toBeNull();

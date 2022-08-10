@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import RestaurantContainer from './RestaurantContainer';
 
-import restaurant from '../fixtures/restaurant';
+import RESTAURANT from '../fixtures/restaurant';
 
 const dispatch = jest.fn();
 useDispatch.mockImplementation(() => dispatch);
@@ -19,7 +19,7 @@ describe('RestaurantContainer', () => {
   context('with restaurant', () => {
     it('renders a restaurant', () => {
       useSelector.mockImplementation((selector) => selector({
-        restaurant,
+        restaurant: RESTAURANT,
       }));
 
       const { container } = render((

@@ -9,6 +9,10 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantsPage from './RestaurantsPage';
 
+import REGIONS from '../fixtures/regions';
+import CATEGORIES from '../fixtures/categories';
+import RESTAURANTS from '../fixtures/restaurants';
+
 const customRender = () => render((
   <MemoryRouter>
     <RestaurantsPage />
@@ -24,15 +28,9 @@ describe('RestaurantsPage', () => {
       useDispatch.mockImplementation(() => dispatch);
 
       useSelector.mockImplementation((selector) => selector({
-        regions: [
-          { id: 1, name: '서울' },
-        ],
-        categories: [
-          { id: 1, name: '한식' },
-        ],
-        restaurants: [
-          { id: 1, name: '한국식 초밥' },
-        ],
+        regions: REGIONS,
+        categories: CATEGORIES,
+        restaurants: RESTAURANTS,
       }));
     });
 

@@ -27,4 +27,22 @@ describe('RestaurantsContainer', () => {
       expect(container).toHaveTextContent('마법사주방');
     });
   });
+
+  context('without restaurants', () => {
+    it('RestaurantsContainer', () => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurants: [
+          {},
+        ],
+      }));
+
+      const { container } = render((
+        <MemoryRouter>
+          <RestaurantsContainer />
+        </MemoryRouter>
+      ));
+
+      expect(container).not.toHaveTextContent('마법사주방');
+    });
+  });
 });
