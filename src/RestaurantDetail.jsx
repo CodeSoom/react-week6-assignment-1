@@ -1,6 +1,6 @@
 import NotFoundPage from './NotFoundPage';
 
-export default function Restaurant({ restaurant }) {
+export default function RestaurantDetail({ restaurant }) {
   const { name, address, menuItems } = restaurant;
 
   if (!restaurant.id) return <NotFoundPage />;

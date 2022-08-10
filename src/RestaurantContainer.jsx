@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Loading from './Loading';
-import Restaurant from './Restaurant';
+import RestaurantDetail from './RestaurantDetail';
 
 import { loadRestaurant } from './actions';
 
@@ -27,6 +27,6 @@ export default function RestaurantContainer() {
   }
 
   return (
-    <Restaurant restaurant={restaurant} />
+    <RestaurantDetail restaurant={restaurant} />
   );
 }
