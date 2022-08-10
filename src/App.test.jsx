@@ -24,11 +24,15 @@ describe('App', () => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
-      regions: [
-        { id: 1, name: '강원도' },
-      ],
+      regions: [{ id: 1, name: '강원도' }],
       categories: [],
       restaurants: [],
+      restaurantDetail: {
+        name: '',
+        adress: '',
+        menuItems: [],
+        reviews: [],
+      },
     }));
   });
 
