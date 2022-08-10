@@ -63,4 +63,12 @@ describe('App', () => {
       expect(container).toHaveTextContent('About');
     });
   });
+  
+  context('with path /restaurant-detail', () => {
+    it('render RestaurantDetailPage', () => {
+      const { container } = renderApp({ path: '/restaurant-detail' });
+
+      expect(container).toHaveTextContent('상세정보');
+    });
+  });
 });

@@ -9,6 +9,7 @@ export default function RestaurantDetailPage() {
 
   return (
     <div>
+      <h1>상세정보</h1>
       <h2>{name}</h2>
       <p>
         주소:&nbsp;
