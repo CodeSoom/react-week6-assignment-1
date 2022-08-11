@@ -44,7 +44,7 @@ describe('RestaurantContainer', () => {
         </MemoryRouter>
       ));
 
-      expect(container).toHaveTextContent('404 Not Found');
+      expect(container).not.toHaveTextContent('밥');
     });
   });
 

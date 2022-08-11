@@ -14,10 +14,10 @@ describe('Restaurant', () => {
   });
 
   context('without restaurant', () => {
-    it('renders 404 page', () => {
+    it('renders invalid route view', () => {
       const { container } = render(<RestaurantDetail restaurant={{}} />);
 
-      expect(container).toHaveTextContent('404 Not Found');
+      expect(container).toHaveTextContent('요청하신 정보를 찾을 수 없습니다.');
     });
   });
 });
