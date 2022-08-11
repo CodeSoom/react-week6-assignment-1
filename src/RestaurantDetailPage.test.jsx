@@ -1,9 +1,13 @@
 import { render } from '@testing-library/react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import RestaurantDetailPage from './RestaurantDetailPage';
 
 test('RestaurantDetailPage', () => {
+  const dispatch = jest.fn();
+
+  useDispatch.mockImplementation(() => dispatch);
+
   useSelector.mockImplementation((selector) => selector({
     restaurantDetail: {
       name: '김초밥',
@@ -40,6 +44,8 @@ test('RestaurantDetailPage', () => {
   }));
 
   const { container } = render(<RestaurantDetailPage />);
+
+  expect(dispatch).toBeCalled();
 
   expect(container).toHaveTextContent('김초밥');
   expect(container).toHaveTextContent('순대');
