@@ -14,6 +14,8 @@ export default function RestaurantDetailPage() {
     dispatch(loadRestaurantDetail());
   }, []);
 
+  if (!name) return (<div>로딩중...</div>);
+
   return (
     <div>
       <h1>상세정보</h1>
