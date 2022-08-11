@@ -40,6 +40,13 @@ export function selectCategory(categoryId) {
   };
 }
 
+export function selectRestaurant(restaurantId) {
+  return {
+    type: 'selectRestaurant',
+    payload: { restaurantId },
+  };
+}
+
 export function setRestaurantDetail(restaurantDetail) {
   return {
     type: 'setRestaurantDetail',
