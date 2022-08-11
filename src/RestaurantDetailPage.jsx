@@ -1,11 +1,18 @@
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { loadRestaurantDetail } from './actions';
 
 import { get } from './utils';
 
 export default function RestaurantDetailPage() {
+  const dispatch = useDispatch();
   const {
     name, address, menuItems, reviews,
   } = useSelector(get('restaurantDetail'));
+
+  useEffect(() => {
+    dispatch(loadRestaurantDetail());
+  }, []);
 
   return (
     <div>
