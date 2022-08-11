@@ -8,7 +8,7 @@ export default function Restaurant({ restaurants }) {
         const path = `/restaurants/${id}`;
 
         return (
-          <li key={id || 0}>
+          <li key={id}>
             <Link to={path}>
               {name}
             </Link>

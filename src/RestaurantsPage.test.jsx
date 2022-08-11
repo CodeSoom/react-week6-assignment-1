@@ -34,19 +34,19 @@ describe('RestaurantsPage', () => {
       }));
     });
 
-    it('shows regions', () => {
+    it('renders regions', () => {
       const { queryByText } = customRender('/restaurants');
 
       expect(queryByText('서울')).not.toBeNull();
     });
 
-    it('shows categories', () => {
+    it('renders categories', () => {
       const { queryByText } = customRender('/restaurants');
 
       expect(queryByText('한식')).not.toBeNull();
     });
 
-    it('shows restaurants', () => {
+    it('renders restaurants', () => {
       const { queryByText } = customRender('/restaurants');
 
       expect(queryByText('한국식 초밥')).not.toBeNull();

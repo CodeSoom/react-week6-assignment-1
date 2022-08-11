@@ -47,13 +47,6 @@ export function selectCategory(categoryId) {
   };
 }
 
-// export function selectRestaurant(id) {
-//   return {
-//     type: 'selectRestaurant',
-//     payload: { id },
-//   };
-// }
-
 export function setLoading(isLoading) {
   return {
     type: 'setLoading',

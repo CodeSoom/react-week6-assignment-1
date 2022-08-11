@@ -33,7 +33,7 @@ describe('RestaurantContainer', () => {
   });
 
   context('without restaurant', () => {
-    it('does not render', () => {
+    it('it renders invalid route message', () => {
       useSelector.mockImplementation((selector) => selector({
         restaurant: {},
       }));
@@ -44,7 +44,7 @@ describe('RestaurantContainer', () => {
         </MemoryRouter>
       ));
 
-      expect(container).not.toHaveTextContent('밥');
+      expect(container).toHaveTextContent('요청하신 정보를 찾을 수 없습니다.');
     });
   });
 

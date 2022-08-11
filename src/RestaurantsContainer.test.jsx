@@ -11,7 +11,7 @@ describe('RestaurantsContainer', () => {
   });
 
   context('with restaurants', () => {
-    it('RestaurantsContainer', () => {
+    it('renders restaurants', () => {
       useSelector.mockImplementation((selector) => selector({
         restaurants: [
           { id: 1, name: '마법사주방' },
@@ -29,11 +29,9 @@ describe('RestaurantsContainer', () => {
   });
 
   context('without restaurants', () => {
-    it('RestaurantsContainer', () => {
+    it('does not render restaurants', () => {
       useSelector.mockImplementation((selector) => selector({
-        restaurants: [
-          {},
-        ],
+        restaurants: [],
       }));
 
       const { container } = render((

@@ -121,7 +121,7 @@ describe('reducer', () => {
   describe('setLoading', () => {
     it('changes loading status', () => {
       const initialState = {
-        loading: false,
+        loading: true,
       };
 
       const state = reducer(initialState, setLoading(false));

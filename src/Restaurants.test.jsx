@@ -16,7 +16,7 @@ function customRender(restaurants) {
 
 describe('Restaurant', () => {
   context('with restaurants', () => {
-    it('renders restaurant', () => {
+    it('renders restaurants', () => {
       const { queryByText } = customRender(RESTAURANTS);
 
       expect(queryByText('양천주가')).not.toBeNull();
@@ -25,7 +25,7 @@ describe('Restaurant', () => {
   });
 
   context('without restaurant', () => {
-    it('renders nothing', () => {
+    it('does not render restaurants', () => {
       const { queryByText } = customRender();
 
       expect(queryByText('양천주가')).toBeNull();
