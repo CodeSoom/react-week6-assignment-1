@@ -1,9 +1,9 @@
-import InvalidRoute from './InvalidRoute';
+import NotFound from './NotFound';
 
 export default function RestaurantDetail({ restaurant }) {
   const { name, address, menuItems } = restaurant;
 
-  if (!restaurant.id) return <InvalidRoute />;
+  if (!restaurant.id) return <NotFound />;
 
   return (
     <>

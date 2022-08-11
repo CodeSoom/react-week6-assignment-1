@@ -12,7 +12,7 @@ import HomePage from './HomePage';
 import AboutPage from './AboutPage';
 import RestaurantsPage from './RestaurantsPage';
 import RestaurantPage from './RestaurantPage';
-import InvalidRoute from './InvalidRoute';
+import NotFound from './NotFound';
 
 import {
   loadInitialData,
@@ -37,7 +37,7 @@ export default function App() {
           <Route index element={<RestaurantsPage />} />
           <Route path=":id" element={<RestaurantPage />} />
         </Route>
-        <Route path="*" element={<InvalidRoute />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );

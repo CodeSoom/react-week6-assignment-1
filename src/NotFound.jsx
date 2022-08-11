@@ -1,4 +1,4 @@
-export default function InvalidRoute() {
+export default function NotFound() {
   return (
     <>
       <p>404 Not Found</p>

@@ -2,9 +2,9 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import InvalidRoute from './InvalidRoute';
+import NotFound from './NotFound';
 
-const customRender = () => render(<InvalidRoute />);
+const customRender = () => render(<NotFound />);
 
 describe('InvalidRoute', () => {
   it('shows description', () => {
