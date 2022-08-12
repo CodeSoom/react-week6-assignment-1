@@ -74,7 +74,9 @@ describe('App', () => {
     it('render RestaurantDetailPage', () => {
       const { container } = renderApp({ path: '/restaurant-detail' });
 
-            expect(container).toHaveTextContent('상세정보');
+      expect(container).toHaveTextContent('로딩중');
+      // 상세정보 데이터를 받아온 후에 상세정보 텍스트가 보이는지 확인하고 싶은데 이떄 방법은? 
+      // expect(container).toHaveTextContent('상세정보');
     });
   });
 });
