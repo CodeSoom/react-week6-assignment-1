@@ -34,6 +34,8 @@ describe('App', () => {
         reviews: [],
       },
     }));
+
+    jest.restoreAllMocks();
   });
 
   function renderApp({ path }) {
@@ -72,7 +74,7 @@ describe('App', () => {
     it('render RestaurantDetailPage', () => {
       const { container } = renderApp({ path: '/restaurant-detail' });
 
-      expect(container).toHaveTextContent('상세정보');
+            expect(container).toHaveTextContent('상세정보');
     });
   });
 });
