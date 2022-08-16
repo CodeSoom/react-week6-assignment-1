@@ -6,6 +6,7 @@ import {
   setRestaurants,
   selectRegion,
   selectCategory,
+  selectRestaurant,
 } from './actions';
 
 describe('reducer', () => {
@@ -16,6 +17,13 @@ describe('reducer', () => {
       restaurants: [],
       selectedRegion: null,
       selectedCategory: null,
+      selectedRestaurant: null,
+      restaurantDetail: {
+        name: '',
+        adress: '',
+        menuItems: [],
+        reviews: [],
+      },
     };
 
     it('returns initialState', () => {
@@ -31,9 +39,7 @@ describe('reducer', () => {
         regions: [],
       };
 
-      const regions = [
-        { id: 1, name: '서울' },
-      ];
+      const regions = [{ id: 1, name: '서울' }];
 
       const state = reducer(initialState, setRegions(regions));
 
@@ -47,9 +53,7 @@ describe('reducer', () => {
         categories: [],
       };
 
-      const categories = [
-        { id: 1, name: '한식' },
-      ];
+      const categories = [{ id: 1, name: '한식' }];
 
       const state = reducer(initialState, setCategories(categories));
 
@@ -63,9 +67,7 @@ describe('reducer', () => {
         restaurants: [],
       };
 
-      const restaurants = [
-        { id: 1, name: '마법사주방' },
-      ];
+      const restaurants = [{ id: 1, name: '마법사주방' }];
 
       const state = reducer(initialState, setRestaurants(restaurants));
 
@@ -76,9 +78,7 @@ describe('reducer', () => {
   describe('selectRegion', () => {
     it('changes selected region', () => {
       const initialState = {
-        regions: [
-          { id: 1, name: '서울' },
-        ],
+        regions: [{ id: 1, name: '서울' }],
         selectedRegion: null,
       };
 
@@ -94,9 +94,7 @@ describe('reducer', () => {
   describe('selectCategory', () => {
     it('changes selected category', () => {
       const initialState = {
-        categories: [
-          { id: 1, name: '한식' },
-        ],
+        categories: [{ id: 1, name: '한식' }],
         selectedCategory: null,
       };
 
@@ -106,6 +104,18 @@ describe('reducer', () => {
         id: 1,
         name: '한식',
       });
+    });
+  });
+
+  describe('', () => {
+    it('changes selected restaurant id', () => {
+      const initialState = {
+        selectedRestaurant: 14,
+      };
+
+      const state = reducer(initialState, selectRestaurant(14));
+
+      expect(state.selectedRestaurant).toEqual(14);
     });
   });
 });

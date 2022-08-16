@@ -18,6 +18,10 @@ jest.mock('./services/api');
 describe('actions', () => {
   let store;
 
+  beforeEach(() => {
+    jest.restoreAllMocks();
+  });
+
   describe('loadInitialData', () => {
     beforeEach(() => {
       store = mockStore({});
@@ -58,7 +62,7 @@ describe('actions', () => {
         });
       });
 
-      it('does\'nt run any actions', async () => {
+      it("does'nt run any actions", async () => {
         await store.dispatch(loadRestaurants());
 
         const actions = store.getActions();
@@ -74,7 +78,7 @@ describe('actions', () => {
         });
       });
 
-      it('does\'nt run any actions', async () => {
+      it("does'nt run any actions", async () => {
         await store.dispatch(loadRestaurants());
 
         const actions = store.getActions();
