@@ -4,8 +4,10 @@ const initialState = {
   regions: [],
   categories: [],
   restaurants: [],
+  restaurant: {},
   selectedRegion: null,
   selectedCategory: null,
+  loading: false,
 };
 
 const reducers = {
@@ -23,10 +25,18 @@ const reducers = {
     };
   },
 
+  // eslint-disable-next-line no-shadow
   setRestaurants(state, { payload: { restaurants } }) {
     return {
       ...state,
       restaurants,
+    };
+  },
+
+  setRestaurant(state, { payload: { restaurant } }) {
+    return {
+      ...state,
+      restaurant,
     };
   },
 
@@ -43,6 +53,13 @@ const reducers = {
     return {
       ...state,
       selectedCategory: categories.find(equal('id', categoryId)),
+    };
+  },
+
+  setLoading(state, { payload: { isLoading } }) {
+    return {
+      ...state,
+      loading: isLoading,
     };
   },
 };

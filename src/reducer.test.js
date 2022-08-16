@@ -4,9 +4,16 @@ import {
   setRegions,
   setCategories,
   setRestaurants,
+  setRestaurant,
   selectRegion,
   selectCategory,
+  setLoading,
 } from './actions';
+
+import REGIONS from '../fixtures/regions';
+import CATEGORIES from '../fixtures/categories';
+import RESTAURANTS from '../fixtures/restaurants';
+import RESTAURANT from '../fixtures/restaurant';
 
 describe('reducer', () => {
   context('when previous state is undefined', () => {
@@ -14,8 +21,10 @@ describe('reducer', () => {
       regions: [],
       categories: [],
       restaurants: [],
+      restaurant: {},
       selectedRegion: null,
       selectedCategory: null,
+      loading: false,
     };
 
     it('returns initialState', () => {
@@ -31,13 +40,9 @@ describe('reducer', () => {
         regions: [],
       };
 
-      const regions = [
-        { id: 1, name: '서울' },
-      ];
+      const state = reducer(initialState, setRegions(REGIONS));
 
-      const state = reducer(initialState, setRegions(regions));
-
-      expect(state.regions).toHaveLength(1);
+      expect(state.regions).toHaveLength(2);
     });
   });
 
@@ -47,13 +52,9 @@ describe('reducer', () => {
         categories: [],
       };
 
-      const categories = [
-        { id: 1, name: '한식' },
-      ];
+      const state = reducer(initialState, setCategories(CATEGORIES));
 
-      const state = reducer(initialState, setCategories(categories));
-
-      expect(state.categories).toHaveLength(1);
+      expect(state.categories).toHaveLength(2);
     });
   });
 
@@ -63,13 +64,21 @@ describe('reducer', () => {
         restaurants: [],
       };
 
-      const restaurants = [
-        { id: 1, name: '마법사주방' },
-      ];
+      const state = reducer(initialState, setRestaurants(RESTAURANTS));
 
-      const state = reducer(initialState, setRestaurants(restaurants));
+      expect(state.restaurants).toHaveLength(3);
+    });
+  });
 
-      expect(state.restaurants).toHaveLength(1);
+  describe('setRestaurant', () => {
+    it('changes restaurants', () => {
+      const initialState = {
+        restaurant: null,
+      };
+
+      const state = reducer(initialState, setRestaurant(RESTAURANT));
+
+      expect(state.restaurant).toEqual(RESTAURANT);
     });
   });
 
@@ -106,6 +115,18 @@ describe('reducer', () => {
         id: 1,
         name: '한식',
       });
+    });
+  });
+
+  describe('setLoading', () => {
+    it('changes loading status', () => {
+      const initialState = {
+        loading: true,
+      };
+
+      const state = reducer(initialState, setLoading(false));
+
+      expect(state.loading).toBeFalsy();
     });
   });
 });
