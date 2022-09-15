@@ -2,7 +2,10 @@ import { fetchRegions, fetchCategories, fetchRestaurants } from './api';
 
 import REGIONS from '../../fixtures/regions';
 import CATEGORIES from '../../fixtures/categories';
-import RESTAURANTS from '../../fixtures/restaurants';
+import {
+  restaurants as RESTAURANTS,
+  restaurantInfo as RESTAURANT_INFO,
+} from '../../fixtures/restaurants';
 
 describe('api', () => {
   const mockFetch = (data) => {
@@ -47,6 +50,20 @@ describe('api', () => {
       });
 
       expect(restaurants).toEqual(RESTAURANTS);
+    });
+  });
+
+  describe('fetchRestaurants', () => {
+    beforeEach(() => {
+      mockFetch(RESTAURANT_INFO);
+    });
+
+    it('returns restaurantInfo', async () => {
+      const restaurantInfo = await fetchRestaurants({
+        restaurantId: 1,
+      });
+
+      expect(restaurantInfo).toEqual(RESTAURANT_INFO);
     });
   });
 });
