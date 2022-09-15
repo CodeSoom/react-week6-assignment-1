@@ -4,10 +4,11 @@ import {
   Link,
 } from 'react-router-dom';
 
-import HomePage from './HomePage';
-import AboutPage from './AboutPage';
-import RestaurantsPage from './RestaurantsPage';
-import NotFoundPage from './NotFoundPage';
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import RestaurantsPage from './pages/RestaurantsPage';
+import NotFoundPage from './pages/NotFoundPage';
+import RestaurantInfoPage from './pages/RestaurantInfoPage';
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
         <Route index path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/restaurants" element={<RestaurantsPage />} />
+        <Route path="/restaurants:restaurantId" element={<RestaurantInfoPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
