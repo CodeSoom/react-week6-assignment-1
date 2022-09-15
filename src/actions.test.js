@@ -82,5 +82,19 @@ describe('actions', () => {
         expect(actions).toHaveLength(0);
       });
     });
+
+    describe('loadRestaurantInfo', () => {
+      beforeEach(() => {
+        store = mockStore({});
+      });
+
+      it('loads RestaurantInfo', async () => {
+        await store.dispatch(loadRestaurantInfo({ restaurantId: 1 }));
+
+        const actions = store.getActions();
+
+        expect(actions[0].toEqual(setRestaurant({})));
+      });
+    });
   });
 });
