@@ -9,8 +9,6 @@ import {
   setRestaurantDetail,
 } from './actions';
 
-import { equal } from './utils';
-
 import REGIONS from '../fixtures/regions';
 import CATEGORIES from '../fixtures/categories';
 import RESTAURANTS from '../fixtures/restaurants';
