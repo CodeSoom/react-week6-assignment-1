@@ -47,7 +47,7 @@ export function selectCategory(categoryId) {
   };
 }
 
-export function loadInitialData() {
+export function loadInitialList() {
   return async (dispatch) => {
     const regions = await fetchRegions();
     dispatch(setRegions(regions));

@@ -7,7 +7,7 @@ import CategoriesContainer from '../CategoriesContainer';
 import RestaurantsContainer from '../RestaurantsContainer';
 
 import {
-  loadInitialData,
+  loadInitialList,
 } from '../actions';
 
 // 0. 지역, 분류 목록을 얻기
@@ -19,7 +19,7 @@ export default function RestaurantsPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadInitialData());
+    dispatch(loadInitialList());
   });
 
   return (
