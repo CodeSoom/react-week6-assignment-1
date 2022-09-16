@@ -4,6 +4,8 @@ import NotFoundPage from './NotFoundPage';
 
 describe('NotFoundPage', () => {
   it('renders NotFoundPage', () => {
-    render(<NotFoundPage />);
+    const { queryByText } = render(<NotFoundPage />);
+
+    expect(queryByText('404 Not Found')).not.toBeNull();
   });
 });

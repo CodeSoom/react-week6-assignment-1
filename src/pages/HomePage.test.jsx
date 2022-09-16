@@ -5,10 +5,14 @@ import HomePage from './HomePage';
 
 describe('HomePage', () => {
   it('renders HomePage', () => {
-    render(
+    const { queryByText } = render(
       <MemoryRouter>
         <HomePage />
       </MemoryRouter>,
     );
+
+    expect(queryByText('Home')).not.toBeNull();
+    expect(queryByText('About')).not.toBeNull();
+    expect(queryByText('Restaurants')).not.toBeNull();
   });
 });

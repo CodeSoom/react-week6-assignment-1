@@ -4,6 +4,8 @@ import AboutPage from './AboutPage';
 
 describe('AboutPage', () => {
   it('renders AboutPage', () => {
-    render(<AboutPage />);
+    const { queryByText } = render(<AboutPage />);
+
+    expect(queryByText('About')).not.toBeNull();
   });
 });
