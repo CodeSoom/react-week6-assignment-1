@@ -21,7 +21,7 @@ export default function RestaurantDetailContainer() {
     dispatch(loadRestaurantDetail({ restaurantId: params.id }));
   }, [params]);
 
-  return (
+  return restaurantDetail && (
     <RestaurantDetail
       restaurantDetail={restaurantDetail}
     />
