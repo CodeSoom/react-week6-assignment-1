@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 
-import { useDiapatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantDetailContainer from './RestaurantDetailContainer';
 
@@ -16,7 +16,7 @@ describe('RestaurantDetailContainer', () => {
       restaurantDetail,
     }));
 
-    useDiapatch.mockImplementation(() => dispatch);
+    useDispatch.mockImplementation(() => dispatch);
   });
 
   afterAll(() => {
