@@ -10,27 +10,40 @@ import { get } from '../utils';
 export default function RestaurantInfoPage() {
   const dispatch = useDispatch();
 
-  const { restaurantInfo } = useSelector(get('restaurantInfo'));
-
   const { restaurantId } = useParams();
 
   useEffect(() => {
     dispatch(loadRestaurantInfo(restaurantId));
-  }, [restaurantId]);
+  }, []);
+
+  const restaurantInfo = useSelector(get('restaurantInfo'));
+
+  if (!restaurantInfo) {
+    return <p>Loading...</p>;
+  }
 
   const { name, address, menuItems } = restaurantInfo;
+
   return (
     <>
-      <p>
-        my parameter is
-        { restaurantId }
-        ok? ok.
-        and my
+      <h2>
         { name }
+      </h2>
+      <p>
+        주소:
+        {' '}
         { address }
-        { menuItems }
-        Thank you.
       </p>
+      <h3>메뉴</h3>
+      <ul>
+        {
+          menuItems.map((menuItem) => (
+            <li key={menuItem.id}>
+              {menuItem.name}
+            </li>
+          ))
+        }
+      </ul>
     </>
   );
 }
