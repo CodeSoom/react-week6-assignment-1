@@ -8,6 +8,10 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
 
+import regions from '../fixtures/regions';
+import categories from '../fixtures/categories';
+import restaurants from '../fixtures/restaurants';
+
 describe('App', () => {
   beforeEach(() => {
     const dispatch = jest.fn();
@@ -15,23 +19,25 @@ describe('App', () => {
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
-      regions: [
-        {
-          id: 1,
-          name: '서울',
-        }],
-      categories: [],
-      restaurants: [],
+      regions,
+      categories,
+      restaurants,
     }));
   });
 
-  function renderApp({ path }) {
+  function renderApp({ path } = {}) {
     return render((
       <MemoryRouter initialEntries={[path]}>
         <App />
       </MemoryRouter>
     ));
   }
+
+  it('renders \'헤더\'', () => {
+    const { container } = renderApp();
+
+    expect(container).toHaveTextContent('헤더');
+  });
 
   context('with path /', () => {
     it('reders the home page', () => {
