@@ -49,4 +49,18 @@ describe('api', () => {
       expect(restaurants).toEqual(RESTAURANTS);
     });
   });
+
+  describe('fetchRestaurantdatil', () => {
+    beforeEach(() => {
+      mockFetch(RESTAURANT_DETAIL);
+    });
+
+    it('returns restaurants', async () => {
+      const restaurants = await fetchRestaurants({
+        restaurantId: 1,
+      });
+
+      expect(restaurantDetail).toEqual(RESTAURANT_DETAIL);
+    });
+  });
 });
