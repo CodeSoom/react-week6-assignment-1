@@ -23,5 +23,6 @@ test('RestaurantsContainer', () => {
 
   restaurantLinks.forEach((restaurantLink, index) => {
     expect(restaurantLink).toHaveTextContent(restaurants[index].name);
+    expect(restaurantLink.href).toContain(restaurants[index].id);
   });
 });
