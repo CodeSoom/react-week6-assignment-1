@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantInfoPage from './RestaurantInfoPage';
 
-import { restaurantInfo as RESTAURANT_INFO } from '../../fixtures/restaurants';
+import { restaurantInfo as RESTAURANT_INFO } from '../../__fixtures__/restaurants';
 
 test('RestaurantInfoPage', () => {
   const dispatch = jest.fn();

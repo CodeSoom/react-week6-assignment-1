@@ -5,12 +5,12 @@ import {
   fetchRestaurantInfo,
 } from './api';
 
-import REGIONS from '../../fixtures/regions';
-import CATEGORIES from '../../fixtures/categories';
+import REGIONS from '../../__fixtures__/regions';
+import CATEGORIES from '../../__fixtures__/categories';
 import {
   restaurants as RESTAURANTS,
   restaurantInfo as RESTAURANT_INFO,
-} from '../../fixtures/restaurants';
+} from '../../__fixtures__/restaurants';
 
 describe('api', () => {
   const mockFetch = (data) => {

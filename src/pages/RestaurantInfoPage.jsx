@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { useParams } from 'react-router-dom';
-import { loadRestaurantInfo } from '../actions';
+import { loadRestaurantInfo } from '../store/actions';
 
 import { get } from '../utils';
 
