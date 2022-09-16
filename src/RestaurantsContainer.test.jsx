@@ -22,6 +22,6 @@ test('RestaurantsContainer', () => {
   const restaurantLinks = getAllByRole('link');
 
   restaurantLinks.forEach((restaurantLink, index) => {
-    expect(restaurantLink).toHaveTextContent(restaurants[index]);
+    expect(restaurantLink).toHaveTextContent(restaurants[index].name);
   });
 });
