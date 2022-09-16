@@ -14,7 +14,7 @@ export default function App() {
     <>
       <header>
         <h1>
-          <Link to="/">헤더 영역</Link>
+          <Link to="/">헤더</Link>
         </h1>
       </header>
       <Routes>
