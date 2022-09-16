@@ -24,6 +24,7 @@ describe('reducer', () => {
       restaurants: [],
       selectedRegion: null,
       selectedCategory: null,
+      restaurantDetail: null,
     };
 
     it('returns initialState', () => {
