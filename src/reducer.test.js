@@ -6,7 +6,7 @@ import {
   setRestaurants,
   selectRegion,
   selectCategory,
-  setRestaurantDetailData,
+  setRestaurantDetail,
 } from './actions';
 
 import { equal } from './utils';
@@ -40,9 +40,9 @@ describe('reducer', () => {
         regions: [],
       };
 
-      const state = reducer(initialState, setRegions(REGIONS));
+      const { regions } = reducer(initialState, setRegions(REGIONS));
 
-      expect(state.regions).toHaveLength(REGIONS.length);
+      expect(regions).toHaveLength(REGIONS.length);
     });
   });
 
@@ -52,9 +52,9 @@ describe('reducer', () => {
         categories: [],
       };
 
-      const state = reducer(initialState, setCategories(CATEGORIES));
+      const { categories } = reducer(initialState, setCategories(CATEGORIES));
 
-      expect(state.categories).toHaveLength(CATEGORIES.length);
+      expect(categories).toHaveLength(CATEGORIES.length);
     });
   });
 
@@ -64,9 +64,9 @@ describe('reducer', () => {
         restaurants: [],
       };
 
-      const state = reducer(initialState, setRestaurants(RESTAURANTS));
+      const { restaurants } = reducer(initialState, setRestaurants(RESTAURANTS));
 
-      expect(state.restaurants).toHaveLength(RESTAURANTS.length);
+      expect(restaurants).toHaveLength(RESTAURANTS.length);
     });
   });
 
@@ -77,11 +77,9 @@ describe('reducer', () => {
         selectedRegion: null,
       };
 
-      const targetId = 1;
+      const { selectedRegion } = reducer(initialState, selectRegion(1));
 
-      const state = reducer(initialState, selectRegion(targetId));
-
-      expect(state.selectedRegion).toEqual(REGIONS.find(equal('id', targetId)));
+      expect(selectedRegion).toEqual(REGIONS[0]);
     });
   });
 
@@ -92,22 +90,20 @@ describe('reducer', () => {
         selectedCategory: null,
       };
 
-      const targetId = 1;
+      const { selectedCategory } = reducer(initialState, selectCategory(1));
 
-      const state = reducer(initialState, selectCategory(targetId));
-
-      expect(state.selectedCategory).toEqual(CATEGORIES.find(equal('id', targetId)));
+      expect(selectedCategory).toEqual(CATEGORIES[0]);
     });
   });
 
-  describe('setRestaurantDetailData', () => {
+  describe('setRestaurantDetail', () => {
     it('changes restaurant detail', () => {
       const initialState = {
         restaurantDetail: null,
       };
 
       const { restaurantDetail } = reducer(
-        initialState, setRestaurantDetailData(RESTAURANT_DETAIL),
+        initialState, setRestaurantDetail(RESTAURANT_DETAIL),
       );
 
       expect(restaurantDetail).toEqual(RESTAURANT_DETAIL);

@@ -47,7 +47,7 @@ const reducers = {
     };
   },
 
-  setRestaurantDetailData(state, { payload: { restaurantDetail } }) {
+  setRestaurantDetail(state, { payload: { restaurantDetail } }) {
     return {
       ...state,
       restaurantDetail,

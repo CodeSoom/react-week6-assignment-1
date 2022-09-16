@@ -4,7 +4,7 @@ import { MemoryRouter } from 'react-router-dom';
 
 import HomePage from './HomePage';
 
-test('HomePage', async () => {
+test('HomePage', () => {
   const { container, getAllByRole } = render((
     <MemoryRouter>
       <HomePage />
