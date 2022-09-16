@@ -1,19 +1,27 @@
 import { render } from '@testing-library/react';
 
+import { MemoryRouter } from 'react-router-dom';
+
 import { useSelector } from 'react-redux';
 
 import RestaurantsContainer from './RestaurantsContainer';
 
+import restaurants from '../fixtures/restaurants';
+
 test('RestaurantsContainer', () => {
   useSelector.mockImplementation((selector) => selector({
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
+    restaurants,
   }));
 
-  const { container } = render((
-    <RestaurantsContainer />
+  const { getAllByRole } = render((
+    <MemoryRouter>
+      <RestaurantsContainer />
+    </MemoryRouter>
   ));
 
-  expect(container).toHaveTextContent('마법사주방');
+  const restaurantLinks = getAllByRole('link');
+
+  restaurantLinks.forEach((restaurantLink, index) => {
+    expect(restaurantLink).toHaveTextContent(restaurants[index]);
+  });
 });
