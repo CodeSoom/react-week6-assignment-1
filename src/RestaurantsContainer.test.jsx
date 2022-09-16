@@ -8,21 +8,23 @@ import RestaurantsContainer from './RestaurantsContainer';
 
 import restaurants from '../fixtures/restaurants';
 
-test('RestaurantsContainer', () => {
+describe('RestaurantsContainer', () => {
   useSelector.mockImplementation((selector) => selector({
     restaurants,
   }));
 
-  const { getAllByRole } = render((
-    <MemoryRouter>
-      <RestaurantsContainer />
-    </MemoryRouter>
-  ));
+  it('renders restaurant links', () => {
+    const { getAllByRole } = render((
+      <MemoryRouter>
+        <RestaurantsContainer />
+      </MemoryRouter>
+    ));
 
-  const restaurantLinks = getAllByRole('link');
+    const restaurantLinks = getAllByRole('link');
 
-  restaurantLinks.forEach((restaurantLink, index) => {
-    expect(restaurantLink).toHaveTextContent(restaurants[index].name);
-    expect(restaurantLink.href).toContain(restaurants[index].id);
+    restaurantLinks.forEach((restaurantLink, index) => {
+      expect(restaurantLink).toHaveTextContent(restaurants[index].name);
+      expect(restaurantLink.href).toContain(`restaurants/${restaurants[index].id}`);
+    });
   });
 });
