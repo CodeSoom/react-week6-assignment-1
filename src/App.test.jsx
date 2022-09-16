@@ -57,9 +57,19 @@ describe('App', () => {
 
   context('with path /restaurants', () => {
     it('reders the restaurants page', () => {
-      const { container } = renderApp({ path: '/restaurants' });
+      const { getByText } = renderApp({ path: '/restaurants' });
 
-      expect(container).toHaveTextContent('서울');
+      regions.forEach((region) => {
+        expect(getByText(region.name)).not.toBeNull();
+      });
+
+      categories.forEach((category) => {
+        expect(getByText(category.name)).not.toBeNull();
+      });
+
+      restaurants.forEach((restaurant) => {
+        expect(getByText(restaurant.name)).not.toBeNull();
+      });
     });
   });
 
