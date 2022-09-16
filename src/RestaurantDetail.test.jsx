@@ -5,7 +5,7 @@ import RestaurantDetail from './RestaurantDetail';
 import restaurantDetail from '../fixtures/restaurantDetail';
 
 describe('RestaurantDetail', () => {
-  it('rendes', () => {
+  it('rendes name, adress, menu items of restaurant', () => {
     const { container, getByText } = render(
       <RestaurantDetail
         restaurantDetail={restaurantDetail}

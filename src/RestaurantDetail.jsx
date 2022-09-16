@@ -1,15 +1,21 @@
-export default function RestaurantDetail({ restaurantDetail }) {
+export default function RestaurantDetail({
+  restaurantDetail: {
+    name,
+    address,
+    menuItems,
+  },
+}) {
   return (
     <>
-      <h2>{restaurantDetail.name}</h2>
+      <h2>{name}</h2>
       <p>
         주소:
         {' '}
-        {restaurantDetail.address}
+        {address}
       </p>
       <h3>메뉴</h3>
       <ul>
-        {restaurantDetail.menuItems.map((menuItem) => (
+        {menuItems.map((menuItem) => (
           <li key={menuItem.id}>
             {menuItem.name}
           </li>
