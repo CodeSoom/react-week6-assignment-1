@@ -6,7 +6,7 @@ import RestaurantInfoPage from './RestaurantInfoPage';
 
 import { restaurantInfo as RESTAURANT_INFO } from '../../__fixtures__/restaurants';
 
-test('RestaurantInfoPage', () => {
+describe('RestaurantInfoPage', () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
@@ -15,12 +15,14 @@ test('RestaurantInfoPage', () => {
     restaurantInfo: RESTAURANT_INFO,
   }));
 
-  const { queryByText } = render((
-    <RestaurantInfoPage />
-  ));
+  it('renders RestaurantInfoPage', () => {
+    const { queryByText } = render((
+      <RestaurantInfoPage />
+    ));
 
-  expect(dispatch).toBeCalled();
+    expect(dispatch).toBeCalled();
 
-  expect(queryByText('양천주가')).not.toBeNull();
-  expect(queryByText('주소: 서울 강남구')).not.toBeNull();
+    expect(queryByText('양천주가')).not.toBeNull();
+    expect(queryByText('주소: 서울 강남구')).not.toBeNull();
+  });
 });

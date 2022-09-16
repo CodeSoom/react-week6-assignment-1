@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantsPage from './RestaurantsPage';
 
-test('RestaurantsPage', () => {
+describe('RestaurantsPage', () => {
   const dispatch = jest.fn();
 
   useDispatch.mockImplementation(() => dispatch);
@@ -21,12 +21,14 @@ test('RestaurantsPage', () => {
     ],
   }));
 
-  const { queryByText } = render((
-    <RestaurantsPage />
-  ));
+  it('renders RestaurantsPage', () => {
+    const { queryByText } = render((
+      <RestaurantsPage />
+    ));
 
-  expect(dispatch).toBeCalled();
+    expect(dispatch).toBeCalled();
 
-  expect(queryByText('서울')).not.toBeNull();
-  expect(queryByText('한식')).not.toBeNull();
+    expect(queryByText('서울')).not.toBeNull();
+    expect(queryByText('한식')).not.toBeNull();
+  });
 });
