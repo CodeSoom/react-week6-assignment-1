@@ -24,7 +24,7 @@ describe('RestaurantsContainer', () => {
 
     restaurantLinks.forEach((restaurantLink, index) => {
       expect(restaurantLink).toHaveTextContent(restaurants[index].name);
-      expect(restaurantLink.href).toContain(`restaurants/${restaurants[index].id}`);
+      expect(restaurantLink.href).toContain(`${restaurants[index].id}`);
     });
   });
 });
