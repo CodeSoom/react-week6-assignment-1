@@ -15,12 +15,13 @@ test('RestaurantInfoPage', () => {
     restaurantInfo: RESTAURANT_INFO,
   }));
 
-  const { queryByText } = render((
+  const { queryByText, getByText } = render((
     <RestaurantInfoPage />
   ));
 
   expect(dispatch).toBeCalled();
 
   expect(queryByText('양천주가')).not.toBeNull();
-  expect(queryByText('강남구')).not.toBeNull();
+  expect(queryByText('주소: 서울 강남구')).not.toBeNull();
+  expect(getByText('주소: 서울 강남구')).not.toBeNull();
 });
