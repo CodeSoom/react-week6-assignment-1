@@ -24,7 +24,7 @@ describe('RegionsContainer', () => {
       }));
     });
 
-    it('renders regions with selected region', () => {
+    it('renders regions', () => {
       const { container } = render((
         <RegionsContainer />
       ));
@@ -41,11 +41,17 @@ describe('RegionsContainer', () => {
     });
 
     it('renders regions', () => {
-      const { container, getByText } = render((
+      const { container } = render((
         <RegionsContainer />
       ));
 
       expect(container).toHaveTextContent(SEOUL.name);
+    });
+
+    it('renders button to listent to click event', () => {
+      const { getByText } = render((
+        <RegionsContainer />
+      ));
 
       fireEvent.click(getByText(SEOUL.name));
 
