@@ -12,10 +12,6 @@ describe('RestaurantDetailContainer', () => {
   const dispatch = jest.fn();
 
   beforeEach(() => {
-    useSelector.mockImplementation((selector) => selector({
-      restaurantDetail,
-    }));
-
     useDispatch.mockImplementation(() => dispatch);
   });
 
@@ -23,15 +19,37 @@ describe('RestaurantDetailContainer', () => {
     jest.clearAllMocks();
   });
 
-  it('loads restaurant detail from API', () => {
-    render(<RestaurantDetailContainer />);
+  context('before loading restaurant detail', () => {
+    beforeEach(() => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurantDetail: null,
+      }));
+    });
 
-    expect(dispatch).toBeCalled();
+    it('renders \'loading...\'', () => {
+      const { container } = render(<RestaurantDetailContainer />);
+
+      expect(container).toHaveTextContent('loading...');
+    });
   });
 
-  it('renders restaurant detail', () => {
-    const { getByText } = render(<RestaurantDetailContainer />);
+  context('when loading restaurant detail', () => {
+    beforeEach(() => {
+      useSelector.mockImplementation((selector) => selector({
+        restaurantDetail,
+      }));
+    });
 
-    expect(getByText(restaurantDetail.name)).not.toBeNull();
+    it('loads restaurant detail from API', () => {
+      render(<RestaurantDetailContainer />);
+
+      expect(dispatch).toBeCalled();
+    });
+
+    it('renders restaurant detail', () => {
+      const { getByText } = render(<RestaurantDetailContainer />);
+
+      expect(getByText(restaurantDetail.name)).not.toBeNull();
+    });
   });
 });
