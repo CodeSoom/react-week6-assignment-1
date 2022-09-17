@@ -14,7 +14,7 @@ export default function RestaurantInfoPage() {
 
   useEffect(() => {
     dispatch(loadRestaurantInfo(restaurantId));
-  }, []);
+  }, [restaurantId]);
 
   const restaurantInfo = useSelector(get('restaurantInfo'));
 

@@ -1,5 +1,7 @@
 import { render } from '@testing-library/react';
 
+import { MemoryRouter } from 'react-router-dom';
+
 import { useSelector } from 'react-redux';
 
 import RestaurantsContainer from './RestaurantsContainer';
@@ -13,7 +15,9 @@ describe('RestaurantsContainer', () => {
 
   it('renders Restaurants', () => {
     const { container } = render((
-      <RestaurantsContainer />
+      < MemoryRouter>
+        <RestaurantsContainer />
+      </MemoryRouter>
     ));
 
     expect(container).toHaveTextContent('마법사주방');
