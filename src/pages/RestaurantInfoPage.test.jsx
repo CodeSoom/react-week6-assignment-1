@@ -17,7 +17,7 @@ describe('RestaurantInfoPage', () => {
       }));
     });
 
-    it('renders RestaurantInfoPage', () => {
+    it('shows restaurant information', () => {
       const { queryByText } = render((
         <RestaurantInfoPage />
       ));
@@ -26,6 +26,8 @@ describe('RestaurantInfoPage', () => {
 
       expect(queryByText('양천주가')).not.toBeNull();
       expect(queryByText('주소: 서울 강남구')).not.toBeNull();
+      expect(queryByText('메뉴')).not.toBeNull();
+      expect(queryByText('짜장면')).not.toBeNull();
     });
   });
 
