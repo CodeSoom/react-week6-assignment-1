@@ -15,7 +15,7 @@ describe('RestaurantsContainer', () => {
 
   it('renders Restaurants', () => {
     const { container } = render((
-      < MemoryRouter>
+      <MemoryRouter>
         <RestaurantsContainer />
       </MemoryRouter>
     ));

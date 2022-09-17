@@ -15,7 +15,7 @@ export default function App() {
     <div>
       <header>
         <h1>
-          <Link to="/">Header</Link>
+          <Link to="/">헤더</Link>
         </h1>
       </header>
       <Routes>
