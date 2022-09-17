@@ -8,31 +8,50 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantsPage from './RestaurantsPage';
 
-test('RestaurantsPage', () => {
+import REGIONS from '../fixtures/regions';
+import CATEGORIES from '../fixtures/categories';
+import RESTAURANTS from '../fixtures/restaurants';
+
+describe('RestaurantsPage', () => {
   const dispatch = jest.fn();
 
-  useDispatch.mockImplementation(() => dispatch);
+  const SEOUL = REGIONS[0];
+  const KOREAN_FOOD = CATEGORIES[0];
+  const KIMBAB = RESTAURANTS[0];
 
-  useSelector.mockImplementation((selector) => selector({
-    regions: [
-      { id: 1, name: '서울' },
-    ],
-    categories: [
-      { id: 1, name: '한식' },
-    ],
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
-  }));
+  beforeEach(() => {
+    useDispatch.mockImplementation(() => dispatch);
 
-  const { queryByText } = render((
-    <MemoryRouter>
-      <RestaurantsPage />
-    </MemoryRouter>
-  ));
+    useSelector.mockImplementation((selector) => selector({
+      regions: REGIONS,
+      categories: CATEGORIES,
+      restaurants: RESTAURANTS,
+    }));
+  });
 
-  expect(dispatch).toBeCalled();
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
 
-  expect(queryByText('서울')).not.toBeNull();
-  expect(queryByText('한식')).not.toBeNull();
+  it('loads initial data from API', () => {
+    render((
+      <MemoryRouter>
+        <RestaurantsPage />
+      </MemoryRouter>
+    ));
+
+    expect(dispatch).toBeCalled();
+  });
+
+  it('renders regions & categories & restaurants', () => {
+    const { queryByText } = render((
+      <MemoryRouter>
+        <RestaurantsPage />
+      </MemoryRouter>
+    ));
+
+    expect(queryByText(SEOUL.name)).not.toBeNull();
+    expect(queryByText(KOREAN_FOOD.name)).not.toBeNull();
+    expect(queryByText(KIMBAB.name)).not.toBeNull();
+  });
 });
