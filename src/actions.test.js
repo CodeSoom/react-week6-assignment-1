@@ -97,7 +97,7 @@ describe('actions', () => {
       const actions = store.getActions();
 
       expect(actions[0]).toEqual(setRestaurantDetail(null));
-      expect(actions[0]).toEqual(setRestaurantDetail([]));
+      expect(actions[1]).toEqual(setRestaurantDetail([]));
     });
   });
 });
