@@ -21,9 +21,15 @@ export default function RestaurantDetailContainer() {
     dispatch(loadRestaurantDetail({ restaurantId }));
   }, [restaurantId]);
 
-  return restaurantDetail && (
-    <RestaurantDetail
-      restaurantDetail={restaurantDetail}
-    />
+  if (restaurantDetail) {
+    return (
+      <RestaurantDetail
+        restaurantDetail={restaurantDetail}
+      />
+    );
+  }
+
+  return (
+    <h2>loading...</h2>
   );
 }
