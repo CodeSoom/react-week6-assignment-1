@@ -5,17 +5,17 @@ import RestaurantDetail from './RestaurantDetail';
 import restaurantDetail from '../fixtures/restaurantDetail';
 
 describe('RestaurantDetail', () => {
-  it('rendes name, adress, menu items of restaurant', () => {
+  it('rendes restaurant details', () => {
     const { container, getByText } = render(
       <RestaurantDetail
         restaurantDetail={restaurantDetail}
       />,
     );
 
-    expect(getByText(restaurantDetail.name)).not.toBeNull();
+    expect(container).toHaveTextContent(restaurantDetail.name);
     expect(container).toHaveTextContent('주소:');
     expect(container).toHaveTextContent(restaurantDetail.address);
-    expect(getByText(/메뉴/)).not.toBeNull();
+    expect(container).toHaveTextContent(/메뉴/);
 
     restaurantDetail.menuItems.forEach((menuItem) => {
       expect(getByText(menuItem.name)).not.toBeNull();
