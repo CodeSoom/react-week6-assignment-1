@@ -12,6 +12,13 @@ import REGIONS from '../../fixtures/regions';
 import CATEGORIES from '../../fixtures/categories';
 import RESTAURANTS from '../../fixtures/restaurants';
 
+const mockedUsedNavigate = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: () => mockedUsedNavigate,
+}));
+
 describe('RestaurantsPage', () => {
   const dispatch = jest.fn();
 
@@ -62,6 +69,6 @@ describe('RestaurantsPage', () => {
 
     fireEvent.click(restaurantLinks[0]);
 
-    // expect(navigate).toBeCalled();
+    expect(mockedUsedNavigate).toBeCalled();
   });
 });
