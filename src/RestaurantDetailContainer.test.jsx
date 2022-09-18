@@ -19,7 +19,7 @@ describe('RestaurantDetailContainer', () => {
     jest.clearAllMocks();
   });
 
-  context('before loading restaurant detail', () => {
+  context('without restaurantDetail', () => {
     beforeEach(() => {
       useSelector.mockImplementation((selector) => selector({
         restaurantDetail: null,
@@ -33,7 +33,7 @@ describe('RestaurantDetailContainer', () => {
     });
   });
 
-  context('when loading restaurant detail', () => {
+  context('with restaurantDetail', () => {
     beforeEach(() => {
       useSelector.mockImplementation((selector) => selector({
         restaurantDetail,
@@ -46,7 +46,7 @@ describe('RestaurantDetailContainer', () => {
       expect(dispatch).toBeCalled();
     });
 
-    it('renders restaurant detail', () => {
+    it('renders restaurant details', () => {
       const { getByText } = render(<RestaurantDetailContainer />);
 
       expect(getByText(restaurantDetail.name)).not.toBeNull();
