@@ -33,22 +33,22 @@ describe('RestaurantsPage', () => {
     jest.clearAllMocks();
   });
 
-  it('loads initial data from API', () => {
-    render((
+  function renderRestaurantsPage() {
+    return render((
       <MemoryRouter>
         <RestaurantsPage />
       </MemoryRouter>
     ));
+  }
+
+  it('loads initial data from API', () => {
+    renderRestaurantsPage();
 
     expect(dispatch).toBeCalled();
   });
 
   it('renders regions & categories & restaurants', () => {
-    const { queryByText } = render((
-      <MemoryRouter>
-        <RestaurantsPage />
-      </MemoryRouter>
-    ));
+    const { queryByText } = renderRestaurantsPage();
 
     expect(queryByText(SEOUL.name)).not.toBeNull();
     expect(queryByText(KOREAN_FOOD.name)).not.toBeNull();

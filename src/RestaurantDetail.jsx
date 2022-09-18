@@ -1,3 +1,5 @@
+import MenuItems from './MenuItems';
+
 export default function RestaurantDetail({
   restaurantDetail: {
     name,
@@ -14,13 +16,7 @@ export default function RestaurantDetail({
         {address}
       </p>
       <h3>메뉴</h3>
-      <ul>
-        {menuItems.map((menuItem) => (
-          <li key={menuItem.id}>
-            {menuItem.name}
-          </li>
-        ))}
-      </ul>
+      <MenuItems menuItems={menuItems} />
     </>
   );
 }

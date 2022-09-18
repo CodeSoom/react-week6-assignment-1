@@ -4,9 +4,9 @@ const initialState = {
   regions: [],
   categories: [],
   restaurants: [],
+  restaurantDetail: null,
   selectedRegion: null,
   selectedCategory: null,
-  restaurantDetail: null,
 };
 
 const reducers = {

@@ -1,7 +1,5 @@
 import { render } from '@testing-library/react';
 
-import { MemoryRouter } from 'react-router-dom';
-
 import { useSelector } from 'react-redux';
 
 import RestaurantsContainer from './RestaurantsContainer';
@@ -13,11 +11,11 @@ describe('RestaurantsContainer', () => {
     restaurants,
   }));
 
-  it('renders restaurant links', () => {
+  const handleClick = jest.fn();
+
+  it('renders links of restaurants', () => {
     const { getAllByRole } = render((
-      <MemoryRouter>
-        <RestaurantsContainer />
-      </MemoryRouter>
+      <RestaurantsContainer onClickRestaurant={handleClick} />
     ));
 
     const restaurantLinks = getAllByRole('link');

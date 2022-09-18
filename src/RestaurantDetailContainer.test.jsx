@@ -19,6 +19,8 @@ describe('RestaurantDetailContainer', () => {
     jest.clearAllMocks();
   });
 
+  const restaurantId = restaurantDetail.id;
+
   context('without restaurantDetail', () => {
     beforeEach(() => {
       useSelector.mockImplementation((selector) => selector({
@@ -27,7 +29,11 @@ describe('RestaurantDetailContainer', () => {
     });
 
     it('renders \'loading...\'', () => {
-      const { container } = render(<RestaurantDetailContainer />);
+      const { container } = render(
+        <RestaurantDetailContainer
+          restaurantId={restaurantId}
+        />,
+      );
 
       expect(container).toHaveTextContent('loading...');
     });
@@ -41,15 +47,13 @@ describe('RestaurantDetailContainer', () => {
     });
 
     it('loads restaurant detail from API', () => {
-      render(<RestaurantDetailContainer />);
+      render(
+        <RestaurantDetailContainer
+          restaurantId={restaurantId}
+        />,
+      );
 
       expect(dispatch).toBeCalled();
-    });
-
-    it('renders restaurant details', () => {
-      const { getByText } = render(<RestaurantDetailContainer />);
-
-      expect(getByText(restaurantDetail.name)).not.toBeNull();
     });
   });
 });

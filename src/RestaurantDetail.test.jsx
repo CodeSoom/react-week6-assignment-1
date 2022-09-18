@@ -6,7 +6,7 @@ import restaurantDetail from '../fixtures/restaurantDetail';
 
 describe('RestaurantDetail', () => {
   it('rendes restaurant details', () => {
-    const { container, getByText } = render(
+    const { container } = render(
       <RestaurantDetail
         restaurantDetail={restaurantDetail}
       />,
@@ -16,9 +16,5 @@ describe('RestaurantDetail', () => {
     expect(container).toHaveTextContent('주소:');
     expect(container).toHaveTextContent(restaurantDetail.address);
     expect(container).toHaveTextContent(/메뉴/);
-
-    restaurantDetail.menuItems.forEach((menuItem) => {
-      expect(getByText(menuItem.name)).not.toBeNull();
-    });
   });
 });
