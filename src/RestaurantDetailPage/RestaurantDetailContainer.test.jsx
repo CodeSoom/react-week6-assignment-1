@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantDetailContainer from './RestaurantDetailContainer';
 
-import restaurantDetail from '../fixtures/restaurantDetail';
+import restaurantDetail from '../../fixtures/restaurantDetail';
 
 jest.mock('react-redux');
 
@@ -21,7 +21,7 @@ describe('RestaurantDetailContainer', () => {
 
   const restaurantId = restaurantDetail.id;
 
-  context('without restaurantDetail', () => {
+  context('without loading', () => {
     beforeEach(() => {
       useSelector.mockImplementation((selector) => selector({
         restaurantDetail: null,
@@ -39,7 +39,7 @@ describe('RestaurantDetailContainer', () => {
     });
   });
 
-  context('with restaurantDetail', () => {
+  context('with loading', () => {
     beforeEach(() => {
       useSelector.mockImplementation((selector) => selector({
         restaurantDetail,

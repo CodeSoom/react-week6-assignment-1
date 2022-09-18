@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 
 import RestaurantDetail from './RestaurantDetail';
 
-import restaurantDetail from '../fixtures/restaurantDetail';
+import restaurantDetail from '../../fixtures/restaurantDetail';
 
 describe('RestaurantDetail', () => {
   it('rendes restaurant details', () => {

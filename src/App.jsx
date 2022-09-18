@@ -6,8 +6,8 @@ import {
 
 import HomePage from './HomePage';
 import AboutPage from './AboutPage';
-import RestaurantsPage from './RestaurantsPage';
-import RestaurantDetailPage from './RestaurantDetailPage';
+import RestaurantsPage from './RestaurantsPage/RestaurantsPage';
+import RestaurantDetailPage from './RestaurantDetailPage/RestaurantDetailPage';
 import NotFoundPage from './NotFoundPage';
 
 export default function App() {

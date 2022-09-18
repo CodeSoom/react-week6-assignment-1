@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 
 import MenuItems from './MenuItems';
 
-import restaurantDetail from '../fixtures/restaurantDetail';
+import restaurantDetail from '../../fixtures/restaurantDetail';
 
 describe('RestaurantDetail', () => {
   context('with menu items', () => {

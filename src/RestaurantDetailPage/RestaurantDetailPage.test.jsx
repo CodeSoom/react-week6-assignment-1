@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantDetailPage from './RestaurantDetailPage';
 
-import restaurantDetail from '../fixtures/restaurantDetail';
+import restaurantDetail from '../../fixtures/restaurantDetail';
 
 jest.mock('react-redux');
 

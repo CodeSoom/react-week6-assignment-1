@@ -8,9 +8,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantsPage from './RestaurantsPage';
 
-import REGIONS from '../fixtures/regions';
-import CATEGORIES from '../fixtures/categories';
-import RESTAURANTS from '../fixtures/restaurants';
+import REGIONS from '../../fixtures/regions';
+import CATEGORIES from '../../fixtures/categories';
+import RESTAURANTS from '../../fixtures/restaurants';
 
 describe('RestaurantsPage', () => {
   const dispatch = jest.fn();
