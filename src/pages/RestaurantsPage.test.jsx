@@ -23,7 +23,7 @@ describe('RestaurantsPage', () => {
     ],
   }));
 
-  it('renders RestaurantsPage', () => {
+  it('shows regions & categories', () => {
     const { queryByText } = render((
       <MemoryRouter>
         <RestaurantsPage />

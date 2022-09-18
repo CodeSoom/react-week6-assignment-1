@@ -4,7 +4,7 @@ import { MemoryRouter } from 'react-router-dom';
 import HomePage from './HomePage';
 
 describe('HomePage', () => {
-  it('renders HomePage', () => {
+  it('shows Home with other links to pages', () => {
     const { queryByText } = render(
       <MemoryRouter>
         <HomePage />
