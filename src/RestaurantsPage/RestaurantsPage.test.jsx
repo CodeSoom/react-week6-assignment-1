@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { MemoryRouter } from 'react-router-dom';
+import { useNavigate, MemoryRouter } from 'react-router-dom';
 
 import { render, fireEvent } from '@testing-library/react';
 
@@ -12,21 +12,22 @@ import REGIONS from '../../fixtures/regions';
 import CATEGORIES from '../../fixtures/categories';
 import RESTAURANTS from '../../fixtures/restaurants';
 
-const mockedUsedNavigate = jest.fn();
-
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
-  useNavigate: () => mockedUsedNavigate,
+  useNavigate: jest.fn(),
 }));
 
 describe('RestaurantsPage', () => {
   const dispatch = jest.fn();
+  const navigate = jest.fn();
 
   const SEOUL = REGIONS[0];
   const KOREAN_FOOD = CATEGORIES[0];
   const KIMBAB = RESTAURANTS[0];
 
   beforeEach(() => {
+    useNavigate.mockImplementation(() => navigate);
+
     useDispatch.mockImplementation(() => dispatch);
 
     useSelector.mockImplementation((selector) => selector({
@@ -69,6 +70,6 @@ describe('RestaurantsPage', () => {
 
     fireEvent.click(restaurantLinks[0]);
 
-    expect(mockedUsedNavigate).toBeCalled();
+    expect(navigate).toBeCalled();
   });
 });
