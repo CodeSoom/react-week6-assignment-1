@@ -21,7 +21,7 @@ describe('RestaurantDetailContainer', () => {
 
   const restaurantId = restaurantDetail.id;
 
-  context('without loading', () => {
+  context('when data is not loading yet', () => {
     beforeEach(() => {
       useSelector.mockImplementation((selector) => selector({
         restaurantDetail: null,
@@ -39,7 +39,7 @@ describe('RestaurantDetailContainer', () => {
     });
   });
 
-  context('with loading', () => {
+  context('when data is loading', () => {
     beforeEach(() => {
       useSelector.mockImplementation((selector) => selector({
         restaurantDetail,

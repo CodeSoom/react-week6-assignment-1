@@ -2,7 +2,7 @@ import React from 'react';
 
 import { MemoryRouter } from 'react-router-dom';
 
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -53,5 +53,15 @@ describe('RestaurantsPage', () => {
     expect(queryByText(SEOUL.name)).not.toBeNull();
     expect(queryByText(KOREAN_FOOD.name)).not.toBeNull();
     expect(queryByText(KIMBAB.name)).not.toBeNull();
+  });
+
+  it('renders links to listent to click event', () => {
+    const { getAllByRole } = renderRestaurantsPage();
+
+    const restaurantLinks = getAllByRole('link');
+
+    fireEvent.click(restaurantLinks[0]);
+
+    // expect(navigate).toBeCalled();
   });
 });
