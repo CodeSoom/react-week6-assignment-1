@@ -77,7 +77,9 @@ describe('reducer', () => {
 
       const { selectedRegion } = reducer(initialState, selectRegion(1));
 
-      expect(selectedRegion).toEqual(REGIONS[0]);
+      const SEOUL = REGIONS[0];
+
+      expect(selectedRegion).toEqual(SEOUL);
     });
   });
 
@@ -90,7 +92,9 @@ describe('reducer', () => {
 
       const { selectedCategory } = reducer(initialState, selectCategory(1));
 
-      expect(selectedCategory).toEqual(CATEGORIES[0]);
+      const KOREAN_FOOD = CATEGORIES[0];
+
+      expect(selectedCategory).toEqual(KOREAN_FOOD);
     });
   });
 
