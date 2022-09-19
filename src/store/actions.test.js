@@ -3,28 +3,30 @@ import thunk from 'redux-thunk';
 import configureStore from 'redux-mock-store';
 
 import {
-  loadInitialData,
+  loadInitialList,
   setRegions,
   setCategories,
   loadRestaurants,
   setRestaurants,
+  loadRestaurantInfo,
+  setRestaurantInfo,
 } from './actions';
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 
-jest.mock('./services/api');
+jest.mock('../services/api');
 
 describe('actions', () => {
   let store;
 
-  describe('loadInitialData', () => {
+  describe('loadInitialList', () => {
     beforeEach(() => {
       store = mockStore({});
     });
 
     it('runs setRegions and setCategories', async () => {
-      await store.dispatch(loadInitialData());
+      await store.dispatch(loadInitialList());
 
       const actions = store.getActions();
 
@@ -80,6 +82,20 @@ describe('actions', () => {
         const actions = store.getActions();
 
         expect(actions).toHaveLength(0);
+      });
+    });
+
+    describe('loadRestaurantInfo', () => {
+      beforeEach(() => {
+        store = mockStore({});
+      });
+
+      it('loads RestaurantInfo', async () => {
+        await store.dispatch(loadRestaurantInfo({ restaurantId: 1 }));
+
+        const actions = store.getActions();
+
+        expect(actions[0]).toEqual(setRestaurantInfo([]));
       });
     });
   });
