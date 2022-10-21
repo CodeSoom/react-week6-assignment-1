@@ -4,8 +4,12 @@ import { render } from '@testing-library/react';
 
 import AboutPage from './AboutPage';
 
-test('AboutPage', () => {
-  render(
-    <AboutPage />,
-  );
+describe('AboutPage', () => {
+  it('renders about page with title', () => {
+    const { getByText } = render(
+      <AboutPage />,
+    );
+
+    expect(getByText('About')).not.toBeNull();
+  });
 });
