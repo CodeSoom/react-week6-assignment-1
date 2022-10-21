@@ -4,7 +4,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import RestaurantsContainer from './RestaurantsContainer';
-import RestaurantsDetailPage from './RestaurantsDetailPage';
+import RestaurantDetailPage from './RestaurantDetailPage';
 
 describe('RestaurantsContainer', () => {
   useSelector.mockImplementation((selector) => selector({
@@ -15,21 +15,23 @@ describe('RestaurantsContainer', () => {
 
   it('renders restaurants component', () => {
     const { container } = render((
-      <RestaurantsContainer />
+      <MemoryRouter initialEntries={['/restaurantsPage']}>
+        <RestaurantsContainer />
+      </MemoryRouter>
     ));
 
     expect(container).toHaveTextContent('마법사주방');
   });
 
-  context('with path /restaurantsDetailPage', () => {
-    it('renders the restaurants detail page', () => {
-      const { container } = render(
-        <MemoryRouter initialEntries={['/restaurantsDetailPage']}>
-          <RestaurantsDetailPage />
-        </MemoryRouter>,
-      );
+  // context('with path /restaurantDetailPage', () => {
+  it('renders the restaurants detail page', () => {
+    const { container } = render(
+      <MemoryRouter initialEntries={['/restaurantDetailPage']}>
+        <RestaurantDetailPage />
+      </MemoryRouter>,
+    );
 
-      expect(container).toHaveTextContent('Detail');
-    });
+    expect(container).toHaveTextContent('Detail');
   });
+  // });
 });

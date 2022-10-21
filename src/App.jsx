@@ -9,6 +9,7 @@ import {
 import HomePage from './HomePage';
 import AboutPage from './AboutPage';
 import RestaurantsPage from './RestaurantsPage';
+import RestaurantDetailPage from './RestaurantDetailPage';
 import NotFoundPage from './NotFoundPage';
 
 export default function App() {
@@ -29,6 +30,7 @@ export default function App() {
         <Route exact path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/restaurants" element={<RestaurantsPage />} />
+        <Route path="/restaurantDetailPage" element={<RestaurantDetailPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>

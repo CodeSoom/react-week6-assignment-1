@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 
 import { useSelector } from 'react-redux';
 
-import RestaurantsDetailPage from './RestaurantsDetailPage';
+import RestaurantDetailPage from './RestaurantDetailPage';
 
 describe('RestaurantsContainer', () => {
   useSelector.mockImplementation((selector) => selector({
@@ -11,7 +11,7 @@ describe('RestaurantsContainer', () => {
 
   it('renders restaurant detail page', () => {
     const { container } = render((
-      <RestaurantsDetailPage />
+      <RestaurantDetailPage />
     ));
 
     expect(container).toHaveTextContent('Detail');
