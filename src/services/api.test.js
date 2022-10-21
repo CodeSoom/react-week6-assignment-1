@@ -63,7 +63,7 @@ describe('api', () => {
         restaurantId: 1,
       });
 
-      expect(restaurantDetail).toEqual(RESTAURANTS);
+      expect(restaurantDetail).toEqual(RESTAURANTDETAIL);
     });
   });
 });
