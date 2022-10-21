@@ -29,7 +29,7 @@ describe('RestaurantsContainer', () => {
         </MemoryRouter>,
       );
 
-      expect(container).toHaveTextContent('마법사주방');
+      expect(container).toHaveTextContent('Detail');
     });
   });
 });
