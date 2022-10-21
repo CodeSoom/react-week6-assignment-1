@@ -31,7 +31,7 @@ describe('RestaurantsContainer', () => {
       </MemoryRouter>,
     );
 
-    expect(container).toHaveTextContent('Detail');
+    expect(container).toHaveTextContent('양천주가');
   });
   // });
 });

@@ -88,7 +88,9 @@ describe('actions', () => {
 
   describe('loadRestaurantDetail', () => {
     beforeEach(() => {
-      store = mockStore({});
+      store = mockStore({
+        selectedRestaurant: { id: 1, name: '마녀식당' },
+      });
     });
 
     it('runs setRestaurantDetail', async () => {
