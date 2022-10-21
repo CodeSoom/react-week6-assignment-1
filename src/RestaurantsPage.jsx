@@ -24,7 +24,6 @@ export default function RestaurantsPage() {
 
   return (
     <div>
-      {/* <RestaurantsPage /> */}
       <RegionsContainer />
       <CategoriesContainer />
       <RestaurantsContainer />

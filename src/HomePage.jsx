@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function HomePage() {
   return (
@@ -6,10 +7,13 @@ export default function HomePage() {
       <h1>Home</h1>
       <ul>
         <li>
-          <a href="/about">About</a>
+          <Link to="/about">소개</Link>
         </li>
         <li>
-          <a href="/restaurants">Restaurants</a>
+          <Link to="/restaurants">Restaurants</Link>
+        </li>
+        <li>
+          <Link to="/xxx">xxx</Link>
         </li>
       </ul>
     </div>
