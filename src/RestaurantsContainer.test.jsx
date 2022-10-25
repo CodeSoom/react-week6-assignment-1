@@ -15,7 +15,7 @@ describe('RestaurantsContainer', () => {
 
   it('renders restaurants component', () => {
     const { container } = render((
-      <MemoryRouter initialEntries={['/restaurantsPage']}>
+      <MemoryRouter initialEntries={['/restaurants']}>
         <RestaurantsContainer />
       </MemoryRouter>
     ));
@@ -23,15 +23,15 @@ describe('RestaurantsContainer', () => {
     expect(container).toHaveTextContent('마법사주방');
   });
 
-  // context('with path /restaurantDetailPage', () => {
-  it('renders the restaurants detail page', () => {
-    const { container } = render(
-      <MemoryRouter initialEntries={['/restaurantDetailPage']}>
-        <RestaurantDetailPage />
-      </MemoryRouter>,
-    );
+  context('with path /restaurant/1', () => {
+    it('renders the restaurants detail page', () => {
+      const { container } = render(
+        <MemoryRouter initialEntries={['/restaurant/1']}>
+          <RestaurantDetailPage />
+        </MemoryRouter>,
+      );
 
-    expect(container).toHaveTextContent('양천주가');
+      expect(container).toHaveTextContent('양천주가');
+    });
   });
-  // });
 });

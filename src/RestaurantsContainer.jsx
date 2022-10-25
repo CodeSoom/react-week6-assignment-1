@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 import {
   selectRestaurant,
-  loadRestaurantDetail,
 } from './actions';
 
 import { get } from './utils';
@@ -14,7 +13,6 @@ export default function RestaurantsContainer() {
 
   function handleClick(restaurantId) {
     dispatch(selectRestaurant(restaurantId));
-    dispatch(loadRestaurantDetail());
   }
 
   return (
@@ -24,9 +22,9 @@ export default function RestaurantsContainer() {
           <Link
             to={`/restaurant/${restaurant.id}`}
             onClick={() => handleClick(restaurant.id)}
+            state={{ restaurantId: restaurant.id }}
           >
             {restaurant.name}
-
           </Link>
         </li>
       ))}
