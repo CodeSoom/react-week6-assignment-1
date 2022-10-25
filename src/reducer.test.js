@@ -10,6 +10,8 @@ import {
   selectRestaurant,
 } from './actions';
 
+import restaurantDetail from '../fixtures/restaurantDetail';
+
 describe('reducer', () => {
   context('when previous state is undefined', () => {
     const initialState = {
@@ -82,27 +84,6 @@ describe('reducer', () => {
       const initialState = {
         restaurantDetail: [],
       };
-
-      const restaurantDetail = [
-        {
-          id: 1,
-          categoryId: 1,
-          name: '양천주가',
-          address: '서울 강남구',
-          menuItems: [
-            {
-              id: 1,
-              restaurantId: 1,
-              name: '짜장면',
-            },
-            {
-              id: 2,
-              restaurantId: 1,
-              name: '짬뽕',
-            },
-          ],
-        },
-      ];
 
       const state = reducer(initialState, setRestaurantDetail(restaurantDetail));
 

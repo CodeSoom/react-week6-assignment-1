@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 
 import { useDispatch } from 'react-redux';
 
+import { Link } from 'react-router-dom';
 import RegionsContainer from './RegionsContainer';
 import CategoriesContainer from './CategoriesContainer';
 import RestaurantsContainer from './RestaurantsContainer';
@@ -26,7 +27,7 @@ export default function RestaurantsPage() {
     <div>
       <RegionsContainer />
       <CategoriesContainer />
-      <RestaurantsContainer />
+      <RestaurantsContainer Link={Link} />
     </div>
   );
 }

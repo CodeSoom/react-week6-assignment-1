@@ -9,14 +9,16 @@ import App from './App';
 
 describe('App', () => {
   beforeEach(() => {
-    const dispatch = jest.fn();
-    useDispatch.mockImplementation(() => dispatch);
-    useSelector.mockImplementation((selector) => selector({
-      regions: [{ id: 1, name: '서울' }],
-      categories: [],
-      restaurants: [],
-    }));
+    jest.clearAllMocks();
   });
+
+  const dispatch = jest.fn();
+  useDispatch.mockImplementation(() => dispatch);
+  useSelector.mockImplementation((selector) => selector({
+    regions: [{ id: 1, name: '서울' }],
+    categories: [],
+    restaurants: [],
+  }));
 
   function renderApp({ path }) {
     return render(
