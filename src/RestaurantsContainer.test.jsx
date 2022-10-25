@@ -4,7 +4,6 @@ import { MemoryRouter } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import RestaurantsContainer from './RestaurantsContainer';
-import RestaurantDetailPage from './RestaurantDetailPage';
 
 describe('RestaurantsContainer', () => {
   useSelector.mockImplementation((selector) => selector({
@@ -21,17 +20,5 @@ describe('RestaurantsContainer', () => {
     ));
 
     expect(container).toHaveTextContent('마법사주방');
-  });
-
-  context('with path /restaurant/1', () => {
-    it('renders the restaurants detail page', () => {
-      const { container } = render(
-        <MemoryRouter initialEntries={['/restaurant/1']}>
-          <RestaurantDetailPage />
-        </MemoryRouter>,
-      );
-
-      expect(container).toHaveTextContent('양천주가');
-    });
   });
 });

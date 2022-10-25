@@ -4,10 +4,9 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import RestaurantDetailPage from './RestaurantDetailPage';
 
-import RESTAURANTS from '../fixtures/restaurants';
 import RESTAURANTDETAIL from '../fixtures/restaurantDetail';
 
-describe('RestaurantsContainer', () => {
+describe('RestaurantDetailPage', () => {
   const dispatch = jest.fn();
 
   beforeEach(() => {
@@ -31,17 +30,17 @@ describe('RestaurantsContainer', () => {
         <RestaurantDetailPage restaurantId="1" />
       ));
 
-      expect(container).toHaveTextContent('양천주가');
+      expect(container).toHaveTextContent(/메뉴/);
     });
   });
 
   context('without restaurant data', () => {
     it('renders restaurant detail page', () => {
       const { container } = render((
-        <RestaurantDetailPage restaurantId={null} />
+        <RestaurantDetailPage restaurantId="" />
       ));
 
-      expect(container).toHaveTextContent('loading...');
+      expect(container).toHaveTextContent('loading');
     });
   });
 });
