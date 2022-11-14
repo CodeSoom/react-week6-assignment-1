@@ -41,13 +41,13 @@ describe('App', () => {
     it('"/about"일 때, about 페이지를 랜더링한다', () => {
       const { container } = renderApp({ path: '/about' });
 
-      expect(container).toHaveTextContent('About');
+      expect(container).toHaveTextContent('영국에서');
     });
 
     it('"/restaurants"일 때, 레스토랑 페이지를 랜더링한다', () => {
       const { container } = renderApp({ path: '/restaurants' });
 
-      expect(container).toHaveTextContent('마법사주방');
+      expect(container).toHaveTextContent('김밥제국');
     });
   });
 });
