@@ -1,7 +1,7 @@
 import { Link, Route, Routes } from 'react-router-dom';
 
 import HomePage from './HomePage';
-import AboutPage from '../../restaurant-routing-demo/src/AboutPage';
+import AboutPage from './AboutPage';
 import RestaurantsPage from './RestaurantsPage';
 
 export default function App() {
