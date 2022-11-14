@@ -41,7 +41,7 @@ describe('App', () => {
     it('"/about"일 때, about 페이지를 랜더링한다', () => {
       const { container } = renderApp({ path: '/about' });
 
-      expect(container).toHaveTextContent('영국에서');
+      expect(container).toHaveTextContent('About 페이지입니다');
     });
 
     it('"/restaurants"일 때, 레스토랑 페이지를 랜더링한다', () => {
