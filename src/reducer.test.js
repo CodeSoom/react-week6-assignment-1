@@ -8,6 +8,8 @@ import {
   selectCategory,
 } from './actions';
 
+import RESTAURANTDETAIL from '../fixtures/restaurantDetail';
+
 describe('reducer', () => {
   context('when previous state is undefined', () => {
     const initialState = {
@@ -16,6 +18,7 @@ describe('reducer', () => {
       restaurants: [],
       selectedRegion: null,
       selectedCategory: null,
+      restaurantDetail: [],
     };
 
     it('returns initialState', () => {
@@ -106,6 +109,18 @@ describe('reducer', () => {
         id: 1,
         name: '한식',
       });
+    });
+  });
+
+  describe('setRestaurantDetail', () => {
+    it('changes restaurant detail info', () => {
+      const initialState = {
+        restaurantDetail: [],
+      };
+
+      const state = reducer(initialState, setRestaurants(RESTAURANTDETAIL));
+
+      expect(state.restaurantDetail).toEqual(RESTAURANTDETAIL);
     });
   });
 });
