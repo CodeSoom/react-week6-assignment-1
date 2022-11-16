@@ -11,10 +11,25 @@ export default function RestaurantDetail() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadRestaurantDetail(id));
-  }, [id]);
+    dispatch(loadRestaurantDetail(id.id));
+  }, []);
 
-  const { restaurantDetail } = useSelector((state) => console.log(state));
+  const { restaurantDetail } = useSelector((state) => ({
+    restaurantDetail: state.restaurantDetail,
+  }));
 
-  return <div>{id.id}</div>;
+  if (restaurantDetail === []) {
+    return null;
+  }
+  return (
+    <div>
+      <h2>{restaurantDetail.name}</h2>
+      <p>{restaurantDetail.address}</p>
+      <ul>
+        {
+          restaurantDetail.menuItems?.map((item) => (<li key={item.id}>{item.name}</li>))
+        }
+      </ul>
+    </div>
+  );
 }
