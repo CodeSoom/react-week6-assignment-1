@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import RestaurantDetail from './RestaurantDetail';
-import RESTAURANTDETAIL from '../fixtures/restaurantDetail';
+import RESTAURANT_DETAIL from '../fixtures/restaurantDetail';
 
 jest.mock('react-redux');
 
@@ -12,7 +12,7 @@ describe('RestaurantDetail', () => {
 
   useDispatch.mockImplementation(() => dispatch);
   useSelector.mockImplementation((selector) => selector({
-    restaurantDetail: RESTAURANTDETAIL,
+    restaurantDetail: RESTAURANT_DETAIL,
   }));
 
   function renderRestaurantDetail() {
