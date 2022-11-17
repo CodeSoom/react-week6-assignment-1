@@ -7,18 +7,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loadRestaurantDetail } from './actions';
 
 export default function RestaurantDetail() {
-  const id = useParams();
+  const { id } = useParams();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadRestaurantDetail(id.id));
+    dispatch(loadRestaurantDetail(id));
   }, []);
 
   const { restaurantDetail } = useSelector((state) => ({
     restaurantDetail: state.restaurantDetail,
   }));
 
-  if (restaurantDetail === []) {
+  if (restaurantDetail.length === 0) {
     return null;
   }
   return (
