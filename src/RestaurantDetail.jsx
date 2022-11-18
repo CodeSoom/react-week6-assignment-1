@@ -18,16 +18,18 @@ export default function RestaurantDetail() {
     restaurantDetail: state.restaurantDetail,
   }));
 
+  const { name, address, menuItems } = restaurantDetail;
+
   if (restaurantDetail.length === 0) {
     return null;
   }
   return (
     <div>
-      <h2>{restaurantDetail.name}</h2>
-      <p>{restaurantDetail.address}</p>
+      <h2>{name}</h2>
+      <p>{address}</p>
       <ul>
         {
-          restaurantDetail.menuItems?.map((item) => (<li key={item.id}>{item.name}</li>))
+          menuItems?.map((item) => (<li key={item.id}>{item.name}</li>))
         }
       </ul>
     </div>
