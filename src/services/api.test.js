@@ -5,8 +5,7 @@ import {
 import REGIONS from '../../fixtures/regions';
 import CATEGORIES from '../../fixtures/categories';
 import RESTAURANTS from '../../fixtures/restaurants';
-
-import RESTAURANTSDETAIL from '../../fixtures/restaurantDetail';
+import RESTAURANT_DETAIL from '../../fixtures/restaurantDetail';
 
 describe('api', () => {
   const mockFetch = (data) => {
@@ -56,7 +55,7 @@ describe('api', () => {
 
   describe('fetchRestaurantDetail', () => {
     beforeEach(() => {
-      mockFetch(RESTAURANTSDETAIL);
+      mockFetch(RESTAURANT_DETAIL);
     });
 
     it('returns restaurantDetail', async () => {
@@ -64,7 +63,7 @@ describe('api', () => {
         id: 1,
       });
 
-      expect(restaurantDetail).toEqual(RESTAURANTSDETAIL);
+      expect(restaurantDetail).toEqual(RESTAURANT_DETAIL);
     });
   });
 });
