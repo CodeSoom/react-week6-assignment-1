@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { useParams } from 'react-router-dom';
 
@@ -17,13 +17,7 @@ export default function RestaurantsInfoPage() {
     dispatch(loadRestaurantsInfo(id));
   }, []);
 
-  const restaurantInfo = useSelector((state) => ({
-    restaurantInfo: state.restaurantInfo,
-  }));
-
   return (
-    <RestaurantsInfoContainer
-      restaurantInfo={restaurantInfo}
-    />
+    <RestaurantsInfoContainer />
   );
 }
