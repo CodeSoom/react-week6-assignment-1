@@ -4,9 +4,12 @@ import {
   setRegions,
   setCategories,
   setRestaurants,
+  setRestaurantInfo,
   selectRegion,
   selectCategory,
 } from './actions';
+
+import restaurantInfo from '../fixtures/restaurantInfo';
 
 describe('reducer', () => {
   context('when previous state is undefined', () => {
@@ -65,6 +68,19 @@ describe('reducer', () => {
       const state = reducer(initialState, setRestaurants(restaurants));
 
       expect(state.restaurants).toHaveLength(1);
+    });
+  });
+
+  describe('setRestaurantInfo', () => {
+    it('changes restaurantInfo', () => {
+      const initialState = {
+        restaurantInfo: [],
+      };
+
+      const state = reducer(initialState, setRestaurantInfo(restaurantInfo));
+
+      expect(state.restaurantInfo.name).toBe('양천주가');
+      expect(state.restaurantInfo.address).toBe('서울시 강남구');
     });
   });
 
