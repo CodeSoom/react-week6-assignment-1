@@ -22,7 +22,7 @@ describe('RestaurantDetail', () => {
       }));
     });
 
-    it('RestaurantDetail을 렌더링한다.', () => {
+    it('레스토랑 정보와 메뉴 목록을 볼 수 있다.', () => {
       const { getByText } = renderRestaurantDetail();
 
       expect(dispatch).toBeCalled();
