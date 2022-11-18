@@ -10,19 +10,42 @@ jest.mock('react-redux');
 describe('RestaurantDetail', () => {
   const dispatch = jest.fn();
 
-  useDispatch.mockImplementation(() => dispatch);
-  useSelector.mockImplementation((selector) => selector({
-    restaurantDetail: RESTAURANT_DETAIL,
-  }));
-
   function renderRestaurantDetail() {
     return render((<RestaurantDetail />));
   }
 
-  it('RestaurantDetail을 렌더링한다.', () => {
-    const { getByText } = renderRestaurantDetail();
+  context('레스토랑 상세정보가 있을 경우', () => {
+    beforeEach(() => {
+      useDispatch.mockImplementation(() => dispatch);
+      useSelector.mockImplementation((selector) => selector({
+        restaurantDetail: RESTAURANT_DETAIL,
+      }));
+    });
 
-    expect(getByText('양천주가')).not.toBeNull();
-    expect(getByText('서울시 강남구')).not.toBeNull();
+    it('RestaurantDetail을 렌더링한다.', () => {
+      const { container } = renderRestaurantDetail();
+
+      expect(dispatch).toBeCalled();
+
+      expect(container).toHaveTextContent('서울시 강남구');
+
+      // expect(getByText('양천주가')).not.toBeNull();
+      // expect(getByText('서울시 강남구')).not.toBeNull();
+    });
+  });
+
+  context('레스토랑 상세정보가 없을 경우', () => {
+    beforeEach(() => {
+      useDispatch.mockImplementation(() => dispatch);
+      useSelector.mockImplementation((selector) => selector({
+        restaurantDetail: [],
+      }));
+    });
+
+    it('아무것도 렌더링하지 않는다.', () => {
+      const { container } = renderRestaurantDetail();
+
+      expect(container).toHaveTextContent('');
+    });
   });
 });
