@@ -2,12 +2,16 @@ import thunk from 'redux-thunk';
 
 import configureStore from 'redux-mock-store';
 
+import restaurantInfo from '../fixtures/restaurantInfo';
+
 import {
   loadInitialData,
   setRegions,
   setCategories,
   loadRestaurants,
   setRestaurants,
+  loadRestaurantsInfo,
+  setRestaurantInfo,
 } from './actions';
 
 const middlewares = [thunk];
@@ -58,7 +62,7 @@ describe('actions', () => {
         });
       });
 
-      it('does\'nt run any actions', async () => {
+      it("does'nt run any actions", async () => {
         await store.dispatch(loadRestaurants());
 
         const actions = store.getActions();
@@ -74,13 +78,29 @@ describe('actions', () => {
         });
       });
 
-      it('does\'nt run any actions', async () => {
+      it("does'nt run any actions", async () => {
         await store.dispatch(loadRestaurants());
 
         const actions = store.getActions();
 
         expect(actions).toHaveLength(0);
       });
+    });
+  });
+
+  describe('loadRestaurantsInfo', () => {
+    beforeEach(() => {
+      store = mockStore({
+        restaurantInfo,
+      });
+    });
+
+    it('setRestaurantInfo을 실행시킨다', async () => {
+      await store.dispatch(loadRestaurantsInfo());
+
+      const actions = store.getActions();
+
+      expect(actions[0]).toEqual(setRestaurantInfo([]));
     });
   });
 });
