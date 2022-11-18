@@ -23,14 +23,12 @@ describe('RestaurantDetail', () => {
     });
 
     it('RestaurantDetail을 렌더링한다.', () => {
-      const { container } = renderRestaurantDetail();
+      const { getByText } = renderRestaurantDetail();
 
       expect(dispatch).toBeCalled();
 
-      expect(container).toHaveTextContent('서울시 강남구');
-
-      // expect(getByText('양천주가')).not.toBeNull();
-      // expect(getByText('서울시 강남구')).not.toBeNull();
+      expect(getByText('양천주가')).not.toBeNull();
+      expect(getByText('서울 강남구')).not.toBeNull();
     });
   });
 
