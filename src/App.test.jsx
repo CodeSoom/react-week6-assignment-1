@@ -50,4 +50,12 @@ describe('App', () => {
       expect(container).toHaveTextContent('김밥제국');
     });
   });
+
+  context('잘못된 경로를 가지고 있을 때', () => {
+    it('NotFoundPage로 연결된다', () => {
+      const { container } = renderApp({ path: '/xxx' });
+
+      expect(container).toHaveTextContent('404 Not Found');
+    });
+  });
 });
