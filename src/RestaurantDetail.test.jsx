@@ -36,14 +36,14 @@ describe('RestaurantDetail', () => {
     beforeEach(() => {
       useDispatch.mockImplementation(() => dispatch);
       useSelector.mockImplementation((selector) => selector({
-        restaurantDetail: [],
+        restaurantDetail: null,
       }));
     });
 
-    it('아무것도 렌더링하지 않는다.', () => {
+    it('로딩 메시지가 렌더링된다.', () => {
       const { container } = renderRestaurantDetail();
 
-      expect(container).toHaveTextContent('');
+      expect(container).toHaveTextContent('Loading...');
     });
   });
 });
