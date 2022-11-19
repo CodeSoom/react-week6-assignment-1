@@ -74,7 +74,7 @@ describe('reducer', () => {
   describe('setRestaurantInfo', () => {
     it('changes restaurantInfo', () => {
       const initialState = {
-        restaurantInfo: [],
+        restaurantInfo: null,
       };
 
       const state = reducer(initialState, setRestaurantInfo(restaurantInfo));
