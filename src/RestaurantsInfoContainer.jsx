@@ -1,6 +1,18 @@
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
-export default function RestaurantsInfoContainer() {
+import { useSelector, useDispatch } from 'react-redux';
+
+import { loadRestaurantsInfo } from './actions';
+
+import RestaurantDetail from './RestaurantDetail';
+
+export default function RestaurantsInfoContainer({ id }) {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadRestaurantsInfo(id));
+  }, [id]);
+
   const { restaurantInfo } = useSelector((state) => ({
     restaurantInfo: state.restaurantInfo,
   }));
@@ -9,26 +21,7 @@ export default function RestaurantsInfoContainer() {
     return <p>Loading...</p>;
   }
 
-  const { name, address, menuItems } = restaurantInfo;
-
   return (
-    <div>
-      <h2>{name}</h2>
-      <p>
-        주소:
-        {' '}
-        {address}
-      </p>
-      <h3>메뉴</h3>
-      <ul>
-        {
-          menuItems?.map(({ id, name: menuName }) => (
-            <li key={id}>
-              {menuName}
-            </li>
-          ))
-        }
-      </ul>
-    </div>
+    <RestaurantDetail restaurantInfo={restaurantInfo} />
   );
 }
