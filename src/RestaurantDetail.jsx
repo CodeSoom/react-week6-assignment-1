@@ -18,11 +18,12 @@ export default function RestaurantDetail() {
     restaurantDetail: state.restaurantDetail,
   }));
 
+  if (!restaurantDetail) {
+    return <p>Loading...</p>;
+  }
+
   const { name, address, menuItems } = restaurantDetail;
 
-  if (restaurantDetail.length === 0) {
-    return null;
-  }
   return (
     <div>
       <h2>{name}</h2>
