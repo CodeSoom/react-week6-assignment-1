@@ -19,7 +19,7 @@ describe('reducer', () => {
       restaurants: [],
       selectedRegion: null,
       selectedCategory: null,
-      restaurantDetail: [],
+      restaurantDetail: null,
     };
 
     it('returns initialState', () => {
@@ -116,7 +116,7 @@ describe('reducer', () => {
   describe('setRestaurantDetail', () => {
     it('changes restaurant detail info', () => {
       const initialState = {
-        restaurantDetail: [],
+        restaurantDetail: null,
       };
 
       const state = reducer(initialState, setRestaurantDetail(RESTAURANT_DETAIL));
