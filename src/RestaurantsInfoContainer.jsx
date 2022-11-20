@@ -1,13 +1,17 @@
 import { useEffect } from 'react';
 
+import { useParams } from 'react-router-dom';
+
 import { useSelector, useDispatch } from 'react-redux';
 
 import { loadRestaurantsInfo } from './actions';
 
 import RestaurantDetail from './RestaurantDetail';
 
-export default function RestaurantsInfoContainer({ id }) {
+export default function RestaurantsInfoContainer() {
   const dispatch = useDispatch();
+
+  const { id } = useParams();
 
   useEffect(() => {
     dispatch(loadRestaurantsInfo(id));
