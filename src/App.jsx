@@ -7,6 +7,7 @@ import HomePage from '../pages/HomePage';
 import AboutPage from '../pages/AboutPage';
 import RestaurantsPage from '../pages/RestaurantsPage';
 import NotFoundPage from '../pages/NotFoundPage';
+import { Link } from 'react-router-dom';
 
 // 0. 지역, 분류 목록을 얻기
 // 1. 지역 선택 - Regions <- API (0)
@@ -22,17 +23,16 @@ export default function App() {
   });
 
   return (
-    <BrowserRouter>
+    <div>
+      <h1>
+        <Link to="/">Header</Link>
+      </h1>
       <Routes>
-        <Route
-          path="/"
-          element={<HomePage />}
-          errorElement={<NotFoundPage />}
-        />
+        <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/restaurants" element={<RestaurantsPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-    </BrowserRouter>
+    </div>
   );
 }

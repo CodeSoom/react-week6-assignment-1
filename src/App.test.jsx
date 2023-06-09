@@ -5,30 +5,59 @@ import { render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
+import { MemoryRouter, Route } from 'react-router-dom';
+import HomePage from '../pages/HomePage';
+import { Routes } from 'react-router-dom';
 
-test('App', () => {
-  const dispatch = jest.fn();
+describe('App', () => {
+  beforeEach(() => {
+    const dispatch = jest.fn();
+    useDispatch.mockImplementation(() => dispatch);
+    useSelector.mockImplementation((selector) =>
+      selector({
+        regions: [{ id: 1, name: '서울' }],
+        categories: [{ id: 1, name: '한식' }],
+        restaurants: [{ id: 1, name: '마법사주방' }],
+      })
+    );
+  });
 
-  useDispatch.mockImplementation(() => dispatch);
+  const renderApp = ({ path }) =>
+    render(
+      <MemoryRouter initialEntries={[path]}>
+        <App />
+      </MemoryRouter>
+    );
 
-  useSelector.mockImplementation((selector) => selector({
-    regions: [
-      { id: 1, name: '서울' },
-    ],
-    categories: [
-      { id: 1, name: '한식' },
-    ],
-    restaurants: [
-      { id: 1, name: '마법사주방' },
-    ],
-  }));
+  context('path Home', () => {
+    it('Home', () => {
+      const { container } = renderApp({ path: '/' });
 
-  const { queryByText } = render((
-    <App />
-  ));
+      expect(container).toHaveTextContent('About');
+    });
+  });
 
-  expect(dispatch).toBeCalled();
+  context('path About', () => {
+    it('Home', () => {
+      const { container } = renderApp({ path: '/about' });
 
-  expect(queryByText('서울')).not.toBeNull();
-  expect(queryByText('한식')).not.toBeNull();
+      expect(container).toHaveTextContent('About');
+    });
+  });
+
+  context('path Restaurants', () => {
+    it('Home', () => {
+      const { container } = renderApp({ path: '/restaurants' });
+
+      expect(container).toHaveTextContent('서울');
+    });
+  });
+
+  context('invalid path', () => {
+    it('renders th not found page', () => {
+      const { container } = renderApp({ path: '/xxx' });
+
+      expect(container).toHaveTextContent('404');
+    });
+  });
 });
