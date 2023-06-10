@@ -1,29 +1,39 @@
 import { useDispatch, useSelector } from 'react-redux';
-import RESTAURANTDETAIL from '../../fixtures/restaurantDetail';
+// import restaurantDetail from '../../fixtures/restaurantDetail';
 import RestaurantDetailPage from './RestaurantDetailPage';
-
-useDispatch;
+import { render, screen } from '@testing-library/react';
 
 describe('RestaurantDetail', () => {
   // 페이지 이동 시 restaurants id 받기
   // id 받아서 데이터 페칭하기
-
+  // 레스토랑 정보 보여주기
   const dispatch = jest.fn();
 
-  const renderRestaurantDetailPage = render(<RestaurantDetailPage />);
-
   beforeEach(() => {
-    dispatch.mockClear();
+    // dispatch.mockClear();
     useDispatch.mockImplementation(() => dispatch);
     useSelector.mockImplementation((selector) =>
-      selector({ title: '코코식당' })
+      selector({
+        restaurantDetail: {
+          id: 1,
+          name: '김밥제국',
+          information: '서울시 강남구 역삼동',
+          menuItems: [
+            { id: 1, name: '김밥' },
+            { id: 2, name: '라면' },
+          ],
+          reviews: [{ id: 3, name: '테스트', description: '좋아요' }],
+        },
+      })
     );
   });
 
+  const renderRestaurantDetailPage = () => render(<RestaurantDetailPage />);
+
   describe('detail', () => {
     it('restaurant 타이틀이 보인다.', () => {
-      const { container } = renderRestaurantDetailPage;
-      expect(container).toHaveTextContent('코코식당');
+      const { container } = renderRestaurantDetailPage();
+      expect(container).toHaveTextContent('김밥제국');
     });
   });
 });
