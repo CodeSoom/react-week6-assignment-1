@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { loadInitialData } from './actions';
+import { loadInitialData } from './redux/actions';
 
-import HomePage from '../pages/HomePage';
-import AboutPage from '../pages/AboutPage';
-import RestaurantsPage from '../pages/RestaurantsPage';
-import NotFoundPage from '../pages/NotFoundPage';
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import RestaurantsPage from './pages/RestaurantsPage';
+import NotFoundPage from './pages/NotFoundPage';
 import { Link } from 'react-router-dom';
 
 // 0. 지역, 분류 목록을 얻기

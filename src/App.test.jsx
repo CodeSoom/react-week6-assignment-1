@@ -5,9 +5,7 @@ import { render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import App from './App';
-import { MemoryRouter, Route } from 'react-router-dom';
-import HomePage from '../pages/HomePage';
-import { Routes } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 
 describe('App', () => {
   beforeEach(() => {
