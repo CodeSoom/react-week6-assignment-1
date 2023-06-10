@@ -7,6 +7,8 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import RestaurantsPage from './pages/RestaurantsPage';
 import NotFoundPage from './pages/NotFoundPage';
+import RestaurantDetailPage from './pages/RestaurantDetailPage';
+
 import { Link } from 'react-router-dom';
 
 // 0. 지역, 분류 목록을 얻기
@@ -31,6 +33,10 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/restaurants" element={<RestaurantsPage />} />
+        <Route
+          path="/restaurants/:restaurantid"
+          element={<RestaurantDetailPage />}
+        />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>

@@ -18,19 +18,12 @@ describe('RestaurantsPage', () => {
   });
 
   const renderRestaurantsPage = () => render(<RestaurantsPage />);
+  const testContents = ['서울', '한식', '마법사주방'];
 
-  it('regionsContainer가 렌더링된다.', () => {
+  it('각각의 컨테이너가 렌더링 된다.', () => {
     const { container } = renderRestaurantsPage();
-    expect(container).toHaveTextContent('서울');
-  });
-
-  it('categoriesContainer가 렌더링된다.', () => {
-    const { container } = renderRestaurantsPage();
-    expect(container).toHaveTextContent('한식');
-  });
-
-  it('restaurantsContainer 렌더링된다.', () => {
-    const { container } = renderRestaurantsPage();
-    expect(container).toHaveTextContent('마법사주방');
+    testContents.forEach((item) => {
+      expect(container).toHaveTextContent(item);
+    });
   });
 });
