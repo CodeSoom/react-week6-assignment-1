@@ -2,6 +2,7 @@ import { render } from '@testing-library/react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import RestaurantsPage from './RestaurantsPage';
+import { MemoryRouter } from 'react-router-dom';
 RestaurantsPage;
 
 describe('RestaurantsPage', () => {
@@ -17,7 +18,12 @@ describe('RestaurantsPage', () => {
     );
   });
 
-  const renderRestaurantsPage = () => render(<RestaurantsPage />);
+  const renderRestaurantsPage = () =>
+    render(
+      <MemoryRouter>
+        <RestaurantsPage />
+      </MemoryRouter>
+    );
   const testContents = ['서울', '한식', '마법사주방'];
 
   it('각각의 컨테이너가 렌더링 된다.', () => {
@@ -25,5 +31,11 @@ describe('RestaurantsPage', () => {
     testContents.forEach((item) => {
       expect(container).toHaveTextContent(item);
     });
+  });
+
+  it('레스토랑 컨테이너가 렌더링 된다.', () => {
+    const { container } = renderRestaurantsPage();
+
+    expect(container).toHaveTextContent('마법사주방');
   });
 });
