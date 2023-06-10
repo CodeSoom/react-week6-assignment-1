@@ -14,14 +14,20 @@ export default function RestaurantDetailContainer() {
     dispatch(loadRestaurantDetail({ restaurantid }));
   }, []);
 
+  if (!restaurantDetail) {
+    return <p>Loading...</p>;
+  }
+
+  const { name, information, menuItems, reviews } = restaurantDetail;
+
   return (
     <div>
-      <div>{restaurantDetail.name}</div>
-      <div>{restaurantDetail.information}</div>
+      <div>{name}</div>
+      <div>{information}</div>
 
       <div>
         <ol>
-          {restaurantDetail.menuItems?.map((item) => (
+          {menuItems?.map((item) => (
             <li key={item.id}>{item.name}</li>
           ))}
         </ol>
@@ -29,7 +35,7 @@ export default function RestaurantDetailContainer() {
 
       <div>
         <ul>
-          {restaurantDetail.reviews?.map((item) => (
+          {reviews?.map((item) => (
             <li key={item.id}>{`${item.name} - ${item.description}`}</li>
           ))}
         </ul>
