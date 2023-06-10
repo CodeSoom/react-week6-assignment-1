@@ -6,6 +6,7 @@ import {
   setRestaurants,
   selectRegion,
   selectCategory,
+  setRestaurantDetail,
 } from './actions';
 
 describe('reducer', () => {
@@ -65,6 +66,23 @@ describe('reducer', () => {
       const state = reducer(initialState, setRestaurants(restaurants));
 
       expect(state.restaurants).toHaveLength(1);
+    });
+  });
+
+  describe('setRestaurantDetail', () => {
+    it('changes restaurantDetail', () => {
+      const initialState = {
+        restaurantDetail: {},
+      };
+
+      const restaurantDetail = { id: 1, name: '마법사주방' };
+
+      const state = reducer(
+        initialState,
+        setRestaurantDetail(restaurantDetail)
+      );
+
+      expect(state.restaurantDetail.name).toEqual('마법사주방');
     });
   });
 

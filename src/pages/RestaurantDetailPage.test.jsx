@@ -26,12 +26,11 @@ describe('RestaurantDetail', () => {
   const renderRestaurantDetailPage = () => render(<RestaurantDetailPage />);
 
   describe('detail', () => {
-    it('restaurant 타이틀이 보인다.', () => {
+    it('restaurant 정보가 보인다.', () => {
       const { container } = renderRestaurantDetailPage();
-      expect(container).toHaveTextContent('김밥제국');
-      // textContents.forEach((text) => {
-      //   expect(container).toHaveTextContent(text);
-      // });
+      textContents.forEach((text) => {
+        expect(container).toHaveTextContent(text);
+      });
     });
   });
 });

@@ -7,20 +7,31 @@ describe('RestaurantDetail', () => {
   const dispatch = jest.fn();
 
   beforeEach(() => {
-    // dispatch.mockClear();
+    dispatch.mockClear();
     useDispatch.mockImplementation(() => dispatch);
     useSelector.mockImplementation((selector) =>
       selector({ restaurantDetail })
     );
   });
 
+  const textContents = [
+    '김밥제국',
+    '서울시 강남구 역삼동',
+    '김밥',
+    '라면',
+    '테스트',
+    '좋아요',
+  ];
+
   const renderRestaurantDetailContainer = () =>
     render(<RestaurantDetailContainer />);
 
   describe('detail', () => {
-    it('restaurant 타이틀이 보인다.', () => {
+    it('restaurant 정보가 보인다.', () => {
       const { container } = renderRestaurantDetailContainer();
-      expect(container).toHaveTextContent('김밥제국');
+      textContents.forEach((text) => {
+        expect(container).toHaveTextContent(text);
+      });
     });
   });
 });

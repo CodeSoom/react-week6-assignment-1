@@ -27,7 +27,7 @@ export default function App() {
   return (
     <div>
       <h1>
-        <Link to="/">Header</Link>
+        <Link to="/">헤더</Link>
       </h1>
       <Routes>
         <Route path="/" element={<HomePage />} />
