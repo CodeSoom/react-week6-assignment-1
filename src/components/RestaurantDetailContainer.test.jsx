@@ -9,32 +9,31 @@ describe('RestaurantDetail', () => {
   const renderRestaurantDetailContainer = () =>
     render(<RestaurantDetailContainer />);
 
-  describe('불러온 레스토랑 목록이 없을 때', () => {
+  const fetchRestaurant = (value) =>
     beforeEach(() => {
       useDispatch.mockImplementation(() => dispatch);
-      useSelector.mockImplementation((selector) =>
-        selector({
-          restaurantDetail: null,
-        })
-      );
+      useSelector.mockImplementation((selector) => selector(value));
     });
 
-    it('로딩 메시지가 렌더링된다.', () => {
+  describe('레스토랑 데이터를 불러오는 중일 때', () => {
+    fetchRestaurant({ restaurantDetail: null });
+    it('데이터가 없다고 표시된다.', () => {
       const { container } = renderRestaurantDetailContainer();
-
       expect(container).toHaveTextContent('Loading...');
     });
   });
 
-  describe('불러온 레스토랑이 있을 때', () => {
-    beforeEach(() => {
-      dispatch.mockClear();
-      useDispatch.mockImplementation(() => dispatch);
-      useSelector.mockImplementation((selector) =>
-        selector({ restaurantDetail })
-      );
-    });
+  describe('불러온 레스토랑 목록이 없을 때', () => {
+    fetchRestaurant({ restaurantDetail: { status: 404 } });
 
+    it('데이터가 없다고 표시된다.', () => {
+      const { container } = renderRestaurantDetailContainer();
+      expect(container).toHaveTextContent('레스토랑 데이터가 없습니다.');
+    });
+  });
+
+  describe('불러온 레스토랑이 있을 때', () => {
+    fetchRestaurant({ restaurantDetail });
     const textContents = [
       '김밥제국',
       '서울시 강남구 역삼동',

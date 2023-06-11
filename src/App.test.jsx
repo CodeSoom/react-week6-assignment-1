@@ -8,8 +8,8 @@ import App from './App';
 import { MemoryRouter } from 'react-router-dom';
 
 describe('App', () => {
+  const dispatch = jest.fn();
   beforeEach(() => {
-    const dispatch = jest.fn();
     useDispatch.mockImplementation(() => dispatch);
     useSelector.mockImplementation((selector) =>
       selector({

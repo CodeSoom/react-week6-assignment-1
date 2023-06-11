@@ -22,7 +22,7 @@ export default function RegionsContainer() {
           <button type="button" onClick={() => handleClick(region.id)}>
             {region.name}
             {selectedRegion ? (
-              <>{region.id === selectedRegion.id ? '(V)' : null}</>
+              <>{region.id === selectedRegion.id && '(V)'}</>
             ) : null}
           </button>
         </li>

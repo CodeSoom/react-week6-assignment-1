@@ -14,8 +14,12 @@ export default function RestaurantDetailContainer() {
     dispatch(loadRestaurantDetail({ restaurantid }));
   }, []);
 
-  if (!restaurantDetail) {
-    return <p>Loading...</p>;
+  if (restaurantDetail === null) {
+    return <div>Loading...</div>;
+  }
+
+  if (restaurantDetail.status >= 400) {
+    return <div>레스토랑 데이터가 없습니다.</div>;
   }
 
   const { name, information, menuItems, reviews } = restaurantDetail;
