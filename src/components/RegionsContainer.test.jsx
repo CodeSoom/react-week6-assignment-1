@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import RegionsContainer from './RegionsContainer';
 
-import REGIONS from '../fixtures/regions';
+import REGIONS from '../../fixtures/regions';
 
 describe('RegionsContainer', () => {
   const dispatch = jest.fn();
@@ -18,16 +18,16 @@ describe('RegionsContainer', () => {
 
   context('with selectedRegion', () => {
     beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({
-        regions: REGIONS,
-        selectedRegion: SEOUL,
-      }));
+      useSelector.mockImplementation((selector) =>
+        selector({
+          regions: REGIONS,
+          selectedRegion: SEOUL,
+        })
+      );
     });
 
     it('renders regions with selected region', () => {
-      const { container } = render((
-        <RegionsContainer />
-      ));
+      const { container } = render(<RegionsContainer />);
 
       expect(container).toHaveTextContent(`${SEOUL.name}(V)`);
     });
@@ -35,15 +35,15 @@ describe('RegionsContainer', () => {
 
   context('without selectedRegion', () => {
     beforeEach(() => {
-      useSelector.mockImplementation((selector) => selector({
-        regions: REGIONS,
-      }));
+      useSelector.mockImplementation((selector) =>
+        selector({
+          regions: REGIONS,
+        })
+      );
     });
 
     it('renders regions', () => {
-      const { container, getByText } = render((
-        <RegionsContainer />
-      ));
+      const { container, getByText } = render(<RegionsContainer />);
 
       expect(container).toHaveTextContent(SEOUL.name);
 
